@@ -1,0 +1,142 @@
+@import ../utils/variables
+@import ../utils/mixins
+@import ../../libs/include-media/dist/include-media
+
+/* shutter
+//html.css-scroll-fixed
+
+	&.touchevents
+		+scroll-blocked() // блокировка скролла во время открытия попапа (на тачскринах)
+
+//.content-wrap, .scroll-nav, .top-panel, .footer__holder
+	transition-property: transform
+	transition-duration: $animation-speed
+	transition-timing-function: cubic-bezier(0.65, 0.05, 0.36, 1) !important
+
+	.shutter--before-open &
+		transform: translate($nav-width - 250, 0)
+
+		+media('<tab-lg')
+			transform: none
+
+//.side-menu
+	.shutter--before-open &
+		transform: translate($sidebar-drop-width, 0)
+		transition-timing-function: cubic-bezier(0.65, 0.05, 0.36, 1)
+
+		+media('<tab-lg')
+			transform: none
+
+.shutter
+	overflow: hidden // необходим для скрытия скролла
+	position: fixed
+	+position(0, #{$sidebar-width})
+	+size(100%, 100vh)
+	min-width: 320px
+	max-width: $nav-width
+	//padding: 0 0 120px
+	background: $bg-color-alt
+	opacity: 0
+	visibility: hidden
+	z-index: 1000
+
+	+media('<tab-lg')
+		left: 0
+		//top: #{$top-panel-height--md}
+		//height: calc(100vh - #{$top-panel-height--md})
+		max-width: none
+		padding-top: 0
+
+.shutter__align
+	width: calc(100% + 100px)
+	overflow-x: hidden
+	overflow-y: auto
+
+	+media('<tab-lg')
+		width: 100%
+
+.shutter__holder
+	width: #{$nav-width}
+
+	+media('<tab-lg')
+		width: 100%
+
+/* shutter header
+.shutter-header
+	position: relative
+	border: 0 solid darken($bg-color-alt, 20%)
+
+	+media('<tab-lg')
+		text-align: center
+		padding: 15px #{$text-layout-space-horizontal--md + $header-height--lg} 15px #{$text-layout-space-horizontal--md}
+		border-bottom-width: 1px
+
+/* shutter header end
+
+/* shutter footer
+.shutter-footer
+	padding: 0 #{$text-layout-space-horizontal--lg} 30px
+	+font(1.2rem, 1.6)
+	color: $text-color
+
+	+media('<tab-lg')
+		+padding-horizontal($text-layout-space-horizontal--md)
+		text-align: center
+
+	+media('<tab-sm')
+		+padding-horizontal($text-layout-space-horizontal--sm)
+
+	.copyright
+		margin-bottom: 1em
+		padding-bottom: 1em
+		+font(1.4rem, 1.5)
+		text-transform: uppercase
+		border-bottom: 1px solid $border-color
+
+		&:last-child
+			margin-bottom: 0
+			padding-bottom: 0
+			border: none
+
+	.map-site
+		color: $text-color-light
+
+		a
+			color: inherit
+			text-decoration: none
+			transition-property: color
+			transition-duration: $animation-speed
+
+			.no-touchevents &:hover
+				color: $base-color
+
+/* shutter footer end
+
+/* button shutter close
+.shutter
+	.btn-popup-close
+		display: none
+		position: absolute
+		right: 0
+		top: 0
+
+		+media('<tab-lg')
+			display: block
+
+/* button shutter close end
+
+/* shutter wide
+.shutter-wide
+	max-width: calc(100% - #{$sidebar-width})
+
+	+media('<tab-lg')
+		max-width: 100%
+
+	.shutter__align
+		width: 100%
+
+	.shutter__holder
+		width: 100%
+
+/* shutter wide end
+/* shutter end

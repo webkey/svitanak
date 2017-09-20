@@ -3,67 +3,72 @@
 	"pageClass": ""
 })
 
-<div class="wrapper">
-	<!--HEADER-->
-	@@include('_tpl_layout_header.html', {
-		"currentItem": ""
-	})
-	<!--HEADER end-->
-	<!--MAIN-->
-	<div class="main">
-		<div class="max-wrap layout">
-			<div class="main__holder">
-				<!--CONTENT-->
-				<div class="content-wrap">
-					<div class="content user-content">
+@@include('_tpl_PAGE_WRAP.html', {"pageWrap": "START" })
 
-						<div class="layout-article">
+<!--HEADER-->
+@@include('_tpl_layout_header.html', {
+	"currentItem": ""
+})
+<!--HEADER end-->
 
-							<h1>Тестирование элементов форм</h1>
+<!--MAIN-->
+<div class="main">
+	<div class="main__holder">
 
-							<!--form clear-->
-							@@include('_tpl_typography_components.html', {
-								"component": "formClear"
-							})
-							<!--form clear end-->
+		<!--CONTENT-->
+		<div class="content-wrap">
+			<div class="content user-content">
 
-							<div class="user-spacer"></div>
+				<div class="layout-article">
 
-							<!--form default-->
-							@@include('_tpl_typography_components.html', {
-								"component": "formDefault"
-							})
-							<!--form default end-->
+					<h1>Тестирование элементов форм</h1>
 
-							<div class="user-spacer"></div>
+					<!--form clear-->
+					@@include('_tpl_typography_components.html', {
+						"component": "formClear"
+					})
+					<!--form clear end-->
 
-							<!--checkbox and radio-->
-							@@include('_tpl_typography_components.html', {
-								"component": "checkboxRadio"
-							})
-							<!--checkbox and radio end-->
+					<div class="user-spacer"></div>
 
-							<div class="user-spacer"></div>
+					<!--form default-->
+					@@include('_tpl_typography_components.html', {
+						"component": "formDefault"
+					})
+					<!--form default end-->
 
-							<!--user form-->
-							@@include('_tpl_typography_components.html', {
-								"component": "userForm"
-							})
-							<!--user form end-->
-						</div>
+					<div class="user-spacer"></div>
 
-						@@include('_tpl_typography_nav.html')
-					</div>
+					<!--checkbox and radio-->
+					@@include('_tpl_typography_components.html', {
+						"component": "checkboxRadio"
+					})
+					<!--checkbox and radio end-->
+
+					<div class="user-spacer"></div>
+
+					<!--user form-->
+					@@include('_tpl_typography_components.html', {
+						"component": "userForm"
+					})
+					<!--user form end-->
 				</div>
-				<!--CONTENT end-->
 
-				<!--SIDEBAR-->
-				@@include('_tpl_layout_sidebar.html')
-				<!--SIDEBAR-->
+				@@include('_tpl_typography_nav.html')
 			</div>
 		</div>
+		<!--CONTENT end-->
+
 	</div>
-	<!--MAIN end-->
 </div>
+<!--MAIN end-->
+
+<!--SIDEBAR-->
+@@include('_tpl_layout_sidebar.html', {
+	"currentItem": ""
+})
+<!--SIDEBAR-->
+
+@@include('_tpl_PAGE_WRAP.html', { "pageWrap": "END" })
 
 @@include('_tpl_layout_foot.html')

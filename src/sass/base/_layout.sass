@@ -56,43 +56,9 @@ body
 
 	background-color: sandybrown
 
-	+media('<desk-lg')
-		width: $sidebar-width--lg
-
-	+media('>=desk-sm')
-		visibility: inherit !important
-		opacity: 1 !important
-		transform: matrix(1, 0, 0, 1, 0, 0) !important
-
-	+media('<desk-sm')
-		opacity: 0
-		visibility: hidden
-		//height: calc(100% - #{$header-height})
-		//top: $header-height
-		padding-top: $header-height
-		width: $sidebar-width
-
-	+media('<tab-lg')
-		//height: calc(100% - #{$header-height--lg})
-		//top: $header-height--lg
-		padding-top: $header-height--lg
-
-	+media('<mob-lg')
-		width: 100%
-		padding-bottom: $header-height--lg // для нижней панели настроек
-
 .sidebar__align
 	width: #{$sidebar-width + 100px}
 	background-color: inherit
-
-	+media('<desk-lg')
-		width: #{$sidebar-width--lg + 100px}
-
-	+media('<desk-sm')
-		width: #{$sidebar-width + 100px}
-
-	+media('<mob-lg')
-		width: 100%
 
 	.touchevents &
 		width: 100%
@@ -101,50 +67,20 @@ body
 	position: relative
 	width: $sidebar-width
 
-	+media('<desk-lg')
-		width: $sidebar-width--lg
-
-	+media('<desk-sm')
-		width: $sidebar-width
-
-	+media('<mob-lg')
-		width: 100%
-
-
-	// для браузеров не поддерживающих display: flex
-	.no-flexbox &
-		width: $sidebar-width
-
-		+media('<desk-lg')
-			width: $sidebar-width--lg
-
-		+media('<desk-sm')
-			width: $sidebar-width
-
-		+media('<mob-lg')
-			width: 100%
-
-	// в ие 11 не поддерживается flex-direction: column вместе с min-height
-	// для этого браузера исспользуем хак
-	@media all and (-ms-high-contrast: none)
-		&::-ms-backdrop, &
-			width: $sidebar-width
-
-			+media('<desk-lg')
-				width: $sidebar-width--lg
-
-			+media('<desk-sm')
-				width: $sidebar-width
-
-			+media('<mob-lg')
-				width: 100%
-
 .footer
 	position: relative
 	clear: both
 	z-index: 5
 
 	background-color: lightgreen
+
+.footer__holder
+	$base-width: 100% - #{$sidebar-width}
+	$base-width--lg: 100% - #{$sidebar-width--lg}
+
+	&
+		left: $sidebar-width
+		width: #{$base-width}
 
 .max-wrap
 	@if $page-layout-width
@@ -301,10 +237,10 @@ body
 	.wrapper > &
 		display: none
 
-		+media('<tab-lg')
+		//+media('<tab-lg')
 			display: block
 
-	.main__holder > &
+	//.main__holder > &
 
 		+media('<tab-lg')
 			display: none
