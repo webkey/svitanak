@@ -7,44 +7,53 @@ $breakpoints: ('desk-hd': 1920px, 'desk-lg': 1600px, 'desk-md': 1366px, 'desk-sm
 
 // base
 $font-size: 1.6rem !default
-$line-height: round-float(2.4rem/$font-size, 2) !default
+$line-height: round-float(3.0rem/$font-size, 2) !default
 // ===============
 $font-size--sm: 1.4rem !default
 $line-height--sm: round-float(2.4rem/$font-size--sm, 2) !default
 // ===============
 $font-size--less: 1.2rem !default
 $line-height--less: round-float(2.0rem/$font-size--less, 2) !default
+// ===============
+$letter-spacing: 0.025em !default
 
 // =======h1========
-$font-size-h1: 4.8rem !default
-$line-height-h1: round-float(6.0rem/$font-size-h1, 2) !default
+$font-size-h1: 72px !default
+$line-height-h1: round-float(72px/$font-size-h1, 2) !default
 // md ===
-$font-size-h1--md: 3.6rem !default
-$line-height-h1--md: round-float(4.8rem/$font-size-h1--md, 2) !default
+$font-size-h1--lg: 42px !default
+$line-height-h1--lg: round-float(42px/$font-size-h1--lg, 2) !default
+// md ===
+$font-size-h1--md: 36px !default
+$line-height-h1--md: round-float(36px/$font-size-h1--md, 2) !default
 // sm ===
-$font-size-h1--sm: 3.0rem !default
-$line-height-h1--sm: round-float(4.2rem/$font-size-h1--sm, 2) !default
+$font-size-h1--sm: 30px !default
+$line-height-h1--sm: round-float(30px/$font-size-h1--sm, 2) !default
 
 // =======h2========
-$font-size-h2: round-float($font-size-h1*3.6rem/4.8rem, 1) !default
-$line-height-h2: round-float(4.8rem/3.6rem, 2) !default
+$font-size-h2: round-float($font-size-h1*36/72, 1) !default
+$line-height-h2: round-float(36/36, 2) !default
 // md ===
 $font-size-h2--md: round-float($font-size-h1--md*0.84, 1) !default
-$line-height-h2--md: round-float(($line-height-h1--md*1.02),2) !default
+//$line-height-h2--md: round-float(($line-height-h1--md*1.02),2) !default
+$line-height-h2--md: 1 !default
 // sm ===
 $font-size-h2--sm: round-float($font-size-h1--sm*0.87, 1) !default
-$line-height-h2--sm: round-float(($line-height-h1--sm*1.01),2) !default
+$line-height-h2--sm: 1 !default
 
 // =======h3========
-$font-size-h3: round-float($font-size-h1*2.4rem/4.8rem, 1) !default
-$line-height-h3: round-float(3.6rem/2.4rem, 2) !default
+$font-size-h3: round-float($font-size-h1*28/72, 1) !default
+$line-height-h3: round-float(28/28, 2) !default
+// md ===
+$font-size-h3--md: round-float($font-size-h1--md*0.78, 1) !default
+$line-height-h3--md: 1 !default
 // sm ===
 $font-size-h3--sm: round-float($font-size-h1--sm*0.73, 1) !default
-$line-height-h3--sm: round-float(($line-height-h1--sm*1.05),2) !default
+$line-height-h3--sm: 1 !default
 
 // =======h4========
-$font-size-h4: round-float($font-size-h1*1.8rem/4.8rem, 1) !default
-$line-height-h4: round-float(3.0rem/1.8rem, 2) !default
+$font-size-h4: round-float($font-size-h1*22/72, 1) !default
+$line-height-h4: round-float(22/22, 2) !default
 
 // =======h5========
 $font-size-h5: $font-size !default
@@ -54,11 +63,11 @@ $line-height-h5: $line-height !default
 $font-size-h6: round-float($font-size*0.75, 1) !default
 $line-height-h6: round-float($line-height*1.25, 2) !default
 
-$bottom-space: round-float($font-size*$line-height, 1) !default
-$bottom-space--lg: round-float($font-size*$line-height*3, 1) !default
-$bottom-space--md: round-float($font-size*$line-height*2.0, 1) !default
-$bottom-space--ml: round-float($font-size*$line-height*1.5, 1) !default
-$bottom-space--sm: round-float($font-size*$line-height*0.75, 1) !default
+$bottom-space: round-float($font-size*$line-height*2/3, 1) !default
+$bottom-space--lg: round-float($bottom-space*3, 1) !default
+$bottom-space--md: round-float($bottom-space*2.0, 1) !default
+$bottom-space--ml: round-float($bottom-space*1.5, 1) !default
+$bottom-space--sm: round-float($bottom-space*0.75, 1) !default
 
 // =======Цветовая схема========
 // цвет бренда
@@ -67,7 +76,7 @@ $base-color-alt: lightskyblue !default
 // цвет фона страницы
 $bg-color: white !default
 // цвет фона элементов выделяющихся на страницы
-$bg-color-alt: #f3f3f3 !default
+$bg-color-alt: #f7f7f7 !default
 // цвет фона выделенных элементов
 $bg-color-selected: #f3f3f3 !default
 // цвет основного текста
@@ -75,7 +84,7 @@ $text-color: #1a1a1a !default
 // цвет основных заголовков
 $title-color: $text-color !default
 // цвет текста светлее основного
-$text-color-light: gray !default
+$text-color-light: #b2b2b2 !default
 // цвет ссылки
 $link-color: $base-color !default
 // цвет линий и границ
@@ -109,9 +118,9 @@ $text-layout-space-horizontal--lg: 30px !default
 $text-layout-space-horizontal--md: 20px !default
 $text-layout-space-horizontal--sm: 15px !default
 // максимальная ширина текстового блока
-$text-layout-width: 800px !default
+$text-layout-width: 980px !default
 // максимальная ширина текстового блока выходящего за пределы текста
-$flood-layout-width: 1000px !default
+$flood-layout-width: 1020px !default
 // отступы внутри блочных элементов
 $grid-space: 30px !default
 $grid-space--lg: 20px !default
@@ -124,7 +133,7 @@ $header-height--lg: 80px !default
 // sidebar
 $sidebar-width: 100px !default
 $sidebar-width--lg: 80px !default
-$sidebar-inside-space: 50px !default
+$sidebar-inside-space: 40px !default
 $sidebar-inside-space--lg: 30px !default
 
 // logo
@@ -175,13 +184,15 @@ $animation-use: false !default
 $animation-speed: 0.2s !default
 $animation-speed-mouseleave: 0.35s !default
 
+// =========special style=========
+
 // =========fonts style=========
 // основоной шрифт
 $font-norm: 'gothampro-regular', sans-serif !default
-$font-bold: 'gothampro-regular', sans-serif !default
-$font-italic: 'gothampro-regular', sans-serif !default
-$font-bold-italic: 'gothampro-regular', sans-serif !default
-$font-medium: 'gothampro-regular', sans-serif !default
+$font-bold: 'gothampro-bold', sans-serif !default
+$font-italic: 'gothampro-italic', sans-serif !default
+$font-bold-italic: 'gothampro-bold-italic', sans-serif !default
+$font-medium: 'gothampro-madium', sans-serif !default
 // дополнительный шрифт
 $font-alt: 'minionpro-regular', serif !default
 $font-alt-bold: 'minionpro-bold', serif !default

@@ -12,6 +12,7 @@ html
 body
 	+font-normal
 	+font($font-size, $line-height)
+	letter-spacing: $letter-spacing
 	color: $text-color
 	background: $bg-color url(../../img/empty.png) no-repeat left top fixed
 
@@ -41,7 +42,19 @@ h1, h2, h3, h4, h5, h6
 			text-decoration: underline
 
 h1
+	margin-bottom: $bottom-space--lg
 	+font($font-size-h1, $line-height-h1)
+	letter-spacing: 0.05em
+	text-align: center
+
+	+media('<desk-hd')
+		+font($font-size-h1--lg, $line-height-h1--lg)
+
+	+media('<desk-lg')
+		margin-bottom: $bottom-space--ml
+
+	+media('<desk-md')
+		+font($font-size-h1--md, $line-height-h1--md)
 
 	+media('<mob-lg')
 		+font($font-size-h1--sm, $line-height-h1--sm)
@@ -49,11 +62,17 @@ h1
 h2
 	+font($font-size-h2, $line-height-h2)
 
+	+media('<desk-md')
+		+font($font-size-h2--md, $line-height-h2--md)
+
 	+media('<mob-lg')
 		+font($font-size-h2--sm, $line-height-h2--sm)
 
 h3
 	+font($font-size-h3, $line-height-h3)
+
+	+media('<desk-md')
+		+font($font-size-h3--md, $line-height-h3--md)
 
 h4
 	+font($font-size-h4, $line-height-h4)
@@ -115,21 +134,42 @@ i b, i strong, em b, em strong, b i, b em, strong i, strong em
 	+font-bold-italic
 
 .entry-text
-	+font-bold
-	font-size: 1.2em
-	margin-bottom: $bottom-space
+	position: relative
+	margin-bottom: $bottom-space--lg
+	padding-bottom: $bottom-space
+	+font-alt-italic
+	+font(30px, round-float(36/30, 2))
+	text-align: center
 
-	b, strong
-		+font-bold
+	&::after
+		$width: 100px
 
+		+pseudo()
+		+position(100%, 50%)
+		+size($width, 0)
+		margin-left: -#{round($width/2)}
+		border-top: 1px solid $text-color
+
+	&:last-child
+		margin-bottom: 0
+
+	b, strong,
 	i, em
-		+font-bold-italic
+		+font-alt-bold
 
 .entry-img
 	position: relative
 	overflow: hidden
-	+ratio(10, 6)
-	margin-bottom: $bottom-space
+	margin-bottom: $bottom-space--lg
+	height: calc(100vh - #{$header-height})
+	min-height: 800px
+
+	&::before
+		+pseudo()
+		+position(0, 0)
+		+size(100%)
+		background-color: rgba($text-color, 0.35)
+		z-index: 2
 
 	+media('<mob-md')
 		+ratio(16, 9)
@@ -147,18 +187,40 @@ i b, i strong, em b, em strong, b i, b em, strong i, strong em
 		height: calc(100% + 4px)
 		transform: translate(-50%, -50%)
 		+object-fit(cover)
+		z-index: 1
 
 		//.no-objectfit &
 			width: auto
 			height: 100%
 
-.entry-img__title
+	.breadcrumbs
+		position: relative
+		z-index: 2
+		margin-bottom: 0
+
+		li, a
+			color: white
+
+	.datetime
+		display: block
+		+font-d
+		color: white
+		text-align: center
+		margin-bottom: 3em
+
+.entry-img__content
 	position: absolute
 	+position(50%)
+	width: 100%
+	max-width: $text-layout-width
+
 	+padding-horizontal(0 !important)
-	margin: 0
 	transform: translate(-50%, -50%)
-	z-index: 10
+	z-index: 3
+
+
+.entry-img__title
+	margin: 0
 	+font($font-size-h1, $line-height-h1)
 	color: $bg-color-base
 	text-shadow: 0 5px 20px rgba(0, 0, 0, 0.2)
@@ -281,11 +343,11 @@ i b, i strong, em b, em strong, b i, b em, strong i, strong em
 	ul > li::before
 		+pseudo()
 		left: 0
-		top: 9px
+		top: round-float($font-size*$line-height/2, 1)
 		+size(0)
-		border: solid transparent
-		border-width: 5px 0 5px 9px
-		border-left-color: $base-color
+		border: 4px solid $base-color
+		margin-top: -4px
+		border-radius: 50%
 
 	ol
 		counter-reset: section
@@ -299,7 +361,7 @@ i b, i strong, em b, em strong, b i, b em, strong i, strong em
 				position: relative
 				display: inline-block
 				text-align: left
-				+font-alt-bold
+				+font-bold
 				color: $base-color
 				content: counter(section)
 				padding: 0 4px 0 0
@@ -332,17 +394,21 @@ table
 	width: auto
 
 	td, th
-		+font($font-size, $line-height)
+		+font-normal
+		+font($font-size, round-float(20/16,2))
 		color: inherit
-		padding: 8px 15px
-		border-color: $text-color-base
+		padding: 20px 30px
+		border-color: $border-color
+
+	th, thead td
+		+font-bold
 
 .table-auto
 	position: relative
 	overflow: auto
 	max-width: 100%
 	-webkit-overflow-scrolling: touch
-	margin-bottom: $bottom-space
+	margin-bottom: $bottom-space--lg
 
 	table
 		margin-bottom: 0
@@ -351,7 +417,7 @@ table
 
 .#{$user-content}
 	table
-		margin-bottom: $bottom-space
+		margin-bottom: $bottom-space--lg
 
 	.table-auto table
 		margin-bottom: 0
@@ -361,40 +427,44 @@ table
 
 		td, th
 			color: $text-color
-			background-color: $bg-color-base
-			border: 0 solid $base-color
-			+font(1.4rem, 1.5)
+			background-color: $bg-color
+			border: 0 solid $border-color
 
 			&:first-child, &:first-child
-				border-left-width: 1px
+				border-left-width: 0
 
 			&:last-child, &:last-child
-				border-right-width: 1px
+				border-right-width: 0
 
-		tr:last-child
+		tr:hover
+			td, th
+				background-color: $bg-color-alt
+
+		//tr:last-child
 			td
-				border-bottom-width: 0
+				border-bottom-width: 1px
 
 		td
-			border-top-width: 1px
+			border-bottom-width: 1px
 
 		tbody tr:first-child td
-			border-top-width: 0
+			border-top-width: 1px
 
-		tbody tr:nth-child(even) td
+		//tbody tr:nth-child(even) td
 			background: $base-color
 			color: $bg-color-base
 
 		th, thead td
 			+font-bold
-			font-size: 1.6rem
+			font-size: $font-size--sm
+			letter-spacing: 0.025em
 			text-align: left
+			text-transform: uppercase
 
 		th, thead td, tfoot td
-			background: $base-color
-			color: $bg-color-base
-			border-color: $base-color
+			background: $bg-color-alt
 			border-top-width: 0
+			border-bottom-width: 0
 
 /* table end
 
@@ -536,3 +606,40 @@ table
 			+hide-text
 
 /* logo end
+
+.hide-text
+	+hide-text
+
+/* scroll to
+.scroll-to
+	text-align: center
+
+	a
+		+font-d
+		text-decoration: none
+		color: $text-color
+		fill: $text-color
+
+		@if $animation-use
+			transition:
+				property: color
+				duration: $animation-speed
+
+	svg
+		+display-inline-block-middle
+		+size(20px, 40px)
+
+	path
+		fill: inherit
+
+		@if $animation-use
+			transition:
+				property: fill
+				duration: $animation-speed
+
+	// hover
+	a:hover
+		color: $link-color
+		fill: $link-color
+
+/* scroll to end

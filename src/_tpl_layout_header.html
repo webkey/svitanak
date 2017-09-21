@@ -8,15 +8,27 @@
 		<!--logo end-->
 
 		<div class="header__holder">
-			<a href="index.html" class="slogan">Белорусский трикотаж из Жодино</a>
-			<ul class="menu-list">
-				<li @@if(context.currentItem === "Продукция"){class="current"}><a href="typography.html"><span>Продукция</span></a></li>
-				<li @@if(context.currentItem === "Клиентам"){class="current"}><a href="inner.html"><span>Клиентам</span></a></li>
-				<li @@if(context.currentItem === "Контакты"){class="current"}><a href="inner.html"><span>Контакты</span></a></li>
-			</ul>
-			<!--user options-->
-			@@include('_tpl_user-options.html')
-			<!--user options end-->
+			<div class="header__col">
+				<div class="header__cell">
+					<a href="index.html" class="slogan">Белорусский трикотаж <br> из Жодино</a>
+				</div>
+			</div>
+			<div class="header__col">
+				<div class="header__cell">
+					<ul class="menu-list">
+						<li @@if(context.currentItem === "Продукция"){class="current"}><a href="typography.html"><span>Продукция</span></a></li>
+						<li @@if(context.currentItem === "Клиентам"){class="current"}><a href="inner.html"><span>Клиентам</span></a></li>
+						<li @@if(context.currentItem === "Контакты"){class="current"}><a href="inner.html"><span>Контакты</span></a></li>
+					</ul>
+				</div>
+			</div>
+			<div class="header__col">
+				<div class="header__cell">
+					<!--user options-->
+					@@include('_tpl_user-options.html')
+					<!--user options end-->
+				</div>
+			</div>
 		</div>
 	</div>
 </header>

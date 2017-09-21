@@ -3,8 +3,9 @@
 @import ../../libs/include-media/dist/include-media
 
 /* HEADER
+// header layout
 .header
-	background-color: rgba($bg-color, 0.5)
+	background-color: rgba($bg-color, 0.85)
 	box-shadow: inset 0 -1px 0 $border-color
 
 .header > .layout
@@ -13,5 +14,71 @@
 .header__holder
 	height: 100%
 	+clear
+	text-align: center
+
+.header__col
+	+display-inline-block-top
+	text-align: left
+	height: 100%
+	white-space: nowrap
+	+clear-spacing
+
+	&:first-child
+		display: block
+		float: left
+
+	&:last-child
+		display: block
+		float: right
+
+	&::before
+		+pseudo-content()
+		+display-inline-block-middle
+		height: 100%
+
+.header__cell
+	+display-inline-block-middle
+	+font($font-size, $line-height)
+	white-space: normal
+	letter-spacing: normal
+
+// header layout end
+
+/* slogan
+.slogan
+	text-decoration: none
+	color: #b2b2b2
+	+font-alt-italic
+	+font(18px, round-float(22/18, 2))
+	padding-top: 0.5em
+
+	&:hover
+		color: $link-color
+
+/* slogan end
+
+/* menu
+.menu-list
+	$ml-space: 54px
+
+	&
+		list-style: none
+		padding: 0
+		margin: 0 -#{round($ml-space/2)}
+		+clear-spacing
+
+	li
+		+display-inline-block-middle
+		+font-d
+		+padding-horizontal(round($ml-space/2))
+
+	a
+		text-decoration: none
+		color: $text-color
+
+		&:hover
+			color: $link-color
+
+/* menu end
 
 /* HEADER end

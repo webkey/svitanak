@@ -1,6 +1,7 @@
 @@if(context.component === "breadcrumbs") {
 
 	@@include('_tpl_breadcrumbs.html', {
+		"items": ["Главная","Новости"],
 		"last": "Типографика в вебдизайне. Основные понятия и положения"
 	})
 
@@ -13,18 +14,28 @@
 
 }@@if(context.component === "dateTime") {
 
-	<time class="datetime" datetime="2017-03-22T13:42">22 марта 2017, 13:42</time>
+	<time class="datetime" datetime="2017-05-05">05 мая 2017</time>
 
 }@@if(context.component === "entryImage") {
 
 	<div class="entry-img">
 		<img src="img/__temp-img-entry.jpg" alt="image description"/>
-		<h2 class="entry-img__title">Типографика в вебдизайне. Основные понятия и положения</h2>
+		<!--breadcrumbs-->
+		@@include('_tpl_breadcrumbs.html', {
+			"items": ["Главная","Новости"],
+			"last": "Акция «Осенний ценопад» в сети фирменной торговли ОАО «Свитанок»"
+		})
+		<!--breadcrumbs end-->
+
+		<div class="entry-img__content">
+			<time class="datetime" datetime="2017-05-05">05 мая 2017</time>
+			<h1 class="entry-img__title">Акция «Осенний ценопад» в сети фирменной торговли ОАО «Свiтанак» <span class="mark">h1</span>.</h1>
+		</div>
 	</div>
 
 }@@if(context.component === "entryText") {
 
-	<div class="entry-text">
+	<div class="entry-text layout-flood">
 		<p>Типографика играет <i>ключевую роль</i> в веб-дизайне, по статистике
 			<b>95% содержимого</b> сайтов составляет текстовый контент. Шрифтовое оформление управляет настроением и создает определенную атмосферу при прочтении текстового содержимого веб-страниц.
 		</p>

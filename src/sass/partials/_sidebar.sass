@@ -6,3 +6,29 @@
 	background-color: rgba($bg-color, 0.5)
 	border: solid $border-color
 	border-width: 0 1px 0 0
+
+.sidebar__ceil
+	position: relative
+
+	.v-middle--top &
+		padding-top: $sidebar-inside-space
+
+	.v-middle--bottom &
+		padding-bottom: $sidebar-inside-space
+
+	&::after
+		+pseudo()
+		display: none
+		left: 50%
+		+size(0, 100px)
+		border-left: 1px solid $border-color
+
+		.v-middle--top &
+			top: 100%
+			display: block
+			margin-top: 25px
+
+		.v-middle--bottom &
+			bottom: 100%
+			display: block
+			margin-bottom: 25px

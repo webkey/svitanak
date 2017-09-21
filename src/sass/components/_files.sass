@@ -23,25 +23,16 @@
 		float: left
 		+size($file-icon-size)
 
-	@if $animation-use
-		path
+	path
+		fill: $text-color
+
+		@if $animation-use
 			transition:
 				property: fill
 				duration: $animation-speed
 
-	.st-bg
-		fill: #e2e5e7
-
-	.st-corner
-		fill: #b0b7bd
-
-	.st-shadow
-		fill: #cad1d8
-
-	.st-text
-		fill: white
-
 	& > span, & > em
+		+font-normal
 		display: block
 		margin-left: #{$file-icon-size}
 		padding-left: 1em
@@ -57,9 +48,11 @@
 		color: $text-color-light
 
 	.no-touchevents &:hover
-		background-color: $base-color
 
-		& > em
-			color: $bg-color-base
+		& > span
+			color: $base-color
+
+		path
+			fill: $base-color
 
 /* files links end

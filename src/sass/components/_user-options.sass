@@ -3,60 +3,39 @@
 @import ../../libs/include-media/dist/include-media
 
 /* user options
+$uo-space: 34px
+
 .user-options
 	position: relative
+	list-style: none
+	padding: 0
+	margin: 0 -#{round($uo-space/2)}
 	+clear-spacing
-	z-index: 100
-
-	.header &
-		float: right
-		margin-right: -1px
+	line-height: 1
 
 .user-options__item
-	+display-inline-block-top
 	position: relative
-	+size(auto, $header-height)
-	min-width: $header-height
-
-	&:first-child ~ &
-		margin-left: -1px
-
-	.no-touchevents &:hover
-		z-index: 1
-
-	+media('<tab-lg')
-		height: $header-height--lg
-		min-width: $header-height--lg
+	+display-inline-block-middle
+	+padding-horizontal(round($uo-space/2))
+	+font($font-size, 1)
+	letter-spacing: normal
 
 	& > a
 		display: block
-		overflow: hidden
 		position: relative
-		height: 100%
-		color: $text-color-base
+		color: $text-color
 		// для svg
-		fill: $text-color-base
+		fill: $text-color
 		text-decoration: none
 		text-align: center
-		border: solid #{$border-color}
-		border-width: 0 1px
 
 		@if $animation-use
 			transition:
-				property: background-color, color, box-shadow
+				property: color
 				duration: $animation-speed
-
-		.no-touchevents &:hover
-			color: $bg-color-base
-			fill: $bg-color-base
-			border-color: $base-color-alt
-			background-color: $base-color-alt
 
 		& > *
 			+display-inline-block-middle
-			+font-medium
-			+font(16px, 20px)
-			letter-spacing: 0.05em
 
 		&::before
 			+pseudo-inline-block()
@@ -64,17 +43,11 @@
 			height: 100%
 
 		svg
-			+size(24px)
-			display: inline-block
-
-			&.svg-visually-impaired
-				+size(38px, 21px)
-
-			&.svg-search
-				+size(20px)
+			+size(18px)
+			+display-inline-block-middle
 
 			& ~ span
-				padding-left: 15px
+				padding-left: 10px
 
 		path
 			fill: inherit
@@ -85,114 +58,11 @@
 					duration: $animation-speed
 
 		& > span
-			display: inline-block
+			+display-inline-block-middle
 
-		.hide-text
-			+hide-text
-
-		// hover and focus
-		.no-touchevents &:hover, .no-touchevents &:focus
-			color: $bg-color-base
-			fill: $bg-color-base
-
-	&.width-auto
-		a
-			+padding-horizontal(25px)
-
-			+media('<desk-hd')
-				+padding-horizontal(15px)
-
-	//&.banner-opener
-		display: none
-
-	&.cecutient-link
-		width: auto
-		height: $header-height
-
-		.cecutient-link--norm
-			display: none
-
-			.cecutient-version &
-				display: inline
-
-		.cecutient-version & .cecutient-link--cec
-			display: none
-
-		+media('<desk-hd')
-			a > span
-				display: none !important
-
-		+media('<tab-lg')
-			height: $header-height--lg
-
-	&.theme-toggle
-		width: auto
-		min-width: 155px
-		height: $header-height
-		z-index: 2
-
-		a, .no-touchevents &:active
-			background-color: $base-color-alt
-			color: white
-			fill: white
-			//box-shadow: -1px 0 0 rgba($bg-color-base, 0.15), inset 0 -1px 0 $border-color
-			border-width: 0 1px
-			border-color: rgba($border-color, 0.2)
-			transition-duration: $animation-speed
-
-			&::after
-				display: none
-
-			.no-touchevents &:hover, .no-touchevents &:focus
-				color: $base-color
-				fill: $base-color
-				border-color: rgba($border-color, 0.2)
-				transition-duration: $animation-speed
-
-				path
-					transition-duration: $animation-speed
-
-			+media('<tab-lg')
-				span
-					display: none
-
-			+media('<mob-lg')
-				box-shadow: -1px 0 0 rgba($bg-color-base, 0.15)
-
-		svg
-			&.svg-theme--dark
-				+size(16px)
-
-			&.svg-theme--light
-				+size(30px)
-
-		path
-			transition-duration: $animation-speed
-
-		+media('<desk-hd')
-			min-width: 130px
-
-		+media('<tab-lg')
-			height: $header-height--lg
-			min-width: $header-height--lg
-
-	.text-theme--light, .svg-theme--light
-		display: none
-
-	&.lang
-		width: auto
-		min-width: 120px
-
-		+media('<desk-hd')
-			min-width: 100px
-
-		+media('<mob-lg')
-			min-width: 0
-			width: 131px
-
-	&.cecutient-link, &.map-site-link, &.theme-toggle, &.lang
-		+media('<mob-lg')
-			.header &
-				display: none
+		// hover
+		&:hover
+			color: $link-color
+			fill: $link-color
 
 /* user options
