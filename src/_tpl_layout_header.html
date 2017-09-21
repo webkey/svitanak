@@ -1,20 +1,22 @@
 <header class="header">
 	<div class="max-wrap layout">
-		<div class="header__holder">
-			<!--logo-->
-			<strong class="logo"><a href="index.html">Project Name</a><img style="display: none;" src="img/logo.png" alt="Project Name"></strong>
-			<!--logo end-->
+		<!--logo-->
+		<strong class="logo">
+			<a href="index.html"><span>Свитанак. Белорусский трикотажиз Жодино</span></a>
+			<img style="display: none;" class="logo-print" src="img/logo.png" alt="Свитанак. Белорусский трикотажиз Жодино">
+		</strong>
+		<!--logo end-->
 
-			<!--navigation-->
-			<div class="nav-wrap">
-				<nav class="nav">
-					@@include('_tpl_nav-constructor.html', {
-						"currentItem": "@@currentItem",
-						"bsKey": "nav"
-					})
-				</nav>
-			</div>
-			<!--navigation end-->
+		<div class="header__holder">
+			<a href="index.html" class="slogan">Белорусский трикотаж из Жодино</a>
+			<ul class="menu-list">
+				<li @@if(context.currentItem === "Продукция"){class="current"}><a href="typography.html"><span>Продукция</span></a></li>
+				<li @@if(context.currentItem === "Клиентам"){class="current"}><a href="inner.html"><span>Клиентам</span></a></li>
+				<li @@if(context.currentItem === "Контакты"){class="current"}><a href="inner.html"><span>Контакты</span></a></li>
+			</ul>
+			<!--user options-->
+			@@include('_tpl_user-options.html')
+			<!--user options end-->
 		</div>
 	</div>
 </header>

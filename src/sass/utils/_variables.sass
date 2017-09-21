@@ -62,27 +62,30 @@ $bottom-space--sm: round-float($font-size*$line-height*0.75, 1) !default
 
 // =======Цветовая схема========
 // цвет бренда
-$base-color: #ffa43f !default
+$base-color: #ff6501 !default
 $base-color-alt: lightskyblue !default
-// главные контрастные цвета (обычно, белый и черный)
-$text-color-base: black !default
-$bg-color-base: white !default
 // цвет фона страницы
-$bg-color: #e5e5e5 !default
+$bg-color: white !default
 // цвет фона элементов выделяющихся на страницы
 $bg-color-alt: #f3f3f3 !default
+// цвет фона выделенных элементов
+$bg-color-selected: #f3f3f3 !default
 // цвет основного текста
-$text-color: #262626 !default
+$text-color: #1a1a1a !default
 // цвет основных заголовков
-$title-color: black !default
+$title-color: $text-color !default
 // цвет текста светлее основного
 $text-color-light: gray !default
 // цвет ссылки
-$link-color: blue !default
+$link-color: $base-color !default
 // цвет линий и границ
-$border-color: lightgray !default
+$border-color: #e6e6e6 !default
 // цвет специальных элементов
 $mark-color: tomato !default
+// =======Темы и спецверсии========
+// главные контрастные цвета (обычно, белый и черный)
+$text-color-base: black !default // использовать для цветовых тем и спецверсий
+$bg-color-base: white !default // использовать для цветовых тем и спецверсий
 
 // =======Класс текстовой страницы========
 // user content class
@@ -123,6 +126,10 @@ $sidebar-width: 100px !default
 $sidebar-width--lg: 80px !default
 $sidebar-inside-space: 50px !default
 $sidebar-inside-space--lg: 30px !default
+
+// logo
+$logo-width: $sidebar-width
+$logo-full-width: 435px
 
 // navigation
 $nav-width: 380px !default

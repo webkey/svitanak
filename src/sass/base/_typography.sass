@@ -506,3 +506,33 @@ table
 		vertical-align: middle
 
 /* view print end
+
+/* logo
+.logo
+	position: relative
+	float: left
+	width: $logo-width
+	height: $header-height
+	z-index: 5
+
+	a
+		display: block
+		height: 100%
+
+		&::before, &::after
+			+pseudo()
+			+position(0)
+			+size(100%)
+			background-repeat: no-repeat
+			background-size: cover
+
+		&::before // full logo
+			background-image: url(../../img/logo.png);
+
+		&::before // full logo
+			background-image: url(../../img/logo-short.png);
+
+		& > span
+			+hide-text
+
+/* logo end

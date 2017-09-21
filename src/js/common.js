@@ -1200,6 +1200,86 @@ function tabSwitcher() {
 }
 
 /**
+ * !Toggle drop
+ * */
+function toggleDrop() {
+
+	var $choiceContainer = $('.js-choice-wrap');
+	var openClass = 'choice-opened';
+
+	if ($choiceContainer.length) {
+
+		$.each($choiceContainer, function () {
+			var $thisContainer = $(this);
+
+			if ($thisContainer.attr('data-parent-position') !== undefined) {
+				$thisContainer.parent().css({
+					'position': 'relative',
+					'padding-right': Math.round($thisContainer.outerWidth() + 10),
+					'overflow': 'visible'
+				});
+			}
+		});
+
+		$('.js-choice-open').on('click', function (e) {
+			e.preventDefault();
+			var $currentContainer = $(this).closest('.js-choice-wrap');
+
+			e.stopPropagation();
+
+			if ($currentContainer.hasClass(openClass)) {
+				$currentContainer.removeClass(openClass);
+				return;
+			}
+
+			$choiceContainer.removeClass(openClass);
+			$currentContainer.addClass(openClass);
+		});
+
+		$(document).on('click', function () {
+			closeDrop();
+		});
+
+		$(document).keyup(function(e) {
+			if ($choiceContainer.hasClass(openClass) && e.keyCode === 27) {
+				closeDrop();
+			}
+		});
+
+		$choiceContainer.on('closeChoiceDrop', function () {
+			closeDrop();
+		});
+
+		function closeDrop() {
+			$choiceContainer.removeClass(openClass);
+		}
+
+		$('.js-choice-drop').on('click', 'a', function (e) {
+			var $this = $(this);
+
+			// if data-window-location is true, prevent default
+			if ($this.closest($choiceContainer).attr('data-window-location') === 'true') {
+				e.preventDefault();
+			}
+
+			// if data-select is false, do not replace text
+			if ($this.closest($choiceContainer).attr('data-select') === 'false') {
+				return false;
+			}
+
+			$('a', '.js-choice-drop').removeClass('active');
+
+			$this
+				.addClass('active')
+				.closest('.js-choice-wrap')
+				.find('.js-choice-open span')
+				.text($this.find('span').text());
+		});
+	}
+
+}
+
+/**
  * !Always place the footer at the bottom of the page
  * */
 function footerBottom() {
@@ -1311,6 +1391,7 @@ $(document).ready(function () {
 	objectFitImages(); // object-fit-images initial
 	popupsInit();
 	tabSwitcher();
+	toggleDrop();
 
 	footerBottom();
 	formSuccessExample();
