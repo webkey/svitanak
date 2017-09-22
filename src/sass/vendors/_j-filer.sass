@@ -12,10 +12,15 @@
 	margin: 0
 	cursor: pointer
 	padding: 20px
-	background: $bg-color-alt
-	border: 1px dashed $border-color
-	transition-property: background-color, border-color, transform
-	transition-duration: $animation-speed
+	background: $bg-color
+	border: 1px dashed #969696
+
+	@if $animation-use
+		transition:
+			property: background-color, border-color, transform
+			duration: $animation-speed
+	@else
+		transition: none
 
 	.no-touchevents &:hover
 		border-color: $form-border-focus-color
@@ -31,16 +36,16 @@
 		i
 			display: inline-block
 			vertical-align: top
-			background: url(../../img/attach.png) no-repeat
+			background: url(../../img/attach.png) no-repeat center
 			background-size: contain
-			+size(60px, 44px)
+			+size(40px, 32px)
 			transition-property: background-color, border-color, transform
 			transition-duration: $animation-speed
 
 	.jFiler-input-text strong
 		display: block
 		+font-normal
-		+font($font-size--less, $line-height--less)
+		+font($font-size, round-float(20/16, 2))
 		color: $text-color
 		text-align: center
 
@@ -110,7 +115,7 @@
 	+size(20px)
 	z-index: 2
 	cursor: pointer
-	background-color: $text-color
+	background-color: transparent
 
 	&::before, &::after
 		content: ''
@@ -119,10 +124,15 @@
 		top: 50%
 		+size(16px, 2px)
 		border-radius: 2px
-		background: white
-		transition-property: background
-		transition-duration: $animation-speed
+		background: $text-color
 		margin: -1px 0 0 -8px
+
+		@if $animation-use
+			transition:
+				property: background-color
+				duration: $animation-speed
+		@else
+			transition: none
 
 	&::before
 		transform: rotate(-45deg)

@@ -25,7 +25,7 @@ h1, h2, h3, h4, h5, h6
 	padding: 0
 	+font-alt-bold
 	color: $title-color
-	margin: 0 0 $bottom-space
+	margin: 0 0 $bottom-space--md
 
 	+media('<mob-lg')
 		margin-bottom: round-float($bottom-space*0.85, 1)
@@ -88,13 +88,16 @@ p
 	padding: 0
 	margin: 0 0 $bottom-space
 
+	&:last-child
+		margin-bottom: 0
+
 hr
 	line-height: 1px
 	height: 0
 	border: none
 	background: none
 	border-bottom: 1px solid $border-color
-	margin-bottom: $bottom-space
+	margin-bottom: $bottom-space--lg
 
 a
 	color: $link-color
@@ -136,7 +139,7 @@ i b, i strong, em b, em strong, b i, b em, strong i, strong em
 .entry-text
 	position: relative
 	margin-bottom: $bottom-space--lg
-	padding-bottom: $bottom-space
+	padding-bottom: $bottom-space--md
 	+font-alt-italic
 	+font(30px, round-float(36/30, 2))
 	text-align: center
@@ -212,7 +215,7 @@ i b, i strong, em b, em strong, b i, b em, strong i, strong em
 	position: absolute
 	+position(50%)
 	width: 100%
-	max-width: $text-layout-width
+	max-width: $flood-layout-width
 
 	+padding-horizontal(0 !important)
 	transform: translate(-50%, -50%)
@@ -261,32 +264,31 @@ i b, i strong, em b, em strong, b i, b em, strong i, strong em
 .nobr
 	white-space: nowrap
 
-
 /* content img
 .imgc
 	text-align: center
-	padding-bottom: $bottom-space
+	margin-bottom: $bottom-space
 	clear: both
 
 .imgl
 	text-align: left
 	float: left
-	margin: 0 $bottom-space $bottom-space 0
+	margin: 0 $bottom-space $bottom-space 0 !important
 
 .imgr
 	text-align: right
 	float: right
-	margin: 0 0 $bottom-space $bottom-space
+	margin: 0 0 $bottom-space $bottom-space !important
 
 .imgl, .imgr
-	max-width: 40%
+	max-width: 40% !important
 
 	+media('<tab-sm')
 		float: none
 		display: block
 		margin-left: auto
 		margin-right: auto
-		max-width: 100%
+		max-width: 100% !important
 
 /* content img end
 
@@ -325,7 +327,7 @@ i b, i strong, em b, em strong, b i, b em, strong i, strong em
 		p + #{$tags},
 		ul + #{$tags},
 		ol + #{$tags}
-			margin-top: round-float($bottom-space--md, 1)
+			margin-top: round-float($bottom-space--lg, 1)
 
 /* list
 .#{$user-content}
@@ -470,44 +472,52 @@ table
 
 /* blockquote
 .#{$user-content}
+	$bq-width: 540px
 
 	blockquote
 		display: block
-		margin: 0 0 $bottom-space
+		margin: $bottom-space--lg 0
 		padding: 0
-		background-color: white
 
 		q
-			display: block
 			margin: 0
-			padding: 0 0 10px
-			font-family: $font-alt
-			+font(round-float($font-size*1.25, 1), $line-height)
+			padding: 0 0 $bottom-space
+			+font-alt-italic
+			+font(3rem, round-float(36/30, 2))
 			color: $text-color
 			text-align: center
 
 			&::before, &::after
-				+pseudo($pos: relative)
-				+font(4rem, 1)
-				text-align: left
+				+pseudo-block-relative()
+				width: 24px
+				height: 15px
+				+push-auto
+				background-position: center
+				background-repeat: no-repeat
+				background-size: contain
+				line-height: 1
 
 			&::before
-				content: '«'
-				padding-left: 17%
-				padding-bottom: 10px
+				content: ''
+				margin-bottom: $bottom-space
+				background-image: url(../../img/ql.png)
 
 			&::after
-				content: '»'
-				text-align: right
-				padding-right: 18.5%
-				padding-top: 8px
+				content: ''
+				margin-top: $bottom-space
+				background-image: url(../../img/ql.png)
 
 		cite
+			+font(2rem, round-float(36/30, 2))
+			color: $base-color
 			text-align: right
+
+		q, cite
 			display: block
-			margin-left: auto
-			+font($font-size, $line-height)
-			color: $text-color-light
+			max-width: $bq-width
+			+push-auto
+			+font-alt-italic
+			+padding-horizontal(#{$text-layout-space-horizontal})
 
 /* blockquote end
 

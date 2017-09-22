@@ -4,8 +4,10 @@
 
 /* slick sliders
 // arrows
+$slick-arrow-icon-size: 6px
+
 .slick-arrow
-	+size(40px)
+	+size($slider-arrow-size)
 	display: block
 	position: absolute
 	border: none
@@ -15,12 +17,33 @@
 	box-shadow: none
 	opacity: 1
 	z-index: 6
-	transition-property: background, opacity, visibility
-	transition-duration: 0.2s
+	+margin-horizontal(-#{round($slick-arrow-icon-size*1.5/2)})
+
+	@if $animation-use
+		transition:
+			property: background, opacity, visibility
+			duration: 0.2s
+	@else
+		transition: none
+
+	&::before
+		content: none
+
+	&::after
+		top: 50%
+		margin-top: -#{round($slick-arrow-icon-size/2)}
+		content: ""
 
 	.no-touchevents &:hover
 		opacity: 1
-		background: #e6e6e6
+
+		&.slick-prev
+			&::after
+				border-right-color: $base-color
+
+		&.slick-next
+			&::after
+				border-left-color: $base-color
 
 	&.slick-disabled, .no-touchevents &.slick-disabled
 		opacity: 0.25
@@ -31,59 +54,20 @@
 		&::before
 			opacity: 1
 
-	&::before
-		content: none
-
-	&::after
-		top: 50%
-		content: ""
-		position: absolute
-		opacity: 1
-		pointer-events: none
-		+size(12px)
-		transform: rotate(45deg)
-		border: 0 solid #000
-
 .slick-prev
 	left: 0
 
 	&::after
+		+triangle(left, $color: $text-color, $size: $slick-arrow-icon-size, $kef: 1.5)
 		left: 50%
-		border-width: 0 0 2px 2px
-		margin: -6px 0 0 -4px
 
 .slick-next
 	right: 0
+	margin-right:
 
 	&::after
+		+triangle(right, $color: $text-color, $size: $slick-arrow-icon-size, $kef: 1.5)
 		right: 50%
-		border-width: 2px 2px 0 0
-		margin: -6px -4px 0 0
-
-// arrows outside
-.slick-arrow-outside, .slick-arrow-outside:hover, .slick-arrow-outside:focus
-	background-color: $btn-bg-color
-
-// переопределяем стили для ховера и фокуса на стрелки слайдера
-.slick-arrow-outside
-	left: auto
-	+size(30px)
-
-	.no-touchevents &:hover, .no-touchevents &:focus
-		background-color: $btn-bg-hover-color
-
-		&.slick-disabled
-			background-color: $btn-bg-color
-
-	&::after
-		border-color: white
-
-.slick-prev-outside
-	right: (30px + 10)
-
-.slick-next-outside
-	right: 0
-
 
 // dots
 .slick-dots
@@ -114,8 +98,14 @@
 			border-radius: 50%
 			background: $base-color
 			position: relative
-			transition-property: background, border, box-shadow, transform
-			transition-duration: 0.6s
+
+			@if $animation-use
+				transition:
+					property: background, border, box-shadow, transform
+					duration: 0.6s
+			@else
+				transition: none
+
 
 			&::before
 				content: ''
@@ -128,8 +118,13 @@
 				border-radius: 50%
 				opacity: 1
 				box-shadow: 0 2px 3px rgba(0, 0, 0, 0.20)
-				transition-property: transform, opacity
-				transition-duration: $animation-speed
+
+				@if $animation-use
+					transition:
+						property: transform, opacity
+						duration: $animation-speed
+				@else
+					transition: none
 
 		&.slick-active button::before
 			opacity: 0
@@ -140,13 +135,9 @@
 /* images slider
 .images-slider
 	position: relative
-	margin-bottom: $bottom-space
-
-	+media('<tab-lg')
-		margin-bottom: $bottom-space--lg
 
 .images-slider__list, .slick-dotted.images-slider__list
-	padding-bottom: $bottom-space
+	padding-bottom: 0
 	margin-bottom: 0
 	position: relative
 	z-index: 2
@@ -193,19 +184,50 @@
 		left: auto
 		top: 100%
 		transform: translate(0, 0)
+		margin-top: -#{round($slider-arrow-size/2)}
+		+margin-horizontal(-110px)
 
 	.slick-prev
-		right: 40px
+		left: 50%
+
+	.slick-next
+		right: 50%
 
 	// slider counter
 	.slider-counter
+		$sc-size: 256px, 86px
+
 		position: absolute
-		left: 0
-		top: 100%
-		color: $text-color-light
+		+position(100%, 50%)
+		padding: 31px 0 0
+		+size(nth($sc-size, 1), nth($sc-size, 2))
+		margin: -#{round(nth($sc-size, 2)/2)} 0 0 -#{round(nth($sc-size, 1)/2)}
+		+font-alt
+		+font(24px, 1)
+		color: $text-color
+		text-align: center
+		background-color: $bg-color-base
+		border: 1px solid $border-color
+
+		&::before, &::after
+			+pseudo()
+			+position(50%)
+			+size(0, 30px)
+			margin-top: -15px
+			border-left: 1px solid $border-color
+
+		&::before
+			margin-left: -42px
+
+		&::after
+			margin-left: 42px
 
 		.slide-curr
-			color: $text-color
+			color: $base-color
+			padding-right: 5px
+
+		.slide-total
+			padding-left: 5px
 
 	.slick-dots, .#{$user-content} & .slick-dots
 		position: absolute
@@ -220,8 +242,13 @@
 				border-radius: 50%
 				background-color: white
 				opacity: 0.5
-				transition-property: opacity, transform
-				transition-duration: $animation-speed
+
+				@if $animation-use
+					transition:
+						property: opacity, transform
+						duration: $animation-speed
+				@else
+					transition: none
 
 				&::before
 					content: none
@@ -234,16 +261,3 @@
 				transform: scale(2)
 
 /* images slider end
-
-/* flashes
-.flashes
-	padding: 0 90px
-
-.flashes__item
-	+font(1.4rem, 1.5)
-	color: $text-color-light
-
-	& > *:last-child
-		margin-bottom: 0
-
-/* flashes end

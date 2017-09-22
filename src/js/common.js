@@ -207,7 +207,7 @@ function fileInput() {
 			'<i class="icon-jfi-cloud-up-o"></i>' +
 			'</div>' +
 			'<div class="jFiler-input-text">' +
-			'<strong>Чтобы добавить файл, перетащите его сюда</strong>' +
+			'<strong>Кликните по полю <br> или перетащите сюда файл</strong>' +
 			'</div>' +
 			'</div>' +
 			'</div>',
@@ -271,7 +271,6 @@ function slidersInit() {
 		$imagesCarousel.each(function () {
 			var $currentImagesCarousel = $(this);
 			var $images = $currentImagesCarousel.find('.images-slider__list');
-			var $titles = $currentImagesCarousel.find('.flashes');
 			var dur = 200;
 
 			$images.on('init', function (event, slick) {
@@ -286,25 +285,13 @@ function slidersInit() {
 				speed: dur,
 				slidesToShow: 1,
 				slidesToScroll: 1,
-				asNavFor: $titles,
 				// initialSlide: 2,
 				lazyLoad: 'ondemand',
 				infinite: true,
-				dots: true,
+				dots: false,
 				arrows: true
 			}).on('beforeChange', function (event, slick, currentSlide, nextSlider) {
 				$('.slide-curr', $(slick.$slider)).text(nextSlider + 1);
-			});
-
-			$titles.slick({
-				fade: true,
-				speed: dur,
-				slidesToShow: 1,
-				slidesToScroll: 1,
-				infinite: true,
-				asNavFor: $images,
-				dots: false,
-				arrows: false
 			});
 
 		});

@@ -1,10 +1,13 @@
-<div class="user-form">
+<div class="user-form layout-flood">
 	<div class="layout-text">
-		<div class="form-title">@@title</div>
 		<form action="#" method="post">
+			<div class="form-caption">
+				<div class="form-title">@@title</div>
+				<button class="btn-reset" type="reset" data-label="Отправить">Очистить</button>
+			</div>
 			<div class="input-wrap">
 				<div class="label-holder">
-					<label for="user-form-example__name-field">Имя<span class="form-mark">*</span></label>
+					<label for="user-form-example__name-field">Имя</label>
 				</div>
 				<div class="input-holder">
 					<input type="text" id="user-form-example__name-field">
@@ -53,12 +56,25 @@
 					</div>
 				</div>
 			</div>
+			<div class="input-wrap">
+				<div class="label-holder">
+					<label for="user-form-example__confirm">Соглашение</label>
+				</div>
+				<div class="input-holder">
+					<label class="check-label">
+						<input type="checkbox" id="user-form-example__confirm" name="user-form-example__confirm">
+						<i>&nbsp;</i>
+						<span>Отличный способ для выделения самого важного в тексте – использование <a href="#">контрастных шрифтов</a></span>
+					</label>
+					<span class="error-note">Для продолжения необходимо принять условия соглашения</span>
+				</div>
+			</div>
 			<div class="form-footer">
 				<div class="form-buttons">
 					<button class="btn-default btn-submit" data-label="Отправить">Отправить</button>
 				</div>
 				<div class="form-note">
-					<div class="form-note__item"><span class="form-mark">*</span> Поля обязательны для заполнения</div>
+					<div class="form-note__item"><span class="form-mark">*</span> - Поля обязательны для заполнения</div>
 				</div>
 			</div>
 		</form>

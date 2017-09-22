@@ -248,7 +248,7 @@
 									<div>
 										<div class="layout-text">
 											<h4><a href="#hash-fcTextarea" id="hash-fcTextarea" class="hashAnchor"><span class="mark">textarea</span></a></h4>
-											<label for="form-clear-ta-base">Текстареа js-классов:</label>
+											<label for="form-clear-ta-base">Текстареа без js-классов:</label>
 											<textarea placeholder="Текстареа (placeholder)" id="form-clear-ta-base"></textarea>
 											<div class="error-note">Поле обязательное для заполнения</div>
 											<div class="success-note">Подтверждено</div>
@@ -617,7 +617,7 @@
 									<!--===================================================-->
 									<div>
 										<div class="layout-text">
-											<h4><a href="#hash-fcColumnizeCustom" id="hash-fcColumnizeCustom" class="hashAnchor"><span class="mark">в два столбца (ie10+) - Z-тип</span></a></h4>
+											<h4><a href="#hash-fcColumnizeCustom" id="hash-fcColumnizeCustom" class="hashAnchor"><span class="mark">в два столбца (ie10+) - N-тип</span></a></h4>
 											<div class="form-columnize">
 												<label for="form-clear-columnize-01" title="Текстовое поле">Текстовое поле:</label>
 												<input type="text" placeholder="Текстовое поле" id="form-clear-columnize-01" />
@@ -675,7 +675,7 @@
 									<!--===================================================-->
 									<div>
 										<div class="layout-text">
-											<h4><a href="#hash-fcColumnsCustom" id="hash-fcColumnsCustom" class="hashAnchor"><span class="mark">в два столбца - N-тип</span></a></h4>
+											<h4><a href="#hash-fcColumnsCustom" id="hash-fcColumnsCustom" class="hashAnchor"><span class="mark">в два столбца - Z-тип</span></a></h4>
 											<div class="form-row">
 												<div class="input-wrap">
 													<label for="form-clear-columns-01" title="Текстовое поле">Текстовое поле:</label>
@@ -831,7 +831,7 @@
 										<div class="layout-text">
 											<h4><a href="#hash-fdTextarea" id="hash-fdTextarea" class="hashAnchor"><span class="mark">textarea</span></a></h4>
 											<div class="input-wrap">
-												<div class="label-holder"><label for="form-cover-ta-base">Текстареа js-классов:</label></div>
+												<div class="label-holder"><label for="form-cover-ta-base">Текстареа без js-классов:</label></div>
 												<div class="input-holder">
 													<textarea placeholder="Текстареа (placeholder)" id="form-cover-ta-base"></textarea>
 													<div class="error-note">Поле обязательное для заполнения</div>
@@ -1345,7 +1345,7 @@
 									</div>
 									<div>
 										<div class="layout-text">
-											<h4><a href="#hash-fdColumnsCustom" id="hash-fdColumnsCustom" class="hashAnchor"><span class="mark">в два столбца - N-тип</span></a></h4>
+											<h4><a href="#hash-fdColumnsCustom" id="hash-fdColumnsCustom" class="hashAnchor"><span class="mark">в два столбца - Z-тип</span></a></h4>
 											<div class="form-row">
 												<div class="input-wrap">
 													<div class="label-holder">
@@ -1567,13 +1567,16 @@
 								<div class="user-spacer"></div>
 								<!--user form-->
 								<h3><a href="#hash-userFormExample" id="hash-userFormExample" class="hashAnchor"><span class="mark">Форма обратной связи</span></a></h3>
-								<div class="user-form">
+								<div class="user-form layout-flood">
 									<div class="layout-text">
-										<div class="form-title">Задать вопрос</div>
 										<form action="#" method="post">
+											<div class="form-caption">
+												<div class="form-title">Форма <br/> обратной связи</div>
+												<button class="btn-reset" type="reset" data-label="Отправить">Очистить</button>
+											</div>
 											<div class="input-wrap">
 												<div class="label-holder">
-													<label for="user-form-example__name-field">Имя<span class="form-mark">*</span></label>
+													<label for="user-form-example__name-field">Имя</label>
 												</div>
 												<div class="input-holder">
 													<input type="text" id="user-form-example__name-field">
@@ -1622,12 +1625,25 @@
 													</div>
 												</div>
 											</div>
+											<div class="input-wrap">
+												<div class="label-holder">
+													<label for="user-form-example__confirm">Соглашение</label>
+												</div>
+												<div class="input-holder">
+													<label class="check-label">
+						<input type="checkbox" id="user-form-example__confirm" name="user-form-example__confirm">
+						<i>&nbsp;</i>
+						<span>Отличный способ для выделения самого важного в тексте – использование <a href="#">контрастных шрифтов</a></span>
+					</label>
+													<span class="error-note">Для продолжения необходимо принять условия соглашения</span>
+												</div>
+											</div>
 											<div class="form-footer">
 												<div class="form-buttons">
 													<button class="btn-default btn-submit" data-label="Отправить">Отправить</button>
 												</div>
 												<div class="form-note">
-													<div class="form-note__item"><span class="form-mark">*</span> Поля обязательны для заполнения</div>
+													<div class="form-note__item"><span class="form-mark">*</span> - Поля обязательны для заполнения</div>
 												</div>
 											</div>
 										</form>

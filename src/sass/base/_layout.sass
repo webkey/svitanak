@@ -114,11 +114,23 @@ body
 		+padding-horizontal(0)
 		+push-auto
 
+	& > h1, & > img, .imgc
+		display: block
+		max-width: $flood-layout-width
+		+push-auto
+
+	& > img, .imgc
+		margin-bottom: $bottom-space--lg
+
 	.layout-flood
 		//max-width: $flood-layout-width + $text-layout-indent
 		//+padding-horizontal($text-layout-indent, 0)
-		max-width: $text-layout-width
+		max-width: $flood-layout-width
 		+padding-horizontal(0)
+		+push-auto
+
+	& > .pagination
+		max-width: $flood-layout-width
 		+push-auto
 
 	// элеметы без отступов по бокам
@@ -232,6 +244,26 @@ body
 
 	p, ul, ol, h1, h2, h3, h4, h5, h6, hr, blockquote
 		max-width: none
+
+// feature list, images slider
+.feature-list, .images-slider
+	max-width: $flood-layout-width
+	+push-auto
+
+	&:last-child
+		margin-bottom: 0
+
+.feature-list
+	margin-bottom: $bottom-space--lg
+
+	+media('<tab-lg')
+		margin-bottom: $bottom-space--ml
+
+.images-slider
+	margin-bottom: $bottom-space--lg*2
+
+	+media('<tab-lg')
+		margin-bottom: $bottom-space--ml*2
 
 /* footer at bottom
 .spacer

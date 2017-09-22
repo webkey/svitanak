@@ -3,20 +3,54 @@
 @import ../../libs/include-media/dist/include-media
 
 /* user form
-.form-title
+.form-caption
+	position: relative
 	display: block
-	+font-alt-bold
-	+font($font-size-h2, $line-height-h2)
-	color: $title-color
-	text-align: center
 	margin-bottom: $bottom-space--md
 
+.form-title
+	display: block
+	position: relative
+	width: 50%
+	+font-alt-bold
+	+font(30px, round-float(36/30, 2))
+	color: $title-color
+	text-transform: uppercase
+	margin-bottom: $bottom-space--md
+
+	&::after
+		+pseudo()
+		+position(100%)
+		+size(100px, 0)
+		margin: -0.7em 0 0 20px
+		border-top: 1px solid $text-color
+
+.btn-reset
+	+font($font-size, round-float(20/16, 2))
+	border: none
+	border-bottom: 1px dashed $text-color
+	background: none
+	box-shadow: none
+	margin: 0
+	padding: 0
+
+	&:hover
+		color: $base-color
+		border-color: $base-color
+
+	.form-caption &
+		position: absolute
+		right: 0
+		bottom: 0
+		margin-bottom: 0.6em
+
 .user-form
-	background: $bg-color-alt
-	+padding-vertical($text-layout-space-horizontal)
-	margin-bottom: $bottom-space
-	border: solid $border-color
-	border-width: 1px 0
+	$label-width: 180px
+
+	&
+		background: $bg-color-alt
+		+padding-vertical($bottom-space--lg)
+		margin-bottom: $bottom-space--lg
 
 	+media('<tab-lg')
 		+padding-vertical($text-layout-space-horizontal--md)
@@ -24,11 +58,24 @@
 	+media('<mob-lg')
 		+padding-vertical($text-layout-space-horizontal--sm)
 
+	&:last-child
+		margin-bottom: 0
+
 	form
 		display: block
 
 	.input-wrap
 		margin-bottom: 50px
+		+clear
+
+	.label-holder
+		float: left
+		width: $label-width
+		margin-bottom: 0
+		padding: 14px 20px 0 0
+
+	.input-holder
+		margin-left: $label-width
 
 	textarea
 		height: 130px
@@ -67,14 +114,15 @@
 					width: 100%
 
 	.form-footer
+		padding-left: $label-width
 		+clear
 
 		+media('<mob-lg')
 			padding-top: $bottom-space--sm
 
 	.form-buttons
-		float: left
-		margin-right: 30px
+		float: right
+		margin-left: 30px
 
 		+media('<mob-lg')
 			float: none
@@ -85,7 +133,7 @@
 
 	.form-note
 		overflow: hidden
-		min-height: 50px
+		min-height: $form-input-height
 		+clear-spacing
 		line-height: 25px
 
@@ -95,11 +143,15 @@
 			vertical-align: middle
 			min-height: inherit
 
+		.form-mark
+			margin-left: 0
+			left: auto
+
 	.form-note__item
 		display: inline-block
 		vertical-align: middle
 		width: calc(100% - 6px)
-		+font($font-size--sm, $line-height--sm)
+		+font($font-size, round-float(20/16, 2))
 		letter-spacing: normal
 
 /* user form end
