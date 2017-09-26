@@ -33,10 +33,29 @@ body
 .content
 	padding: #{$layout-spaces}
 
+	+media('<desk-lg')
+		padding: #{$layout-spaces--lg}
+
+// актуально только для текущего проекта
+.layout-full-width, .layout-wide
+	+margin-horizontal(-#{$layout-spaces})
+
+	+media('<desk-lg')
+
+.layout-top-fit
+	margin-top: -#{$layout-spaces}
+
+	+media('<desk-lg')
+		margin-top: -#{$layout-spaces--lg}
+
+.layout-bottom-fit
+	margin-bottom: -#{$layout-spaces}
+
+	+media('<desk-lg')
+		margin-bottom: -#{$layout-spaces--lg}
+
 .entry-img
 	padding: #{$layout-spaces}
-	margin-top: -#{$layout-spaces}
-	+margin-horizontal(-#{$layout-spaces})
 
 .header
 	position: fixed
@@ -82,6 +101,13 @@ body
 	&
 		left: $sidebar-width
 		width: calc(#{$base-width})
+		+padding-horizontal($layout-spaces)
+
+		+media('<desk-lg')
+			+padding-horizontal($layout-spaces--lg)
+
+.footer-common, .footer-bottom
+	+padding-vertical(round($layout-spaces/2))
 
 .max-wrap
 	@if $page-layout-width
@@ -95,58 +121,6 @@ body
 	//+media('<tab-lg')
 		.main &
 			+padding-horizontal(0)
-
-// выравнивание текстовых элементов на странице статьи (контент обернут в .layout-article)
-// и их максимальная ширина
-.layout-article
-	//padding: round($text-layout-space-horizontal) #{$text-layout-space-horizontal} round($text-layout-space-horizontal*1.5)
-
-	//+media('<tab-lg')
-		padding: round($text-layout-space-horizontal--md*1.5) #{$text-layout-space-horizontal--md} round($text-layout-space-horizontal--md*2)
-
-	//+media('<tab-sm')
-		padding: round($text-layout-space-horizontal--sm*1.5) #{$text-layout-space-horizontal--sm} round($text-layout-space-horizontal--sm*2)
-
-	& > p, & > ul, & > ol, & > h1, & > h2, & > h3, & > h4, & > h5, & > h6, & > hr, & > blockquote, & > .layout-text
-		//max-width: $text-layout-width + $text-layout-indent
-		//+padding-horizontal($text-layout-indent, 0)
-		max-width: $text-layout-width
-		+padding-horizontal(0)
-		+push-auto
-
-	& > h1, & > img, .imgc
-		display: block
-		max-width: $flood-layout-width
-		+push-auto
-
-	& > img, .imgc
-		margin-bottom: $bottom-space--lg
-
-	.layout-flood
-		//max-width: $flood-layout-width + $text-layout-indent
-		//+padding-horizontal($text-layout-indent, 0)
-		max-width: $flood-layout-width
-		+padding-horizontal(0)
-		+push-auto
-
-	& > .pagination
-		max-width: $flood-layout-width
-		+push-auto
-
-	// элеметы без отступов по бокам
-	// минусовые маржины по горизонтале имеют значение только внутри .layout-article
-	.layout-full-width, .layout-wide
-
-		+margin-horizontal(-#{$text-layout-space-horizontal})
-
-		+media('<desk-lg')
-			+margin-horizontal(-#{$text-layout-space-horizontal--lg})
-
-		//+media('<tab-lg')
-			+margin-horizontal(-#{$text-layout-space-horizontal--md})
-
-		+media('<mob-lg')
-			+margin-horizontal(-#{$text-layout-space-horizontal--sm})
 
 // максимальная ширина текстовых элементов на внутренней (текстовой) странице
 .max-wrap-text
@@ -245,6 +219,70 @@ body
 	p, ul, ol, h1, h2, h3, h4, h5, h6, hr, blockquote
 		max-width: none
 
+// выравнивание текстовых элементов на странице статьи (контент обернут в .layout-article)
+// и их максимальная ширина
+.layout-article
+	//padding: round($text-layout-space-horizontal) #{$text-layout-space-horizontal} round($text-layout-space-horizontal*1.5)
+
+	//+media('<tab-lg')
+		padding: round($text-layout-space-horizontal--md*1.5) #{$text-layout-space-horizontal--md} round($text-layout-space-horizontal--md*2)
+
+	//+media('<tab-sm')
+		padding: round($text-layout-space-horizontal--sm*1.5) #{$text-layout-space-horizontal--sm} round($text-layout-space-horizontal--sm*2)
+
+	& > p, & > ul, & > ol, & > h1, & > h2, & > h3, & > h4, & > h5, & > h6, & > hr, & > blockquote, & > .layout-text
+		//max-width: $text-layout-width + $text-layout-indent
+		//+padding-horizontal($text-layout-indent, 0)
+		max-width: $text-layout-width
+		+padding-horizontal(0)
+		+push-auto
+
+	& > h1, & > img, .imgc
+		display: block
+		max-width: $flood-layout-width
+		+push-auto
+
+	& > img, .imgc
+		margin-bottom: $bottom-space--lg
+
+	.layout-text, .layout-flood
+		+padding-horizontal(0)
+		+push-auto
+
+	.layout-text
+		max-width: $text-layout-width
+
+	.max-wrap-text
+		max-width: $text-layout-width
+
+	.layout-flood
+		//max-width: $flood-layout-width + $text-layout-indent
+		//+padding-horizontal($text-layout-indent, 0)
+		max-width: $flood-layout-width
+
+	.max-wrap-flood
+		max-width: $flood-layout-width
+
+	& > .pagination
+		max-width: $flood-layout-width
+		+push-auto
+
+	// элеметы без отступов по бокам
+	// минусовые маржины по горизонтале имеют значение только внутри .layout-article
+	// и если у .layout-article есть горизонтальные отступы
+	//.layout-full-width, .layout-wide
+
+		//+margin-horizontal(-#{$text-layout-space-horizontal})
+
+		//+media('<desk-lg')
+			+margin-horizontal(-#{$text-layout-space-horizontal--lg})
+
+		//+media('<tab-lg')
+			+margin-horizontal(-#{$text-layout-space-horizontal--md})
+
+		//+media('<mob-lg')
+			+margin-horizontal(-#{$text-layout-space-horizontal--sm})
+
 // feature list, images slider
 .feature-list, .images-slider
 	max-width: $flood-layout-width
@@ -264,6 +302,27 @@ body
 
 	+media('<tab-lg')
 		margin-bottom: $bottom-space--ml*2
+
+/* subscription form
+.subscription-form
+	padding: $layout-spaces
+
+	.article-footer + &
+		padding-top: 145px
+
+/* subscription form end
+
+/* bottom space
+.bottom-space
+	margin-bottom: $bottom-space--lg
+
+	+media('<desk-lg')
+		margin-bottom: $bottom-space--ml
+
+	&:last-child
+		margin-bottom: 0
+
+/* bottom space end
 
 /* footer at bottom
 .spacer

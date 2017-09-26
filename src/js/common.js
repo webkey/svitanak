@@ -1304,7 +1304,7 @@ function footerBottom() {
  * !Testing form validation (for example). Do not use on release!
  * */
 function formSuccessExample() {
-	var $form = $('.user-form form');
+	var $form = $('.user-form form, .subscription-form form');
 
 	if ( $form.length ) {
 

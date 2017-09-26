@@ -193,6 +193,8 @@
 	$btn-menu-lines-height: 3px
 	$btn-menu-lines-space: 5px
 	$btn-menu-lines-color: $text-color
+	$btn-menu-animation-speed: $animation-speed
+	$btn-menu-animation-delay: round-float($animation-speed*0.5, 2)
 
 	$user-options-cross-width: $btn-menu-lines-width
 	$user-options-cross-height: $btn-menu-lines-height
@@ -217,7 +219,7 @@
 	@if $animation-use
 		transition:
 			property: background-color
-			duration: $animation-speed
+			duration: $btn-menu-animation-speed
 
 	+media('<tab-lg')
 		+size($sidebar-width--lg)
@@ -236,7 +238,8 @@
 		opacity: 0
 		transition:
 			property: transform, opacity
-			duration: $animation-speed
+			duration: $btn-menu-animation-speed
+			delay: 0s
 			timing-function: cubic-bezier(0.65, 0.05, 0.36, 1)
 
 	// бутерброд
@@ -249,12 +252,13 @@
 		backface-visibility: hidden
 		transition:
 			property: opacity
-			duration: $animation-speed
+			duration: $btn-menu-animation-speed
+			delay: $btn-menu-animation-delay
 
 		@if $animation-use
 			transition:
 				property: background-color, opacity
-				duration: $animation-speed
+				duration: $btn-menu-animation-speed
 
 		&::before, &::after
 			+pseudo()
@@ -262,13 +266,14 @@
 			+menu-btn-line
 			backface-visibility: hidden
 			transition:
-				property: transform, opacity
-				duration: $animation-speed
+				property: transform
+				duration: $btn-menu-animation-speed
+				delay: $btn-menu-animation-delay
 
 			@if $animation-use
 				transition:
 					property: transform, opacity, background-color
-					duration: $animation-speed
+					duration: $btn-menu-animation-speed
 
 		//first line menu
 		&::before
@@ -294,6 +299,8 @@
 	&.active
 
 		&::before, &::after
+			transition-delay: $btn-menu-animation-delay
+
 			opacity: 1
 
 		&::before
@@ -303,8 +310,11 @@
 			transform: rotate(-45deg) translateZ(0)
 
 		& > i
-			background-color: transparent
 			opacity: 0
+			transition-delay: 0s
+
+			&::before, &::after
+				transition-delay: 0s
 
 			&::before
 				transform: translate(0, #{$btn-menu-lines-height + $btn-menu-lines-space}) translateZ(0)
@@ -392,3 +402,42 @@
 		background-color: $mark-color
 
 /* button popup close end
+
+/* arrow left
+.arr-left, .arr-right
+	position: relative
+	+display-inline-block-top
+	+size(50px)
+	text-decoration: none
+	color: $text-color
+
+	& > span
+		+hide-text
+
+	& > i
+		position: absolute
+		+position(50%)
+		+clear-spacing
+		transform: translate(-50%, -50%)
+
+.arr-left
+	& > i
+		+triangle(left, $text-color, 6px)
+
+.arr-right
+	& > i
+		+triangle(right, $text-color, 6px)
+
+// hover
+//a.arr-left
+	.no-touchevents &:hover
+		& > i
+			border-right-color: $base-color
+
+//a.arr-right
+	.no-touchevents &:hover
+		& > i
+			border-left-color: $base-color
+
+
+/* arrow left end

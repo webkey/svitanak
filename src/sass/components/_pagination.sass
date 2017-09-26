@@ -19,20 +19,9 @@ $pagination-border-width: 0
 	text-align: center
 	cursor: default
 	margin-bottom: $bottom-space--lg
-	padding: #{round($grid-space*0.85 - $pagination-vspace)} #{$grid-space - $pagination-hspace}
 
 	+media('<desk-lg')
 		margin-bottom: $bottom-space--ml
-
-	+media('<mob-lg')
-		+padding-horizontal(0)
-
-	+media('<mob-md')
-		+margin-horizontal(-#{$layout-spaces--sm + 2px})
-
-		&::after
-			left: 0
-			background-position: center bottom
 
 	&:last-child
 		margin-bottom: 0

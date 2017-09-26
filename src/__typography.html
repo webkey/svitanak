@@ -168,11 +168,43 @@
 					})
 					<!--pagination end-->
 
-					<!--print-button-->
-					@@include('_tpl_typography_components.html', {
-						"component": "printButton"
+					<div class="layout-flood bottom-space">
+						<!--print-button-->
+						@@include('_tpl_typography_components.html', {
+							"component": "printButton"
+						})
+						<!--print-button end-->
+					</div>
+
+					<!--article footer-->
+					@@include('_tpl_article-footer.html', {
+						"prevHref": "#",
+						"prevArticle": "Акция ко Дню защиты детей!",
+						"nextHref": "#",
+						"nextArticle": "Счастливые лица  и улыбки детей – главный показатель проведенного на «ура» праздника!"
 					})
-					<!--print-button end-->
+					<!--article footer-->
+
+					<!--subscription-->
+					<section class="subscription-form layout-full-width layout-bottom-fit">
+						<form action="javascript:void(0)" method="post" class="layout-text">
+							<strong class="subscription-form__title">Подписка на новости</strong>
+							<div class="input-wrap">
+								<div class="label-holder">
+									<label for="subscription-email">Подпишитесь на наши новости и будьте всегда первыми в курсе всех последних акций и событий.</label>
+								</div>
+								<div class="form-fields">
+									<div class="input-holder">
+										<input id="subscription-email" type="email" placeholder="Ваш e-mail">
+										<button class="btn-default">Ok</button>
+									</div>
+									<div class="success-text"><span>&nbsp;</span></div>
+									<div class="error-text">Пожалуйста, ведите корректный email</div>
+								</div>
+							</div>
+						</form>
+					</section>
+					<!--subscription end-->
 				</div>
 
 				@@include('_tpl_typography_nav.html')

@@ -9,6 +9,13 @@
 	.layout
 		position: relative
 
+	.copyright
+		display: block
+		+font-alt-italic
+		+font(18px, round-float(22/18, 2))
+		letter-spacing: $letter-spacing
+		color: $text-color-light
+
 .footer__holder
 	overflow: hidden
 	position: absolute
@@ -16,6 +23,35 @@
 	right: auto
 	bottom: 0
 	cursor: default
+	border-top: 1px solid $border-color
+
+/* footer common / footer bottom
+.footer-common-holder, .footer-bottom__holder
+	+push-auto
+	width: 1380px
+	max-width: 100%
+
+.footer-common__cols, .footer-bottom__cols
+	+grid-parent($footer-grid-space)
+	+clear-spacing
+
+	+media('<desk-lg')
+		+grid-parent($footer-grid-space--lg)
+
+.footer-common__col, .footer-bottom__col
+	position: relative
+	+grid-item(3, $footer-grid-space)
+	+font($font-size, $line-height)
+	letter-spacing: $letter-spacing
+	text-align: center
+
+	+media('<desk-lg')
+		+grid-item-responsive(2, $footer-grid-space--lg)
+
+	+media('<mob-lg')
+		+grid-item-responsive(1, $footer-grid-space--lg)
+
+/* footer common / footer bottom end
 
 /* footer common
 .footer-common
@@ -23,23 +59,22 @@
 	color: inherit
 
 	a
-		color: $link-color
-		text-decoration: none
-		cursor: pointer !important
+		color: inherit
+		text-decoration: underline
 
 		@if $animation-use
 			transition:
 				property: color
 				duration: $animation-speed
 
-		.no-touchevents &:hover
-			color: $link-color
-
 	.dl
 		list-style: none
 
 		li
 			margin-bottom: 0
+
+		.dt
+			color: $text-color-light
 
 		.dt, .dd
 			+display-inline-block-top
@@ -50,50 +85,26 @@
 	.adr
 		+font-normal
 
-// footer nav
-.footer-nav
-	+grid-parent($grid-space)
-	+clear-spacing
+.footer-common__title
+	display: block
+	text-align: center
+	+font-d
+	margin-bottom: $bottom-space--sm
 
-	+media('<desk-lg')
-		+grid-parent($grid-space--lg)
-
-.footer-nav__col
-	position: relative
-	+grid-item(4, $grid-space)
-	+font(16px, round-float(24/16, 2))
-	letter-spacing: 0.025em
-
-	&:nth-last-child(1)
-		text-align: right
-
-	+media('<desk-lg')
-		+grid-item-responsive(2, $grid-space--lg)
-
-		&:nth-last-child(3)
-			text-align: right
-
-	+media('<mob-lg')
-		+grid-item-responsive(1, $grid-space--lg)
-		text-align: center !important
-
-	& > *:last-child
-		margin-bottom: 0
-
-.footer-nav-list
+.footer-common-list
 	list-style: none
 	padding: 0
 	margin: 0
 
 	li
-		margin-bottom: 20px
+		margin-bottom: $bottom-space--sm
 		overflow: hidden
 
 		&:last-child
 			margin-bottom: 0
 
-.footer-nav__item
-	margin-bottom: 20px
+.footer-common__cell
+	margin-bottom: $bottom-space--sm
 
 	&:last-child
 		margin-bottom: 0
@@ -103,6 +114,7 @@
 /* footer bottom
 .footer-bottom
 	color: $text-color
+	border-top: 1px solid $border-color
 
 .footer-bottom__holder
 	position: relative
@@ -119,21 +131,6 @@
 		height: 1px
 		overflow: hidden
 
-.footer-bottom__col
-	+display-inline-block-top
-	+font(16px, round-float(24/16, 3))
-	letter-spacing: normal
-
-	&:last-child
-		text-align: right
-
-	a
-		color: $text-color
-		text-decoration: none
-
-		.no-touchevents &:hover
-			text-decoration: underline
-
 /* footer bottom end
 
 /* developer
@@ -146,12 +143,20 @@
 		.no-touchevents &:hover
 			text-decoration: none
 
+.developer__label
+	display: block
+	text-align: center
+	+font-alt-italic
+	+font(18px, round-float(22/18, 2))
+	letter-spacing: $letter-spacing
+	color: #ccc
+	margin-bottom: 5px
+
 .developer__logo
-	+display-inline-block-top
-	position: relative
-	top: 5px
-	padding-right: 3px
+	display: block
 	+size(154px, 20px)
+	position: relative
+	padding-right: 3px
 	text-align: left
 	text-indent: -9999px
 

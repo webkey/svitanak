@@ -1,0 +1,94 @@
+@import ../utils/variables
+@import ../utils/mixins
+@import ../../libs/include-media/dist/include-media
+
+/* article style
+.article-footer
+	position: relative
+	height: $article-footer-height
+	background-color: $bg-color
+	border: 1px solid $bg-color-alt
+	+margin-horizontal(auto)
+	+padding-horizontal(35px)
+	z-index: 1
+	+clear-spacing
+
+	+media('<desk-lg')
+		+padding-horizontal(20px)
+
+	&::before
+		+pseudo-inline-block-relative()
+		vertical-align: middle
+		height: 100%
+
+	.text-sm
+		display: block
+		+font(10px, round-float(12/10, 2))
+		color: #4c4c4c
+		letter-spacing: 0.2em
+		text-transform: uppercase
+		margin-bottom: 5px
+
+		&:last-child
+			margin-bottom: 0
+
+	.text-article-title
+		display: block
+		+font-alt-bold
+		+font(24px, round-float(28/24, 2))
+		+truncate(100%)
+
+	[class*="arr-"]
+		position: absolute
+		top: 50%
+		+size(12px, 10px)
+		transform: translate(0, -50%)
+
+.article-footer__cell
+	position: relative
+	+display-inline-block-middle
+	+padding-horizontal(50px)
+	width: round-float(100%/2 - 0.02, 2)
+	+font($font-size, $line-height)
+	letter-spacing: $letter-spacing
+	text-decoration: none
+	color: $text-color
+
+	+media('<desk-lg')
+		+padding-horizontal(30px)
+
+	&::before
+		+pseudo()
+		+position(50%, 0)
+		+size(0, 50px)
+		border-left: 1px solid $bg-color-alt
+		transform: translate(0, -50%)
+
+	&:first-child
+		&::before
+			content: none
+
+	&:hover
+		color: $base-color
+
+		.arr-left
+			& > i
+				border-right-color: $base-color
+
+		.arr-right
+			& > i
+				border-left-color: $base-color
+
+.article-footer__cell--left
+	text-align: left
+
+	[class*="arr-"]
+		left: 0
+
+.article-footer__cell--right
+	text-align: right
+
+	[class*="arr-"]
+		right: 0
+
+/* article style end

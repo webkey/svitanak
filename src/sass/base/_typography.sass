@@ -544,11 +544,10 @@ table
 /* view print
 .view-print
 	+display-inline-block-top
-	padding: 6px 12px
-	margin-bottom: $bottom-space
-	background: #f9f9f9
+	margin-bottom: $bottom-space--lg
 	line-height: 1
-	color: black
+	color: $text-color-base
+	fill: $text-color-base
 	text-decoration: none
 
 	@if $animation-use
@@ -565,9 +564,6 @@ table
 	&:last-child
 		margin-bottom: 0
 
-	.no-touchevents &:hover
-		background-color: #eaeaea
-
 	svg
 		display: inline-block
 		vertical-align: middle
@@ -575,8 +571,10 @@ table
 		height: 20px
 		margin-right: 5px
 
-	@if $animation-use
-		path
+	path
+		fill: inherit
+
+		@if $animation-use
 			transition:
 				property: fill
 				duration: $animation-speed
@@ -584,6 +582,11 @@ table
 	span
 		display: inline-block
 		vertical-align: middle
+
+	// hover
+	.no-touchevents &:hover
+		color: $base-color
+		fill: $base-color
 
 /* view print end
 
