@@ -1,0 +1,21 @@
+<!--(1) START @@bsKey FIRST level-->
+<ul class="@@bsKey__list @@bsKey-js">
+	<!--@@bsKey item start-->
+	<li class="@@if(currentItem === 'Каталог'){current}">
+		@@include('_tpl_nav-link--short.html', { "txt": "Каталог", "href": "#", "key": "@@bsKey" })
+	</li>
+	<!--@@bsKey item end-->
+
+	<!--@@bsKey item start-->
+	<li class="@@if(currentItem === 'Рукав медицинский'){current}">
+		@@include('_tpl_nav-link--short.html', { "txt": "Рукав медицинский", "href": "#", "key": "@@bsKey" })
+	</li>
+	<!--@@bsKey item end-->
+
+	<!--@@bsKey item start-->
+	<li class="@@if(currentItem === 'Где купить'){current}">
+		@@include('_tpl_nav-link--short.html', { "txt": "Где купить", "href": "#", "key": "@@bsKey" })
+	</li>
+	<!--@@bsKey item end-->
+</ul>
+<!--(1) END @@bsKey FIRST level-->

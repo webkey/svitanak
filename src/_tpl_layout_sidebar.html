@@ -47,7 +47,11 @@
 					<!--navigation-->
 					<div class="nav-wrap">
 						<nav class="nav">
-							@@include('_tpl_nav-constructor.html', {
+							@@include('_tpl_nav-01-constructor.html', {
+								"currentItem": "@@currentItem",
+								"bsKey": "nav"
+							})
+							@@include('_tpl_nav-02-constructor.html', {
 								"currentItem": "@@currentItem",
 								"bsKey": "nav"
 							})
