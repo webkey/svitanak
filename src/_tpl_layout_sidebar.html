@@ -39,13 +39,13 @@
 		<div class="shutter__holder v-middle__holder">
 			<div class="shutter__row v-middle__row v-middle--top">
 				<div class="shutter__cell v-middle__cell">
-					@@include('_tpl_shutter-header.html')
+					<!--@@include('_tpl_shutter-header.html')-->
 				</div>
 			</div>
 			<div class="shutter__row v-middle__row v-middle--center">
 				<div class="shutter__cell v-middle__cell">
-					<!--navigation-->
-					<div class="nav-wrap">
+					<div class="shutter-content">
+						<!--navigation-->
 						<nav class="nav">
 							@@include('_tpl_nav-01-constructor.html', {
 								"currentItem": "@@currentItem",
@@ -56,13 +56,59 @@
 								"bsKey": "nav"
 							})
 						</nav>
+						<!--navigation end-->
 					</div>
-					<!--navigation end-->
+
+					<div class="shutter-aside">
+						<!--departments-->
+						<ul class="dep-list">
+							<li class="dep-item">
+								<figure class="dep-img">
+									<div><img src="img/dep-img-04.png" alt="Ясельное"/></div>
+								</figure>
+								<ul class="subdep-list">
+									<li><a href="#"><span>Белье ясельное</span></a></li>
+								</ul>
+							</li>
+							<li class="dep-item">
+								<figure class="dep-img">
+									<div><img src="img/dep-img-03.png" alt="Детское"/></div>
+								</figure>
+								<ul class="subdep-list">
+									<li><a href="#"><span>Белье детское</span></a></li>
+									<li><a href="#"><span>Верх детский</span></a></li>
+								</ul>
+							</li>
+							<li class="dep-item">
+								<figure class="dep-img">
+									<div><img src="img/dep-img-02.png" alt="Мужское"/></div>
+								</figure>
+								<ul class="subdep-list">
+									<li><a href="#"><span>Белье мужское</span></a></li>
+									<li><a href="#"><span>Верх мужской</span></a></li>
+								</ul>
+							</li>
+							<li class="dep-item">
+								<figure class="dep-img">
+									<div><img src="img/dep-img-01.png" alt="Женское" /></div>
+								</figure>
+								<ul class="subdep-list">
+									<li><a href="#"><span>Белье женское</span></a></li>
+									<li><a href="#"><span>Верх женский</span></a></li>
+								</ul>
+							</li>
+						</ul>
+						<!--departments end-->
+						<div class="file-download">
+							<a href="#"><span>каталог «весна-лето» 2017</span></a>
+						</div>
+						@@loop("_tpl_short-contacts-items.html", "includes-json/short-contacts-items.json")
+					</div>
 				</div>
 			</div>
 			<div class="shutter__row v-middle__row v-middle--bottom">
 				<div class="shutter__cell v-middle__cell">
-					@@include('_tpl_shutter-footer.html')
+					<!--@@include('_tpl_shutter-footer.html')-->
 				</div>
 			</div>
 		</div>
@@ -71,7 +117,7 @@
 <!--navigation shutter end-->
 
 <!--search shutter-->
-<aside class="shutter shutter-wide v-middle search-popup-js">
+<aside class="shutter shutter-wide v-middle search-popup-js" style="display: none;">
 	<div class="shutter__align v-middle__align">
 		<div class="shutter__holder v-middle__holder">
 			<div class="shutter__row v-middle__row v-middle--top">
@@ -111,7 +157,7 @@
 <!--search shutter end-->
 
 <!--login shutter-->
-<aside class="shutter v-middle login-popup-js">
+<aside class="shutter v-middle login-popup-js" style="display: none;">
 	<div class="shutter__align v-middle__align">
 		<div class="shutter__holder v-middle__holder">
 			<div class="shutter__row v-middle__row v-middle--top">

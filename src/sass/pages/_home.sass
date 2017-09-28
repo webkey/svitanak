@@ -1,0 +1,620 @@
+@import ../utils/variables
+@import ../utils/mixins
+@import ../../libs/include-media/dist/include-media
+
+/*scroll sections
+$main-section-max-width: 960px !default
+$main-section-max-width-lg: 960px !default
+
+.main-sections
+	.touchevents &
+		height: auto !important
+		transform: none !important
+		transition-duration: 0s !important
+
+	+media('<tab-lg')
+		height: auto !important
+		transform: none !important
+		transition-duration: 0s !important
+
+.main-section
+	position: relative
+	//background-color: #f3f3f3
+	min-height: 100vh
+	overflow: hidden
+
+	+media('<tab-lg')
+		height: auto !important
+		min-height: 0
+
+	.fp-bg
+		background: #f3f3f3 no-repeat center
+		background-size: cover
+		position: absolute
+		left: -5px
+		top: -5px
+		+size(calc(100% + 10px))
+		//z-index: -1
+		backface-visibility: hidden
+		transition-property: transform
+		//transform: translate(0, -33%)
+		transition-duration: $animation-speed-section
+		z-index: -1
+
+		+media('<tab-lg')
+			transform: none !important
+
+		&::before
+			+pseudo()
+			+position(0, 0)
+			+size(100%)
+			background-color: rgba(0, 0, 0, 0.3)
+	//+linear-gradient(to top, rgba(0, 0, 0, 0.81) 0, rgba(0, 0, 0, 0.7) 25%, rgba(0, 0, 0, 0.5) 50%, rgba(0, 0, 0, 0.4) 100%)
+
+	//+media('<tab-sm')
+		+linear-gradient(to top, rgba(0, 0, 0, 0.81) 0, rgba(0, 0, 0, 0.7) 25%, rgba(0, 0, 0, 0.5) 50%, rgba(0, 0, 0, 0.4) 100%)
+
+		.no-cssgradients &
+			background: rgba(0, 0, 0, 0.5)
+
+	.fp-no-animate &
+		.fp-bg
+			transition-duration: 0s
+
+	&.active, &.fp-completely
+		.fp-bg
+			transition-duration: $animation-speed-section
+
+	//&.active
+		.fp-bg
+			transform: translate(0, 0)
+
+	&.fp-prev-before .fp-bg
+		//transform: translate(0, 0)
+		transform: translate(0, 33%)
+	//transition-duration: $animation-speed-section
+
+	.fp-up &.fp-prev-before .fp-bg
+		//transform: translate(0, 0)
+		transform: translate(0, -33%)
+
+//&.fp-prev .fp-bg
+	transform: translate(0, 0)
+	transition-duration: 0s
+
+.main-section__container
+	position: relative
+
+	+media('>=tab-lg')
+		display: table
+		width: 100%
+		height: 100%
+		min-height: 100vh
+
+.main-section__align
+	+media('>=tab-lg')
+		display: table-cell
+		vertical-align: middle
+		text-align: center
+
+.main-section__layout
+	position: relative
+	+push-auto
+	max-width: $main-section-max-width
+	text-align: left
+
+	.main-section__align &
+		display: inline-block
+		width: 100%
+
+	+media('<desk-lg')
+		max-width: $main-section-max-width-lg
+
+.main-section__title
+	display: flex
+	justify-content: space-between
+	+font-bold
+	+font(48px, round-float(58/48, 1))
+	margin-bottom: 10px
+	color: white
+
+	+media('<desk-hd')
+		font-size: 42px
+		margin-bottom: 20px
+
+	+media('<desk-hd')
+		font-size: 38px
+		margin-bottom: 10px
+
+	+media('<tab-lg')
+		display: block
+		text-align: center
+		margin-bottom: 0.6em
+
+	+media('<tab-sm')
+		font-size: 30px
+
+	h2, h3
+		margin: 0
+		font-family: inherit
+		+font(inherit, inherit)
+		font-weight: inherit
+		color: inherit
+		flex: 1 1 12rem
+
+		+media('<tab-lg')
+			margin-bottom: 0.2em
+
+			&:last-child
+				margin-bottom: 0
+
+	.subtitle
+		+font-normal
+		+font(24px, round-float(30/24, 1))
+		flex: 1 1 12em
+		padding: 0.5em
+
+		+media('<desk-hd')
+			font-size: 20px
+
+		+media('<tab-lg')
+			font-size: 18px
+
+.main-section__holder
+	+clear
+	margin-bottom: $bottom-space--md
+
+	&:last-child
+		margin-bottom: 0
+
+/*scroll sections end
+
+/*main section entry
+.main-section--entry
+	color: white
+
+	.fp-bg
+		background-image: url(../../img/bg-entry.jpg)
+
+		+media('<tab-lg')
+			display: none
+
+	.main-section__align
+		+padding-vertical(120px)
+
+	.main-section__container
+		+media('<tab-lg')
+			background: #f3f3f3 url(../../img/bg-entry.jpg) no-repeat center
+			background-size: cover
+
+			&::before
+				+pseudo()
+				+position(0, 0)
+				+size(100%)
+				//background-color: rgba(0, 0, 0, 0.4)
+				+linear-gradient(to top, rgba(0, 0, 0, 1) 0, rgba(0, 0, 0, 0.6) 25%, rgba(0, 0, 0, 0.4) 50%, rgba(0, 0, 0, 0.3) 100%)
+
+	.main-section__title
+		position: relative
+		padding-bottom: 0.8em
+		margin-bottom: 100px
+		+font-bold
+		+font(52px, 1.2)
+		text-transform: uppercase
+		color: white
+
+		+media('<desk-hd')
+			font-size: 48px
+
+		+media('<tab-lg')
+			margin-bottom: 20px
+			padding-bottom: 0
+			text-align: center
+
+			&:last-child
+				margin-bottom: 0
+
+		+media('<tab-sm')
+			+font(22px, round-float(30/22, 1))
+			letter-spacing: 0.05em
+
+		&::before
+			+pseudo()
+			left: 0
+			bottom: 0
+			+size(85px, 3px)
+			background-color: white
+
+			+media('<tab-lg')
+				content: none
+
+		h1, h2, h3
+			width: 800px
+			max-width: 100%
+
+	.main-section__footer
+		text-align: center
+
+/*animation show on scroll end
+/*main section entry end
+
+/*total date
+.total-data
+	+media('>=tab-lg')
+		position: absolute
+		left: 0
+		bottom: 0
+		width: 100%
+		z-index: 50
+
+		&:last-child
+			margin-bottom: 0
+
+	+media('<tab-lg')
+		background-color: black
+
+	+media('<tab-sm')
+		display: none
+
+.total-data__list
+	position: relative
+	+margin-horizontal(-20px)
+	+clear
+
+	&::before
+		+pseudo()
+		left: 0
+		top: 0
+		width: 108px
+		height: 114px
+		background: url(../../img/bg-triangle.png) no-repeat
+		background-size: cover
+		z-index: -1
+		transform: translate(-30px, -20px)
+
+		+media('<desk-lg')
+			content: none
+
+.total-data__item
+	float: left
+	width: 33.3%
+	padding: 30px 20px 10px 20px
+
+	+media('<tab-sm')
+		float: none
+		width: auto
+		text-align: center
+
+.total-data__title
+	margin-bottom: 0.05em
+	+font-medium
+	+font(90px, 1)
+	color: $base-color
+	white-space: nowrap
+
+	+media('<desk-hd')
+		font-size: 78px
+
+	+media('<desk-sm')
+		font-size: 42px
+		margin-bottom: 10px
+
+	.prefix, .unit
+		+font-normal
+
+	.prefix
+		position: relative
+		+display-inline-block-top
+		+margin($top: 0.1em, $right: 1em)
+		+font(24px, 1.3)
+		color: white
+
+		+media('<desk-sm')
+			font-size: 18px
+			margin-right: 0.5em
+
+	.unit
+		position: relative
+		display: inline-block
+		vertical-align: bottom
+		+margin($bottom: 0.1em, $left: 1em)
+		+font(34px, 1.3)
+		color: white
+
+		+media('<desk-sm')
+			font-size: 22px
+			margin-left: 0.5em
+
+.total-data__text
+	+font(1.6rem, 1.2)
+
+/*total date end
+
+.fp-enabled
+	.main-section--entry
+		+animation-on-scroll(main-section__title total-data)
+
+/*main section news
+.main-section--news
+	background-size: cover
+
+	.fp-bg
+		background-color: #fff
+		background-image: url('../../img/bg-news.jpg')
+
+/*main section news end
+
+.fp-enabled
+	.main-section--news
+		+animation-on-scroll(main-section__title news-grid main-section__footer)
+
+/*main section providers
+.main-section--providers
+	background-size: cover
+
+	.fp-bg
+		background-color: #4f4d47
+		background-image: url('../../img/bg-providers.jpg')
+
+		&::before
+			background-color: rgba(0, 0, 0, 0.6)
+
+/*main section news end
+
+.fp-enabled
+	.main-section--providers
+		+animation-on-scroll(main-section__title agency providers plea)
+
+/*main section map
+.main-section--map
+	+font-normal
+	+font(1.8rem, 1.222)
+	color: #092140
+	cursor: default
+
+	.main-section__title
+		position: relative
+		color: $text-color
+		margin-bottom: 0.5em
+		padding-bottom: 0.5em
+
+		&::before
+			+pseudo()
+			bottom: 0
+			left: 0
+			+size(64px, 3px)
+			background-color: $text-color
+
+			+media('<tab-lg')
+				left: 50%
+				margin-left: -(round(64px/2))
+
+	.main-section__layout
+		+media('>=tab-lg')
+			height: 0
+
+	.main-section__pos
+		+media('>=tab-lg')
+			position: absolute
+			left: 0
+			top: 0
+			max-width: 100%
+			transform: translate(0, -50%)
+			z-index: 40
+			+antialiased
+
+		+media('<tab-lg')
+			background-color: white
+			padding-bottom: 70px
+
+		+media('<tab-sm')
+			padding-bottom: 40px
+
+	.phone
+		margin-bottom: 36px
+		+font-bold
+		+font(72px, round-float(86/72, 1))
+		color: $text-color
+
+		+media('<desk-hd')
+			margin-bottom: 20px
+			font-size: 64px
+
+		+media('<desk-sm')
+			font-size: 48px
+
+		+media('<tab-lg')
+			text-align: center
+
+		+media('<tab-sm')
+			font-size: 28px
+
+		&:last-child
+			margin-bottom: 0
+
+	.info
+		margin-bottom: 3em
+
+		&:last-child
+			margin-bottom: 0
+
+		+media('<tab-lg')
+			text-align: center
+
+	.contacts
+		margin-bottom: 1.5em
+		max-width: 300px
+		+font(1.6rem, (round-float(24/16, 2)))
+
+		&:last-child
+			margin-bottom: 0
+
+		+media('<tab-lg')
+			+push-auto
+
+		li
+			padding-left: 0
+			margin: 0
+
+			&::before
+				content: none
+
+		a
+			color: inherit
+			text-decoration: none
+			transition-property: color
+			transition-duration: $animation-speed
+
+			.no-touchevents &:hover
+				color: $base-color
+
+//.main-section__holder > *
+	opacity: 0
+	visibility: hidden
+	transform: translate(0, 20px)
+	transition-property: transform, opacity, visibility, background-color, color, border-color
+	transition-duration: $animation-speed-element
+
+//.main-section--map.active .main-section__holder > *
+	opacity: 1
+	visibility: visible
+	transform: translate(0, 0)
+
+	@for $child from 0 through 4
+		&:nth-child(#{$child})
+			transition-delay: (#{$animation-speed-element-delay + $child*0.3}, #{$animation-speed-element-delay + $child*0.3}, #{$animation-speed-element-delay + $child*0.3}, 0s, 0s, 0s)
+
+/*main section map end
+
+/*main map
+.main-section .main-map
+	+cover-abs()
+	background-color: #d3d3d3
+	z-index: auto
+
+	+media('<tab-lg')
+		position: relative
+		left: auto
+		top: auto
+		width: 100%
+		height: 320px
+
+/*main map end
+
+.fp-enabled
+	.main-section--map
+		+animation-on-scroll(main-section__title phone info main-section__footer)
+
+.c-categories
+	display: none
+	background-color: $base-color
+
+	+media('<tab-lg')
+		display: block
+
+.c-categories-item
+	$icon-size: 50px !default
+
+	display: block
+	padding: #{round($text-layout-space-horizontal--md*0.6)} #{$text-layout-space-horizontal--md}
+	text-decoration: none
+	color: $text-color
+	border: solid $border-color
+	border-width: 1px 0 0
+
+	+media('<tab-sm')
+		padding: #{round($text-layout-space-horizontal--sm*0.6)} #{$text-layout-space-horizontal--sm}
+
+	&:first-child
+		border-top-width: 0
+
+	svg
+		+display-inline-block-middle
+		+size($icon-size)
+		margin-right: $text-layout-space-horizontal--md
+
+		+media('<tab-sm')
+			margin-right: $text-layout-space-horizontal--sm
+
+	.c-categories__title
+		+font-normal
+		+font(18px, round-float(21/18, 2))
+		text-transform: uppercase
+
+	svg + .c-categories__title
+		+display-inline-block-middle
+		width: calc(100% - #{$icon-size} - #{$text-layout-space-horizontal--md} - 6px)
+
+.main-section--footer
+	height: 200px !important
+	min-height: 200px
+
+	.fp-bg
+		background-color: red
+		
+/* scroll menu
+.scroll-nav
+	position: fixed
+	right: $sidebar-width + $text-layout-space-horizontal
+	top: $header-height + $text-layout-space-horizontal
+	z-index: 5
+
+	+media('<desk-hd')
+		right: $sidebar-width + $text-layout-space-horizontal--lg
+		top: $header-height + $text-layout-space-horizontal--lg
+
+	+media('<desk-lg')
+		display: none
+
+	&, .#{$user-content} &
+		margin: 0
+
+		li
+			margin: 0 0 10px
+			padding: 0
+
+			&:before
+				content: none
+	&
+		a
+			display: block
+			position: relative
+			width: 40px
+			height: 40px
+			text-indent: -9999px
+			overflow: hidden
+			background-color: black
+			transition-property: background-color
+			transition-duration: $animation-speed
+
+			&::before
+				+pseudo()
+				left: 0
+				bottom: 0
+				height: 100%
+				width: 100%
+				background-color: $base-color
+				transition-property: transform
+				transition-duration: 0.3s
+				transform: translate(0, 100%)
+
+			svg
+				+centering-transform-abs()
+				+size(22px)
+
+			path
+				fill: white
+
+			.no-touchevents &:hover
+				&::before
+					transform: translate(0, calc(100% - 2px))
+
+		li.active a
+			&, .no-touchevents &
+				//background-color: $base-color
+				cursor: default
+
+				&::before
+					transform: translate(0, 0)
+
+/* scroll menu end

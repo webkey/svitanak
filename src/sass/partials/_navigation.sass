@@ -2,65 +2,45 @@
 @import ../utils/mixins
 @import ../../libs/include-media/dist/include-media
 
+/* navigation
 .nav
 	position: relative
 
-.nav__list
-	+clear
+.nav-list
+	list-style: none
+	margin: 0 0 58px
+	padding: 0
+
+	&:last-child
+		margin-bottom: 0
 
 	li
 		position: relative
+		margin-bottom: 12px
 
-		&.has-drop
-			padding-right: 2rem
-
-			.nav__angle
-				position: absolute
-				right: 0
-				top: 50%
-				transform: translate(0, -50%)
-				line-height: 0
-				pointer-events: none
+		&:last-child
+			margin-bottom: 0
 
 	a
 		display: block
+		+font-alt-medium
+		+font(30px, round-float(30/30, 2))
+		color: $text-color-base
+		border-color: $text-color-base // для нижнего подчеркивания
+		text-decoration: none
 
-	& > li
-		float: left
-		margin-right: 2rem
+		@if $animation-use
+			transition:
+				property: color, border
+				duration: $animation-speed
 
-		&.has-drop > .nav__tab .nav__angle i
-			display: inline-block
-			vertical-align: top
-			+triangle(bottom, tomato, 5px, 2)
+		span
+			border-bottom: 2px solid
+			border-bottom-color: inherit
 
-.nav__drop
-	position: absolute
-	left: 0
-	top: 100%
-	background-color: white
-	border: 1px solid $border-color
-	padding: 2rem
-	width: 320px
-	opacity: 0
-	visibility: hidden
-	z-index: 10
+		// hover
+		&:hover
+			color: $base-color
+			border-color: $base-color
 
-	li:hover > &
-		opacity: 1
-		visibility: visible
-
-	li
-		margin-bottom: 1rem
-		font-size: 1.4rem
-		line-height: 1.5
-
-		&.has-drop > .nav__tab .nav__angle i
-			display: inline-block
-			vertical-align: top
-			+triangle(right, tomato, 5px, 2)
-
-
-	.nav__drop
-		top: 0
-		left: 100%
+/* navigation end

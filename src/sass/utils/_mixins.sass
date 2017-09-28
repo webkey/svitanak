@@ -1072,6 +1072,37 @@
 	letter-spacing: 0.2em
 	text-transform: uppercase
 
+// =============================================================================
+// animation elements on scroll
+// =============================================================================
+/// Примесь обеспечивает последовательное появление элементов при сколле старницы
+/// @author []
+///
+/// @param {list} $list [] - название шрифта
+
+=animation-on-scroll($list)
+	@for $i from 1 through length($list)
+		$item: nth($list, $i)
+		//@debug $i
+		//@debug $item
+
+		+media('>=tab-lg')
+			.no-touchevents .#{$item}
+				opacity: 0
+				visibility: hidden
+				transform: translate(0, 60px)
+				transition-property: transform, opacity, visibility
+				transition-duration: $animation-speed-element
+
+			$delay: #{$animation-speed-element-delay + ($i - 1)*0.2}
+			//@debug $delay
+
+			&.active .#{$item}
+				opacity: 1
+				visibility: visible
+				transform: translate(0, 0)
+				transition-delay: ($delay)
+
 // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++//
 // ПРИМЕСИ ИСПОЛЬЗУЕМЫЕ В ТИПОГРАФИЧЕСКИХ СТИЛЯХ конец
 // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++//

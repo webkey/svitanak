@@ -264,6 +264,9 @@ i b, i strong, em b, em strong, b i, b em, strong i, strong em
 .nobr
 	white-space: nowrap
 
+.hide-text
+	+hide-text
+
 /* content img
 .imgc
 	text-align: center
@@ -589,70 +592,3 @@ table
 		fill: $base-color
 
 /* view print end
-
-/* logo
-.logo
-	position: relative
-	float: left
-	width: $logo-width
-	height: $header-height
-	z-index: 5
-
-	a
-		display: block
-		height: 100%
-
-		&::before, &::after
-			+pseudo()
-			+position(0)
-			+size(100%)
-			background-repeat: no-repeat
-			background-size: cover
-
-		&::before // full logo
-			background-image: url(../../img/logo.png);
-
-		&::before // full logo
-			background-image: url(../../img/logo-short.png);
-
-		& > span
-			+hide-text
-
-/* logo end
-
-.hide-text
-	+hide-text
-
-/* scroll to
-.scroll-to
-	text-align: center
-
-	a
-		+font-d
-		text-decoration: none
-		color: $text-color
-		fill: $text-color
-
-		@if $animation-use
-			transition:
-				property: color
-				duration: $animation-speed
-
-	svg
-		+display-inline-block-middle
-		+size(20px, 40px)
-
-	path
-		fill: inherit
-
-		@if $animation-use
-			transition:
-				property: fill
-				duration: $animation-speed
-
-	// hover
-	a:hover
-		color: $link-color
-		fill: $link-color
-
-/* scroll to end

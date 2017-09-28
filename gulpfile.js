@@ -77,6 +77,7 @@ gulp.task('mergeCssLibs', function () { // Таск для мержа css биб
 	return gulp.src([
 		'src/css/temp/*.css' // see gulpfile-special.js
 		, 'src/libs/select2/dist/css/select2.min.css'
+		,'src/libs/fullpage.js/dist/jquery.fullpage.min.css' // стили для плагина постраничной прокрутки
 		// , 'src/lib/plugin/file.css'
 	]) // Выбираем файлы для конкатенации
 		.pipe(concatCss("src/css/libs.css", {
@@ -105,6 +106,7 @@ gulp.task('copyLibsScriptsToJs', ['copyJqueryToJs'], function () { // Таск �
 		, 'src/libs/slick-carousel/slick/slick.min.js' // slick slider
 		, 'node_modules/object-fit-images/dist/ofi.min.js' // object-fit fix for a non-support browsers
 		, 'src/libs/gsap/src/minified/TweenMax.min.js' // библиотека для создания анимаций
+		, 'src/libs/fullpage.js/dist/jquery.fullpage.min.js' // скрипт для постраничной прокрутки
 	])
 		.pipe(concat('libs.js')) // Собираем их в кучу в новом файле libs.min.js
 		.pipe(gulp.dest('src/js'))

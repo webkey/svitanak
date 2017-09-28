@@ -30,12 +30,13 @@
 .shutter
 	overflow: hidden // необходим для скрытия скролла
 	position: fixed
-	+position(0, #{$sidebar-width})
-	+size(100%, 100vh)
+	left: #{$sidebar-width}
+	bottom: 0
+	+size(100%, calc(100vh - #{$header-height}))
 	min-width: 320px
-	max-width: $nav-width
+	max-width: $shutter-width
 	//padding: 0 0 120px
-	background: $bg-color-alt
+	background: $bg-color
 	opacity: 0
 	visibility: hidden
 	z-index: 1000
@@ -56,10 +57,21 @@
 		width: 100%
 
 .shutter__holder
-	width: #{$nav-width}
+	width: #{$shutter-width}
 
 	+media('<tab-lg')
 		width: 100%
+
+.shutter__row
+	&.v-middle--top, &.v-middle--bottom
+		height: 0
+
+		.shutter__cell
+			padding: 0
+
+.shutter__cell
+	padding: nth($shutter-space, 1) nth($shutter-space, 2)
+	vertical-align: top
 
 /* shutter header
 .shutter-header
@@ -72,6 +84,20 @@
 		border-bottom-width: 1px
 
 /* shutter header end
+
+/* shutter content
+.shutter-content
+	float: left
+	width: calc(100% - #{$shutter-aside-width})
+
+/* shutter content end
+
+/* shutter aside
+.shutter-aside
+	float: right
+	width: $shutter-aside-width
+
+/* shutter aside end
 
 /* shutter footer
 .shutter-footer
