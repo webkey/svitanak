@@ -76,8 +76,9 @@ gulp.task('sassCompilation', ['compressNormalizeCss'], function () { // Созд
 gulp.task('mergeCssLibs', function () { // Таск для мержа css библиотек
 	return gulp.src([
 		'src/css/temp/*.css' // see gulpfile-special.js
-		, 'src/libs/select2/dist/css/select2.min.css'
-		,'src/libs/fullpage.js/dist/jquery.fullpage.min.css' // стили для плагина постраничной прокрутки
+		, 'src/libs/select2/dist/css/select2.min.css' // стили для кастомного селекта
+		, 'src/libs/swiper/dist/css/swiper.min.css' // стили для swiper slider
+		, 'src/libs/fullpage.js/dist/jquery.fullpage.min.css' // стили для плагина постраничной прокрутки
 		// , 'src/lib/plugin/file.css'
 	]) // Выбираем файлы для конкатенации
 		.pipe(concatCss("src/css/libs.css", {
@@ -104,8 +105,10 @@ gulp.task('copyLibsScriptsToJs', ['copyJqueryToJs'], function () { // Таск �
 		, 'src/libs/select2/dist/js/i18n/ru.js' // локализация для кастомного селекта
 		, 'src/js/temp/filer.min.js' // инпут файл
 		, 'src/libs/slick-carousel/slick/slick.min.js' // slick slider
+		, 'src/libs/swiper/dist/js/swiper.min.js' // swiper slider
 		, 'node_modules/object-fit-images/dist/ofi.min.js' // object-fit fix for a non-support browsers
 		, 'src/libs/gsap/src/minified/TweenMax.min.js' // библиотека для создания анимаций
+		, 'src/libs/fullpage.js/vendors/scrolloverflow.min.js' // расширение для плагина постраничной прокрутки, позволяющее добавлять скролл внутри страницы
 		, 'src/libs/fullpage.js/dist/jquery.fullpage.min.js' // скрипт для постраничной прокрутки
 	])
 		.pipe(concat('libs.js')) // Собираем их в кучу в новом файле libs.min.js

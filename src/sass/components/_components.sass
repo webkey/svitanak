@@ -8,24 +8,22 @@
 	float: left
 	width: $logo-width
 	height: $header-height
+	background-color: $base-color
 	z-index: 5
 
+	&::before
+		+pseudo()
+		+position(0)
+		+size(100%)
+		background-repeat: no-repeat
+		background-size: cover
+		background-image: url(../../img/logo.png)
+
 	a
+		position: relative
 		display: block
 		height: 100%
-
-		&::before, &::after
-			+pseudo()
-			+position(0)
-			+size(100%)
-			background-repeat: no-repeat
-			background-size: cover
-
-		&::before // full logo
-			background-image: url(../../img/logo.png);
-
-		&::before // full logo
-			background-image: url(../../img/logo-short.png);
+		z-index: 5
 
 		& > span
 			+hide-text
@@ -49,7 +47,7 @@
 
 	svg
 		+display-inline-block-middle
-		+size(20px, 40px)
+		+size(40px)
 
 	path
 		fill: inherit

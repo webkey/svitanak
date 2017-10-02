@@ -261,13 +261,6 @@ function fileInput() {
  * !Initial full page scroll plugin
  * */
 function fullPageInitial() {
-	var $html = $('html');
-	var prevBeforeSectionClass = 'fp-prev-before';
-	var topClass = 'fp-is-top';
-	var bottomClass = 'fp-is-bottom';
-	// var prevSectionClass = 'fp-prev';
-	var noAnimateClass = 'fp-no-animate';
-	var timeout;
 
 	var $mainSections = $('.main-sections-js');
 	if($mainSections.length) {
@@ -275,73 +268,24 @@ function fullPageInitial() {
 			verticalCentered: false,
 			// anchors: ['firstPage', 'secondPage', 'thirdPage'],
 			// navigation: true,
-			menu: '.scroll-nav-js',
-			sectionSelector: '.main-section',
+			// menu: '.scroll-nav-js',
+			sectionSelector: '.main-section-js',
+			// paddingTop: 100,
 			scrollingSpeed: 1000,
-			recordHistory: false,
-			onLeave: function (index, nextIndex, direction) {
-				var $this = $(this);
-				var $section = $this.parent().children();
-				// var lengthPages = $section.length;
+			recordHistory: true,
+			responsiveWidth: 1000,
+			responsiveHeight: 600,
+			// normalScrollElements: '.main-section--news',
+			// scrollOverflow: true,
+			// scrollOverflowOptions: {
+			// 	scrollbars: 'custom'
+			// },
 
-				$this.parent().removeClass('fp-down fp-up').addClass('fp-' + direction);
-
-				$section.removeClass(prevBeforeSectionClass);
-				$section.eq($this.index()).addClass(prevBeforeSectionClass);
-				// console.log("currentIndex: ", index);
-				// console.log("beforeIndex: ", $this.index());
-				// console.log("thisIndex: ", $this.index());
-				// console.log("nextIndex: ", nextIndex);
-
-				// $section.addClass(prevBeforeSectionClass);
-				// for(var i = 0; i < lengthPages; i++) {
-				// 	if (i+1 >= nextIndex) {
-				// 		$section.eq(i).removeClass(prevBeforeSectionClass);
-				// 	}
-				// }
-			},
-			afterLoad: function (anchorLink, index) {
-				var $this = $(this);
-				var $section = $this.parent().children();
-				// console.log("this.parent(): ", lengthPages);
-				// console.log("this: ", this);
-				// console.log("anchorLink: ", anchorLink);
-				// console.log("index(afterLoad): ", index);
-				// console.log("$thisIndex(afterLoad): ", $this.index());
-
-				$this.parent().addClass(noAnimateClass);
-				// console.log('addClass "no-animate"');
-
-				clearTimeout(timeout);
-
-				timeout = setTimeout(function () {
-					$this.parent().removeClass(noAnimateClass);
-					// console.log('removeClass "no-animate"');
-				}, 50);
-
-				$section.removeClass(prevBeforeSectionClass);
-
-				$html.removeClass(topClass);
-				$html.removeClass(bottomClass);
-
-				if(index === 1) {
-					$html.addClass(topClass);
-				}
-				if(index === $section.length) {
-					$html.addClass(bottomClass);
-				}
-
-				// $section.addClass(prevSectionClass);
-				// for(var i = 0; i < lengthPages; i++) {
-				// 	if (i+1 >= index) {
-				// 		$section.eq(i).removeClass(prevSectionClass);
-				// 	}
-				// }
-			},
-			afterRender: function(){
-				var pluginContainer = $(this);
-				fullPageRespons();
-			}
+			// dots navigation
+			navigation: true,
+			navigationPosition: null
+			// navigationTooltips: ['First', 'Second', 'Third', '4', 'foo'],
+			// showActiveTooltip: true
 		});
 	}
 
@@ -349,21 +293,6 @@ function fullPageInitial() {
 		e.preventDefault();
 
 		$.fn.fullpage.moveSectionDown();
-	});
-
-	function fullPageRespons() {
-		if ($mainSections.length) {
-			if (window.innerWidth < mediaTablet || !DESKTOP) {
-				$.fn.fullpage.setResponsive(true);
-				// $.fn.fullpage.setRecordHistory(true);
-			} else {
-				$.fn.fullpage.setResponsive(false);
-				// $.fn.fullpage.setRecordHistory(false);
-			}
-		}
-	}
-	$(window).on('debouncedresize', function () {
-		fullPageRespons();
 	});
 }
 /*full page scroll*/
@@ -408,6 +337,23 @@ function slidersInit() {
 			});
 
 		});
+	}
+
+	var mainSlider = '.main-slider-js';
+
+	if ($(mainSlider).length) {
+		var mainSliderSwiper = new Swiper(mainSlider, {
+			// Optional parameters
+			loop: false,
+
+			// Navigation arrows
+			nextButton: '.swiper-button-next',
+			prevButton: '.swiper-button-prev',
+
+			// Pagination
+			pagination: '.swiper-pagination',
+			paginationType: 'fraction'
+		})
 	}
 }
 
