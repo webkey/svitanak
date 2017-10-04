@@ -34,10 +34,10 @@ body
 	width: 100%
 
 .content
-	padding: #{$layout-spaces}
+	padding: #{floor($layout-spaces*0.9)} #{$layout-spaces}
 
 	+media('<desk-lg')
-		padding: #{$layout-spaces--lg}
+		padding:  #{floor($layout-spaces--lg*0.9)} #{$layout-spaces--lg}
 
 // актуально только для текущего проекта
 .layout-full-width, .layout-wide
@@ -286,7 +286,32 @@ body
 		//+media('<mob-lg')
 			+margin-horizontal(-#{$text-layout-space-horizontal--sm})
 
-// feature list, images slider
+/* main slider (layout)
+.home-page
+	.main-slider-pagination
+		left: #{$layout-spaces}
+		top: #{floor($layout-spaces*0.9)}
+
+	.main-slider-prev, .main-slider-next
+		bottom: #{floor($layout-spaces*0.9)}
+		top: auto
+		margin-top: 0
+
+	.main-slider-prev
+		left: #{$layout-spaces}
+
+	.main-slider-next
+		right: #{$layout-spaces}
+
+	.main-slider__item
+		padding: #{floor($layout-spaces*0.9*2)} #{$layout-spaces}
+
+		+media('<desk-lg')
+			padding:  #{floor($layout-spaces--lg*0.9*2)} #{$layout-spaces--lg}
+
+/* main slider (layout) end
+
+/* feature list, images slider
 .feature-list, .images-slider
 	max-width: $flood-layout-width
 	+push-auto
@@ -305,6 +330,8 @@ body
 
 	+media('<tab-lg')
 		margin-bottom: $bottom-space--ml*2
+
+/* feature list, images slider end
 
 /* subscription form
 .subscription-form

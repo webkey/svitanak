@@ -271,7 +271,7 @@ function fullPageInitial() {
 			// menu: '.scroll-nav-js',
 			sectionSelector: '.main-section-js',
 			// paddingTop: 100,
-			scrollingSpeed: 1000,
+			scrollingSpeed: 600,
 			recordHistory: true,
 			responsiveWidth: 1000,
 			responsiveHeight: 600,
@@ -339,21 +339,34 @@ function slidersInit() {
 		});
 	}
 
-	var mainSlider = '.main-slider-js';
+	/*main slider*/
+	var $mainSlider = $('.main-slider-js');
+	if ($mainSlider.length) {
+		$mainSlider.each(function () {
+			var $thisSlider = $(this);
+			var $thisBtnNext = $('.swiper-button-next', $thisSlider);
+			var $thisBtnPrev = $('.swiper-button-prev', $thisSlider);
+			var $thisFractPag = $('.swiper-pagination', $thisSlider);
 
-	if ($(mainSlider).length) {
-		var mainSliderSwiper = new Swiper(mainSlider, {
-			// Optional parameters
-			loop: false,
+			var currentMainSlider = new Swiper($thisSlider, {
+				// Optional parameters
+				loop: false,
+				// Keyboard
+				keyboardControl: true,
 
-			// Navigation arrows
-			nextButton: '.swiper-button-next',
-			prevButton: '.swiper-button-prev',
+				// Navigation arrows
+				nextButton: $thisBtnNext,
+				prevButton: $thisBtnPrev,
 
-			// Pagination
-			pagination: '.swiper-pagination',
-			paginationType: 'fraction'
-		})
+				// Pagination
+				pagination: $thisFractPag,
+				paginationType: 'fraction'
+			});
+
+			// currentMainSlider.on('onSetTranslate', function (swiper, translate) {
+			// 	console.log("translate: ", translate);
+			// });
+		});
 	}
 }
 
@@ -834,10 +847,12 @@ function slidersInit() {
 
 	ExtraPopup.prototype.cssScrollFixed = function() {
 		$('html').addClass('css-scroll-fixed');
+		$(document).trigger('extraPopupScrollFixed');
 	};
 
 	ExtraPopup.prototype.cssScrollUnfixed = function() {
 		$('html').removeClass('css-scroll-fixed');
+		$(document).trigger('extraPopupScrollUnfixed');
 	};
 
 	// clearing inline styles
@@ -873,6 +888,18 @@ function slidersInit() {
  * !extra popup initial
  * */
 function popupsInit(){
+
+	$(document).on('extraPopupScrollFixed', function () {
+		if($('.main-sections-js').length) {
+			$.fn.fullpage.setAllowScrolling(false); // blocked fullpage scroll
+		}
+	});
+
+	$(document).on('extraPopupScrollUnfixed', function () {
+		if($('.main-sections-js').length) {
+			$.fn.fullpage.setAllowScrolling(true); // unblocked fullpage scroll
+		}
+	});
 
 	/*navigation*/
 	var navPopupClass = '.nav-popup-js';

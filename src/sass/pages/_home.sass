@@ -27,10 +27,97 @@
 	background-color: #fafafa
 
 /* main section
-.swiper-container
+/* main slider
+.main-slider
 	//width: 600px
 	height: 100%
+	background-color: $bg-color-alt
 
+.main-slider-prev, .main-slider-next, .main-slider-pagination, .main-slider__content
+	filter: drop-shadow(1px 1px rgba(white, 0.5))
+	user-select: none
+
+.main-slider-pagination
+	position: absolute
+	top: 0
+	left: 0
+	bottom: auto
+	width: auto
+	min-width: 35px
+	padding-right: 20px
+	+font-alt-italic
+	+font(20px, 1)
+
+	&::after
+		+pseudo()
+		left: 100%
+		top: 50%
+		+size(100px, 0)
+		border-top: 1px solid $text-color
+		margin-top: -1px
+
+.main-slider__item
+	position: relative
+
+.main-slider__img
+	position: absolute
+	+size(100%)
+	+position(0)
+	background-color: $bg-color-alt
+	z-index: -1
+
+	//&::after
+		+pseudo()
+		+position(0)
+		+size(100%)
+		+linear-gradient(to right, rgba(white, 0.2) 0%, rgba(white, 0) 75%, rgba(white, 0) 100%)
+
+	img
+		display: block
+		+size(100%)
+		max-width: none
+		+object-fit(cover)
+
+.main-slider__content
+	max-width: 1200px
+	+push-auto
+
+.main-slider__title
+	$line-height: round-float(72/72, 2)
+	$font-size: 72px
+	// ===============
+	display: block
+	overflow: hidden
+	margin-bottom: $bottom-space--lg
+	+font-alt-bold
+	+font($font-size, $line-height)
+	width: 700px
+	max-width: 100%
+	max-height: round($font-size*$line-height*5) // maximum 5 line
+	cursor: default
+
+	&:last-child
+		margin-bottom: 0
+
+.main-slider__footer
+	.more-link
+		+display-inline-block-top
+		+font-d
+		text-decoration: none
+		color: inherit
+
+		span
+			+display-inline-block-top
+			line-height: 1.5
+			border-bottom: 2px solid $text-color
+
+		&:hover
+			color: $base-color
+
+			span
+				border-color: $base-color
+
+/* main slider end
 /* main section end
 
 /* fullpage navigation
@@ -59,15 +146,18 @@
 			+size(auto)
 			line-height: $dot-size
 			margin: 0
-			padding: round($dot-space/2 - ($dot-size-active - $dot-size)/2) 0
+			//padding: round($dot-space/2 - ($dot-size-active - $dot-size)/2) 0
+			padding: 0
 
 			&:last-child
 				display: none
 
 			a
-				+display-inline-block-top
-				+size($dot-size-active)
-				padding: round(($dot-size-active - $dot-size)/2)
+				//+display-inline-block-top
+				//+size($dot-size-active)
+				//padding: round(($dot-size-active - $dot-size)/2)
+				display: block
+				padding: round($dot-space/2)
 
 				&::before
 					+pseudo()
