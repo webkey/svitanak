@@ -280,6 +280,98 @@ $dep-img-size: 80px, 120px // width, height
 
 /* departments end
 
+/* main slider (home page)
+.main-slider
+	//width: 600px
+	height: 100%
+	background-color: $bg-color-alt
+
+.main-slider-prev, .main-slider-next, .main-slider-pagination, .main-slider__content
+	filter: drop-shadow(1px 1px rgba(white, 0.5))
+	user-select: none
+
+.main-slider-pagination
+	position: absolute
+	top: 0
+	left: 0
+	bottom: auto
+	width: auto
+	min-width: 35px
+	padding-right: 20px
+	+font-alt-italic
+	+font(20px, 1)
+
+	&::after
+		+pseudo()
+		left: 100%
+		top: 50%
+		+size(100px, 0)
+		border-top: 1px solid $text-color
+		margin-top: -1px
+
+.main-slider__item
+	position: relative
+
+.main-slider__img
+	position: absolute
+	+size(100%)
+	+position(0)
+	background-color: $bg-color-alt
+	z-index: -1
+
+	//&::after
+		+pseudo()
+		+position(0)
+		+size(100%)
+		+linear-gradient(to right, rgba(white, 0.2) 0%, rgba(white, 0) 75%, rgba(white, 0) 100%)
+
+	img
+		display: block
+		+size(100%)
+		max-width: none
+		+object-fit(cover)
+
+.main-slider__content
+	max-width: 1200px
+	+push-auto
+
+.main-slider__title
+	$line-height: round-float(72/72, 2)
+	$font-size: 72px
+	// ===============
+	display: block
+	overflow: hidden
+	margin-bottom: $bottom-space--lg
+	+font-alt-bold
+	+font($font-size, $line-height)
+	width: 700px
+	max-width: 100%
+	max-height: round($font-size*$line-height*5) // maximum 5 line
+	cursor: default
+
+	&:last-child
+		margin-bottom: 0
+
+.main-slider__footer
+	.more-link
+		+display-inline-block-top
+		+font-d
+		text-decoration: none
+		color: inherit
+
+		span
+			+display-inline-block-top
+			line-height: 1.5
+			border-bottom: 2px solid $text-color
+
+		&:hover
+			color: $base-color
+
+			span
+				border-color: $base-color
+
+/* main slider (home page) end
+
 /* catalog (home page)
 $m-catalog-space: 85px, 100px
 $m-catalog-img-size: 250px, 375px // width, height
@@ -290,7 +382,7 @@ $m-catalog-img-duration: 10s
 	+font-alt-bold
 	+font(48px, 1)
 	letter-spacing: 0.05em
-	margin-bottom: $bottom-space
+	margin-bottom: $bottom-space--md
 
 	&:last-child
 		margin-bottom: 0
@@ -300,6 +392,12 @@ $m-catalog-img-duration: 10s
 	border-width: 0
 	border-color: $border-color
 	+clear-spacing
+
+	// при переполненние контейнера (если добавить больше 8 категорий)
+	// кастомный скролл (включив опцию fullPage.js scrollOverflow: true) не получается добавить
+	// если высота контента (списка) нечетная, то округление высоты одного элемента списка (.m-catalog-item) происходит в болюшу сторону. Добавляется 1 лишний пиксел к общей высоте. Появляется скролл, хотя элементов не больше 8
+	// Если же высоту элементов делать на 1 пиксел, то получается однопикселный отступ снизу, что будет резать глаз дизайнеру, менеджерам, клиенту и самому Б.
+	// Опцию scrollOverflow не включаем. Лишние (больше 8) элементы списка обрезаются!
 
 	&, .#{$user-content}
 		list-style: none
@@ -314,10 +412,11 @@ $m-catalog-img-duration: 10s
 				content: none
 
 	& > li
-		+display-inline-block-top
+		//+display-inline-block-top
+		float: left
 		overflow: hidden
 		width: calc(25% + 1px)
-		height: calc((100vh - #{$header-height})/2)
+		height: calc((100vh - #{$header-height})/2 + 1px)
 		position: relative
 		letter-spacing: $letter-spacing
 		border-style: solid
@@ -340,6 +439,97 @@ $m-catalog-img-duration: 10s
 			&::after
 				content: none
 
+	$data-length: 'data-length' !default
+
+	@for $i from 1 through 8
+		@if $i == 1
+			&[#{$data-length}="#{$i}"]
+				& > li
+					width: calc(100% + 1px)
+					height: calc(100vh - #{$header-height} + 1px)
+
+					.m-catalog-img
+						left: auto
+						right: nth($m-catalog-space, 2)
+						transform: none
+
+		@if $i == 2
+			&[#{$data-length}="#{$i}"]
+				& > li
+					width: calc(100%/2 + 1px)
+					height: calc(100vh - #{$header-height} + 1px)
+
+					.m-catalog-img
+						left: auto
+						right: nth($m-catalog-space, 2)
+						transform: none
+
+		@if $i == 3
+			&[#{$data-length}="#{$i}"]
+				& > li
+					width: calc(100%/2 + 1px)
+
+					&:first-child
+						height: calc(100vh - #{$header-height} + 1px)
+
+					.m-catalog-img
+						left: auto
+						right: nth($m-catalog-space, 2)
+						transform: none
+
+		@if $i == 4
+			&[#{$data-length}="#{$i}"]
+				& > li
+					width: calc(100%/2 + 1px)
+
+					.m-catalog-img
+						left: auto
+						right: nth($m-catalog-space, 2)
+						transform: none
+
+		@if $i == 5
+			&[#{$data-length}="#{$i}"]
+				& > li
+					width: calc(100%/3 + 1px)
+
+					.m-catalog-img
+						left: auto
+						right: -6%
+						transform: none
+
+					&:nth-child(-n+2)
+						width: calc(100%/2 + 1px)
+
+						.m-catalog-img
+							right: nth($m-catalog-space, 2)
+
+		@if $i == 6
+			&[#{$data-length}="#{$i}"]
+				& > li
+					width: calc(100%/4 + 1px)
+
+					&:nth-child(7n + 1),
+					&:nth-child(6n)
+						width: calc(100%/4*2 + 1px)
+
+						.m-catalog-img
+							left: auto
+							right: nth($m-catalog-space, 2)
+							transform: none
+
+		@if $i == 7
+			&[#{$data-length}="#{$i}"]
+				& > li
+					width: calc(100%/4 + 1px)
+
+					&:nth-child(7n + 1)
+						width: calc(100%/4*2 + 1px)
+
+						.m-catalog-img
+							left: auto
+							right: nth($m-catalog-space, 2)
+							transform: none
+
 .m-catalog-img
 	position: absolute
 	left: 50%
@@ -347,6 +537,7 @@ $m-catalog-img-duration: 10s
 	padding: 0
 	margin: 0
 	width: nth($m-catalog-img-size, 1)
+	max-width: 80%
 	transform: translate(-50%, 0)
 	z-index: -1
 
@@ -434,6 +625,144 @@ $m-catalog-img-duration: 10s
 					border-color: $base-color
 
 /* catalog (home page) end
+
+/* services (home page)
+$m-services-thumb-left: 160px
+$m-services-thumb-indent: 320px
+
+.m-services-container
+	height: 100%
+	+clear
+
+.m-services
+	height: 100%
+	margin-left: auto
+	margin-right: auto
+	position: relative
+	overflow: hidden
+	z-index: 1
+
+.m-services-visual
+	float: left
+	width: 50%
+	height: 100%
+	background-color: $bg-color-alt
+
+.m-services-prev, .m-services-next, .m-services-pagination, .m-services__content
+	user-select: none
+
+.m-services__item
+	position: relative
+
+.m-services__img
+	position: absolute
+	+size(100%)
+	+position(0)
+	background-color: $bg-color-alt
+	z-index: -1
+
+	img
+		display: block
+		+size(100%)
+		max-width: none
+		+object-fit(contain)
+
+.m-services-title
+	display: block
+	+font-alt-bold
+	+font(48px, 1)
+	color: inherit
+	margin-bottom: $bottom-space--lg
+	padding-left: $m-services-thumb-indent
+
+.svg-t
+	position: absolute
+	top: 50%
+	left: 100%
+	display: block
+	margin-top: 60px
+	width: 400px
+	height: 400px
+	transform: translate(-50%, -50%)
+	font: 50vmin/1 'minionpro-bold', serif
+	text-transform: uppercase
+
+.m-services-thumbs
+	position: relative
+	float: right
+	+size(50%, 100%)
+	overflow-y: auto
+	overflow-x: hidden
+	z-index: 5
+
+	&::before
+		+pseudo()
+		left: $m-services-thumb-left
+		top: 0
+		+size(0, 100%)
+		border: solid $border-color
+		border-width: 0 0 0 1px
+		z-index: 5
+		pointer-events: none
+
+.m-services-thumbs-align
+	margin-right: -100px
+	+padding-vertical($layout-spaces)
+
+.m-services-pagination
+
+.m-services-bullet
+	display: block
+	position: relative
+	+padding-vertical(20px)
+	color: inherit
+	+font(16px, 24px)
+	text-decoration: none
+	+clear
+	
+	&::before
+		+pseudo()
+		+size(100%)
+		+position(0)
+		background-color: #fafafa
+		opacity: 0
+		z-index: -1
+
+	& > i
+		display: block
+		float: left
+		width: $m-services-thumb-left
+		+font-alt-italic
+		font-size: 18px
+		text-align: center
+
+	& > span
+		position: relative
+		display: block
+		padding-left: $m-services-thumb-indent
+
+		&::before
+			+pseudo()
+			left: $m-services-thumb-left
+			top: 50%
+			+size(100px, 0)
+			border: solid $text-color
+			border-width: 1px 0 0
+			transform: translate(-30%, 0)
+			opacity: 0
+
+	&:hover, &.m-services-bullet-active
+		&::before
+			opacity: 1
+
+		& > span
+			color: $base-color
+
+			&::before
+				opacity: 1
+
+
+/* services (home page) end
 
 /* file download
 .file-download

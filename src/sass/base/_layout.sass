@@ -14,6 +14,16 @@ body
 	position: relative
 	padding-top: $header-height
 
+	&::before
+		+pseudo()
+		top: 0
+		left: $page-layout-width
+		height: 100%
+		border-right: 1px solid $border-color
+
+		+media('<1920px')
+			left: 100%
+
 .main
 	position: relative
 	width: 100%
@@ -37,7 +47,7 @@ body
 	padding: #{floor($layout-spaces*0.9)} #{$layout-spaces}
 
 	+media('<desk-lg')
-		padding:  #{floor($layout-spaces--lg*0.9)} #{$layout-spaces--lg}
+		padding: #{floor($layout-spaces--lg*0.9)} #{$layout-spaces--lg}
 
 // актуально только для текущего проекта
 .layout-full-width, .layout-wide
@@ -46,19 +56,22 @@ body
 	+media('<desk-lg')
 
 .layout-top-fit
-	margin-top: -#{$layout-spaces}
+	margin-top: -#{floor($layout-spaces*0.9)}
 
 	+media('<desk-lg')
-		margin-top: -#{$layout-spaces--lg}
+		margin-top: -#{floor($layout-spaces--lg*0.9)}
 
 .layout-bottom-fit
-	margin-bottom: -#{$layout-spaces}
+	margin-bottom: -#{floor($layout-spaces*0.9)}
 
 	+media('<desk-lg')
-		margin-bottom: -#{$layout-spaces--lg}
+		margin-bottom: -#{floor($layout-spaces--lg*0.9)}
 
 .entry-img
-	padding: #{$layout-spaces}
+	padding: #{floor($layout-spaces*0.9)} #{$layout-spaces}
+
+	+media('<desk-lg')
+		padding: #{floor($layout-spaces--lg*0.9)} #{$layout-spaces--lg}
 
 .header
 	position: fixed

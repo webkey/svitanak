@@ -277,6 +277,7 @@ function fullPageInitial() {
 			responsiveHeight: 600,
 			// normalScrollElements: '.main-section--news',
 			// scrollOverflow: true,
+			// add .fp-noscroll for deactivate scroll
 			// scrollOverflowOptions: {
 			// 	scrollbars: 'custom'
 			// },
@@ -364,6 +365,52 @@ function slidersInit() {
 			});
 
 			// currentMainSlider.on('onSetTranslate', function (swiper, translate) {
+			// 	console.log("translate: ", translate);
+			// });
+		});
+	}
+
+	/*services slider*/
+	var $mServicesSlider = $('.m-services-js');
+
+	if ($mServicesSlider.length) {
+		$mServicesSlider.each(function () {
+			var $thisSlider = $(this);
+			var $thisSliderWrap = $thisSlider.parent();
+			var $thisPag = $('.m-services-pagination-js', $thisSliderWrap);
+			var serviceBullet = 'm-services-bullet';
+
+			var currentMServicesSlider = new Swiper($thisSlider, {
+				// Classes
+				bulletClass: serviceBullet,
+				bulletActiveClass: serviceBullet + '-active',
+
+				// Optional parameters
+				effect: 'fade',
+				fade: {
+					crossFade: true
+				},
+				loop: false,
+
+				// Keyboard / Mousewheel
+				keyboardControl: false,
+				mousewheelControl: false,
+				simulateTouch: false,
+
+				// Pagination
+				pagination: $thisPag,
+				paginationClickable: false,
+				paginationBulletRender: function (swiper, index, className) {
+					var $curSlide = $(swiper.slides).eq(index);
+					return '<a href="'+ $curSlide.data('link') +'" class="' + className + '"><i>' + (index + 1) + '</i><span>' + $curSlide.data('label') + '</span></a>';
+				}
+			});
+
+			$('.m-services-pagination-js').on('mouseenter', '.' + serviceBullet, function () {
+				currentMServicesSlider.slideTo($(this).index());
+			});
+
+			// currentMServicesSlider.on('onSetTranslate', function (swiper, translate) {
 			// 	console.log("translate: ", translate);
 			// });
 		});
@@ -1353,6 +1400,19 @@ function toggleDrop() {
 }
 
 /**
+ * !Add data-length on list
+ */
+function addDataLengthChildren() {
+	var $list = $('.list-counter-js');
+
+	$.each($list, function () {
+		var $currentList = $(this);
+
+		$currentList.attr('data-length', $currentList.children().length)
+	})
+}
+
+/**
  * !Always place the footer at the bottom of the page
  * */
 function footerBottom() {
@@ -1466,6 +1526,7 @@ $(document).ready(function () {
 	popupsInit();
 	tabSwitcher();
 	toggleDrop();
+	addDataLengthChildren();
 
 	footerBottom();
 	formSuccessExample();

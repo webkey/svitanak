@@ -1,0 +1,11 @@
+<li class="m-catalog-item">
+	<strong class="m-catalog-title">@@title</strong>
+	<ul class="m-catalog-sub-list">
+		@@for (var i = 0; i < items.length; i++) {
+			<li><a href="#" title="`+items[i]+`"><span>`+items[i]+`</span></a></li>
+		}
+	</ul>
+	<figure class="m-catalog-img">
+		<div><img src="img/@@img" alt="@@title"></div>
+	</figure>
+</li>

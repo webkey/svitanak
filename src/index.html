@@ -173,59 +173,191 @@
 							<section class="main-section main-section-js main-section--categories" data-anchor="sectionCategories">
 								<div class="main-section__container">
 									<div class="main-section__align">
-										<ul class="m-catalog-list">
+										<ul class="m-catalog-list list-counter-js">
 											<li class="m-catalog-item">
 												<strong class="m-catalog-title">Женский трикотаж</strong>
 												<ul class="m-catalog-sub-list">
-													<li><a href="#"><span>Белье женское</span></a></li>
-													<li><a href="#"><span>Верх женский</span></a></li>
+													<li><a href="#" title="Белье женское"><span>Белье женское</span></a></li>
+													<li><a href="#" title="Верх женский"><span>Верх женский</span></a></li>
 												</ul>
 												<figure class="m-catalog-img">
-													<div><img src="img/m-catalog-img-01.png" alt="Женское"></div>
+													<div><img src="img/m-catalog-img-01.png" alt="Женский трикотаж"></div>
 												</figure>
 											</li>
 											<li class="m-catalog-item">
 												<strong class="m-catalog-title">Детский трикотаж</strong>
 												<ul class="m-catalog-sub-list">
-													<li><a href="#"><span>Белье детское</span></a></li>
-													<li><a href="#"><span>Верх детский</span></a></li>
+													<li><a href="#" title="Белье детское"><span>Белье детское</span></a></li>
+													<li><a href="#" title="Верх детский"><span>Верх детский</span></a></li>
 												</ul>
 												<figure class="m-catalog-img">
-													<div><img src="img/m-catalog-img-02.png" alt="Детское"></div>
+													<div><img src="img/m-catalog-img-02.png" alt="Детский трикотаж"></div>
 												</figure>
 											</li>
 											<li class="m-catalog-item">
 												<strong class="m-catalog-title">Мужской трикотаж</strong>
 												<ul class="m-catalog-sub-list">
-													<li><a href="#"><span>Белье мужское</span></a></li>
-													<li><a href="#"><span>Верх мужской</span></a></li>
+													<li><a href="#" title="Белье мужское"><span>Белье мужское</span></a></li>
+													<li><a href="#" title="Верх мужской"><span>Верх мужской</span></a></li>
 												</ul>
 												<figure class="m-catalog-img">
-													<div><img src="img/m-catalog-img-03.png" alt="Мужское"></div>
+													<div><img src="img/m-catalog-img-03.png" alt="Мужской трикотаж"></div>
 												</figure>
 											</li>
 											<li class="m-catalog-item">
 												<strong class="m-catalog-title">Ясельный трикотаж</strong>
 												<ul class="m-catalog-sub-list">
-													<li><a href="#"><span>Белье ясельное</span></a></li>
+													<li><a href="#" title="Белье ясельное"><span>Белье ясельное</span></a></li>
 												</ul>
 												<figure class="m-catalog-img">
-													<div><img src="img/m-catalog-img-04.png" alt="Ясельное"></div>
+													<div><img src="img/m-catalog-img-04.png" alt="Ясельный трикотаж"></div>
 												</figure>
 											</li>
 										</ul>
+										<!--
+,
+								{
+								"title": "Детский трикотаж",
+								"items": ["Белье детское", "Верх детский", "Трикотаж детский"],
+								"img": "m-catalog-img-02.png"
+								},
+								{
+								"title": "Женский трикотаж",
+								"items": ["Белье женское", "Верх женский"],
+								"img": "m-catalog-img-01.png"
+								},
+								{
+								"title": "Ясельный трикотаж",
+								"items": ["Белье ясельное"],
+								"img": "m-catalog-img-04.png"
+								},
+								{
+								"title": "Мужской трикотаж",
+								"items": ["Белье мужское", "Верх мужской"],
+								"img": "m-catalog-img-03.png"
+								}
+							-->
 									</div>
 								</div>
 							</section>
 							<section class="main-section main-section-js main-section--services" data-anchor="sectionServices">
 								<div class="main-section__container">
 									<div class="main-section__align">
-										<div class="main-section__layout">
-											<div class="main-section__title">
-												<h2>Title 3</h2>
+										<div class="m-services-container">
+											<div class="m-services-visual m-services-js swiper-container">
+												<div class="swiper-wrapper m-services-wrapper">
+													<div class="m-services__item swiper-slide" data-label="Печать на кружках" data-link="typography.html">
+														<div class="m-services__img">
+															<img src="img/img-m-services-01.jpg" alt="Печать на кружках" />
+														</div>
+														<div class="m-services__content">
+															<svg class="svg-t" xmlns="http://www.w3.org/2000/svg">
+			<defs>
+				<pattern id="pt--text" patternUnits="userSpaceOnUse" width="8" height="8">
+					<rect class="svg-pattern" x="6" y="6" width="8" height="8" fill="black"></rect>
+				</pattern>
+			</defs>
+			<text class="title" text-anchor="middle" alignment-baseline="middle" x="50%" y="50%" fill="url(#pt--text)">к</text>
+		</svg>
+														</div>
+													</div>
+													<div class="m-services__item swiper-slide" data-label="Печать на футболках" data-link="#">
+														<div class="m-services__img">
+															<img src="img/img-main-slider-02.jpg" alt="Печать на футболках" />
+														</div>
+														<div class="m-services__content">
+															<svg class="svg-t" xmlns="http://www.w3.org/2000/svg">
+			<defs>
+				<pattern id="pt--text" patternUnits="userSpaceOnUse" width="8" height="8">
+					<rect class="svg-pattern" x="6" y="6" width="8" height="8" fill="black"></rect>
+				</pattern>
+			</defs>
+			<text class="title" text-anchor="middle" alignment-baseline="middle" x="50%" y="50%" fill="url(#pt--text)">ф</text>
+		</svg>
+														</div>
+													</div>
+													<div class="m-services__item swiper-slide" data-label="Фото на подушках" data-link="#">
+														<div class="m-services__img">
+															<img src="img/__temp-img-content-carousel-01.jpg" alt="Фото на подушках" />
+														</div>
+														<div class="m-services__content">
+															<svg class="svg-t" xmlns="http://www.w3.org/2000/svg">
+			<defs>
+				<pattern id="pt--text" patternUnits="userSpaceOnUse" width="8" height="8">
+					<rect class="svg-pattern" x="6" y="6" width="8" height="8" fill="black"></rect>
+				</pattern>
+			</defs>
+			<text class="title" text-anchor="middle" alignment-baseline="middle" x="50%" y="50%" fill="url(#pt--text)">п</text>
+		</svg>
+														</div>
+													</div>
+													<div class="m-services__item swiper-slide" data-label="Фотопазлы" data-link="#">
+														<div class="m-services__img">
+															<img src="img/m-catalog-img-01.png" alt="Фотопазлы" />
+														</div>
+														<div class="m-services__content">
+															<svg class="svg-t" xmlns="http://www.w3.org/2000/svg">
+			<defs>
+				<pattern id="pt--text" patternUnits="userSpaceOnUse" width="8" height="8">
+					<rect class="svg-pattern" x="6" y="6" width="8" height="8" fill="black"></rect>
+				</pattern>
+			</defs>
+			<text class="title" text-anchor="middle" alignment-baseline="middle" x="50%" y="50%" fill="url(#pt--text)">з</text>
+		</svg>
+														</div>
+													</div>
+													<div class="m-services__item swiper-slide" data-label="Настенные фотокалендари" data-link="#">
+														<div class="m-services__img">
+															<img src="img/m-catalog-img-02.png" alt="Настенные фотокалендари" />
+														</div>
+														<div class="m-services__content">
+															<svg class="svg-t" xmlns="http://www.w3.org/2000/svg">
+			<defs>
+				<pattern id="pt--text" patternUnits="userSpaceOnUse" width="8" height="8">
+					<rect class="svg-pattern" x="6" y="6" width="8" height="8" fill="black"></rect>
+				</pattern>
+			</defs>
+			<text class="title" text-anchor="middle" alignment-baseline="middle" x="50%" y="50%" fill="url(#pt--text)">к</text>
+		</svg>
+														</div>
+													</div>
+													<div class="m-services__item swiper-slide" data-label="Этикетки на бутылки" data-link="#">
+														<div class="m-services__img">
+															<img src="img/m-catalog-img-03.png" alt="Этикетки на бутылки" />
+														</div>
+														<div class="m-services__content">
+															<svg class="svg-t" xmlns="http://www.w3.org/2000/svg">
+			<defs>
+				<pattern id="pt--text" patternUnits="userSpaceOnUse" width="8" height="8">
+					<rect class="svg-pattern" x="6" y="6" width="8" height="8" fill="black"></rect>
+				</pattern>
+			</defs>
+			<text class="title" text-anchor="middle" alignment-baseline="middle" x="50%" y="50%" fill="url(#pt--text)">б</text>
+		</svg>
+														</div>
+													</div>
+													<div class="m-services__item swiper-slide" data-label="Фотомагниты" data-link="#">
+														<div class="m-services__img">
+															<img src="img/m-catalog-img-04.png" alt="Фотомагниты" />
+														</div>
+														<div class="m-services__content">
+															<svg class="svg-t" xmlns="http://www.w3.org/2000/svg">
+			<defs>
+				<pattern id="pt--text" patternUnits="userSpaceOnUse" width="8" height="8">
+					<rect class="svg-pattern" x="6" y="6" width="8" height="8" fill="black"></rect>
+				</pattern>
+			</defs>
+			<text class="title" text-anchor="middle" alignment-baseline="middle" x="50%" y="50%" fill="url(#pt--text)">м</text>
+		</svg>
+														</div>
+													</div>
+												</div>
 											</div>
-											<div class="main-section__holder">
-												Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus dignissimos dolor dolore dolores dolorum eius est eum illo illum magnam, nobis non porro quisquam repellat repellendus saepe sunt tempora? Obcaecati.
+											<div class="m-services-thumbs">
+												<div class="m-services-thumbs-align">
+													<strong class="m-services-title">Наши услуги</strong>
+													<div class="m-services-pagination m-services-pagination-js"></div>
+												</div>
 											</div>
 										</div>
 									</div>

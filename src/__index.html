@@ -81,58 +81,116 @@
 				<section class="main-section main-section-js main-section--categories" data-anchor="sectionCategories">
 					<div class="main-section__container">
 						<div class="main-section__align">
-							<ul class="m-catalog-list">
-								<li class="m-catalog-item">
-									<strong class="m-catalog-title">Женский трикотаж</strong>
-									<ul class="m-catalog-sub-list">
-										<li><a href="#"><span>Белье женское</span></a></li>
-										<li><a href="#"><span>Верх женский</span></a></li>
-									</ul>
-									<figure class="m-catalog-img">
-										<div><img src="img/m-catalog-img-01.png" alt="Женское"></div>
-									</figure>
-								</li>
-								<li class="m-catalog-item">
-									<strong class="m-catalog-title">Детский трикотаж</strong>
-									<ul class="m-catalog-sub-list">
-										<li><a href="#"><span>Белье детское</span></a></li>
-										<li><a href="#"><span>Верх детский</span></a></li>
-									</ul>
-									<figure class="m-catalog-img">
-										<div><img src="img/m-catalog-img-02.png" alt="Детское"></div>
-									</figure>
-								</li>
-								<li class="m-catalog-item">
-									<strong class="m-catalog-title">Мужской трикотаж</strong>
-									<ul class="m-catalog-sub-list">
-										<li><a href="#"><span>Белье мужское</span></a></li>
-										<li><a href="#"><span>Верх мужской</span></a></li>
-									</ul>
-									<figure class="m-catalog-img">
-										<div><img src="img/m-catalog-img-03.png" alt="Мужское"></div>
-									</figure>
-								</li>
-								<li class="m-catalog-item">
-									<strong class="m-catalog-title">Ясельный трикотаж</strong>
-									<ul class="m-catalog-sub-list">
-										<li><a href="#"><span>Белье ясельное</span></a></li>
-									</ul>
-									<figure class="m-catalog-img">
-										<div><img src="img/m-catalog-img-04.png" alt="Ясельное"></div>
-									</figure>
-								</li>
+							<ul class="m-catalog-list list-counter-js">
+								@@loop('_tpl_m-catalog-items.html', [
+								{
+								"title": "Женский трикотаж",
+								"items": ["Белье женское", "Верх женский"],
+								"img": "m-catalog-img-01.png"
+								},
+								{
+								"title": "Детский трикотаж",
+								"items": ["Белье детское", "Верх детский"],
+								"img": "m-catalog-img-02.png"
+								},
+								{
+								"title": "Мужской трикотаж",
+								"items": ["Белье мужское", "Верх мужской"],
+								"img": "m-catalog-img-03.png"
+								},
+								{
+								"title": "Ясельный трикотаж",
+								"items": ["Белье ясельное"],
+								"img": "m-catalog-img-04.png"
+								}
+								])
 							</ul>
+							<!--
+,
+								{
+								"title": "Детский трикотаж",
+								"items": ["Белье детское", "Верх детский", "Трикотаж детский"],
+								"img": "m-catalog-img-02.png"
+								},
+								{
+								"title": "Женский трикотаж",
+								"items": ["Белье женское", "Верх женский"],
+								"img": "m-catalog-img-01.png"
+								},
+								{
+								"title": "Ясельный трикотаж",
+								"items": ["Белье ясельное"],
+								"img": "m-catalog-img-04.png"
+								},
+								{
+								"title": "Мужской трикотаж",
+								"items": ["Белье мужское", "Верх мужской"],
+								"img": "m-catalog-img-03.png"
+								}
+							-->
 						</div>
 					</div>
 				</section>
 				<section class="main-section main-section-js main-section--services" data-anchor="sectionServices">
 					<div class="main-section__container">
 						<div class="main-section__align">
-							<div class="main-section__layout">
-								<div class="main-section__title"><h2>Title 3</h2></div>
-								<div class="main-section__holder">
-									Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus dignissimos dolor dolore dolores dolorum eius est eum illo illum magnam, nobis non porro quisquam repellat repellendus saepe sunt tempora? Obcaecati.
+							<div class="m-services-container">
+								<div class="m-services-visual m-services-js swiper-container">
+									<div class="swiper-wrapper m-services-wrapper">
+										@@loop('_tpl_m-services-items.html', [
+										{
+										"label": "Печать на кружках",
+										"link": "typography.html",
+										"img": "img-m-services-01.jpg",
+										"letter": "к"
+										},
+										{
+										"label": "Печать на футболках",
+										"link": "#",
+										"img": "img-main-slider-02.jpg",
+										"letter": "ф"
+										},
+										{
+										"label": "Фото на подушках",
+										"link": "#",
+										"img": "__temp-img-content-carousel-01.jpg",
+										"letter": "п"
+										},
+										{
+										"label": "Фотопазлы",
+										"link": "#",
+										"img": "m-catalog-img-01.png",
+										"letter": "з"
+										},
+										{
+										"label": "Настенные фотокалендари",
+										"link": "#",
+										"img": "m-catalog-img-02.png",
+										"letter": "к"
+										},
+										{
+										"label": "Этикетки на бутылки",
+										"link": "#",
+										"img": "m-catalog-img-03.png",
+										"letter": "б"
+										},
+										{
+										"label": "Фотомагниты",
+										"link": "#",
+										"img": "m-catalog-img-04.png",
+										"letter": "м"
+										}
+										])
+									</div>
 								</div>
+
+								<div class="m-services-thumbs">
+									<div class="m-services-thumbs-align">
+										<strong class="m-services-title">Наши услуги</strong>
+										<div class="m-services-pagination m-services-pagination-js"></div>
+									</div>
+								</div>
+
 							</div>
 						</div>
 					</div>
