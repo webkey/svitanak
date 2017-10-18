@@ -1,15 +1,22 @@
-<div class="m-services__item swiper-slide" data-label="@@label" data-link="@@link">
+<div class="m-services__item swiper-slide@@if(context.dark){ dark-view}" data-label="@@label" data-link="@@link">
 	<div class="m-services__img">
 		<img src="img/@@img" alt="@@label" />
 	</div>
 	<div class="m-services__content">
-		<svg class="svg-t" xmlns="http://www.w3.org/2000/svg" >
-			<defs>
-				<pattern id="pt--text" patternUnits="userSpaceOnUse" width="8" height="8">
-					<rect class="svg-pattern" x="6" y="6" width="8" height="8" fill="black"></rect>
-				</pattern>
-			</defs>
-			<text class="title" text-anchor="middle" alignment-baseline="middle" x="50%" y="50%" fill="url(#pt--text)">@@letter</text>
-		</svg>
+		<div class="m-services__letter">
+			<svg xmlns="http://www.w3.org/2000/svg">
+				<defs>
+					<pattern id="pt-text-@@id" patternUnits="userSpaceOnUse" width="8" height="8">
+						@@if(context.dark){
+						<rect class="svg-pattern--light" x="6" y="6" width="8" height="8" fill="white"></rect>
+						}
+						@@if(!context.dark){
+						<rect class="svg-pattern--dark" x="6" y="6" width="8" height="8" fill="black"></rect>
+						}
+					</pattern>
+				</defs>
+				<text class="title" text-anchor="middle" alignment-baseline="middle" x="50%" y="50%" fill="url(#pt-text-@@id)">@@letter</text>
+			</svg>
+		</div>
 	</div>
 </div>

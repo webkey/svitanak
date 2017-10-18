@@ -285,10 +285,15 @@ $dep-img-size: 80px, 120px // width, height
 	//width: 600px
 	height: 100%
 	background-color: $bg-color-alt
+	color: $main-slider-color
 
 .main-slider-prev, .main-slider-next, .main-slider-pagination, .main-slider__content
-	filter: drop-shadow(1px 1px rgba(white, 0.5))
+	//filter: drop-shadow(1px 1px rgba(white, 0.5))
 	user-select: none
+
+.main-slider-prev, .main-slider-next
+	&::before, &::after
+		border-color: $main-slider-color
 
 .main-slider-pagination
 	position: absolute
@@ -306,18 +311,27 @@ $dep-img-size: 80px, 120px // width, height
 		left: 100%
 		top: 50%
 		+size(100px, 0)
-		border-top: 1px solid $text-color
+		border-top: 1px solid $main-slider-color
 		margin-top: -1px
 
 .main-slider__item
 	position: relative
+
+	&::before
+		$grad-color: black
+		+pseudo()
+		+size(100%)
+		+position(0)
+		//+linear-gradient(to right, rgba($grad-color, 0.33) 0%, rgba($grad-color, 0) 100%)
+		background-color: rgba($grad-color, 0.25)
+		z-index: -1
 
 .main-slider__img
 	position: absolute
 	+size(100%)
 	+position(0)
 	background-color: $bg-color-alt
-	z-index: -1
+	z-index: -2
 
 	//&::after
 		+pseudo()
@@ -362,7 +376,7 @@ $dep-img-size: 80px, 120px // width, height
 		span
 			+display-inline-block-top
 			line-height: 1.5
-			border-bottom: 2px solid $text-color
+			border-bottom: 2px solid $main-slider-color
 
 		&:hover
 			color: $base-color
@@ -665,7 +679,7 @@ $m-services-thumb-indent: 320px
 		display: block
 		+size(100%)
 		max-width: none
-		+object-fit(contain)
+		+object-fit(cover)
 
 .m-services-title
 	display: block
@@ -675,17 +689,37 @@ $m-services-thumb-indent: 320px
 	margin-bottom: $bottom-space--lg
 	padding-left: $m-services-thumb-indent
 
-.svg-t
+.m-services__letter
+	display: block
 	position: absolute
 	top: 50%
 	left: 100%
-	display: block
-	margin-top: 60px
 	width: 400px
 	height: 400px
 	transform: translate(-50%, -50%)
-	font: 50vmin/1 'minionpro-bold', serif
-	text-transform: uppercase
+	//background-color: rgba($bg-color-alt, 0.35)
+
+	svg
+		display: block
+		position: absolute
+		top: 50%
+		left: 50%
+		margin-top: 50px
+		width: 400px
+		height: 400px
+		transform: translate(-50%, -50%)
+		font: 50vmin/1 'minionpro-bold', serif
+		text-transform: uppercase
+
+	//.svg-pattern--light
+		display: none
+
+	//.dark-view &
+		.svg-pattern--dark
+			display: none
+
+		.svg-pattern--light
+			display: block
 
 .m-services-thumbs
 	position: relative
@@ -708,8 +742,6 @@ $m-services-thumb-indent: 320px
 .m-services-thumbs-align
 	margin-right: -100px
 	+padding-vertical($layout-spaces)
-
-.m-services-pagination
 
 .m-services-bullet
 	display: block
@@ -741,15 +773,29 @@ $m-services-thumb-indent: 320px
 		display: block
 		padding-left: $m-services-thumb-indent
 
-		&::before
+		&::before, &::after
 			+pseudo()
-			left: $m-services-thumb-left
-			top: 50%
-			+size(100px, 0)
+			height: 0
 			border: solid $text-color
 			border-width: 1px 0 0
-			transform: translate(-30%, 0)
+			top: 50%
+			left: $m-services-thumb-left
 			opacity: 0
+			transform: scale3d(0, 1, 1)
+
+			transition:
+				property: transform, opacity
+				duration: $animation-speed*2
+				timing-function: cubic-bezier(0.65, 0.05, 0.36, 1)
+
+		&::before
+			width: 30px
+			margin-left: -30px
+			transform-origin: right center
+
+		&::after
+			width: 70px
+			transform-origin: left center
 
 	&:hover, &.m-services-bullet-active
 		&::before
@@ -758,8 +804,9 @@ $m-services-thumb-indent: 320px
 		& > span
 			color: $base-color
 
-			&::before
+			&::before, &::after
 				opacity: 1
+				transform: scale3d(1, 1, 1)
 
 
 /* services (home page) end
