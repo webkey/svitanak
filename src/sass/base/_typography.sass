@@ -136,6 +136,24 @@ i, em
 i b, i strong, em b, em strong, b i, b em, strong i, strong em
 	+font-bold-italic
 
+.font-d
+	+display-inline-block-top
+	+font-d
+	text-decoration: none
+	color: $text-color
+
+	& > span
+		+display-inline-block-top
+		border-bottom: 2px solid $text-color
+		line-height: 28px
+
+	// hover
+	&:hover
+		color: $base-color
+
+		& > span
+			border-color: $base-color
+
 .entry-text
 	position: relative
 	margin-bottom: $bottom-space--lg

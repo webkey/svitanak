@@ -299,8 +299,8 @@ body
 		//+media('<mob-lg')
 			+margin-horizontal(-#{$text-layout-space-horizontal--sm})
 
-/* main slider (layout)
 .home-page
+	/* main slider (layout)
 	.main-slider-pagination
 		left: #{$layout-spaces}
 		top: #{floor($layout-spaces*0.9)}
@@ -322,7 +322,30 @@ body
 		+media('<desk-lg')
 			padding:  #{floor($layout-spaces--lg*0.9*2)} #{$layout-spaces--lg}
 
-/* main slider (layout) end
+	/* main slider (layout) end
+	
+	/* tape slider (layout)
+	.tape-slider-pagination
+		bottom: #{floor($layout-spaces*0.9)}
+
+	.tape-slider-prev, .tape-slider-next
+		bottom: #{floor($layout-spaces*0.9)}
+		top: auto
+		margin-top: 0
+
+	.tape-slider-prev
+		left: #{$layout-spaces}
+
+	.tape-slider-next
+		right: #{$layout-spaces}
+
+	/* tape slider (layout) end
+
+	/* previews tabs (layout)
+	.previews-tabs__nav
+		padding: #{floor($layout-spaces*0.9)} #{$layout-spaces}
+
+	/* previews tabs (layout end)
 
 /* feature list, images slider
 .feature-list, .images-slider

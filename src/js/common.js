@@ -329,7 +329,7 @@ function slidersInit() {
 				slidesToShow: 1,
 				slidesToScroll: 1,
 				// initialSlide: 2,
-				lazyLoad: 'ondemand',
+				// lazyLoad: 'ondemand',
 				infinite: true,
 				dots: false,
 				arrows: true
@@ -349,7 +349,7 @@ function slidersInit() {
 			var $thisBtnPrev = $('.swiper-button-prev', $thisSlider);
 			var $thisFractPag = $('.swiper-pagination', $thisSlider);
 
-			var currentMainSlider = new Swiper($thisSlider, {
+			new Swiper($thisSlider, {
 				// Optional parameters
 				loop: false,
 				// Keyboard
@@ -363,10 +363,6 @@ function slidersInit() {
 				pagination: $thisFractPag,
 				paginationType: 'fraction'
 			});
-
-			// currentMainSlider.on('onSetTranslate', function (swiper, translate) {
-			// 	console.log("translate: ", translate);
-			// });
 		});
 	}
 
@@ -409,10 +405,62 @@ function slidersInit() {
 			$('.m-services-pagination-js').on('mouseenter', '.' + serviceBullet, function () {
 				currentMServicesSlider.slideTo($(this).index());
 			});
+		});
+	}
 
-			// currentMServicesSlider.on('onSetTranslate', function (swiper, translate) {
-			// 	console.log("translate: ", translate);
-			// });
+	/*tape slider*/
+	var $tapeSlider = $('.tape-slider-js');
+	if ($tapeSlider.length) {
+		$tapeSlider.each(function () {
+			var $thisSlider = $(this);
+			var $thisBtnNext = $('.swiper-button-next', $thisSlider);
+			var $thisBtnPrev = $('.swiper-button-prev', $thisSlider);
+			var $thisFractPag = $('.swiper-pagination', $thisSlider);
+
+			new Swiper($thisSlider, {
+				slidesPerView: 'auto',
+				slidesPerGroup: 3,
+				// autoHeight: true,
+				// Optional parameters
+				loop: false,
+				// Keyboard
+				keyboardControl: true,
+				// additional slide offset in the beginning of the container
+				slidesOffsetBefore: 91,
+				spaceBetween: 65,
+				// Ratio to trigger swipe to next/previous slide during long swipes
+				longSwipesRatio: 0.1,
+				longSwipesMs: 200,
+
+				// Navigation arrows
+				nextButton: $thisBtnNext,
+				prevButton: $thisBtnPrev,
+				// navigation: {
+				// 	nextEl: $thisBtnNext,
+				// 	prevEl: $thisBtnPrev
+				// },
+
+				// Pagination
+				pagination: $thisFractPag,
+				paginationType: 'fraction',
+				// pagination: {
+				// 	el: $thisFractPag,
+				// 	type: 'fraction'
+				// },
+				// Responsive breakpoints
+				breakpoints: {
+					1919: {
+						slidesOffsetBefore: 40,
+						spaceBetween: 40
+					}
+				},
+				// events
+				onInit: function (swiper) {
+					$(swiper.slides).matchHeight({
+						byRow: true, property: 'height', target: null, remove: false
+					});
+				}
+			});
 		});
 	}
 }
@@ -1062,29 +1110,29 @@ function tabSwitcher() {
 	 <!--if has data-collapsed="true" one click open tab content, two click close collapse tab content-->
 	 <div class="some-class__nav">
 	 <div class="some-class__tab">
-	 <a href="#" class="tab-anchor-js" data-for="some-id-01">Text tab 01</a>
+	 <a href="#some-id-01" class="tab-anchor-js">Text tab 01</a>
 	 </div>
 	 <div class="some-class__tab">
-	 <a href="#" class="tab-anchor-js" data-for="some-id-02">Text tab 02</a>
+	 <a href="#some-id-02" class="tab-anchor-js">Text tab 02</a>
 	 </div>
 	 </div>
 
 	 <div class="some-class__panels tab-container-js">
-	 <div class="some-class__panel tab-content-js" data-id="some-id-01">Text content 01</div>
-	 <div class="some-class__panel tab-content-js" data-id="some-id-02">Text content 02</div>
+	 <div class="some-class__panel tab-content-js" id="some-id-01">Text content 01</div>
+	 <div class="some-class__panel tab-content-js" id="some-id-02">Text content 02</div>
 	 </div>
 	 </div>
 	 <!--html end-->
 	 */
 
-	var $tabWrapper = $('.js-tabs');
-	var $container = $('.js-tab-container');
+	var $tabWrapper = $('.tabs-js');
+	var $container = $('.tab-container-js');
 
 	if (!$container.length) return false;
 
 	if ($tabWrapper.length) {
-		var $anchor = $('.js-tab-anchor'),
-			$content = $('.js-tab-content'),
+		var $anchor = $('.tab-anchor-js'),
+			$content = $('.tab-content-js'),
 			activeClass = 'active-tab',
 			collapseAllClass = 'collapsed-all-tab',
 			idPrefix = 'activeIs',
@@ -1096,6 +1144,8 @@ function tabSwitcher() {
 				$currentAnchor = $currentContainer.find($anchor),
 				$thisContainer = $currentContainer.find($container),
 				$currentContent = $currentContainer.find($content);
+
+
 			if ($currentContainer.find('.' + activeClass).length > 0) {
 				var initialTab = $currentContainer.find('.' + activeClass).attr('href').substring(1);
 			}
@@ -1219,7 +1269,7 @@ function tabSwitcher() {
 						'height': $initialContent.outerHeight(),
 						onComplete: function () {
 
-							thisAutoHeight && $thisContainer.css('height', 'auto');
+							thisAutoHeight && $thisContainer.css('height', '');
 
 							$initialContent.css({
 								'position': 'relative',
@@ -1413,6 +1463,20 @@ function addDataLengthChildren() {
 }
 
 /**
+ * !Equal height of blocks by maximum height of them
+ */
+function equalHeight() {
+	// example
+	var $example = $('.example-class');
+
+	if($example.length) {
+		$example.children().matchHeight({
+			byRow: true, property: 'height', target: null, remove: false
+		});
+	}
+}
+
+/**
  * !Always place the footer at the bottom of the page
  * */
 function footerBottom() {
@@ -1527,6 +1591,7 @@ $(document).ready(function () {
 	tabSwitcher();
 	toggleDrop();
 	addDataLengthChildren();
+	equalHeight();
 
 	footerBottom();
 	formSuccessExample();

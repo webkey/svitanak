@@ -1,0 +1,21 @@
+@@if(context.img){
+<div class="tape-slider__item swiper-slide">
+}
+@@if(!context.img){
+<div class="tape-slider__item swiper-slide no-image">
+}
+	<a href="@@href" class="news-preview__inner">
+		<time class="news-preview__date" datetime="@@datetime">@@date</time>
+		<div class="news-preview__img">
+			@@if(context.img){
+			<img src="img/@@img" alt="@@title" />
+			}
+		</div>
+		<div class="news-preview__content">
+			<div class="news-preview__text">@@text</div>
+		</div>
+		<div class="news-preview__footer">
+			<span class="more-link"><span>@@btnMoreText</span></span>
+		</div>
+	</a>
+</div>

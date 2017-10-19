@@ -143,14 +143,13 @@ $slick-arrow-icon-size: 6px
 	z-index: 2
 
 .images-slider__item
-	float: none
-	display: inline-block
-	vertical-align: top
-	opacity: 0
-	white-space: normal
-	overflow: hidden
 	position: relative
+	overflow: hidden
+	float: none
+	+display-inline-block-top
+	white-space: normal
 	background: #494949
+	opacity: 0
 
 	.slick-initialized &
 		display: block

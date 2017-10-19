@@ -23,7 +23,6 @@
 						<div class="main-section__align">
 							<div class="main-slider swiper-container main-slider-js">
 								<div class="swiper-wrapper">
-									<!-- Slides -->
 									<div class="main-slider__item swiper-slide">
 										<div class="main-slider__img">
 											<img src="img/img-main-slider-01.jpg" alt="image description" />
@@ -212,12 +211,51 @@
 				<section class="main-section main-section-js main-section--news" data-anchor="sectionNews">
 					<div class="main-section__container">
 						<div class="main-section__align">
-							<div class="main-section__layout">
-								<div class="main-section__title"><h2>Title 4</h2></div>
-								<div class="main-section__holder">
-									Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad amet at aut blanditiis, commodi ea id iusto magni, obcaecati odio officiis provident quis, recusandae rem repellendus tempore temporibus vel voluptas? Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus adipisci aliquam at dolor eos exercitationem facere illum in ipsa laborum nemo numquam quaerat quam quibusdam quidem quo, totam voluptate voluptates!
+							<!--previews tabs-->
+							<div class="previews-tabs tabs-js" data-auto-height="false">
+								<div class="previews-tabs__nav">
+									<div class="previews-tabs__thumbs">
+										<div class="previews-tabs__tab">
+											<a href="#newsPreviews" class="tab-anchor-js active-tab"><span>Новости</span></a>
+										</div>
+										<div class="previews-tabs__tab">
+											<a href="#newsPromotions" class="tab-anchor-js"><span>Акции</span></a>
+										</div>
+									</div>
+									<div class="view-all">
+										<a href="#" class="font-d all-news"><span>Все новости</span></a>
+										<a href="#" class="font-d all-promotions"><span>Все акции</span></a>
+									</div>
+								</div>
+
+								<div class="previews-tabs__panels tab-container-js">
+									<div class="previews-tabs__panel tab-content-js" id="newsPreviews">
+										<div class="tape-slider swiper-container tape-slider-js">
+											<div class="swiper-wrapper">
+												@@loop("_tpl_tape-slider-slides.html", "includes-json/news-slider-slides.json")
+											</div>
+											<!-- pagination -->
+											<div class="tape-slider-pagination swiper-pagination"></div>
+											<!-- navigation buttons -->
+											<div class="tape-slider-prev swiper-button-prev">Предыдущий</div>
+											<div class="tape-slider-next swiper-button-next">Слудующий</div>
+										</div>
+									</div>
+									<div class="previews-tabs__panel tab-content-js" id="newsPromotions">
+										<div class="tape-slider swiper-container tape-slider-js">
+											<div class="swiper-wrapper">
+												@@loop("_tpl_tape-slider-slides.html", "includes-json/promotions-slider-slides.json")
+											</div>
+											<!-- pagination -->
+											<div class="tape-slider-pagination swiper-pagination"></div>
+											<!-- navigation buttons -->
+											<div class="tape-slider-prev swiper-button-prev">Предыдущий</div>
+											<div class="tape-slider-next swiper-button-next">Слудующий</div>
+										</div>
+									</div>
 								</div>
 							</div>
+							<!--previews tabs end-->
 						</div>
 					</div>
 				</section>

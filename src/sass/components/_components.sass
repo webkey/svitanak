@@ -842,3 +842,269 @@ $m-services-thumb-indent: 320px
 			color: $base-color
 
 /* file download end
+
+/* tape slider (home page): News and Promotions
+.tape-slider
+	height: 100%
+	//padding-bottom: 200px
+	//background-color: $bg-color-alt
+	color: $tape-slider-color
+
+	// чтобы слайды не растягивало по высоте на 100%
+	.swiper-wrapper
+		align-items: flex-start
+
+.tape-slider-prev, .tape-slider-next, .tape-slider-pagination, .tape-slider__content
+	user-select: none
+
+.tape-slider-prev, .tape-slider-next
+	&::before, &::after
+		border-color: $tape-slider-color
+
+.tape-slider-pagination
+	position: absolute
+	top: auto
+	left: 50%
+	bottom: auto
+	width: auto
+	min-width: 85px
+	+padding-horizontal(25px)
+	transform: translate(-50%, 0)
+	+font-alt-italic
+	+font(18px, 1)
+	text-align: center
+	color: $text-color-light
+
+	&::before, &::after
+		+pseudo()
+		+size(100px, 0)
+		top: 50%
+		border-top: 1px solid $tape-slider-color
+		margin-top: -1px
+
+	&::before
+		right: 100%
+
+	&::after
+		left: 100%
+
+	.swiper-pagination-current
+		color: $tape-slider-color
+
+.tape-slider__item
+	position: relative
+	width: 445px
+
+	// News and Promotions
+	height: auto
+	max-height: none
+	min-height: 0
+	+clear
+
+/* tape slider (home page): News and Promotions (end)
+
+/* news previews
+.news-preview__inner
+	display: block
+	position: relative
+	text-decoration: none
+	color: inherit
+	padding-bottom: $news-preview-footer-height
+	+clear
+
+	height: 100%
+
+.news-preview__date
+	display: block
+	+font-alt-italic
+	+font(18px, round-float(24/18, 2))
+	color: $text-color-light
+	margin-bottom: 2.6rem
+
+.news-preview__img
+	position: relative
+	overflow: hidden
+	+size(nth($news-preview-img-size, 1), auto)
+	max-width: 100%
+	background-color: $bg-color-alt
+	z-index: -2
+
+	&::before
+		+pseudo-block-relative()
+		+ratio(nth($news-preview-img-size, 1), nth($news-preview-img-size, 2))
+
+	img
+		display: block
+		position: absolute
+		+position(0)
+		+size(100%)
+		max-width: none
+		+object-fit(cover)
+
+.news-preview__content
+	display: block
+	float: right
+	width: 320px
+	padding: round($grid-space*0.68) #{$grid-space}
+	margin-top: -#{round(nth($news-preview-img-size, 2)/2)}
+	background-color: $bg-color-base
+
+.news-preview__text
+	$this-font-size: $font-size
+	$this-line-height: $line-height
+	// ===============
+	display: block
+	position: relative
+	overflow: hidden
+	+font($this-font-size, $this-line-height)
+	height: round($this-font-size*$this-line-height*5) // maximum 5 line
+
+.news-preview__footer
+	display: block
+	position: absolute
+	+size(100%, auto)
+	bottom: 0
+	left: 0
+
+	.more-link
+		+display-inline-block-top
+		+font-d
+		line-height: $news-preview-footer-height
+		text-decoration: none
+		color: inherit
+
+		span
+			+display-inline-block-top
+			border-bottom: 2px solid $tape-slider-color
+			line-height: round($news-preview-footer-height - 2px)
+
+		&:hover
+			color: $base-color
+
+			span
+				border-color: $base-color
+
+// no image
+.no-image
+	.news-preview__img
+		background-image: url(../../img/no-img.png)
+		background-position: center
+		background-repeat: no-repeat
+		background-size: cover
+
+/* news previews end
+
+/* previews tabs
+// container
+.previews-tabs
+	position: relative
+	height: 100%
+
+// nav
+.previews-tabs__nav
+	position: absolute
+	+size(100%, auto)
+	+position(0)
+	z-index: 5
+
+	.view-all
+		float: right
+
+		a
+			display: none
+
+			.activeIs-newsPreviews &.all-news
+				display: inline-block
+
+			.activeIs-newsPromotions &.all-promotions
+				display: inline-block
+
+.previews-tabs__thumbs
+	+display-inline-block-top
+	+clear-spacing
+	position: relative
+	padding-right: 50px
+
+	&::before, &::after
+		+pseudo()
+		+size(100px, 0)
+		top: 50%
+		border-top: 1px solid $tape-slider-color
+		margin-top: -1px
+
+	&::before
+		content: none
+
+	&::after
+		left: 100%
+
+.previews-tabs__tab
+	$this-space: 1.6em
+	$this-font-size: 48px
+	//=================
+	position: relative
+	+display-inline-block-top
+	+font-alt-bold
+	+font($this-font-size, round-float(52/48, 2))
+	letter-spacing: $letter-spacing
+	padding-right: $this-space
+
+	&::after
+		+pseudo()
+		+size(0, $this-font-size)
+		top: 50%
+		right: round-float($this-space/2, 1) // нужны десятые
+		border-left: 2px solid $text-color-light
+		margin-top: -1px
+		transform: translate(0, -50%)
+
+	&:last-child
+		padding-right: 0
+
+		&::after
+			content: none
+
+	a
+		text-decoration: none
+		color: inherit
+
+		span
+			border-bottom: 2px solid transparent
+
+		// hover
+		&:hover:not(.active-tab)
+
+			span
+				border-color: $text-color
+
+		// active
+		&.active-tab
+			color: $base-color
+			cursor: default
+
+// panels
+.previews-tabs__panels
+	height: 100%
+	overflow: hidden
+
+.previews-tabs__panel
+	height: 100%
+	padding-top: $previews-tabs-top-space
+
+	.tape-slider
+		will-change: opacity, transform
+		//transform: translate3d(0, -200px, 0)
+		transform: scale(1.1) translateZ(0)
+		opacity: 0
+		transition:
+			property: transform, opacity
+			duration: $animation-speed*3
+			//timing-function: cubic-bezier(0.65, 0.05, 0.36, 1)
+			timing-function: cubic-bezier(0.46, 0.03, 0.52, 0.96)
+
+	&.active-tab .tape-slider
+		opacity: 1
+		//transform: translate3d(0, 0, 0)
+		transform: scale(1) translateZ(0)
+
+/* previews tabs end
