@@ -657,8 +657,9 @@
 /// }
 
 =optional-at-root($sel)
-	@at-root #{if(not &, $sel, selector-append(&, $sel))}
-		@content
+	@at-root
+		#{if(not &, $sel, selector-append(&, $sel))}
+			@content
 
 =placeholder()
 	+optional-at-root('::-webkit-input-placeholder')

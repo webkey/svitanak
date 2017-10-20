@@ -705,7 +705,6 @@ input[type="radio"]
 	padding: 8px #{$select-space-h} 8px #{$select-space-h}
 
 /* select end
-/* FORM STYLE DEFAULT end
 
 /* inputs states
 =form-success()
@@ -715,7 +714,6 @@ input[type="radio"]
 
 =form-error()
 	color: $form-error-color
-	//border-color: $form-error-color
 	box-shadow: inset 0 -2px 0 $form-error-color
 
 =form-has-value()
@@ -749,18 +747,20 @@ input[type="text"], input[type="password"], input[type="email"], input[type="sea
 		&.success
 			+form-success
 
-			//form error placeholder
-			+placeholder
-				color: $form-success-color
+	//form error placeholder
+	&.success
+		+placeholder
+			color: $form-success-color
 
 	//form error
 	@at-root label, &
 		&.error
 			+form-error
 
-			//form error placeholder
-			+placeholder
-				color: $form-error-color
+	//form error placeholder
+	&.error
+		+placeholder
+			color: $form-error-color
 
 	// on focus (js)
 	@at-root label, &
@@ -795,3 +795,4 @@ input[type="text"], input[type="password"], input[type="email"], input[type="sea
 				color: $form-error-color
 
 /* inputs states end
+/* FORM STYLE DEFAULT end

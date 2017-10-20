@@ -13,61 +13,76 @@
 @import utils/placeholders
 
 /*======================================================*/
-/*FONTS*/
+/* FONTS
 /*======================================================*/
 @import fonts/fonts
 
 /*======================================================*/
-/*NORMALIZE AND RESET*/
+/* NORMALIZE AND RESET
 /*======================================================*/
 @import base/normalize.min
 @import base/reset
 @import base/oldie
+
 /*======================================================*/
-/*TYPOGRAPHY*/
+/* VENDOR
 /*======================================================*/
+@import vendors/j-filer
+@import vendors/slick-slider
+@import vendors/swiper-slider
+
+/*======================================================*/
+/* TYPOGRAPHY
+/*======================================================*/
+@import components/v-middle-new
 @import base/typography
 @import base/buttons
-@import components/v-middle-new
 @import base/forms-default
 
 /*======================================================*/
-/*COMMON*/
+/* COMMON
 /*======================================================*/
-///*======================================================*/
-///*PARTIALS 1*/
-///*======================================================*/
-@import partials/header
-@import partials/navigation
-@import partials/shutter
-
-///*======================================================*/
-///*VENDOR*/
-///*======================================================*/
-@import vendors/j-filer
-@import vendors/swiper-slider
 
 ///*======================================================*/
 ///*COMPONENTS*/
 ///*======================================================*/
+/* SLIDERS
+@import components/sliders
+/* SLIDERS end
+/* FORMS
+@import components/user-form
+@import components/subscription-form
+/* FORMS end
+/* COMPONENTS
 @import components/breadcrumbs
 @import components/social
 @import components/files
 @import components/pagination
-@import components/sliders
-@import components/user-form
-@import components/subscription-form
 @import components/components
 @import components/bitrix-search
 @import components/feature-list
 @import components/user-options
 @import components/lang
 @import components/article
+/* COMPONENTS end
 
 /*======================================================*/
-/*LAYOUT*/
+/* LAYOUT
 /*======================================================*/
 @import base/layout
+
+///*======================================================*/
+///*POPUPS*/
+///*======================================================*/
+/* POPUPS / OPENING PANELS
+@import partials/shutter
+/* POPUPS / OPENING PANELS end
+
+///*======================================================*/
+///*PARTIALS 1*/
+///*======================================================*/
+@import partials/header
+@import partials/navigation
 
 ///*======================================================*/
 ///*PARTIALS 2*/
@@ -86,6 +101,6 @@
 @import themes/theme
 
 /*======================================================*/
-/*PRINT STYLES*/
+/* PRINT VERSION
 /*======================================================*/
 @import print/print
