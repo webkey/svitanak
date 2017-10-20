@@ -66,7 +66,7 @@ gulp.task('sassCompilation', ['compressNormalizeCss'], function () { // Созд
 		], {
 			cascade: true
 		})) // Создаем префиксы
-		.pipe(sourcemaps.write())
+		.pipe(sourcemaps.write('./'))
 		.pipe(gulp.dest('./src/css')) // Выгружаем результата в папку src/css
 		.pipe(browserSync.reload({
 			stream: true
