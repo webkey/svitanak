@@ -65,4 +65,22 @@ $uo-space: 34px
 			color: $link-color
 			fill: $link-color
 
+.basket-link-counter
+	$size: 18px
+	$border: 2px
+	position: absolute
+	left: 100%
+	bottom: 100%
+	margin: 0 0 -14px -9px
+	padding: 0 2px
+	height: $size+$border*2
+	min-width: $size+$border*2
+	border-radius: round(($size+$border*2)/2)
+	background-color: $base-color
+	border: $border solid $bg-color-base
+	+font-medium
+	+font(11px, $size)
+	color: $bg-color-base
+	text-align: center
+
 /* user options
