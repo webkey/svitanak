@@ -1,0 +1,344 @@
+@import ../utils/_variables
+@import ../utils/_mixins
+@import ../../libs/include-media/dist/_include-media
+
+/* products filters
+$p-filters-inside-space: 20px
+
+.p-filters
+	position: relative
+	padding-right: 1px
+	margin-bottom: $bottom-space
+	z-index: 15
+	user-select: none
+
+	&:last-child
+		margin-bottom: 0
+
+.p-filters-list
+	+clear-spacing
+	padding-bottom: 1px
+	margin-bottom: $bottom-space
+
+	&:last-child
+		margin-bottom: 0
+
+.p-filters-item
+	position: relative
+	+display-inline-block-top
+	height: 58px
+	width: round-float(100%/5, 4)
+	padding: 1px 0 0 1px
+	+font(1.5rem, round-float(18px/15px, 2))
+	letter-spacing: normal
+	+display-inline-block-top
+	border-width: 0 1px 1px 0
+
+	&.p-filters-is-open
+		z-index: 5
+
+	+media('<desk-hd')
+		width: round-float(100%/4, 4)
+
+	+media('<desk-lg')
+		width: round-float(100%/3, 4)
+
+	+media('<mob-lg')
+		width: round-float(100%/2, 4)
+
+	+media('<mob-md')
+		width: round-float(100%/1, 4)
+
+.p-filters-inner
+	display: block
+	position: relative
+	height: 100%
+	+font(11px, 13px)
+	text-decoration: none
+	color: inherit
+	box-shadow: 0 0 0 1px $border-color
+
+.p-filters-select
+	position: relative
+	height: 100%
+
+.p-filters-select-head
+	padding: 12px 30px 0 10px
+	cursor: pointer
+	height: 100%
+	transition-property: background-color
+	transition-duration: $animation-speed
+
+	.p-filters-is-open &, .p-filters-on &
+		background-color: #{$bg-color-selected}
+
+.p-filters-angle
+	position: absolute
+	top: 0
+	right: 0
+	+size(30px, 100%)
+	cursor: pointer
+
+	& > i
+		$this-icon-lines-width: 8px
+		$this-icon-lines-height: 2px
+		$this-icon-lines-color: $text-color
+
+		width: 12px
+		height: 8px
+		position: absolute
+		left: 50%
+		top: 50%
+		margin-top: -4px
+		margin-left: -6px
+		backface-visibility: hidden
+		cursor: inherit
+
+		&::before, &::after
+			+pseudo()
+			backface-visibility: hidden
+			+size($this-icon-lines-width, $this-icon-lines-height)
+			background-color: $this-icon-lines-color
+			transition-property: background-color
+			transition-duration: $animation-speed
+
+		&::before
+			bottom: 0
+			right: 50%
+			transform-origin: bottom right
+			transform: rotate(45deg)
+
+		&::after
+			bottom: 0
+			left: 50%
+			transform-origin: bottom left
+			transform: rotate(-45deg)
+
+		.p-filters-is-open &
+			transform: rotate(0.5turn)
+
+.p-filters__title
+	+font-normal
+	+font(11px, 13px)
+	color: #{$text-color-light}
+	margin-bottom: 0.5em
+	+truncate(none)
+
+.p-filters__placeholder,
+.p-filters__value
+	+font-bold
+	+font(10px, 13px)
+	color: #{$text-color}
+	text-transform: uppercase
+	letter-spacing: 0.05em
+	+truncate(none)
+
+.p-filters__value
+	display: none
+
+.btn-clear
+	display: block
+	+size(100%)
+	padding: 0
+	+clear-spacing
+	white-space: nowrap
+	text-decoration: none
+	color: #{$text-color}
+	cursor: pointer
+	border: none
+	background: none
+	transition-duration: $animation-speed
+	transition-property: background-color
+
+	&::before, & > i, & > span
+		+display-inline-block-middle
+
+	&::before
+		content: ""
+		height: 100%
+
+	& > i
+		margin-right: 10px
+
+		svg
+			+display-inline-block-top
+			+size(18px)
+
+		path
+			fill: #{$base-color}
+
+	& > span
+		+font(10px, 14px)
+		letter-spacing: 0.05em
+		text-transform: uppercase
+		white-space: normal
+
+	.no-touchevents &:not(:disabled):hover
+		background-color: #{$bg-color-selected}
+
+	&:disabled
+		&
+			color: $text-color-light
+			border-color: $text-color-light
+			cursor: default
+
+			path
+				fill: $text-color-light
+
+.p-filters-drop
+	position: absolute
+	width: calc(100% + 2px)
+	+position(100%, -1px)
+	background-color: #{$bg-color-selected}
+	border: 1px solid #{$border-color}
+	opacity: 0
+	visibility: hidden
+	transition-property: opacity, visibility
+	transition-duration: $animation-speed
+
+	.p-filters-is-open &
+		opacity: 1
+		visibility: visible
+
+.p-filters-drop-list
+
+	&, .#{$user-content} &
+		margin: 0
+		padding: #{round($p-filters-inside-space*0.8)} #{$p-filters-inside-space}
+
+		li
+			padding-left: 0
+			margin: 0 0 10px
+
+			&::before
+				content: none
+
+			&:last-child
+				margin-bottom: 0
+
+	label
+		display: block
+		+font(13px, 18px)
+		transition-property: color
+		transition-duration: $animation-speed
+
+		.no-touchevents &:hover
+			color: $link-color
+
+		[type="checkbox"]:checked
+			& + span
+				+font-bold
+		
+.p-filters-drop-footer
+	border-top: 1px solid #{$border-color}
+
+	.btn-reset
+		display: block
+		width: 100%
+		padding: #{round($p-filters-inside-space*0.8)} #{$p-filters-inside-space}
+		+font(13px, 18px)
+		text-decoration: none
+		color: $text-color
+		cursor: pointer
+		border: none
+		border-color: $text-color
+		box-shadow: none
+		background: none
+		transition-property: border-color, color
+		transition-duration: $animation-speed
+
+		span
+			border-bottom: 1px dashed
+			border-color: inherit
+			transition: inherit
+
+		.no-touchevents &:not(:disabled):hover
+			span
+				border-bottom-color: transparent
+
+		&:disabled
+			color: $text-color-light
+			border-color: $text-color-light
+			cursor: default
+
+/* filters tags
+.p-filters-tags
+	margin-bottom: $bottom-space
+
+	&:last-child
+		margin-bottom: 0
+
+.p-filters-tags__holder
+	cursor: default
+	min-height: 10px
+	margin-top: -10px
+
+.p-filters-tags__item
+	+display-inline-block-top
+	position: relative
+	margin: 10px 10px 0 0
+	cursor: pointer
+	color: white
+	padding: 3px 10px 3px 25px
+	+font(13px, 18px)
+	background-color: #333
+	transition-property: background-color
+	transition-duration: $animation-speed
+
+	//&::before
+		+pseudo()
+		+position(-3px)
+		+size(calc(100% + 13px), calc(100% + 6px))
+		background-color: $bg-color-selected
+		z-index: -1
+
+	//&::after
+		+pseudo-inline-block(',')
+
+	& > span
+		+display-inline-block-top
+		+truncate(120px)
+
+	&:last-child::after
+		content: none
+
+	& > i
+		$this-icon-lines-width: 12px
+		$this-icon-lines-height: 2px
+		$this-icon-lines-color: white
+
+		position: absolute
+		left: 4px
+		top: 50%
+		+size(#{round($this-icon-lines-width*1.5)})
+		margin-top: -#{round($this-icon-lines-width*1.5*0.5)}
+		border-radius: 2px
+		backface-visibility: hidden
+		background-color: transparent
+		+font(0, 0)
+
+		&::before, &::after
+			+pseudo()
+			left: 50%
+			top: 50%
+			backface-visibility: hidden
+			+size($this-icon-lines-width, $this-icon-lines-height)
+			margin: -#{round($this-icon-lines-height*0.5)} 0 0 -#{round($this-icon-lines-width*0.5)}
+			background-color: $this-icon-lines-color
+
+		&::before
+			transform: rotate(-45deg)
+
+		&::after
+			transform: rotate(45deg)
+
+	.no-touchevents &:hover
+		background-color: $base-color
+
+		& > i
+			opacity: 1
+			visibility: visible
+
+/* filters tags end
+
+/* products filters end

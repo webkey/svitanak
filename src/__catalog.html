@@ -25,6 +25,25 @@
 						"last": "Наша продукция"
 					})
 					<div>{{content of page}}</div>
+					<!--filters-->
+					@@include('_tpl_products-filters.html')
+					<!--filters end-->
+					<!--options panel-->
+					@@include('_tpl_products-options.html')
+					<!--options panel end-->
+					<!--options panel end-->
+					<div class="layout-wide">
+						<!--products-->
+						<div class="products view-container-js">
+							<section class="products__list">
+								@@loop("_tpl_products-items.html", "includes-json/products-items.json")
+							</section>
+						</div>
+						<!--products end-->
+						<!--pagination-->
+						@@include('_tpl_pagination.html')
+						<!--pagination end-->
+					</div>
 				</div>
 
 			</div>

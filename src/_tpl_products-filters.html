@@ -1,0 +1,138 @@
+<div class="p-filters p-filters-js">
+	<div class="p-filters-list">
+		<div class="p-filters-item p-filters-item-js">
+			<div class="p-filters-inner">
+				<div class="p-filters-select p-filters-select-js">
+					@@include('_tpl_products-filters--head.html', {
+						"title": "Производитель",
+						"placeholder": "Выбрать производителя",
+						"value": "",
+						"valuePrefix": "Выбрано",
+						"valuePostfix": "фильтра"
+					})
+					<div class="p-filters-angle"><i>&nbsp;</i></div>
+				</div>
+				@@include('_tpl_products-filters--drop.html', {
+					"group": "manufacturer",
+					"checkboxesExpanded": {
+						"ru": {
+							"full": "Российская Федерация",
+							"short": "Россия"
+						},
+						"ch": {
+							"full": "Китайская Народная Республика",
+							"short": "КНР"
+						},
+						"en": {
+							"full": "Соединенное Королевство Великобритании и Северной Ирландии",
+							"short": "Великобритания"
+						},
+						"fr": {
+							"full": "Французская Республика",
+							"short": "Франция"
+						}
+					},
+					"checkboxes": ""
+				})
+			</div>
+		</div>
+		<div class="p-filters-item p-filters-item-js">
+			<div class="p-filters-inner">
+				<div class="p-filters-select p-filters-select-js">
+					@@include('_tpl_products-filters--head.html', {
+						"title": "Стоимость",
+						"placeholder": "Выбрать стоимость",
+						"value": "",
+						"valuePrefix": "Выбрано",
+						"valuePostfix": "фильтра"
+					})
+					<div class="p-filters-angle"><i>&nbsp;</i></div>
+				</div>
+				@@include('_tpl_products-filters--drop.html', {
+					"group": "price",
+					"checkboxes": {
+						"-81": "до 81 р.",
+						"81-150": "81 р. — 150 р.",
+						"151-300": "151 р. — 300 р.",
+						"301-600": "301 р. — 600 р.",
+						"601-1000": "601 р. — 1000 р.",
+						"1001-2000": "1001 р. — 2000 р.",
+						"2001-5000": "2001 р. — 5000 р."
+					}
+				})
+			</div>
+		</div>
+		<div class="p-filters-item p-filters-item-js">
+			<div class="p-filters-inner">
+				<div class="p-filters-select p-filters-select-js">
+					@@include('_tpl_products-filters--head.html', {
+						"title": "Цвет",
+						"placeholder": "Выбрать цвет",
+						"value": "",
+						"valuePrefix": "Выбрано",
+						"valuePostfix": "фильтра"
+					})
+					<div class="p-filters-angle"><i>&nbsp;</i></div>
+				</div>
+				@@include('_tpl_products-filters--drop.html', {
+					"group": "color",
+					"checkboxes": {
+						"red": "Красны",
+						"black": "Черный",
+						"white": "Белый",
+						"green": "Зеленый",
+						"blue": "Синий",
+						"gray": "Серый",
+						"alizarin": "Ализариновый красный с легким оттенком берюзы",
+						"yellow": "Желный"
+					}
+				})
+			</div>
+		</div>
+		<div class="p-filters-item p-filters-item-js">
+			<div class="p-filters-inner">
+				<div class="p-filters-select p-filters-select-js">
+					@@include('_tpl_products-filters--head.html', {
+						"title": "Тип",
+						"placeholder": "Выбрать тип",
+						"value": "",
+						"valuePrefix": "Выбрано",
+						"valuePostfix": "фильтра"
+					})
+					<div class="p-filters-angle"><i>&nbsp;</i></div>
+				</div>
+				@@include('_tpl_products-filters--drop.html', {
+					"group": "type",
+					"checkboxes": {
+						"tall": "Высокий",
+						"low": "Низкий",
+						"lean": "Худой",
+						"fat": "Толстый",
+						"skinny": "Тощий",
+						"sad": "Печальный",
+						"cheerful": "Веселый",
+						"middle": "Среднестатистичеки нормальный",
+						"kind": "Добрый",
+						"evil": "Злой"
+					}
+				})
+			</div>
+		</div>
+		<div class="p-filters-item p-filters-item-js">
+			<div class="p-filters-inner">
+				<button class="btn-clear btn-clear-filters-js" disabled> <i>
+					<svg xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 543.9 599.9" enable-background="new 0 0 543.9 599.9">
+<path d="M291,0c2.6,2.4,5.4,4.8,7.9,7.4c30.7,31,61.5,62,92.2,93c6.5,6.6,6.5,11.2-0.1,17.8c-31.3,31.3-62.7,62.7-94,94  c-1.8,1.8-4,3.8-6.4,4.6c-6.4,2.1-11.8-2.3-11.9-9.4c-0.1-17-0.1-34-0.1-51c0-2,0-3.9,0-6.8c-9.8,0.5-19,0.6-28.2,1.5  c-29.7,3-57.6,11.7-82.5,28.6c-37,25-59.6,59.8-69,103.1c-9.6,44.2-6.7,87.5,13,128.6c23.8,49.9,64.1,79.3,117.6,90.5  c42.3,8.8,83.9,5.8,123.5-12.5c51.2-23.7,81.3-64.5,92.7-119.2c2.8-13.4,3.7-27.4,4.1-41.1c0.8-25.8,18.8-45.6,44.5-47.7  c22.9-1.9,44,15,48.7,39.1c0.1,0.6,0.6,1.1,0.9,1.7c0,6.3,0,12.7,0,19c-0.3,1.8-0.7,3.5-0.9,5.3c-2.2,13.9-3.3,28.1-6.8,41.7  C520,452.5,484,504.2,431.4,544.4c-34.9,26.7-73.9,44.3-117.4,51.7c-9,1.5-18,2.5-27.1,3.8c-10,0-20,0-30,0  c-1.1-0.3-2.2-0.7-3.3-0.8c-14.1-2.3-28.4-3.4-42.2-6.9c-67.7-17.3-121-55.9-161.5-112.4c-25-34.9-41-73.5-47.1-116.2  c-1-7.2-1.9-14.4-2.8-21.6c0-9,0-18,0-27c0.3-1.6,0.7-3.2,0.9-4.8c2.2-14.1,3.2-28.5,6.9-42.2c24.7-90.8,81.3-154.4,167.1-192  c32.7-14.3,67.3-20.3,103.7-19.7c0-1.9,0-3.6,0-5.4c0-12.5,0.2-25-0.1-37.5C278.4,7.5,279.8,3,285,0C287,0,289,0,291,0z"/>
+</svg>
+				</i>
+					<span>Сбросить все</span>
+				</button>
+			</div>
+		</div>
+	</div>
+	<div class="p-filters-tags">
+		<div class="p-filters-tags__holder p-filters-tags-js">
+			<!--filters tags-->
+		</div>
+	</div>
+</div>

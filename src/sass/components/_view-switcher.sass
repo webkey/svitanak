@@ -1,0 +1,102 @@
+@import ../utils/variables
+@import ../utils/mixins
+@import ../../libs/include-media/dist/include-media
+
+/* view switcher
+$view-switcher-size: 34px
+$view-switcher-icon-size: 16px
+
+.view-switcher
+	position: relative
+	overflow: hidden
+	+size(#{$view-switcher-size*2}, #{$view-switcher-size})
+	margin-bottom: $bottom-space--md
+
+	&:last-child
+		margin-bottom: 0
+
+	a
+		float: left
+		position: relative
+		+size(#{$view-switcher-size})
+		background: white
+		border: 1px solid #{$border-color}
+		margin-left: -1px
+		z-index: 9
+		transition-property: border-color, background-color
+		transition-duration: $animation-speed
+
+		&:first-child
+			margin-left: 0
+
+		span
+			position: absolute
+			+size(#{$view-switcher-icon-size})
+			+position(50%)
+			+font(0, 0)
+			transform: translate(-50%, -50%)
+			transition: inherit
+
+			&::before, &::after
+				+pseudo()
+				transition: inherit
+
+		&.list-view
+			span
+
+				&, &::before, &::after
+					+size(#{$view-switcher-icon-size}, #{round(($view-switcher-icon-size - 4px)/3)})
+					border: solid #{$text-color}
+					border-width: 0 10px 0 4px
+
+				&::before, &::after
+					left: -4px
+
+				&::before
+					top: -6px
+
+				&::after
+					top: 6px
+
+		&.grid-view
+			span
+				&::before, &::after
+					left: 0
+					+size(100%, #{round($view-switcher-icon-size*0.5) - 1px})
+					background: none
+					border: solid #{$text-color}
+					border-width: 0 #{round($view-switcher-icon-size*0.5) - 1px}
+
+				&::before
+					top: 0
+
+				&::after
+					bottom: 0
+
+		&:hover
+			span
+				&, &::before, &::after
+					border-color: $base-color
+
+			&.list-view span
+				background-color: $bg-color-alt
+
+			&.grid-view span
+				border-color: $base-color
+
+		&.active
+			//background-color: #{$bg-color-light}
+			//border-color: #{$bg-color-light}
+			cursor: default
+
+			span
+				&, &::before, &::after
+					border-color: $border-color
+
+			&.list-view span
+				background-color: $bg-color-selected
+
+			&.grid-view span
+				border-color: $border-color
+
+/* view switcher end
