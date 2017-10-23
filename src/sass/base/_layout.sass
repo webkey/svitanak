@@ -279,7 +279,7 @@ body
 	.max-wrap-flood
 		max-width: $flood-layout-width
 
-	& > .pagination
+	& .pagination
 		max-width: $flood-layout-width
 		+push-auto
 
@@ -345,7 +345,7 @@ body
 	.previews-tabs__nav
 		padding: #{floor($layout-spaces*0.9)} #{$layout-spaces}
 
-	/* previews tabs (layout end)
+	/* previews tabs (layout) end
 
 /* feature list, images slider
 .feature-list, .images-slider
@@ -404,3 +404,34 @@ body
 			display: none
 
 /* footer at bottom end
+
+/* article entry (layout)
+.article-entry
+	padding-left: $aside-width
+
+/* article entry (layout) end/* footer at bottom end
+
+/* box options (layout)
+.box-options__label
+	width: $aside-width
+	padding-right: $layout-spaces
+	margin-top: -0.4em
+
+.box-options__content
+	margin-left: $aside-width
+
+/* box options (layout) end
+
+/* m-container (layout)
+.m-container
+	+clear
+
+.m-aside
+	float: left
+	width: $aside-width
+	padding-right: $layout-spaces
+
+.m-content
+	margin-left: $aside-width
+
+/* m-container (layout) end

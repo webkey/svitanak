@@ -45,7 +45,6 @@ h1
 	margin-bottom: $bottom-space--lg
 	+font($font-size-h1, $line-height-h1)
 	letter-spacing: 0.05em
-	text-align: center
 
 	+media('<desk-hd')
 		+font($font-size-h1--lg, $line-height-h1--lg)
@@ -239,10 +238,9 @@ i b, i strong, em b, em strong, b i, b em, strong i, strong em
 	transform: translate(-50%, -50%)
 	z-index: 3
 
-
 .entry-img__title
 	margin: 0
-	+font($font-size-h1, $line-height-h1)
+	+font(78px, $line-height-h1)
 	color: $bg-color-base
 	text-shadow: 0 5px 20px rgba(0, 0, 0, 0.2)
 	text-align: center
@@ -256,6 +254,35 @@ i b, i strong, em b, em strong, b i, b em, strong i, strong em
 	+media('<mob-md')
 		+font(22px, 1)
 
+.heading
+	// display flex
+	display: flex
+	justify-content: space-between
+	align-items: center
+	flex-wrap: wrap
+
+	margin-bottom: round($bottom-space--lg/2)
+
+	+media('<desk-lg')
+		margin-bottom: round($bottom-space--ml/2)
+
+	h1, h2, h3
+		+display-inline-block-middle
+		margin-right: 20px
+		margin-bottom: round($bottom-space--lg/2)
+
+		+media('<desk-lg')
+			margin-bottom: round($bottom-space--ml/2)
+
+		&:last-child
+			margin-right: 0
+
+.heading__options
+	+display-inline-block-top
+	margin-bottom: round($bottom-space--lg/2)
+
+	+media('<desk-lg')
+		margin-bottom: round($bottom-space--ml/2)
 .mark
 	color: $mark-color
 	font-style: inherit

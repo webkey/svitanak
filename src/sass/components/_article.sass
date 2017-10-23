@@ -3,6 +3,22 @@
 @import ../../libs/include-media/dist/include-media
 
 /* article style
+.article-entry
+	position: relative
+	margin-bottom: $bottom-space--lg
+
+	+media('<desk-lg')
+		margin-bottom: $bottom-space--ml
+
+	&:last-child
+		margin-bottom: 0
+
+	&::before
+		+pseudo()
+		+position(1em, 0)
+		+size(100px, 0)
+		border-top: 1px solid $tape-slider-color
+
 .article-footer
 	position: relative
 	height: $article-footer-height

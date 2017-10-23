@@ -25,8 +25,6 @@
 [class*="btn-default"]
 	position: relative
 	+font-bold
-	+font(14px, 18px)
-	letter-spacing: 0.2em
 	text-transform: uppercase
 	color: $btn-text-color
 	fill: $btn-text-color
@@ -35,6 +33,10 @@
 	background: $btn-bg-color
 	box-shadow: none
 	margin: 0
+
+	&, & > span
+		+font(14px, 18px)
+		letter-spacing: 0.2em
 
 	@if $animation-use
 		transition:
@@ -64,12 +66,14 @@
 	.no-touchevents &:hover
 		background: $btn-bg-color
 		color: $btn-text-color
+		fill: $btn-text-color
 
 	&:disabled, &.disabled, &[data-disabled]
 		cursor: default
 		background-color: white !important
 		border-color: $btn-disabled-color !important
 		color: $btn-disabled-color !important
+		fill: $btn-disabled-color !important
 
 		&::before, &::after
 			display: none
@@ -81,39 +85,59 @@
 
 /* btn-default-alt end
 
+/* btn-underline
+.btn-underline
+	+display-inline-block-top
+	position: relative
+	+font-bold
+	text-transform: uppercase
+	color: $text-color
+	fill: $text-color
+	padding: 0 0 5px
+	box-shadow: none
+	background: none
+	border: solid $text-color
+	border-width: 0 0 2px
+
+	&, & > span
+		+font(14px, 18px)
+		letter-spacing: 0.2em
+
+	.no-touchevents &:hover
+		color: $base-color
+		fill: $base-color
+		border-color: $base-color
+
+	&:disabled, &.disabled, &[data-disabled]
+		cursor: default
+		color: $btn-disabled-color !important
+		fill: $btn-disabled-color !important
+		border-color: $btn-disabled-color !important
+
+/* btn-underline end
+
 /* btn-with-icon
 .btn-with-icon
-	& > i, & > span
-		+display-inline-block-top
+	$btni-space: 10px
+	//=================
+	text-align: center
+	+clear-spacing
+	white-space: nowrap
 
-	& > i
-		margin-right: 10px
-		line-height: 1
-
-	svg
-		+display-inline-block-top
-		+size(24px)
+	svg, span
+		+display-inline-block-middle
 
 	path
 		fill: inherit
 
-		@if $animation-use
-			transition:
-				property: fill
-				duration: $animation-speed
-
-	& > span
+	span
 		text-align: left
 		white-space: normal
+		padding-right: $btni-space
 
-	.depict-send
-		svg
-			+size(40px, 16px)
-			margin-top: 4px
-			margin-bottom: -4px
-
-		& + span
-			max-width: calc(100% - 5px - 40px - 10px)
+	svg + span
+		padding-right: 0
+		padding-left: $btni-space
 
 /* btn-with-icon end
 

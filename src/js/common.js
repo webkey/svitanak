@@ -1469,10 +1469,10 @@ function addDataLengthChildren() {
  */
 function equalHeight() {
 	// example
-	var $example = $('.example-class');
+	var $equalHeight = $('.equal-height-js');
 
-	if($example.length) {
-		$example.children().matchHeight({
+	if($equalHeight.length) {
+		$equalHeight.children().matchHeight({
 			byRow: true, property: 'height', target: null, remove: false
 		});
 	}

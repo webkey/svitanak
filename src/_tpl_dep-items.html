@@ -1,0 +1,15 @@
+<li class="dep-item">
+	@@if(context.title){
+	<strong class="dep-title">@@title</strong>
+	}
+	<figure class="dep-img">
+		<!--need to put double images-->
+		<div><img src="img/@@img" alt="@@alt"></div>
+		<div><img src="img/@@img" alt="@@alt"></div>
+	</figure>
+	<ul class="dep-sub-list">
+		@@for (var i = 0; i < items.length; i++) {
+		<li><a href="#" title="`+items[i]+`"><span>`+items[i]+`</span></a></li>
+		}
+	</ul>
+</li>

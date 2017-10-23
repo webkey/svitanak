@@ -7,10 +7,18 @@
 
 }@@if(context.component === "heading") {
 
-	<h1>
-		<span class="mark">h1</span>
-		Типографика в вебдизайне. Основные понятия и положения
-	</h1>
+	<div class="heading">
+		<h1>
+			<span class="mark">h1</span>
+			Типографика в вебдизайне. Основные понятия и положения
+		</h1>
+		<div class="heading__options">
+			<a href="#" class="btn-underline btn-with-icon">
+				<svg class="svg-ico-arr-l" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 62 45.2"><path d="M61.6 20.7c-0.8-2.3-3-3.7-5.6-3.7 -11.3 0-22.6 0-33.9 0h-1.1c0.3-0.3 0.5-0.5 0.7-0.6 2.4-2.1 4.8-4.2 7.1-6.3 2.9-2.6 2.9-6.6 0-8.8C28 0.7 27 0.4 26.1 0h-1.8c-1.8 0.4-3.2 1.6-4.6 2.8C14.1 7.8 8.4 12.8 2.7 17.7 1.4 18.8 0.4 20.1 0 21.8v1.6c0.4 1.9 1.7 3.2 3.1 4.5 5.7 4.9 11.3 9.9 17 14.9 1.2 1.1 2.5 2.1 4.2 2.5h1.8c0.7-0.3 1.5-0.5 2.2-0.9 3.1-1.8 3.7-6.1 1.1-8.6 -2.5-2.4-5.1-4.5-7.6-6.8 -0.2-0.2-0.4-0.4-0.7-0.7h1c11.2 0 22.4 0 33.6 0 3.4 0 5.3-1.4 6.3-4.7 0 0 0.1-0.1 0.1-0.1v-1.6C61.9 21.4 61.8 21.1 61.6 20.7z"></path></svg>
+				<span>Назад к покупкам</span>
+			</a>
+		</div>
+	</div>
 
 }@@if(context.component === "dateTime") {
 
@@ -459,17 +467,107 @@
 	</div>
 
 	@@include('_tpl_title-anchor.html', {
+		"taId": "buttonsUnderline",
+		"taText": "Кнопки с нижним бордером",
+		"taTag": "h4"
+	})
+	<div class="layout-text">
+		<div style="padding: 0 0 20px;">
+			<a href="#" class="btn-underline">Отправить заявку</a>
+		</div>
+		<code>.btn-with-icon</code>
+		<div style="padding: 0 0 20px;">
+			<a href="#" class="btn-underline btn-with-icon">
+				<svg class="svg-ico-arr-l" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 62 45.2"><path d="M61.6 20.7c-0.8-2.3-3-3.7-5.6-3.7 -11.3 0-22.6 0-33.9 0h-1.1c0.3-0.3 0.5-0.5 0.7-0.6 2.4-2.1 4.8-4.2 7.1-6.3 2.9-2.6 2.9-6.6 0-8.8C28 0.7 27 0.4 26.1 0h-1.8c-1.8 0.4-3.2 1.6-4.6 2.8C14.1 7.8 8.4 12.8 2.7 17.7 1.4 18.8 0.4 20.1 0 21.8v1.6c0.4 1.9 1.7 3.2 3.1 4.5 5.7 4.9 11.3 9.9 17 14.9 1.2 1.1 2.5 2.1 4.2 2.5h1.8c0.7-0.3 1.5-0.5 2.2-0.9 3.1-1.8 3.7-6.1 1.1-8.6 -2.5-2.4-5.1-4.5-7.6-6.8 -0.2-0.2-0.4-0.4-0.7-0.7h1c11.2 0 22.4 0 33.6 0 3.4 0 5.3-1.4 6.3-4.7 0 0 0.1-0.1 0.1-0.1v-1.6C61.9 21.4 61.8 21.1 61.6 20.7z"></path></svg>
+				<span>Вернуться к каталогу</span>
+			</a>
+		</div>
+		<code>.btn-with-icon</code>
+		<div style="padding: 0 0 20px;">
+			<a href="#" class="btn-underline btn-with-icon">
+				<span>Следующая статья</span>
+				<svg class="svg-ico-arr-r" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 62 45.2"><path d="M0.4 24.5c0.8 2.3 3 3.7 5.6 3.7 11.3 0 22.6 0 33.9 0h1.1c-0.3 0.3-0.5 0.5-0.7 0.6 -2.4 2.1-4.8 4.2-7.1 6.3 -2.9 2.6-2.9 6.6 0 8.8 0.8 0.6 1.8 0.9 2.8 1.3H37.7c1.8-0.4 3.2-1.6 4.6-2.8 5.7-5 11.3-10 17-14.9 1.3-1.1 2.3-2.4 2.7-4.1v-1.6c-0.4-1.9-1.7-3.2-3.1-4.5 -5.7-4.9-11.3-9.9-17-14.9C40.6 1.4 39.3 0.4 37.7 0h-1.8c-0.7 0.3-1.5 0.5-2.2 0.9 -3.1 1.8-3.7 6.1-1.1 8.6 2.5 2.4 5.1 4.5 7.6 6.8 0.2 0.2 0.4 0.4 0.7 0.7h-1c-11.2 0-22.4 0-33.6 0 -3.4 0-5.3 1.5-6.3 4.7C0.1 21.7 0 21.8 0 21.8v1.6C0.1 23.8 0.2 24.2 0.4 24.5z"></path></svg>
+			</a>
+		</div>
+		<div style="padding: 0 0 20px;">
+			<button class="btn-underline">Button</button>
+		</div>
+		<div style="padding: 0 0 20px;">
+			<input class="btn-underline" type="submit" value="Type submit">
+		</div>
+		<div style="padding: 0 0 20px;">
+			<input class="btn-underline" type="button" value="Type button">
+		</div>
+		<div style="padding: 0 0 20px;">
+			<input class="btn-underline" type="reset" value="Type reset">
+		</div>
+	</div>
+
+	@@include('_tpl_title-anchor.html', {
+		"taId": "buttonsUnderlineDisabled",
+		"taText": "Кнопки с нижним бордером (неактивные)",
+		"taTag": "h4"
+	})
+	<div class="layout-text">
+		<div style="padding: 0 0 20px;">
+			<a href="javascript:void(0)" class="btn-underline disabled">Отправить заявку (.disabled)</a>
+		</div>
+		<div style="padding: 0 0 20px;">
+			<a href="javascript:void(0)" class="btn-underline" data-disabled>Отправить заявку (data-disabled)</a>
+		</div>
+		<code>.btn-with-icon</code>
+		<div style="padding: 0 0 20px;">
+			<a href="javascript:void(0)" class="btn-underline btn-with-icon" data-disabled>
+				<svg class="svg-ico-arr-l" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 62 45.2"><path d="M61.6 20.7c-0.8-2.3-3-3.7-5.6-3.7 -11.3 0-22.6 0-33.9 0h-1.1c0.3-0.3 0.5-0.5 0.7-0.6 2.4-2.1 4.8-4.2 7.1-6.3 2.9-2.6 2.9-6.6 0-8.8C28 0.7 27 0.4 26.1 0h-1.8c-1.8 0.4-3.2 1.6-4.6 2.8C14.1 7.8 8.4 12.8 2.7 17.7 1.4 18.8 0.4 20.1 0 21.8v1.6c0.4 1.9 1.7 3.2 3.1 4.5 5.7 4.9 11.3 9.9 17 14.9 1.2 1.1 2.5 2.1 4.2 2.5h1.8c0.7-0.3 1.5-0.5 2.2-0.9 3.1-1.8 3.7-6.1 1.1-8.6 -2.5-2.4-5.1-4.5-7.6-6.8 -0.2-0.2-0.4-0.4-0.7-0.7h1c11.2 0 22.4 0 33.6 0 3.4 0 5.3-1.4 6.3-4.7 0 0 0.1-0.1 0.1-0.1v-1.6C61.9 21.4 61.8 21.1 61.6 20.7z"></path></svg>
+				<span>Отправить заявку (data-disabled)</span>
+			</a>
+		</div>
+		<div style="padding: 0 0 20px;">
+			<button class="btn-underline disabled">Button (.disabled)</button>
+		</div>
+		<div style="padding: 0 0 20px;">
+			<button class="btn-underline" data-disabled>Button (data-disabled)</button>
+		</div>
+		<div style="padding: 0 0 20px;">
+			<input class="btn-underline" type="submit" value="Type submit" disabled>
+		</div>
+		<div style="padding: 0 0 20px;">
+			<input class="btn-underline" type="button" value="Type button" disabled>
+		</div>
+		<div style="padding: 0 0 20px;">
+			<input class="btn-underline" type="reset" value="Type reset" disabled>
+		</div>
+	</div>
+
+	@@include('_tpl_title-anchor.html', {
 		"taId": "buttonsWithIcon",
-		"taText": "Кнопки с иконкой",
+		"taText": "Кнопки с иконками",
 		"taTag": "h4"
 	})
 	<div class="layout-text">
 		<div style="padding: 0 0 20px;">
 			<button class="btn-default btn-with-icon">
-				<i class="depict-send">
-					<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 91.8 37"><path d="M27.5 16H12c-1.1 0-2 0.9-2 2s0.9 2 2 2h15.5c1.1 0 2-0.9 2-2S28.6 16 27.5 16zM27.5 6H2C0.9 6 0 6.9 0 8s0.9 2 2 2h25.5c1.1 0 2-0.9 2-2S28.6 6 27.5 6zM27.5 26H22c-1.1 0-2 0.9-2 2s0.9 2 2 2h5.5c1.1 0 2-0.9 2-2S28.6 26 27.5 26zM44.8 10.1l10.6 8.1 -10.5 7.7c-0.8 0.6-0.9 1.8-0.4 2.6 0.6 0.9 1.8 1.2 2.8 0.6l11.5-8.3 2.7 2.1c0.7 0.6 1.7 0.6 2.5 0l3.2-2.5 10.8 8.4c0.9 0.7 2.1 0.5 2.8-0.4 0.7-0.9 0.5-2.1-0.4-2.8l-10-7.7 10-7.7c0.9-0.7 1-1.9 0.4-2.8 -0.7-0.9-1.9-1-2.8-0.4L62.5 18.7 47.2 6.9c-0.9-0.7-2.1-0.5-2.8 0.4C43.7 8.1 43.9 9.4 44.8 10.1zM87.8 0h-50c-2.2 0-4 1.8-4 4v29c0 2.2 1.8 4 4 4h50c2.2 0 4-1.8 4-4V4C91.8 1.8 90 0 87.8 0zM87.8 33h-50V4h50V33z"></path></svg>
-				</i>
+				<svg xmlns="http://www.w3.org/2000/svg" width="40" height="16" viewBox="0 0 91.8 37"><path d="M27.5 16H12c-1.1 0-2 0.9-2 2s0.9 2 2 2h15.5c1.1 0 2-0.9 2-2S28.6 16 27.5 16zM27.5 6H2C0.9 6 0 6.9 0 8s0.9 2 2 2h25.5c1.1 0 2-0.9 2-2S28.6 6 27.5 6zM27.5 26H22c-1.1 0-2 0.9-2 2s0.9 2 2 2h5.5c1.1 0 2-0.9 2-2S28.6 26 27.5 26zM44.8 10.1l10.6 8.1 -10.5 7.7c-0.8 0.6-0.9 1.8-0.4 2.6 0.6 0.9 1.8 1.2 2.8 0.6l11.5-8.3 2.7 2.1c0.7 0.6 1.7 0.6 2.5 0l3.2-2.5 10.8 8.4c0.9 0.7 2.1 0.5 2.8-0.4 0.7-0.9 0.5-2.1-0.4-2.8l-10-7.7 10-7.7c0.9-0.7 1-1.9 0.4-2.8 -0.7-0.9-1.9-1-2.8-0.4L62.5 18.7 47.2 6.9c-0.9-0.7-2.1-0.5-2.8 0.4C43.7 8.1 43.9 9.4 44.8 10.1zM87.8 0h-50c-2.2 0-4 1.8-4 4v29c0 2.2 1.8 4 4 4h50c2.2 0 4-1.8 4-4V4C91.8 1.8 90 0 87.8 0zM87.8 33h-50V4h50V33z"></path></svg>
 				<span>Отправить</span>
+			</button>
+		</div>
+		<div style="padding: 0 0 20px;">
+			<button class="btn-default btn-with-icon">
+				<span>Send</span>
+				<svg xmlns="http://www.w3.org/2000/svg" width="40" height="16" viewBox="0 0 91.8 37"><path d="M27.5 16H12c-1.1 0-2 0.9-2 2s0.9 2 2 2h15.5c1.1 0 2-0.9 2-2S28.6 16 27.5 16zM27.5 6H2C0.9 6 0 6.9 0 8s0.9 2 2 2h25.5c1.1 0 2-0.9 2-2S28.6 6 27.5 6zM27.5 26H22c-1.1 0-2 0.9-2 2s0.9 2 2 2h5.5c1.1 0 2-0.9 2-2S28.6 26 27.5 26zM44.8 10.1l10.6 8.1 -10.5 7.7c-0.8 0.6-0.9 1.8-0.4 2.6 0.6 0.9 1.8 1.2 2.8 0.6l11.5-8.3 2.7 2.1c0.7 0.6 1.7 0.6 2.5 0l3.2-2.5 10.8 8.4c0.9 0.7 2.1 0.5 2.8-0.4 0.7-0.9 0.5-2.1-0.4-2.8l-10-7.7 10-7.7c0.9-0.7 1-1.9 0.4-2.8 -0.7-0.9-1.9-1-2.8-0.4L62.5 18.7 47.2 6.9c-0.9-0.7-2.1-0.5-2.8 0.4C43.7 8.1 43.9 9.4 44.8 10.1zM87.8 0h-50c-2.2 0-4 1.8-4 4v29c0 2.2 1.8 4 4 4h50c2.2 0 4-1.8 4-4V4C91.8 1.8 90 0 87.8 0zM87.8 33h-50V4h50V33z"></path></svg>
+			</button>
+		</div>
+		<div style="padding: 0 0 20px;">
+			<button class="btn-default btn-with-icon">
+				<svg class="svg-ico-arr-l" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 62 45.2"><path d="M61.6 20.7c-0.8-2.3-3-3.7-5.6-3.7 -11.3 0-22.6 0-33.9 0h-1.1c0.3-0.3 0.5-0.5 0.7-0.6 2.4-2.1 4.8-4.2 7.1-6.3 2.9-2.6 2.9-6.6 0-8.8C28 0.7 27 0.4 26.1 0h-1.8c-1.8 0.4-3.2 1.6-4.6 2.8C14.1 7.8 8.4 12.8 2.7 17.7 1.4 18.8 0.4 20.1 0 21.8v1.6c0.4 1.9 1.7 3.2 3.1 4.5 5.7 4.9 11.3 9.9 17 14.9 1.2 1.1 2.5 2.1 4.2 2.5h1.8c0.7-0.3 1.5-0.5 2.2-0.9 3.1-1.8 3.7-6.1 1.1-8.6 -2.5-2.4-5.1-4.5-7.6-6.8 -0.2-0.2-0.4-0.4-0.7-0.7h1c11.2 0 22.4 0 33.6 0 3.4 0 5.3-1.4 6.3-4.7 0 0 0.1-0.1 0.1-0.1v-1.6C61.9 21.4 61.8 21.1 61.6 20.7z"></path></svg>
+				<span>Вернуться к каталогу</span>
+			</button>
+		</div>
+		<div style="padding: 0 0 20px; width: 250px;">
+			<code>width: 250px</code>
+			<button class="btn-default btn-with-icon">
+				<svg class="svg-ico-arr-l" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 62 45.2"><path d="M61.6 20.7c-0.8-2.3-3-3.7-5.6-3.7 -11.3 0-22.6 0-33.9 0h-1.1c0.3-0.3 0.5-0.5 0.7-0.6 2.4-2.1 4.8-4.2 7.1-6.3 2.9-2.6 2.9-6.6 0-8.8C28 0.7 27 0.4 26.1 0h-1.8c-1.8 0.4-3.2 1.6-4.6 2.8C14.1 7.8 8.4 12.8 2.7 17.7 1.4 18.8 0.4 20.1 0 21.8v1.6c0.4 1.9 1.7 3.2 3.1 4.5 5.7 4.9 11.3 9.9 17 14.9 1.2 1.1 2.5 2.1 4.2 2.5h1.8c0.7-0.3 1.5-0.5 2.2-0.9 3.1-1.8 3.7-6.1 1.1-8.6 -2.5-2.4-5.1-4.5-7.6-6.8 -0.2-0.2-0.4-0.4-0.7-0.7h1c11.2 0 22.4 0 33.6 0 3.4 0 5.3-1.4 6.3-4.7 0 0 0.1-0.1 0.1-0.1v-1.6C61.9 21.4 61.8 21.1 61.6 20.7z"></path></svg>
+				<span>Вернуться к каталогу</span>
 			</button>
 		</div>
 	</div>
@@ -617,6 +715,14 @@
 		"taText": "Изображения + описания к ним"
 	})
 	@@include("_tpl_feature-list.html")
+
+}@@if(context.component === "iconsList") {
+
+	@@include('_tpl_title-anchor.html', {
+		"taId": "iconsList",
+		"taText": "Используемые иконки"
+	})
+	@@include("_tpl_icons-list.html")
 
 }@@if(context.component === "printButton") {
 
