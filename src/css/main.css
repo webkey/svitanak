@@ -1239,20 +1239,16 @@ i b, i strong, em b, em strong, b i, b em, strong i, strong em {
 
 .heading {
 	display: -webkit-box;
-	display: -webkit-flex;
 	display: -ms-flexbox;
 	display: flex;
 	-webkit-box-pack: justify;
-	-webkit-justify-content: space-between;
 	    -ms-flex-pack: justify;
 	        justify-content: space-between;
 	-webkit-box-align: center;
-	-webkit-align-items: center;
 	    -ms-flex-align: center;
 	        align-items: center;
-	-webkit-flex-wrap: wrap;
-	    -ms-flex-wrap: wrap;
-	        flex-wrap: wrap;
+	-ms-flex-wrap: wrap;
+	    flex-wrap: wrap;
 	margin-bottom: 3rem;
 }
 
@@ -1382,10 +1378,8 @@ i b, i strong, em b, em strong, b i, b em, strong i, strong em {
 /* columnize */
 .columnize, .columnize--3, .columnize--4 {
 	-webkit-column-count: 2;
-	   -moz-column-count: 2;
 	        column-count: 2;
 	-webkit-column-gap: 2em;
-	   -moz-column-gap: 2em;
 	        column-gap: 2em;
 	margin-bottom: 2rem;
 	font-size: 0.9em;
@@ -1393,14 +1387,12 @@ i b, i strong, em b, em strong, b i, b em, strong i, strong em {
 
 .columnize--3 {
 	-webkit-column-count: 3;
-	   -moz-column-count: 3;
 	        column-count: 3;
 	font-size: 0.85em;
 }
 
 .columnize--4 {
 	-webkit-column-count: 4;
-	   -moz-column-count: 4;
 	        column-count: 4;
 	font-size: 0.8em;
 }
@@ -1408,7 +1400,6 @@ i b, i strong, em b, em strong, b i, b em, strong i, strong em {
 @media (max-width: 1199px) {
 	.columnize--4 {
 		-webkit-column-count: 3;
-		   -moz-column-count: 3;
 		        column-count: 3;
 	}
 }
@@ -1416,7 +1407,6 @@ i b, i strong, em b, em strong, b i, b em, strong i, strong em {
 @media (max-width: 991px) {
 	.columnize--3, .columnize--4 {
 		-webkit-column-count: 2;
-		   -moz-column-count: 2;
 		        column-count: 2;
 	}
 }
@@ -1424,7 +1414,6 @@ i b, i strong, em b, em strong, b i, b em, strong i, strong em {
 @media (max-width: 767px) {
 	.columnize, .columnize--3, .columnize--4 {
 		-webkit-column-count: 1;
-		   -moz-column-count: 1;
 		        column-count: 1;
 	}
 }
@@ -2394,19 +2383,16 @@ label, .label {
 
 .form-columnize {
 	-webkit-column-count: 2;
-	   -moz-column-count: 2;
 	        column-count: 2;
 }
 
 .form-columnize--3 {
 	-webkit-column-count: 3;
-	   -moz-column-count: 3;
 	        column-count: 3;
 }
 
 .form-columnize, .form-columnize--3 {
 	-webkit-column-gap: 40px;
-	   -moz-column-gap: 40px;
 	        column-gap: 40px;
 }
 
@@ -2420,10 +2406,8 @@ label, .label {
 @media (max-width: 639px) {
 	.form-columnize, .form-columnize--3 {
 		-webkit-column-count: 1;
-		   -moz-column-count: 1;
 		        column-count: 1;
 		-webkit-column-gap: 0;
-		   -moz-column-gap: 0;
 		        column-gap: 0;
 	}
 }
@@ -4595,7 +4579,7 @@ label.input--focus, input[type="text"].input--focus, input[type="password"].inpu
 
 .dep-list > li:hover {
 	z-index: 10 !important;
-	overflow: visible;
+	overflow: visible !important;
 }
 
 .dep-list > li:hover::after {
@@ -5387,7 +5371,6 @@ label.input--focus, input[type="text"].input--focus, input[type="password"].inpu
 
 .tape-slider .swiper-wrapper {
 	-webkit-box-align: start;
-	-webkit-align-items: flex-start;
 	    -ms-flex-align: start;
 	        align-items: flex-start;
 }
@@ -6538,16 +6521,13 @@ label.input--focus, input[type="text"].input--focus, input[type="password"].inpu
 
 .products.grid-view-activated .products__list {
 	display: -webkit-box;
-	display: -webkit-flex;
 	display: -ms-flexbox;
 	display: flex;
 	-webkit-box-flex: 0;
-	-webkit-flex: 0 1 auto;
 	    -ms-flex: 0 1 auto;
 	        flex: 0 1 auto;
 	-webkit-box-orient: horizontal;
 	-webkit-box-direction: normal;
-	-webkit-flex-flow: row wrap;
 	    -ms-flex-flow: row wrap;
 	        flex-flow: row wrap;
 }
@@ -6586,16 +6566,13 @@ label.input--focus, input[type="text"].input--focus, input[type="password"].inpu
 .products.grid-view-activated .products__inner {
 	padding: 30px;
 	display: -webkit-box;
-	display: -webkit-flex;
 	display: -ms-flexbox;
 	display: flex;
 	-webkit-box-orient: vertical;
 	-webkit-box-direction: normal;
-	-webkit-flex-direction: column;
 	    -ms-flex-direction: column;
 	        flex-direction: column;
 	-webkit-box-pack: justify;
-	-webkit-justify-content: space-between;
 	    -ms-flex-pack: justify;
 	        justify-content: space-between;
 	height: 100%;
@@ -6656,16 +6633,13 @@ label.input--focus, input[type="text"].input--focus, input[type="password"].inpu
 	}
 	.products__list {
 		display: -webkit-box;
-		display: -webkit-flex;
 		display: -ms-flexbox;
 		display: flex;
 		-webkit-box-flex: 0;
-		-webkit-flex: 0 1 auto;
 		    -ms-flex: 0 1 auto;
 		        flex: 0 1 auto;
 		-webkit-box-orient: horizontal;
 		-webkit-box-direction: normal;
-		-webkit-flex-flow: row wrap;
 		    -ms-flex-flow: row wrap;
 		        flex-flow: row wrap;
 	}
@@ -6678,16 +6652,13 @@ label.input--focus, input[type="text"].input--focus, input[type="password"].inpu
 	.products__inner {
 		padding: 30px;
 		display: -webkit-box;
-		display: -webkit-flex;
 		display: -ms-flexbox;
 		display: flex;
 		-webkit-box-orient: vertical;
 		-webkit-box-direction: normal;
-		-webkit-flex-direction: column;
 		    -ms-flex-direction: column;
 		        flex-direction: column;
 		-webkit-box-pack: justify;
-		-webkit-justify-content: space-between;
 		    -ms-flex-pack: justify;
 		        justify-content: space-between;
 		height: 100%;
@@ -7200,20 +7171,16 @@ label.input--focus, input[type="text"].input--focus, input[type="password"].inpu
 
 .p-options__list {
 	display: -webkit-box;
-	display: -webkit-flex;
 	display: -ms-flexbox;
 	display: flex;
 	-webkit-box-pack: justify;
-	-webkit-justify-content: space-between;
 	    -ms-flex-pack: justify;
 	        justify-content: space-between;
 	-webkit-box-align: center;
-	-webkit-align-items: center;
 	    -ms-flex-align: center;
 	        align-items: center;
-	-webkit-flex-wrap: wrap;
-	    -ms-flex-wrap: wrap;
-	        flex-wrap: wrap;
+	-ms-flex-wrap: wrap;
+	    flex-wrap: wrap;
 }
 
 .no-flexbox .p-options__list {
@@ -7233,7 +7200,6 @@ label.input--focus, input[type="text"].input--focus, input[type="password"].inpu
 	line-height: 1.3;
 	text-align: center;
 	-webkit-box-flex: 3;
-	-webkit-flex: 3 3 100px;
 	    -ms-flex: 3 3 100px;
 	        flex: 3 3 100px;
 }
@@ -7241,14 +7207,12 @@ label.input--focus, input[type="text"].input--focus, input[type="password"].inpu
 @media (max-width: 991px) {
 	.p-options__item {
 		-webkit-box-flex: 1;
-		-webkit-flex: 1 1 100px;
 		    -ms-flex: 1 1 100px;
 		        flex: 1 1 100px;
 	}
 	.p-options__item:nth-last-child(2) {
 		text-align: right;
 		-webkit-box-flex: 1;
-		-webkit-flex: 1 1 100px;
 		    -ms-flex: 1 1 100px;
 		        flex: 1 1 100px;
 	}
@@ -7257,7 +7221,6 @@ label.input--focus, input[type="text"].input--focus, input[type="password"].inpu
 .p-options__item:first-child {
 	text-align: left;
 	-webkit-box-flex: 1;
-	-webkit-flex: 1 1 100px;
 	    -ms-flex: 1 1 100px;
 	        flex: 1 1 100px;
 }
@@ -7265,7 +7228,6 @@ label.input--focus, input[type="text"].input--focus, input[type="password"].inpu
 .p-options__item:last-child {
 	text-align: right;
 	-webkit-box-flex: 1;
-	-webkit-flex: 1 1 100px;
 	    -ms-flex: 1 1 100px;
 	        flex: 1 1 100px;
 }
@@ -7299,15 +7261,12 @@ label.input--focus, input[type="text"].input--focus, input[type="password"].inpu
 
 .p-options__group {
 	display: -webkit-box;
-	display: -webkit-flex;
 	display: -ms-flexbox;
 	display: flex;
 	-webkit-box-pack: start;
-	-webkit-justify-content: flex-start;
 	    -ms-flex-pack: start;
 	        justify-content: flex-start;
 	-webkit-box-align: center;
-	-webkit-align-items: center;
 	    -ms-flex-align: center;
 	        align-items: center;
 	-webkit-user-select: none;
@@ -7320,7 +7279,6 @@ label.input--focus, input[type="text"].input--focus, input[type="password"].inpu
 @media (max-width: 991px) {
 	.p-options__group {
 		-webkit-box-pack: end;
-		-webkit-justify-content: flex-end;
 		    -ms-flex-pack: end;
 		        justify-content: flex-end;
 	}
@@ -7329,7 +7287,6 @@ label.input--focus, input[type="text"].input--focus, input[type="password"].inpu
 @media (max-width: 767px) {
 	.p-options__group {
 		-webkit-box-pack: center;
-		-webkit-justify-content: center;
 		    -ms-flex-pack: center;
 		        justify-content: center;
 	}
