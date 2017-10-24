@@ -66,26 +66,33 @@
 							<!--departments end-->
 						</div>
 					</div>
-					<div class="m-container">
-						<div class="m-aside">
-							<!--filters-->
-							@@include('_tpl_products-filters.html')
-							<!--filters end-->
-						</div>
-						<div class="m-content">
-							<!--options panel-->
-							@@include('_tpl_products-options.html')
-							<!--options panel end-->
-							<!--products-->
-							<div class="products view-container-js">
-								<section class="products__list">
-									@@loop("_tpl_products-items.html", "includes-json/products-items.json")
-								</section>
+					<div class="p-filters-js">
+						<div class="p-filters-tags">
+							<div class="p-filters-tags__holder p-filters-tags-js">
+								<!--filters tags-->
 							</div>
-							<!--products end-->
-							<!--pagination-->
-							@@include('_tpl_pagination.html')
-							<!--pagination end-->
+						</div>
+						<div class="m-container">
+							<div class="m-aside">
+								<!--filters-->
+								@@include('_tpl_products-filters.html')
+								<!--filters end-->
+							</div>
+							<div class="m-content">
+								<!--options panel-->
+								@@include('_tpl_products-options.html')
+								<!--options panel end-->
+								<!--products-->
+								<div class="products view-container-js grid-view-activated">
+									<section class="products__list">
+										@@loop("_tpl_products-items.html", "includes-json/products-items.json")
+									</section>
+								</div>
+								<!--products end-->
+								<!--pagination-->
+								@@include('_tpl_pagination.html')
+								<!--pagination end-->
+							</div>
 						</div>
 					</div>
 				</div>

@@ -5,7 +5,10 @@
 /* options panel
 .p-options
 	position: relative
-	margin-bottom: $bottom-space
+	margin-bottom: $bottom-space--lg
+
+	+media('<desk-lg')
+		margin-bottom: $bottom-space--ml
 
 	&:last-child
 		margin-bottom: 0
@@ -26,7 +29,7 @@
 			display: block
 
 .p-options__item
-	+font(1.4rem, 1.3)
+	+font-d
 	text-align: center
 	flex: 3 3 100px
 
@@ -82,13 +85,11 @@
 	+media('<tab-sm')
 		justify-content: center
 
-	& > small
-		+font(inherit, inherit)
+	.p-options__label
 		+display-inline-block-middle
-		margin: 4px 10px 4px 0
-
-	& > select
-		display: none
+		margin: 4px 25px 4px 0
+		+font(inherit, inherit)
+		color: $text-color-light
 
 .p-sorting
 	+display-inline-block-middle
@@ -97,14 +98,14 @@
 		margin: 0
 
 		li
-			padding: 2px 8px 2px 8px
-			margin: 4px 4px 4px 0
+			padding: 0 12px 0 0
+			margin: 4px 18px 4px 0
 
 			&::before
 				content: none
 
-			&.active
-				padding-right: 24px
+			//&.active
+				padding-right: 38px
 
 	li
 		+display-inline-block-top
@@ -112,34 +113,35 @@
 		position: relative
 		cursor: pointer
 
-		& > span
+		//& > span
 			border-bottom: 1px solid #{$border-color}
-			transition-property: border-color
-			transition-duration: $animation-speed
 
 		// стрелочка развернута ВВЕРХ, сортировака ПО ВОЗРАСТАНИЮ
 		.arr
 			position: absolute
 			top: 50%
-			right: 10px
+			right: 0
 			+triangle(top, #{$text-color}, 4px, 2)
 			margin-top: -4px
 			opacity: 0
-			visibility: hidden
-			transition-property: opacity, visibility
+			transform: rotate(0) translateZ(0)
+			transition:
+				property: transform, opacity
+				duration: $animation-speed
 
 			.order-desc &
-				transform: rotate(0.5turn)
+				transform: rotate(0.5turn) translateZ(0)
 
-		// состояние на ховер
+		// hover
 		.no-touchevents &:hover
+			color: $base-color
 
-			& > span
+			//& > span
 				border-bottom-color: transparent
 
 		// активное соотояние
 		&.active
-			background-color: #{$border-color}
+			color: $base-color
 
 			& > span
 				border-bottom-color: transparent
@@ -147,7 +149,6 @@
 			// стрелочка развернута ВНИЗ, сортировака ПО УБЫВАНИЮ
 			.arr
 				opacity: 1
-				visibility: visible
-				transition-duration: $animation-speed
+				border-bottom-color: $base-color
 
 /* options panel end

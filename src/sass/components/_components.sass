@@ -716,6 +716,10 @@ $m-services-thumb-indent: 320px
 	margin-bottom: $bottom-space--lg
 	padding-left: $m-services-thumb-indent
 
+.m-services-pagination
+	position: relative
+	z-index: 5
+
 .m-services__letter
 	display: block
 	position: absolute
@@ -754,7 +758,12 @@ $m-services-thumb-indent: 320px
 	+size(50%, 100%)
 	overflow-y: auto
 	overflow-x: hidden
-	z-index: 5
+	z-index: 0
+
+.m-services-thumbs-align
+	position: relative
+	margin-right: -100px
+	+padding-vertical($layout-spaces)
 
 	&::before
 		+pseudo()
@@ -765,10 +774,6 @@ $m-services-thumb-indent: 320px
 		border-width: 0 0 0 1px
 		z-index: 5
 		pointer-events: none
-
-.m-services-thumbs-align
-	margin-right: -100px
-	+padding-vertical($layout-spaces)
 
 .m-services-bullet
 	display: block
@@ -794,6 +799,12 @@ $m-services-thumb-indent: 320px
 		+font-alt-italic
 		font-size: 18px
 		text-align: center
+
+		&::after
+			+pseudo()
+			+position(0, $m-services-thumb-left)
+			+size(0, 100%)
+			border-right: 1px solid $border-color
 
 	& > span
 		position: relative

@@ -3,14 +3,18 @@
 @import ../../libs/include-media/dist/_include-media
 
 /* products filters
-$p-filters-inside-space: 20px
+$p-filters-angle-lines-size: 10px, 2px // width, height
+$p-filters-angle-lines-color: $text-color
 
 .p-filters
 	position: relative
 	padding-right: 1px
-	margin-bottom: $bottom-space
+	margin-bottom: $bottom-space--lg
 	z-index: 15
 	user-select: none
+
+	+media('<desk-lg')
+		margin-bottom: $bottom-space--ml
 
 	&:last-child
 		margin-bottom: 0
@@ -18,197 +22,79 @@ $p-filters-inside-space: 20px
 .p-filters-list
 	+clear-spacing
 	padding-bottom: 1px
-	margin-bottom: $bottom-space
+	margin-bottom: $bottom-space--md
 
 	&:last-child
 		margin-bottom: 0
 
 .p-filters-item
 	position: relative
-	+display-inline-block-top
-	height: 58px
-	width: round-float(100%/5, 4)
-	padding: 1px 0 0 1px
-	+font(1.5rem, round-float(18px/15px, 2))
-	letter-spacing: normal
-	+display-inline-block-top
-	border-width: 0 1px 1px 0
+	+font($font-size, $line-height)
+	letter-spacing: $letter-spacing
+	border-bottom: 1px solid $text-color
+	margin-bottom: $bottom-space
 
-	&.p-filters-is-open
-		z-index: 5
-
-	+media('<desk-hd')
-		width: round-float(100%/4, 4)
-
-	+media('<desk-lg')
-		width: round-float(100%/3, 4)
-
-	+media('<mob-lg')
-		width: round-float(100%/2, 4)
-
-	+media('<mob-md')
-		width: round-float(100%/1, 4)
+	&:last-child
+		margin-bottom: 0
 
 .p-filters-inner
-	display: block
-	position: relative
-	height: 100%
-	+font(11px, 13px)
 	text-decoration: none
 	color: inherit
-	box-shadow: 0 0 0 1px $border-color
 
 .p-filters-select
 	position: relative
-	height: 100%
 
 .p-filters-select-head
-	padding: 12px 30px 0 10px
+	padding: 5px 20px 5px 0
 	cursor: pointer
-	height: 100%
-	transition-property: background-color
-	transition-duration: $animation-speed
 
-	.p-filters-is-open &, .p-filters-on &
-		background-color: #{$bg-color-selected}
-
+// angle
 .p-filters-angle
 	position: absolute
-	top: 0
 	right: 0
-	+size(30px, 100%)
-	cursor: pointer
+	top: 50%
+	+size(nth($p-filters-angle-lines-size, 1), nth($p-filters-angle-lines-size, 2))
+	margin-top: -#{round(nth($p-filters-angle-lines-size, 2)*0.5)}
+	transition:
+		property: transform
+		duration: $animation-speed
 
-	& > i
-		$this-icon-lines-width: 8px
-		$this-icon-lines-height: 2px
-		$this-icon-lines-color: $text-color
-
-		width: 12px
-		height: 8px
-		position: absolute
-		left: 50%
-		top: 50%
-		margin-top: -4px
-		margin-left: -6px
-		backface-visibility: hidden
-		cursor: inherit
-
-		&::before, &::after
-			+pseudo()
-			backface-visibility: hidden
-			+size($this-icon-lines-width, $this-icon-lines-height)
-			background-color: $this-icon-lines-color
-			transition-property: background-color
-			transition-duration: $animation-speed
-
-		&::before
-			bottom: 0
-			right: 50%
-			transform-origin: bottom right
-			transform: rotate(45deg)
-
-		&::after
-			bottom: 0
-			left: 50%
-			transform-origin: bottom left
-			transform: rotate(-45deg)
-
-		.p-filters-is-open &
-			transform: rotate(0.5turn)
-
-.p-filters__title
-	+font-normal
-	+font(11px, 13px)
-	color: #{$text-color-light}
-	margin-bottom: 0.5em
-	+truncate(none)
-
-.p-filters__placeholder,
-.p-filters__value
-	+font-bold
-	+font(10px, 13px)
-	color: #{$text-color}
-	text-transform: uppercase
-	letter-spacing: 0.05em
-	+truncate(none)
-
-.p-filters__value
-	display: none
-
-.btn-clear
-	display: block
-	+size(100%)
-	padding: 0
-	+clear-spacing
-	white-space: nowrap
-	text-decoration: none
-	color: #{$text-color}
-	cursor: pointer
-	border: none
-	background: none
-	transition-duration: $animation-speed
-	transition-property: background-color
-
-	&::before, & > i, & > span
-		+display-inline-block-middle
+	&::before, &::after
+		+pseudo()
+		left: 0
+		+size(nth($p-filters-angle-lines-size, 1), nth($p-filters-angle-lines-size, 2))
+		background-color: $p-filters-angle-lines-color
+		transition:
+			property: transform
+			duration: $animation-speed
 
 	&::before
-		content: ""
-		height: 100%
+		top: 0
 
-	& > i
-		margin-right: 10px
+	&::after
+		top: 0
+		transform: rotate(90deg) translateZ(0)
 
-		svg
-			+display-inline-block-top
-			+size(18px)
+		.ie9 &
+			transform: rotate(90deg)
 
-		path
-			fill: #{$base-color}
-
-	& > span
-		+font(10px, 14px)
-		letter-spacing: 0.05em
-		text-transform: uppercase
-		white-space: normal
-
-	.no-touchevents &:not(:disabled):hover
-		background-color: #{$bg-color-selected}
-
-	&:disabled
-		&
-			color: $text-color-light
-			border-color: $text-color-light
-			cursor: default
-
-			path
-				fill: $text-color-light
+.p-filters__title
+	+font-d
+	color: inherit
 
 .p-filters-drop
-	position: absolute
-	width: calc(100% + 2px)
-	+position(100%, -1px)
-	background-color: #{$bg-color-selected}
-	border: 1px solid #{$border-color}
-	opacity: 0
-	visibility: hidden
-	transition-property: opacity, visibility
-	transition-duration: $animation-speed
-
-	.p-filters-is-open &
-		opacity: 1
-		visibility: visible
+	position: relative
+	display: none
 
 .p-filters-drop-list
 
 	&, .#{$user-content} &
 		margin: 0
-		padding: #{round($p-filters-inside-space*0.8)} #{$p-filters-inside-space}
+		padding: #{round($grid-space*0.8)} 0 $grid-space
 
 		li
 			padding-left: 0
-			margin: 0 0 10px
+			margin: 0 0 15px
 
 			&::before
 				content: none
@@ -218,82 +104,68 @@ $p-filters-inside-space: 20px
 
 	label
 		display: block
-		+font(13px, 18px)
-		transition-property: color
-		transition-duration: $animation-speed
+		font-size: 12px
+		letter-spacing: 0.05em
+		text-transform: uppercase
 
-		.no-touchevents &:hover
+		//.no-touchevents &:hover
 			color: $link-color
 
 		[type="checkbox"]:checked
-			& + span
+			& ~ span
 				+font-bold
-		
-.p-filters-drop-footer
-	border-top: 1px solid #{$border-color}
 
-	.btn-reset
+// hover, active, has checked filters
+.no-touchevents .p-filters-select:hover,
+.p-filters-item.p-filters-on
+	color: $base-color
+
+	.p-filters-angle
+		&::before, &::after
+			background-color: $base-color
+
+// drop open
+.p-filters-item.p-filters-is-open
+	.p-filters-angle
+		transform: rotate(0.5turn) translateZ(0)
+
+		&::after
+			transform: rotate(0) translateZ(0)
+
+		.ie9 &
+			transform: rotate(0.5turn)
+
+			&::after
+				transform: rotate(0)
+
+	.p-filters-drop
 		display: block
-		width: 100%
-		padding: #{round($p-filters-inside-space*0.8)} #{$p-filters-inside-space}
-		+font(13px, 18px)
-		text-decoration: none
-		color: $text-color
-		cursor: pointer
-		border: none
-		border-color: $text-color
-		box-shadow: none
-		background: none
-		transition-property: border-color, color
-		transition-duration: $animation-speed
-
-		span
-			border-bottom: 1px dashed
-			border-color: inherit
-			transition: inherit
-
-		.no-touchevents &:not(:disabled):hover
-			span
-				border-bottom-color: transparent
-
-		&:disabled
-			color: $text-color-light
-			border-color: $text-color-light
-			cursor: default
 
 /* filters tags
 .p-filters-tags
-	margin-bottom: $bottom-space
+	margin-bottom: $bottom-space--md
+	min-height: 30px
+
+	+media('<desk-lg')
+		margin-bottom: $bottom-space
 
 	&:last-child
 		margin-bottom: 0
 
 .p-filters-tags__holder
 	cursor: default
-	min-height: 10px
 	margin-top: -10px
 
 .p-filters-tags__item
 	+display-inline-block-top
 	position: relative
-	margin: 10px 10px 0 0
+	margin: 10px 25px 0 0
 	cursor: pointer
-	color: white
-	padding: 3px 10px 3px 25px
-	+font(13px, 18px)
-	background-color: #333
-	transition-property: background-color
-	transition-duration: $animation-speed
-
-	//&::before
-		+pseudo()
-		+position(-3px)
-		+size(calc(100% + 13px), calc(100% + 6px))
-		background-color: $bg-color-selected
-		z-index: -1
-
-	//&::after
-		+pseudo-inline-block(',')
+	color: inherit
+	padding: 0 0 0 20px
+	+font(12px, 18px)
+	letter-spacing: 0.05em
+	text-transform: uppercase
 
 	& > span
 		+display-inline-block-top
@@ -303,17 +175,16 @@ $p-filters-inside-space: 20px
 		content: none
 
 	& > i
-		$this-icon-lines-width: 12px
+		$this-icon-lines-width: 10px
 		$this-icon-lines-height: 2px
-		$this-icon-lines-color: white
+		$this-icon-lines-color: $text-color
 
 		position: absolute
-		left: 4px
+		left: 0
 		top: 50%
 		+size(#{round($this-icon-lines-width*1.5)})
 		margin-top: -#{round($this-icon-lines-width*1.5*0.5)}
-		border-radius: 2px
-		backface-visibility: hidden
+		border-radius: 0
 		background-color: transparent
 		+font(0, 0)
 
@@ -333,11 +204,11 @@ $p-filters-inside-space: 20px
 			transform: rotate(45deg)
 
 	.no-touchevents &:hover
-		background-color: $base-color
+		color: $base-color
 
 		& > i
-			opacity: 1
-			visibility: visible
+			&::before, &::after
+				background-color: $base-color
 
 /* filters tags end
 

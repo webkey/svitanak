@@ -3,386 +3,288 @@
 @import ../../libs/include-media/dist/_include-media
 
 /* products
+$products-space: 75px
+$products-grid-space: 30px
+$product-visual-width: 300px
+$product-visual-space: 20px
+$product-dt: 120px
+
 .products
 	overflow: hidden
-	margin-bottom: $bottom-space--md
+	margin-bottom: $bottom-space--lg
+
+	+media('<desk-lg')
+		margin-bottom: $bottom-space--ml
 
 	&:last-child
 		margin-bottom: 0
 
 .products__list
+	+grid-parent($products-space)
 	+clear-spacing
-	padding-bottom: 1px
 
 .products__item
-	+display-inline-block-top
-	width: 100%
-	position: relative
-	padding-top: 1px
-	+font(1.5rem, round-float(18px/15px, 2))
-	background-color: #{$bg-color-selected}
-	letter-spacing: normal
+	+grid-item(2, $products-space)
+	+font($font-size, $line-height)
+	letter-spacing: $letter-spacing
 
 .products__inner
+	position: relative
 	display: block
-	+padding-vertical(13px)
 	text-decoration: none
 	color: inherit
-	+clear-spacing
-	transition-property: background-color
-	transition-duration: $animation-speed
 
-	.no-touchevents &
-		&:hover, &:focus
-			background: $bg-color-selected
+	+clear
 
-// дополнительные бордеры нужны для safari
-// т.к. в этом браузере не поддерживается автовысота во flex-box элементах
-// подходит только, если не нужно делать всю область кликабельной
-.products, .products__list, .products__item, .products__inner
-	position: relative
+.products__brand
+	position: absolute
+	+position(0)
+	z-index: 10
 
-	&::before, &::after
-		+pseudo()
-		+size(0)
-		border: 0 solid $border-color
+.products__visual
+	float: left
+	width: $product-visual-width
+	padding-right: $product-visual-space
 
-.products
-	&::after
-		left: 0
-		bottom: 0
-		border-width: 0 0 1px
-		+size(9999px, 0)
-
-.products__list, .products__item
-	&::before
-		right: -1px
-		top: 0
-		+size(0, 9999px)
-		border-width: 0 1px 0 0
-		display: none
-
-.products__list
-	&::after
-		top: 0
-		left: 0
-		+size(9999px, 0)
-		border-width: 0 0 1px 0
-
-.products__item
-	&::after
-		top: 0
-		left: 0
-		+size(0, 9999px)
-		border-width: 0 0 0 1px
-		display: none
-
-.products__inner
-	&::after
-		top: -1px
-		left: 0
-		+size(9999px, 0)
-		border-width: 1px 0 0
-
-// дополнительные бордеры нужны для safari END
-
-.products__body, .products__footer
-	position: relative
-	+display-inline-block-middle
-
-.products__body
-	width: 60%
-
-	+media('<desk-lg')
-		width: 55%
-
-.products__footer
-	width: 39.98%
-	padding-left: 1.5%
-
-	+media('<desk-lg')
-		width: 44.98%
-
-.products__figure, .products__content, .products__title, .products__stock
-	+display-inline-block-middle
-
-$product-figure-width: 60px
-$product-figure-right-space: 20px
 .products__figure
+	display: block
 	position: relative
-	width: #{$product-figure-width}
-	margin-right: #{$product-figure-right-space}
-	letter-spacing: normal
+	text-decoration: none
+	color: inherit
 
 	&:before
 		+pseudo-block-relative()
-		+ratio(4, 3)
+		+ratio(3, 4)
 
 .products__img
 	+cover-abs()
-	font-size: $font-size
-	letter-spacing: normal
-	backface-visibility: hidden
+
+	.no-image &
+		background: url(../../img/no-img.png) no-repeat center
+		background-size: cover
 
 	img
 		display: block
-		max-height: 100%
-		max-width: 100%
-		+centering-transform-rel()
+		width: 100%
+		height: 100%
+		max-width: none
+		+object-fit(cover)
 
-.products__content
-	width: calc(100% - (#{$product-figure-width} + #{$product-figure-right-space}))
+.products__title, .products__content, .products__footer
+	float: right
+	width: calc(100% - #{$product-visual-width})
+	margin-bottom: $bottom-space--ml
 
-	ul
-
-		li, ul, ol
-			margin: 0.7em 0
-
-		li
-			padding-left: 0
-
-			&::before
-				content: none
-
-		a
-			padding-top: 0.2em
-			color: inherit
-			text-decoration: none
-			transition-property: color
-			transition-duration: $animation-speed
-
-			.no-touchevents &:hover
-				color: $link-color
-
-		ul, ol
-			padding-left: 30px
-
-			li
-				&::before
-					content: '–'
-					display: inline-block
-					position: relative
-					margin-right: 5px
-					+position(auto, auto)
-					width: auto
-					height: auto
-					border: none
+	&:last-child
+		margin-bottom: 0
 
 .products__title
-	width: 70%
-	+font-alt-bold
-	padding-right: 20px
-	+font(16px, 19px)
-	letter-spacing: normal
-	transition-property: color
-	transition-duration: $animation-speed
+	+font-d(24)
+	overflow: hidden
 
 	a
+		padding-top: 0.5em
 		text-decoration: none
 		color: inherit
 		transition: inherit
-		padding-top: 0.2em
 
-		.no-touchevents &:hover
-			color: $link-color
-
-.products__stock
-	position: relative
-	+font(14px, 18px)
-	letter-spacing: normal
-	width: 29%
-
-	& > *:last-child
-		margin-bottom: 0
-
-.products__price, .products__options
-	+display-inline-block-middle
-	letter-spacing: normal
-
-.products__options
-	width: 170px
-
-.products__price
-	width: calc(100% - 170px)
-	text-align: right
-	padding-right: 15%
-
-	.cur, .no, .old
-		margin-bottom: 2px
-
-	.cur
-		+font(18px, 22px)
-		+font-bold
-
-	.no
-		+font(14px, 18px)
-
-	.old
-		+font(14px, 22px)
-		+font-normal
-		color: #666
-		text-decoration: line-through
-
-.products__options
-	text-align: center
-
-	.btn-outline
-		display: block
-		+padding-horizontal(12px)
-
-		.in-cart &
-			display: none
-
-	.spinner
+	.products__model
 		display: none
 
-		.in-cart &
-			display: inline-block
+	a
+		.no-touchevents &:hover
+			color: $base-color
+
+			.products__model
+				color: inherit
+
+.products__model
+	+font-normal
+	color: $text-color-light
+	letter-spacing: $letter-spacing
+
+	&::before
+		content: "/ "
+
+// list of characteristics
+.products__dl
+	position: relative
+	padding: 5px 0
+	border-bottom: 1px dashed $text-color-light
+	+clear
+
+.products__dt
+	float: left
+	width: $product-dt
+	color: $text-color-light
+	padding-right: 10px
+
+.products__dd
+	margin-left: $product-dt
+
+// colors
+.p-colors
+	+clear-spacing
+	margin-top: -10px
+	padding-top: 8px
+	cursor: default
+
+.p-color
+	+display-inline-block-top
+	+size(14px)
+	margin-right: 16px
+	margin-top: 10px
+	border-radius: 50%
+	+font(0, 0)
+
+// footer
+.products__footer
+	+clear
+
+// price
+.products__price
+	float: left
+	width: $product-dt
+	padding-right: 10px
+
+	.cur
+		display: block
+		line-height: 30px
+		color: $base-color
+
+		.val
+			+font-bold
+			font-size: 16px
+			letter-spacing: 0.025em
+
+		.unit
+			+font-normal
+			font-size: 12px
+			letter-spacing: 0.05em
+
+.products__basket
+	margin-left: $product-dt
+
+// btn to basket
+.btn-to-basket, .btn-from-basket
+	$btn-space: 10px
+	//====================
+	+display-inline-block-top
+	cursor: default
+	color: inherit
+	text-align: center
+	white-space: nowrap
+	+clear-spacing
+	user-select: none
+
+	svg, span
+		+display-inline-block-middle
+
+	.svg-ico-basket
+		+size(22px)
+
+	.svg-ico-basket-add
+		+size(32px, 22px)
+
+	path
+		fill: inherit
+
+	span
+		padding-right: $btn-space
+		+font($font-size, $line-height)
+		letter-spacing: $letter-spacing
+		text-align: left
+		white-space: normal
+
+	svg + span
+		padding-right: 0
+		padding-left: $btn-space
+
+// hover
+a.btn-to-basket
+	cursor: pointer
+
+	.no-touchevents &:hover
+		color: $link-color
+		fill: $link-color
+
+.btn-from-basket
+	display: none
+	color: $base-color
+	fill: $base-color
+
+.products__item.in-cart
+	.btn-to-basket
+		display: none
+
+	.btn-from-basket
+		display: inline-block
 
 /* grid view
 .products.grid-view-activated
-	&
-		padding-right: 1px
-
 	.products__list
-		display: flex
-		flex: 0 1 auto
-		//justify-content: stretch
-		flex-flow: row wrap
+		+grid-parent($products-grid-space)
+		+clear-spacing
 
 	.products__item
-		+display-inline-block-top
-		padding-left: 1px
-		width: round-float(100%/5, 4)
+		+grid-item(4, $products-grid-space, $products-space)
 
-		+media('<desk-hd')
-			width: round-float(100%/4, 4)
-
-		+media('<desk-lg')
-			width: round-float(100%/3, 4)
-
-		+media('<desk-sm')
-			width: round-float(100%/2, 4)
-
-		+media('<mob-lg')
-			width: round-float(100%/1, 4)
-
-	.products__inner
-		padding: 30px
-		display: flex
-		flex-direction: column
-		justify-content: space-between
-		height: 100%
-
-	.products__list, .products__item
-		&::before
-			display: block
-
-	.products__item
-		&::after
-			display: block
-
-	.products__body, .products__footer
-		display: block
+	.products__visual, .products__title, .products__content, .products__footer
+		float: none
 		width: auto
-		+padding-horizontal(0)
 
-	.products__figure, .products__content, .products__title, .products__stock, .products__price, .products__options
-		display: block
-		width: auto
-	
-	.products__figure
-		margin: 0 auto $bottom-space
-		width: 100%
-		max-width: 260px
+	.products__visual
+		padding: 0
+		margin-bottom: $bottom-space--ml
+
+		&:last-child
+			margin-bottom: 0
 
 	.products__title
-		margin-bottom: 0.5em
-		padding: 0
+		+padding-horizontal($grid-space)
+		+font-normal
+		+font(16px, round-float(24/16, 2))
+		letter-spacing: $letter-spacing
+		text-align: center
+		text-transform: none
+		margin-bottom: 1.5rem
 
-	.products__stock
-		margin-bottom: 1em
+		&:last-child
+			margin-bottom: 0
 
+		.products__model
+			display: inline
+
+	.products__content
+		display: none
+
+	// price
 	.products__price
 		text-align: center
+		float: none
+		width: auto
 		padding: 0
-		margin-bottom: 20px
 
-		.cur, .no, .old
-			+display-inline-block-top
-			+margin-horizontal(0.2em)
-			margin-bottom: 0
+	.products__basket
+		position: absolute
+		top: 0
+		right: 0
+		margin: 0
+		z-index: 10
+
+	.btn-to-basket,
+	.btn-from-basket
+		span
+			display: none
+
+/* grid view end
 
 // для маленьких мониторов
+/* for mobile
 +media('<tab-lg')
-	.products
-		padding-right: 1px
-
-	.products__list
-		display: flex
-		flex: 0 1 auto
-		flex-flow: row wrap
-
-	.products__item
-		+display-inline-block-top
-		padding-left: 1px
-		width: round-float(100%/2, 4)
-
-	.products__inner
-		padding: 30px
-		display: flex
-		flex-direction: column
-		justify-content: space-between
-		height: 100%
-
-	.products__list, .products__item
-		&::before
-			display: block
-
-	.products__item
-		&::after
-			display: block
-
-	.products__body, .products__footer
-		display: block
-		width: auto
-		+padding-horizontal(0)
-
-	.products__figure, .products__content, .products__title, .products__stock, .products__price, .products__options
-		display: block
-		width: auto
-
-	.products__figure
-		margin: 0 auto $bottom-space
-		width: 100%
-		max-width: 260px
-
-	.products__title
-		margin-bottom: 0.5em
-		padding: 0
-
-		// только для маленьких мониторов
-		text-align: center
-
-	.products__stock
-		margin-bottom: 1em
-
-		// только для маленьких мониторов
-		text-align: center
-
-	.products__price
-		text-align: center
-		padding: 0
-		margin-bottom: 20px
-
-		.cur, .no, .old
-			display: block
-			+margin-horizontal(0.2em)
-			margin-bottom: 0
 
 .products__item
 	+media('<mob-lg')
-		width: round-float(100%/1, 4)
 
-/* grid view end
+/* for mobile end
 /* products end
