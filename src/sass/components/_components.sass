@@ -1165,7 +1165,63 @@ $m-services-thumb-indent: 320px
 
 /* box options end
 
+/* custom table
+.c-table
+	display: table
+	width: 100%
+
+.c-thead
+	display: table-header-group
+
+.c-tbody
+	display: table-row-group
+
+.c-tfoot
+	display: table-footer-group
+
+.c-tr
+	display: table-row
+
+.c-th, .c-td
+	display: table-cell
+
+/* custom table end
+
+/* color pic
+.color-pics
+	cursor: default
+
+.color-pic
+	+display-inline-block-top
+	+size(16px)
+	border-radius: 50%
+	+font(0, 0)
+
+	.color-pics &
+		margin-right: 16px
+		margin-top: 10px
+
+/* color pic end
+
 /* order list
+.order-calc-list
+	.c-th
+		padding: 15px #{$grid-space}
+		+font-d
+		border: solid $bg-color-base
+		border-width: 0 0 0 2px
+		background-color: $bg-color-alt
+
+		&:first-child
+			border: none
+
+	.c-td
+		padding: 10px #{$grid-space}
+		vertical-align: middle
+		border: solid $border-color
+		border-width: 0 0 1px
+
+// === img ===
 .order-list__img
 	border: 1px solid transparent
 	display: block
@@ -1190,12 +1246,42 @@ $m-services-thumb-indent: 320px
 .no-touchevents a.order-list__img:hover
 	border-color: $base-color
 
-// total
-.order-product-totals__label
+// === color ===
+.order-calc-list__color
+	white-space: nowrap
+	vertical-align: middle
+
+	.color-pic
+		vertical-align: middle
+		margin-right: 5px
+
+// === totals ===
+.order-calc-totals
+	position: relative
+	margin-top: -1px
+	line-height: 0
+	background-color: $bg-color-alt
+	+clear
+
+.order-calc-totals__text
+	+display-inline-block-middle
+	+font-d()
+	padding: 14px $grid-space
 	display: none
 
 	&.show
-		display: block
+		display: inline-block
+
+.order-calc-totals__label
+	+display-inline-block-top
+	margin-right: 10px
+
+.order-calc-totals__count, .order-calc-totals__price
+	color: $base-color
+
+.order-calc-btn
+	float: right
+	min-width: 240px
 
 /* order list end
 
@@ -1213,34 +1299,10 @@ $m-services-thumb-indent: 320px
 	text-indent: -9999px
 	overflow: hidden
 
-	$group: 1, 100
+	// from 1% to 50%
+	+grad-per-value($color: #ff4200 #e18a00, $val: 1 50)
 
-	@for $item from nth($group, 1) through nth($group, 2)
-
-		$percentage: $item*1%
-
-		&[style*="#{$percentage}"]
-
-			background-color: mix(#36b514, #e2460f, $percentage)
-
-	//$group2: 51, 100
-
-	//@for $item from nth($group2, 1) through nth($group2, 2)
-
-		$min: nth($group2, 1)
-		$max: nth($group2, 2)
-		$total: $max - $min
-		$cur-item: $item - 1
-
-		$per: $item*1%
-		//$perColor: 100/(nth($group2, 1) - 1)*$cur-item*1%
-		$perColor: 100/$total
-
-		@debug $total
-		//@debug $per
-		//@debug $perColor
-	//&[style*="#{$per}"]
-
-		background-color: mix(#e2460f, #131ee2, $perColor)
+	// from 51% to 100%
+	+grad-per-value($color: #e18a00 #29c100, $val: 51 100)
 
 /* stock tape end

@@ -9,4 +9,15 @@
 	background-color: $bg-color-base
 	+push-auto
 
+.inline-popup__title
+	+font-alt-bold
+	+font(24px, round-float(32/24, 2))
+	margin-bottom: $bottom-space--md
+
+	+media('<desk-lg')
+		margin-bottom: $bottom-space--ml
+
+	&:last-child
+		margin-bottom: 0
+
 /* popups end

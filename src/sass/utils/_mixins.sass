@@ -1065,7 +1065,7 @@
 
 
 // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++//
-// ПРИМЕСИ ИСПОЛЬЗУЕМЫЕ В ТИОПОГРАФИЧЕСКИХ СТИЛЯХ
+// ПРИМЕСИ ИСПОЛЬЗУЕМЫЕ В ТЕКУЩЕМ ПРОЕКТЕ
 // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++//
 =font-d($line-height: 20)
 	+font-bold
@@ -1074,38 +1074,24 @@
 	text-transform: uppercase
 
 // =============================================================================
-// animation elements on scroll
+// gradient per value
 // =============================================================================
-/// Примесь обеспечивает последовательное появление элементов при сколле старницы
-/// @author []
-///
-/// @param {list} $list [] - название шрифта
+/// создает набор css-селекторов с переходом цвета от одного к другому
+=grad-per-value($color: white black, $val: 1 100)
+	$i: 0
 
-=animation-on-scroll($list)
-	@for $i from 1 through length($list)
-		$item: nth($list, $i)
-		//@debug $i
-		//@debug $item
+	@for $item from nth($val, 1) through nth($val, 2)
 
-		+media('>=tab-lg')
-			.no-touchevents .#{$item}
-				opacity: 0
-				visibility: hidden
-				transform: translate(0, 60px)
-				transition-property: transform, opacity, visibility
-				transition-duration: $animation-speed-element
+		$percentage: $item*1%
+		$perVal: 100/(nth($val, 2) - nth($val, 1))*$i*1%
 
-			$delay: #{$animation-speed-element-delay + ($i - 1)*0.2}
-			//@debug $delay
+		&[style*="#{$percentage}"]
+			background-color: mix(nth($color, 2), nth($color, 1), $perVal)
 
-			&.active .#{$item}
-				opacity: 1
-				visibility: visible
-				transform: translate(0, 0)
-				transition-delay: ($delay)
+		$i: $i + 1
 
 // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++//
-// ПРИМЕСИ ИСПОЛЬЗУЕМЫЕ В ТИПОГРАФИЧЕСКИХ СТИЛЯХ конец
+// ПРИМЕСИ ИСПОЛЬЗУЕМЫЕ В ТЕКУЩЕМ ПРОЕКТЕ конец
 // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++//
 
 

@@ -10,8 +10,6 @@ $spinner-input-size: 54px // width
 	+display-inline-block-top
 	text-align: left
 	background-color: transparent
-	opacity: 0
-	visibility: hidden
 
 	input
 		margin-bottom: 0
@@ -21,9 +19,13 @@ $spinner-input-size: 54px // width
 		height: 20px
 		padding: 0
 
-	.ui-spinner &
-		opacity: 1
-		visibility: visible
+	&.spinner-js
+		opacity: 0
+		visibility: hidden
+
+		.ui-spinner &
+			opacity: 1
+			visibility: visible
 
 .ui-widget.ui-widget-content
 	border: none
@@ -67,7 +69,7 @@ $spinner-input-size: 54px // width
 .ui-spinner-down
 	left: 0
 
-.ui-spinner .ui-button-icon
+.ui-button-icon-only .ui-icon
 	$this-icon-lines-size: 10px, 2px // width, height
 	$this-icon-lines-color: $text-color
 
@@ -84,34 +86,44 @@ $spinner-input-size: 54px // width
 		+size(nth($this-icon-lines-size, 1), nth($this-icon-lines-size, 2))
 		background-color: $this-icon-lines-color
 
-.ui-spinner .ui-spinner-up .ui-button-icon
-	//&::before
-		top: 0
-		right: 50%
-		transform-origin: top right
-		transform: rotate(-45deg)
+.ui-spinner-up
+	.ui-button-icon
+		//&::before
+			top: 0
+			right: 50%
+			transform-origin: top right
+			transform: rotate(-45deg)
 
-	&::before
-		transform: rotate(0.25turn)
+		&::before
+			transform: rotate(0.25turn)
 
-	//&::after
-		top: 0
-		left: 50%
-		transform-origin: top left
-		transform: rotate(45deg)
+		//&::after
+			top: 0
+			left: 50%
+			transform-origin: top left
+			transform: rotate(45deg)
 
-//.ui-spinner .ui-spinner-down .ui-button-icon
-	&::before
-		bottom: 0
-		right: 50%
-		transform-origin: bottom right
-		transform: rotate(45deg)
+.ui-spinner-down
 
-	&::after
-		bottom: 0
-		left: 50%
-		transform-origin: bottom left
-		transform: rotate(-45deg)
+	//.ui-button-icon
+		&::before
+			bottom: 0
+			right: 50%
+			transform-origin: bottom right
+			transform: rotate(45deg)
+
+		//&::after
+			bottom: 0
+			left: 50%
+			transform-origin: bottom left
+			transform: rotate(-45deg)
+
+	[aria-valuenow="0"] ~ &
+		cursor: default
+
+		.ui-button-icon
+			&::before, &::after
+				background-color: $btn-disabled-color !important
 
 // hover
 .ui-spinner-button:hover .ui-button-icon

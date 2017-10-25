@@ -1,0 +1,26 @@
+<div class="inline-popup__title">@@title</div>
+<div class="inline-popup__content order-calc order-calc-js">
+	<div class="c-table order-calc-list">
+		<div class="c-thead">
+			<div class="c-tr">
+				<div class="c-th">Модель</div>
+				<div class="c-th">Цвет</div>
+				<div class="c-th">Размер</div>
+				<div class="c-th">Рост</div>
+				<div class="c-th">Остаток</div>
+				<div class="c-th">Цена</div>
+				<div class="c-th">Количество</div>
+			</div>
+		</div>
+		<div class="c-tbody">
+			@@loop("_tpl_order-calc-items.html", "includes-json/order-calc-items-01.json")
+		</div>
+	</div>
+	<div class="order-calc-totals">
+		<div class="order-calc-totals__text price-calc__totals-label-js">
+			<div class="order-calc-totals__label">Итого:</div>
+			<span class="order-calc-totals__count price-calc__counts-total-js">0</span> позиций на <span class="order-calc-totals__price price-calc__price-total-js">0</span> руб.
+		</div>
+		<a href="#" class="btn-default order-calc-btn">Заказать</a>
+	</div>
+</div>

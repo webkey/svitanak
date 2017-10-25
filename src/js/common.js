@@ -2272,63 +2272,72 @@ function popupInitial(){
 			},
 			ajaxContentAdded: function() {
 				// Ajax content is loaded and appended to DOM
-				priceCalculation(this.content.find('.spinner-js'));
+				spinnerInit(this.content.find('.spinner-js'));
+				priceCalculation();
 			}
 		}
 	});
 }
 
+/**
+ * ui spinner initial
+ */
+function spinnerInit($spinner) {
+	$spinner.spinner({
+		min: 0
+	});
+}
+
+
 /**product price calculation*/
-function priceCalculation($spinner) {
-	var $container = $('.price-calc-js');
+function priceCalculation() {
+	var $container = $('.order-calc-js');
 	var $price = $('.price-js');
-	var totalCount = 0;
 	var objMain = {};
 	var objId = {};
 	var objCount = {};
 	var objPriceSum = {};
 
-	$spinner.spinner({
-		min: 0,
-		spin: function( event, ui ) {
+	$(document).on('change spin', '.price-calc__number-js', function (e, ui) {
 
-			var $currentPrice = $(this).closest('tr').find($price);
-			var priceVal = $currentPrice.data('price');
+		var $currentInput = $(this);
+		var $currentPrice = $currentInput.closest('.c-tr').find($price);
+		var priceVal = $currentPrice.data('price');
 
-			var currentItemCount = ui.value;
-			var priceValSum = Math.round(priceVal * currentItemCount * 100) / 100;
+		var currentItemCount = ui ? ui.value : +$currentInput.val();
 
-			$currentPrice.attr('data-price-sum', priceValSum);
+		var priceValSum = Math.round(priceVal * currentItemCount * 100) / 100;
 
-			// добавляем в ассоциативный ряд значения для каждого элемента
-			objId['count'] = currentItemCount;
-			objId['priceSum'] = priceValSum;
+		$currentPrice.attr('data-price-sum', priceValSum);
 
-			// добавляем в общий объект создаваемые ассоциативные ряды элементов
-			var id = $(this).data('id');
-			objMain[id] = objId;
+		// добавляем в ассоциативный ряд значения для каждого элемента
+		objId['count'] = currentItemCount;
+		objId['priceSum'] = priceValSum;
 
-			// console.log(id + ": ", objMain[id]['count']);
+		// добавляем в общий объект создаваемые ассоциативные ряды элементов
+		var id = $currentInput.data('id');
+		objMain[id] = objId;
 
-			// добавляем в отдельный объект параметры каждого элемента
-			objCount[id] = objMain[id]['count']; // объект с количеством выбранных элеметров
-			objPriceSum[id] = objMain[id]['priceSum']; // объект с общей ценой выбранных элементов
+		// console.log(id + ": ", objMain[id]['count']);
 
-			// console.log("objCount: ", objCount);
-			// console.log("objPriceSum: ", objPriceSum);
+		// добавляем в отдельный объект параметры каждого элемента
+		objCount[id] = objMain[id]['count']; // объект с количеством выбранных элеметров
+		objPriceSum[id] = objMain[id]['priceSum']; // объект с общей ценой выбранных элементов
 
-			// суммируем значения в созданных объектах
-			var countSum = sum(objCount);
-			var priceSum = sum(objPriceSum);
+		// console.log("objCount: ", objCount);
+		// console.log("objPriceSum: ", objPriceSum);
 
-			// console.log("countSum: ", countSum);
-			// console.log("priceSum: ", priceSum);
+		// суммируем значения в созданных объектах
+		var countSum = sum(objCount);
+		var priceSum = sum(objPriceSum);
 
-			var $currentContainer = $currentPrice.closest($container);
-			$currentContainer.find('.price-calc__totals-label-js').toggleClass('show', countSum > 0);
-			$currentContainer.find('.price-calc__counts-total-js').text(countSum);
-			$currentContainer.find('.price-calc__price-total-js').text(priceSum);
-		}
+		// console.log("countSum: ", countSum);
+		// console.log("priceSum: ", priceSum);
+
+		var $currentContainer = $currentPrice.closest($container);
+		$currentContainer.find('.price-calc__totals-label-js').toggleClass('show', countSum > 0);
+		$currentContainer.find('.price-calc__counts-total-js').text(countSum);
+		$currentContainer.find('.price-calc__price-total-js').text(priceSum);
 	});
 
 	function sum(obj) {
@@ -2486,7 +2495,8 @@ $(document).ready(function () {
 	sortingOrder();
 	initMultiAccordion();
 	popupInitial();
-	priceCalculation($( ".spinner-js" ));
+	spinnerInit($(".spinner-js"));
+	priceCalculation();
 	onlyNumberInput();
 
 	/* for testing validate forms */
