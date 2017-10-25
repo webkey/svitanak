@@ -2251,6 +2251,21 @@ function initMultiAccordion() {
 	}
 }
 
+/*popup initial*/
+function popupInitial(){
+
+	$('.btn-order-js').magnificPopup({
+		// delegate: 'a',
+		type: 'ajax',
+		// closeOnContentClick: false,
+		mainClass: 'mfp-zoom-in ',
+		removalDelay: 500,
+		fixedContentPos: 'auto',
+		overflowY: 'auto'
+	});
+}
+/*popup initial end*/
+
 /**
  * !Always place the footer at the bottom of the page
  * */
@@ -2371,6 +2386,7 @@ $(document).ready(function () {
 	multiFiltersInit();
 	sortingOrder();
 	initMultiAccordion();
+	popupInitial();
 
 	/* for testing validate forms */
 	formSuccessExample();
