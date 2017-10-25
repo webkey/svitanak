@@ -1,0 +1,108 @@
+@@include('_tpl_layout_head.html', {
+	"title": "ajax-order",
+	"pageClass": ""
+})
+
+@@include('_tpl_PAGE_WRAP.html', {"pageWrap": "START" })
+
+<!--HEADER-->
+@@include('_tpl_layout_header.html', {
+	"currentItem": "Клиентам"
+})
+<!--HEADER end-->
+<!--MAIN-->
+<div class="main">
+
+	<div class="main__holder">
+		<!--CONTENT-->
+		<div class="content-wrap">
+			<div class="content user-content">
+				<div class="order-product mfp-with-anim inline-popup">
+					<div class="inline-popup__title">Комплект жен.(фуфайка+брюки)</div>
+					<div class="inline-popup__content price-calc-js">
+						<table class="order-list">
+							<thead>
+								<tr>
+									<th>Модель</th>
+									<th>Цвет</th>
+									<th>Размер</th>
+									<th>Рост</th>
+									<th>Остаток</th>
+									<th>Цена</th>
+									<th>Количество</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>
+										<a href="#" class="order-list__img">
+											<img src="img/img-products-01.jpg" alt="image description" />
+										</a>
+									</td>
+									<td>
+										<div><span class="color-pic" style="background-color: #8f8288;">#8f8288</span> – Серый</div>
+									</td>
+									<td>44</td>
+									<td>155 см</td>
+									<td><div class="stock-tape" title="50%"><span class="stock-tape-value" style="width: 50%;">50%</span></div></td>
+									<td><div class="price-js" data-price="125.79">125,79 р.</div></td>
+									<td><input class="spinner spinner-js" type="text" name="value" value="0" data-id="Р219044~158~88" data-only-number></td>
+								</tr>
+								<tr>
+									<td>
+										<a href="#" class="order-list__img">
+											<img src="img/img-products-02.jpg" alt="image description" />
+										</a>
+									</td>
+									<td>
+										<div><span class="color-pic" style="background-color: #c73ec4;">#c73ec4</span> – Розовый</div>
+									</td>
+									<td>48</td>
+									<td>170 см</td>
+									<td><div class="stock-tape" title="5%"><span class="stock-tape-value" style="width: 5%;">5%</span></div></td>
+									<td><div class="price-js" data-price="122.15">122,15 р.</div></td>
+									<td><input class="spinner spinner-js" type="text" name="value" value="0" data-id="Р219044~158~92" data-only-number></td>
+								</tr>
+								<tr>
+									<td>
+										<a href="#" class="order-list__img">
+											<img src="img/img-products-03.jpg" alt="image description" />
+										</a>
+									</td>
+									<td>
+										<div><span class="color-pic" style="background-color: #b28384;">#b28384</span> – Лиловый</div>
+									</td>
+									<td>50</td>
+									<td>182 см</td>
+									<td><div class="stock-tape" title="5%"><span class="stock-tape-value" style="width: 68%;">68%</span></div></td>
+									<td><div class="price-js" data-price="400.05">400,05 р.</div></td>
+									<td><input class="spinner spinner-js" type="text" name="value" value="0" data-id="Р219044~182~50" data-only-number></td>
+								</tr>
+							</tbody>
+						</table>
+						<div class="order-product-totals">
+							<div class="order-product-totals__label price-calc__totals-label-js">
+								<div class="label">Итого:</div>
+								<span class="count price-calc__counts-total-js">0</span> позиций на <span class="total-price price-calc__price-total-js">0</span> руб.
+							</div>
+							<a href="#" class="btn-default">Заказать</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!--CONTENT end-->
+	</div>
+
+</div>
+<!--MAIN end-->
+
+<!--SIDEBAR-->
+@@include('_tpl_layout_sidebar.html', {
+	"currentItem": ""
+})
+<!--SIDEBAR-->
+
+@@include('_tpl_PAGE_WRAP.html', { "pageWrap": "END" })
+
+@@include('_tpl_layout_foot.html')

@@ -1164,3 +1164,83 @@ $m-services-thumb-indent: 320px
 	color: $text-color-light
 
 /* box options end
+
+/* order list
+.order-list__img
+	border: 1px solid transparent
+	display: block
+	text-decoration: none
+	color: inherit
+	position: relative
+	+size(70px, auto)
+
+	&::after
+		+pseudo-block-relative()
+		+ratio(1, 1)
+
+	img
+		+cover-abs
+		display: block
+		width: 100%
+		height: 100%
+		max-width: none
+		+object-fit(contain)
+
+// hover
+.no-touchevents a.order-list__img:hover
+	border-color: $base-color
+
+// total
+.order-product-totals__label
+	display: none
+
+	&.show
+		display: block
+
+/* order list end
+
+/* stock tape
+.stock-tape
+	display: block
+	position: relative
+	+size(90px, 10px)
+	background-color: $bg-color-base
+	box-shadow: inset 0 0 0 1px $border-color
+
+.stock-tape-value
+	background-color: gray
+	+cover-abs
+	text-indent: -9999px
+	overflow: hidden
+
+	$group: 1, 100
+
+	@for $item from nth($group, 1) through nth($group, 2)
+
+		$percentage: $item*1%
+
+		&[style*="#{$percentage}"]
+
+			background-color: mix(#36b514, #e2460f, $percentage)
+
+	//$group2: 51, 100
+
+	//@for $item from nth($group2, 1) through nth($group2, 2)
+
+		$min: nth($group2, 1)
+		$max: nth($group2, 2)
+		$total: $max - $min
+		$cur-item: $item - 1
+
+		$per: $item*1%
+		//$perColor: 100/(nth($group2, 1) - 1)*$cur-item*1%
+		$perColor: 100/$total
+
+		@debug $total
+		//@debug $per
+		//@debug $perColor
+	//&[style*="#{$per}"]
+
+		background-color: mix(#e2460f, #131ee2, $perColor)
+
+/* stock tape end

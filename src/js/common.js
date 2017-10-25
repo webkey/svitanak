@@ -2261,10 +2261,109 @@ function popupInitial(){
 		mainClass: 'mfp-zoom-in ',
 		removalDelay: 500,
 		fixedContentPos: 'auto',
-		overflowY: 'auto'
+		overflowY: 'auto',
+		callbacks: {
+			open: function() {
+				// Will fire when this exact popup is opened
+				// this - is Magnific Popup object
+			},
+			close: function() {
+				// Will fire when popup is closed
+			},
+			ajaxContentAdded: function() {
+				// Ajax content is loaded and appended to DOM
+				priceCalculation(this.content.find('.spinner-js'));
+			}
+		}
 	});
 }
-/*popup initial end*/
+
+/**product price calculation*/
+function priceCalculation($spinner) {
+	var $container = $('.price-calc-js');
+	var $price = $('.price-js');
+	var totalCount = 0;
+	var objMain = {};
+	var objId = {};
+	var objCount = {};
+	var objPriceSum = {};
+
+	$spinner.spinner({
+		min: 0,
+		spin: function( event, ui ) {
+
+			var $currentPrice = $(this).closest('tr').find($price);
+			var priceVal = $currentPrice.data('price');
+
+			var currentItemCount = ui.value;
+			var priceValSum = Math.round(priceVal * currentItemCount * 100) / 100;
+
+			$currentPrice.attr('data-price-sum', priceValSum);
+
+			// добавляем в ассоциативный ряд значения для каждого элемента
+			objId['count'] = currentItemCount;
+			objId['priceSum'] = priceValSum;
+
+			// добавляем в общий объект создаваемые ассоциативные ряды элементов
+			var id = $(this).data('id');
+			objMain[id] = objId;
+
+			// console.log(id + ": ", objMain[id]['count']);
+
+			// добавляем в отдельный объект параметры каждого элемента
+			objCount[id] = objMain[id]['count']; // объект с количеством выбранных элеметров
+			objPriceSum[id] = objMain[id]['priceSum']; // объект с общей ценой выбранных элементов
+
+			// console.log("objCount: ", objCount);
+			// console.log("objPriceSum: ", objPriceSum);
+
+			// суммируем значения в созданных объектах
+			var countSum = sum(objCount);
+			var priceSum = sum(objPriceSum);
+
+			// console.log("countSum: ", countSum);
+			// console.log("priceSum: ", priceSum);
+
+			var $currentContainer = $currentPrice.closest($container);
+			$currentContainer.find('.price-calc__totals-label-js').toggleClass('show', countSum > 0);
+			$currentContainer.find('.price-calc__counts-total-js').text(countSum);
+			$currentContainer.find('.price-calc__price-total-js').text(priceSum);
+		}
+	});
+
+	function sum(obj) {
+		var result = 0;
+		var prop;
+
+		for(prop in obj) {
+			result += obj[prop];
+		}
+
+		return Math.round(result*100)/100;
+	}
+
+}
+
+/**only number input*/
+function onlyNumberInput() {
+	// link: https://stackoverflow.com/questions/995183/how-to-allow-only-numeric-0-9-in-html-inputbox-using-jquery
+
+	$("[data-only-number]").keydown(function (e) {
+		// Allow: backspace, delete, tab, escape, enter and .
+		if ($.inArray(e.keyCode, [46, 8, 9, 27, 13, 110, 190]) !== -1 ||
+			// Allow: Ctrl+A, Command+A
+			(e.keyCode === 65 && (e.ctrlKey === true || e.metaKey === true)) ||
+			// Allow: home, end, left, right, down, up
+			(e.keyCode >= 35 && e.keyCode <= 40)) {
+			// let it happen, don't do anything
+			return;
+		}
+		// Ensure that it is a number and stop the keypress
+		if ((e.shiftKey || (e.keyCode < 48 || e.keyCode > 57)) && (e.keyCode < 96 || e.keyCode > 105)) {
+			e.preventDefault();
+		}
+	});
+}
 
 /**
  * !Always place the footer at the bottom of the page
@@ -2387,6 +2486,8 @@ $(document).ready(function () {
 	sortingOrder();
 	initMultiAccordion();
 	popupInitial();
+	priceCalculation($( ".spinner-js" ));
+	onlyNumberInput();
 
 	/* for testing validate forms */
 	formSuccessExample();
