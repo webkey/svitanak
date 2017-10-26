@@ -1793,6 +1793,7 @@ function toggleView() {
 			if($currentItem.hasClass(dropIsOpenedClass)) {
 				// closeVisibleDrop();
 				closeCurrentDrop($currentItem);
+
 				return;
 			}
 
@@ -1823,16 +1824,22 @@ function toggleView() {
 		function openCurrentDrop($elements) {
 			self.addClassCustom($elements, dropIsOpenedClass);
 			// self.dropIsOpened = true;
+			// reinit sticky
+			$(".m-aside").hcSticky('reinit');
 		}
 
 		function closeCurrentDrop($elements) {
 			self.removeClassCustom($elements, dropIsOpenedClass);
 			// self.dropIsOpened = true;
+			// reinit sticky
+			$(".m-aside").hcSticky('reinit');
 		}
 
 		function closeVisibleDrop() {
 			self.removeClassCustom($item, dropIsOpenedClass);
 			// self.dropIsOpened = false;
+			// reinit sticky
+			$(".m-aside").hcSticky('reinit');
 		}
 	};
 
@@ -2288,7 +2295,6 @@ function spinnerInit($spinner) {
 	});
 }
 
-
 /**product price calculation*/
 function priceCalculation() {
 	var $container = $('.order-calc-js');
@@ -2372,6 +2378,21 @@ function onlyNumberInput() {
 			e.preventDefault();
 		}
 	});
+}
+
+/**
+ * Sticky element on page
+ */
+function stickyInit() {
+	var $mAside = $('.m-aside');
+	if ($mAside.length) {
+		$mAside.hcSticky({
+			top: $('.header').outerHeight() + 20,
+			wrapperClassName: 'm-aside-sticky'
+			// responsive: false
+
+		});
+	}
 }
 
 /**
@@ -2499,6 +2520,7 @@ $(document).ready(function () {
 	priceCalculation();
 	onlyNumberInput();
 
+	stickyInit();
 	/* for testing validate forms */
 	formSuccessExample();
 

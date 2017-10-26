@@ -102,7 +102,9 @@ gulp.task('createCustomModernizr', function (done) { // Таск для форм
 
 gulp.task('copyLibsScriptsToJs', ['copyJqueryToJs'], function () { // Таск для мераж js библиотек
 	return gulp.src([
-		'src/libs/device.js/lib/device.min.js' // определение устройств
+		// jquery ui
+		'src/libs/jquery-ui/jquery-ui.min.js'
+		, 'src/libs/device.js/lib/device.min.js' // определение устройств
 		, 'src/libs/jquery-smartresize/jquery.debouncedresize.js' // "умный" ресайз
 		, 'src/libs/jquery-placeholder/jquery.placeholder.min.js' // поддержка плейсхолдера в старых браузерах
 		, 'src/libs/select2/dist/js/select2.full.min.js' // кастомный селект
@@ -116,8 +118,7 @@ gulp.task('copyLibsScriptsToJs', ['copyJqueryToJs'], function () { // Таск �
 		, 'src/libs/fullpage.js/dist/jquery.fullpage.min.js' // скрипт для постраничной прокрутки
 		, 'src/libs/matchHeight/dist/jquery.matchHeight-min.js' // скрипт для выравнивания элементов по максимальному
 		, 'src/libs/magnific-popup/dist/jquery.magnific-popup.min.js' // Magnific Popup - v1.1.0 - 2016-02-20 http://dimsemenov.com/plugins/magnific-popup/
-		// jquery ui
-		, 'src/libs/jquery-ui/jquery-ui.min.js'
+		, 'src/libs/hc-sticky/jquery.hc-sticky.min.js' // sticky element on scroll
 	])
 		.pipe(concat('libs.js')) // Собираем их в кучу в новом файле libs.min.js
 		.pipe(gulp.dest('src/js'))
@@ -128,8 +129,10 @@ gulp.task('copyLibsScriptsToJs', ['copyJqueryToJs'], function () { // Таск �
 
 gulp.task('copyJqueryToJs', function () { // Таск для копирования jquery в js папку
 	return gulp.src([
-		'src/libs/jquery/dist/jquery.min.js'
+		// 'src/libs/jquery/dist/jquery.min.js'
+		'src/libs/jquery-2.2.4.min/index.js'
 	])
+		.pipe(rename({basename: 'jquery-2.2.4.min'})) // Добавляем суффикс .min
 		.pipe(gulp.dest('src/js'));
 });
 
@@ -182,7 +185,7 @@ gulp.task('build', ['cleanDistFolder', 'htmlCompilation', 'copyImgToDist', 'sass
 	gulp.src(['!src/js/temp/**/*.js', '!src/js/**/temp-*.js', 'src/js/*.js']) // Переносим скрипты в продакшен
 		.pipe(gulp.dest('dist/js'));
 
-	gulp.src(['!src/__*.html', 'src/forms.html', '!src/_tpl_*.html', 'src/*.html']) // Переносим HTML в продакшен
+	gulp.src(['!src/__*.html', '!src/ajax*.html', '!src/temp*.html', 'src/forms.html', '!src/_tpl_*.html', 'src/*.html']) // Переносим HTML в продакшен
 		.pipe(gulp.dest('dist'));
 
 	gulp.src(['src/*.png', 'src/*.ico', 'src/.htaccess']) // Переносим favicon и др. файлы в продакшин
