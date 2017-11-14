@@ -104,6 +104,9 @@ gulp.task('copyLibsScriptsToJs', ['copyJqueryToJs'], function () { // Таск �
 	return gulp.src([
 		// jquery ui
 		'src/libs/jquery-ui/jquery-ui.min.js'
+		// , 'src/libs/jquery-ui/ui/core.js' // jquery ui (core)
+		// , 'src/libs/jquery-ui/ui/widget.js' // jquery ui (widget)
+		// , 'src/libs/jquery-ui/ui/widgets/spinner.js' // jquery ui (spinner)
 		, 'src/libs/device.js/lib/device.min.js' // определение устройств
 		, 'src/libs/jquery-smartresize/jquery.debouncedresize.js' // "умный" ресайз
 		, 'src/libs/jquery-placeholder/jquery.placeholder.min.js' // поддержка плейсхолдера в старых браузерах
@@ -118,7 +121,10 @@ gulp.task('copyLibsScriptsToJs', ['copyJqueryToJs'], function () { // Таск �
 		, 'src/libs/fullpage.js/dist/jquery.fullpage.min.js' // скрипт для постраничной прокрутки
 		, 'src/libs/matchHeight/dist/jquery.matchHeight-min.js' // скрипт для выравнивания элементов по максимальному
 		, 'src/libs/magnific-popup/dist/jquery.magnific-popup.min.js' // Magnific Popup - v1.1.0 - 2016-02-20 http://dimsemenov.com/plugins/magnific-popup/
-		, 'src/libs/hc-sticky/jquery.hc-sticky.min.js' // sticky element on scroll
+
+		, 'src/js/temp/rAF.js' // resize-sensor for "sticky-sidebar.js"
+		, 'src/libs/resize-sensor/ResizeSensor.min.js' // resize-sensor for "sticky-sidebar.js"
+		, 'src/libs/sticky-sidebar/dist/jquery.sticky-sidebar.min.js' // sticky element on scroll
 	])
 		.pipe(concat('libs.js')) // Собираем их в кучу в новом файле libs.min.js
 		.pipe(gulp.dest('src/js'))
@@ -129,10 +135,8 @@ gulp.task('copyLibsScriptsToJs', ['copyJqueryToJs'], function () { // Таск �
 
 gulp.task('copyJqueryToJs', function () { // Таск для копирования jquery в js папку
 	return gulp.src([
-		// 'src/libs/jquery/dist/jquery.min.js'
-		'src/libs/jquery-2.2.4.min/index.js'
+		'src/libs/jquery/dist/jquery.min.js'
 	])
-		.pipe(rename({basename: 'jquery-2.2.4.min'})) // Добавляем суффикс .min
 		.pipe(gulp.dest('src/js'));
 });
 

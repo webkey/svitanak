@@ -429,15 +429,38 @@ body
 .m-aside
 	float: left
 	width: $aside-width
+	// for sticky-sidebar js
+	will-change: min-height
+
+.m-aside-holder
+	// for sticky-sidebar js
+	transform: translate(0, 0) /* For browsers don't support translate3d. */
+	transform: translate3d(0, 0, 0)
+	will-change: position, transform
 	padding-right: $layout-spaces
 
 .m-content
 	margin-left: $aside-width
+	+clear
+
+.m-content__holder
+	float: left
+	width: 100%
 
 /* m-container (layout) end
 
 /* filters tags (layout)
-.p-filters-tags
+.p-filters-tags.is-affixed
+	// for sticky-sidebar js
+	z-index: 5
+
+.p-filters-tags__holder
 	padding-left: $aside-width
 
 /* filters tags (layout) end
+
+/* news-preview (layout)
+.news-preview
+	max-width: $flood-layout-width
+
+/* news-preview(layout) end

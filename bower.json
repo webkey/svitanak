@@ -18,7 +18,7 @@
   ],
   "dependencies": {
     "slick-carousel": "^1.6.0",
-    "jquery": "2.2.4",
+    "jquery": "^3.1.1",
     "device.js": "devicejs#^0.2.7",
     "gsap": "^1.19.1",
     "fullpage.js": "^2.9.4",
@@ -31,7 +31,8 @@
     "select2": "^4.0.3",
     "swiper": "^3.4.2",
     "magnific-popup": "^1.1.0",
-    "hc-sticky": "^1.2.43"
+    "sticky-sidebar": "^3.3.0",
+    "resize-sensor": "^0.0.7"
   },
   "devDependencies": {
     "mathsass": "^0.9.5"

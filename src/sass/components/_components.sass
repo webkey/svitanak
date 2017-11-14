@@ -948,6 +948,7 @@ $m-services-thumb-indent: 320px
 	text-decoration: none
 	color: inherit
 	padding-bottom: $news-preview-footer-height
+	letter-spacing: $letter-spacing
 	+clear
 
 	height: 100%
@@ -961,7 +962,6 @@ $m-services-thumb-indent: 320px
 
 .news-preview__img
 	position: relative
-	overflow: hidden
 	+size(nth($news-preview-img-size, 1), auto)
 	max-width: 100%
 	background-color: $bg-color-alt
@@ -970,6 +970,14 @@ $m-services-thumb-indent: 320px
 	&::before
 		+pseudo-block-relative()
 		+ratio(nth($news-preview-img-size, 1), nth($news-preview-img-size, 2))
+
+	&::after
+		$size: 80px
+		+pseudo()
+		+position(100%, 35px)
+		+size(0, #{$size})
+		margin-top: -#{round($size/2)}
+		border-left: 1px solid $base-color
 
 	img
 		display: block
@@ -1026,9 +1034,25 @@ $m-services-thumb-indent: 320px
 .no-image
 	.news-preview__img
 		background-image: url(../../img/no-img.png)
+		background-color: $bg-color-alt
 		background-position: center
 		background-repeat: no-repeat
-		background-size: cover
+		background-size: 50%
+
+
+.news-preview
+	margin-bottom: $bottom-space--lg
+	+grid-parent($news-preview-space-between)
+	+clear-spacing
+
+	+media('<desk-lg')
+		margin-bottom: $bottom-space--ml
+
+	&:last-child
+		margin-bottom: 0
+
+.news-previews__item
+	+grid-item(2, $news-preview-space-between)
 
 /* news previews end
 

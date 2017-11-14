@@ -1,0 +1,78 @@
+@@include('_tpl_layout_head.html', {
+	"title": "Пресс-релизы",
+	"pageClass": ""
+})
+
+@@include('_tpl_PAGE_WRAP.html', {"pageWrap": "START" })
+
+<!--HEADER-->
+@@include('_tpl_layout_header.html', {
+	"currentItem": ""
+})
+<!--HEADER end-->
+
+<!--MAIN-->
+<div class="main">
+	<div class="main__holder">
+
+		<!--CONTENT-->
+		<div class="content-wrap">
+			<div class="content user-content">
+
+				<div class="layout-article">
+					@@include('_tpl_breadcrumbs.html', {
+						"items": ["Главная"],
+						"last": "Пресс-релизы"
+					})
+
+					<div class="heading">
+						<h1>Пресс-релизы</h1>
+					</div>
+					<div class="p-filters p-filters-js">
+						<div class="p-filters-tags">
+							<div class="p-filters-tags__holder">
+								<div class="p-filters-tags__frame p-filters-tags-js">
+									<!--filters tags-->
+								</div>
+							</div>
+						</div>
+						<div class="m-container">
+							<div class="m-aside">
+								<div class="m-aside-holder">
+									<!--filters-->
+									@@include('_tpl_products-filters.html')
+									<!--filters end-->
+								</div>
+							</div>
+							<div class="m-content">
+								<div class="m-content__holder">
+									<!--news previews-->
+									<div class="news-preview">
+										@@loop("_tpl_news-preview.html", "includes-json/news-slider-slides.json")
+									</div>
+									<!--news previews end-->
+									<!--pagination-->
+									@@include('_tpl_pagination.html')
+									<!--pagination end-->
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+			</div>
+		</div>
+		<!--CONTENT end-->
+	</div>
+</div>
+<!--MAIN end-->
+
+<!--SIDEBAR-->
+@@include('_tpl_layout_sidebar.html', {
+	"currentItem": "Новости"
+})
+<!--SIDEBAR-->
+
+@@include('_tpl_PAGE_WRAP.html', { "pageWrap": "END" })
+
+@@include('_tpl_layout_foot.html')
