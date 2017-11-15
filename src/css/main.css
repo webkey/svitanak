@@ -3634,13 +3634,16 @@ label.input--focus, input[type="text"].input--focus, input[type="password"].inpu
 .form-caption {
 	position: relative;
 	display: block;
-	margin-bottom: 4rem;
+	margin-bottom: 50px;
+}
+
+.input-wrap + .form-caption {
+	margin-top: 90px;
 }
 
 .form-title {
 	display: block;
 	position: relative;
-	width: 50%;
 	font-family: "minionpro-bold", serif;
 	font-weight: normal;
 	font-style: normal;
@@ -3648,7 +3651,11 @@ label.input--focus, input[type="text"].input--focus, input[type="password"].inpu
 	line-height: 1.2;
 	color: #1a1a1a;
 	text-transform: uppercase;
-	margin-bottom: 4rem;
+	margin-bottom: 50px;
+}
+
+.form-caption .form-title {
+	width: 50%;
 }
 
 .form-title::after {
@@ -3661,6 +3668,16 @@ label.input--focus, input[type="text"].input--focus, input[type="password"].inpu
 	height: 0;
 	margin: -0.7em 0 0 20px;
 	border-top: 1px solid #1a1a1a;
+}
+
+.form-subtitle {
+	font-family: "minionpro-bold", serif;
+	font-weight: normal;
+	font-style: normal;
+	font-size: 36px;
+	line-height: 1;
+	color: #1a1a1a;
+	margin-bottom: 50px;
 }
 
 .btn-reset {
@@ -3727,13 +3744,13 @@ label.input--focus, input[type="text"].input--focus, input[type="password"].inpu
 
 .user-form .label-holder {
 	float: left;
-	width: 180px;
+	width: 250px;
 	margin-bottom: 0;
 	padding: 14px 20px 0 0;
 }
 
 .user-form .input-holder {
-	margin-left: 180px;
+	margin-left: 250px;
 }
 
 .user-form textarea {
@@ -3760,14 +3777,17 @@ label.input--focus, input[type="text"].input--focus, input[type="password"].inpu
 .user-form .captcha img {
 	display: inline-block;
 	vertical-align: middle;
-	max-width: calc(50%);
+	max-width: 50%;
 	margin-right: 20px;
+	font-size: 12px;
+	line-height: 1.33;
+	letter-spacing: 0.025em;
 }
 
 .user-form .captcha img + input {
 	display: inline-block;
 	vertical-align: middle;
-	width: 200px;
+	width: calc(50% - 20px);
 }
 
 @media (max-width: 991px) {
@@ -3783,8 +3803,34 @@ label.input--focus, input[type="text"].input--focus, input[type="password"].inpu
 	}
 }
 
+.user-form .captcha-refresh {
+	font-size: 14px;
+	line-height: 1.29;
+	letter-spacing: 0.025em;
+	margin-bottom: 0.5em;
+}
+
+.user-form .captcha-refresh a {
+	color: #1a1a1a;
+	text-decoration: none;
+}
+
+.user-form .captcha-refresh a span {
+	border-bottom: 1px dotted #1a1a1a;
+}
+
+.user-form .captcha-refresh a:hover {
+	color: #ff6501;
+}
+
+.user-form .captcha-refresh a:hover span {
+	border-color: #ff6501;
+}
+
 .user-form .form-footer {
-	padding-left: 180px;
+	padding: 50px 0 0;
+	border: solid #d9d9d9;
+	border-width: 1px 0 0;
 }
 
 .user-form .form-footer::after {
@@ -3821,6 +3867,7 @@ label.input--focus, input[type="text"].input--focus, input[type="password"].inpu
 	font-size: 0;
 	letter-spacing: -4px;
 	line-height: 25px;
+	max-width: 250px;
 }
 
 .user-form .form-note::before {
