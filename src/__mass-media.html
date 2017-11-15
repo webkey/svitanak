@@ -1,6 +1,6 @@
 @@include('_tpl_layout_head.html', {
-	"title": "Пресс-релизы",
-	"pageClass": ""
+	"title": "Акции",
+	"pageClass": "СМИ о нас"
 })
 
 @@include('_tpl_PAGE_WRAP.html', {"pageWrap": "START" })
@@ -21,16 +21,16 @@
 
 				@@include('_tpl_breadcrumbs.html', {
 					"items": ["Главная"],
-					"last": "Пресс-релизы"
+					"last": "СМИ о нас"
 				})
 
 				<div class="heading">
 					<div class="previews-tabs__thumbs">
 						<div class="previews-tabs__tab">
-							<a href="news.html" class="active-tab"><span>Пресс-релизы</span></a>
+							<a href="news.html"><span>Пресс-релизы</span></a>
 						</div>
 						<div class="previews-tabs__tab">
-							<a href="mass-media.html"><span>СМИ о нас</span></a>
+							<a href="mass-media.html" class="active-tab"><span>СМИ о нас</span></a>
 						</div>
 					</div>
 					<!--view switcher-->
@@ -66,7 +66,7 @@
 								<div class="m-content__holder">
 									<!--news previews-->
 									<div class="news-preview" data-toggle-view-panels="news">
-										@@loop("_tpl_news-preview.html", "includes-json/news-slider-slides.json")
+										@@loop("_tpl_news-preview.html", "includes-json/promotions-slider-slides.json")
 									</div>
 									<!--news previews end-->
 									<!--pagination-->

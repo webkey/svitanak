@@ -4,11 +4,13 @@
 
 /* view switcher
 $view-switcher-size: 38px, 18px // width, height
+$view-switcher-size-alt: 18px, 18px // width, height
 $view-switcher-icon-size: 16px
 
 .view-switcher
 	position: relative
 	margin-bottom: $bottom-space--md
+	line-height: 0
 
 	&::before
 		+pseudo()
@@ -22,11 +24,18 @@ $view-switcher-icon-size: 16px
 	&:last-child
 		margin-bottom: 0
 
+	// если лежит в .heading
+	.heading &
+		margin-bottom: round($bottom-space--lg/2)
+
+		+media('<desk-lg')
+			margin-bottom: round($bottom-space--ml/2)
+
 	a
 		float: left
 		position: relative
 		margin-left: 20px
-		+size(nth($view-switcher-size, 1), nth($view-switcher-size, 2))
+		//+size(nth($view-switcher-size, 1), nth($view-switcher-size, 2))
 		color: $text-color
 		fill: $text-color
 		z-index: 9
@@ -36,9 +45,17 @@ $view-switcher-icon-size: 16px
 
 		span
 			+hide-text
+			line-height: $line-height
 
 		svg
-			+size(nth($view-switcher-size, 1), nth($view-switcher-size, 2))
+			+display-inline-block-top
+
+			&.svg-ico-menu-short, &.svg-ico-menu-full
+				+size(nth($view-switcher-size, 1), nth($view-switcher-size, 2))
+
+			&.svg-ico-menu-short-lg, &.svg-ico-menu-full-lg
+				+size(nth($view-switcher-size-alt, 1), nth($view-switcher-size-alt, 2))
+
 
 		path
 			fill: inherit

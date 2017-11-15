@@ -2,6 +2,19 @@
 @import ../utils/mixins
 @import ../../libs/include-media/dist/include-media
 
+.m-wrapper
+	position: relative
+	padding-right: 1px
+	margin-bottom: $bottom-space--lg
+	z-index: 15
+	user-select: none
+
+	+media('<desk-lg')
+		margin-bottom: $bottom-space--ml
+
+	&:last-child
+		margin-bottom: 0
+
 /* logo
 .logo
 	position: relative
@@ -990,9 +1003,10 @@ $m-services-thumb-indent: 320px
 .news-preview__content
 	display: block
 	float: right
-	width: 320px
+	//width: 320px
 	padding: round($grid-space*0.68) #{$grid-space}
 	margin-top: -#{round(nth($news-preview-img-size, 2)/2)}
+	margin-left: #{round(nth($news-preview-img-size, 2)/2)}
 	background-color: $bg-color-base
 
 .news-preview__text
@@ -1054,6 +1068,53 @@ $m-services-thumb-indent: 320px
 .news-previews__item
 	+grid-item(2, $news-preview-space-between)
 
+// row view
+.row-view-activated
+	&.news-preview
+		+grid-parent(0)
+
+	.news-previews__item
+		+grid-item-responsive(1, 0)
+		border: dashed $border-color
+		border-width: 0 0 1px
+
+		&:first-child
+			border-width: 1px 0
+
+	.news-preview__inner
+		padding: $grid-space 0
+
+	.news-preview__date
+		float: left
+		width: 135px
+		margin-bottom: -5px 0
+
+	.news-preview__img
+		float: left
+		width: 50px
+		margin-right: 50px
+
+		&::after
+			content: none
+
+	.news-preview__content
+		float: none
+		overflow: hidden
+		margin: -10px 0 // Костыль. Выравнять текст и картинку по горизонтали
+		padding: 0
+
+	.news-preview__text
+		height: auto
+
+	.news-preview__footer
+		display: none
+
+	// hover
+	// if link
+	a.news-preview__inner:hover
+		.news-preview__text
+			color: $base-color
+
 /* news previews end
 
 /* previews tabs
@@ -1099,6 +1160,12 @@ $m-services-thumb-indent: 320px
 
 	&::after
 		left: 100%
+
+	.heading &
+		margin-bottom: round($bottom-space--lg/2)
+
+		+media('<desk-lg')
+			margin-bottom: round($bottom-space--ml/2)
 
 .previews-tabs__tab
 	$this-space: 1.6em

@@ -6,19 +6,6 @@
 $p-filters-angle-lines-size: 10px, 2px // width, height
 $p-filters-angle-lines-color: $text-color
 
-.p-filters
-	position: relative
-	padding-right: 1px
-	margin-bottom: $bottom-space--lg
-	z-index: 15
-	user-select: none
-
-	+media('<desk-lg')
-		margin-bottom: $bottom-space--ml
-
-	&:last-child
-		margin-bottom: 0
-
 .p-filters-list
 	+clear-spacing
 	padding-bottom: 1px
@@ -104,9 +91,9 @@ $p-filters-angle-lines-color: $text-color
 
 	label
 		display: block
-		font-size: 12px
+		font-size: 14px
 		letter-spacing: 0.05em
-		text-transform: uppercase
+		//text-transform: uppercase
 
 		//.no-touchevents &:hover
 			color: $link-color

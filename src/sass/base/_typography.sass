@@ -87,7 +87,8 @@ p
 	padding: 0
 	margin: 0 0 $bottom-space
 
-	&:last-child
+	.#{$user-content} > &:last-child,
+	.layout-article:last-child > &:last-child
 		margin-bottom: 0
 
 hr
@@ -258,8 +259,8 @@ i b, i strong, em b, em strong, b i, b em, strong i, strong em
 	// display flex
 	display: flex
 	justify-content: space-between
-	align-items: center
-	flex-wrap: wrap
+	align-items: flex-start
+	//flex-wrap: wrap
 
 	margin-bottom: round($bottom-space--lg/2)
 
@@ -267,9 +268,11 @@ i b, i strong, em b, em strong, b i, b em, strong i, strong em
 		margin-bottom: round($bottom-space--ml/2)
 
 	h1, h2, h3
+		position: relative
 		+display-inline-block-middle
-		margin-right: 20px
+		padding-right: 50px
 		margin-bottom: round($bottom-space--lg/2)
+		max-width: 80%
 
 		+media('<desk-lg')
 			margin-bottom: round($bottom-space--ml/2)
@@ -277,9 +280,18 @@ i b, i strong, em b, em strong, b i, b em, strong i, strong em
 		&:last-child
 			margin-right: 0
 
+	.sep
+		position: absolute
+		+size(100px, 0)
+		top: 50%
+		left: 100%
+		border-top: 1px solid $tape-slider-color
+		margin-top: -1px
+
 .heading__options
 	+display-inline-block-top
 	margin-bottom: round($bottom-space--lg/2)
+	padding: 12px 0 0
 
 	+media('<desk-lg')
 		margin-bottom: round($bottom-space--ml/2)
@@ -427,6 +439,11 @@ i b, i strong, em b, em strong, b i, b em, strong i, strong em
 	ul, ol
 		ul, ol
 			margin: round($bottom-space*0.5) 0
+
+ul, ol
+	.#{$user-content} > &:last-child,
+	.layout-article:last-child > &:last-child
+		margin-bottom: 0
 
 /* list reset
 .reset-list,

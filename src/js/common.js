@@ -1481,7 +1481,7 @@ function equalHeight() {
 /**
  * !toggle view shops
  * */
-function toggleView() {
+/*function toggleView() {
 	var $switcherHand = $('.view-switcher-js a');
 
 	if ( $switcherHand.length ) {
@@ -1507,7 +1507,127 @@ function toggleView() {
 			// }
 		});
 	}
+}*/
+
+(function($){
+	// <!--view switcher-->
+	// <div class="class-js" data-toggle-view-switcher="id">
+	// 	<a href="#" class="grid-view tv-active" title="">View 1</a>
+	// 	<a href="#" class="list-view" title="">View 2</a>
+	// </div>
+	// <!--view switcher end-->
+
+	var defaults = {
+		anchor: 'a',
+		active: 0,
+		containerClass: 'toggle-view-initialized',
+		dataAttrSwitcher: 'data-toggle-view-switcher',
+		dataAttrPanels: 'data-toggle-view-panels',
+
+		activeClass: 'tv-active',
+		viewClass: 'tv-alt-view'
+
+		// Add callback-function:
+		// created: function () {} // fire after initialized
+		// changed: function () {} // fire after view changed
+		// Callback-function outside call for example:
+		// $('.thisClass').on('changed.toggleView', function () {
+		// 	console.log('changed.toggleView...');
+		// });
+	};
+
+	function ToggleView(element, options) {
+		var self = this;
+
+		self.config = $.extend(true, {}, defaults, options);
+
+		self.element = element;
+		self.anchor = self.element.find(self.config.anchor);
+		self.panels = $('[' + self.config.dataAttrPanels + '="' + self.element.attr(self.config.dataAttrSwitcher) + '"]');
+
+		self.callbacks();
+		self.event(); // example event
+		self.init(); // create DOM structure of the plugins
+	}
+
+	/** track events */
+	ToggleView.prototype.callbacks = function () {
+		var self = this;
+		$.each(self.config, function (key, value) {
+			if(typeof value === 'function') {
+				self.element.on(key + '.toggleView', function (e, param) {
+					return value(e, self.element, param);
+				});
+			}
+		});
+	};
+
+	ToggleView.prototype.event = function () {
+		var self = this;
+
+		self.anchor.on('click', function (e) {
+			e.preventDefault();
+			var currentAnchor = $(this);
+
+			if ( currentAnchor.hasClass(self.config.activeClass) ) return;
+
+			self.anchor.removeClass(self.config.activeClass);
+
+			currentAnchor.addClass(self.config.activeClass);
+
+			// add modifiers class to panels
+			var currentSwitcherAttr = currentAnchor.closest(self.element).attr(self.config.dataAttrSwitcher);
+
+			$('[' + self.config.dataAttrPanels + '="' + currentSwitcherAttr + '"]').toggleClass(self.config.viewClass);
+
+			self.element.trigger('changed.toggleView');
+		});
+	};
+
+	ToggleView.prototype.init = function () {
+		var self = this;
+
+		self.element.addClass(self.config.containerClass);
+		var currentSwitcherAttr = self.element.attr(self.config.dataAttrSwitcher);
+		$('[' + self.config.dataAttrPanels + '="' + currentSwitcherAttr + '"]').addClass(self.config.containerClass);
+
+		self.element.trigger('created.toggleView');
+
+	};
+
+	$.fn.toggleView = function (options) {
+		'use strict';
+
+		new ToggleView(this, options);
+
+		return this;
+	};
+})(jQuery);
+
+function toggleViewInit() {
+	var $toggleViewSwitcherNews = $('.view-switcher-news-js');
+
+	if ( $toggleViewSwitcherNews.length ) {
+
+		$toggleViewSwitcherNews.toggleView({
+			activeClass: 'active',
+			viewClass: 'row-view-activated'
+		})
+	}
+
+	// ==============================
+
+	var $toggleViewSwitcherProducts = $('.view-switcher-products-js');
+
+	if ( $toggleViewSwitcherProducts.length ) {
+
+		$toggleViewSwitcherProducts.toggleView({
+			activeClass: 'active',
+			viewClass: 'grid-view-activated'
+		})
+	}
 }
+
 /*toggle view shops end*/
 
 /**
@@ -2398,13 +2518,30 @@ function stickyInit() {
 	// }
 	var $mAside = $('.m-aside');
 	if ($mAside.length) {
-		$mAside.stickySidebar({
+		// var mAsideSticky = $mAside.stickySidebar({
+		// 	containerSelector: '.m-container',
+		// 	innerWrapperSelector: '.m-aside-holder',
+		// 	topSpacing: $('.header').outerHeight() + 20,
+		// 	resizeSensor: false, // recalculation sticky on change size of elements
+		// 	MinWidth: 640
+		//
+		// });
+
+		var mAsideSticky = new StickySidebar('.m-aside', {
 			containerSelector: '.m-container',
 			innerWrapperSelector: '.m-aside-holder',
 			topSpacing: $('.header').outerHeight() + 20,
 			resizeSensor: false, // recalculation sticky on change size of elements
 			MinWidth: 640
 
+		});
+
+		$('.view-switcher-news-js').on('changed.toggleView', function () {
+			mAsideSticky.updateSticky();
+		});
+
+		$('.view-switcher-products-js').on('changed.toggleView', function () {
+			mAsideSticky.updateSticky();
 		});
 	}
 	// var $filtersTags = $('.p-filters-tags');
@@ -2536,7 +2673,7 @@ $(document).ready(function () {
 	toggleDrop();
 	addDataLengthChildren();
 	equalHeight();
-	toggleView();
+	toggleViewInit();
 	multiFiltersInit();
 	sortingOrder();
 	initMultiAccordion();

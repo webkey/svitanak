@@ -19,85 +19,83 @@
 		<div class="content-wrap">
 			<div class="content user-content">
 
-				<div class="layout-article">
-					@@include('_tpl_breadcrumbs.html', {
-						"items": ["Главная"],
-						"last": "Наша продукция"
-					})
+				@@include('_tpl_breadcrumbs.html', {
+					"items": ["Главная"],
+					"last": "Наша продукция"
+				})
 
-					<div class="heading">
-						<h1>Наша продукция</h1>
+				<div class="heading">
+					<h1>Наша продукция</h1>
+				</div>
+				<div class="article-entry">
+					<p>В каталоге ОАО «Свiтанак» представлены актуальные на сегодняшний день модели белья и верхней одежды, выпускаемой нашим предприятием, а также вся необходимая информация по каждой модели, включающая фото и номер модели, ассортиментную группу, шкалу размеров, состав, полотно и вид отделки.</p>
+				</div>
+				<div class="box-options">
+					<div class="box-options__label">Для удобства пользования каталог разбит на линии, а также снабжен удобным фильтром.</div>
+					<div class="box-options__content">
+						<!--departments-->
+						<ul class="dep-list dep-list--horizontal equal-height-js">
+							@@loop('_tpl_dep-items.html', [
+							{
+							"title": "",
+							"alt": "Женский трикотаж",
+							"items": ["Белье женское", "Верх женский"],
+							"img": "dep-img-01.png"
+							},
+							{
+							"title": "",
+							"alt": "Мужской трикотаж",
+							"items": ["Белье мужское", "Верх мужской"],
+							"img": "dep-img-02.png"
+							},
+							{
+							"title": "",
+							"alt": "Детский трикотаж",
+							"items": ["Белье детское", "Верх детский"],
+							"img": "dep-img-03.png"
+							},
+							{
+							"title": "",
+							"alt": "Ясельный трикотаж",
+							"items": ["Белье ясельное"],
+							"img": "dep-img-04.png"
+							}
+							])
+						</ul>
+						<!--departments end-->
 					</div>
-					<div class="article-entry">
-						<p>В каталоге ОАО «Свiтанак» представлены актуальные на сегодняшний день модели белья и верхней одежды, выпускаемой нашим предприятием, а также вся необходимая информация по каждой модели, включающая фото и номер модели, ассортиментную группу, шкалу размеров, состав, полотно и вид отделки.</p>
-					</div>
-					<div class="box-options">
-						<div class="box-options__label">Для удобства пользования каталог разбит на линии, а также снабжен удобным фильтром.</div>
-						<div class="box-options__content">
-							<!--departments-->
-							<ul class="dep-list dep-list--horizontal equal-height-js">
-								@@loop('_tpl_dep-items.html', [
-								{
-								"title": "",
-								"alt": "Женский трикотаж",
-								"items": ["Белье женское", "Верх женский"],
-								"img": "dep-img-01.png"
-								},
-								{
-								"title": "",
-								"alt": "Мужской трикотаж",
-								"items": ["Белье мужское", "Верх мужской"],
-								"img": "dep-img-02.png"
-								},
-								{
-								"title": "",
-								"alt": "Детский трикотаж",
-								"items": ["Белье детское", "Верх детский"],
-								"img": "dep-img-03.png"
-								},
-								{
-								"title": "",
-								"alt": "Ясельный трикотаж",
-								"items": ["Белье ясельное"],
-								"img": "dep-img-04.png"
-								}
-								])
-							</ul>
-							<!--departments end-->
-						</div>
-					</div>
-					<div class="p-filters p-filters-js">
-						<div class="p-filters-tags">
-							<div class="p-filters-tags__holder">
-								<div class="p-filters-tags__frame p-filters-tags-js">
-									<!--filters tags-->
-								</div>
+				</div>
+				<div class="m-wrapper p-filters-js">
+					<div class="p-filters-tags">
+						<div class="p-filters-tags__holder">
+							<div class="p-filters-tags__frame p-filters-tags-js">
+								<!--filters tags-->
 							</div>
 						</div>
-						<div class="m-container">
-							<div class="m-aside">
-								<div class="m-aside-holder">
-									<!--filters-->
-									@@include('_tpl_products-filters.html')
-									<!--filters end-->
-								</div>
+					</div>
+					<div class="m-container">
+						<div class="m-aside">
+							<div class="m-aside-holder">
+								<!--filters-->
+								@@include('_tpl_products-filters.html')
+								<!--filters end-->
 							</div>
-							<div class="m-content">
-								<div class="m-content__holder">
-									<!--options panel-->
-									@@include('_tpl_products-options.html')
-									<!--options panel end-->
-									<!--products-->
-									<div class="products view-container-js grid-view-activated">
-										<section class="products__list">
-											@@loop("_tpl_products-items.html", "includes-json/products-items.json")
-										</section>
-									</div>
-									<!--products end-->
-									<!--pagination-->
-									@@include('_tpl_pagination.html')
-									<!--pagination end-->
+						</div>
+						<div class="m-content">
+							<div class="m-content__holder">
+								<!--options panel-->
+								@@include('_tpl_products-options.html')
+								<!--options panel end-->
+								<!--products-->
+								<div class="products grid-view-activated" data-toggle-view-panels="products">
+									<section class="products__list">
+										@@loop("_tpl_products-items.html", "includes-json/products-items.json")
+									</section>
 								</div>
+								<!--products end-->
+								<!--pagination-->
+								@@include('_tpl_pagination.html')
+								<!--pagination end-->
 							</div>
 						</div>
 					</div>

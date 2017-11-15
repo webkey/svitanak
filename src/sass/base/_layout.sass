@@ -140,18 +140,21 @@ body
 
 // максимальная ширина текстовых элементов на внутренней (текстовой) странице
 .max-wrap-text
-	max-width: #{$text-layout-width + $text-layout-space-horizontal*2}
+	max-width: #{$text-layout-width}
+	//max-width: #{$text-layout-width + $text-layout-space-horizontal*2}
 	//max-width: #{$text-layout-width + $text-layout-space-horizontal*2 + $text-layout-indent}
 
-	+media('<desk-lg')
-		max-width: #{$text-layout-width + $text-layout-space-horizontal--lg*2}
+	//+media('<desk-lg')
+		max-width: #{$text-layout-width}
+		//max-width: #{$text-layout-width + $text-layout-space-horizontal--lg*2}
 
 	//+media('<tab-lg')
 		//max-width: #{$text-layout-width + $text-layout-space-horizontal--md*2}
 		max-width: #{$text-layout-width + $text-layout-indent}
 
-	+media('<mob-lg')
-		max-width: #{$text-layout-width + $text-layout-space-horizontal--sm*2}
+	//+media('<mob-lg')
+		max-width: #{$text-layout-width}
+		//max-width: #{$text-layout-width + $text-layout-space-horizontal--sm*2}
 		//max-width: #{$text-layout-width + $text-layout-indent}
 
 // выравнивание текстовых элементов на внутренней (текстовой) странице
@@ -159,11 +162,12 @@ body
 .layout-text
 	//max-width: #{$text-layout-width + $text-layout-space-horizontal*2 + $text-layout-indent}
 	//+padding-horizontal(#{$text-layout-indent + $text-layout-space-horizontal}, $text-layout-space-horizontal)
-	max-width: #{$text-layout-width + $text-layout-space-horizontal*2}
-	+padding-horizontal($text-layout-space-horizontal)
+	//max-width: #{$text-layout-width + $text-layout-space-horizontal*2}
+	//+padding-horizontal($text-layout-space-horizontal)
+	max-width: #{$text-layout-width}
 	+push-auto
 
-	+media('<desk-lg')
+	//+media('<desk-lg')
 		max-width: #{$text-layout-width + $text-layout-space-horizontal--lg*2}
 		+padding-horizontal($text-layout-space-horizontal--lg)
 
@@ -171,34 +175,36 @@ body
 		max-width: #{$text-layout-width + $text-layout-space-horizontal--md*2}
 		+padding-horizontal($text-layout-space-horizontal--md)
 
-	+media('<mob-lg')
+	//+media('<mob-lg')
 		max-width: #{$text-layout-width + $text-layout-space-horizontal--sm*2}
 		+padding-horizontal($text-layout-space-horizontal--sm)
 
 // максимальная ширина альтернативных элементов на внутренней (текстовой) странице
 .max-wrap-flood
-	max-width: #{$flood-layout-width + $text-layout-space-horizontal*2}
+	//max-width: #{$flood-layout-width + $text-layout-space-horizontal*2}
 	//max-width: #{$flood-layout-width + $text-layout-space-horizontal*2 + $text-layout-indent}
+	max-width: #{$flood-layout-width }
 
-	+media('<desk-lg')
+	//+media('<desk-lg')
 		max-width: #{$flood-layout-width + $text-layout-space-horizontal--lg*2}
 
 	//+media('<tab-lg')
 		max-width: #{$flood-layout-width + $text-layout-space-horizontal--md*2}
 
-	+media('<mob-lg')
+	//+media('<mob-lg')
 		max-width: #{$flood-layout-width + $text-layout-space-horizontal--sm*2}
 
 // выравнивание альтернативных элементов на внутренней (текстовой) странице
 // и их максимальная ширина
 .layout-flood
-	max-width: #{$flood-layout-width + $text-layout-space-horizontal*2}
-	+padding-horizontal($text-layout-space-horizontal)
 	//max-width: #{$flood-layout-width + $text-layout-space-horizontal*2 + $text-layout-indent}
 	//+padding-horizontal(#{$text-layout-indent + $text-layout-space-horizontal}, $text-layout-space-horizontal)
+	//max-width: #{$flood-layout-width + $text-layout-space-horizontal*2}
+	//+padding-horizontal($text-layout-space-horizontal)
+	max-width: #{$flood-layout-width}
 	+push-auto
 
-	+media('<desk-lg')
+	//+media('<desk-lg')
 		max-width: #{$flood-layout-width + $text-layout-space-horizontal--lg*2}
 		+padding-horizontal($text-layout-space-horizontal--lg)
 
@@ -206,7 +212,7 @@ body
 		max-width: #{$flood-layout-width + $text-layout-space-horizontal--md*2}
 		+padding-horizontal($text-layout-space-horizontal--md)
 
-	+media('<mob-lg')
+	//+media('<mob-lg')
 		max-width: #{$flood-layout-width + $text-layout-space-horizontal--sm*2}
 		+padding-horizontal($text-layout-space-horizontal--sm)
 
@@ -215,16 +221,17 @@ body
 
 // элеметы с отступами по бокам
 .layout-wide
-	+padding-horizontal($text-layout-space-horizontal)
+	//+padding-horizontal($text-layout-space-horizontal)
+	+padding-horizontal($layout-spaces)
 
 	+media('<desk-lg')
-		+padding-horizontal($text-layout-space-horizontal--lg)
+		+padding-horizontal($layout-spaces--lg)
 
 	//+media('<tab-lg')
 		+padding-horizontal($text-layout-space-horizontal--md)
 
 	+media('<mob-lg')
-		+padding-horizontal($text-layout-space-horizontal--sm)
+		+padding-horizontal($layout-spaces--sm)
 
 	p, ul, ol, h1, h2, h3, h4, h5, h6, hr, blockquote
 		max-width: none
@@ -271,6 +278,10 @@ body
 	.max-wrap-text
 		max-width: $text-layout-width
 
+	//& .pagination
+		max-width: $text-layout-width
+		+push-auto
+
 	.layout-flood
 		//max-width: $flood-layout-width + $text-layout-indent
 		//+padding-horizontal($text-layout-indent, 0)
@@ -278,10 +289,6 @@ body
 
 	.max-wrap-flood
 		max-width: $flood-layout-width
-
-	& .pagination
-		max-width: $flood-layout-width
-		+push-auto
 
 	// элеметы без отступов по бокам
 	// минусовые маржины по горизонтале имеют значение только внутри .layout-article
@@ -460,7 +467,7 @@ body
 /* filters tags (layout) end
 
 /* news-preview (layout)
-.news-preview
+//.news-preview
 	max-width: $flood-layout-width
 
 /* news-preview(layout) end
