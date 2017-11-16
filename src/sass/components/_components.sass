@@ -1398,3 +1398,47 @@ $m-services-thumb-indent: 320px
 	+grad-per-value($color: #d7d700 #009b00, $val: 51 100)
 
 /* stock tape end
+
+/* pseudotabs
+.pseudotabs
+
+
+.pseudotabs-nav
+	text-align: center
+	+clear-spacing
+	margin: 0 -20px round($bottom-space--lg/2)
+
+	+media('<desk-lg')
+		margin-bottom: round($bottom-space--ml/2)
+
+.pseudotabs-tab
+	+font-d()
+	+display-inline-block-top
+	margin: 0 20px round($bottom-space--lg/2)
+
+	+media('<desk-lg')
+		margin-bottom: round($bottom-space--ml/2)
+
+	a
+		display: block
+		color: $text-color
+		text-decoration: none
+		
+		span
+			border-bottom: 2px dotted $text-color
+
+		// hover
+		&:hover
+			color: $link-color
+
+			span
+				border-color: $link-color
+
+		// active
+		&.active-tab
+			color: $link-color
+
+			span
+				border-color: transparent
+
+/* pseudotabs end

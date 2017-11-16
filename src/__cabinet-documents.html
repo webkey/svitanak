@@ -1,0 +1,63 @@
+@@include('_tpl_layout_head.html', {
+	"title": "Личный кабинет",
+	"pageClass": ""
+})
+
+@@include('_tpl_PAGE_WRAP.html', {"pageWrap": "START" })
+
+<!--HEADER-->
+@@include('_tpl_layout_header.html', {
+	"currentItem": ""
+})
+<!--HEADER end-->
+
+<!--MAIN-->
+<div class="main">
+	<div class="main__holder">
+
+		<!--CONTENT-->
+		<div class="content-wrap">
+			<div class="content user-content">
+
+				@@include('_tpl_breadcrumbs.html', {
+					"items": ["Главная", "Личный кабинет"],
+					"last": "Документы"
+				})
+
+				<div class="heading">
+					<h1>Личный кабинет <span class="sep">&nbsp;</span></h1>
+					<div class="heading__options">
+						<a href="#" class="btn-underline"><span>выйти</span></a>
+					</div>
+				</div>
+
+				<!--cabinet-->
+				<div class="pseudotabs cabinet layout-flood">
+					@@include('_tpl_pseudotabs-nav.html', {
+						"active": "Документы"
+					})
+
+					<div class="pseudotabs-panels">
+						<div class="pseudotabs-panel">
+							Документы
+						</div>
+					</div>
+				</div>
+				<!--cabinet end-->
+
+			</div>
+		</div>
+		<!--CONTENT end-->
+	</div>
+</div>
+<!--MAIN end-->
+
+<!--SIDEBAR-->
+@@include('_tpl_layout_sidebar.html', {
+	"currentItem": ""
+})
+<!--SIDEBAR-->
+
+@@include('_tpl_PAGE_WRAP.html', { "pageWrap": "END" })
+
+@@include('_tpl_layout_foot.html')

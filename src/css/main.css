@@ -2230,13 +2230,6 @@ table th, table thead td {
 	background-color: white;
 }
 
-@media (max-width: 991px) {
-	.btn-menu {
-		width: 80px;
-		height: 80px;
-	}
-}
-
 .btn-menu > span {
 	border: 0;
 	clip: rect(0 0 0 0);
@@ -3641,6 +3634,15 @@ label.input--focus, input[type="text"].input--focus, input[type="password"].inpu
 	margin-top: 90px;
 }
 
+@media (max-width: 767px) {
+	.form-caption {
+		margin-bottom: 30px;
+	}
+	.input-wrap + .form-caption {
+		margin-top: 54px;
+	}
+}
+
 .form-title {
 	display: block;
 	position: relative;
@@ -3652,6 +3654,12 @@ label.input--focus, input[type="text"].input--focus, input[type="password"].inpu
 	color: #1a1a1a;
 	text-transform: uppercase;
 	margin-bottom: 50px;
+}
+
+@media (max-width: 767px) {
+	.form-title {
+		margin-bottom: 30px;
+	}
 }
 
 .form-caption .form-title {
@@ -3680,6 +3688,18 @@ label.input--focus, input[type="text"].input--focus, input[type="password"].inpu
 	margin-bottom: 50px;
 }
 
+@media (max-width: 767px) {
+	.form-subtitle {
+		margin-bottom: 30px;
+	}
+}
+
+@media (max-width: 639px) {
+	.form-subtitle {
+		font-size: 28px;
+	}
+}
+
 .btn-reset {
 	font-size: 1.6rem;
 	line-height: 1.25;
@@ -3705,23 +3725,7 @@ label.input--focus, input[type="text"].input--focus, input[type="password"].inpu
 
 .user-form {
 	background: #f2f2f2;
-	padding-top: 6rem;
-	padding-bottom: 6rem;
 	margin-bottom: 6rem;
-}
-
-@media (max-width: 991px) {
-	.user-form {
-		padding-top: 20px;
-		padding-bottom: 20px;
-	}
-}
-
-@media (max-width: 639px) {
-	.user-form {
-		padding-top: 15px;
-		padding-bottom: 15px;
-	}
 }
 
 .user-form:last-child {
@@ -3742,15 +3746,62 @@ label.input--focus, input[type="text"].input--focus, input[type="password"].inpu
 	clear: both;
 }
 
+@media (max-width: 767px) {
+	.user-form .input-wrap {
+		margin-bottom: 30px;
+	}
+}
+
 .user-form .label-holder {
 	float: left;
 	width: 250px;
 	margin-bottom: 0;
-	padding: 14px 20px 0 0;
+	padding: 0 20px 0 0;
+}
+
+@media (max-width: 767px) {
+	.user-form .label-holder {
+		width: auto;
+		float: none;
+		padding: 0 0 10px;
+	}
+}
+
+.user-form .label-holder::before {
+	content: "";
+	display: inline-block;
+	vertical-align: middle;
+	min-height: 50px;
+}
+
+@media (max-width: 767px) {
+	.user-form .label-holder::before {
+		content: none;
+	}
+}
+
+.user-form .label-holder, .user-form .label-holder label {
+	font-size: 14px;
+	line-height: 1.21;
+	letter-spacing: 0.1em;
+}
+
+.user-form .label-holder label {
+	display: inline-block;
+	vertical-align: middle;
+	max-width: calc(100% - 4px);
+	padding: 5px 0;
+	text-transform: uppercase;
 }
 
 .user-form .input-holder {
 	margin-left: 250px;
+}
+
+@media (max-width: 767px) {
+	.user-form .input-holder {
+		margin-left: 0;
+	}
 }
 
 .user-form textarea {
@@ -3760,8 +3811,6 @@ label.input--focus, input[type="text"].input--focus, input[type="password"].inpu
 }
 
 .user-form .captcha {
-	display: inline-block;
-	vertical-align: top;
 	font-size: 0;
 	letter-spacing: -4px;
 	position: relative;
@@ -3839,9 +3888,9 @@ label.input--focus, input[type="text"].input--focus, input[type="password"].inpu
 	clear: both;
 }
 
-@media (max-width: 639px) {
+@media (max-width: 767px) {
 	.user-form .form-footer {
-		padding-top: 1.5rem;
+		padding-top: 30px;
 	}
 }
 
@@ -3850,10 +3899,11 @@ label.input--focus, input[type="text"].input--focus, input[type="password"].inpu
 	margin-left: 30px;
 }
 
-@media (max-width: 639px) {
+@media (max-width: 767px) {
 	.user-form .form-buttons {
 		float: none;
-		margin: 0;
+		margin: 0 0 30px;
+		text-align: center;
 	}
 }
 
@@ -3864,10 +3914,10 @@ label.input--focus, input[type="text"].input--focus, input[type="password"].inpu
 .user-form .form-note {
 	overflow: hidden;
 	min-height: 50px;
+	max-width: 250px;
 	font-size: 0;
 	letter-spacing: -4px;
 	line-height: 25px;
-	max-width: 250px;
 }
 
 .user-form .form-note::before {
@@ -3875,6 +3925,13 @@ label.input--focus, input[type="text"].input--focus, input[type="password"].inpu
 	display: inline-block;
 	vertical-align: middle;
 	min-height: inherit;
+}
+
+@media (max-width: 767px) {
+	.user-form .form-note {
+		max-width: none;
+		min-height: 0;
+	}
 }
 
 .user-form .form-note .form-mark {
@@ -6751,6 +6808,66 @@ label.input--focus, input[type="text"].input--focus, input[type="password"].inpu
 }
 
 /* stock tape end */
+/* pseudotabs */
+.pseudotabs-nav {
+	text-align: center;
+	font-size: 0;
+	letter-spacing: -4px;
+	margin: 0 -20px 3rem;
+}
+
+@media (max-width: 1599px) {
+	.pseudotabs-nav {
+		margin-bottom: 2rem;
+	}
+}
+
+.pseudotabs-tab {
+	font-family: "gothampro-bold", sans-serif;
+	font-weight: normal;
+	font-style: normal;
+	font-size: 14px;
+	line-height: 1.43;
+	letter-spacing: 0.2em;
+	text-transform: uppercase;
+	display: inline-block;
+	vertical-align: top;
+	margin: 0 20px 3rem;
+}
+
+@media (max-width: 1599px) {
+	.pseudotabs-tab {
+		margin-bottom: 2rem;
+	}
+}
+
+.pseudotabs-tab a {
+	display: block;
+	color: #1a1a1a;
+	text-decoration: none;
+}
+
+.pseudotabs-tab a span {
+	border-bottom: 2px dotted #1a1a1a;
+}
+
+.pseudotabs-tab a:hover {
+	color: #ff6501;
+}
+
+.pseudotabs-tab a:hover span {
+	border-color: #ff6501;
+}
+
+.pseudotabs-tab a.active-tab {
+	color: #ff6501;
+}
+
+.pseudotabs-tab a.active-tab span {
+	border-color: transparent;
+}
+
+/* pseudotabs end */
 /* bitrix default search page */
 .search-page {
 	font-size: 1.4rem;
@@ -8311,7 +8428,7 @@ body {
 
 @media (max-width: 1599px) {
 	.content {
-		padding: 24px 27px;
+		padding: 54px 61px;
 	}
 }
 
@@ -8704,6 +8821,18 @@ body {
 /* filters tags (layout) end */
 /* news-preview (layout) */
 /* news-preview(layout) end */
+/* user-form (layout) */
+.user-form, .layout-article .user-form {
+	padding: 80px 40px;
+}
+
+@media (max-width: 991px) {
+	.user-form, .layout-article .user-form {
+		padding: 40px;
+	}
+}
+
+/* user-form (layout) end */
 /* POPUPS / OPENING PANELS */
 /* shutter */
 .shutter {

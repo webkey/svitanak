@@ -5,6 +5,10 @@
 /* user form
 $uf-label-width: 250px
 $uf-row-bottom-space: 50px
+$uf-row-bottom-space--sm: 30px
+
+$media--md: '<tab-sm'
+$media--sm: '<mob-lg'
 
 .form-caption
 	position: relative
@@ -14,6 +18,13 @@ $uf-row-bottom-space: 50px
 	.input-wrap + &
 		margin-top: round($uf-row-bottom-space*1.8)
 
+	+media(#{$media--md})
+		margin-bottom: $uf-row-bottom-space--sm
+
+		.input-wrap + &
+			margin-top: round($uf-row-bottom-space--sm*1.8)
+
+
 .form-title
 	display: block
 	position: relative
@@ -22,6 +33,9 @@ $uf-row-bottom-space: 50px
 	color: $title-color
 	text-transform: uppercase
 	margin-bottom: $uf-row-bottom-space
+
+	+media(#{$media--md})
+		margin-bottom: $uf-row-bottom-space--sm
 
 	.form-caption &
 		width: 50%
@@ -38,6 +52,12 @@ $uf-row-bottom-space: 50px
 	+font(36px, round-float(36/36, 2))
 	color: $title-color
 	margin-bottom: $uf-row-bottom-space
+
+	+media(#{$media--md})
+		margin-bottom: $uf-row-bottom-space--sm
+
+	+media(#{$media--sm})
+		font-size: 28px
 
 .btn-reset
 	+font($font-size, round-float(20/16, 2))
@@ -61,14 +81,7 @@ $uf-row-bottom-space: 50px
 .user-form
 	&
 		background: $bg-color-alt
-		+padding-vertical($bottom-space--lg)
 		margin-bottom: $bottom-space--lg
-
-	+media('<tab-lg')
-		+padding-vertical($text-layout-space-horizontal--md)
-
-	+media('<mob-lg')
-		+padding-vertical($text-layout-space-horizontal--sm)
 
 	&:last-child
 		margin-bottom: 0
@@ -80,14 +93,43 @@ $uf-row-bottom-space: 50px
 		margin-bottom: $uf-row-bottom-space
 		+clear
 
+		+media(#{$media--md})
+			margin-bottom: $uf-row-bottom-space--sm
+
 	.label-holder
 		float: left
 		width: $uf-label-width
 		margin-bottom: 0
-		padding: 14px 20px 0 0
+		padding: 0 20px 0 0
+
+		+media(#{$media--md})
+			width: auto
+			float: none
+			padding: 0 0 10px
+
+		&::before
+			+pseudo-inline-block()
+			vertical-align: middle
+			min-height: $form-input-height
+
+			+media(#{$media--md})
+				content: none
+
+		&, & label
+			+font(14px, round-float(17/14, 2))
+			letter-spacing: 0.1em
+
+		label
+			+display-inline-block-middle
+			max-width: calc(100% - 4px)
+			padding: 5px 0
+			text-transform: uppercase
 
 	.input-holder
 		margin-left: $uf-label-width
+
+		+media(#{$media--md})
+			margin-left: 0
 
 	textarea
 		height: 130px
@@ -95,7 +137,7 @@ $uf-row-bottom-space: 50px
 		resize: none
 
 	.captcha
-		+display-inline-block-top
+		//+display-inline-block-top
 		+clear-spacing
 		position: relative // Важно! Для позицирования отметки подтверждения полей формы
 		z-index: 1 // Важно! Отметка подтверждения полей формы имеет z-index: -1
@@ -150,19 +192,19 @@ $uf-row-bottom-space: 50px
 		padding: $uf-row-bottom-space 0 0
 		border: solid #d9d9d9
 		border-width: 1px 0 0
-
 		+clear
 
-		+media('<mob-lg')
-			padding-top: $bottom-space--sm
+		+media(#{$media--md})
+			padding-top: $uf-row-bottom-space--sm
 
 	.form-buttons
 		float: right
 		margin-left: 30px
 
-		+media('<mob-lg')
+		+media(#{$media--md})
 			float: none
-			margin: 0
+			margin: 0 0 $uf-row-bottom-space--sm
+			text-align: center
 
 		.btn-submit
 			width: 200px
@@ -170,15 +212,19 @@ $uf-row-bottom-space: 50px
 	.form-note
 		overflow: hidden
 		min-height: $form-input-height
+		max-width: $uf-label-width
 		+clear-spacing
 		line-height: 25px
-		max-width: $uf-label-width
 
 		&::before
 			content: ''
 			display: inline-block
 			vertical-align: middle
 			min-height: inherit
+
+		+media(#{$media--md})
+			max-width: none
+			min-height: 0
 
 		.form-mark
 			margin-left: 0
