@@ -1,0 +1,44 @@
+[
+	{
+		"class": "",
+		"head": "Модель",
+		"colspan": "",
+		"rowspan": ""
+	},
+	{
+		"class": "",
+		"head": "Цвет",
+		"colspan": "",
+		"rowspan": ""
+	},
+	{
+		"class": "",
+		"head": "Размер",
+		"colspan": "",
+		"rowspan": ""
+	},
+	{
+		"class": "",
+		"head": "Рост",
+		"colspan": "",
+		"rowspan": ""
+	},
+	{
+		"class": "",
+		"head": "Остаток",
+		"colspan": "",
+		"rowspan": ""
+	},
+	{
+		"class": "",
+		"head": "Цена",
+		"colspan": "",
+		"rowspan": ""
+	},
+	{
+		"class": "",
+		"head": "Количество",
+		"colspan": "",
+		"rowspan": ""
+	}
+]

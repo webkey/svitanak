@@ -1272,9 +1272,51 @@ $m-services-thumb-indent: 320px
 
 .c-tr
 	display: table-row
+	color: inherit
+	text-decoration: none
+
+a.c-tr:hover
+	color: $link-color
 
 .c-th, .c-td
 	display: table-cell
+
+.c-th
+	padding: 15px #{$grid-space}
+	+font-d
+	border: solid $bg-color-base
+	border-width: 0 0 0 2px
+	background-color: $bg-color-alt
+
+	&:first-child
+		border: none
+
+.c-td
+	padding: 10px #{$grid-space}
+	vertical-align: middle
+	border: solid $border-color
+	border-width: 0 0 1px
+
+
+.c-table-result
+	position: relative
+	margin-top: -1px
+	line-height: 0
+	background-color: $bg-color-alt
+	+clear
+
+.c-table-result__text
+	+display-inline-block-middle
+	+font-d()
+	padding: 15px $grid-space
+
+.c-table-result__label
+	+display-inline-block-top
+	margin-right: 10px
+
+.c-table-result__count,
+.c-table-result__price
+	color: $base-color
 
 /* custom table end
 
@@ -1295,23 +1337,6 @@ $m-services-thumb-indent: 320px
 /* color pic end
 
 /* order list
-.order-calc-list
-	.c-th
-		padding: 15px #{$grid-space}
-		+font-d
-		border: solid $bg-color-base
-		border-width: 0 0 0 2px
-		background-color: $bg-color-alt
-
-		&:first-child
-			border: none
-
-	.c-td
-		padding: 10px #{$grid-space}
-		vertical-align: middle
-		border: solid $border-color
-		border-width: 0 0 1px
-
 // === img ===
 .order-list__img
 	border: 1px solid transparent
@@ -1338,7 +1363,7 @@ $m-services-thumb-indent: 320px
 	border-color: $base-color
 
 // === color ===
-.order-calc-list__color
+.order-list__color
 	white-space: nowrap
 	vertical-align: middle
 
@@ -1346,29 +1371,12 @@ $m-services-thumb-indent: 320px
 		vertical-align: middle
 		margin-right: 5px
 
-// === totals ===
-.order-calc-totals
-	position: relative
-	margin-top: -1px
-	line-height: 0
-	background-color: $bg-color-alt
-	+clear
-
-.order-calc-totals__text
-	+display-inline-block-middle
-	+font-d()
-	padding: 14px $grid-space
+// === results ===
+.order-calc .c-table-result__text
 	display: none
 
 	&.show
 		display: inline-block
-
-.order-calc-totals__label
-	+display-inline-block-top
-	margin-right: 10px
-
-.order-calc-totals__count, .order-calc-totals__price
-	color: $base-color
 
 .order-calc-btn
 	float: right
@@ -1400,9 +1408,6 @@ $m-services-thumb-indent: 320px
 /* stock tape end
 
 /* pseudotabs
-.pseudotabs
-
-
 .pseudotabs-nav
 	text-align: center
 	+clear-spacing

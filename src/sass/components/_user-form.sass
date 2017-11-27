@@ -101,6 +101,8 @@ $media--sm: '<mob-lg'
 		width: $uf-label-width
 		margin-bottom: 0
 		padding: 0 20px 0 0
+		+clear-spacing
+		line-height: 1
 
 		+media(#{$media--md})
 			width: auto
@@ -115,13 +117,11 @@ $media--sm: '<mob-lg'
 			+media(#{$media--md})
 				content: none
 
-		&, & label
+		label
 			+font(14px, round-float(17/14, 2))
 			letter-spacing: 0.1em
-
-		label
 			+display-inline-block-middle
-			max-width: calc(100% - 4px)
+			max-width: calc(100% - 6px)
 			padding: 5px 0
 			text-transform: uppercase
 
