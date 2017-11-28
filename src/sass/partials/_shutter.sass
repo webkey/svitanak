@@ -52,38 +52,18 @@
 	width: calc(100% + 100px)
 	overflow-x: hidden
 	overflow-y: auto
+	height: 100%
 
 	+media('<tab-lg')
 		width: 100%
 
 .shutter__holder
 	width: #{$shutter-width}
+	//padding: nth($shutter-space, 1) nth($shutter-space, 2)
+	+clear
 
 	+media('<tab-lg')
 		width: 100%
-
-.shutter__row
-	&.v-middle--top, &.v-middle--bottom
-		height: 0
-
-		.shutter__cell
-			padding: 0
-
-.shutter__cell
-	padding: nth($shutter-space, 1) nth($shutter-space, 2)
-	vertical-align: top
-
-/* shutter header
-.shutter-header
-	position: relative
-	border: 0 solid darken($bg-color-alt, 20%)
-
-	+media('<tab-lg')
-		text-align: center
-		padding: 15px #{$text-layout-space-horizontal--md + $header-height--lg} 15px #{$text-layout-space-horizontal--md}
-		border-bottom-width: 1px
-
-/* shutter header end
 
 /* shutter content
 .shutter-content
@@ -98,45 +78,6 @@
 	width: $shutter-aside-width
 
 /* shutter aside end
-
-/* shutter footer
-.shutter-footer
-	padding: 0 #{$text-layout-space-horizontal--lg} 30px
-	+font(1.2rem, 1.6)
-	color: $text-color
-
-	+media('<tab-lg')
-		+padding-horizontal($text-layout-space-horizontal--md)
-		text-align: center
-
-	+media('<tab-sm')
-		+padding-horizontal($text-layout-space-horizontal--sm)
-
-	.copyright
-		margin-bottom: 1em
-		padding-bottom: 1em
-		+font(1.4rem, 1.5)
-		text-transform: uppercase
-		border-bottom: 1px solid $border-color
-
-		&:last-child
-			margin-bottom: 0
-			padding-bottom: 0
-			border: none
-
-	.map-site
-		color: $text-color-light
-
-		a
-			color: inherit
-			text-decoration: none
-			transition-property: color
-			transition-duration: $animation-speed
-
-			.no-touchevents &:hover
-				color: $base-color
-
-/* shutter footer end
 
 /* button shutter close
 .shutter

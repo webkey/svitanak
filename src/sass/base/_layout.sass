@@ -485,3 +485,12 @@ body
 			+padding-vertical($text-layout-space-horizontal--sm)
 
 /* user-form (layout) end
+
+/* shutter (layout)
+.shutter__holder
+	padding: nth($shutter-space, 1) $layout-spaces
+
+	+media('<desk-lg')
+		padding: nth($shutter-space, 1) $layout-spaces--hd
+
+/* shutter (layout) end

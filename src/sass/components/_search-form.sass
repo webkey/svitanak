@@ -1,0 +1,168 @@
+@import ../utils/variables
+@import ../utils/mixins
+@import ../../libs/include-media/dist/include-media
+
+/* search form
+//.search-form
+	+padding-vertical(50px)
+
+.search-form, .search-form__field
+	position: relative
+	margin-bottom: $bottom-space--md
+
+	&:last-child
+		margin-bottom: 0
+
+input.search-form__input
+	padding: 0 #{$search-form-popup-btn-size+12} 0 0
+	height: 72px
+	+font-alt-bold
+	+font(72px, 72px)
+	letter-spacing: 0.05em
+
+	&, &:hover, &:focus, &.error, &.input--has-value
+		box-shadow: none
+
+	+placeholder
+		color: #e5e5e5
+
+	+placeholder-focus
+		color: #e5e5e5
+		opacity: 1
+
+// кнопка поиска
+.search-form__btn
+	position: absolute
+	right: 0
+	top: 50%
+	+size($search-form-popup-btn-size)
+	margin-top: -#{round($search-form-popup-btn-size*0.5)}
+	+font-normal
+	+clear-spacing
+	text-align: center
+	z-index: 5
+	transition-property: color, fill, opacity
+	transition-duration: $animation-speed
+	// цвет текста и svg иконки
+	color: #e5e5e5
+	fill: #e5e5e5
+	pointer-events: none
+
+	.input--has-value &
+		pointer-events: auto
+		color: $text-color
+		fill: $text-color
+
+	.no-touchevents &:hover
+		color: $base-color
+		fill: $base-color
+
+	input
+		+cover-abs()
+		padding: 0
+		border: 0
+		opacity: 0
+		z-index: 99
+
+	svg
+		display: inline-block
+		position: absolute
+		+position(50%)
+		+size($search-form-popup-btn-size)
+		margin: -#{round($search-form-popup-btn-size*0.5)} 0 0 -#{round($search-form-popup-btn-size*0.5)}
+
+	path
+		fill: inherit
+		transition: inherit
+
+	span
+		+hide-text
+
+/* search form end
+
+/* search counter
+.search-counter
+	+font-d()
+	margin-bottom: $bottom-space--lg
+
+	+media('<desk-lg')
+		margin-bottom: $bottom-space--ml
+
+	&:last-child
+		margin-bottom: 0
+
+/* search counter end
+
+/* search results
+.search-results
+	overflow: hidden
+	margin-bottom: $bottom-space--lg
+
+	+media('<desk-lg')
+		margin-bottom: $bottom-space--ml
+
+	&:last-child
+		margin-bottom: 0
+
+.search-results__list
+	+grid-parent($products-space)
+	+clear-spacing
+
+.search-results__item
+	+grid-item(4, $products-space, floor($products-space*0.65))
+	+font($font-size, round-float(24/16, 2))
+	letter-spacing: $letter-spacing
+
+.search-results__inner
+	position: relative
+	display: block
+	text-decoration: none
+	color: inherit
+	+clear
+
+.search-results__img
+	$img-size: 52px, 70px
+
+	&
+		display: block
+		text-decoration: none
+		color: inherit
+		position: relative
+		+size(nth($img-size, 1), auto)
+
+		.no-image &
+			background: url(../../img/no-img-product.png) no-repeat center
+			background-size: contain
+
+	.search-results__item &
+		float: left
+		margin-top: 5px
+
+	&::after
+		+pseudo-block-relative()
+		+ratio(nth($img-size, 1), nth($img-size, 2))
+
+	img
+		+cover-abs
+		display: block
+		width: 100%
+		height: 100%
+		max-width: none
+		+object-fit(contain)
+
+	& ~ *
+		margin-left: nth($img-size, 1) + $grid-space
+		margin-bottom: 10px
+
+		&:last-child
+			margin-bottom: 0
+
+.search-results__text
+	color: $text-color-light
+
+// hover
+a.search-results__inner:hover
+	.search-results__title
+		color: $base-color
+
+/* search results end

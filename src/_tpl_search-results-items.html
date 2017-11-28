@@ -1,0 +1,21 @@
+@@if (context.src) {
+<div class="search-results__item">
+}
+@@if (!context.src) {
+<div class="search-results__item no-image">
+}
+	@@if (context.link) {
+	<a href="@@link" class="search-results__inner">
+	}
+	@@if (!context.link) {
+	<div class="search-results__inner">
+	}
+		<div class="search-results__img">
+			@@if (context.src) {
+			<img src="img/@@src" alt="@@title" />
+			}
+		</div>
+		<div class="search-results__title">@@title</div>
+		<div class="search-results__text">@@text</div>
+	@@if (context.link) {</a>}@@if (!context.link) {</div>}
+</div>

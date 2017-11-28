@@ -982,9 +982,9 @@ function slidersInit() {
 }(jQuery));
 
 /**
- * !extra popup initial
+ * !shutter initial
  * */
-function popupsInit(){
+function shuttersInit(){
 
 	$(document).on('extraPopupScrollFixed', function () {
 		if($('.main-sections-js').length) {
@@ -999,7 +999,7 @@ function popupsInit(){
 	});
 
 	/*navigation*/
-	var navPopupClass = '.nav-popup-js';
+	var navPopupClass = '.nav-shutter-js';
 	var $navPopup = $(navPopupClass);
 
 	if($navPopup.length){
@@ -1027,7 +1027,7 @@ function popupsInit(){
 	}
 
 	/*search*/
-	var searchPopupClass = '.search-popup-js';
+	var searchPopupClass = '.search-shutter-js';
 	var $searchPopup = $(searchPopupClass);
 
 	if($searchPopup.length){
@@ -1035,35 +1035,7 @@ function popupsInit(){
 		new ExtraPopup({
 			navContainer: searchPopupClass,
 			// navMenu: '.nav__list',
-			btnMenu: '.btn-search-popup-js',
-			btnMenuClose: '.btn-shutter-close-js',
-			// staggerElement: '.nav__list > li',
-			overlayClass: 'popup-overlay--nav',
-			overlayAppendTo: 'body',
-			closeOnResize: false,
-			// mediaWidth: 1280,
-			animationSpeed: 200,
-			overlayAlpha: 0.35,
-			overlayIndex: 999,
-			// alpha: 0,
-			cssScrollBlocked: true,
-			openedClass: 'shutter--opened',
-			beforeOpenClass: 'shutter--before-open',
-			ease: 'Power2.easeInOut'
-			// ease: 'Power0.easeNone'
-		});
-	}
-
-	/*login*/
-	var loginPopupClass = '.login-popup-js';
-	var $loginPopup = $(loginPopupClass);
-
-	if($loginPopup.length){
-
-		new ExtraPopup({
-			navContainer: loginPopupClass,
-			// navMenu: '.nav__list',
-			btnMenu: '.btn-login-popup-js',
+			btnMenu: '.btn-search-open-js',
 			btnMenuClose: '.btn-shutter-close-js',
 			// staggerElement: '.nav__list > li',
 			overlayClass: 'popup-overlay--nav',
@@ -1084,16 +1056,11 @@ function popupsInit(){
 
 	$searchPopup.on('extraPopupBeforeOpen', function () {
 		$navPopup.trigger('extraPopupClose');
-		$loginPopup.trigger('extraPopupClose');
+
+		$(this).find('.search-form__input').focus();
 	});
 
 	$navPopup.on('extraPopupBeforeOpen', function () {
-		$searchPopup.trigger('extraPopupClose');
-		$loginPopup.trigger('extraPopupClose');
-	});
-
-	$loginPopup.on('extraPopupBeforeOpen', function () {
-		$navPopup.trigger('extraPopupClose');
 		$searchPopup.trigger('extraPopupClose');
 	});
 }
@@ -2668,7 +2635,7 @@ $(document).ready(function () {
 	fullPageInitial();
 	slidersInit();
 	objectFitImages(); // object-fit-images initial
-	popupsInit();
+	shuttersInit();
 	tabSwitcher();
 	toggleDrop();
 	addDataLengthChildren();

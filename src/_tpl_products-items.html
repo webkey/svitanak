@@ -1,15 +1,20 @@
 @@if (context.inCart) {
-	<article class="products__item in-cart">
-}
-@@if (!context.inCart) {
-	<article class="products__item">
-}
 	@@if (context.src) {
-	<div class="products__inner">
+	<article class="products__item in-cart">
 	}
 	@@if (!context.src) {
-	<div class="products__inner no-image">
+	<article class="products__item in-cart no-image">
 	}
+}
+@@if (!context.inCart) {
+	@@if (context.src) {
+	<article class="products__item">
+	}
+	@@if (!context.src) {
+	<article class="products__item no-image">
+	}
+}
+	<div class="products__inner">
 		<div class="products__brand">
 			@@if (context.brand) {
 			<img src="img/@@brand" alt="Бренд" />
