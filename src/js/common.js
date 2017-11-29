@@ -999,13 +999,13 @@ function shuttersInit(){
 	});
 
 	/*navigation*/
-	var navPopupClass = '.nav-shutter-js';
-	var $navPopup = $(navPopupClass);
+	var navShutterClass = '.nav-shutter-js';
+	var $navShutter = $(navShutterClass);
 
-	if($navPopup.length){
+	if($navShutter.length){
 
 		new ExtraPopup({
-			navContainer: navPopupClass,
+			navContainer: navShutterClass,
 			navMenu: '.nav__list',
 			btnMenu: '.btn-nav-js',
 			btnMenuClose: '.btn-shutter-close-js',
@@ -1027,13 +1027,13 @@ function shuttersInit(){
 	}
 
 	/*search*/
-	var searchPopupClass = '.search-shutter-js';
-	var $searchPopup = $(searchPopupClass);
+	var searchShutterClass = '.search-shutter-js';
+	var $searchShutter = $(searchShutterClass);
 
-	if($searchPopup.length){
+	if($searchShutter.length){
 
 		new ExtraPopup({
-			navContainer: searchPopupClass,
+			navContainer: searchShutterClass,
 			// navMenu: '.nav__list',
 			btnMenu: '.btn-search-open-js',
 			btnMenuClose: '.btn-shutter-close-js',
@@ -1054,14 +1054,50 @@ function shuttersInit(){
 		});
 	}
 
-	$searchPopup.on('extraPopupBeforeOpen', function () {
-		$navPopup.trigger('extraPopupClose');
+	/*bag*/
+	var bagShutterClass = '.bag-shutter-js';
+	var $bagShutter = $(bagShutterClass);
+
+	if($bagShutter.length){
+
+		new ExtraPopup({
+			navContainer: bagShutterClass,
+			// navMenu: '.nav__list',
+			btnMenu: '.btn-bag-open-js',
+			btnMenuClose: '.btn-shutter-close-js',
+			// staggerElement: '.nav__list > li',
+			overlayClass: 'popup-overlay--nav',
+			overlayAppendTo: 'body',
+			closeOnResize: false,
+			// mediaWidth: 1280,
+			animationType: 'rtl',
+			animationSpeed: 200,
+			overlayAlpha: 0.35,
+			overlayIndex: 999,
+			// alpha: 0,
+			cssScrollBlocked: true,
+			openedClass: 'shutter--opened',
+			beforeOpenClass: 'shutter--before-open',
+			ease: 'Power2.easeInOut'
+			// ease: 'Power0.easeNone'
+		});
+	}
+
+	$searchShutter.on('extraPopupBeforeOpen', function () {
+		$navShutter.trigger('extraPopupClose');
+		$bagShutter.trigger('extraPopupClose');
 
 		$(this).find('.search-form__input').focus();
 	});
 
-	$navPopup.on('extraPopupBeforeOpen', function () {
-		$searchPopup.trigger('extraPopupClose');
+	$navShutter.on('extraPopupBeforeOpen', function () {
+		$searchShutter.trigger('extraPopupClose');
+		$bagShutter.trigger('extraPopupClose');
+	});
+
+	$bagShutter.on('extraPopupBeforeOpen', function () {
+		$searchShutter.trigger('extraPopupClose');
+		$bagShutter.trigger('extraPopupClose');
 	});
 }
 
@@ -2538,6 +2574,25 @@ function stickyInit() {
 	// 	});
 	// }
 }
+
+/**
+ * get height children elements in group
+ */
+(function () {
+	var $container = $('.group-js'),
+		$body = $('.group__body-js'),
+		$footer = $('.group__footer-js'),
+		containerHeight,
+		footerHeight;
+
+	$(window).on('load debouncedresize', function (e) {
+
+		containerHeight = $container.outerHeight();
+		footerHeight = $footer.outerHeight();
+
+		$body.height(containerHeight - footerHeight);
+	});
+})();
 
 /**
  * !Always place the footer at the bottom of the page

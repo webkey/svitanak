@@ -1501,3 +1501,137 @@ a.c-tr:hover
 			text-align: center
 
 /* msg form end
+
+/* bag list
+.bag
+	overflow: hidden
+	margin-bottom: $bottom-space--lg
+
+	+media('<desk-lg')
+		margin-bottom: $bottom-space--ml
+
+	&:last-child
+		margin-bottom: 0
+
+//.bag__list
+
+.bag__item
+	position: relative
+	+font($font-size, round-float(24/16, 2))
+	letter-spacing: $letter-spacing
+	padding-right: 50px
+	padding-bottom: 20px
+
+	&:last-child
+		padding-bottom: 0
+
+.bag__inner
+	position: relative
+	display: table
+	width: 100%
+	text-decoration: none
+	color: inherit
+	+clear
+
+.bag__cell
+	display: table-cell
+	vertical-align: top
+	+padding-horizontal(round($grid-space/2))
+	word-wrap: break-word
+
+	&:first-child
+		padding-left: 0
+
+	&:last-child
+		padding-right: 0
+
+	&.bag__cell--price
+		width: 110px
+		min-width: 110px
+
+.bag__img
+	$img-size: 52px, 70px
+
+	&
+		display: block
+		text-decoration: none
+		color: inherit
+		position: relative
+		margin: 5px 0 0
+		+size(nth($img-size, 1), auto)
+
+		.no-image &
+			background: url(../../img/no-img-product.png) no-repeat center
+			background-size: contain
+
+	&::after
+		+pseudo-block-relative()
+		+ratio(nth($img-size, 1), nth($img-size, 2))
+
+	img
+		+cover-abs
+		display: block
+		width: 100%
+		height: 100%
+		max-width: none
+		+object-fit(contain)
+
+.bag__text
+	color: $text-color-light
+
+// hover
+a.bag__inner:hover
+	.bag__title
+		color: $link-color
+
+// del btn
+.bag__del
+	$btn-size: 12px
+	$icon-size: 12px
+	// ============
+	display: block
+	position: absolute
+	right: 0
+	top: 0
+	+size($btn-size)
+	color: $text-color
+	fill: $text-color
+	text-decoration: none
+
+	svg
+		position: absolute
+		+size($icon-size)
+		+position(50%)
+		margin: -#{round($icon-size/2)} 0 0 -#{round($icon-size/2)}
+
+	path
+		fill: inherit
+
+	// hover
+	&:hover
+		color: $link-color
+		fill: $link-color
+
+/* bag list end
+
+/* bag footer
+.bag-footer__row
+	display: flex
+	justify-content: space-between
+	align-items: flex-start
+	+font-d()
+	margin-bottom: 20px
+
+	&:last-child
+		margin-bottom: 0
+
+	[class*="btn-"]
+		display: block
+		width: 100%
+		text-align: center
+
+.bag-footer__cell
+	+display-inline-block-top
+
+
+/* bag footer end

@@ -65,6 +65,9 @@
 	+media('<tab-lg')
 		width: 100%
 
+.shutter__footer
+	border-top: 1px solid $border-color
+
 /* shutter content
 .shutter-content
 	float: left
@@ -93,7 +96,7 @@
 /* button shutter close end
 
 /* shutter wide
-.shutter-wide
+.shutter--wide
 	max-width: calc(100% - #{$sidebar-width})
 
 	+media('<tab-lg')
@@ -106,4 +109,39 @@
 		width: 100%
 
 /* shutter wide end
+
+/* bag shutter
+.bag-shutter
+	$bag-shutter-width: 470px
+	// ======================
+	width: $bag-shutter-width
+	max-width: 100%
+	left: auto
+	right: 0
+
+	.shutter__align
+		overflow-y: hidden
+
+	.shutter__holder
+		width: #{$bag-shutter-width}
+		height: 100%
+		padding: 0
+
+		&::after
+			content: none
+
+		+media('<tab-lg')
+			width: 100%
+
+	.shutter__row
+		overflow-x: hidden
+		overflow-y: auto
+
+		&.shutter__footer
+			overflow-y: hidden
+
+	.shutter__cell
+		padding: $grid-space
+
+/* bag shutter end
 /* shutter end

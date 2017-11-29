@@ -95,7 +95,7 @@
 <!--navigation shutter end-->
 
 <!--search shutter-->
-<aside class="search-shutter shutter shutter-wide search-shutter-js">
+<div class="shutter search-shutter shutter--wide search-shutter-js">
 	<div class="shutter__align ">
 		<div class="shutter__holder">
 			<div class="search-form">
@@ -113,11 +113,49 @@
 			<div class="search-counter">найдено совпадений: <span class="mark">18</span></div>
 			<div class="search-results">
 				<div class="search-results__list">
-					@@loop("_tpl_search-results-items.html", "includes-json/search-results-items.json")
-					@@loop("_tpl_search-results-items.html", "includes-json/search-results-items.json")
+					@@loop("_tpl_search-results-items.html", "includes-json/product-options-items.json")
+					@@loop("_tpl_search-results-items.html", "includes-json/product-options-items.json")
 				</div>
 			</div>
 		</div>
 	</div>
-</aside>
+</div>
+<!--search shutter end-->
+
+<div class="shutter bag-shutter bag-shutter-js">
+	<div class="shutter__align ">
+		<div class="shutter__holder">
+			Корзина пуста
+		</div>
+	</div>
+</div>
+
+<!--bag shutter-->
+<div class="shutter bag-shutter bag-shutter-js group-js">
+	<div class="shutter__align">
+		<div class="shutter__holder">
+			<div class="shutter__row group__body-js">
+				<div class="shutter__cell">
+					<div class="bag">
+						<div class="bag__list">
+							@@loop("_tpl_bag-items.html", "includes-json/product-options-items.json")
+							@@loop("_tpl_bag-items.html", "includes-json/product-options-items.json")
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="shutter__row shutter__footer group__footer-js">
+				<div class="shutter__cell">
+					<div class="bag-footer__row">
+						<div class="bag-footer__cell">итого:</div>
+						<div class="bag-footer__cell"><span class="mark">1 250</span> руб.</div>
+					</div>
+					<div class="bag-footer__row">
+						<a href="#" class="btn-default">Перейти в корзину</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
 <!--search shutter end-->

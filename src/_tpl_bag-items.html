@@ -1,0 +1,33 @@
+@@if (context.src) {
+<div class="bag__item">
+}
+@@if (!context.src) {
+<div class="bag__item no-image">
+}
+
+	@@if (context.link) {
+	<a href="@@link" class="bag__inner">
+	}
+	@@if (!context.link) {
+	<div class="bag__inner">
+	}
+		<div class="bag__cell">
+			<div class="bag__img">
+				@@if (context.src) {
+				<img src="img/@@src" alt="@@title" />
+				}
+			</div>
+		</div>
+		<div class="bag__cell">
+			<div class="bag__title">@@title</div>
+			<div class="bag__text">@@count</div>
+		</div>
+		<div class="bag__cell bag__cell--price">
+			<div class="bag__price">@@price</div>
+		</div>
+
+	@@if (context.link) {</a>}@@if (!context.link) {</div>}
+
+	<a href="#" class="bag__del">@@include("includes-json/files/icon-close.svg")</a>
+
+</div>

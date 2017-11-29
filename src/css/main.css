@@ -7224,6 +7224,187 @@ a.c-tr:hover {
 }
 
 /* msg form end */
+/* bag list */
+.bag {
+	overflow: hidden;
+	margin-bottom: 6rem;
+}
+
+@media (max-width: 1599px) {
+	.bag {
+		margin-bottom: 3rem;
+	}
+}
+
+.bag:last-child {
+	margin-bottom: 0;
+}
+
+.bag__item {
+	position: relative;
+	font-size: 1.6rem;
+	line-height: 1.5;
+	letter-spacing: 0.025em;
+	padding-right: 50px;
+	padding-bottom: 20px;
+}
+
+.bag__item:last-child {
+	padding-bottom: 0;
+}
+
+.bag__inner {
+	position: relative;
+	display: table;
+	width: 100%;
+	text-decoration: none;
+	color: inherit;
+}
+
+.bag__inner::after {
+	content: '';
+	display: table;
+	clear: both;
+}
+
+.bag__cell {
+	display: table-cell;
+	vertical-align: top;
+	padding-right: 15px;
+	padding-left: 15px;
+	word-wrap: break-word;
+}
+
+.bag__cell:first-child {
+	padding-left: 0;
+}
+
+.bag__cell:last-child {
+	padding-right: 0;
+}
+
+.bag__cell.bag__cell--price {
+	width: 110px;
+	min-width: 110px;
+}
+
+.bag__img {
+	display: block;
+	text-decoration: none;
+	color: inherit;
+	position: relative;
+	margin: 5px 0 0;
+	width: 52px;
+	height: auto;
+}
+
+.no-image .bag__img {
+	background: url(../img/no-img-product.png) no-repeat center;
+	background-size: contain;
+}
+
+.bag__img::after {
+	content: "";
+	display: block;
+	position: relative;
+	height: 0;
+	padding-top: 134.62%;
+}
+
+.bag__img img {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	display: block;
+	width: 100%;
+	height: 100%;
+	max-width: none;
+	-o-object-fit: contain;
+	   object-fit: contain;
+	font-family: "object-fit: contain";
+}
+
+.bag__text {
+	color: #b2b2b2;
+}
+
+a.bag__inner:hover .bag__title {
+	color: #ff6501;
+}
+
+.bag__del {
+	display: block;
+	position: absolute;
+	right: 0;
+	top: 0;
+	width: 12px;
+	height: 12px;
+	color: #1a1a1a;
+	fill: #1a1a1a;
+	text-decoration: none;
+}
+
+.bag__del svg {
+	position: absolute;
+	width: 12px;
+	height: 12px;
+	top: 50%;
+	left: 50%;
+	margin: -6px 0 0 -6px;
+}
+
+.bag__del path {
+	fill: inherit;
+}
+
+.bag__del:hover {
+	color: #ff6501;
+	fill: #ff6501;
+}
+
+/* bag list end */
+/* bag footer */
+.bag-footer__row {
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-pack: justify;
+	-webkit-justify-content: space-between;
+	    -ms-flex-pack: justify;
+	        justify-content: space-between;
+	-webkit-box-align: start;
+	-webkit-align-items: flex-start;
+	    -ms-flex-align: start;
+	        align-items: flex-start;
+	font-family: "gothampro-bold", sans-serif;
+	font-weight: normal;
+	font-style: normal;
+	font-size: 14px;
+	line-height: 1.43;
+	letter-spacing: 0.2em;
+	text-transform: uppercase;
+	margin-bottom: 20px;
+}
+
+.bag-footer__row:last-child {
+	margin-bottom: 0;
+}
+
+.bag-footer__row [class*="btn-"] {
+	display: block;
+	width: 100%;
+	text-align: center;
+}
+
+.bag-footer__cell {
+	display: inline-block;
+	vertical-align: top;
+}
+
+/* bag footer end */
 /* bitrix default search page */
 .search-page {
 	font-size: 1.4rem;
@@ -9325,6 +9506,10 @@ body {
 	}
 }
 
+.shutter__footer {
+	border-top: 1px solid #e6e6e6;
+}
+
 /* shutter content */
 .shutter-content {
 	float: left;
@@ -9355,25 +9540,67 @@ body {
 
 /* button shutter close end */
 /* shutter wide */
-.shutter-wide {
+.shutter--wide {
 	max-width: calc(100% - 100px);
 }
 
 @media (max-width: 991px) {
-	.shutter-wide {
+	.shutter--wide {
 		max-width: 100%;
 	}
 }
 
-.shutter-wide .shutter__align {
+.shutter--wide .shutter__align {
 	width: 100%;
 }
 
-.shutter-wide .shutter__holder {
+.shutter--wide .shutter__holder {
 	width: 100%;
 }
 
 /* shutter wide end */
+/* bag shutter */
+.bag-shutter {
+	width: 470px;
+	max-width: 100%;
+	left: auto;
+	right: 0;
+}
+
+.bag-shutter .shutter__align {
+	overflow-y: hidden;
+}
+
+.bag-shutter .shutter__holder {
+	width: 470px;
+	height: 100%;
+	padding: 0;
+}
+
+.bag-shutter .shutter__holder::after {
+	content: none;
+}
+
+@media (max-width: 991px) {
+	.bag-shutter .shutter__holder {
+		width: 100%;
+	}
+}
+
+.bag-shutter .shutter__row {
+	overflow-x: hidden;
+	overflow-y: auto;
+}
+
+.bag-shutter .shutter__row.shutter__footer {
+	overflow-y: hidden;
+}
+
+.bag-shutter .shutter__cell {
+	padding: 30px;
+}
+
+/* bag shutter end */
 /* shutter end */
 /* POPUPS / OPENING PANELS end */
 /* HEADER */
