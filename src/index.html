@@ -70,9 +70,11 @@
 								<!--user options-->
 								<ul class="user-options">
 									<li class="user-options__item message-link">
-										<a href="#" title="Сообщения">
+										<!--<a href="#" title="Сообщения">-->
+										<a href="#msg-popup" class="btn-popup-js" title="У вас есть новые сообщения: 1">
 			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 88 62" width="24" height="24"><path d="M77.3 0H10.7C4.8 0 0 4.7 0 10.4v41.3C0 57.3 4.8 62 10.7 62h66.6C83.2 62 88 57.3 88 51.6V10.4C88 4.7 83.2 0 77.3 0zM74.9 6.9L44 31.1 13.1 6.9H74.9zM80.9 51.6c0 2-1.5 3.5-3.6 3.5H10.7c-2 0-3.6-1.5-3.6-3.5V11.1l34.6 27.1c1.3 1 3.2 1 4.5 0l34.6-27.2V51.6z"></path></svg>
 			<span class="hide-text">Сообщения</span>
+			<div class="user-options-counter">1</div>
 		</a>
 									</li>
 									<li class="user-options__item login-link">
@@ -82,15 +84,17 @@
 		</a>
 									</li>
 									<li class="user-options__item basket-link">
-										<a href="#" title="Корзина">
+										<!--<a href="#" title="Корзина">-->
+										<a href="#" title="В корзине товаров: 22">
 			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 29.3" width="24" height="24"><path d="M24 27.8c-0.9-7-1.7-13.2-1.2-19.7 0-0.4-0.1-0.7-0.4-1 -0.3-0.3-0.6-0.4-1-0.4h-4.2V5.8c0-3.2-2.4-5.8-5.3-5.8 -2.9 0-5.3 2.6-5.3 5.8v0.9H2.5C1.8 6.7 1.2 7.3 1.2 8l0 2.2c0 5.8 0 11.8-1.2 17.5 -0.1 0.4 0 0.8 0.3 1.1 0.3 0.3 0.6 0.5 1 0.5h21.4c0.4 0 0.8-0.2 1-0.5C24 28.6 24.1 28.2 24 27.8zM9.3 5.8c0-1.7 1.2-3.2 2.7-3.2 1.5 0 2.7 1.4 2.7 3.2v0.9L9.3 6.6V5.8zM2.9 26.7c1-5.5 0.9-11 0.9-16.4L3.8 9.3h16.2c-0.3 5.8 0.3 11.3 1.1 17.3H2.9z"></path></svg>
-			<div class="basket-link-counter">22</div>
 			<span class="hide-text">Корзина</span>
+			<div class="user-options-counter">22</div>
 		</a>
 									</li>
 									<li class="user-options__item search-link">
 										<a href="#" title="Поиск" class="btn-search-open-js">
-			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 89.8 89.8" width="24" height="24"><path d="M68.1 61c11.4-14.9 10.3-36.3-3.3-49.9C57.6 3.9 48.1 0 37.9 0c-10.1 0-19.7 3.9-26.8 11.1C3.9 18.3 0 27.8 0 37.9c0 10.1 3.9 19.7 11.1 26.8 7.2 7.2 16.7 11.1 26.8 11.1 8.4 0 16.5-2.8 23.1-7.8l21.8 21.7 7.1-7.1L68.1 61zM57.7 57.7c-5.3 5.3-12.3 8.2-19.8 8.2 -7.5 0-14.5-2.9-19.8-8.2C12.9 52.4 10 45.4 10 37.9c0-7.5 2.9-14.5 8.2-19.8C23.5 12.9 30.5 10 37.9 10c7.5 0 14.5 2.9 19.8 8.2C68.6 29.1 68.6 46.8 57.7 57.7z"></path></svg>
+			<svg class="for-close" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 57.2 57.2"><path d="M34.3 28.6L56 6.9c1.6-1.6 1.6-4.1 0-5.7 -1.6-1.6-4.1-1.6-5.7 0L28.6 22.9 6.9 1.3c-1.6-1.6-4.1-1.6-5.7 0 -1.6 1.6-1.6 4.1 0 5.7l21.7 21.6L1.3 50.3c-1.6 1.5-1.6 4.1 0 5.6 0.8 0.8 1.8 1.2 2.8 1.2s2-0.4 2.8-1.2l21.7-21.6L50.3 56c0.8 0.8 1.8 1.2 2.8 1.2s2-0.4 2.8-1.2c1.6-1.6 1.6-4.1 0-5.7L34.3 28.6z"></path></svg>
+			<svg class="for-open" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 89.8 89.8" width="24" height="24"><path d="M68.1 61c11.4-14.9 10.3-36.3-3.3-49.9C57.6 3.9 48.1 0 37.9 0c-10.1 0-19.7 3.9-26.8 11.1C3.9 18.3 0 27.8 0 37.9c0 10.1 3.9 19.7 11.1 26.8 7.2 7.2 16.7 11.1 26.8 11.1 8.4 0 16.5-2.8 23.1-7.8l21.8 21.7 7.1-7.1L68.1 61zM57.7 57.7c-5.3 5.3-12.3 8.2-19.8 8.2 -7.5 0-14.5-2.9-19.8-8.2C12.9 52.4 10 45.4 10 37.9c0-7.5 2.9-14.5 8.2-19.8C23.5 12.9 30.5 10 37.9 10c7.5 0 14.5 2.9 19.8 8.2C68.6 29.1 68.6 46.8 57.7 57.7z"></path></svg>
 			<span class="hide-text">Поиск</span>
 		</a>
 									</li>
@@ -809,6 +813,70 @@
 										<!--footer bottom end-->
 									</div>
 								</footer>
+								<!--message popup-->
+								<div id="msg-popup" class="default-popup mfp-with-anim mfp-hide">
+									<div class="default-popup__content">
+										<div class="pseudotabs-nav">
+											<div class="pseudotabs-tab">
+												<a href="javascript:void(0)" class="active-tab"><span>Сообщение</span></a>
+											</div>
+											<div class="pseudotabs-tab">
+												<a href="#callback-popup" class="btn-popup-js"><span>Перезвоните мне</span></a>
+											</div>
+										</div>
+										<div class="msg-form">
+											<form action="#" method="post">
+												<!--<label for="">Ваше имя:</label>-->
+												<input type="text" placeholder="Ваше имя">
+												<div class="error-note">Поле обязательное для заполнения</div>
+												<div class="success-note">Подтверждено</div>
+												<!--<label for="">E-mail:</label>-->
+												<input type="email" placeholder="E-mail">
+												<div class="error-note">Поле обязательное для заполнения</div>
+												<div class="success-note">Подтверждено</div>
+												<!--<label for="">Телефон:</label>-->
+												<input type="text" placeholder="Телефон">
+												<div class="error-note">Поле обязательное для заполнения</div>
+												<div class="success-note">Подтверждено</div>
+												<!--<label for="">Сообщение:</label>-->
+												<textarea placeholder="Сообщение"></textarea>
+												<div class="error-note">Поле обязательное для заполнения</div>
+												<div class="success-note">Подтверждено</div>
+												<div class="form-buttons">
+													<button class="btn-default btn-submit">Отправить</button>
+												</div>
+											</form>
+										</div>
+									</div>
+								</div>
+								<!--callback popup-->
+								<div id="callback-popup" class="default-popup mfp-with-anim mfp-hide">
+									<div class="default-popup__content">
+										<div class="pseudotabs-nav">
+											<div class="pseudotabs-tab">
+												<a href="#msg-popup" class="btn-popup-js"><span>Сообщение</span></a>
+											</div>
+											<div class="pseudotabs-tab">
+												<a href="javascript:void(0)" class="active-tab"><span>Перезвоните мне</span></a>
+											</div>
+										</div>
+										<div class="msg-form">
+											<form action="#" method="post">
+												<!--<label for="">Ваше имя:</label>-->
+												<input type="text" placeholder="Ваше имя">
+												<div class="error-note">Поле обязательное для заполнения</div>
+												<div class="success-note">Подтверждено</div>
+												<!--<label for="">Телефон:</label>-->
+												<input type="text" placeholder="Телефон">
+												<div class="error-note">Поле обязательное для заполнения</div>
+												<div class="success-note">Подтверждено</div>
+												<div class="form-buttons">
+													<button class="btn-default btn-submit">Жду звонка</button>
+												</div>
+											</form>
+										</div>
+									</div>
+								</div>
 								<!--footer end-->
 							</section>
 						</div>
@@ -843,9 +911,10 @@
 						<div class="sidebar__row v-middle__row v-middle--bottom">
 							<div class="sidebar__ceil v-middle__cell">
 								<div class="scroll-to">
-									<a href="#" class="move-next-section-js" title="Скрольте вниз">
-							<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 36 72" width="24" height="24"><path d="M22 0h-8C6.3 0 0 6.3 0 14v26c0 7.4 5.7 13.4 13 13.9v-4c-5-0.5-9-4.8-9-9.9V14C4 8.5 8.5 4 14 4h8c5.5 0 10 4.5 10 10v26c0 5.2-4 9.4-9 9.9v4c7.3-0.5 13-6.6 13-13.9V14C36 6.3 29.7 0 22 0zM18 21c1.1 0 2-0.9 2-2v-6c0-1.1-0.9-2-2-2s-2 0.9-2 2v6C16 20.1 16.9 21 18 21zM23 63c-0.5 0-1 0.2-1.4 0.6L20 65.2V44c0-1.1-0.9-2-2-2s-2 0.9-2 2v21.2l-1.6-1.6C14 63.2 13.5 63 13 63s-1 0.2-1.4 0.6c-0.8 0.8-0.8 2 0 2.8l1.4 1.4 3.6 3.6c0.1 0.1 0.2 0.2 0.3 0.2l0.1 0.1c0.1 0 0.1 0.1 0.2 0.1 0.1 0 0.1 0 0.2 0.1 0.1 0 0.1 0 0.2 0.1h0.8c0.1 0 0.1 0 0.2-0.1 0.1 0 0.1 0 0.2-0.1 0.1 0 0.1-0.1 0.2-0.1 0 0 0.1 0 0.1-0.1 0.1-0.1 0.2-0.2 0.3-0.2l3.6-3.6 1.4-1.4c0.8-0.8 0.8-2 0-2.8C24 63.2 23.5 63 23 63z"></path></svg>
-						</a>
+									<!--<div class="move-next-section-js" title="Скрольте вниз">-->
+									<div title="Скрольте вниз">
+										<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 36 72" width="24" height="24"><path d="M22 0h-8C6.3 0 0 6.3 0 14v26c0 7.4 5.7 13.4 13 13.9v-4c-5-0.5-9-4.8-9-9.9V14C4 8.5 8.5 4 14 4h8c5.5 0 10 4.5 10 10v26c0 5.2-4 9.4-9 9.9v4c7.3-0.5 13-6.6 13-13.9V14C36 6.3 29.7 0 22 0zM18 21c1.1 0 2-0.9 2-2v-6c0-1.1-0.9-2-2-2s-2 0.9-2 2v6C16 20.1 16.9 21 18 21zM23 63c-0.5 0-1 0.2-1.4 0.6L20 65.2V44c0-1.1-0.9-2-2-2s-2 0.9-2 2v21.2l-1.6-1.6C14 63.2 13.5 63 13 63s-1 0.2-1.4 0.6c-0.8 0.8-0.8 2 0 2.8l1.4 1.4 3.6 3.6c0.1 0.1 0.2 0.2 0.3 0.2l0.1 0.1c0.1 0 0.1 0.1 0.2 0.1 0.1 0 0.1 0 0.2 0.1 0.1 0 0.1 0 0.2 0.1h0.8c0.1 0 0.1 0 0.2-0.1 0.1 0 0.1 0 0.2-0.1 0.1 0 0.1-0.1 0.2-0.1 0 0 0.1 0 0.1-0.1 0.1-0.1 0.2-0.2 0.3-0.2l3.6-3.6 1.4-1.4c0.8-0.8 0.8-2 0-2.8C24 63.2 23.5 63 23 63z"></path></svg>
+									</div>
 								</div>
 							</div>
 						</div>

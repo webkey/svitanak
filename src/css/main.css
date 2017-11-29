@@ -7114,7 +7114,6 @@ a.c-tr:hover {
 /* stock tape end */
 /* pseudotabs */
 .pseudotabs-nav {
-	text-align: center;
 	font-size: 0;
 	letter-spacing: -4px;
 	margin: 0 -20px 3rem;
@@ -7124,6 +7123,10 @@ a.c-tr:hover {
 	.pseudotabs-nav {
 		margin-bottom: 2rem;
 	}
+}
+
+.pseudotabs-nav.align-center {
+	text-align: center;
 }
 
 .pseudotabs-tab {
@@ -7153,6 +7156,9 @@ a.c-tr:hover {
 
 .pseudotabs-tab a span {
 	border-bottom: 2px dotted #1a1a1a;
+	display: inline-block;
+	vertical-align: top;
+	padding: 0 0 2px;
 }
 
 .pseudotabs-tab a:hover {
@@ -7196,6 +7202,28 @@ a.c-tr:hover {
 }
 
 /* list dividers end */
+/* msg form */
+.msg-form textarea {
+	resize: none;
+	height: 120px;
+	max-height: 120px;
+}
+
+.msg-form .form-buttons button {
+	margin-bottom: 20px;
+}
+
+.msg-form .form-buttons button:last-child {
+	margin-bottom: 0;
+}
+
+.msg-form .form-buttons .btn-submit {
+	display: block;
+	width: 100%;
+	text-align: center;
+}
+
+/* msg form end */
 /* bitrix default search page */
 .search-page {
 	font-size: 1.4rem;
@@ -7418,15 +7446,16 @@ a.c-tr:hover {
 	position: relative;
 	display: inline-block;
 	vertical-align: middle;
-	padding: 17px;
 	font-size: 1.6rem;
 	line-height: 1;
 	letter-spacing: normal;
 }
 
 .user-options__item > a {
-	display: block;
 	position: relative;
+	display: block;
+	width: 50px;
+	height: 50px;
 	color: #1a1a1a;
 	line-height: 1;
 	fill: #1a1a1a;
@@ -7437,8 +7466,20 @@ a.c-tr:hover {
 .user-options__item > a svg {
 	width: 18px;
 	height: 18px;
-	display: inline-block;
-	vertical-align: middle;
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	margin: -9px 0 0 -9px;
+}
+
+.user-options__item > a svg.for-close {
+	opacity: 0;
+	visibility: hidden;
+	z-index: auto;
+}
+
+.user-options__item > a svg.for-open {
+	z-index: 1;
 }
 
 .user-options__item > a svg ~ span {
@@ -7453,22 +7494,35 @@ a.c-tr:hover {
 	fill: inherit;
 }
 
-.user-options__item > a > span {
-	display: inline-block;
-	vertical-align: middle;
-}
-
 .user-options__item > a:hover {
 	color: #ff6501;
 	fill: #ff6501;
 }
 
-.basket-link-counter {
+.user-options__item > a.active .for-close {
+	opacity: 1;
+	visibility: visible;
+	z-index: 1;
+}
+
+.user-options__item > a.active .for-open {
+	opacity: 0;
+	visibility: hidden;
+	z-index: auto;
+}
+
+.search-link .for-close {
+	width: 12px;
+	height: 12px;
+	margin: -6px 0 0 -6px;
+}
+
+.user-options-counter {
 	position: absolute;
 	left: 0;
-	bottom: 100%;
-	margin: 0 0 -14px 9px;
-	padding: 0 2px;
+	top: 50%;
+	margin: -18px 0 0 24px;
+	padding: 0 3px;
 	height: 22px;
 	min-width: 22px;
 	border-radius: 11px;
@@ -7892,6 +7946,7 @@ a.c-tr:hover {
 
 .products__basket {
 	margin-left: 120px;
+	line-height: 1;
 }
 
 .btn-to-basket, .btn-from-basket {
@@ -8660,23 +8715,74 @@ a.btn-to-basket {
 	margin-left: auto;
 }
 
-.inline-popup__title {
+.default-popup {
+	max-width: 580px;
+	padding: 50px;
+	background-color: #f2f2f2;
+	margin-right: auto;
+	margin-left: auto;
+}
+
+.inline-popup__title, .default-popup__title {
 	font-family: "minionpro-bold", serif;
 	font-weight: normal;
 	font-style: normal;
 	font-size: 24px;
 	line-height: 1.33;
 	margin-bottom: 4rem;
+	padding-right: 20px;
 }
 
 @media (max-width: 1599px) {
-	.inline-popup__title {
+	.inline-popup__title, .default-popup__title {
 		margin-bottom: 3rem;
 	}
 }
 
-.inline-popup__title:last-child {
+.inline-popup__title:last-child, .default-popup__title:last-child {
 	margin-bottom: 0;
+}
+
+.mfp-close {
+	width: 40px;
+	height: 40px;
+	opacity: 1;
+}
+
+.mfp-close svg {
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	width: 12px;
+	height: 12px;
+	margin: -6px 0 0 -6px;
+	z-index: -1;
+	pointer-events: none;
+}
+
+.mfp-close path {
+	fill: inherit;
+}
+
+.mfp-close-btn-in .mfp-close {
+	fill: #1a1a1a;
+	color: #1a1a1a;
+	top: 36px;
+	right: 36px;
+}
+
+.mfp-close-btn-in .mfp-close:hover {
+	fill: #ff6501;
+	color: #ff6501;
+}
+
+.default-popup .pseudotabs-nav, .inline-popup .pseudotabs-nav {
+	padding-right: 40px;
+	margin-bottom: 20px;
+}
+
+.default-popup .pseudotabs-tab, .inline-popup .pseudotabs-tab {
+	margin-bottom: 20px;
 }
 
 /* popups end */

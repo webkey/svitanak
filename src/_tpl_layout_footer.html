@@ -66,3 +66,69 @@
 	</div>
 
 </footer>
+
+<!--message popup-->
+<div id="msg-popup" class="default-popup mfp-with-anim mfp-hide">
+	<div class="default-popup__content">
+		<div class="pseudotabs-nav">
+			<div class="pseudotabs-tab">
+				<a href="javascript:void(0)" class="active-tab"><span>Сообщение</span></a>
+			</div>
+			<div class="pseudotabs-tab">
+				<a href="#callback-popup" class="btn-popup-js"><span>Перезвоните мне</span></a>
+			</div>
+		</div>
+		<div class="msg-form">
+			<form action="#" method="post">
+				<!--<label for="">Ваше имя:</label>-->
+				<input type="text" placeholder="Ваше имя">
+				<div class="error-note">Поле обязательное для заполнения</div>
+				<div class="success-note">Подтверждено</div>
+				<!--<label for="">E-mail:</label>-->
+				<input type="email" placeholder="E-mail">
+				<div class="error-note">Поле обязательное для заполнения</div>
+				<div class="success-note">Подтверждено</div>
+				<!--<label for="">Телефон:</label>-->
+				<input type="text" placeholder="Телефон">
+				<div class="error-note">Поле обязательное для заполнения</div>
+				<div class="success-note">Подтверждено</div>
+				<!--<label for="">Сообщение:</label>-->
+				<textarea placeholder="Сообщение"></textarea>
+				<div class="error-note">Поле обязательное для заполнения</div>
+				<div class="success-note">Подтверждено</div>
+				<div class="form-buttons">
+					<button class="btn-default btn-submit">Отправить</button>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
+
+<!--callback popup-->
+<div id="callback-popup" class="default-popup mfp-with-anim mfp-hide">
+	<div class="default-popup__content">
+		<div class="pseudotabs-nav">
+			<div class="pseudotabs-tab">
+				<a href="#msg-popup" class="btn-popup-js"><span>Сообщение</span></a>
+			</div>
+			<div class="pseudotabs-tab">
+				<a href="javascript:void(0)" class="active-tab"><span>Перезвоните мне</span></a>
+			</div>
+		</div>
+		<div class="msg-form">
+			<form action="#" method="post">
+				<!--<label for="">Ваше имя:</label>-->
+				<input type="text" placeholder="Ваше имя">
+				<div class="error-note">Поле обязательное для заполнения</div>
+				<div class="success-note">Подтверждено</div>
+				<!--<label for="">Телефон:</label>-->
+				<input type="text" placeholder="Телефон">
+				<div class="error-note">Поле обязательное для заполнения</div>
+				<div class="success-note">Подтверждено</div>
+				<div class="form-buttons">
+					<button class="btn-default btn-submit">Жду звонка</button>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
