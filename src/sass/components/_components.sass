@@ -1639,12 +1639,167 @@ a.bag__inner:hover
 .contacts-page .content
 	padding: 0
 
-.contacts__map
-	position: absolute
-	left: 0
-	top: 0
+/* contacts end
+
+/* contacts map
+.contacts-map
+	float: left
 	width: 50%
+	will-change: min-height
+	position: relative
+
+.contacts-map__holder
+	transform: translate(0, 0) /* For browsers don't support translate3d. */
+	transform: translate3d(0, 0, 0)
+	will-change: position, transform
 	background: $bg-color-alt url(../../img/__temp-map.jpg) no-repeat
 	background-size: cover
 
-/* contacts end
+/* contacts map end
+
+/* contacts info
+.contacts__info
+	float: right
+	width: 50%
+	background-color: $bg-color-light
+	
+// container
+.contacts-tabs
+	position: relative
+
+// nav
+.contacts-tabs__nav
+	z-index: 5
+	margin-bottom: $bottom-space--lg
+
+	+media('<desk-lg')
+		margin-bottom: $bottom-space--ml
+
+.contacts-tabs__thumbs
+	+display-inline-block-top
+	+clear-spacing
+	position: relative
+
+.contacts-tabs__tab
+	$this-space: 1.6em
+	$this-font-size: 36px
+	//=================
+	position: relative
+	+display-inline-block-top
+	+font-alt-bold
+	+font($this-font-size, round-float(42/36, 2))
+	letter-spacing: $letter-spacing
+	padding-right: $this-space
+
+	&::after
+		+pseudo()
+		+size(0, $this-font-size)
+		top: 50%
+		right: round-float($this-space/2, 1) // нужны десятые
+		border-left: 2px solid $text-color-light
+		margin-top: -1px
+		transform: translate(0, -50%)
+
+	&:last-child
+		padding-right: 0
+
+		&::after
+			content: none
+
+	a
+		text-decoration: none
+		color: inherit
+
+		span
+			border-bottom: 2px solid transparent
+
+		// hover
+		&:hover:not(.active-tab)
+
+			span
+				border-color: $text-color
+
+		// active
+		&.active-tab
+			color: $base-color
+			cursor: default
+
+// panels
+.contacts-tabs__panels
+
+.contacts-tabs__panel
+
+.contacts-box
+	border-top: 1px dashed #b4b4b4
+	padding: $grid-space 0
+
+.contacts-box__item
+	margin-bottom: $bottom-space--md
+	+clear
+
+	&:last-child
+		margin-bottom: 0
+
+.contacts-box__label, .contacts-box__title
+	position: relative
+	+font-d($line-height: 24px)
+
+.contacts-box__title
+	margin-bottom: $bottom-space
+
+	&:last-child
+		margin-bottom: 0
+
+.contacts-box__label
+	float: left
+	padding-right: 120px
+	width: calc(100% - 320px)
+
+	&::after
+		+pseudo()
+		top: 13px
+		right: 50px
+		+size(50px, 0)
+		border: solid $text-color
+		border-width: 1px 0 0
+
+	.contacts-box__title ~ .contacts-box__item &
+		+font-normal
+		+font(16px, 24px)
+		text-transform: none
+		letter-spacing: 0.08em
+
+.contacts-box__content
+	overflow: hidden
+
+.contacts-box__dt
+	+font-alt-italic
+	+font(18px, 24px)
+	color: $text-color-light
+	letter-spacing: 0.1em
+
+.contacts-box__dd
+	+font-alt
+	+font(30px, 36px)
+	margin-bottom: 0.5em
+
+	a
+		color: inherit
+		text-decoration: none
+		word-wrap: break-word
+
+		&:hover
+			text-decoration: underline
+
+	&:last-child
+		margin-bottom: 0
+
+.contacts__info
+	.user-form
+		padding: 0
+		background: none
+
+		.layout-text
+			max-width: none
+
+/* contacts info end

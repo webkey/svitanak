@@ -1281,6 +1281,8 @@ function tabSwitcher() {
 								'left': 'auto',
 								'right': 'auto'
 							});
+
+							$tabWrapper.trigger('afterChange.tabSwitcher');
 						}
 					});
 				}
@@ -2526,7 +2528,7 @@ function onlyNumberInput() {
 }
 
 /**
- * Sticky element on page
+ * !Sticky element on page
  */
 function stickyInit() {
 	// var $mAside = $('.m-aside');
@@ -2540,7 +2542,7 @@ function stickyInit() {
 	// }
 	var $mAside = $('.m-aside');
 	if ($mAside.length) {
-		// var mAsideSticky = $mAside.stickySidebar({
+		// var contactsMapSticky = $mAside.stickySidebar({
 		// 	containerSelector: '.m-container',
 		// 	innerWrapperSelector: '.m-aside-holder',
 		// 	topSpacing: $('.header').outerHeight() + 20,
@@ -2577,6 +2579,28 @@ function stickyInit() {
 	//
 	// 	});
 	// }
+
+	var contactsMap = '.contacts-map';
+	if ($(contactsMap).length) {
+
+		var contactsMapSticky = new StickySidebar(contactsMap, {
+			containerSelector: '.contacts',
+			innerWrapperSelector: '.contacts-map__holder',
+			topSpacing: $('.header').outerHeight(),
+			resizeSensor: true // recalculation sticky on change size of elements
+
+		});
+
+		var timeout;
+
+		$('.tabs-js').on('afterChange.tabSwitcher', function () {
+			clearTimeout(timeout);
+
+			timeout = setTimeout(function () {
+				contactsMapSticky.updateSticky();
+			}, 50);
+		});
+	}
 }
 
 /**

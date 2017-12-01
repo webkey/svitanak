@@ -20,16 +20,18 @@
 			<img src="img/@@brand" alt="Бренд" />
 			}
 		</div>
-		<div class="products__visual">
-			<a href="product-card.html" class="products__figure">
-				<div class="products__img">
-					@@if (context.src) {
-					<img src="img/@@src" alt="@@title" />
-					}
+		<a href="product-card.html">
+			<div class="products__visual">
+				<div class="products__figure">
+					<div class="products__img">
+						@@if (context.src) {
+						<img src="img/@@src" alt="@@title" />
+						}
+					</div>
 				</div>
-			</a>
-		</div>
-		<div class="products__title"><a href="product-card.html"><span>@@title</span> <em class="products__model">@@ch.Модель</em></a></div>
+			</div>
+			<div class="products__title"><span>@@title</span> <em class="products__model">@@ch.Модель</em></div>
+		</a>
 
 		<div class="products__content">
 			@@if (context.ch) {

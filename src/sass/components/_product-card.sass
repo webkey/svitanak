@@ -1,0 +1,116 @@
+@import ../utils/_variables
+@import ../utils/_mixins
+@import ../../libs/include-media/dist/_include-media
+
+/*product card*/
+.p-card
+	+clear
+
+.p-card__title
+
+	h1, h2, h3
+		+font-alt-bold
+		+font(#{$font-size-h2}, #{$line-height-h2})
+
+		+media('<mob-lg')
+			+font(#{$font-size-h1--sm}, #{$line-height-h1--sm})
+
+		&:last-child
+			margin-bottom: 0
+
+.p-card__visual, .p-card__content, .p-card__title
+	padding: 0 30px
+	margin-bottom: $bottom-space--md
+
+	+media('<tab-lg')
+		padding: 0 20px
+
+.p-card__visual
+	float: left
+	width: 36%
+	padding-top: 5px
+	padding-left: 0
+
+	+media('<desk-hd')
+		width: 40%
+
+	+media('<desk-lg')
+		width: 50%
+
+	+media('<tab-sm')
+		max-width: 480px
+		float: none
+		width: auto
+		+padding-horizontal(0)
+		margin: 0 auto $bottom-space
+
+.p-card__gallery
+	margin-bottom: $bottom-space--md
+
+	&:last-child
+		margin-bottom: 0
+
+.p-card__content, .p-card__title
+	width: 64%
+	float: right
+	padding-right: 0
+	clear: right
+
+	+media('<desk-hd')
+		width: 60%
+
+	+media('<desk-lg')
+		width: 50%
+
+	+media('<tab-sm')
+		float: none
+		width: auto
+		+padding-horizontal(0)
+		margin-bottom: 3rem
+
+.p-card-price
+	small
+		display: block
+		+font(14px, 17px)
+		color: $text-color-light
+
+	.val
+		+font(30px, 42px)
+		+font-bold
+		display: block
+
+		& > span
+			font-size: 20px
+
+.p-card__widget
+	margin-bottom: $bottom-space--md
+	+font(#{$font-size--sm}, #{$line-height--sm})
+
+	& > *
+		+display-inline-block-top
+		margin-right: 20px
+		margin-bottom: $bottom-space--sm
+
+		&:last-child
+			margin-bottom: 0
+
+	.btn-outline
+		min-width: 190px
+
+.p-card__subtitle
+	display: block
+	+font-alt-bold
+	+font(#{$font-size-h3}, #{$line-height-h3})
+	margin-bottom: $bottom-space
+
+/*product card end*/
+
+/*card bar*/
+.p-card-overview
+	position: relative
+	margin-bottom: $bottom-space--md
+
+	&:last-child
+		margin-bottom: 0
+
+/*card bar end*/

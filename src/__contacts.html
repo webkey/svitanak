@@ -19,8 +19,167 @@
 		<div class="content-wrap">
 			<div class="content user-content">
 				<div class="contacts">
-					<div class="contacts__map"></div>
-					<div class="contacts__info"></div>
+					<div class="contacts-map">
+						<div class="contacts-map__holder">
+							<!--add map-->
+						</div>
+					</div>
+
+					<div class="contacts__info">
+						<div class="contacts-tabs tabs-js" data-auto-height="true">
+							<div class="contacts-tabs__nav">
+								<div class="contacts-tabs__thumbs">
+									<div class="contacts-tabs__tab">
+										<a href="#contactsCall" class="tab-anchor-js active-tab"><span>Позвоните нам</span></a>
+									</div>
+									<div class="contacts-tabs__tab">
+										<a href="#contactsWrite" class="tab-anchor-js"><span>Напишите</span></a>
+									</div>
+								</div>
+							</div>
+
+							<div class="contacts-tabs__panels tab-container-js">
+								<div class="contacts-tabs__panel tab-content-js" id="contactsCall">
+									<div class="contacts-box">
+										<div class="contacts-box__title">Директор:</div>
+										<div class="contacts-box__item">
+											<div class="contacts-box__label">Лукашевич Юрий Борисович</div>
+											<div class="contacts-box__content">
+												<div class="contacts-box__dt">Телефон:</div>
+												<div class="contacts-box__dd"><a href="tel:+375 (17) 753-36-20">+375 (17) 753-36-20</a></div>
+												<div class="contacts-box__dt">Факс:</div>
+												<div class="contacts-box__dd"><a href="tel:+375 (17) 757-01-58">+375 (17) 757-01-58</a></div>
+												<div class="contacts-box__dt">E-mail:</div>
+												<div class="contacts-box__dd"><a href="mailto:office@svitanak.by">office@svitanak.by</a></div>
+											</div>
+										</div>
+									</div>
+									<div class="contacts-box">
+										<div class="contacts-box__title">Отдел продаж:</div>
+										<div class="contacts-box__item">
+											<div class="contacts-box__label">Республика Беларусь</div>
+											<div class="contacts-box__content">
+												<div class="contacts-box__dt">Телефон:</div>
+												<div class="contacts-box__dd"><a href="tel:+375 (17) 753-36-20">+375 (17) 753-36-20</a></div>
+												<div class="contacts-box__dt">Факс:</div>
+												<div class="contacts-box__dd"><a href="tel:+375 (17) 757-01-58">+375 (17) 757-01-58</a></div>
+												<div class="contacts-box__dt">E-mail:</div>
+												<div class="contacts-box__dd"><a href="mailto:market-bel@svitanak.by">market-bel@svitanak.by</a></div>
+											</div>
+										</div>
+										<div class="contacts-box__item">
+											<div class="contacts-box__label">Республика Беларусь</div>
+											<div class="contacts-box__content">
+												<div class="contacts-box__dt">Телефон:</div>
+												<div class="contacts-box__dd"><a href="tel:+375 (17) 753-36-20">+375 (17) 753-36-20</a></div>
+												<div class="contacts-box__dt">Факс:</div>
+												<div class="contacts-box__dd"><a href="tel:+375 (17) 757-01-58">+375 (17) 757-01-58</a></div>
+												<div class="contacts-box__dt">E-mail:</div>
+												<div class="contacts-box__dd"><a href="mailto:market-rus@svitanak.by">market-rus@svitanak.by</a></div>
+											</div>
+										</div>
+									</div>
+									<div class="contacts-box">
+										<div class="contacts-box__item">
+											<div class="contacts-box__label">Отдел рекламы:</div>
+											<div class="contacts-box__content">
+												<div class="contacts-box__dt">Телефон:</div>
+												<div class="contacts-box__dd"><a href="tel:+375 (17) 757-01-88">+375 (17) 757-01-88</a></div>
+												<div class="contacts-box__dt">E-mail:</div>
+												<div class="contacts-box__dd"><a href="mailto:reklama@svitanak.by">reklama@svitanak.by</a></div>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="contacts-tabs__panel tab-content-js" id="contactsWrite">
+									<div class="user-form layout-flood">
+										<div class="layout-text">
+											<form action="#" method="post">
+												<div class="input-wrap">
+													<div class="label-holder">
+														<label for="resort-form__name-field">Имя <span class="form-mark">*</span></label>
+													</div>
+													<div class="input-holder">
+														<input type="text" id="resort-form__name-field">
+														@@include('_tpl_forms_form-validation.html')
+													</div>
+												</div>
+												<div class="input-wrap">
+													<div class="label-holder">
+														<label for="resort-form__organization-field">Предприятие <span class="form-mark">*</span></label>
+													</div>
+													<div class="input-holder">
+														<input type="text" id="resort-form__organization-field">
+														@@include('_tpl_forms_form-validation.html')
+													</div>
+												</div>
+												<div class="input-wrap">
+													<div class="label-holder">
+														<label for="resort-form__contacts-field">Телефон/факс <span class="form-mark">*</span></label>
+													</div>
+													<div class="input-holder">
+														<input type="text" id="resort-form__contacts-field">
+														@@include('_tpl_forms_form-validation.html')
+													</div>
+												</div>
+												<div class="input-wrap">
+													<div class="label-holder">
+														<label for="resort-form__email-field">E-mail <span class="form-mark">*</span></label>
+													</div>
+													<div class="input-holder">
+														<input type="email" id="resort-form__email-field">
+														@@include('_tpl_forms_form-validation.html')
+													</div>
+												</div>
+												<div class="input-wrap">
+													<div class="label-holder">
+														<label for="resort-form__theme-field">Тема письма <span class="form-mark">*</span></label>
+													</div>
+													<div class="input-holder">
+														<select class="cselect" data-placeholder="- Выбрать -" name="" id="resort-form__theme-field">
+															@@include('_tpl_forms_form-select-options.html')
+														</select>
+														@@include('_tpl_forms_form-validation.html')
+													</div>
+												</div>
+												<div class="input-wrap">
+													<div class="label-holder">
+														<label for="resort-form__message-field">Сообщение <span class="form-mark">*</span></label>
+													</div>
+													<div class="input-holder">
+														<textarea id="resort-form__message-field"></textarea>
+														@@include('_tpl_forms_form-validation.html')
+													</div>
+												</div>
+												<div class="input-wrap">
+													<div class="label-holder">
+														<label for="resort-form__captcha-field">Введите код <span class="form-mark">*</span></label>
+													</div>
+													<div class="input-holder">
+														<div class="captcha">
+															<div class="captcha-refresh"><a href="#"><span>Другое изображение</span></a></div>
+															<img src="img/captcha.jpg" alt="captcha" />
+															<input type="text" id="resort-form__captcha-field">
+															<span class="error-note">Введите текст на картинке для защиты от спама</span>
+															<span class="success-note">&nbsp;</span>
+														</div>
+													</div>
+												</div>
+												<div class="form-footer">
+													<div class="form-buttons">
+														<button class="btn-default btn-submit">Отправить</button>
+													</div>
+													<div class="form-note">
+														<div class="form-note__item"><span class="form-mark">*</span> - Поля обязательны для заполнения</div>
+													</div>
+												</div>
+											</form>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
 				</div>
 			</div>
 		</div>

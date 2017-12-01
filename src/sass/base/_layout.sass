@@ -496,7 +496,17 @@ body
 /* shutter (layout) end
 
 /* contacts (layout)
-.contacts__map
+.contacts-map__holder
 	height: calc(100vh - #{$header-height})
+	//height: 1000px
+
+.contacts__info
+	min-height: calc(100vh - #{$header-height})
+	padding: #{floor($layout-spaces*0.9)} #{$layout-spaces}
+
+	+media('<desk-lg')
+		padding: #{floor($layout-spaces--hd*0.9)} #{$layout-spaces--hd}
+
+/* contacts info end
 
 /* contacts (layout) end

@@ -28,6 +28,10 @@
 	text-decoration: none
 	color: inherit
 
+	a
+		text-decoration: none
+		color: inherit
+
 	+clear
 
 .products__brand
@@ -69,6 +73,7 @@
 	width: calc(100% - #{$product-visual-width})
 	margin-bottom: $bottom-space--ml
 
+.products__content, .products__footer
 	&:last-child
 		margin-bottom: 0
 
@@ -85,12 +90,12 @@
 	.products__model
 		display: none
 
-	a
-		.no-touchevents &:hover
-			color: $base-color
+	//hover
+	.no-touchevents a:hover &
+		color: $base-color
 
-			.products__model
-				color: inherit
+		.products__model
+			color: $text-color-light
 
 .products__model
 	+font-normal
@@ -235,9 +240,6 @@ a.btn-to-basket
 		text-align: center
 		text-transform: none
 		margin-bottom: 1.5rem
-
-		&:last-child
-			margin-bottom: 0
 
 		.products__model
 			display: inline
