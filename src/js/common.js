@@ -2069,15 +2069,17 @@ function sortingOrder() {
 		_descending = 'order-desc';
 	var activeClass = 'active';
 
-	var $sortingItems = $('.sorting-thumbs-js li');
+	var $sortingItems = $('.sorting-thumbs-js a');
+	var $sortingItemParent = $sortingItems.parent();
 
 	$sortingItems.on('click', function (e) {
 		e.preventDefault();
 
 		var $this = $(this);
-		if (!$this.hasClass(activeClass)) {
-			$sortingItems.removeClass(activeClass);
-			$this.addClass(activeClass);
+		var $thisParent = $this.parent();
+		if (!$thisParent.hasClass(activeClass)) {
+			$sortingItemParent.removeClass(activeClass);
+			$thisParent.addClass(activeClass);
 
 			return;
 		}
@@ -2436,14 +2438,16 @@ function spinnerInit($spinner) {
 	});
 }
 
-/**product price calculation*/
+/**
+ * !product price calculation
+ * */
 function priceCalculation() {
 	var $container = $('.order-calc-js');
 	var $price = $('.price-js');
-	var objMain = {};
-	var objId = {};
-	var objCount = {};
-	var objPriceSum = {};
+	var objMain = {},
+		objId = {},
+		objCount = {},
+		objPriceSum = {};
 
 	$(document).on('change spin', '.price-calc__number-js', function (e, ui) {
 
@@ -2597,16 +2601,20 @@ function stickyInit() {
 /**
  * !Always place the footer at the bottom of the page
  * */
-function footerBottom() {
+(function () {
 	var $footer = $('.footer__holder');
 
 	if ($footer.length) {
 		$('.main__holder').append($('<div class="spacer"></div>')); // need for sidebar's element sticky of bottom page
 		$('.wrapper').append($('<div class="spacer"></div>')); // need for sidebar's element sticky of bottom page (for responsive)
 
-		setTimeout(function () {
-			layoutFooter();
-		}, 200);
+		// setTimeout(function () {
+		// 	layoutFooter();
+		// 	$($footer).addClass('isBottoming');
+		// }, 200);
+
+		layoutFooter();
+		$($footer).addClass('isBottoming');
 
 		$(window).on('resizeByWidth', function () {
 			layoutFooter();
@@ -2626,7 +2634,7 @@ function footerBottom() {
 			});
 		}
 	}
-}
+})();
 
 /**
  * !Testing form validation (for example). Do not use on release!
@@ -2722,6 +2730,4 @@ $(document).ready(function () {
 	stickyInit();
 	/* for testing validate forms */
 	formSuccessExample();
-
-	footerBottom();
 });

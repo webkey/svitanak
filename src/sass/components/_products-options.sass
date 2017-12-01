@@ -98,7 +98,7 @@
 		margin: 0
 
 		li
-			padding: 0 12px 0 0
+			padding: 0
 			margin: 4px 18px 4px 0
 
 			&::before
@@ -112,9 +112,6 @@
 		white-space: nowrap
 		position: relative
 		cursor: pointer
-
-		//& > span
-			border-bottom: 1px solid #{$border-color}
 
 		// стрелочка развернута ВВЕРХ, сортировака ПО ВОЗРАСТАНИЮ
 		.arr
@@ -132,15 +129,21 @@
 			.order-desc &
 				transform: rotate(0.5turn) translateZ(0)
 
+	a
+		display: block
+		position: relative
+		text-decoration: none
+		color: inherit
+		padding: 0 12px 0 0
+
 		// hover
-		.no-touchevents &:hover
+		&:hover
 			color: $base-color
 
-			//& > span
-				border-bottom-color: transparent
+	// активное соотояние
+	li.active
 
-		// активное соотояние
-		&.active
+		a
 			color: $base-color
 
 			& > span

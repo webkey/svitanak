@@ -88,6 +88,9 @@ label, .label
 	+font(18px, round-float(32/18, 2))
 	margin-bottom: $bottom-space
 
+.form-buttons
+	+clear
+
 /* form layout end
 
 /* form footer
@@ -124,6 +127,7 @@ input[type="text"], input[type="password"], input[type="email"], input[type="sea
 			duration: $animation-speed
 
 	@at-root .select2, .#{$user-content} select, .select, &
+		+font-normal
 		margin: 0 0 $form-bottom-space
 		box-shadow: inset 0 -2px 0 $form-border-color
 
@@ -131,6 +135,9 @@ input[type="text"], input[type="password"], input[type="email"], input[type="sea
 		+font
 		+font($form-font-size, $form-line-height)
 		color: $form-text-color
+
+	&.dark-form
+		background-color: $bg-color-alt
 
 textarea
 	padding: #{$form-input-space-vt} #{$form-input-space-h} #{$form-input-space-vb}

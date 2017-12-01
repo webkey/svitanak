@@ -1,13 +1,13 @@
 @@include('_tpl_layout_head.html', {
-	"title": "error 404",
-	"pageClass": ""
+	"title": "Контакты",
+	"pageClass": "contacts-page"
 })
 
 @@include('_tpl_PAGE_WRAP.html', {"pageWrap": "START" })
 
 <!--HEADER-->
 @@include('_tpl_layout_header.html', {
-	"currentItem": "Клиентам"
+	"currentItem": "Контакты"
 })
 <!--HEADER end-->
 
@@ -18,24 +18,20 @@
 		<!--CONTENT-->
 		<div class="content-wrap">
 			<div class="content user-content">
-				<div class="err">
-					<div class="err__holder">
-						<h1 style="text-align: center;">Page Not Found</h1>
-						<p style="text-align: center;">Sorry, but the page you were trying to view does not exist.</p>
-						<div style="text-align: center;"><a href="index.html">Home page</a></div>
-					</div>
+				<div class="contacts">
+					<div class="contacts__map"></div>
+					<div class="contacts__info"></div>
 				</div>
 			</div>
 		</div>
 		<!--CONTENT end-->
-
 	</div>
 </div>
 <!--MAIN end-->
 
 <!--SIDEBAR-->
 @@include('_tpl_layout_sidebar.html', {
-	"currentItem": ""
+	"currentItem": "Контакты"
 })
 <!--SIDEBAR-->
 

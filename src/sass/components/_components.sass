@@ -15,6 +15,20 @@
 	&:last-child
 		margin-bottom: 0
 
+/* 404 page
+.err
+	display: table
+	width: 100%
+
+.err__holder
+	display: table-cell
+	vertical-align: middle
+	+padding-vertical(100px)
+	background: url(../../img/no-img-product.png) no-repeat center
+	background-size: contain
+
+/* 404 page end
+
 /* logo
 .logo
 	position: relative
@@ -1283,13 +1297,25 @@ a.c-tr:hover
 
 .c-th
 	padding: 15px #{$grid-space}
-	+font-d
+	+font-d($line-height: 20px)
 	border: solid $bg-color-base
 	border-width: 0 0 0 2px
 	background-color: $bg-color-alt
 
 	&:first-child
 		border: none
+
+	& > svg
+		+display-inline-block-top
+
+	&.c-th--del
+		width: 82px
+		text-align: center
+		+padding-horizontal(5px)
+
+
+		& > span
+			+hide-text
 
 .c-td
 	padding: 10px #{$grid-space}
@@ -1307,7 +1333,7 @@ a.c-tr:hover
 
 .c-table-result__text
 	+display-inline-block-middle
-	+font-d()
+	+font-d($line-height: 20px)
 	padding: 15px $grid-space
 
 .c-table-result__label
@@ -1412,6 +1438,15 @@ a.c-tr:hover
 /* stock tape end
 
 /* pseudotabs
+.pseudotabs
+	margin-bottom: $bottom-space--lg
+
+	+media('<desk-lg')
+		margin-bottom: $bottom-space--ml
+
+	&:last-child
+		margin-bottom: 0
+
 .pseudotabs-nav
 	+clear-spacing
 	margin: 0 -20px round($bottom-space--lg/2)
@@ -1423,7 +1458,7 @@ a.c-tr:hover
 		text-align: center
 
 .pseudotabs-tab
-	+font-d()
+	+font-d
 	+display-inline-block-top
 	margin: 0 20px round($bottom-space--lg/2)
 
@@ -1479,29 +1514,6 @@ a.c-tr:hover
 
 /* list dividers end
 
-/* msg form
-.msg-form
-	textarea
-		$height: 120px
-
-		resize: none
-		height: $height
-		max-height: $height
-
-	.form-buttons
-		button
-			margin-bottom: 20px
-
-			&:last-child
-				margin-bottom: 0
-
-		.btn-submit
-			display: block
-			width: 100%
-			text-align: center
-
-/* msg form end
-
 /* bag list
 .bag
 	overflow: hidden
@@ -1517,7 +1529,7 @@ a.c-tr:hover
 
 .bag__item
 	position: relative
-	+font($font-size, round-float(24/16, 2))
+	+font($font-size--sm, round-float(24/16, 2))
 	letter-spacing: $letter-spacing
 	padding-right: 50px
 	padding-bottom: 20px
@@ -1548,6 +1560,7 @@ a.c-tr:hover
 	&.bag__cell--price
 		width: 110px
 		min-width: 110px
+		text-align: right
 
 .bag__img
 	$img-size: 52px, 70px
@@ -1557,7 +1570,7 @@ a.c-tr:hover
 		text-decoration: none
 		color: inherit
 		position: relative
-		margin: 5px 0 0
+		margin: 3px 0 0
 		+size(nth($img-size, 1), auto)
 
 		.no-image &
@@ -1585,32 +1598,15 @@ a.bag__inner:hover
 		color: $link-color
 
 // del btn
-.bag__del
-	$btn-size: 12px
-	$icon-size: 12px
-	// ============
-	display: block
-	position: absolute
-	right: 0
-	top: 0
-	+size($btn-size)
-	color: $text-color
-	fill: $text-color
-	text-decoration: none
-
-	svg
+.bag__item
+	.btn-del
+		$btn-size: 12px
+		// ============
+		+size($btn-size)
+		display: block
 		position: absolute
-		+size($icon-size)
-		+position(50%)
-		margin: -#{round($icon-size/2)} 0 0 -#{round($icon-size/2)}
-
-	path
-		fill: inherit
-
-	// hover
-	&:hover
-		color: $link-color
-		fill: $link-color
+		right: 0
+		top: 4px
 
 /* bag list end
 
@@ -1619,7 +1615,7 @@ a.bag__inner:hover
 	display: flex
 	justify-content: space-between
 	align-items: flex-start
-	+font-d()
+	+font-d
 	margin-bottom: 20px
 
 	&:last-child
@@ -1633,5 +1629,22 @@ a.bag__inner:hover
 .bag-footer__cell
 	+display-inline-block-top
 
-
 /* bag footer end
+
+/* contacts
+.contacts
+	position: relative
+	+clear
+
+.contacts-page .content
+	padding: 0
+
+.contacts__map
+	position: absolute
+	left: 0
+	top: 0
+	width: 50%
+	background: $bg-color-alt url(../../img/__temp-map.jpg) no-repeat
+	background-size: cover
+
+/* contacts end

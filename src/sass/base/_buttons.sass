@@ -464,4 +464,33 @@
 
 
 /* arrow left end
+
+/* btn-del
+.btn-del
+	$btn-size: 20px
+	$icon-size: 12px
+	// ============
+	display: block
+	margin: 0 auto
+	+size($btn-size)
+	color: $text-color
+	fill: $text-color
+	text-decoration: none
+
+	svg
+		position: absolute
+		+size($icon-size)
+		+position(50%)
+		margin: -#{round($icon-size/2)} 0 0 -#{round($icon-size/2)}
+
+	path
+		fill: inherit
+
+	// hover
+	&:hover
+		color: $link-color
+		fill: $link-color
+
+/* btn-del end
+
 /* BUTTON end

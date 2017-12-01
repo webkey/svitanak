@@ -255,7 +255,7 @@ i b, i strong, em b, em strong, b i, b em, strong i, strong em
 	+media('<mob-md')
 		+font(22px, 1)
 
-.heading
+.heading, .sub-heading
 	// display flex
 	display: flex
 	justify-content: space-between
@@ -323,6 +323,15 @@ i b, i strong, em b, em strong, b i, b em, strong i, strong em
 
 .hide-text
 	+hide-text
+
+.bottom-space-lg
+	margin-bottom: $bottom-space--lg
+
+	+media('<desk-lg')
+		margin-bottom: $bottom-space--ml
+
+	&:last-child
+		margin-bottom: 0
 
 /* content img
 .imgc

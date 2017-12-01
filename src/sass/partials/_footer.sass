@@ -16,12 +16,16 @@
 
 .footer__holder
 	overflow: hidden
-	position: absolute
 	top: auto
 	right: auto
 	bottom: 0
 	cursor: default
-	border-top: 1px solid $border-color
+	border-top: 1px solid $bg-color-alt
+	background-color: $bg-color-alt
+
+	// чтобы футер не накрывал контент до инициализации скрипта
+	&.isBottoming, .no-js &
+		position: absolute
 
 /* footer common / footer bottom
 .footer-common-holder, .footer-bottom__holder
@@ -39,7 +43,7 @@
 .footer-common__col, .footer-bottom__col
 	position: relative
 	+grid-item(3, $footer-grid-space)
-	+font($font-size, $line-height)
+	+font($font-size, 30px)
 	letter-spacing: $letter-spacing
 	text-align: center
 
@@ -72,6 +76,9 @@
 			margin-bottom: 0
 
 		.dt
+			+font-alt-italic
+			font-size: 18px
+			letter-spacing: 0.1em
 			color: $text-color-light
 
 		.dt, .dd

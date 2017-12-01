@@ -1071,9 +1071,9 @@
 // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++//
 // ПРИМЕСИ ИСПОЛЬЗУЕМЫЕ В ТЕКУЩЕМ ПРОЕКТЕ
 // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++//
-=font-d($line-height: 20)
+=font-d($font-size: 14px, $line-height: round-float(20/14, 2))
 	+font-bold
-	+font(14px, round-float($line-height/14, 2))
+	+font($font-size, $line-height)
 	letter-spacing: 0.2em
 	text-transform: uppercase
 
