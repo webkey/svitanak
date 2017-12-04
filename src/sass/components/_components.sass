@@ -1318,10 +1318,17 @@ a.c-tr:hover
 			+hide-text
 
 .c-td
-	padding: 10px #{$grid-space}
+	padding: 28px #{$grid-space}
 	vertical-align: middle
 	border: solid $border-color
 	border-width: 0 0 1px
+
+	a
+		text-decoration: none
+		color: inherit
+
+		.no-touchevents &:hover
+			color: $link-color
 
 
 .c-table-result
@@ -1355,6 +1362,9 @@ a.c-tr:hover
 	+size(16px)
 	border-radius: 50%
 	+font(0, 0)
+	
+	&[style*="#fff"]
+		box-shadow: inset 0 0 0 1px #d9d9d9
 
 	.color-pics &
 		margin-right: 16px
@@ -1365,12 +1375,14 @@ a.c-tr:hover
 /* order list
 // === img ===
 .order-list__img
-	border: 1px solid transparent
 	display: block
+	+size(70px, auto)
 	text-decoration: none
 	color: inherit
 	position: relative
-	+size(70px, auto)
+
+	.c-td &
+		+margin-vertical(-18px)
 
 	.no-image &
 		background: url(../../img/no-img-product.png) no-repeat center
@@ -1388,10 +1400,6 @@ a.c-tr:hover
 		max-width: none
 		+object-fit(contain)
 
-// hover
-.no-touchevents a.order-list__img:hover
-	border-color: $base-color
-
 // === color ===
 .order-list__color
 	white-space: nowrap
@@ -1402,8 +1410,9 @@ a.c-tr:hover
 		margin-right: 5px
 
 // === results ===
-.order-calc .c-table-result__text
-	display: none
+.c-table-result__text
+	&.hide-before-calc
+		display: none
 
 	&.show
 		display: inline-block

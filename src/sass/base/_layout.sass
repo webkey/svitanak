@@ -306,6 +306,25 @@ body
 		//+media('<mob-lg')
 			+margin-horizontal(-#{$text-layout-space-horizontal--sm})
 
+.nav-bottom
+	padding-bottom: #{floor($layout-spaces*0.9)}
+
+	/* tape slider (layout)
+	.tape-slider-pagination
+		bottom: 0
+
+	.tape-slider-prev, .tape-slider-next
+		bottom: 0
+		top: auto
+		margin-top: 0
+
+	.tape-slider-prev
+		left: 0
+
+	.tape-slider-next
+		right: 0
+	/* tape slider (layout) end
+
 .home-page
 	/* main slider (layout)
 	.main-slider-pagination
@@ -327,26 +346,24 @@ body
 		padding: #{floor($layout-spaces*0.9*2)} #{$layout-spaces}
 
 		+media('<desk-lg')
-			padding:  #{floor($layout-spaces--lg*0.9*2)} #{$layout-spaces--lg}
+			padding: #{floor($layout-spaces--lg*0.9*2)} #{$layout-spaces--lg}
 
 	/* main slider (layout) end
-	
-	/* tape slider (layout)
-	.tape-slider-pagination
-		bottom: #{floor($layout-spaces*0.9)}
 
-	.tape-slider-prev, .tape-slider-next
-		bottom: #{floor($layout-spaces*0.9)}
-		top: auto
-		margin-top: 0
+	.nav-bottom
+		padding-bottom: #{floor($layout-spaces*1.8)}
 
-	.tape-slider-prev
-		left: #{$layout-spaces}
+		/* tape slider (layout)
+		.tape-slider-pagination, .tape-slider-prev, .tape-slider-next
+			bottom: #{floor($layout-spaces*0.9)}
 
-	.tape-slider-next
-		right: #{$layout-spaces}
+		.tape-slider-prev
+			left: #{$layout-spaces}
 
-	/* tape slider (layout) end
+		.tape-slider-next
+			right: #{$layout-spaces}
+
+		/* tape slider (layout) end
 
 	/* previews tabs (layout)
 	.previews-tabs__nav

@@ -465,6 +465,62 @@ function slidersInit() {
 			});
 		});
 	}
+
+	/*similar slider*/
+	var $similarSlider = $('.similar-slider-js');
+	if ($similarSlider.length) {
+		$similarSlider.each(function () {
+			var $thisSlider = $(this);
+			var $thisBtnNext = $('.swiper-button-next', $thisSlider);
+			var $thisBtnPrev = $('.swiper-button-prev', $thisSlider);
+			var $thisFractPag = $('.swiper-pagination', $thisSlider);
+
+			new Swiper($thisSlider, {
+				slidesPerView: 5,
+				slidesPerGroup: 5,
+				// autoHeight: true,
+				// Optional parameters
+				loop: false,
+				// Keyboard
+				keyboardControl: true,
+				// additional slide offset in the beginning of the container
+				// slidesOffsetBefore: 91,
+				spaceBetween: 65,
+				// Ratio to trigger swipe to next/previous slide during long swipes
+				longSwipesRatio: 0.1,
+				longSwipesMs: 200,
+
+				// Navigation arrows
+				nextButton: $thisBtnNext,
+				prevButton: $thisBtnPrev,
+				// navigation: {
+				// 	nextEl: $thisBtnNext,
+				// 	prevEl: $thisBtnPrev
+				// },
+
+				// Pagination
+				pagination: $thisFractPag,
+				paginationType: 'fraction',
+				// pagination: {
+				// 	el: $thisFractPag,
+				// 	type: 'fraction'
+				// },
+				// Responsive breakpoints
+				breakpoints: {
+					1919: {
+						slidesOffsetBefore: 40,
+						spaceBetween: 40
+					}
+				},
+				// events
+				onInit: function (swiper) {
+					$(swiper.slides).matchHeight({
+						byRow: true, property: 'height', target: null, remove: false
+					});
+				}
+			});
+		});
+	}
 }
 
 /**
@@ -1493,7 +1549,7 @@ function equalHeight() {
 
 		var $container = $('.view-container-js');
 		var activeHand = 'active';
-		var activeContainer = 'grid-view-activated';
+		var activeContainer = 'grid-view';
 
 		$switcherHand.on('click', function (e) {
 			e.preventDefault();
@@ -1628,7 +1684,7 @@ function toggleViewInit() {
 
 		$toggleViewSwitcherProducts.toggleView({
 			activeClass: 'active',
-			viewClass: 'grid-view-activated'
+			viewClass: 'grid-view'
 		})
 	}
 }
@@ -2591,14 +2647,26 @@ function stickyInit() {
 
 		});
 
-		var timeout;
+		var contactsMapTimeout;
 
 		$('.tabs-js').on('afterChange.tabSwitcher', function () {
-			clearTimeout(timeout);
+			clearTimeout(contactsMapTimeout);
 
 			timeout = setTimeout(function () {
 				contactsMapSticky.updateSticky();
 			}, 50);
+		});
+	}
+
+	var cardInfo = '.card-info-js';
+	if ($(cardInfo).length) {
+
+		new StickySidebar(cardInfo, {
+			containerSelector: '.p-card',
+			innerWrapperSelector: '.p-card__content__holder',
+			topSpacing: $('.header').outerHeight() + 40,
+			resizeSensor: true // recalculation sticky on change size of elements
+
 		});
 	}
 }

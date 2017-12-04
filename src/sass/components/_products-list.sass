@@ -107,6 +107,12 @@
 
 // list of characteristics
 .products__dl
+	margin-bottom: $bottom-space
+
+	&:last-child
+		margin-bottom: 0
+
+.products__di
 	position: relative
 	padding: 5px 0
 	border-bottom: 1px dashed $text-color-light
@@ -213,7 +219,7 @@ a.btn-to-basket
 		display: inline-block
 
 /* grid view
-.products.grid-view-activated
+.grid-view
 	.products__list
 		+grid-parent($products-grid-space)
 		+clear-spacing

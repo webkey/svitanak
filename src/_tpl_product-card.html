@@ -1,49 +1,90 @@
 <div class="p-card">
-	<div class="p-card__title"><h2>Комплект жен.(фуфайка+шорты)</h2></div>
 	<div class="p-card__visual">
 		<div class="p-card__gallery card-gallery-js">
+			<div class="p-card__gallery__item"><img src="img/img-products-08.jpg"></div>
+			<div class="p-card__gallery__item"><img src="img/img-products-05.jpg"></div>
 			<div class="p-card__gallery__item"><img src="img/img-products-01.jpg"></div>
-			<div class="p-card__gallery__item"><img src="img/img-products-02.jpg"></div>
-			<div class="p-card__gallery__item"><img src="img/img-products-03.jpg"></div>
-			<div class="p-card__gallery__item"><img src="img/img-products-04.jpg"></div>
+			<div class="p-card__gallery__item"><img src="img/img-products-06.jpg"></div>
+			<div class="p-card__gallery__item"><img src="img/img-products-07.jpg"></div>
 		</div>
 	</div>
-	<div class="p-card__content">
-		<div class="p-card__widget">
-			<strong class="p-card__subtitle">Краткое описание:</strong>
-			<p>Резьбовой крепежный элемент РКн (наружная резьба) предназначен для соединения изолированного металлорукава с установочной коробкой и герметичного соединение изолированного отрезков металлорукава путем стыковки с ответным элементом РКв (внутренняя резьба).</p>
-		</div>
-		<div class="p-card__widget">
-			<div class="spinner">
-				<input class="spinner-js" type="text" name="value" value="1" data-only-number>
-			</div>
-			<div class="p-card-price products__price">
-				<div class="cur">
-					<strong class="val">46.58</strong>
-					<span class="unit">BYN</span>
+	<div class="p-card__content card-info-js">
+		<div class="p-card__content__holder">
+			<div class="p-card__title">
+				<h2>Комплект жен.(фуфайка+шорты)</h2>
+				<!--<div class="to-catalog">
+					<a href="catalog.html" class="btn-underline btn-with-icon">
+						<svg class="svg-ico-arr-l" xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 62 45.2"><path d="M61.6 20.7c-0.8-2.3-3-3.7-5.6-3.7 -11.3 0-22.6 0-33.9 0h-1.1c0.3-0.3 0.5-0.5 0.7-0.6 2.4-2.1 4.8-4.2 7.1-6.3 2.9-2.6 2.9-6.6 0-8.8C28 0.7 27 0.4 26.1 0h-1.8c-1.8 0.4-3.2 1.6-4.6 2.8C14.1 7.8 8.4 12.8 2.7 17.7 1.4 18.8 0.4 20.1 0 21.8v1.6c0.4 1.9 1.7 3.2 3.1 4.5 5.7 4.9 11.3 9.9 17 14.9 1.2 1.1 2.5 2.1 4.2 2.5h1.8c0.7-0.3 1.5-0.5 2.2-0.9 3.1-1.8 3.7-6.1 1.1-8.6 -2.5-2.4-5.1-4.5-7.6-6.8 -0.2-0.2-0.4-0.4-0.7-0.7h1c11.2 0 22.4 0 33.6 0 3.4 0 5.3-1.4 6.3-4.7 0 0 0.1-0.1 0.1-0.1v-1.6C61.9 21.4 61.8 21.1 61.6 20.7z"></path></svg>
+						<span>Назад к каталогу</span>
+					</a>
+				</div>-->
+				<div class="p-card__state">
+					<span class="p-card__model">модель: Р219044</span>
+					<div class="p-card__store on">
+						@@include("includes-json/files/icon-on.svg")
+						<span>Есть в наличии</span>
+					</div>
+					<div class="p-card__store off">
+						@@include("includes-json/files/icon-off.svg")
+						<span>Нет в наличии</span>
+					</div>
 				</div>
 			</div>
-		</div>
-		<div class="p-card__widget">
-			@@include("_tpl_products-card-features.html", {
-				"src": "img-products-01.jpg",
-				"title": "Комплект жен. (фуфайка+брюки)",
-				"stock": "",
-				"price": "27.35",
-				"priceUnit": "BYN",
-				"old": "",
-				"oldUnit": "BYN",
-				"inCart": "",
-				"ch": {
-					"Модель": "P209101",
-					"Коллекция": "<a href=\"#\">Лето</a>",
-					"Полотно": "Кулир",
-					"Состав": "Хлопок 100%",
-					"Размеры": "84-108"
-				},
-				"colors": ["#a9e2f5", "#f2d7fa"],
-				"brand": "img-brand-01.png"
-			})
+			<!--<div class="p-card__widget">
+				<strong class="p-card__widget__title">Краткое описание:</strong>
+				<p>Резьбовой крепежный элемент РКн (наружная резьба) предназначен для соединения изолированного металлорукава с установочной коробкой и герметичного соединение изолированного отрезков металлорукава путем стыковки с ответным элементом РКв (внутренняя резьба).</p>
+			</div>-->
+			<div class="p-card__widget">
+				<div class="p-card__price">
+					<div class="cur">
+						<strong class="val">46.58</strong>
+						<small>BYN</small>
+					</div>
+					<div class="old">
+						<strong class="val">71.05</strong>
+						<small>BYN</small>
+					</div>
+				</div>
+			</div>
+			<div class="p-card__widget">
+				@@include("_tpl_products-card__features.html", {
+					"ch": {
+						"Модель": "P209101",
+						"Коллекция": "<a href=\"#\">Сон и отдых</a>",
+						"Полотно": "Ластик 1х1",
+						"Состав": "Хлопок 87%, полиэфир 13%",
+						"Поверхность": "Гладкая",
+						"Вид отделки:": "Пигментная печать",
+						"Размеры": "84-108"
+					}
+				})
+			</div>
+			<div class="p-card__widget">
+				<strong class="p-card__widget__title">Размер:</strong>
+				@@include("_tpl_products-card__grids.html", {
+					"items": ["36", "38", "40", "42", "44", "46", "48", "50", "52", "48", "50", "52"]
+				})
+			</div>
+			<div class="p-card__widget">
+				<strong class="p-card__widget__title">Рост:</strong>
+				@@include("_tpl_products-card__grids.html", {
+					"items": ["155", "160", "165", "170", "175", "180", "185", "190", "195"]
+				})
+			</div>
+			<div class="p-card__widget">
+				<strong class="p-card__widget__title">Цвет:</strong>
+				@@include("_tpl_products-card__colors.html", {
+				"color": {
+					"Серый": "#c7c7c7",
+					"Темносерый": "#3a3a3a",
+					"Белый": "#fff",
+					"Розовый": "#f3bd9b",
+					"Коричневый": "#985e46",
+					"Бежевый": "#e0e1c6",
+					"Желтый": "#f5ff84"
+				}
+				})
+			</div>
 		</div>
 	</div>
 </div>

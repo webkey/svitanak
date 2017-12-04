@@ -34,24 +34,26 @@
 		</a>
 
 		<div class="products__content">
-			@@if (context.ch) {
-				@@for (var key in ch) {
-				<div class="products__dl">
-					<div class="products__dt">`+key+`:</div>
-					<div class="products__dd">`+ch[key]+`</div>
-				</div>
-				}
-			}
 			<div class="products__dl">
-				<div class="products__dt">Цвет</div>
-				<div class="products__dd">
-					@@if (context.colors) {
-					<div class="color-pics">
-					@@for (var i = 0; i < colors.length; i++) {
-						<div class="color-pic" style="background-color: `+colors[i]+`;">`+colors[i]+`</div>
-					}
+				@@if (context.ch) {
+					@@for (var key in ch) {
+					<div class="products__di">
+						<div class="products__dt">`+key+`:</div>
+						<div class="products__dd">`+ch[key]+`</div>
 					</div>
 					}
+				}
+				<div class="products__di">
+					<div class="products__dt">Цвет</div>
+					<div class="products__dd">
+						@@if (context.colors) {
+						<div class="color-pics">
+						@@for (var i = 0; i < colors.length; i++) {
+							<div class="color-pic" style="background-color: `+colors[i]+`;">`+colors[i]+`</div>
+						}
+						</div>
+						}
+					</div>
 				</div>
 			</div>
 		</div>

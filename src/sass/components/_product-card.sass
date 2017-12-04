@@ -3,112 +3,278 @@
 @import ../../libs/include-media/dist/_include-media
 
 /*product card*/
+$p-card-space: 100px
+$p-card-space--lg: 50px
+$p-card-ratio: 60% 40%
+$p-card-ratio--lg: 50% 50%
+
+$p-card-elem-bottom-space: 40px
+
 .p-card
 	+clear
+	margin-bottom: $bottom-space--lg
 
+	+media('<desk-lg')
+		margin-bottom: $bottom-space--ml
+
+// title
 .p-card__title
+	margin-bottom: $p-card-elem-bottom-space
 
 	h1, h2, h3
 		+font-alt-bold
 		+font(#{$font-size-h2}, #{$line-height-h2})
+		letter-spacing: 0.05em
+		margin-bottom: $p-card-elem-bottom-space
 
 		+media('<mob-lg')
 			+font(#{$font-size-h1--sm}, #{$line-height-h1--sm})
+			margin-bottom: $bottom-space
 
 		&:last-child
 			margin-bottom: 0
 
-.p-card__visual, .p-card__content, .p-card__title
-	padding: 0 30px
-	margin-bottom: $bottom-space--md
+	.to-catalog
+		text-align: right
+		margin-bottom: $bottom-space
 
-	+media('<tab-lg')
-		padding: 0 20px
+.p-card__state
+	+font-d()
+
+	.p-card__model, .p-card__store
+		+display-inline-block-top
+
+.p-card__model
+	color: $text-color-light
+	
+.p-card__store
+	&::before
+		content: "/"
+		display: none
+		color: $text-color-light
+
+	.p-card__model + &::before
+		display: inline-block
+
+	svg
+		+display-inline-block-top
+		+size(14px)
+		margin-top: 3px
+
+	path, polygon
+		fill: inherit
+
+	&.on
+		$color: #32b39b
+		// ================
+		color: $color
+		fill: $color
+
+	&.off
+		$color: #ff203b
+		// ================
+		color: $color
+		fill: $color
+
+		svg
+			+size(10px)
+			margin-top: 5px
+
+// product photos
+.p-card__visual, .p-card__content__holder
+	padding: 0 $p-card-space
 
 .p-card__visual
 	float: left
-	width: 36%
-	padding-top: 5px
-	padding-left: 0
-
-	+media('<desk-hd')
-		width: 40%
+	width: nth($p-card-ratio, 1)
 
 	+media('<desk-lg')
-		width: 50%
-
-	+media('<tab-sm')
-		max-width: 480px
-		float: none
-		width: auto
-		+padding-horizontal(0)
-		margin: 0 auto $bottom-space
+		width: nth($p-card-ratio--lg, 1)
 
 .p-card__gallery
-	margin-bottom: $bottom-space--md
+	margin-bottom: $bottom-space--lg
 
 	&:last-child
 		margin-bottom: 0
 
-.p-card__content, .p-card__title
-	width: 64%
+.p-card__gallery__item
+	height: calc(100vh - 264px) // костыль
+	padding-top: $p-card-space
+
+	&:first-child
+		padding-top: 0
+
+	img
+		display: block
+		width: 100%
+		height: 100%
+		max-width: none
+		+object-fit(none)
+		+object-fit(scale-down)
+
+// widget
+.p-card__widget
+	margin-bottom: $p-card-elem-bottom-space
+	+font(#{$font-size}, #{$line-height})
+
+.p-card__widget__title
+	display: block
+	+font-d()
+	margin-bottom: $bottom-space--sm
+
+// info
+.p-card__content
+	width: nth($p-card-ratio, 2)
 	float: right
-	padding-right: 0
 	clear: right
 
-	+media('<desk-hd')
-		width: 60%
-
 	+media('<desk-lg')
-		width: 50%
+		width: nth($p-card-ratio--lg, 2)
 
-	+media('<tab-sm')
-		float: none
-		width: auto
-		+padding-horizontal(0)
-		margin-bottom: 3rem
+.p-card__content__holder
+	padding-left: 0
 
-.p-card-price
-	small
-		display: block
-		+font(14px, 17px)
-		color: $text-color-light
+// price
+.p-card__price
+	+font-normal
+	line-height: 24px
+	color: $base-color
 
 	.val
-		+font(30px, 42px)
+		display: inline-block
+		vertical-align: baseline
 		+font-bold
-		display: block
+		font-size: 18px
 
-		& > span
-			font-size: 20px
+	small
+		display: inline-block
+		vertical-align: baseline
+		font-size: 14px
 
-.p-card__widget
-	margin-bottom: $bottom-space--md
-	+font(#{$font-size--sm}, #{$line-height--sm})
+	.old, .cur
+		position: relative
+		display: inline-block
+		vertical-align: baseline
+		margin-right: $grid-space
 
-	& > *
-		+display-inline-block-top
-		margin-right: 20px
-		margin-bottom: $bottom-space--sm
+	.old
+		color: $text-color-light
+
+		&::after
+			+pseudo()
+			+size(calc(100% + 4px), 0)
+			left: -2px
+			bottom: 50%
+			margin-bottom: -1px
+			border-top: 1px solid $text-color-light
+
+		.val
+			font-size: 14px
+
+		small
+			font-size: 10px
+
+// list of characteristics
+.p-card__options__dl
+	margin-bottom: $p-card-elem-bottom-space
+	$dt-width: 184px
+
+	&:last-child
+		margin-bottom: 0
+
+	.p-card__options__di
+		position: relative
+		padding: 10px 0
+		border-bottom: 1px dashed $text-color-light
+		+clear
+
+	.p-card__options__dt
+		float: left
+		width: $dt-width
+		color: $text-color-light
+		padding-right: 10px
+
+	.p-card__options__dd
+		margin-left: $dt-width
+
+// list of grid view parameters
+.p-card__options__grid
+	+clear-spacing
+
+	&, .#{$user-content} &
+		padding: 0 0 1px 1px
+		margin: 0 0 $p-card-elem-bottom-space
 
 		&:last-child
 			margin-bottom: 0
 
-	.btn-outline
-		min-width: 190px
+		li
+			padding: 8px
+			margin: 0 0 -1px -1px
 
-.p-card__subtitle
-	display: block
-	+font-alt-bold
-	+font(#{$font-size-h3}, #{$line-height-h3})
-	margin-bottom: $bottom-space
+			&::before
+				content: none
+
+	li
+		+display-inline-block-top
+		min-width: 61px
+		border: 1px solid $border-color
+		+font(16px, 20px)
+		letter-spacing: normal
+		text-align: center
+
+// list of colors
+.p-card__color
+	+clear-spacing
+
+	&, .#{$user-content} &
+		padding: 0 0 1px 1px
+		margin: 0 0 $p-card-elem-bottom-space
+
+		&:last-child
+			margin-bottom: 0
+
+		li
+			padding: 8px 8px 8px 42px
+			margin: 0 0 -1px -1px
+
+			&::before
+				content: none
+
+	li
+		position: relative
+		+display-inline-block-top
+		width: 33.28%
+		border: 1px solid $border-color
+		+font($font-size, $line-height)
+		letter-spacing: normal
+		+truncate(none)
+		overflow: hidden
+		cursor: default
+
+	.color-pic
+		position: absolute
+		left: 19px
+		top: 14px
+		margin: 0
+		z-index: 5
+		will-change: transform
+		transition:
+			property: transform
+			duration: 0.6s
+
+	.no-touchevents & li:hover
+		.color-pic
+			$scale: 30
+			transform: scale($scale)
+			transform: scale3d($scale, $scale, $scale)
 
 /*product card end*/
 
 /*card bar*/
 .p-card-overview
 	position: relative
-	margin-bottom: $bottom-space--md
+	margin-bottom: $p-card-elem-bottom-space
 
 	&:last-child
 		margin-bottom: 0

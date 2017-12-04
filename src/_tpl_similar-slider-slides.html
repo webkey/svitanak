@@ -1,0 +1,49 @@
+@@if (context.inCart) {
+	@@if (context.src) {
+	<div class="tape-slider__item swiper-slide in-cart">
+	}
+	@@if (!context.src) {
+	<div class="tape-slider__item swiper-slide in-cart no-image">
+	}
+}
+@@if (!context.inCart) {
+	@@if (context.src) {
+	<div class="tape-slider__item swiper-slide">
+	}
+	@@if (!context.src) {
+	<div class="tape-slider__item swiper-slide no-image">
+	}
+}
+	<div class="products__inner">
+		<div class="products__brand">
+			@@if (context.brand) {
+			<img src="img/@@brand" alt="Бренд" />
+			}
+		</div>
+		<a href="product-card.html">
+			<div class="products__visual">
+				<div class="products__figure">
+					<div class="products__img">
+						@@if (context.src) {
+						<img src="img/@@src" alt="@@title" />
+						}
+					</div>
+				</div>
+			</div>
+			<div class="products__title"><span>@@title</span> <em class="products__model">@@ch.Модель</em></div>
+		</a>
+
+		<div class="products__footer">
+			@@if (context.price) {
+			<div class="products__price">
+				<div class="cur"><strong class="val">@@price</strong> <span class="unit">@@priceUnit</span></div>
+			</div>
+			}
+			@@if (!context.price) {
+			<div class="products__price">
+				<div class="no">цену уточняйте</div>
+			</div>
+			}
+		</div>
+	</div>
+</div>
