@@ -1460,6 +1460,8 @@ function toggleDrop() {
 
 			e.stopPropagation();
 
+			$choiceContainer.trigger('change.toggleDrop');
+
 			if ($currentContainer.hasClass(openClass)) {
 				$currentContainer.removeClass(openClass);
 				return;
@@ -1497,7 +1499,7 @@ function toggleDrop() {
 
 			// if data-select is false, do not replace text
 			if ($this.closest($choiceContainer).attr('data-select') === 'false') {
-				return false;
+				return;
 			}
 
 			$('a', '.js-choice-drop').removeClass('active');
@@ -1510,6 +1512,50 @@ function toggleDrop() {
 		});
 	}
 
+}
+
+/**
+ * !Zoom images
+ * */
+function zoomImages() {
+	var $toggler = $('.p-card__gallery__item'),
+		$container = $('.p-card');
+	var activeClass = 'zoom-on';
+	var timeout;
+
+	$toggler.on('click', function (e) {
+		e.preventDefault();
+
+		var $this = $(this),
+			$thisContainer = $this.closest($container);
+
+		$thisContainer.toggleClass(activeClass);
+
+		$container.trigger('change.zoomImages');
+
+		clearTimeout(timeout);
+
+		timeout = setTimeout(function () {
+			scrollTo($this, 300);
+		}, 300);
+	});
+
+	// $(document).keyup(function(e) {
+	// 	if ($container.hasClass(activeClass) && e.keyCode === 27) {
+	// 		$container.removeClass(activeClass);
+	//
+	// 		$container.trigger('change.zoomImages');
+	// 	}
+	// });
+
+	function scrollTo($element, speed) {
+
+		var dur = speed || 300;
+
+		if (!$(this).is(':animated')) {
+			$('html,body').stop().animate({scrollTop: $element.offset().top}, dur);
+		}
+	}
 }
 
 /**
@@ -2652,21 +2698,50 @@ function stickyInit() {
 		$('.tabs-js').on('afterChange.tabSwitcher', function () {
 			clearTimeout(contactsMapTimeout);
 
-			timeout = setTimeout(function () {
+			contactsMapTimeout = setTimeout(function () {
 				contactsMapSticky.updateSticky();
 			}, 50);
 		});
 	}
 
 	var cardInfo = '.card-info-js';
-	if ($(cardInfo).length) {
+	var $cardInfo = $(cardInfo);
+	if ($cardInfo.length) {
 
-		new StickySidebar(cardInfo, {
+		var cardInfoSticky = new StickySidebar(cardInfo, {
 			containerSelector: '.p-card',
 			innerWrapperSelector: '.p-card__content__holder',
 			topSpacing: $('.header').outerHeight() + 40,
 			resizeSensor: true // recalculation sticky on change size of elements
 
+		});
+
+		// var cardInfoElement = document.querySelector(cardInfo);
+
+		// cardInfoElement.addEventListener('affix.bottom.stickySidebar', function () {
+		// 	$cardInfo.addClass('is-bottom-affixed');
+		// });
+		//
+		// cardInfoElement.addEventListener('affix.unbottom.stickySidebar', function (event) {
+		// 	$cardInfo.removeClass('is-bottom-affixed');
+		// });
+
+		var cardInfoTimeout;
+
+		$('.js-choice-wrap').on('change.toggleDrop', function () {
+			clearTimeout(cardInfoTimeout);
+
+			cardInfoTimeout = setTimeout(function () {
+				cardInfoSticky.updateSticky();
+			}, 50);
+		});
+
+		$('.p-card').on('change.zoomImages', function () {
+			clearTimeout(cardInfoTimeout);
+
+			cardInfoTimeout = setTimeout(function () {
+				cardInfoSticky.updateSticky();
+			}, 500);
 		});
 	}
 }
@@ -2808,6 +2883,7 @@ $(document).ready(function () {
 	shuttersInit();
 	tabSwitcher();
 	toggleDrop();
+	zoomImages();
 	addDataLengthChildren();
 	equalHeight();
 	toggleViewInit();

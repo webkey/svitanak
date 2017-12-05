@@ -5,16 +5,16 @@
 /*product card*/
 $p-card-space: 100px
 $p-card-space--lg: 50px
-$p-card-ratio: 60% 40%
+$p-card-ratio: 55% 45%
 $p-card-ratio--lg: 50% 50%
 
 $p-card-elem-bottom-space: 40px
 
 .p-card
 	+clear
-	margin-bottom: $bottom-space--lg
+	//margin-bottom: $bottom-space--lg
 
-	+media('<desk-lg')
+	//+media('<desk-lg')
 		margin-bottom: $bottom-space--ml
 
 // title
@@ -81,15 +81,19 @@ $p-card-elem-bottom-space: 40px
 			margin-top: 5px
 
 // product photos
-.p-card__visual, .p-card__content__holder
+.p-card, .p-card__content__holder
 	padding: 0 $p-card-space
 
 .p-card__visual
 	float: left
 	width: nth($p-card-ratio, 1)
+	margin-bottom: $bottom-space--lg
 
 	+media('<desk-lg')
 		width: nth($p-card-ratio--lg, 1)
+
+	&:last-child
+		margin-bottom: 0
 
 .p-card__gallery
 	margin-bottom: $bottom-space--lg
@@ -98,13 +102,22 @@ $p-card-elem-bottom-space: 40px
 		margin-bottom: 0
 
 .p-card__gallery__item
-	height: calc(100vh - 264px) // костыль
-	padding-top: $p-card-space
+	//height: calc(100vh - 264px) // костыль
+	position: relative
+	height: 100vh
+	text-align: center
+	// для сжатия по высоте / плохо анимируется
+	//+clear-spacing
 
-	&:first-child
-		padding-top: 0
+	// для сжатия по высоте / плохо анимируется
+	//&::before
+		content: ""
+		display: inline-block
+		vertical-align: middle
+		+size(0, 100%)
 
 	img
+		visibility: hidden
 		display: block
 		width: 100%
 		height: 100%
@@ -112,10 +125,28 @@ $p-card-elem-bottom-space: 40px
 		+object-fit(none)
 		+object-fit(scale-down)
 
+		.no-js &
+			width: auto
+			height: auto
+			max-width: 100%
+
+.p-card__gallery__inner
+	// для сжатия по высоте / плохо анимируется
+	//+display-inline-block-middle
+	+size(100%, 100%)
+	font-size: $font-size
+	letter-spacing: normal
+	background-position: center
+	background-repeat: no-repeat
+	background-size: auto 80%
+
 // widget
 .p-card__widget
-	margin-bottom: $p-card-elem-bottom-space
+	margin-top: $p-card-elem-bottom-space
 	+font(#{$font-size}, #{$line-height})
+
+	&:first-child
+		margin-top: 0
 
 .p-card__widget__title
 	display: block
@@ -127,12 +158,17 @@ $p-card-elem-bottom-space: 40px
 	width: nth($p-card-ratio, 2)
 	float: right
 	clear: right
+	will-change: min-height
 
 	+media('<desk-lg')
 		width: nth($p-card-ratio--lg, 2)
 
 .p-card__content__holder
-	padding-left: 0
+	padding-right: 0
+	padding-bottom: $bottom-space--lg
+	transform: translate(0, 0) /* For browsers don't support translate3d. */
+	transform: translate3d(0, 0, 0)
+	will-change: position, transform
 
 // price
 .p-card__price
@@ -199,7 +235,7 @@ $p-card-elem-bottom-space: 40px
 
 // list of grid view parameters
 .p-card__options__grid
-	+clear-spacing
+	+clear
 
 	&, .#{$user-content} &
 		padding: 0 0 1px 1px
@@ -216,11 +252,10 @@ $p-card-elem-bottom-space: 40px
 				content: none
 
 	li
-		+display-inline-block-top
+		float: left
 		min-width: 61px
 		border: 1px solid $border-color
 		+font(16px, 20px)
-		letter-spacing: normal
 		text-align: center
 
 // list of colors
@@ -249,7 +284,6 @@ $p-card-elem-bottom-space: 40px
 		+font($font-size, $line-height)
 		letter-spacing: normal
 		+truncate(none)
-		overflow: hidden
 		cursor: default
 
 	.color-pic
@@ -269,10 +303,89 @@ $p-card-elem-bottom-space: 40px
 			transform: scale($scale)
 			transform: scale3d($scale, $scale, $scale)
 
+// previous and next products
+.p-card__btn
+	$pc-btn-size: 300px 430px // width height
+
+	position: absolute
+	top: 50vh
+	+size(nth($pc-btn-size, 1), nth($pc-btn-size, 2))
+	margin: -#{round(nth($pc-btn-size, 2)/2)} -#{round(nth($pc-btn-size, 1)/2)} 0
+	z-index: 15
+
+	.p-card__btn__text
+		position: absolute
+		+size(200px)
+		top: 50%
+
+		background-color: lightskyblue
+
+		span
+			display: block
+			transform: rotate(-0.25turn)
+			text-align: center
+			width: 200px
+			+truncate(200px)
+			transform-origin: left center
+
+			background-color: lightpink
+
+	// prev
+	&.p-card__btn--prev
+		left: 0
+		margin-right: 0
+
+		.p-card__btn__text
+			right: 0
+
+	// next
+	&.p-card__btn--next
+		right: 0
+		margin-left: 0
+
+		.p-card__btn__text
+			left: 0
+
+// zoom on
+.p-card__content, .p-card__visual, .p-card__gallery__item, .p-card__gallery__inner, .p-card__content__frame
+	will-change: margin, width, height, opacity, visibility, background-size
+	transition:
+		property: margin, width, height, opacity, visibility, background-size
+		duration: 0.4s
+		timing-function: cubic-bezier(0,.71,.41,1)
+
+.p-card__gallery__item
+	cursor: url(../../img/cursor-zoom-in.cur), zoom-in
+
+.zoom-on
+	.p-card__content
+		//margin-right: -#{nth($p-card-ratio, 2)}
+		opacity: 0
+		visibility: hidden
+
+	.p-card__visual
+		width: 100%
+		margin-right: -#{nth($p-card-ratio, 2)}
+
+	.p-card__gallery__item
+		cursor: url(../../img/cursor-zoom-out.cur), zoom-out
+		//height: 100vh
+
+	.p-card__gallery__inner
+		background-size: auto 100%
+
+	.p-card__content__frame
+		margin-right: -200px
+		margin-left: 200px
+
+// для сжатия по высоте / плохо анимируется
+	//.p-card__gallery__inner
+		+size(100%)
+
 /*product card end*/
 
 /*card bar*/
-.p-card-overview
+//.p-card-overview
 	position: relative
 	margin-bottom: $p-card-elem-bottom-space
 
