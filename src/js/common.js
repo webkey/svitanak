@@ -1442,18 +1442,6 @@ function toggleDrop() {
 
 	if ($choiceContainer.length) {
 
-		$.each($choiceContainer, function () {
-			var $thisContainer = $(this);
-
-			if ($thisContainer.attr('data-parent-position') !== undefined) {
-				$thisContainer.parent().css({
-					'position': 'relative',
-					'padding-right': Math.round($thisContainer.outerWidth() + 10),
-					'overflow': 'visible'
-				});
-			}
-		});
-
 		$('.js-choice-open').on('click', function (e) {
 			e.preventDefault();
 			var $currentContainer = $(this).closest('.js-choice-wrap');

@@ -59,7 +59,7 @@
 						<div class="header__col menu-container">
 							<div class="header__cell">
 								<ul class="menu-list">
-									<li><a href="catalog.html"><span>Продукция</span></a></li>
+									<li class="current"><a href="catalog.html"><span>Продукция</span></a></li>
 									<li><a href="404.html"><span>Клиентам</span></a></li>
 									<li><a href="contacts.html"><span>Контакты</span></a></li>
 								</ul>
@@ -123,20 +123,22 @@
 							</div>
 							<!--product card-->
 							<div class="p-card">
-								<div class="p-card__btn p-card__btn--prev">
+								<!--button next/previous products-->
+								<a href="product-card.html" class="p-card__btn p-card__btn--prev">
 									<div class="p-card__btn__img">
 										<img src="img/img-products-09.jpg" alt="image description" />
 									</div>
-									<div class="p-card__btn__arr">&nbsp;</div>
+									<div class="p-card__btn__arr def-arrows--prev">&nbsp;</div>
 									<div class="p-card__btn__text"><span>Р219043</span></div>
-								</div>
-								<div class="p-card__btn p-card__btn--next">
+								</a>
+								<a href="product-card.html" class="p-card__btn p-card__btn--next">
 									<div class="p-card__btn__img">
 										<img src="img/img-products-02.jpg" alt="image description" />
 									</div>
-									<div class="p-card__btn__arr">&nbsp;</div>
+									<div class="p-card__btn__arr def-arrows--next">&nbsp;</div>
 									<div class="p-card__btn__text"><span>Р219044</span></div>
-								</div>
+								</a>
+								<!--button next/previous products end-->
 								<div class="p-card__visual">
 									<div class="p-card__gallery card-gallery-js">
 										<div class="p-card__gallery__item">
@@ -200,7 +202,7 @@
 														<span>Есть в наличии</span>
 													</div>
 													<div class="p-card__store off">
-														<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 56 56">
+														<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 56 56" width="16" heigth="16">
 	<polygon points="56 13.5 42.5 0 28 14.5 13.5 0 0 13.5 14.5 28 0 42.5 13.5 56 28 41.5 42.5 56 56 42.5 41.5 28 "></polygon>
 </svg>
 														<span>Нет в наличии</span>
