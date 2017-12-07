@@ -47,11 +47,14 @@
 	letter-spacing: $letter-spacing
 	text-align: center
 
-	+media('<desk-lg')
+	+media('<desk-md')
 		+grid-item-responsive(2, $footer-grid-space--lg)
 
 	+media('<mob-lg')
 		+grid-item-responsive(1, $footer-grid-space--lg)
+
+.footer-bottom__col
+	vertical-align: middle
 
 /* footer common / footer bottom end
 
@@ -144,6 +147,8 @@
 
 	a
 		text-decoration: none
+		vertical-align: top
+		line-height: 1
 
 		.no-touchevents &:hover
 			text-decoration: none

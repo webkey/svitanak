@@ -273,8 +273,8 @@ function fullPageInitial() {
 			// paddingTop: 100,
 			scrollingSpeed: 600,
 			recordHistory: true,
-			responsiveWidth: 1000,
-			responsiveHeight: 600,
+			responsiveWidth: 1200,
+			responsiveHeight: 400,
 			// normalScrollElements: '.main-section--news',
 			// scrollOverflow: true,
 			// add .fp-noscroll for deactivate scroll
@@ -452,8 +452,12 @@ function slidersInit() {
 				// Responsive breakpoints
 				breakpoints: {
 					1919: {
-						slidesOffsetBefore: 40,
-						spaceBetween: 40
+						slidesOffsetBefore: 71,
+						spaceBetween: 30
+					},
+					1599: {
+						slidesOffsetBefore: 41,
+						spaceBetween: 20
 					}
 				},
 				// events
@@ -1153,7 +1157,7 @@ function shuttersInit(){
 
 	$bagShutter.on('extraPopupBeforeOpen', function () {
 		$searchShutter.trigger('extraPopupClose');
-		$bagShutter.trigger('extraPopupClose');
+		$navShutter.trigger('extraPopupClose');
 	});
 }
 

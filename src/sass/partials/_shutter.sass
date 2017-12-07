@@ -97,10 +97,10 @@
 
 /* shutter wide
 .shutter--wide
-	max-width: calc(100% - #{$sidebar-width})
+	max-width: #{$page-layout-width - $sidebar-width}
 
-	+media('<tab-lg')
-		max-width: 100%
+	+media('<desk-hd')
+		max-width: calc(100% - #{$sidebar-width})
 
 	.shutter__align
 		width: 100%
@@ -116,8 +116,13 @@
 	// ======================
 	width: $bag-shutter-width
 	max-width: 100%
-	left: auto
-	right: 0
+	//left: auto
+	//right: 0
+	left: $page-layout-width
+	margin-left: -#{$bag-shutter-width}
+
+	+media('<desk-hd')
+		left: 100%
 
 	.shutter__align
 		overflow-y: hidden

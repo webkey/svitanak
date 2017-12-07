@@ -403,9 +403,14 @@ $dep-img-size: 80px, 120px // width, height
 	max-width: 1200px
 	+push-auto
 
+	+media('<desk-hd')
+		max-width: 980px
+
 .main-slider__title
-	$line-height: round-float(72/72, 2)
+	$line-height: 1
 	$font-size: 72px
+	$font-size--hd: 60px
+	$font-size--lg: 48px
 	// ===============
 	display: block
 	overflow: hidden
@@ -416,6 +421,14 @@ $dep-img-size: 80px, 120px // width, height
 	max-width: 100%
 	max-height: round($font-size*$line-height*5) // maximum 5 line
 	cursor: default
+
+	+media('<desk-hd')
+		font-size: $font-size--hd
+		max-height: round($font-size--hd*$line-height*5) // maximum 5 line
+
+	+media('<desk-lg')
+		font-size: $font-size--lg
+		max-height: round($font-size--lg*$line-height*5) // maximum 5 line
 
 	&:last-child
 		margin-bottom: 0
@@ -440,17 +453,19 @@ $dep-img-size: 80px, 120px // width, height
 
 /* main slider (home page) end
 
-/* catalog (home page)
-$m-catalog-space: 85px, 100px
-$m-catalog-img-size: 250px, 375px // width, height
-$m-catalog-img-duration: 10s
-
+/* catalog - m-catalog (home page)
 .m-catalog-title
 	display: block
 	+font-alt-bold
-	+font(48px, 1)
+	+font($m-catalog-title__font-size, 1)
 	letter-spacing: 0.05em
-	margin-bottom: $bottom-space--md
+	margin-bottom: 0.7em
+
+	+media('<desk-hd')
+		font-size: $m-catalog-title__font-size--hd
+
+	+media('<desk-lg')
+		font-size: $m-catalog-title__font-size--lg
 
 	&:last-child
 		margin-bottom: 0
@@ -467,13 +482,12 @@ $m-catalog-img-duration: 10s
 	// Если же высоту элементов делать на 1 пиксел, то получается однопикселный отступ снизу, что будет резать глаз дизайнеру, менеджерам, клиенту и самому Б.
 	// Опцию scrollOverflow не включаем. Лишние (больше 8) элементы списка обрезаются!
 
-	&, .#{$user-content}
+	&, .#{$user-content} &
 		list-style: none
 		margin: 0 -1px 0 0
 		padding: 0
 
 		li
-			padding: nth($m-catalog-space, 1) nth($m-catalog-space, 2)
 			margin: -1px 0 0 -1px
 
 			&::before
@@ -515,10 +529,14 @@ $m-catalog-img-duration: 10s
 				& > li
 					width: calc(100% + 1px)
 					height: calc(100vh - #{$header-height} + 1px)
+					display: none
+
+					&:nth-child(-n+#{$i})
+						display: block
 
 					.m-catalog-img
 						left: auto
-						right: nth($m-catalog-space, 2)
+						right: nth($m-catalog__space, 2)
 						transform: none
 
 		@if $i == 2
@@ -526,39 +544,55 @@ $m-catalog-img-duration: 10s
 				& > li
 					width: calc(100%/2 + 1px)
 					height: calc(100vh - #{$header-height} + 1px)
+					display: none
+
+					&:nth-child(-n+#{$i})
+						display: block
 
 					.m-catalog-img
 						left: auto
-						right: nth($m-catalog-space, 2)
+						right: nth($m-catalog__space, 2)
 						transform: none
 
 		@if $i == 3
 			&[#{$data-length}="#{$i}"]
 				& > li
 					width: calc(100%/2 + 1px)
+					display: none
+
+					&:nth-child(-n+#{$i})
+						display: block
 
 					&:first-child
 						height: calc(100vh - #{$header-height} + 1px)
 
 					.m-catalog-img
 						left: auto
-						right: nth($m-catalog-space, 2)
+						right: nth($m-catalog__space, 2)
 						transform: none
 
 		@if $i == 4
 			&[#{$data-length}="#{$i}"]
 				& > li
 					width: calc(100%/2 + 1px)
+					display: none
+
+					&:nth-child(-n+#{$i})
+						display: block
 
 					.m-catalog-img
 						left: auto
-						right: nth($m-catalog-space, 2)
+						right: nth($m-catalog__space, 2)
 						transform: none
 
 		@if $i == 5
 			&[#{$data-length}="#{$i}"]
 				& > li
 					width: calc(100%/3 + 1px)
+					display: none
+
+					&:nth-child(-n+#{$i})
+						display: block
 
 					.m-catalog-img
 						left: auto
@@ -569,12 +603,16 @@ $m-catalog-img-duration: 10s
 						width: calc(100%/2 + 1px)
 
 						.m-catalog-img
-							right: nth($m-catalog-space, 2)
+							right: nth($m-catalog__space, 2)
 
 		@if $i == 6
 			&[#{$data-length}="#{$i}"]
 				& > li
 					width: calc(100%/4 + 1px)
+					display: none
+
+					&:nth-child(-n+#{$i})
+						display: block
 
 					&:nth-child(7n + 1),
 					&:nth-child(6n)
@@ -582,20 +620,24 @@ $m-catalog-img-duration: 10s
 
 						.m-catalog-img
 							left: auto
-							right: nth($m-catalog-space, 2)
+							right: nth($m-catalog__space, 2)
 							transform: none
 
 		@if $i == 7
 			&[#{$data-length}="#{$i}"]
 				& > li
 					width: calc(100%/4 + 1px)
+					display: none
+
+					&:nth-child(-n+#{$i})
+						display: block
 
 					&:nth-child(7n + 1)
 						width: calc(100%/4*2 + 1px)
 
 						.m-catalog-img
 							left: auto
-							right: nth($m-catalog-space, 2)
+							right: nth($m-catalog__space, 2)
 							transform: none
 
 .m-catalog-img
@@ -604,14 +646,21 @@ $m-catalog-img-duration: 10s
 	bottom: 0
 	padding: 0
 	margin: 0
-	width: nth($m-catalog-img-size, 1)
+	width: nth($m-catalog-img__size, 1)
 	max-width: 80%
 	transform: translate(-50%, 0)
 	z-index: -1
 
+	+media('<desk-hd')
+		width: nth($m-catalog-img__size--hd, 1)
+
+	+media('<desk-lg')
+		width: nth($m-catalog-img__size--lg, 1)
+
+
 	&::before
 		+pseudo-block-relative()
-		+ratio(nth($m-catalog-img-size, 1), nth($m-catalog-img-size, 2))
+		+ratio(nth($m-catalog-img__size, 1), nth($m-catalog-img__size, 2))
 
 	& > div
 		position: absolute
@@ -677,10 +726,12 @@ $m-catalog-img-duration: 10s
 	li
 		+font-d
 		color: inherit
+		overflow: hidden
 
 		a
 			color: inherit
 			text-decoration: none
+			padding-top: 0.5em
 
 			span
 				border-bottom: 2px solid $text-color
@@ -692,7 +743,7 @@ $m-catalog-img-duration: 10s
 				span
 					border-color: $base-color
 
-/* catalog (home page) end
+/* catalog - m-catalog (home page) end
 
 /* services (home page)
 $m-services-thumb-left: 160px
@@ -1182,21 +1233,18 @@ $m-services-thumb-indent: 320px
 			margin-bottom: round($bottom-space--ml/2)
 
 .previews-tabs__tab
-	$this-space: 1.6em
-	$this-font-size: 48px
-	//=================
 	position: relative
 	+display-inline-block-top
 	+font-alt-bold
-	+font($this-font-size, round-float(52/48, 2))
+	+font($previews-tab-font-size, $previews-tab-line-height)
 	letter-spacing: $letter-spacing
-	padding-right: $this-space
+	padding-right: $previews-tab-space
 
 	&::after
 		+pseudo()
-		+size(0, $this-font-size)
+		+size(0, $previews-tab-line-height)
 		top: 50%
-		right: round-float($this-space/2, 1) // нужны десятые
+		right: round-float($previews-tab-space/2, 1) // нужны десятые
 		border-left: 2px solid $text-color-light
 		margin-top: -1px
 		transform: translate(0, -50%)
@@ -1232,7 +1280,6 @@ $m-services-thumb-indent: 320px
 
 .previews-tabs__panel
 	height: 100%
-	padding-top: $previews-tabs-top-space
 
 	// эффект смены табов
 	//.tape-slider

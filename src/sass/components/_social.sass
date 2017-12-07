@@ -11,6 +11,7 @@ $youtube-color: #e62117 !default
 $instagram-color-start: #de4f5a !default
 $instagram-color-end: #a43b97 !default
 $social-space: 30px !default
+$social-space--lg: 20px !default
 
 /* social networks
 .social-networks
@@ -25,13 +26,20 @@ $social-space: 30px !default
 	float: left
 	width: calc(100% + #{$social-space})
 	margin: 0 -#{round($social-space/2)} -#{round($social-space/2)}
-	+clear-spacing
+	font-size: 0
+
+	+media('<desk-lg')
+		width: calc(100% + #{$social-space--lg})
+		margin: 0 -#{round($social-space--lg/2)} -#{round($social-space--lg/2)}
 
 .social-networks__item
 	+display-inline-block-top
 	margin: 0 #{round($social-space/2)} round($social-space/2)
 	+font(14px, round-float(18/14, 2))
 	letter-spacing: normal
+
+	+media('<desk-lg')
+		margin: 0 #{round($social-space--lg/2)} round($social-space--lg/2)
 
 	a
 		display: block
@@ -41,14 +49,6 @@ $social-space: 30px !default
 		color: $text-color
 		fill: $text-color
 		border-radius: 50%
-
-		@if $animation-use
-			transition:
-				property: transform, border-color, background-color
-				duration: $animation-speed
-
-		+media('<desk-lg')
-			+size(30px)
 
 		+media('<desk-sm')
 			+size(40px)
@@ -62,9 +62,6 @@ $social-space: 30px !default
 
 		path
 			fill: inherit
-
-			@if $animation-use
-				transition: fill $animation-speed
 
 		.no-touchevents &:hover
 			&.fb
