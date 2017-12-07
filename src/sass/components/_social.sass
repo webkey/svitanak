@@ -251,13 +251,14 @@ input[type="checkbox"].social-share__check
 		&::before, &::after
 			display: block
 
-.choice-opened
+.is-open
 	.social-share__list
 		display: inline-block
 
 	.social-share__opener
 		margin-right: round($social-share-space/2)
 		background-color: $text-color
+		user-select: none
 
 		&:hover
 			background-color: $link-color

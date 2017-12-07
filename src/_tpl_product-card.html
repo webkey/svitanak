@@ -143,12 +143,11 @@
 					})
 				</div>
 				<div class="p-card__widget">
-					<div class="social-share js-choice-wrap" data-select="false">
-						<!--<input class="social-share__check" type="checkbox" id="shareOpener">-->
-						<a href="#" class="social-share__opener js-choice-open">
+					<div class="social-share social-share__container-js" data-select="false">
+						<a href="#" class="social-share__opener social-share__opener-js">
 							@@include("includes-json/files/icon-share.svg")
 						</a>
-						<div class="social-share__list js-choice-drop">
+						<div class="social-share__list social-share__drop-js">
 							@@loop('_tpl_social-share-items.html', 'includes-json/social-share.json')
 						</div>
 						<div class="social-share__label">Поделиться</div>

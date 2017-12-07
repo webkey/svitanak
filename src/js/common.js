@@ -1433,73 +1433,174 @@ function tabSwitcher() {
 }
 
 /**
- * !Toggle drop
+ * !Toggle drop (plugin)
  * */
-function toggleDrop() {
+;(function($){
+	var defaults = {
+		opener: '.ms-drop__opener-js',
+		openerText: 'span',
+		drop: '.ms-drop__drop-js',
+		dropOption: '.ms-drop__drop-js a',
+		dropOptionText: 'span',
+		initClass: 'ms-drop--initialized',
+		outsideClick: true, // Close all if outside click
+		closeAfterSelect: true, // Close drop after selected option
+		preventOption: false, // Add preventDefault on click to option
+		selectValue: true, // Display the selected value in the opener
+		modifiers: {
+			isOpen: 'is-open',
+			activeItem: 'active-item'
+		}
 
-	var $choiceContainer = $('.js-choice-wrap');
-	var openClass = 'choice-opened';
+		// Callback functions
+		// afterInit: function () {} // Fire immediately after initialized
+		// afterChange: function () {} // Fire immediately after added or removed an open-class
+	};
 
-	if ($choiceContainer.length) {
+	function MsDrop(element, options) {
+		var self = this;
 
-		$('.js-choice-open').on('click', function (e) {
-			e.preventDefault();
-			var $currentContainer = $(this).closest('.js-choice-wrap');
+		self.config = $.extend(true, {}, defaults, options);
 
-			e.stopPropagation();
+		self.element = element;
 
-			$choiceContainer.trigger('change.toggleDrop');
+		self.callbacks();
+		self.event();
+		// close drop if clicked outside active element
+		if (self.config.outsideClick) {
+			self.clickOutside();
+		}
+		self.eventDropItems();
+		self.init();
+	}
 
-			if ($currentContainer.hasClass(openClass)) {
-				$currentContainer.removeClass(openClass);
+	/** track events */
+	MsDrop.prototype.callbacks = function () {
+		var self = this;
+		$.each(self.config, function (key, value) {
+			if(typeof value === 'function') {
+				self.element.on(key + '.msDrop', function (e, param) {
+					return value(e, self.element, param);
+				});
+			}
+		});
+	};
+
+	MsDrop.prototype.event = function () {
+		var self = this;
+		self.element.on('click', self.config.opener, function (event) {
+			event.preventDefault();
+			var curContainer = $(this).closest(self.element);
+
+			if (curContainer.hasClass(self.config.modifiers.isOpen)) {
+				curContainer.removeClass(self.config.modifiers.isOpen);
+
+				// callback afterChange
+				self.element.trigger('afterChange.msDrop');
 				return;
 			}
 
-			$choiceContainer.removeClass(openClass);
-			$currentContainer.addClass(openClass);
-		});
+			self.element.removeClass(self.config.modifiers.isOpen);
 
-		$(document).on('click', function () {
-			closeDrop();
-		});
+			curContainer.addClass(self.config.modifiers.isOpen);
 
-		$(document).keyup(function(e) {
-			if ($choiceContainer.hasClass(openClass) && e.keyCode === 27) {
-				closeDrop();
+			// callback afterChange
+			self.element.trigger('afterChange.msDrop');
+		});
+	};
+
+	MsDrop.prototype.clickOutside = function () {
+
+		var self = this;
+		$(document).on('click', function(event){
+			if( $(event.target).closest(self.element).length ) {
+				return;
 			}
+
+			self.closeDrop();
+			event.stopPropagation();
 		});
 
-		$choiceContainer.on('closeChoiceDrop', function () {
-			closeDrop();
-		});
+	};
 
-		function closeDrop() {
-			$choiceContainer.removeClass(openClass);
+	MsDrop.prototype.closeDrop = function (container) {
+
+		var self = this,
+			$element = $(container || self.element);
+
+		if ($element.hasClass(self.config.modifiers.isOpen)) {
+			$element.removeClass(self.config.modifiers.isOpen);
 		}
 
-		$('.js-choice-drop').on('click', 'a', function (e) {
-			var $this = $(this);
+	};
 
-			// if data-window-location is true, prevent default
-			if ($this.closest($choiceContainer).attr('data-window-location') === 'true') {
+	MsDrop.prototype.eventDropItems = function () {
+
+		var self = this;
+
+		self.element.on('click', self.config.dropOption, function (e) {
+			var cur = $(this);
+			var curParent = cur.parent();
+
+			if(curParent.hasClass(self.config.modifiers.activeItem)){
+				e.preventDefault();
+				return;
+			}
+			if(self.config.preventOption){
 				e.preventDefault();
 			}
 
-			// if data-select is false, do not replace text
-			if ($this.closest($choiceContainer).attr('data-select') === 'false') {
-				return;
+			var curContainer = cur.closest(self.element);
+
+			curContainer.find(self.config.dropOption).parent().removeClass(self.config.modifiers.activeItem);
+
+			curParent
+				.addClass(self.config.modifiers.activeItem);
+
+			if(self.config.selectValue){
+				curContainer
+					.find(self.config.opener).find(self.config.openerText)
+					.text(cur.find(self.config.dropOptionText).text());
 			}
 
-			$('a', '.js-choice-drop').removeClass('active');
+			if(self.config.closeAfterSelect) {
+				self.closeDrop();
+			}
 
-			$this
-				.addClass('active')
-				.closest('.js-choice-wrap')
-				.find('.js-choice-open span')
-				.text($this.find('span').text());
 		});
-	}
 
+	};
+
+	MsDrop.prototype.init = function () {
+
+		this.element.addClass(this.config.initClass);
+
+		this.element.trigger('afterInit.msDrop');
+
+	};
+
+	$.fn.msDrop = function (options) {
+		'use strict';
+
+		return this.each(function(){
+			new MsDrop($(this), options);
+		});
+
+	};
+})(jQuery);
+
+/**
+ * !Toggle drop initial
+ * */
+function toggleDropInit() {
+	var $shareContainer = $('.social-share__container-js');
+	if($shareContainer.length){
+		$shareContainer.msDrop({
+			opener: '.social-share__opener-js',
+			drop: 'social-share__drop-js',
+			selectValue: false
+		})
+	}
 }
 
 /**
@@ -2714,16 +2815,16 @@ function stickyInit() {
 		// 	$cardInfo.removeClass('is-bottom-affixed');
 		// });
 
-		var cardInfoTimeout;
+		var shareDropTimeout;
+		$('.social-share__container-js').on('afterChange.msDrop', function () {
+			clearTimeout(shareDropTimeout);
 
-		$('.js-choice-wrap').on('change.toggleDrop', function () {
-			clearTimeout(cardInfoTimeout);
-
-			cardInfoTimeout = setTimeout(function () {
+			shareDropTimeout = setTimeout(function () {
 				cardInfoSticky.updateSticky();
-			}, 50);
+			}, 100);
 		});
 
+		var cardInfoTimeout;
 		$('.p-card').on('change.zoomImages', function () {
 			clearTimeout(cardInfoTimeout);
 
@@ -2870,7 +2971,7 @@ $(document).ready(function () {
 	objectFitImages(); // object-fit-images initial
 	shuttersInit();
 	tabSwitcher();
-	toggleDrop();
+	toggleDropInit();
 	zoomImages();
 	addDataLengthChildren();
 	equalHeight();

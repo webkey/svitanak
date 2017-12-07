@@ -4584,7 +4584,7 @@ a.search-results__inner:hover .search-results__title {
 }
 
 .breadcrumbs__list li, .user-content .breadcrumbs__list li {
-	padding: 0 10px 0 0;
+	padding: 0 6px 0 0;
 	margin: 0;
 }
 
@@ -4595,16 +4595,14 @@ a.search-results__inner:hover .search-results__title {
 .breadcrumbs__list {
 	cursor: default;
 	overflow: hidden;
-	font-size: 0;
-	letter-spacing: -4px;
+	font-size: 1.4rem;
+	line-height: 1.71;
+	letter-spacing: 0.025em;
 }
 
 .breadcrumbs__list li {
 	display: inline;
 	position: relative;
-	font-size: 1.4rem;
-	line-height: 1.71;
-	letter-spacing: 0.025em;
 }
 
 .breadcrumbs__list li::after {
@@ -4996,24 +4994,28 @@ input[type="checkbox"].social-share__check:active, input[type="checkbox"].social
 	border-top: 1px solid #b2b2b2;
 }
 
-.choice-opened .social-share__list {
+.is-open .social-share__list {
 	display: inline-block;
 }
 
-.choice-opened .social-share__opener {
+.is-open .social-share__opener {
 	margin-right: 6px;
 	background-color: #1a1a1a;
+	-webkit-user-select: none;
+	   -moz-user-select: none;
+	    -ms-user-select: none;
+	        user-select: none;
 }
 
-.choice-opened .social-share__opener:hover {
+.is-open .social-share__opener:hover {
 	background-color: #ff6501;
 }
 
-.choice-opened .social-share__opener svg {
+.is-open .social-share__opener svg {
 	display: none;
 }
 
-.choice-opened .social-share__opener::before, .choice-opened .social-share__opener::after {
+.is-open .social-share__opener::before, .is-open .social-share__opener::after {
 	display: block;
 }
 

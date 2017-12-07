@@ -19,7 +19,7 @@
 	list-style: none
 
 	li
-		padding: 0 10px 0 0
+		padding: 0 6px 0 0
 		margin: 0
 
 		&::before, &:first-child::before
@@ -28,13 +28,12 @@
 .breadcrumbs__list
 	cursor: default
 	overflow: hidden
-	+clear-spacing
+	+font($font-size--sm, $line-height--sm)
+	letter-spacing: 0.025em
 
 	li
 		display: inline
 		position: relative
-		+font($font-size--sm, $line-height--sm)
-		letter-spacing: 0.025em
 
 		&::after
 			display: inline-block
