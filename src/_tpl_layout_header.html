@@ -1,5 +1,10 @@
 <header class="header">
 	<div class="max-wrap layout">
+		<a href="#" class="btn-menu btn-nav-js" title="Главное меню">
+			<span>Меню</span>
+			<i>&nbsp;</i>
+		</a>
+
 		<!--logo-->
 		<strong class="logo">
 			<a href="index.html"><span>Свитанак. Белорусский трикотажиз Жодино</span></a>
@@ -8,12 +13,12 @@
 		<!--logo end-->
 
 		<div class="header__holder">
-			<div class="header__col">
+			<div class="header__col header__col--slogan">
 				<div class="header__cell">
 					<a href="index.html" class="slogan">Белорусский трикотаж <br> из Жодино</a>
 				</div>
 			</div>
-			<div class="header__col menu-container">
+			<div class="header__col header__col--menu">
 				<div class="header__cell">
 					<ul class="menu-list">
 						<li @@if(context.currentItem === "Продукция"){class="current"}><a href="catalog.html"><span>Продукция</span></a></li>
@@ -23,7 +28,7 @@
 				</div>
 			</div>
 			<div class="header__col">
-				<div class="header__cell">
+				<div class="header__cell header__col--options">
 					<!--user options-->
 					@@include('_tpl_user-options.html')
 					<!--user options end-->

@@ -14,6 +14,15 @@ body
 	position: relative
 	padding-top: $header-height
 
+	.home-page &
+		padding-top: 0
+
+		+media('<desk-sm')
+			padding-top: $header-height--lg
+
+	+media('<desk-lg')
+		padding-top: $header-height--lg
+
 	&::before, &::after
 		+pseudo()
 		top: 0
@@ -42,8 +51,17 @@ body
 	min-height: 50px
 	+clear
 
+	+media('<desk-lg')
+		margin-left: $sidebar-width--lg
+
 	.home-page &
 		margin: 0 #{$sidebar-width}
+
+		+media('<desk-lg')
+			+margin-horizontal($sidebar-width--lg)
+
+		+media('<desk-sm')
+			+margin-horizontal(0)
 
 .content-wrap
 	float: left
@@ -58,6 +76,9 @@ body
 	+media('<desk-lg')
 		padding: #{floor($layout-spaces--lg*0.9)} #{$layout-spaces--lg}
 
+	+media('<desk-sm')
+		padding: #{floor($layout-spaces--sm*0.9)} #{$layout-spaces--sm}
+
 // актуально только для текущего проекта
 .layout-full-width, .layout-wide
 	+margin-horizontal(-#{$layout-spaces})
@@ -68,6 +89,9 @@ body
 	+media('<desk-lg')
 		+margin-horizontal(-#{$layout-spaces--lg})
 
+	+media('<desk-sm')
+		+margin-horizontal(-#{$layout-spaces--sm})
+
 .layout-top-fit
 	margin-top: -#{floor($layout-spaces*0.9)}
 
@@ -76,6 +100,9 @@ body
 
 	+media('<desk-lg')
 		margin-top: -#{floor($layout-spaces--lg*0.9)}
+
+	+media('<desk-sm')
+		margin-top: -#{floor($layout-spaces--sm*0.9)}
 
 .layout-bottom-fit
 	margin-bottom: -#{floor($layout-spaces*0.9)}
@@ -86,6 +113,9 @@ body
 	+media('<desk-lg')
 		margin-bottom: -#{floor($layout-spaces--lg*0.9)}
 
+	+media('<desk-sm')
+		margin-bottom: -#{floor($layout-spaces--sm*0.9)}
+
 .entry-img
 	padding: #{floor($layout-spaces*0.9)} #{$layout-spaces}
 
@@ -95,6 +125,10 @@ body
 	+media('<desk-lg')
 		padding: #{floor($layout-spaces--lg*0.9)} #{$layout-spaces--lg}
 
+	+media('<desk-sm')
+		padding: #{floor($layout-spaces--sm*0.9)} #{$layout-spaces--sm}
+
+/* sidebar (layout)
 .header
 	position: fixed
 	top: 0
@@ -106,6 +140,9 @@ body
 	@else
 		max-width: 100%
 
+	+media('<desk-lg')
+		height: $header-height--lg
+
 .header__holder
 	+padding-horizontal($layout-spaces)
 	margin-left: $logo-width
@@ -115,15 +152,46 @@ body
 
 	+media('<desk-lg')
 		+padding-horizontal($layout-spaces--lg)
+		margin-left: $logo-width--lg
 
+	+media('<desk-sm')
+		+padding-horizontal($layout-spaces--sm)
+		margin-left: 0
+
+.home-page .header__holder
+	+padding-horizontal($layout-spaces, $sidebar-width)
+	margin-left: $logo-width
+
+	+media('<desk-hd')
+		+padding-horizontal($layout-spaces--hd, $sidebar-width)
+
+	+media('<desk-lg')
+		+padding-horizontal($layout-spaces--lg, $sidebar-width--lg)
+		margin-left: $logo-width--lg
+
+	+media('<desk-sm')
+		+padding-horizontal($layout-spaces--sm)
+		margin-left: 0
+
+/* sidebar (layout) end
+
+/* sidebar (layout)
 .sidebar
 	position: fixed
-	+position(#{$header-height}, 0)
+	top: $header-height
+	left: 0
 	+size($sidebar-width, calc(100% - #{$header-height}))
 	z-index: 1001
 
+	+media('<desk-lg')
+		top: $header-height--lg
+		+size($sidebar-width--lg, calc(100% - #{$header-height--lg}))
+
+	+media('<desk-sm')
+		display: none
+
 .sidebar__align
-	width: #{$sidebar-width + 100px}
+	width: calc(100% + 100px)
 	background-color: inherit
 
 	.touchevents &
@@ -133,6 +201,12 @@ body
 	position: relative
 	width: $sidebar-width
 
+	+media('<desk-lg')
+		width: $sidebar-width--lg
+
+/* sidebar (layout) end
+
+/* footer (layout)
 .footer
 	position: relative
 	clear: both
@@ -161,6 +235,8 @@ body
 
 	+media('<desk-lg')
 		+padding-vertical(round($layout-spaces--lg*0.85))
+
+/* footer (layout) end
 
 .max-wrap
 	@if $page-layout-width
@@ -278,7 +354,6 @@ body
 
 // элеметы без отступов по бокам
 .layout-full-width
-
 	p, ul, ol, h1, h2, h3, h4, h5, h6, hr, blockquote
 		max-width: none
 
@@ -346,6 +421,66 @@ body
 		//+media('<mob-lg')
 			+margin-horizontal(-#{$text-layout-space-horizontal--sm})
 
+/* logo (layout)
+.logo
+	width: $logo-width
+	height: $header-height
+
+	+media('<desk-lg')
+		width: $logo-width--lg
+		height: $header-height--lg
+
+	// home-page
+	.home-page &
+		width: $logo-full-width
+
+		+media('<desk-lg')
+			width: $logo-full-width--lg
+
+// header if has large logo
+.home-page
+	.header__holder
+		padding-left: $layout-spaces + $logo-full-width - $logo-width
+
+		+media('<desk-hd')
+			padding-left: $layout-spaces--hd + $logo-full-width - $logo-width
+
+		+media('<desk-lg')
+			padding-left: $layout-spaces--lg + $logo-full-width--lg - $logo-width--lg
+
+		+media('<desk-sm')
+			padding-left: $layout-spaces--sm
+
+/* logo (layout) end
+
+/* button toggle menu (layout)
+.btn-menu
+	+size($sidebar-width)
+
+	+media('<desk-lg')
+		+size($sidebar-width--lg)
+
+/* button toggle menu (layout) end
+
+/* fullpage navigation / fp-nav (layout)
+#fp-nav
+	height: 100vh
+	width: $sidebar-width
+	top: 0
+	left: $page-layout-width
+	margin: 0 0 0 -#{$sidebar-width} !important
+	padding-top: $header-height
+
+	+media('<1920px')
+		left: 100%
+
+	+media('<desk-lg')
+		width: $sidebar-width--lg
+		margin: 0 0 0 -#{$sidebar-width--lg} !important
+		padding-top: $header-height--lg
+
+/* fullpage navigation / fp-nav (layout) end
+
 .nav-bottom
 	padding-bottom: #{floor($layout-spaces*0.9)}
 
@@ -354,6 +489,9 @@ body
 
 	+media('<desk-lg')
 		padding-bottom: #{floor($layout-spaces--lg*0.9)}
+
+	+media('<desk-sm')
+		padding-bottom: #{floor($layout-spaces--sm*0.9)}
 
 	/* tape slider (layout)
 	.tape-slider-pagination
@@ -371,6 +509,33 @@ body
 		right: 0
 	/* tape slider (layout) end
 
+/* catalog - m-catalog (layout)
+.m-catalog-list,
+	&, .#{$user-content} .m-catalog-list
+		& > li
+			padding: nth($m-catalog__space, 1) nth($m-catalog__space, 2)
+
+			+media('<desk-hd')
+				padding: #{floor($layout-spaces--hd*0.9)} #{$layout-spaces--hd}
+
+			+media('<desk-lg')
+				padding: #{floor($layout-spaces--lg*0.9)} #{$layout-spaces--lg}
+
+			+media('<desk-sm')
+				padding: #{floor($layout-spaces--sm*0.9)} #{$layout-spaces--sm}
+
+/* catalog - m-catalog (layout) end
+
+/* home-page (layout)
+.main-section
+	padding-top: $header-height
+
+	+media('<desk-lg')
+		padding-top: $header-height--lg
+
+	+media('<desk-sm')
+		padding-top: 0
+
 .home-page
 	/* main slider (layout)
 	.main-slider-pagination
@@ -385,6 +550,10 @@ body
 			left: #{$layout-spaces--lg}
 			top: #{floor($layout-spaces--lg*0.9)}
 
+		+media('<desk-sm')
+			left: #{$layout-spaces--sm}
+			top: #{floor($layout-spaces--sm*0.9)}
+
 	.main-slider-prev, .main-slider-next
 		bottom: #{floor($layout-spaces*0.9)}
 		top: auto
@@ -396,6 +565,9 @@ body
 		+media('<desk-lg')
 			bottom: #{floor($layout-spaces--lg*0.9)}
 
+		+media('<desk-sm')
+			bottom: #{floor($layout-spaces--sm*0.9)}
+
 	.main-slider-prev
 		left: #{$layout-spaces}
 
@@ -404,6 +576,9 @@ body
 
 		+media('<desk-lg')
 			left: #{$layout-spaces--lg}
+
+		+media('<desk-sm')
+			left: #{$layout-spaces--sm}
 
 	.main-slider-next
 		right: #{$layout-spaces}
@@ -414,6 +589,9 @@ body
 		+media('<desk-lg')
 			right: #{$layout-spaces--lg}
 
+		+media('<desk-sm')
+			right: #{$layout-spaces--sm}
+
 	.main-slider__item
 		padding: #{floor($layout-spaces*0.9*2)} #{$layout-spaces}
 
@@ -422,6 +600,9 @@ body
 
 		+media('<desk-lg')
 			padding: #{floor($layout-spaces--lg*0.9*2.5)} #{$layout-spaces--lg}
+
+		+media('<desk-sm')
+			padding: #{floor($layout-spaces--sm*0.9*2.5)} #{$layout-spaces--sm}
 
 	/* main slider (layout) end
 
@@ -434,6 +615,9 @@ body
 		+media('<desk-lg')
 			padding-bottom: #{floor($layout-spaces--lg*1.8)}
 
+		+media('<desk-sm')
+			padding-bottom: #{floor($layout-spaces--sm*1.8)}
+
 		/* tape slider (layout)
 		.tape-slider-pagination, .tape-slider-prev, .tape-slider-next
 			bottom: #{floor($layout-spaces*0.9)}
@@ -444,6 +628,9 @@ body
 			+media('<desk-lg')
 				bottom: #{floor($layout-spaces--lg*0.9)}
 
+			+media('<desk-sm')
+				bottom: #{floor($layout-spaces--sm*0.9)}
+
 		.tape-slider-prev
 			left: #{$layout-spaces}
 
@@ -452,6 +639,9 @@ body
 
 			+media('<desk-lg')
 				left: #{$layout-spaces--lg}
+
+			+media('<desk-sm')
+				left: #{$layout-spaces--sm}
 
 		.tape-slider-next
 			right: #{$layout-spaces}
@@ -462,19 +652,10 @@ body
 			+media('<desk-lg')
 				right: #{$layout-spaces--lg}
 
+			+media('<desk-sm')
+				right: #{$layout-spaces--sm}
+
 		/* tape slider (layout) end
-
-	/*
-	.m-catalog-list,
-	.#{$user-content} .m-catalog-list
-		& > li
-			padding: nth($m-catalog__space, 1) nth($m-catalog__space, 2)
-
-			+media('<desk-hd')
-				padding: #{floor($layout-spaces--hd*0.9)} #{$layout-spaces--hd}
-
-			+media('<desk-lg')
-				padding: #{floor($layout-spaces--lg*0.9)} #{$layout-spaces--lg}
 
 	/* previews tabs (layout)
 	.previews-tabs__panel
@@ -487,6 +668,9 @@ body
 		+media('<desk-lg')
 			padding-top: $previews-tab-line-height + floor($layout-spaces--lg*0.9*2)
 
+		+media('<desk-sm')
+			padding-top: $previews-tab-line-height + floor($layout-spaces--sm*0.9*2)
+
 	.previews-tabs__nav
 		padding: #{floor($layout-spaces*0.9)} #{$layout-spaces}
 
@@ -495,6 +679,9 @@ body
 
 		+media('<desk-lg')
 			padding: #{floor($layout-spaces--lg*0.9)} #{$layout-spaces--lg}
+
+		+media('<desk-sm')
+			padding: #{floor($layout-spaces--sm*0.9)} #{$layout-spaces--sm}
 
 	/* previews tabs (layout) end
 
@@ -530,6 +717,9 @@ body
 	+media('<desk-lg')
 		padding: $layout-spaces--lg
 
+	+media('<desk-sm')
+		padding: $layout-spaces--sm
+
 	.article-footer + &
 		padding-top: 145px
 
@@ -552,13 +742,8 @@ body
 	.wrapper > &
 		display: none
 
-		//+media('<tab-lg')
-			display: block
-
-	//.main__holder > &
-
-		+media('<tab-lg')
-			display: none
+	.home-page .main &
+		display: none
 
 /* footer at bottom end
 
@@ -579,6 +764,9 @@ body
 
 	+media('<desk-lg')
 		padding-right: $layout-spaces--lg
+
+	+media('<desk-sm')
+		padding-right: $layout-spaces--sm
 
 .box-options__content
 	margin-left: $aside-width
@@ -607,6 +795,9 @@ body
 
 	+media('<desk-lg')
 		padding-right: $layout-spaces--lg
+
+	+media('<desk-sm')
+		padding-right: $layout-spaces--sm
 
 .m-content
 	margin-left: $aside-width
@@ -649,15 +840,6 @@ body
 /* user-form (layout) end
 
 /* shutter (layout)
-.shutter__holder
-	padding: nth($shutter-space, 1) $layout-spaces
-
-	+media('<desk-hd')
-		padding: nth($shutter-space--hd, 1) $layout-spaces--hd
-
-	+media('<desk-lg')
-		padding: nth($shutter-space--lg, 1) $layout-spaces--lg
-
 /* shutter (layout) end
 
 /* contacts (layout)
@@ -675,6 +857,9 @@ body
 	+media('<desk-lg')
 		padding: #{floor($layout-spaces--hd*0.9)} #{$layout-spaces--lg}
 
+	+media('<desk-sm')
+		padding: #{floor($layout-spaces--sm*0.9)} #{$layout-spaces--sm}
+
 /* contacts info end
 
 /* contacts (layout) end
@@ -688,6 +873,9 @@ body
 
 	+media('<desk-lg')
 		margin-top: -#{$header-height + floor($layout-spaces--lg*0.9)}
+
+	+media('<desk-sm')
+		margin-top: -#{$header-height + floor($layout-spaces--sm*0.9)}
 
 .p-card__gallery__item
 	padding-top: $header-height

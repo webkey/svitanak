@@ -15,8 +15,14 @@
 	.v-middle--top &
 		padding-top: $sidebar-inside-space
 
+		+media('<desk-lg')
+			padding-top: $sidebar-inside-space--lg
+
 	.v-middle--bottom &
 		padding-bottom: $sidebar-inside-space
+
+		+media('<desk-lg')
+			padding-bottom: $sidebar-inside-space--lg
 
 	&::after
 		display: none
@@ -35,5 +41,8 @@
 			bottom: 100%
 			display: block
 			margin-bottom: 25px
+
+		+media('<desk-lg')
+			height: 50px
 
 /* SIDEBAR end

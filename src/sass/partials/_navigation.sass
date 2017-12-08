@@ -29,6 +29,12 @@
 		border-color: $text-color-base // для нижнего подчеркивания
 		text-decoration: none
 
+		+media('<desk-hd')
+			font-size: 26px
+
+		+media('<desk-lg')
+			font-size: 24px
+
 		@if $animation-use
 			transition:
 				property: color, border

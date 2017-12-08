@@ -421,7 +421,7 @@ function slidersInit() {
 
 			new Swiper($thisSlider, {
 				slidesPerView: 'auto',
-				slidesPerGroup: 3,
+				// slidesPerGroup: 3,
 				// autoHeight: true,
 				// Optional parameters
 				loop: false,

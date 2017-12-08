@@ -223,6 +223,8 @@
 	$user-options-cross-height: $btn-menu-lines-height
 	$user-options-cross-color: $btn-menu-lines-color
 
+	// =====================
+
 	=menu-btn-line()
 		+size($btn-menu-lines-width, $btn-menu-lines-height)
 		background-color: $btn-menu-lines-color
@@ -236,8 +238,19 @@
 	position: relative
 	text-decoration: none
 	color: $text-color
-	+size($sidebar-width)
 	background-color: $bg-color-base
+	// has styles on layout.sass
+
+	// in header
+	.header &
+		position: absolute
+		left: 0
+		top: 0
+		display: none
+		background: none
+
+		+media('<desk-md')
+			display: block
 
 	@if $animation-use
 		transition:

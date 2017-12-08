@@ -30,23 +30,22 @@
 .shutter
 	overflow: hidden // необходим для скрытия скролла
 	position: fixed
-	left: #{$sidebar-width}
+	//left: 0
 	bottom: 0
-	+size(100%, calc(100vh - #{$header-height}))
 	min-width: 320px
-	max-width: $shutter-width
-	//padding: 0 0 120px
 	background: $bg-color
 	opacity: 0
 	visibility: hidden
 	z-index: 1000
+	left: #{$sidebar-width}
+	+size(100%, calc(100vh - #{$header-height}))
 
-	+media('<tab-lg')
+	+media('<desk-lg')
+		left: #{$sidebar-width--lg}
+		height: calc(100vh - #{$header-height--lg})
+
+	+media('<desk-sm')
 		left: 0
-		//top: #{$top-panel-height--md}
-		//height: calc(100vh - #{$top-panel-height--md})
-		max-width: none
-		padding-top: 0
 
 .shutter__align
 	width: calc(100% + 100px)
@@ -54,15 +53,20 @@
 	overflow-y: auto
 	height: 100%
 
-	+media('<tab-lg')
+	+media('<desk-sm')
 		width: 100%
 
 .shutter__holder
-	width: #{$shutter-width}
-	//padding: nth($shutter-space, 1) nth($shutter-space, 2)
 	+clear
+	padding: nth($shutter-space, 1) $layout-spaces
 
-	+media('<tab-lg')
+	+media('<desk-hd')
+		padding: nth($shutter-space--hd, 1) $layout-spaces--hd
+
+	+media('<desk-lg')
+		padding: nth($shutter-space--lg, 1) $layout-spaces--lg
+
+	+media('<desk-sm')
 		width: 100%
 
 .shutter__footer
@@ -72,6 +76,7 @@
 .shutter-content
 	float: left
 	width: calc(100% - #{$shutter-aside-width})
+	padding-right: $grid-space
 
 /* shutter content end
 
@@ -95,12 +100,31 @@
 
 /* button shutter close end
 
+/* nav-shutter
+.nav-shutter
+	&, .shutter__holder
+		max-width: $shutter-width
+
+		+media('<desk-lg')
+			max-width: $shutter-width--lg
+
+		+media('<desk-sm')
+			max-width: none
+
+/* nav-shutter end
+
 /* shutter wide
 .shutter--wide
 	max-width: #{$page-layout-width - $sidebar-width}
 
-	+media('<desk-hd')
+	+media('<1921')
 		max-width: calc(100% - #{$sidebar-width})
+
+	+media('<desk-lg')
+		max-width: calc(100% - #{$sidebar-width--lg})
+
+	+media('<desk-sm')
+		max-width: none
 
 	.shutter__align
 		width: 100%

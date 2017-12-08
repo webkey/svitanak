@@ -183,7 +183,7 @@ i b, i strong, em b, em strong, b i, b em, strong i, strong em
 	overflow: hidden
 	margin-bottom: $bottom-space--lg
 	height: calc(100vh - #{$header-height})
-	min-height: 800px
+	min-height: 400px
 
 	&::before
 		+pseudo()
@@ -232,8 +232,10 @@ i b, i strong, em b, em strong, b i, b em, strong i, strong em
 .entry-img__content
 	position: absolute
 	+position(50%)
-	width: 100%
+	width: 94%
 	max-width: $flood-layout-width
+	max-height: 70%
+	overflow: hidden
 
 	+padding-horizontal(0 !important)
 	transform: translate(-50%, -50%)
@@ -241,19 +243,22 @@ i b, i strong, em b, em strong, b i, b em, strong i, strong em
 
 .entry-img__title
 	margin: 0
-	+font(78px, $line-height-h1)
+	+font(72px, 1)
 	color: $bg-color-base
 	text-shadow: 0 5px 20px rgba(0, 0, 0, 0.2)
 	text-align: center
 
+	+media('<desk-lg')
+		font-size: 60px
+
 	+media('<desk-md')
-		+font($font-size-h1--md, $line-height-h1--md)
+		font-size: 48px
 
 	+media('<mob-lg')
-		+font($font-size-h1--sm, $line-height-h1--sm)
+		font-size: 44px
 
 	+media('<mob-md')
-		+font(22px, 1)
+		font-size: 22px
 
 .heading, .sub-heading
 	// display flex

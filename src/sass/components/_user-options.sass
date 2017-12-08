@@ -34,6 +34,11 @@ $uo-icon-size: 18px
 		text-decoration: none
 		text-align: center
 
+		&::before
+			content: ""
+			+display-inline-block-middle
+			height: 100%
+
 		@if $animation-use
 			transition:
 				property: color
@@ -69,8 +74,9 @@ $uo-icon-size: 18px
 					property: fill
 					duration: $animation-speed
 
-		//& > span
+		& > span
 			+display-inline-block-middle
+			+font-d()
 
 		// hover
 		&:hover
@@ -112,5 +118,12 @@ $uo-icon-size: 18px
 	+font(11px, $size)
 	color: $bg-color-base
 	text-align: center
+
+// lang link
+.lang-link
+	display: none
+
+	+media('<desk-sm')
+		display: inline-block
 
 /* user options

@@ -12,6 +12,9 @@
 .header > .layout
 	height: 100%
 
+	+media('<desk-sm')
+		display: flex
+
 .header__holder
 	height: 100%
 	+clear
@@ -46,34 +49,49 @@
 // header layout end
 
 /* slogan
+.header__col--slogan
+	&.header__col
+		+media('<desk-sm')
+			display: none
+
 .slogan
+	+display-inline-block-top
 	text-decoration: none
 	color: #b2b2b2
 	+font-alt-italic
 	+font(18px, round-float(22/18, 2))
-	padding-top: 0.7em
 
 	&:hover
 		color: $link-color
 
+	+media('<desk-lg')
+		+font(16px, round-float(19/16, 2))
+
 /* slogan end
 
 /* menu
-.menu-container
+.header__col--menu
 	&.header__col
 		height: 100%
+
+		+media('<desk-sm')
+			display: none
 
 		.header__cell, .menu-list, .menu-list > li, .menu-list > li > a
 			height: 100%
 
 .menu-list
 	$ml-space: 54px
+	$ml-space--lg: 40px
 
 	&
 		list-style: none
 		padding: 0
 		margin: 0 -#{round($ml-space/2)}
 		+clear-spacing
+
+		+media('<desk-lg')
+			+margin-horizontal(-#{round($ml-space--lg/2)})
 
 	li
 		+display-inline-block-middle
@@ -91,6 +109,9 @@
 			+padding-horizontal(round($ml-space/2))
 			border: solid transparent
 			border-width: 3px 0
+
+			+media('<desk-lg')
+				+padding-horizontal(round($ml-space--lg/2))
 
 	// hover
 	a

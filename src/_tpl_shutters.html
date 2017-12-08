@@ -1,0 +1,118 @@
+<!--navigation shutter-->
+<div class="shutter nav-shutter nav-shutter-js">
+	<div class="shutter__align">
+		<div class="shutter__holder">
+			<div class="shutter-content">
+				<!--navigation-->
+				<nav class="nav">
+					@@include('_tpl_nav-01-constructor.html', {
+					"currentItem": "@@currentItem",
+					"bsKey": "nav"
+					})
+					@@include('_tpl_nav-02-constructor.html', {
+					"currentItem": "@@currentItem",
+					"bsKey": "nav"
+					})
+				</nav>
+				<!--navigation end-->
+			</div>
+
+			<div class="shutter-aside">
+				<!--departments-->
+				<ul class="dep-list">
+					@@loop('_tpl_dep-items.html', [
+					{
+					"title": "",
+					"alt": "Женский трикотаж",
+					"items": ["Белье женское", "Верх женский"],
+					"img": "dep-img-01.png"
+					},
+					{
+					"title": "",
+					"alt": "Мужской трикотаж",
+					"items": ["Белье мужское", "Верх мужской"],
+					"img": "dep-img-02.png"
+					},
+					{
+					"title": "",
+					"alt": "Детский трикотаж",
+					"items": ["Белье детское", "Верх детский"],
+					"img": "dep-img-03.png"
+					},
+					{
+					"title": "",
+					"alt": "Ясельный трикотаж",
+					"items": ["Белье ясельное"],
+					"img": "dep-img-04.png"
+					}
+					])
+				</ul>
+				<!--departments end-->
+				<div class="file-download">
+					<a href="#"><span>каталог «весна-лето» 2017</span></a>
+				</div>
+				@@loop("_tpl_short-contacts-items.html", "includes-json/short-contacts-items.json")
+			</div>
+		</div>
+	</div>
+</div>
+<!--navigation shutter end-->
+
+<!--search shutter-->
+<div class="shutter search-shutter shutter--wide search-shutter-js">
+	<div class="shutter__align ">
+		<div class="shutter__holder">
+			<div class="search-form">
+				<form action="#" method="post">
+					<div class="search-form__field input-wrap">
+						<input type="search" placeholder="текст для поиска" class="search-form__input field-effects-js"/>
+						<div class="search-form__btn">
+							<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 89.8 89.8" width="24" height="24"><path d="M68.1 61c11.4-14.9 10.3-36.3-3.3-49.9C57.6 3.9 48.1 0 37.9 0c-10.1 0-19.7 3.9-26.8 11.1C3.9 18.3 0 27.8 0 37.9c0 10.1 3.9 19.7 11.1 26.8 7.2 7.2 16.7 11.1 26.8 11.1 8.4 0 16.5-2.8 23.1-7.8l21.8 21.7 7.1-7.1L68.1 61zM57.7 57.7c-5.3 5.3-12.3 8.2-19.8 8.2 -7.5 0-14.5-2.9-19.8-8.2C12.9 52.4 10 45.4 10 37.9c0-7.5 2.9-14.5 8.2-19.8C23.5 12.9 30.5 10 37.9 10c7.5 0 14.5 2.9 19.8 8.2C68.6 29.1 68.6 46.8 57.7 57.7z"></path></svg>
+							<span>Искать</span>
+							<input type="submit" value="">
+						</div>
+					</div>
+				</form>
+			</div>
+			<div class="search-counter">найдено совпадений: <span class="mark">18</span></div>
+			<div class="search-results">
+				<div class="search-results__list">
+					@@loop("_tpl_search-results-items.html", "includes-json/product-options-items.json")
+					@@loop("_tpl_search-results-items.html", "includes-json/product-options-items.json")
+					@@loop("_tpl_search-results-items.html", "includes-json/product-options-items.json")
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!--search shutter end-->
+
+<!--bag shutter-->
+<div class="shutter bag-shutter bag-shutter-js group-js">
+	<div class="shutter__align">
+		<div class="shutter__holder">
+			<div class="shutter__row group__body-js">
+				<div class="shutter__cell">
+					<div class="bag">
+						<div class="bag__list">
+							@@loop("_tpl_bag-items.html", "includes-json/product-options-items.json")
+							@@loop("_tpl_bag-items.html", "includes-json/product-options-items.json")
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="shutter__row shutter__footer group__footer-js">
+				<div class="shutter__cell">
+					<div class="bag-footer__row">
+						<div class="bag-footer__cell">итого:</div>
+						<div class="bag-footer__cell"><span class="mark">1 250</span> руб.</div>
+					</div>
+					<div class="bag-footer__row">
+						<a href="cart.html" class="btn-default">Перейти в корзину</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!--search shutter end-->

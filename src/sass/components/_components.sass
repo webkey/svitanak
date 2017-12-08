@@ -31,12 +31,17 @@
 
 /* logo
 .logo
+	// has styles on layout.sass
 	position: relative
 	float: left
-	width: $logo-width
-	height: $header-height
 	background-color: $base-color
 	z-index: 5
+
+	+media('<desk-sm')
+		float: none
+		margin: 0 auto
+		display: block
+		background-color: transparent
 
 	&::before
 		+pseudo()
@@ -45,6 +50,9 @@
 		background-repeat: no-repeat
 		background-size: cover
 		background-image: url(../../img/logo.png)
+
+		+media('<desk-sm')
+			background-image: url(../../img/logo--alt.png)
 
 	a
 		position: relative
@@ -368,8 +376,12 @@ $dep-img-size: 80px, 120px // width, height
 		border-top: 1px solid $main-slider-color
 		margin-top: -1px
 
+		+media('<desk-sm')
+			width: 50px
+
 .main-slider__item
 	position: relative
+	text-align: center
 
 	&::before
 		$grad-color: black
@@ -379,6 +391,12 @@ $dep-img-size: 80px, 120px // width, height
 		//+linear-gradient(to right, rgba($grad-color, 0.33) 0%, rgba($grad-color, 0) 100%)
 		background-color: rgba($grad-color, 0.25)
 		z-index: -1
+
+	&::after
+		content: ""
+		display: inline-block
+		vertical-align: middle
+		height: 100%
 
 .main-slider__img
 	position: absolute
@@ -400,17 +418,24 @@ $dep-img-size: 80px, 120px // width, height
 		+object-fit(cover)
 
 .main-slider__content
-	max-width: 1200px
-	+push-auto
+	+display-inline-block-top
+	width: 1200px
+	max-width: calc(100% - 10px)
+	text-align: left
 
 	+media('<desk-hd')
-		max-width: 980px
+		width: 980px
+
+	+media('<desk-sm')
+		vertical-align: middle
+		width: 750px
 
 .main-slider__title
 	$line-height: 1
 	$font-size: 72px
 	$font-size--hd: 60px
 	$font-size--lg: 48px
+	$font-size--sm: 44px
 	// ===============
 	display: block
 	overflow: hidden
@@ -422,13 +447,14 @@ $dep-img-size: 80px, 120px // width, height
 	max-height: round($font-size*$line-height*5) // maximum 5 line
 	cursor: default
 
-	+media('<desk-hd')
-		font-size: $font-size--hd
-		max-height: round($font-size--hd*$line-height*5) // maximum 5 line
-
-	+media('<desk-lg')
+	//+media('<desk-lg')
 		font-size: $font-size--lg
 		max-height: round($font-size--lg*$line-height*5) // maximum 5 line
+
+	+media('<desk-sm')
+		width: 600px
+		font-size: $font-size--sm
+		max-height: round($font-size--sm*$line-height*5) // maximum 5 line
 
 	&:last-child
 		margin-bottom: 0
@@ -494,11 +520,11 @@ $dep-img-size: 80px, 120px // width, height
 				content: none
 
 	& > li
+		// has styles on layout.sass
 		//+display-inline-block-top
 		float: left
 		overflow: hidden
 		width: calc(25% + 1px)
-		height: calc((100vh - #{$header-height})/2 + 1px)
 		position: relative
 		letter-spacing: $letter-spacing
 		border-style: solid
@@ -506,6 +532,14 @@ $dep-img-size: 80px, 120px // width, height
 		border-width: 1px
 		background-color: $bg-color
 		z-index: 5
+
+		height: calc((100vh - #{$header-height})/2 + 1px)
+
+		+media('<desk-lg')
+			height: calc((100vh - #{$header-height--lg})/2 + 1px)
+
+		+media('<desk-sm')
+			height: calc(100vh/2 + 1px)
 
 		&::after
 			+pseudo()
@@ -531,6 +565,12 @@ $dep-img-size: 80px, 120px // width, height
 					height: calc(100vh - #{$header-height} + 1px)
 					display: none
 
+					+media('<desk-lg')
+						height: calc(100vh - #{$header-height--lg} + 1px)
+
+					+media('<desk-sm')
+						height: calc(100vh + 1px)
+
 					&:nth-child(-n+#{$i})
 						display: block
 
@@ -545,6 +585,12 @@ $dep-img-size: 80px, 120px // width, height
 					width: calc(100%/2 + 1px)
 					height: calc(100vh - #{$header-height} + 1px)
 					display: none
+
+					+media('<desk-lg')
+						height: calc(100vh - #{$header-height--lg} + 1px)
+
+					+media('<desk-sm')
+						height: calc(100vh + 1px)
 
 					&:nth-child(-n+#{$i})
 						display: block
@@ -565,6 +611,12 @@ $dep-img-size: 80px, 120px // width, height
 
 					&:first-child
 						height: calc(100vh - #{$header-height} + 1px)
+
+						+media('<desk-lg')
+							height: calc(100vh - #{$header-height--lg} + 1px)
+
+						+media('<desk-sm')
+							height: calc(100vh + 1px)
 
 					.m-catalog-img
 						left: auto

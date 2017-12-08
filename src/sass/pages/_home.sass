@@ -3,14 +3,11 @@
 @import ../../libs/include-media/dist/include-media
 
 /* HOME PAGE
-.home-page .wrapper
-	padding-top: 0
-
 /*scroll sections
 .main-section-js
 	position: relative
 	overflow: hidden
-	padding-top: $header-height
+	// has style on layout.sass
 
 .main-section__container
 	height: 100%
@@ -21,6 +18,11 @@
 	margin: 0 auto
 
 /*scroll sections end
+
+.main-section--main
+	+media('<desk-sm')
+		height: calc(100vh - #{$header-height--lg}) !important
+		min-height: 480px
 
 .main-section--footer
 	height: auto !important
@@ -39,23 +41,14 @@
 #fp-nav
 	display: table
 	position: fixed
-	top: 0
-	left: $page-layout-width
-	height: 100vh
-	width: $sidebar-width
-	margin: 0 0 0 -#{$sidebar-width}!important
-	padding-top: $header-height
 	background-color: rgba($bg-color, 0.5)
 	border: solid $border-color
 	border-width: 0 0 0 1px
 
-	+media('<1920px')
-		left: 100%
-
 	ul
 		$dot-size: 8px
 		$dot-size-active: 20px
-		$dot-space: 40px
+		$dot-space: 50px
 
 		display: table-cell
 		vertical-align: middle
@@ -76,7 +69,7 @@
 				//+size($dot-size-active)
 				//padding: round(($dot-size-active - $dot-size)/2)
 				display: block
-				padding: round($dot-space/2)
+				padding: round($dot-space/2) 10px
 
 				&::before
 					+pseudo()
@@ -145,14 +138,6 @@
 
 /* special styles for home page
 .home-page
-	// header
-	.header__holder
-		padding-left: $layout-spaces + $logo-full-width - $logo-width
-
-	// logo
-	.logo
-		width: $logo-full-width
-
 	// footer
 	.footer__holder
 		position: relative
