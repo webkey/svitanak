@@ -456,8 +456,10 @@ function slidersInit() {
 						spaceBetween: 30
 					},
 					1599: {
-						slidesOffsetBefore: 41,
-						spaceBetween: 20
+						slidesOffsetBefore: 41
+					},
+					1199: {
+						slidesOffsetBefore: 30
 					}
 				},
 				// events

@@ -12,13 +12,18 @@
 .header > .layout
 	height: 100%
 
-	+media('<desk-sm')
+	//+media('<desk-sm')
 		display: flex
 
 .header__holder
 	height: 100%
 	+clear
 	text-align: center
+
+	+media('<desk-sm')
+		position: absolute
+		right: 0
+		top: 0
 
 .header__col
 	+display-inline-block-top
@@ -128,5 +133,4 @@
 					border-bottom-color: $base-color
 
 /* menu end
-
 /* HEADER end

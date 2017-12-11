@@ -47,10 +47,13 @@
 	letter-spacing: $letter-spacing
 	text-align: center
 
-	+media('<desk-md')
-		+grid-item-responsive(2, $footer-grid-space--lg)
+	+media('<desk-lg')
+		+grid-item-responsive(3, $footer-grid-space--lg)
 
-	+media('<mob-lg')
+	+media('<desk-md')
+		//+grid-item-responsive(2, $footer-grid-space--lg)
+
+	//+media('<mob-lg')
 		+grid-item-responsive(1, $footer-grid-space--lg)
 
 .footer-bottom__col

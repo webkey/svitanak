@@ -213,25 +213,22 @@
 	$btn-menu-bg: $bg-color
 	$btn-menu-color: $text-color
 	$btn-menu-lines-width: 26px
+	$btn-menu-lines-width--lg: 22px
 	$btn-menu-lines-height: 3px
+	$btn-menu-lines-height--lg: 2px
 	$btn-menu-lines-space: 5px
+	$btn-menu-lines-space--lg: 4px
 	$btn-menu-lines-color: $text-color
 	$btn-menu-animation-speed: $animation-speed
 	$btn-menu-animation-delay: round-float($animation-speed*0.5, 2)
 
 	$user-options-cross-width: $btn-menu-lines-width
+	$user-options-cross-width--lg: $btn-menu-lines-width--lg
 	$user-options-cross-height: $btn-menu-lines-height
+	$user-options-cross-height--lg: $btn-menu-lines-height--lg
 	$user-options-cross-color: $btn-menu-lines-color
 
 	// =====================
-
-	=menu-btn-line()
-		+size($btn-menu-lines-width, $btn-menu-lines-height)
-		background-color: $btn-menu-lines-color
-
-	=menu-btn-cross-line()
-		+size($user-options-cross-width, $user-options-cross-height)
-		background-color: $user-options-cross-color
 
 	display: block
 	vertical-align: top
@@ -267,7 +264,8 @@
 	// крест
 	&::before, &::after
 		+pseudo()
-		+menu-btn-cross-line
+		+size($user-options-cross-width, $user-options-cross-height)
+		background-color: $user-options-cross-color
 		+position(50%)
 		+margin($top: -#{round($user-options-cross-height*0.5)}, $left: -#{round($user-options-cross-width*0.5)})
 		will-change: opacity, transform
@@ -278,12 +276,17 @@
 			delay: 0s
 			timing-function: cubic-bezier(0.65, 0.05, 0.36, 1)
 
+		+media('<desk-lg')
+			+size($user-options-cross-width--lg, $user-options-cross-height--lg)
+			+margin($top: -#{round($user-options-cross-height--lg*0.5)}, $left: -#{round($user-options-cross-width--lg*0.5)})
+
 	// бутерброд
 	& > i
 		position: absolute
 		left: 50%
 		top: 50%
-		+menu-btn-line
+		+size($btn-menu-lines-width, $btn-menu-lines-height)
+		background-color: $btn-menu-lines-color
 		+margin($top: -#{round($btn-menu-lines-height*0.5)}, $left: -#{round($btn-menu-lines-width*0.5)})
 		backface-visibility: hidden
 		transition:
@@ -296,10 +299,15 @@
 				property: background-color, opacity
 				duration: $btn-menu-animation-speed
 
+		+media('<desk-lg')
+			+size($btn-menu-lines-width--lg, $btn-menu-lines-height--lg)
+			+margin($top: -#{round($btn-menu-lines-height--lg*0.5)}, $left: -#{round($btn-menu-lines-width--lg*0.5)})
+
 		&::before, &::after
 			+pseudo()
 			left: 0
-			+menu-btn-line
+			+size($btn-menu-lines-width, $btn-menu-lines-height)
+			background-color: $btn-menu-lines-color
 			backface-visibility: hidden
 			transition:
 				property: transform
@@ -311,13 +319,22 @@
 					property: transform, opacity, background-color
 					duration: $btn-menu-animation-speed
 
+			+media('<desk-lg')
+				+size($btn-menu-lines-width--lg, $btn-menu-lines-height--lg)
+
 		//first line menu
 		&::before
 			top: -#{$btn-menu-lines-height + $btn-menu-lines-space}
 
+			+media('<desk-lg')
+				top: -#{$btn-menu-lines-height--lg + $btn-menu-lines-space--lg}
+
 		//third line menu
 		&::after
 			top: #{$btn-menu-lines-height + $btn-menu-lines-space}
+
+			+media('<desk-lg')
+				top: #{$btn-menu-lines-height--lg + $btn-menu-lines-space--lg}
 
 	// hover
 	.no-touchevents &:hover
@@ -355,16 +372,14 @@
 			&::before
 				transform: translate(0, #{$btn-menu-lines-height + $btn-menu-lines-space}) translateZ(0)
 
+				+media('<desk-lg')
+					transform: translate(0, #{$btn-menu-lines-height--lg + $btn-menu-lines-space--lg}) translateZ(0)
+
 			&::after
 				transform: translate(0, -#{$btn-menu-lines-height + $btn-menu-lines-space}) translateZ(0)
 
-	// hover on active
-	//.no-touchevents &.active:hover
-
-		& > i
-
-			&::before, &::after
-				background-color: $bg-color-base
+				+media('<desk-lg')
+					transform: translate(0, -#{$btn-menu-lines-height--lg + $btn-menu-lines-space--lg}) translateZ(0)
 
 /* button toggle menu end
 

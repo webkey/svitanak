@@ -32,6 +32,19 @@
 .main-section--categories
 	.main-section__align
 		overflow: hidden
+		
+.main-section--services
+	+media('<desk-sm')
+		border-bottom: 1px solid $border-color
+		height: calc(100vh - #{$header-height--lg} + 1px) !important
+
+	+media('<tab-lg')
+		height: auto !important
+		background-color: $bg-color-alt
+
+.main-section--news
+	+media('<desk-sm')
+		height: auto !important
 
 /* main section
 

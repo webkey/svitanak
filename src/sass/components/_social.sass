@@ -50,7 +50,7 @@ $social-space--lg: 20px !default
 		fill: $text-color
 		border-radius: 50%
 
-		+media('<desk-sm')
+		+media('<mob-lg')
 			+size(40px)
 
 		span
@@ -59,6 +59,9 @@ $social-space--lg: 20px !default
 		svg
 			+centering-transform-abs
 			+size(20px)
+
+			+media('<mob-lg')
+				+size(16px)
 
 		path
 			fill: inherit

@@ -84,6 +84,9 @@
 		+display-inline-block-middle
 		+size(40px)
 
+		+media('<desk-lg')
+			+size(30px)
+
 	path
 		fill: inherit
 
@@ -579,6 +582,14 @@ $dep-img-size: 80px, 120px // width, height
 						right: nth($m-catalog__space, 2)
 						transform: none
 
+						img
+							+media('<desk-sm')
+								filter: grayscale(0)
+
+						&::after
+							+media('<desk-sm')
+								content: none
+
 		@if $i == 2
 			&[#{$data-length}="#{$i}"]
 				& > li
@@ -599,6 +610,14 @@ $dep-img-size: 80px, 120px // width, height
 						left: auto
 						right: nth($m-catalog__space, 2)
 						transform: none
+
+						img
+							+media('<desk-sm')
+								filter: grayscale(0)
+
+						&::after
+							+media('<desk-sm')
+								content: none
 
 		@if $i == 3
 			&[#{$data-length}="#{$i}"]
@@ -623,6 +642,14 @@ $dep-img-size: 80px, 120px // width, height
 						right: nth($m-catalog__space, 2)
 						transform: none
 
+						img
+							+media('<desk-sm')
+								filter: grayscale(0)
+
+						&::after
+							+media('<desk-sm')
+								content: none
+
 		@if $i == 4
 			&[#{$data-length}="#{$i}"]
 				& > li
@@ -637,6 +664,14 @@ $dep-img-size: 80px, 120px // width, height
 						right: nth($m-catalog__space, 2)
 						transform: none
 
+						img
+							+media('<desk-sm')
+								filter: grayscale(0)
+
+						&::after
+							+media('<desk-sm')
+								content: none
+
 		@if $i == 5
 			&[#{$data-length}="#{$i}"]
 				& > li
@@ -650,6 +685,14 @@ $dep-img-size: 80px, 120px // width, height
 						left: auto
 						right: -6%
 						transform: none
+
+						img
+							+media('<desk-sm')
+								filter: grayscale(0)
+
+						&::after
+							+media('<desk-sm')
+								content: none
 
 					&:nth-child(-n+2)
 						width: calc(100%/2 + 1px)
@@ -799,10 +842,17 @@ $dep-img-size: 80px, 120px // width, height
 
 /* services (home page)
 $m-services-thumb-left: 160px
+$m-services-thumb-left--lg: 100px
+$m-services-thumb-left--sm: 40px
 $m-services-thumb-indent: 320px
+$m-services-thumb-indent--hd: 260px
+$m-services-thumb-indent--lg: 160px
+$m-services-thumb-indent--sm: 40px
 
 .m-services-container
 	height: 100%
+	overflow: hidden
+	position: relative
 	+clear
 
 .m-services
@@ -818,6 +868,11 @@ $m-services-thumb-indent: 320px
 	width: 50%
 	height: 100%
 	background-color: $bg-color-alt
+
+	+media('<tab-lg')
+		position: absolute
+		right: 150%
+		top: 0
 
 .m-services-prev, .m-services-next, .m-services-pagination, .m-services__content
 	user-select: none
@@ -836,19 +891,36 @@ $m-services-thumb-indent: 320px
 		display: block
 		+size(100%)
 		max-width: none
-		+object-fit(cover)
+		+object-fit(contain)
 
 .m-services-title
 	display: block
 	+font-alt-bold
 	+font(48px, 1)
+	letter-spacing: 0.05em
 	color: inherit
-	margin-bottom: $bottom-space--lg
+	margin-bottom: 60px
 	padding-left: $m-services-thumb-indent
+
+	+media('<desk-hd')
+		padding-left: $m-services-thumb-indent--hd
+		margin-bottom: 46px
+
+	+media('<desk-lg')
+		padding-left: $m-services-thumb-indent--lg
+		margin-bottom: 27px
+		font-size: 36px
+
+	+media('<tab-lg')
+		padding-left: 0
 
 .m-services-pagination
 	position: relative
 	z-index: 5
+
+	+media('<tab-lg')
+		+margin-horizontal(-#{$layout-spaces--sm})
+		+clear
 
 .m-services__letter
 	display: block
@@ -890,10 +962,16 @@ $m-services-thumb-indent: 320px
 	overflow-x: hidden
 	z-index: 0
 
+	+media('<tab-lg')
+		float: none
+		+size(auto, auto)
+		overflow: visible
+
 .m-services-thumbs-align
 	position: relative
-	margin-right: -100px
+	//margin-right: -100px
 	+padding-vertical($layout-spaces)
+	min-height: 100%
 
 	&::before
 		+pseudo()
@@ -905,14 +983,33 @@ $m-services-thumb-indent: 320px
 		z-index: 5
 		pointer-events: none
 
+		+media('<desk-lg')
+			left: $m-services-thumb-left--lg
+
+		+media('<tab-lg')
+			content: none
+			display: none
+			left: $m-services-thumb-left--sm
+
 .m-services-bullet
 	display: block
 	position: relative
-	+padding-vertical(20px)
+	padding: 20px 0
 	color: inherit
 	+font(16px, 24px)
 	text-decoration: none
 	+clear
+
+	+media('<desk-hd')
+		+padding-vertical(18px)
+
+	+media('<tab-lg')
+		float: left
+		width: 50%
+		padding: 10px $layout-spaces--sm
+
+		&:nth-child(2n + 3)
+			clear: both
 	
 	&::before
 		+pseudo()
@@ -929,6 +1026,14 @@ $m-services-thumb-indent: 320px
 		+font-alt-italic
 		font-size: 18px
 		text-align: center
+		+margin-vertical(1px, -1px)
+
+		+media('<desk-lg')
+			width: $m-services-thumb-left--lg
+
+		+media('<tab-lg')
+			width: $m-services-thumb-left--sm
+			text-align: left
 
 		&::after
 			+pseudo()
@@ -936,10 +1041,27 @@ $m-services-thumb-indent: 320px
 			+size(0, 100%)
 			border-right: 1px solid $border-color
 
+			+media('<desk-lg')
+				left: $m-services-thumb-left--lg
+
+			+media('<tab-lg')
+				content: none
+				display: none
+				left: $m-services-thumb-left--lg
+
 	& > span
 		position: relative
 		display: block
 		padding-left: $m-services-thumb-indent
+
+		+media('<desk-hd')
+			padding-left: $m-services-thumb-indent--hd
+
+		+media('<desk-lg')
+			padding-left: $m-services-thumb-indent--lg
+
+		+media('<tab-lg')
+			padding-left: $m-services-thumb-indent--sm
 
 		&::before, &::after
 			+pseudo()
@@ -956,16 +1078,31 @@ $m-services-thumb-indent: 320px
 				duration: $animation-speed*2
 				timing-function: cubic-bezier(0.65, 0.05, 0.36, 1)
 
+			+media('<desk-lg')
+				left: $m-services-thumb-left--lg
+
+			+media('<tab-lg')
+				content: none
+				display: none
+				left: $m-services-thumb-left--sm
+
 		&::before
 			width: 30px
 			margin-left: -30px
 			transform-origin: right center
 
+			+media('<desk-lg')
+				width: 25px
+				margin-left: -25px
+
 		&::after
 			width: 70px
 			transform-origin: left center
 
-	&:hover, &.m-services-bullet-active
+			+media('<desk-lg')
+				width: 25px
+
+	.no-touchevents &:hover, .no-touchevents &.m-services-bullet-active
 		&::before
 			opacity: 1
 
@@ -1049,6 +1186,10 @@ $m-services-thumb-indent: 320px
 		top: 50%
 		border-top: 1px solid $tape-slider-color
 		margin-top: -1px
+
+		+media('<desk-sm')
+			content: none
+			display: none
 
 	&::before
 		right: 100%
@@ -1247,6 +1388,11 @@ $m-services-thumb-indent: 320px
 	+position(0)
 	z-index: 5
 
+	+media('<desk-sm')
+		position: relative
+		left: auto
+		top: auto
+
 	.view-all
 		float: right
 
@@ -1265,12 +1411,18 @@ $m-services-thumb-indent: 320px
 	position: relative
 	padding-right: 50px
 
+	+media('<desk-sm')
+		padding-right: 30px
+
 	&::before, &::after
 		+pseudo()
 		+size(100px, 0)
 		top: 50%
 		border-top: 1px solid $tape-slider-color
 		margin-top: -1px
+
+		+media('<desk-sm')
+			width: 50px
 
 	&::before
 		content: none
@@ -1292,6 +1444,9 @@ $m-services-thumb-indent: 320px
 	letter-spacing: $letter-spacing
 	padding-right: $previews-tab-space
 
+	+media('<desk-sm')
+		+font($previews-tab-font-size--sm, $previews-tab-line-height--sm)
+
 	&::after
 		+pseudo()
 		+size(0, $previews-tab-line-height)
@@ -1300,6 +1455,9 @@ $m-services-thumb-indent: 320px
 		border-left: 2px solid $text-color-light
 		margin-top: -1px
 		transform: translate(0, -50%)
+
+		+media('<desk-sm')
+			height: $previews-tab-line-height--sm
 
 	&:last-child
 		padding-right: 0
