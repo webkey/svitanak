@@ -50,14 +50,24 @@
 	+media('<desk-lg')
 		+grid-item-responsive(3, $footer-grid-space--lg)
 
-	+media('<desk-md')
-		//+grid-item-responsive(2, $footer-grid-space--lg)
+	+media('<tab-lg')
+		+grid-item-responsive(2, $footer-grid-space--sm)
+
+		&:nth-last-child(-n+2)
+			margin-bottom: $footer-grid-space--sm
+
+		&:last-child
+			width: 100%
+			margin-bottom: 0
 
 	//+media('<mob-lg')
 		+grid-item-responsive(1, $footer-grid-space--lg)
 
 .footer-bottom__col
 	vertical-align: middle
+
+	+media('<tab-lg')
+		vertical-align: top
 
 /* footer common / footer bottom end
 

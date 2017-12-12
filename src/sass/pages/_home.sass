@@ -30,9 +30,13 @@
 	background-color: #fafafa
 
 .main-section--categories
+
+	+media('<desk-sm')
+		height: auto !important
+
 	.main-section__align
 		overflow: hidden
-		
+
 .main-section--services
 	+media('<desk-sm')
 		border-bottom: 1px solid $border-color

@@ -227,6 +227,9 @@ body
 		+media('<desk-lg')
 			+padding-horizontal($layout-spaces--lg)
 
+		+media('<desk-sm')
+			+padding-horizontal($layout-spaces--sm)
+
 .footer-common, .footer-bottom
 	+padding-vertical(round($layout-spaces*0.5))
 
@@ -235,6 +238,9 @@ body
 
 	+media('<desk-lg')
 		+padding-vertical(round($layout-spaces--lg*0.85))
+
+	+media('<desk-sm')
+		+padding-vertical(round($layout-spaces--sm*0.85))
 
 /* footer (layout) end
 
@@ -429,6 +435,13 @@ body
 	+media('<desk-lg')
 		width: $logo-width--lg
 		height: $header-height--lg
+
+	+media('<desk-sm')
+		margin: 0 auto
+		width: $logo-full-width--lg
+
+	+media('<tab-sm')
+		margin: 0 0 0 $header-height--lg
 
 	// home-page
 	.home-page &

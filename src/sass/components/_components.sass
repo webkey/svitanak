@@ -39,7 +39,6 @@
 
 	+media('<desk-sm')
 		float: none
-		margin: 0 auto
 		display: block
 		background-color: transparent
 
@@ -542,7 +541,10 @@ $dep-img-size: 80px, 120px // width, height
 			height: calc((100vh - #{$header-height--lg})/2 + 1px)
 
 		+media('<desk-sm')
-			height: calc(100vh/2 + 1px)
+			width: calc(100%/2 + 1px)
+
+		//+media('<desk-sm')
+			height: calc((100vh - #{$header-height--lg})/2 + 1px)
 
 		&::after
 			+pseudo()
@@ -572,7 +574,7 @@ $dep-img-size: 80px, 120px // width, height
 						height: calc(100vh - #{$header-height--lg} + 1px)
 
 					+media('<desk-sm')
-						height: calc(100vh + 1px)
+						height: calc((100vh - #{$header-height--lg})/2 + 1px)
 
 					&:nth-child(-n+#{$i})
 						display: block
@@ -582,13 +584,8 @@ $dep-img-size: 80px, 120px // width, height
 						right: nth($m-catalog__space, 2)
 						transform: none
 
-						img
-							+media('<desk-sm')
-								filter: grayscale(0)
-
-						&::after
-							+media('<desk-sm')
-								content: none
+						+media('<desk-sm')
+							right: -6%
 
 		@if $i == 2
 			&[#{$data-length}="#{$i}"]
@@ -601,7 +598,7 @@ $dep-img-size: 80px, 120px // width, height
 						height: calc(100vh - #{$header-height--lg} + 1px)
 
 					+media('<desk-sm')
-						height: calc(100vh + 1px)
+						height: calc((100vh - #{$header-height--lg})/2 + 1px)
 
 					&:nth-child(-n+#{$i})
 						display: block
@@ -611,13 +608,8 @@ $dep-img-size: 80px, 120px // width, height
 						right: nth($m-catalog__space, 2)
 						transform: none
 
-						img
-							+media('<desk-sm')
-								filter: grayscale(0)
-
-						&::after
-							+media('<desk-sm')
-								content: none
+						+media('<desk-sm')
+							right: -6%
 
 		@if $i == 3
 			&[#{$data-length}="#{$i}"]
@@ -635,20 +627,19 @@ $dep-img-size: 80px, 120px // width, height
 							height: calc(100vh - #{$header-height--lg} + 1px)
 
 						+media('<desk-sm')
-							height: calc(100vh + 1px)
+							height: calc((100vh - #{$header-height--lg})/2 + 1px)
+							width: calc(100% + 1px)
+
+							.m-catalog-img
+								right: nth($m-catalog__space, 2)
 
 					.m-catalog-img
 						left: auto
 						right: nth($m-catalog__space, 2)
 						transform: none
 
-						img
-							+media('<desk-sm')
-								filter: grayscale(0)
-
-						&::after
-							+media('<desk-sm')
-								content: none
+						+media('<desk-sm')
+							right: -6%
 
 		@if $i == 4
 			&[#{$data-length}="#{$i}"]
@@ -664,13 +655,8 @@ $dep-img-size: 80px, 120px // width, height
 						right: nth($m-catalog__space, 2)
 						transform: none
 
-						img
-							+media('<desk-sm')
-								filter: grayscale(0)
-
-						&::after
-							+media('<desk-sm')
-								content: none
+						+media('<desk-sm')
+							right: -6%
 
 		@if $i == 5
 			&[#{$data-length}="#{$i}"]
@@ -678,21 +664,11 @@ $dep-img-size: 80px, 120px // width, height
 					width: calc(100%/3 + 1px)
 					display: none
 
+					+media('<desk-sm')
+						width: calc(100%/2 + 1px)
+
 					&:nth-child(-n+#{$i})
 						display: block
-
-					.m-catalog-img
-						left: auto
-						right: -6%
-						transform: none
-
-						img
-							+media('<desk-sm')
-								filter: grayscale(0)
-
-						&::after
-							+media('<desk-sm')
-								content: none
 
 					&:nth-child(-n+2)
 						width: calc(100%/2 + 1px)
@@ -700,11 +676,31 @@ $dep-img-size: 80px, 120px // width, height
 						.m-catalog-img
 							right: nth($m-catalog__space, 2)
 
+							+media('<desk-sm')
+								right: -6%
+
+					&:first-child
+						+media('<desk-sm')
+							height: calc((100vh - #{$header-height--lg})/2 + 1px)
+							width: calc(100% + 1px)
+
+						.m-catalog-img
+							+media('<desk-sm')
+								right: nth($m-catalog__space, 2)
+
+					.m-catalog-img
+						left: auto
+						right: -6%
+						transform: none
+
 		@if $i == 6
 			&[#{$data-length}="#{$i}"]
 				& > li
 					width: calc(100%/4 + 1px)
 					display: none
+
+					+media('<desk-sm')
+						width: calc(100%/2 + 1px)
 
 					&:nth-child(-n+#{$i})
 						display: block
@@ -718,11 +714,23 @@ $dep-img-size: 80px, 120px // width, height
 							right: nth($m-catalog__space, 2)
 							transform: none
 
+							+media('<desk-sm')
+								right: -6%
+
+					.m-catalog-img
+						+media('<desk-sm')
+							left: auto
+							right: -6%
+							transform: none
+
 		@if $i == 7
 			&[#{$data-length}="#{$i}"]
 				& > li
 					width: calc(100%/4 + 1px)
 					display: none
+
+					+media('<desk-sm')
+						width: calc(100%/2 + 1px)
 
 					&:nth-child(-n+#{$i})
 						display: block
@@ -735,6 +743,22 @@ $dep-img-size: 80px, 120px // width, height
 							right: nth($m-catalog__space, 2)
 							transform: none
 
+							+media('<desk-sm')
+								right: -6%
+
+					&:first-child
+						+media('<desk-sm')
+							height: calc((100vh - #{$header-height--lg})/2 + 1px)
+							width: calc(100% + 1px)
+
+						.m-catalog-img
+							+media('<desk-sm')
+								right: nth($m-catalog__space, 2)
+
+					.m-catalog-img
+						left: auto
+						right: -6%
+						transform: none
 .m-catalog-img
 	position: absolute
 	left: 50%
@@ -752,6 +776,10 @@ $dep-img-size: 80px, 120px // width, height
 	+media('<desk-lg')
 		width: nth($m-catalog-img__size--lg, 1)
 
+	+media('<desk-sm')
+		left: auto
+		right: -6%
+		transform: none
 
 	&::before
 		+pseudo-block-relative()
@@ -783,8 +811,14 @@ $dep-img-size: 80px, 120px // width, height
 		background-color: rgba(white, 0.75)
 		z-index: 2
 
+		+media('<desk-sm')
+			content: none
+
 	img
 		filter: grayscale(1)
+
+		+media('<desk-sm')
+			filter: grayscale(0)
 
 // hover
 .m-catalog-list > li:hover
@@ -910,6 +944,9 @@ $m-services-thumb-indent--sm: 40px
 		padding-left: $m-services-thumb-indent--lg
 		margin-bottom: 27px
 		font-size: 36px
+
+	+media('<desk-sm')
+		font-size: 30px
 
 	+media('<tab-lg')
 		padding-left: 0
@@ -1444,6 +1481,9 @@ $m-services-thumb-indent--sm: 40px
 	letter-spacing: $letter-spacing
 	padding-right: $previews-tab-space
 
+	+media('<desk-lg')
+		+font($previews-tab-font-size--lg, $previews-tab-line-height--lg)
+
 	+media('<desk-sm')
 		+font($previews-tab-font-size--sm, $previews-tab-line-height--sm)
 
@@ -1455,6 +1495,9 @@ $m-services-thumb-indent--sm: 40px
 		border-left: 2px solid $text-color-light
 		margin-top: -1px
 		transform: translate(0, -50%)
+
+		+media('<desk-lg')
+			height: $previews-tab-line-height--sm
 
 		+media('<desk-sm')
 			height: $previews-tab-line-height--sm
