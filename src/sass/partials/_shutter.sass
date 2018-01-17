@@ -47,6 +47,12 @@
 	+media('<desk-sm')
 		left: 0
 
+.shutter__options
+	display: none
+
+	+media('<tab-sm')
+		display: block
+
 .shutter__align
 	width: calc(100% + 100px)
 	overflow-x: hidden
@@ -88,20 +94,87 @@
 /* shutter aside end
 
 /* button shutter close
-.shutter
-	.btn-popup-close
-		display: none
-		position: absolute
-		right: 0
-		top: 0
+.btn-shutter-close
+	//<a href="#" class="btn-shutter-close js-btn-shutter-close"><i>&nbsp;</i><span>Закрыть</span></a>
+	$btn-shutter-close--bg: #fff
+	$btn-shutter-close--color: $text-color
+	$btn-shutter-close--size: 60px
+	$btn-shutter-close--space: 12px
+	$btn-shutter-close--lines-width: 22px
+	$btn-shutter-close--lines-height: 2px
+	$btn-shutter-close--lines-space: 5px
+	$btn-shutter-close--lines-radius: 0
+	$btn-shutter-close--lines-color: $text-color
 
-		+media('<tab-lg')
-			display: block
+	display: block
+	+size($btn-shutter-close--size)
+	background: $btn-shutter-close--bg
+	color: white
+	text-decoration: none
+	+clear-spacing
+	white-space: nowrap
+	transition-property: background-color, opacity, visibility
+	transition-duration: $animation-speed
+
+	&::before
+		content: ''
+		display: inline-block
+		height: $btn-shutter-close--size
+		min-height: 100%
+		vertical-align: middle
+
+	> span
+		+hide-text
+
+	> i
+		display: inline-block
+		vertical-align: middle
+		position: relative
+		//backface-visibility: hidden
+		background-color: transparent
+		+size($btn-shutter-close--lines-width, $btn-shutter-close--lines-height)
+		border-radius: $btn-shutter-close--lines-radius
+
+		&::before, &::after
+			+pseudo()
+			left: 0
+			//backface-visibility: hidden
+			+size($btn-shutter-close--lines-width, $btn-shutter-close--lines-height)
+			border-radius: $btn-shutter-close--lines-radius
+			background: $btn-shutter-close--lines-color
+			transition-property: background-color
+			transition-duration: $animation-speed
+
+		//first line menu
+		&::before
+			top: 0
+			transform: rotate(-45deg)
+
+		//third line menu
+		&::after
+			top: 0
+			transform: rotate(45deg)
+
+	.no-touchevents &:hover
+		background-color: $bg-color-selected
 
 /* button shutter close end
 
+.btn-popup-close
+	display: none
+	position: absolute
+	right: 0
+	top: 0
+
+	+media('<tab-lg')
+		display: block
+
 /* nav-shutter
 .nav-shutter
+	+media('<tab-sm')
+		height: 100%
+		z-index: 1040
+
 	&, .shutter__holder
 		max-width: $shutter-width
 
@@ -110,6 +183,9 @@
 
 		+media('<desk-sm')
 			max-width: none
+
+	.user-options
+		display: none
 
 /* nav-shutter end
 

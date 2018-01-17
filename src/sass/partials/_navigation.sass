@@ -16,24 +16,24 @@
 
 	li
 		position: relative
-		margin-bottom: 12px
-
-		&:last-child
-			margin-bottom: 0
-
-	a
-		display: block
+		margin-bottom: 8px
 		+font-alt-medium
-		+font(30px, round-float(30/30, 2))
-		color: $text-color-base
-		border-color: $text-color-base // для нижнего подчеркивания
-		text-decoration: none
+		+font(30px, round-float(34/30, 2))
 
 		+media('<desk-hd')
 			font-size: 26px
 
 		+media('<desk-lg')
 			font-size: 24px
+
+		&:last-child
+			margin-bottom: 0
+
+	a
+		//display: block
+		color: $text-color-base
+		border-color: $text-color-base // для нижнего подчеркивания
+		text-decoration: none
 
 		@if $animation-use
 			transition:

@@ -572,7 +572,7 @@ function slidersInit() {
 		navContainer: null, // main navigation container
 		navMenu: null, // menu
 		btnMenu: null, // element which opens or switches menu
-		btnMenuClose: null, // element which closes a menu
+		btnClose: null, // element which closes a menu
 		navMenuItem: null,
 		navMenuAnchor: 'a',
 		staggerElement: null,
@@ -610,7 +610,7 @@ function slidersInit() {
 		self.$mainContainer = $(options.mainContainer);            // . по умолчанию <html></html>
 		self.$navMenu = $(options.navMenu);
 		self.$btnMenu = $(options.btnMenu);
-		self.$btnMenuClose = $(options.btnMenuClose);
+		self.$btnClose = $(options.btnClose);
 		self.$navContainer = container;
 		self.$navMenuItem = $(options.navMenuItem, container);     // Пункты навигации;
 		self.$navMenuAnchor = $(options.navMenuAnchor, container); // Элемент, по которому производится событие (клик);
@@ -648,7 +648,7 @@ function slidersInit() {
 			self.preparationAnimation();
 		}
 		self.toggleMenu();
-		self.eventsBtnMenuClose();
+		self.eventsbtnClose();
 		self.clearStyles();
 		self.closeNavOnEsc();
 		self.closeNavMethod();
@@ -718,11 +718,11 @@ function slidersInit() {
 	};
 
 	// events btn close menu
-	ExtraPopup.prototype.eventsBtnMenuClose = function () {
+	ExtraPopup.prototype.eventsbtnClose = function () {
 
 		var self = this;
 
-		self.$btnMenuClose.on('click', function (e) {
+		self.$btnClose.on('click', function (e) {
 			e.preventDefault();
 
 			if ( self.navIsOpened ) {
@@ -780,7 +780,7 @@ function slidersInit() {
 			$html = self.$mainContainer,
 			$navContainer = self.$navContainer,
 			$buttonMenu = self.$btnMenu,
-			$buttonClose = self.$btnMenuClose,
+			$buttonClose = self.$btnClose,
 			_animationSpeed = self._animateSpeedOverlay,
 			$staggerElement = self.$staggerElement,
 			ease = self.ease;
@@ -847,7 +847,7 @@ function slidersInit() {
 			$html = self.$mainContainer,
 			$navContainer = self.$navContainer,
 			$buttonMenu = self.$btnMenu,
-			$buttonClose = self.$btnMenuClose,
+			$buttonClose = self.$btnClose,
 			$staggerElement = self.$staggerElement,
 			_animationSpeed = self._animateSpeedOverlay,
 			_mediaWidth = self._mediaWidth,
@@ -1070,7 +1070,7 @@ function shuttersInit(){
 			navContainer: navShutterClass,
 			navMenu: '.nav__list',
 			btnMenu: '.btn-nav-js',
-			btnMenuClose: '.btn-shutter-close-js',
+			btnClose: '.btn-shutter-close-js',
 			// staggerElement: '.nav__list > li',
 			overlayClass: 'popup-overlay--nav',
 			overlayAppendTo: 'body',
@@ -1098,7 +1098,7 @@ function shuttersInit(){
 			navContainer: searchShutterClass,
 			// navMenu: '.nav__list',
 			btnMenu: '.btn-search-open-js',
-			btnMenuClose: '.btn-shutter-close-js',
+			btnClose: '.btn-shutter-close-js',
 			// staggerElement: '.nav__list > li',
 			overlayClass: 'popup-overlay--nav',
 			overlayAppendTo: 'body',
@@ -1126,7 +1126,7 @@ function shuttersInit(){
 			navContainer: bagShutterClass,
 			// navMenu: '.nav__list',
 			btnMenu: '.btn-bag-open-js',
-			btnMenuClose: '.btn-shutter-close-js',
+			btnClose: '.btn-shutter-close-js',
 			// staggerElement: '.nav__list > li',
 			overlayClass: 'popup-overlay--nav',
 			overlayAppendTo: 'body',
