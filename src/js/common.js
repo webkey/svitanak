@@ -2620,7 +2620,7 @@ function popupInitial(){
 		type: 'inline',
 		midClick: true, // Allow opening popup on middle mouse click. Always set it to true if you don't provide alternative source in href.,
 		// closeOnContentClick: false,
-		mainClass: 'mfp-zoom-in ',
+		mainClass: 'mfp-zoom-in',
 		removalDelay: 500,
 		fixedContentPos: 'auto',
 		overflowY: 'auto',
