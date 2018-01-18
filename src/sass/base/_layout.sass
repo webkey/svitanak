@@ -79,6 +79,9 @@ body
 	+media('<desk-sm')
 		padding: #{round($layout-spaces--sm*0.9)} #{$layout-spaces--sm}
 
+	+media('<mob-lg')
+		padding: #{round($layout-spaces--mob*0.9)} #{$layout-spaces--mob}
+
 // актуально только для текущего проекта
 .layout-full-width, .layout-wide
 	+margin-horizontal(-#{$layout-spaces})
@@ -92,6 +95,9 @@ body
 	+media('<desk-sm')
 		+margin-horizontal(-#{$layout-spaces--sm})
 
+	+media('<mob-lg')
+		+margin-horizontal(-#{$layout-spaces--mob})
+
 .layout-top-fit
 	margin-top: -#{round($layout-spaces*0.9)}
 
@@ -103,6 +109,9 @@ body
 
 	+media('<desk-sm')
 		margin-top: -#{round($layout-spaces--sm*0.9)}
+
+	+media('<mob-lg')
+		margin-top: -#{round($layout-spaces--mob*0.9)}
 
 .layout-bottom-fit
 	margin-bottom: -#{round($layout-spaces*0.9)}
@@ -116,6 +125,9 @@ body
 	+media('<desk-sm')
 		margin-bottom: -#{round($layout-spaces--sm*0.9)}
 
+	+media('<mob-lg')
+		margin-bottom: -#{round($layout-spaces--mob*0.9)}
+
 .entry-img
 	padding: #{round($layout-spaces*0.9)} #{$layout-spaces}
 
@@ -127,6 +139,9 @@ body
 
 	+media('<desk-sm')
 		padding: #{round($layout-spaces--sm*0.9)} #{$layout-spaces--sm}
+
+	+media('<mob-lg')
+		padding: #{round($layout-spaces--mob*0.9)} #{$layout-spaces--mob}
 
 /* header (layout)
 .header
@@ -158,6 +173,9 @@ body
 		+padding-horizontal($layout-spaces--sm)
 		margin-left: 0
 
+	+media('<mob-lg')
+		+padding-horizontal($layout-spaces--mob)
+
 .home-page .header__holder
 	+padding-horizontal($layout-spaces, $sidebar-width)
 	margin-left: $logo-width
@@ -172,6 +190,9 @@ body
 	+media('<desk-sm')
 		+padding-horizontal($layout-spaces--sm)
 		margin-left: 0
+
+	+media('<mob-lg')
+		+padding-horizontal($layout-spaces--mob)
 
 /* header (layout) end
 
@@ -230,6 +251,9 @@ body
 		+media('<desk-sm')
 			+padding-horizontal($layout-spaces--sm)
 
+		+media('<desk-sm')
+			+padding-horizontal($layout-spaces--mob)
+
 .footer-common, .footer-bottom
 	+padding-vertical(round($layout-spaces*0.5))
 
@@ -241,6 +265,9 @@ body
 
 	+media('<desk-sm')
 		+padding-vertical(round($layout-spaces--sm*0.85))
+
+	+media('<mob-lg')
+		+padding-vertical(round($layout-spaces--mob*0.85))
 
 /* footer (layout) end
 
@@ -352,8 +379,12 @@ body
 	//+media('<tab-lg')
 		+padding-horizontal($text-layout-space-horizontal--md)
 
-	+media('<mob-lg')
+	//+media('<mob-lg')
+	+media('<desk-sm')
 		+padding-horizontal($layout-spaces--sm)
+
+	+media('<mob-lg')
+		+padding-horizontal($layout-spaces--mob)
 
 	p, ul, ol, h1, h2, h3, h4, h5, h6, hr, blockquote
 		max-width: none
@@ -441,7 +472,7 @@ body
 		width: $logo-full-width--lg
 
 	+media('<tab-sm')
-		margin: 0 0 0 $header-height--lg
+		margin: 0 0 0 #{$header-height--lg - 10}
 
 	// home-page
 	.home-page &
@@ -449,6 +480,12 @@ body
 
 		+media('<desk-lg')
 			width: $logo-full-width--lg
+
+		+media('<mob-lg')
+			width: $logo-full-width--sm
+
+		+media('<mob-md')
+			width: $logo-full-width--mob
 
 // header if has large logo
 .home-page
@@ -463,6 +500,9 @@ body
 
 		+media('<desk-sm')
 			padding-left: $layout-spaces--sm
+
+		+media('<mob-lg')
+			padding-left: $layout-spaces--mob
 
 /* logo (layout) end
 
@@ -506,6 +546,9 @@ body
 	+media('<desk-sm')
 		padding-bottom: #{round($layout-spaces--sm*0.9)}
 
+	+media('<mob-lg')
+		padding-bottom: #{round($layout-spaces--mob*0.9)}
+
 	/* tape slider (layout)
 	.tape-slider-pagination
 		bottom: 0
@@ -537,6 +580,9 @@ body
 			+media('<desk-sm')
 				padding: #{round($layout-spaces--sm*0.9)} #{$layout-spaces--sm}
 
+			+media('<mob-lg')
+				padding: #{round($layout-spaces--mob*0.9)} #{$layout-spaces--mob}
+
 /* catalog - m-catalog (layout) end
 
 /* m-services (layout)
@@ -555,6 +601,8 @@ body
 	+media('<tab-lg')
 		padding: #{round($layout-spaces--sm*0.9)} #{$layout-spaces--sm}
 
+	+media('<mob-lg')
+		padding: #{round($layout-spaces--mob*0.9)} #{$layout-spaces--mob}
 
 /* m-services (layout) end
 
@@ -586,6 +634,10 @@ body
 			left: #{$layout-spaces--sm}
 			top: #{round($layout-spaces--sm*0.9)}
 
+		+media('<mob-lg')
+			left: #{$layout-spaces--mob}
+			top: #{round($layout-spaces--mob*0.9)}
+
 	.main-slider-prev, .main-slider-next
 		bottom: #{round($layout-spaces*0.9)}
 		top: auto
@@ -600,6 +652,9 @@ body
 		+media('<desk-sm')
 			bottom: #{round($layout-spaces--sm*0.9)}
 
+		+media('<mob-lg')
+			bottom: #{round($layout-spaces--mob*0.9)}
+
 	.main-slider-prev
 		left: #{$layout-spaces}
 
@@ -611,6 +666,9 @@ body
 
 		+media('<desk-sm')
 			left: #{$layout-spaces--sm}
+
+		+media('<mob-lg')
+			left: #{$layout-spaces--mob}
 
 	.main-slider-next
 		right: #{$layout-spaces}
@@ -624,6 +682,9 @@ body
 		+media('<desk-sm')
 			right: #{$layout-spaces--sm}
 
+		+media('<mob-lg')
+			right: #{$layout-spaces--mob}
+
 	.main-slider__item
 		padding: #{round($layout-spaces*0.9*2)} #{$layout-spaces}
 
@@ -635,6 +696,9 @@ body
 
 		+media('<desk-sm')
 			padding: #{round($layout-spaces--sm*0.9*2.5)} #{$layout-spaces--sm}
+
+		+media('<mob-lg')
+			padding: #{round($layout-spaces--mob*0.9*2.5)} #{$layout-spaces--mob}
 
 	/* main slider (layout) end
 
@@ -663,6 +727,9 @@ body
 			+media('<desk-sm')
 				bottom: #{round($layout-spaces--sm*0.9)}
 
+			+media('<mob-lg')
+				bottom: #{round($layout-spaces--mob*0.9)}
+
 		.tape-slider-prev
 			left: #{$layout-spaces}
 
@@ -675,6 +742,9 @@ body
 			+media('<desk-sm')
 				left: #{$layout-spaces--sm}
 
+			+media('<mob-lg')
+				left: #{$layout-spaces--mob}
+
 		.tape-slider-next
 			right: #{$layout-spaces}
 
@@ -686,6 +756,9 @@ body
 
 			+media('<desk-sm')
 				right: #{$layout-spaces--sm}
+
+			+media('<mob-lg')
+				right: #{$layout-spaces--mob}
 
 		/* tape slider (layout) end
 
@@ -715,6 +788,9 @@ body
 
 		+media('<desk-sm')
 			padding: #{round($layout-spaces--sm*0.9)} #{$layout-spaces--sm}
+
+		+media('<mob-lg')
+			padding: #{round($layout-spaces--mob*0.9)} #{$layout-spaces--mob}
 
 	/* previews tabs (layout) end
 
@@ -752,6 +828,9 @@ body
 
 	+media('<desk-sm')
 		padding: $layout-spaces--sm
+
+	+media('<mob-lg')
+		padding: $layout-spaces--mob
 
 	.article-footer + &
 		padding-top: 145px
@@ -801,6 +880,9 @@ body
 	+media('<desk-sm')
 		padding-right: $layout-spaces--sm
 
+	+media('<mob-lg')
+		padding-right: $layout-spaces--mob
+
 .box-options__content
 	margin-left: $aside-width
 
@@ -831,6 +913,9 @@ body
 
 	+media('<desk-sm')
 		padding-right: $layout-spaces--sm
+
+	+media('<mob-lg')
+		padding-right: $layout-spaces--mob
 
 .m-content
 	margin-left: $aside-width
@@ -893,6 +978,9 @@ body
 	+media('<desk-sm')
 		padding: #{round($layout-spaces--sm*0.9)} #{$layout-spaces--sm}
 
+	+media('<mob-lg')
+		padding: #{round($layout-spaces--mob*0.9)} #{$layout-spaces--mob}
+
 /* contacts info end
 
 /* contacts (layout) end
@@ -909,6 +997,9 @@ body
 
 	+media('<desk-sm')
 		margin-top: -#{$header-height + round($layout-spaces--sm*0.9)}
+
+	+media('<mob-lg')
+		margin-top: -#{$header-height + round($layout-spaces--mob*0.9)}
 
 .p-card__gallery__item
 	padding-top: $header-height

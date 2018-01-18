@@ -238,17 +238,6 @@
 	background-color: $bg-color-base
 	// has styles on layout.sass
 
-	// in header
-	.header &
-		position: absolute
-		left: 0
-		top: 0
-		display: none
-		background: none
-
-		+media('<desk-md')
-			display: block
-
 	@if $animation-use
 		transition:
 			property: background-color

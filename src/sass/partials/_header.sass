@@ -9,6 +9,17 @@
 	background-color: $bg-color
 	box-shadow: inset 0 -1px 0 $border-color
 
+	.btn-menu
+		position: absolute
+		left: 0
+		top: 0
+		display: none
+		background: none
+		z-index: 5
+
+		+media('<desk-md')
+			display: block
+
 .header > .layout
 	height: 100%
 

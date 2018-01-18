@@ -1610,6 +1610,25 @@ function toggleDropInit() {
 }
 
 /**
+ * !Menu switcher
+ * */
+function menuSwitcher() {
+	var $switcher = $('.menu-switcher-js'),
+		activeClass = 'active';
+
+	if($switcher.length) {
+		$switcher.find('a').on('click', function (event) {
+			var $currentToggleItem = $(this);
+			$currentToggleItem.addClass(activeClass).siblings().removeClass(activeClass);
+			$switcher.closest('.menu-container-js').find('.menu-panel-js').removeClass(activeClass);
+			$('#' + $currentToggleItem.attr('href').substring(1)).addClass(activeClass);
+
+			event.preventDefault();
+		});
+	}
+}
+
+/**
  * !Zoom images
  * */
 function zoomImages() {
@@ -2978,6 +2997,7 @@ $(document).ready(function () {
 	shuttersInit();
 	tabSwitcher();
 	toggleDropInit();
+	menuSwitcher();
 	zoomImages();
 	addDataLengthChildren();
 	equalHeight();

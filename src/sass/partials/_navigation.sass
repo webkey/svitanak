@@ -11,6 +11,12 @@
 	margin: 0 0 58px
 	padding: 0
 
+	+media('<desk-hd')
+		margin: 0 0 48px
+
+	+media('<desk-lg')
+		margin: 0 0 32px
+
 	&:last-child
 		margin-bottom: 0
 
@@ -40,7 +46,7 @@
 				property: color, border
 				duration: $animation-speed
 
-		span
+		//span
 			border-bottom: 2px solid
 			border-bottom-color: inherit
 

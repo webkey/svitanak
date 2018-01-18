@@ -1,11 +1,15 @@
 <!--navigation shutter-->
-<div class="shutter nav-shutter nav-shutter-js">
+<div class="shutter nav-shutter nav-shutter-js menu-container-js">
 	<div class="shutter__options">
 		<a href="#" class="btn-shutter-close btn-shutter-close-js"><i>&nbsp;</i><span>Закрыть</span></a>
+		<div class="menu-toggle menu-switcher-js">
+			<a href="#mainNav" class="active"><span>Меню</span></a>
+			<a href="#catalogMenu"><span>Каталог</span></a>
+		</div>
 	</div>
 	<div class="shutter__align">
 		<div class="shutter__holder">
-			<div class="shutter-content">
+			<div class="shutter-content active menu-panel-js" id="mainNav">
 				<!--navigation-->
 				<nav class="nav">
 					@@include('_tpl_nav-01-constructor.html', {
@@ -20,7 +24,7 @@
 				<!--navigation end-->
 			</div>
 
-			<div class="shutter-aside">
+			<div class="shutter-aside menu-panel-js" id="catalogMenu">
 				<!--departments-->
 				<ul class="dep-list">
 					@@loop('_tpl_dep-items.html', [
@@ -58,10 +62,14 @@
 			</div>
 		</div>
 	</div>
-	<!--user options-->
-	<!--copy element for small devices-->
-	@@include('_tpl_user-options.html')
-	<!--user options end-->
+	<div class="shutter__panel">
+		<!--user options-->
+		<!--copy element for small devices-->
+		@@include('_tpl_user-options.html', {
+			"forDevices": "true"
+		})
+		<!--user options end-->
+	</div>
 </div>
 <!--navigation shutter end-->
 

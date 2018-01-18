@@ -47,7 +47,8 @@
 		+position(0)
 		+size(100%)
 		background-repeat: no-repeat
-		background-size: cover
+		background-size: contain
+		background-position: center
 		background-image: url(../../img/logo.png)
 
 		+media('<desk-sm')
@@ -104,6 +105,10 @@
 /* short contacts
 .short-contacts-wrap
 	text-align: center
+	margin-bottom: 2rem
+
+	&:last-child
+		margin-bottom: 0
 
 .short-contacts
 	$icon-size: 22px
@@ -213,6 +218,9 @@ $dep-img-size: 80px, 120px // width, height
 			padding: nth($dep-space, 1) #{nth($dep-space, 2) + nth($dep-img-size, 1)} nth($dep-space, 1) nth($dep-space, 2)
 			margin: 0
 
+			+media('<mob-lg')
+				padding-left: $layout-spaces--mob
+
 			&::before
 				content: none
 
@@ -256,13 +264,9 @@ $dep-img-size: 80px, 120px // width, height
 		opacity: 0.5
 		filter: grayscale(1)
 
-	// color effect
-	//&::after
-		+pseudo()
-		+size(100%)
-		+position(0)
-		background-color: rgba(white, 0.75)
-		z-index: 2
+		.touchevents &
+			opacity: 1
+			filter: grayscale(0)
 
 	& > div:first-child img
 		filter: brightness(0) invert(1)
@@ -1925,6 +1929,9 @@ a.bag__inner:hover
 	align-items: flex-start
 	+font-d
 	margin-bottom: 20px
+
+	+media('<mob-lg')
+		margin-bottom: 10px
 
 	&:last-child
 		margin-bottom: 0

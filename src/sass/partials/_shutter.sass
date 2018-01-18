@@ -27,6 +27,7 @@
 		+media('<tab-lg')
 			transform: none
 
+/* shutter layout
 .shutter
 	overflow: hidden // необходим для скрытия скролла
 	position: fixed
@@ -46,12 +47,6 @@
 
 	+media('<desk-sm')
 		left: 0
-
-.shutter__options
-	display: none
-
-	+media('<tab-sm')
-		display: block
 
 .shutter__align
 	width: calc(100% + 100px)
@@ -75,36 +70,153 @@
 	+media('<desk-sm')
 		width: 100%
 
-.shutter__footer
-	border-top: 1px solid $border-color
-
-/* shutter content
 .shutter-content
 	float: left
 	width: calc(100% - #{$shutter-aside-width})
 	padding-right: $grid-space
 
-/* shutter content end
+	+media('<tab-sm')
+		width: auto
+		float: none
+		padding: $layout-spaces--sm
 
-/* shutter aside
+		display: none
+
+		&.active, .no-js &
+			display: block
+
+	+media('<mob-lg')
+		padding: $layout-spaces--mob
+
 .shutter-aside
 	float: right
 	width: $shutter-aside-width
 
-/* shutter aside end
+	+media('<tab-sm')
+		width: auto
+		float: none
+		padding: $layout-spaces--sm $layout-spaces--sm 40px
+
+		display: none
+
+		&.active, .no-js &
+			display: block
+
+	+media('<mob-lg')
+		padding: $layout-spaces--mob $layout-spaces--mob 30px
+
+	.dep-list
+		&, .#{$user-content} &
+
+			+media('<tab-sm')
+				+margin-horizontal(-$layout-spaces--sm)
+				margin-top: -$layout-spaces--sm
+				border-width: 0 0 1px
+				padding-bottom: 40px
+
+				li:first-child
+					border-top: none
+
+			+media('<mob-lg')
+				+margin-horizontal(-$layout-spaces--mob)
+				margin-top: -$layout-spaces--mob
+
+/* shutter layout end
+
+/* shutter options
+.shutter__options
+	display: none
+	position: relative
+	padding-left: $header-height--lg
+	height: $header-height--lg
+	box-shadow: inset 0 1px 0 $border-color, 0 0 50px 10px white
+	//border: solid $border-color
+	//border-width: 0 0 1px
+	z-index: 5
+
+	+media('<tab-sm')
+		display: block
+
+.menu-toggle
+	display: table
+	width: 100%
+	height: 100%
+	table-layout: fixed
+
+	a
+		display: table-cell
+		vertical-align: middle
+		text-align: center
+		text-decoration: none
+		+font-d()
+		background-color: #404040
+		border: solid transparent
+		border-width: 0 0 1px
+		color: white
+
+		&.active
+			background-color: white
+			color: $text-color
+			border-color: $border-color
+
+/* shutter options end
+
+/* shutter footer
+.shutter__footer
+	border-top: 1px solid $border-color
+
+/* shutter footer end
+
+/* shutter panel
+.shutter__panel
+	display: none
+	position: absolute
+	left: 0
+	bottom: 0
+	width: 100%
+	background-color: white
+	z-index: 5
+	box-shadow: 0 0 40px 20px white
+
+	+media('<mob-md')
+		display: block
+
+	.user-options
+		display: table
+		table-layout: fixed
+		width: 100%
+		height: $user-options__height--sm
+		margin: 0
+		border: solid $border-color
+		border-width: 1px 0 0
+
+	.user-options__item
+		display: table-cell
+		vertical-align: middle
+		text-align: center
+		border: solid $border-color
+		border-width: 0 1px
+		padding: 0
+
+		& > a
+			display: block
+			width: auto
+			height: $user-options__height--sm
+
+/* shutter panel end
 
 /* button shutter close
 .btn-shutter-close
 	//<a href="#" class="btn-shutter-close js-btn-shutter-close"><i>&nbsp;</i><span>Закрыть</span></a>
-	$btn-shutter-close--bg: #fff
+	$btn-shutter-close--bg: $btn-bg-color
 	$btn-shutter-close--color: $text-color
-	$btn-shutter-close--size: 60px
+	$btn-shutter-close--size: $header-height--lg
 	$btn-shutter-close--space: 12px
 	$btn-shutter-close--lines-width: 22px
 	$btn-shutter-close--lines-height: 2px
 	$btn-shutter-close--lines-space: 5px
 	$btn-shutter-close--lines-radius: 0
-	$btn-shutter-close--lines-color: $text-color
+	$btn-shutter-close--lines-color: white
 
 	display: block
 	+size($btn-shutter-close--size)
@@ -122,6 +234,13 @@
 		height: $btn-shutter-close--size
 		min-height: 100%
 		vertical-align: middle
+
+	.shutter__options &
+		position: absolute
+		left: 0
+		top: 0
+		border: solid $border-color
+		border-width: 0 1px 0 0
 
 	> span
 		+hide-text
@@ -155,8 +274,11 @@
 			top: 0
 			transform: rotate(45deg)
 
-	.no-touchevents &:hover
-		background-color: $bg-color-selected
+	//.no-touchevents &:hover
+		//background-color: $bg-color-selected
+		> i
+			&::before, &::after
+				background-color: $link-color
 
 /* button shutter close end
 
@@ -184,8 +306,15 @@
 		+media('<desk-sm')
 			max-width: none
 
-	.user-options
-		display: none
+		+media('<tab-sm')
+			padding: 0
+
+	.shutter__align
+		+media('<tab-sm')
+			height: calc(100% - #{$header-height--lg})
+
+		+media('<mob-md')
+			height: calc(100% - #{$header-height--lg} - #{$user-options__height--sm})
 
 /* nav-shutter end
 
@@ -224,6 +353,12 @@
 	+media('<desk-hd')
 		left: 100%
 
+	+media('<mob-lg')
+		width: 100%
+		left: auto
+		right: 0
+		margin-left: 0
+
 	.shutter__align
 		overflow-y: hidden
 
@@ -244,9 +379,13 @@
 
 		&.shutter__footer
 			overflow-y: hidden
+			box-shadow: 0 0 40px 20px #fff
 
 	.shutter__cell
 		padding: $grid-space
+
+		+media('<mob-lg')
+			padding: $layout-spaces--mob
 
 /* bag shutter end
 /* shutter end

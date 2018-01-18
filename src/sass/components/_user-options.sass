@@ -4,6 +4,7 @@
 
 /* user options
 $uo-size: 50px
+$uo-size--mob: 40px
 $uo-space: 34px
 $uo-icon-size: 18px
 
@@ -33,6 +34,9 @@ $uo-icon-size: 18px
 		fill: $text-color
 		text-decoration: none
 		text-align: center
+
+		+media('<mob-md')
+			+size($uo-size--mob)
 
 		&::before
 			content: ""
@@ -94,13 +98,15 @@ $uo-icon-size: 18px
 				visibility: hidden
 				z-index: auto
 
-// search link
-.search-link
-	.for-close
-		+size(12px)
-		margin: -6px 0 0 -6px
+// message
+//.user-options--message
 
-// basket link
+// login
+.user-options--login
+	+media('<mob-md')
+		display: none
+
+// basket
 .user-options-counter
 	$size: 18px
 	$border: 2px
@@ -119,8 +125,17 @@ $uo-icon-size: 18px
 	color: $bg-color-base
 	text-align: center
 
-// lang link
-.lang-link
+	+media('<mob-md')
+		margin: -18px 0 0 18px
+
+// search
+.user-options--search
+	.for-close
+		+size(12px)
+		margin: -6px 0 0 -6px
+
+// lang
+.user-options--lang
 	display: none
 
 	+media('<desk-sm')
