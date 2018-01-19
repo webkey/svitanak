@@ -267,7 +267,7 @@ body
 		+padding-vertical(round($layout-spaces--sm*0.85))
 
 	+media('<mob-lg')
-		+padding-vertical(round($layout-spaces--mob*0.85))
+		+padding-vertical(round($layout-spaces--mob*1.2))
 
 /* footer (layout) end
 
@@ -581,7 +581,7 @@ body
 				padding: #{round($layout-spaces--sm*0.9)} #{$layout-spaces--sm}
 
 			+media('<mob-lg')
-				padding: #{round($layout-spaces--mob*0.9)} #{$layout-spaces--mob}
+				padding: #{round($layout-spaces--mob*1.5)} #{$layout-spaces--mob}
 
 /* catalog - m-catalog (layout) end
 
@@ -599,10 +599,10 @@ body
 		+padding-vertical($layout-spaces--sm)
 
 	+media('<tab-lg')
-		padding: #{round($layout-spaces--sm*0.9)} #{$layout-spaces--sm}
+		padding: #{round($layout-spaces--sm*0.9)} $layout-spaces--sm
 
 	+media('<mob-lg')
-		padding: #{round($layout-spaces--mob*0.9)} #{$layout-spaces--mob}
+		padding: #{round($layout-spaces--mob*1.5)} $layout-spaces--mob $layout-spaces--mob
 
 /* m-services (layout) end
 
@@ -635,8 +635,9 @@ body
 			top: #{round($layout-spaces--sm*0.9)}
 
 		+media('<mob-lg')
-			left: #{$layout-spaces--mob}
-			top: #{round($layout-spaces--mob*0.9)}
+			left: 50%
+			top: auto
+			bottom: #{round($layout-spaces--mob*0.9)}
 
 	.main-slider-prev, .main-slider-next
 		bottom: #{round($layout-spaces*0.9)}
@@ -698,7 +699,7 @@ body
 			padding: #{round($layout-spaces--sm*0.9*2.5)} #{$layout-spaces--sm}
 
 		+media('<mob-lg')
-			padding: #{round($layout-spaces--mob*0.9*2.5)} #{$layout-spaces--mob}
+			padding: #{$layout-spaces--mob}
 
 	/* main slider (layout) end
 
@@ -713,6 +714,9 @@ body
 
 		+media('<desk-sm')
 			padding-bottom: 100px
+
+		+media('<mob-md')
+			padding-bottom: 60px
 
 		/* tape slider (layout)
 		.tape-slider-pagination, .tape-slider-prev, .tape-slider-next
@@ -790,7 +794,7 @@ body
 			padding: #{round($layout-spaces--sm*0.9)} #{$layout-spaces--sm}
 
 		+media('<mob-lg')
-			padding: #{round($layout-spaces--mob*0.9)} #{$layout-spaces--mob}
+			padding: #{round($layout-spaces--mob*0.9)} #{$layout-spaces--mob} #{round($layout-spaces--mob*1.5)}
 
 	/* previews tabs (layout) end
 

@@ -69,6 +69,10 @@
 
 	+media('<desk-sm')
 		width: 100%
+		padding: nth($shutter-space--lg, 1) $layout-spaces--sm
+
+	+media('<mob-lg')
+		padding: nth($shutter-space--lg, 1) $layout-spaces--mob
 
 .shutter-content
 	float: left
@@ -112,7 +116,7 @@
 				+margin-horizontal(-$layout-spaces--sm)
 				margin-top: -$layout-spaces--sm
 				border-width: 0 0 1px
-				padding-bottom: 40px
+				//padding-bottom: 40px
 
 				li:first-child
 					border-top: none
@@ -322,7 +326,7 @@
 .shutter--wide
 	max-width: #{$page-layout-width - $sidebar-width}
 
-	+media('<1921')
+	+media('<1921px')
 		max-width: calc(100% - #{$sidebar-width})
 
 	+media('<desk-lg')
@@ -343,6 +347,7 @@
 .bag-shutter
 	$bag-shutter-width: 470px
 	// ======================
+	overflow: hidden
 	width: $bag-shutter-width
 	max-width: 100%
 	//left: auto
@@ -358,6 +363,15 @@
 		left: auto
 		right: 0
 		margin-left: 0
+
+	&::before
+		+pseudo()
+		+size(120%, 100px)
+		left: -10%
+		top: -100px
+		box-shadow: 0 0 20px 10px white
+		z-index: 5
+		pointer-events: none
 
 	.shutter__align
 		overflow-y: hidden
@@ -378,8 +392,10 @@
 		overflow-y: auto
 
 		&.shutter__footer
+			position: relative
 			overflow-y: hidden
-			box-shadow: 0 0 40px 20px #fff
+			box-shadow: 0 0 30px 10px #fff
+			z-index: 5
 
 	.shutter__cell
 		padding: $grid-space

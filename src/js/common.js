@@ -273,8 +273,8 @@ function fullPageInitial() {
 			// paddingTop: 100,
 			scrollingSpeed: 600,
 			recordHistory: true,
-			responsiveWidth: 1200,
-			responsiveHeight: 400,
+			responsiveWidth: 1200, // and add css rule .fp-enabled
+			responsiveHeight: 400, // and add css rule .fp-enabled
 			// normalScrollElements: '.main-section--news',
 			// scrollOverflow: true,
 			// add .fp-noscroll for deactivate scroll
@@ -460,6 +460,13 @@ function slidersInit() {
 					},
 					1199: {
 						slidesOffsetBefore: 30
+					},
+					639: {
+						slidesOffsetBefore: 20
+					},
+					479: {
+						slidesOffsetBefore: 0,
+						slidesPerView: 1
 					}
 				},
 				// events

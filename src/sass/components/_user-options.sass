@@ -55,11 +55,17 @@ $uo-icon-size: 18px
 			left: 50%
 			top: 50%
 			margin: -#{round($uo-icon-size/2)} 0 0 -#{round($uo-icon-size/2)}
+			will-change: opacity
+			transition:
+				property: transform, opacity
+				duration: $animation-speed
 
 			&.for-close
-				opacity: 0
-				visibility: hidden
+				+size(12px)
+				margin: -6px 0 0 -6px
 				z-index: auto
+				opacity: 0
+				//visibility: hidden
 
 			&.for-open
 				z-index: 1
@@ -90,12 +96,12 @@ $uo-icon-size: 18px
 		&.active
 			.for-close
 				opacity: 1
-				visibility: visible
+				//visibility: visible
 				z-index: 1
 
 			.for-open
 				opacity: 0
-				visibility: hidden
+				//visibility: hidden
 				z-index: auto
 
 // message
@@ -124,15 +130,23 @@ $uo-icon-size: 18px
 	+font(11px, $size)
 	color: $bg-color-base
 	text-align: center
+	z-index: 5
+	transform: rotateY(0turn)
+	will-change: transform, opacity
+	opacity: 1
+	transition:
+		property: transform, opacity
+		duration: $animation-speed
+
+	.user-options__item a.active &
+		opacity: 0.5
+		transform: rotateY(0.25turn)
 
 	+media('<mob-md')
 		margin: -18px 0 0 18px
 
 // search
-.user-options--search
-	.for-close
-		+size(12px)
-		margin: -6px 0 0 -6px
+//.user-options--search
 
 // lang
 .user-options--lang

@@ -60,8 +60,8 @@
 			width: 100%
 			margin-bottom: 0
 
-	//+media('<mob-lg')
-		+grid-item-responsive(1, $footer-grid-space--lg)
+	+media('<mob-lg')
+		+grid-item-responsive(1, 30px)
 
 .footer-bottom__col
 	vertical-align: middle
@@ -158,10 +158,16 @@
 .developer
 	display: inline-block
 
+	+media('<mob-lg')
+		display: block
+
 	a
 		text-decoration: none
 		vertical-align: top
 		line-height: 1
+
+		+media('<mob-lg')
+			display: inline-block
 
 		.no-touchevents &:hover
 			text-decoration: none
@@ -175,6 +181,11 @@
 	color: #ccc
 	margin-bottom: 5px
 
+	+media('<mob-lg')
+		display: inline-block
+		margin-bottom: 0
+		margin-right: 10px
+
 .developer__logo
 	display: block
 	+size(154px, 20px)
@@ -182,6 +193,9 @@
 	padding-right: 3px
 	text-align: left
 	text-indent: -9999px
+
+	+media('<mob-lg')
+		display: inline-block
 
 	&::before, &::after
 		+pseudo()

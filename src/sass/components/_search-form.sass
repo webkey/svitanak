@@ -10,6 +10,9 @@
 	position: relative
 	margin-bottom: $bottom-space--md
 
+	+media('<mob-lg')
+		margin-bottom: 3rem
+
 	&:last-child
 		margin-bottom: 0
 
@@ -19,6 +22,15 @@ input.search-form__input
 	+font-alt-bold
 	+font(72px, 72px)
 	letter-spacing: 0.05em
+
+	+media('<tab-lg')
+		height: 46px
+		+font(46px, 46px)
+
+	+media('<mob-lg')
+		height: 24px
+		+font(24px, 24px)
+		padding-right: #{$search-form-popup-btn-size--sm+12}
 
 	&, &:hover, &:focus, &.error, &.input--has-value
 		box-shadow: none
@@ -48,6 +60,10 @@ input.search-form__input
 	fill: #e5e5e5
 	pointer-events: none
 
+	+media('<mob-lg')
+		+size($search-form-popup-btn-size--sm)
+		margin-top: -#{round($search-form-popup-btn-size--sm*0.5)}
+
 	.input--has-value &
 		pointer-events: auto
 		color: $text-color
@@ -70,6 +86,10 @@ input.search-form__input
 		+position(50%)
 		+size($search-form-popup-btn-size)
 		margin: -#{round($search-form-popup-btn-size*0.5)} 0 0 -#{round($search-form-popup-btn-size*0.5)}
+
+		+media('<mob-lg')
+			+size($search-form-popup-btn-size--sm)
+			margin: -#{round($search-form-popup-btn-size--sm*0.5)} 0 0 -#{round($search-form-popup-btn-size--sm*0.5)}
 
 	path
 		fill: inherit
@@ -108,10 +128,31 @@ input.search-form__input
 	+grid-parent($products-space)
 	+clear-spacing
 
+	+media('<desk-lg')
+		+grid-parent($products-space--md)
+
+	+media('<desk-sm')
+		+grid-parent($products-space--sm)
+
+	+media('<mob-lg')
+		+grid-parent($products-space--mob)
+
 .search-results__item
 	+grid-item(4, $products-space, floor($products-space*0.65))
 	+font($font-size, round-float(24/16, 2))
 	letter-spacing: $letter-spacing
+
+	+media('<desk-lg')
+		+grid-item-responsive(4, $products-space--md, floor($products-space--md*0.5))
+
+	+media('<desk-md')
+		+grid-item-responsive(3, $products-space--md, floor($products-space--md*0.5))
+
+	+media('<tab-lg')
+		+grid-item-responsive(2, $products-space--sm, $products-space--sm)
+
+	+media('<mob-lg')
+		+grid-item-responsive(1, $products-space--mob, $products-space--mob)
 
 .search-results__inner
 	position: relative
@@ -151,6 +192,9 @@ input.search-form__input
 	& ~ *
 		margin-left: nth($img-size, 1) + $grid-space
 		margin-bottom: 10px
+
+		+media('<mob-lg')
+			margin-bottom: 4px
 
 		&:last-child
 			margin-bottom: 0

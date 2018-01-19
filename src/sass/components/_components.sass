@@ -355,6 +355,10 @@ $dep-img-size: 80px, 120px // width, height
 	background-color: $bg-color-alt
 	color: $main-slider-color
 
+	+media('<mob-lg')
+		color: $text-color
+		padding-bottom: 60px
+
 .main-slider-prev, .main-slider-next, .main-slider-pagination, .main-slider__content
 	//filter: drop-shadow(1px 1px rgba(white, 0.5))
 	user-select: none
@@ -362,6 +366,9 @@ $dep-img-size: 80px, 120px // width, height
 .main-slider-prev, .main-slider-next
 	&::before, &::after
 		border-color: $main-slider-color
+
+		+media('<mob-lg')
+			border-color: $text-color
 
 .main-slider-pagination
 	position: absolute
@@ -374,6 +381,17 @@ $dep-img-size: 80px, 120px // width, height
 	+font-alt-italic
 	+font(20px, 1)
 
+	+media('<mob-lg')
+		position: absolute
+		width: auto
+		min-width: 85px
+		+padding-horizontal(25px)
+		transform: translate(-50%, 0)
+		+font-alt-italic
+		+font(18px, 1)
+		text-align: center
+		color: $text-color
+
 	&::after
 		+pseudo()
 		left: 100%
@@ -384,6 +402,9 @@ $dep-img-size: 80px, 120px // width, height
 
 		+media('<desk-sm')
 			width: 50px
+
+		+media('<mob-lg')
+			content: none
 
 .main-slider__item
 	position: relative
@@ -398,6 +419,9 @@ $dep-img-size: 80px, 120px // width, height
 		background-color: rgba($grad-color, 0.25)
 		z-index: -1
 
+		+media('<mob-lg')
+			content: none
+
 	&::after
 		content: ""
 		display: inline-block
@@ -411,17 +435,31 @@ $dep-img-size: 80px, 120px // width, height
 	background-color: $bg-color-alt
 	z-index: -2
 
-	//&::after
-		+pseudo()
-		+position(0)
-		+size(100%)
-		+linear-gradient(to right, rgba(white, 0.2) 0%, rgba(white, 0) 75%, rgba(white, 0) 100%)
+	+media('<mob-lg')
+		position: relative
+		+size(auto)
+		+position(auto)
+		z-index: auto
+		margin: -#{$layout-spaces--mob} -#{$layout-spaces--mob} 2.5rem
+
+	&::before
+		content: none
+		display: block
+		+ratio(172, 85)
+
+		+media('<mob-lg')
+			content: ""
 
 	img
 		display: block
 		+size(100%)
 		max-width: none
 		+object-fit(cover)
+
+		+media('<mob-lg')
+			position: absolute
+			left: 0
+			top: 0
 
 .main-slider__content
 	+display-inline-block-top
@@ -437,11 +475,14 @@ $dep-img-size: 80px, 120px // width, height
 		width: 750px
 
 .main-slider__title
-	$line-height: 1
 	$font-size: 72px
 	$font-size--hd: 60px
 	$font-size--lg: 48px
-	$font-size--sm: 44px
+	$font-size--md: 44px
+	$font-size--sm: 30px
+	$font-size--mob: 26px
+	$line-height: 1
+	$line-height--sm: round-float(36/30, 1)
 	// ===============
 	display: block
 	overflow: hidden
@@ -453,14 +494,21 @@ $dep-img-size: 80px, 120px // width, height
 	max-height: round($font-size*$line-height*5) // maximum 5 line
 	cursor: default
 
-	//+media('<desk-lg')
-		font-size: $font-size--lg
-		max-height: round($font-size--lg*$line-height*5) // maximum 5 line
-
 	+media('<desk-sm')
 		width: 600px
+		font-size: $font-size--md
+		max-height: round($font-size--md*$line-height*5) // maximum 5 line
+
+	+media('<mob-lg')
+		width: auto
 		font-size: $font-size--sm
-		max-height: round($font-size--sm*$line-height*5) // maximum 5 line
+		line-height: $line-height--sm
+		max-height: round($font-size--sm*$line-height--sm*5) // maximum 5 line
+		margin-bottom: 2rem
+
+	+media('<mob-md')
+		font-size: $font-size--mob
+		max-height: round($font-size--mob*$line-height--sm*5) // maximum 5 line
 
 	&:last-child
 		margin-bottom: 0
@@ -475,7 +523,7 @@ $dep-img-size: 80px, 120px // width, height
 		span
 			+display-inline-block-top
 			line-height: 1.5
-			border-bottom: 2px solid $main-slider-color
+			border-bottom: 2px solid
 
 		&:hover
 			color: $base-color
@@ -498,6 +546,12 @@ $dep-img-size: 80px, 120px // width, height
 
 	+media('<desk-lg')
 		font-size: $m-catalog-title__font-size--lg
+
+	+media('<mob-lg')
+		margin-bottom: 0.5em
+
+	+media('<mob-md')
+		display: none
 
 	&:last-child
 		margin-bottom: 0
@@ -547,8 +601,13 @@ $dep-img-size: 80px, 120px // width, height
 		+media('<desk-sm')
 			width: calc(100%/2 + 1px)
 
-		//+media('<desk-sm')
-			height: calc((100vh - #{$header-height--lg})/2 + 1px)
+		+media('<mob-lg')
+			height: auto
+			min-height: 168px
+			width: calc(100% + 1px)
+
+		+media('<mob-md')
+			min-height: 138px
 
 		&::after
 			+pseudo()
@@ -785,6 +844,10 @@ $dep-img-size: 80px, 120px // width, height
 		right: -6%
 		transform: none
 
+	+media('<mob-lg')
+		right: $layout-spaces--mob
+		width: nth($m-catalog-img__size--sm, 1)
+
 	&::before
 		+pseudo-block-relative()
 		+ratio(nth($m-catalog-img__size, 1), nth($m-catalog-img__size, 2))
@@ -946,14 +1009,17 @@ $m-services-thumb-indent--sm: 40px
 
 	+media('<desk-lg')
 		padding-left: $m-services-thumb-indent--lg
-		margin-bottom: 27px
 		font-size: 36px
+		margin-bottom: 0.75em
 
 	+media('<desk-sm')
 		font-size: 30px
 
 	+media('<tab-lg')
 		padding-left: 0
+
+	+media('<mob-lg')
+		margin-bottom: 0.5em
 
 .m-services-pagination
 	position: relative
@@ -962,6 +1028,9 @@ $m-services-thumb-indent--sm: 40px
 	+media('<tab-lg')
 		+margin-horizontal(-#{$layout-spaces--sm})
 		+clear
+
+	+media('<mob-lg')
+		+margin-horizontal(-#{$layout-spaces--mob})
 
 .m-services__letter
 	display: block
@@ -984,16 +1053,6 @@ $m-services-thumb-indent--sm: 40px
 		transform: translate(-50%, -50%)
 		font: 50vmin/1 'minionpro-bold', serif
 		text-transform: uppercase
-
-	//.svg-pattern--light
-		display: none
-
-	//.dark-view &
-		.svg-pattern--dark
-			display: none
-
-		.svg-pattern--light
-			display: block
 
 .m-services-thumbs
 	position: relative
@@ -1039,7 +1098,6 @@ $m-services-thumb-indent--sm: 40px
 	color: inherit
 	+font(16px, 24px)
 	text-decoration: none
-	+clear
 
 	+media('<desk-hd')
 		+padding-vertical(18px)
@@ -1051,7 +1109,12 @@ $m-services-thumb-indent--sm: 40px
 
 		&:nth-child(2n + 3)
 			clear: both
-	
+
+	+media('<mob-lg')
+		width: 100%
+		float: none
+		padding: 13px $layout-spaces--mob
+
 	&::before
 		+pseudo()
 		+size(100%)
@@ -1059,6 +1122,21 @@ $m-services-thumb-indent--sm: 40px
 		background-color: #fafafa
 		opacity: 0
 		z-index: -1
+
+	+clear
+
+	&::after
+		+media('<mob-lg')
+			+pseudo()
+			left: $layout-spaces--mob
+			right: $layout-spaces--mob
+			top: 0
+			height: 0
+			border-top: 1px solid #bfbfbf
+
+	&:first-child
+		&::after
+			border: none
 
 	& > i
 		display: block
@@ -1265,6 +1343,9 @@ $m-services-thumb-indent--sm: 40px
 
 	height: 100%
 
+	+media('<mob-md')
+		padding: 0 $layout-spaces--mob $layout-spaces--mob
+
 .news-preview__date
 	display: block
 	+font-alt-italic
@@ -1272,12 +1353,18 @@ $m-services-thumb-indent--sm: 40px
 	color: $text-color-light
 	margin-bottom: 2.6rem
 
+	+media('<mob-lg')
+		margin-bottom: 1.5rem
+
 .news-preview__img
 	position: relative
 	+size(nth($news-preview-img-size, 1), auto)
 	max-width: 100%
 	background-color: $bg-color-alt
 	z-index: -2
+
+	+media('<mob-md')
+		margin-bottom: 2rem
 
 	&::before
 		+pseudo-block-relative()
@@ -1290,6 +1377,9 @@ $m-services-thumb-indent--sm: 40px
 		+size(0, #{$size})
 		margin-top: -#{round($size/2)}
 		border-left: 1px solid $base-color
+
+		+media('<mob-md')
+			content: none
 
 	img
 		display: block
@@ -1308,6 +1398,12 @@ $m-services-thumb-indent--sm: 40px
 	margin-left: #{round(nth($news-preview-img-size, 2)/2)}
 	background-color: $bg-color-base
 
+	+media('<mob-md')
+		float: none
+		margin: 0 0 2rem
+		padding: 0
+		background: none
+
 .news-preview__text
 	$this-font-size: $font-size
 	$this-line-height: $line-height
@@ -1318,12 +1414,21 @@ $m-services-thumb-indent--sm: 40px
 	+font($this-font-size, $this-line-height)
 	height: round($this-font-size*$this-line-height*5) // maximum 5 line
 
+	+media('<mob-md')
+		height: auto
+		max-height: round($this-font-size*$this-line-height*5) // maximum 5 line
+
 .news-preview__footer
 	display: block
 	position: absolute
 	+size(100%, auto)
 	bottom: 0
 	left: 0
+
+	+media('<mob-md')
+		position: relative
+		bottom: auto
+		left: auto
 
 	.more-link
 		+display-inline-block-top
@@ -1437,6 +1542,9 @@ $m-services-thumb-indent--sm: 40px
 	.view-all
 		float: right
 
+		+media('<mob-lg')
+			float: none
+
 		a
 			display: none
 
@@ -1455,6 +1563,11 @@ $m-services-thumb-indent--sm: 40px
 	+media('<desk-sm')
 		padding-right: 30px
 
+	+media('<mob-lg')
+		display: block
+		padding-right: 0
+		margin-bottom: 1rem
+
 	&::before, &::after
 		+pseudo()
 		+size(100px, 0)
@@ -1470,6 +1583,9 @@ $m-services-thumb-indent--sm: 40px
 
 	&::after
 		left: 100%
+
+		+media('<mob-lg')
+			content: none
 
 	.heading &
 		margin-bottom: round($bottom-space--lg/2)
@@ -1503,8 +1619,8 @@ $m-services-thumb-indent--sm: 40px
 		+media('<desk-lg')
 			height: $previews-tab-line-height--sm
 
-		+media('<desk-sm')
-			height: $previews-tab-line-height--sm
+		+media('<mob-lg')
+			height: $previews-tab-line-height--mob
 
 	&:last-child
 		padding-right: 0
@@ -1698,8 +1814,6 @@ a.c-tr:hover
 	img
 		+cover-abs
 		display: block
-		width: 100%
-		height: 100%
 		max-width: none
 		+object-fit(contain)
 
@@ -1846,6 +1960,9 @@ a.c-tr:hover
 	padding-right: 50px
 	padding-bottom: 20px
 
+	+media('<mob-md')
+		padding-right: 30px
+
 	&:last-child
 		padding-bottom: 0
 
@@ -1873,6 +1990,24 @@ a.c-tr:hover
 		width: 110px
 		min-width: 110px
 		text-align: right
+
+		+media('<mob-md')
+			text-align: inherit
+			+font-bold
+
+.bag__group
+	display: table
+	width: 100%
+
+	+media('<mob-md')
+		display: block
+
+	.bag__cell
+		+media('<mob-md')
+			display: block
+			padding: 0
+			width: auto
+			min-width: auto
 
 .bag__img
 	$img-size: 52px, 70px
@@ -1940,6 +2075,7 @@ a.bag__inner:hover
 		display: block
 		width: 100%
 		text-align: center
+		+padding-horizontal(10px)
 
 .bag-footer__cell
 	+display-inline-block-top
