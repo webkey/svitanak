@@ -10,7 +10,7 @@
 	position: relative
 	margin-bottom: $bottom-space--md
 
-	+media('<mob-lg')
+	+media('<tab-sm')
 		margin-bottom: 3rem
 
 	&:last-child
@@ -27,9 +27,13 @@ input.search-form__input
 		height: 46px
 		+font(46px, 46px)
 
+	+media('<tab-sm')
+		height: 32px
+		+font(32px, 32px)
+
 	+media('<mob-lg')
-		height: 24px
-		+font(24px, 24px)
+		height: 22px
+		+font(22px, 22px)
 		padding-right: #{$search-form-popup-btn-size--sm+12}
 
 	&, &:hover, &:focus, &.error, &.input--has-value
@@ -195,6 +199,7 @@ input.search-form__input
 
 		+media('<mob-lg')
 			margin-bottom: 4px
+			margin-left: nth($img-size, 1) + $grid-space--sm
 
 		&:last-child
 			margin-bottom: 0

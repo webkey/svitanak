@@ -17,6 +17,14 @@
 	background-color: $bg-color-alt
 	+push-auto
 
+	+media('<tab-sm')
+		max-width: none
+		min-height: 100vh
+		padding: #{30+$header-height--lg} #{$layout-spaces--sm} #{$layout-spaces--sm}
+
+	+media('<mob-lg')
+		padding: #{30+$header-height--lg} #{$layout-spaces--mob}
+
 // popup title
 .inline-popup__title, .default-popup__title
 	+font-alt-bold
@@ -30,43 +38,14 @@
 	&:last-child
 		margin-bottom: 0
 
-// popup button close
-.mfp-close
-	$mfp-close-btn-size: 40px
-	$mfp-close-icon-size: 12px
-
-	+size($mfp-close-btn-size)
-	opacity: 1
-
-	svg
-		position: absolute
-		left: 50%
-		top: 50%
-		+size($mfp-close-icon-size)
-		margin: -#{round($mfp-close-icon-size/2)} 0 0 -#{round($mfp-close-icon-size/2)}
-		z-index: -1
-		pointer-events: none
-
-	path
-		fill: inherit
-
-	.mfp-close-btn-in &
-		$space: round($popup-space - (($mfp-close-btn-size - $mfp-close-icon-size)/2))
-
-		fill: $text-color
-		color: $text-color
-		top: $space
-		right: $space
-
-		&:hover
-			fill: $link-color
-			color: $link-color
-
 // pseudotabs-nav
 .default-popup, .inline-popup
 	.pseudotabs-nav
 		padding-right: 40px
 		margin-bottom: 20px
+
+		+media('<tab-sm')
+			padding-right: 0
 
 	.pseudotabs-tab
 		margin-bottom: 20px

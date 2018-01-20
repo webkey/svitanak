@@ -121,6 +121,9 @@ input[type="text"], input[type="password"], input[type="email"], input[type="sea
 	border: #{$form-border-width} solid #{$form-border-color}
 	cursor: pointer
 
+	+media('<mob-lg')
+		+padding-horizontal(12px)
+
 	@if $animation-use
 		transition:
 			property: border-color, background-color, box-shadow

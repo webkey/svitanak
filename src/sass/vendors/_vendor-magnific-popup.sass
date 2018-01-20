@@ -11,6 +11,66 @@
 
 	+media('<desk-hd')
 		max-width: 100%
+
+	+media('<tab-sm')
+		padding: 0
+
+		&::before
+			content: none
+
+//.mfp-content
+	+media('<tab-sm')
+		height: 100%
+
+// popup button close
+.mfp-close
+	$mfp-close-btn-size: 40px
+	$mfp-close-btn-size--mob: 60px
+	$mfp-close-icon-size: 12px
+	$mfp-close-icon-size--mob: 16px
+
+	+size($mfp-close-btn-size)
+	opacity: 1
+
+	+media('<tab-sm')
+		+size($mfp-close-btn-size--mob)
+
+	svg
+		position: absolute
+		left: 50%
+		top: 50%
+		+size($mfp-close-icon-size)
+		margin: -#{round($mfp-close-icon-size/2)} 0 0 -#{round($mfp-close-icon-size/2)}
+		z-index: -1
+		pointer-events: none
+
+		+media('<tab-sm')
+			+size($mfp-close-icon-size--mob)
+			margin: -#{round($mfp-close-icon-size--mob/2)} 0 0 -#{round($mfp-close-icon-size--mob/2)}
+
+	path
+		fill: inherit
+
+	.mfp-close-btn-in &
+		$space: round($popup-space - (($mfp-close-btn-size - $mfp-close-icon-size)/2))
+
+		fill: $text-color
+		color: $text-color
+		top: $space
+		right: $space
+
+		+media('<tab-sm')
+			top: 0
+			right: auto
+			left: 0
+			fill: white
+			color: white
+			background-color: $btn-bg-color
+
+		.no-touchevents &:hover
+			fill: $link-color
+			color: $link-color
+
 /*
  *
  *====== Zoom effect ======
@@ -20,6 +80,10 @@
 		opacity: 0
 		transition: all 0.2s ease-in-out
 		transform: scale(0.8)
+
+		// для девайсов отключаем эффект всплывание
+		+media('<tab-sm')
+			transform: none
 
 	&.mfp-bg
 		opacity: 0
@@ -39,6 +103,9 @@
 		.mfp-with-anim
 			transform: scale(0.8)
 			opacity: 0
+
+			+media('<tab-sm')
+				transform: none
 
 		&.mfp-bg
 			opacity: 0

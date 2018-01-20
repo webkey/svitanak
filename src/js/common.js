@@ -2651,6 +2651,11 @@ function popupInitial(){
 		fixedContentPos: 'auto',
 		overflowY: 'auto',
 		closeMarkup: btnCloseTpl,
+		callbacks: {
+			open: function() {
+
+			}
+		}
 	});
 }
 
@@ -2873,16 +2878,29 @@ function stickyInit() {
 (function () {
 	var $container = $('.group-js'),
 		$body = $('.group__body-js'),
-		$footer = $('.group__footer-js'),
-		containerHeight,
-		footerHeight;
+		$spacer = $('.group__spacer-js');
 
 	$(window).on('load debouncedresize', function (e) {
 
-		containerHeight = $container.outerHeight();
-		footerHeight = $footer.outerHeight();
+		// spacersHeight = $spacer.outerHeight();
 
-		$body.height(containerHeight - footerHeight);
+		$.each($container, function(){
+
+			var $curContainer = $(this);
+			var $curSpacer = $curContainer.find($spacer);
+			var containerHeight = $curContainer.outerHeight();
+			console.log("containerHeight: ", containerHeight);
+
+			var spacersHeight = 0;
+			$.each($curSpacer, function () {
+				var $thisSpacer = $(this);
+				console.log("$thisSpacer.outerHeight: ", $thisSpacer.outerHeight());
+				spacersHeight = spacersHeight + $thisSpacer.outerHeight();
+			});
+
+			$curContainer.find($body).height(containerHeight - spacersHeight);
+		});
+
 	});
 })();
 

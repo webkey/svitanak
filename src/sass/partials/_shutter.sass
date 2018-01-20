@@ -133,13 +133,10 @@
 	position: relative
 	padding-left: $header-height--lg
 	height: $header-height--lg
-	box-shadow: inset 0 1px 0 $border-color, 0 0 50px 10px white
+	box-shadow: inset 0 1px 0 $border-color, 0 0 30px 10px white
 	//border: solid $border-color
 	//border-width: 0 0 1px
 	z-index: 5
-
-	+media('<tab-sm')
-		display: block
 
 .menu-toggle
 	display: table
@@ -295,33 +292,6 @@
 	+media('<tab-lg')
 		display: block
 
-/* nav-shutter
-.nav-shutter
-	+media('<tab-sm')
-		height: 100%
-		z-index: 1040
-
-	&, .shutter__holder
-		max-width: $shutter-width
-
-		+media('<desk-lg')
-			max-width: $shutter-width--lg
-
-		+media('<desk-sm')
-			max-width: none
-
-		+media('<tab-sm')
-			padding: 0
-
-	.shutter__align
-		+media('<tab-sm')
-			height: calc(100% - #{$header-height--lg})
-
-		+media('<mob-md')
-			height: calc(100% - #{$header-height--lg} - #{$user-options__height--sm})
-
-/* nav-shutter end
-
 /* shutter wide
 .shutter--wide
 	max-width: #{$page-layout-width - $sidebar-width}
@@ -343,7 +313,92 @@
 
 /* shutter wide end
 
-/* bag shutter
+/* nav-shutter
+.nav-shutter
+	+media('<tab-sm')
+		height: 100%
+		z-index: 1040
+
+	&, .shutter__holder
+		max-width: $shutter-width
+
+		+media('<desk-lg')
+			max-width: $shutter-width--lg
+
+		+media('<desk-sm')
+			max-width: none
+
+		+media('<tab-sm')
+			padding: 0
+
+	.shutter__options
+		+media('<tab-sm')
+			display: block
+
+	.shutter__align
+		+media('<tab-sm')
+			height: calc(100% - #{$header-height--lg})
+
+		+media('<mob-md')
+			height: calc(100% - #{$header-height--lg} - #{$user-options__height--sm})
+
+/* nav-shutter end
+
+/* search-shutter
+.search-shutter
+	+media('<tab-sm')
+		height: 100%
+		z-index: 1040
+
+	.shutter__holder
+		padding-top: 2rem
+
+		+media('<desk-sm')
+			padding-top: 1.5rem
+
+	.shutter__options
+		display: block
+		height: auto
+		min-height: $header-height
+		padding: nth($shutter-space, 1) $layout-spaces 2rem
+		box-shadow: 0 0 30px 10px white
+
+		+media('<desk-hd')
+			padding: nth($shutter-space--hd, 1) $layout-spaces--hd 2rem
+
+		+media('<desk-lg')
+			padding: nth($shutter-space--lg, 1) $layout-spaces--lg 2rem
+
+		+media('<desk-sm')
+			min-height: $header-height--lg
+			padding: nth($shutter-space--lg, 1) $layout-spaces--sm 1.5rem
+
+		+media('<tab-sm')
+			padding: 1.8rem $layout-spaces--sm 1.5rem
+
+		+media('<mob-lg')
+			padding: 2rem $layout-spaces--mob 1.5rem
+
+	.btn-shutter-close
+		display: none
+
+		+media('<tab-sm')
+			display: block
+
+	.search-form
+		+media('<tab-sm')
+			margin-left: $header-height--lg
+			margin-bottom: 3rem
+
+		+media('<mob-lg')
+			margin-bottom: 4rem
+
+	.shutter__align
+		height: calc(100% - #{$header-height--lg})
+
+/* search-shutter end
+
+/* bag-shutter
 .bag-shutter
 	$bag-shutter-width: 470px
 	// ======================
@@ -403,5 +458,5 @@
 		+media('<mob-lg')
 			padding: $layout-spaces--mob
 
-/* bag shutter end
+/* bag-shutter end
 /* shutter end
