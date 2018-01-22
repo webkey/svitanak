@@ -54,6 +54,9 @@ body
 	+media('<desk-lg')
 		margin-left: $sidebar-width--lg
 
+	+media('<desk-sm')
+		margin-left: 0
+
 	.home-page &
 		margin: 0 #{$sidebar-width}
 
@@ -74,13 +77,13 @@ body
 		padding: #{round($layout-spaces--hd*0.9)} #{$layout-spaces--hd}
 
 	+media('<desk-lg')
-		padding: #{round($layout-spaces--lg*0.9)} #{$layout-spaces--lg}
+		padding: #{round($layout-spaces--lg*0.9)} #{$layout-spaces--lg} #{$layout-spaces--lg}
 
 	+media('<desk-sm')
-		padding: #{round($layout-spaces--sm*0.9)} #{$layout-spaces--sm}
+		padding: #{round($layout-spaces--sm*0.9)} #{$layout-spaces--sm} #{$layout-spaces--sm}
 
 	+media('<mob-lg')
-		padding: #{round($layout-spaces--mob*0.9)} #{$layout-spaces--mob}
+		padding: #{round($layout-spaces--mob*0.9)} #{$layout-spaces--mob} #{$layout-spaces--mob}
 
 // актуально только для текущего проекта
 .layout-full-width, .layout-wide
@@ -252,6 +255,8 @@ body
 
 		+media('<desk-sm')
 			+padding-horizontal($layout-spaces--sm)
+			left: 0
+			width: 100%
 
 		+media('<desk-sm')
 			+padding-horizontal($layout-spaces--mob)
@@ -886,6 +891,9 @@ body
 	+media('<desk-lg')
 		padding-right: $layout-spaces--lg
 
+	+media('<desk-md')
+		width: $aside-width--sm
+
 	+media('<desk-sm')
 		padding-right: $layout-spaces--sm
 
@@ -910,6 +918,9 @@ body
 	// for sticky-sidebar js
 	will-change: min-height
 
+	+media('<desk-md')
+		width: $aside-width--sm
+
 .m-aside-holder
 	// for sticky-sidebar js
 	transform: translate(0, 0) /* For browsers don't support translate3d. */
@@ -933,6 +944,9 @@ body
 	margin-left: $aside-width
 	+clear
 
+	+media('<desk-md')
+		margin-left: $aside-width--sm
+
 .m-content__holder
 	float: left
 	width: 100%
@@ -946,6 +960,9 @@ body
 
 .p-filters-tags__holder
 	padding-left: $aside-width
+
+	+media('<desk-md')
+		padding-left: $aside-width--sm
 
 /* filters tags (layout) end
 

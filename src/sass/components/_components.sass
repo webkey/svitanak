@@ -57,6 +57,8 @@
 
 		+media('<desk-sm')
 			background-image: url(../../img/logo--alt.png)
+			background-size: contain
+			background-position: center
 
 	a
 		position: relative
@@ -355,6 +357,16 @@ $dep-img-size: 80px, 120px // width, height
 			width: calc(#{round-float(100%/$items-in-row, 2)} + 1px)
 
 			&:nth-child(-n+#{$items-in-row})
+				overflow: visible
+
+		+media('<desk-sm')
+			width: calc(#{round-float(100%/$items-in-row--hd, 2)} + 1px)
+			overflow: hidden
+
+			&:nth-child(-n+#{$items-in-row})
+				overflow: hidden
+
+			&:nth-child(-n+#{$items-in-row--hd})
 				overflow: visible
 
 /* departments end

@@ -17,10 +17,20 @@
 	+grid-parent($products-space)
 	+clear-spacing
 
+	+media('<desk-lg')
+		+grid-parent($products-space--md)
+
 .products__item
 	+grid-item(2, $products-space)
 	+font($font-size, $line-height)
 	letter-spacing: $letter-spacing
+
+	+media('<desk-lg')
+		+grid-item-responsive(2, $products-space--md, $products-space)
+
+	.page--has-m-aside &
+		+media('<desk-md')
+			+grid-item-responsive(1, $products-space--md, $products-space)
 
 .products__inner
 	position: relative
@@ -41,12 +51,23 @@
 
 .products__visual
 	float: left
-	width: $product-visual-width
+	width: calc(100% - #{$product-content-width})
 	padding-right: $product-visual-space
+
+	.page--has-m-aside &
+		+media('<desk-hd')
+			padding-top: 50px
+			width: calc(100% - #{$product-content-width--lg})
+
+		+media('<desk-md')
+			padding-top: 0
+			width: calc(100% - #{$product-content-width})
 
 .products__figure
 	display: block
 	position: relative
+	max-width: 240px // ограничиваем ширину изображения продукта
+	+push-auto
 	text-decoration: none
 	color: inherit
 
@@ -70,8 +91,16 @@
 
 .products__title, .products__content, .products__footer
 	float: right
-	width: calc(100% - #{$product-visual-width})
+	clear: right
+	width: $product-content-width
 	margin-bottom: $bottom-space--ml
+
+	.page--has-m-aside &
+		+media('<desk-hd')
+			width: $product-content-width--lg
+
+		+media('<desk-md')
+			width: $product-content-width
 
 .products__content, .products__footer
 	&:last-child
@@ -226,6 +255,10 @@ a.btn-to-basket
 
 	.products__item
 		+grid-item(4, $products-grid-space, $products-space)
+
+		+media('<desk-md')
+			.page--has-m-aside &
+				+grid-item-responsive(3, $products-grid-space, $products-space)
 
 	.products__visual, .products__title, .products__content, .products__footer
 		float: none

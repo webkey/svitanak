@@ -21,6 +21,10 @@ $view-switcher-icon-size: 16px
 		margin-top: -1px
 		margin-right: 50px
 
+		+media('<desk-md')
+			margin-right: 30px
+			width: 50px
+
 	&:last-child
 		margin-bottom: 0
 
@@ -39,6 +43,9 @@ $view-switcher-icon-size: 16px
 		color: $text-color
 		fill: $text-color
 		z-index: 9
+
+		+media('<desk-md')
+			margin-left: 10px
 
 		&:first-child
 			margin-left: 0

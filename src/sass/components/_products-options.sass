@@ -82,10 +82,10 @@
 	user-select: none
 	text-align: left
 
-	+media('<tab-lg')
+	//+media('<tab-lg')
 		justify-content: flex-end
 
-	+media('<tab-sm')
+	//+media('<tab-sm')
 		justify-content: center
 
 	.p-options__label
@@ -93,6 +93,9 @@
 		margin: 4px 25px 4px 0
 		+font(inherit, inherit)
 		color: $text-color-light
+
+		+media('<desk-md')
+			margin-right: 15px
 
 .p-sorting
 	+display-inline-block-middle
@@ -103,6 +106,9 @@
 		li
 			padding: 0
 			margin: 4px 18px 4px 0
+
+			+media('<desk-md')
+				margin-right: 10px
 
 			&::before
 				content: none
