@@ -234,12 +234,12 @@ body
 	z-index: 5
 
 .footer__holder
-	$base-width: 100% - #{$sidebar-width}
-	$base-width--lg: 100% - #{$sidebar-width--lg}
+	$base-width: calc(100% - #{$sidebar-width})
+	$base-width--lg: calc(100% - #{$sidebar-width--lg})
 
 	&
 		left: $sidebar-width
-		width: calc(#{$base-width})
+		width: $base-width
 		+padding-horizontal($layout-spaces)
 
 		+media('<desk-hd')
@@ -247,6 +247,8 @@ body
 
 		+media('<desk-lg')
 			+padding-horizontal($layout-spaces--lg)
+			left: $sidebar-width--lg
+			width: $base-width--lg
 
 		+media('<desk-sm')
 			+padding-horizontal($layout-spaces--sm)
@@ -867,6 +869,9 @@ body
 .article-entry
 	padding-left: $aside-width
 
+	+media('<desk-md')
+		padding-left: 0
+
 /* article entry (layout) end/* footer at bottom end
 
 /* box options (layout)
@@ -889,6 +894,9 @@ body
 
 .box-options__content
 	margin-left: $aside-width
+
+	+media('<desk-md')
+		margin-left: 0
 
 /* box options (layout) end
 

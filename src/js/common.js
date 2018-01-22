@@ -2653,7 +2653,7 @@ function popupInitial(){
 		closeMarkup: btnCloseTpl,
 		callbacks: {
 			open: function() {
-
+				$('.shutter-js').trigger('extraPopupClose');
 			}
 		}
 	});
@@ -2889,12 +2889,10 @@ function stickyInit() {
 			var $curContainer = $(this);
 			var $curSpacer = $curContainer.find($spacer);
 			var containerHeight = $curContainer.outerHeight();
-			console.log("containerHeight: ", containerHeight);
 
 			var spacersHeight = 0;
 			$.each($curSpacer, function () {
 				var $thisSpacer = $(this);
-				console.log("$thisSpacer.outerHeight: ", $thisSpacer.outerHeight());
 				spacersHeight = spacersHeight + $thisSpacer.outerHeight();
 			});
 

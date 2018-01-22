@@ -47,9 +47,13 @@
 		+position(0)
 		+size(100%)
 		background-repeat: no-repeat
-		background-size: contain
-		background-position: center
 		background-image: url(../../img/logo.png)
+		background-size: auto 100%
+		background-position: left
+
+		.home-page &, .page--has-full-logo &
+			background-size: contain
+			background-position: center
 
 		+media('<desk-sm')
 			background-image: url(../../img/logo--alt.png)
@@ -215,7 +219,8 @@ $dep-img-size: 80px, 120px // width, height
 			margin-bottom: 0
 
 		& > li
-			padding: nth($dep-space, 1) #{nth($dep-space, 2) + nth($dep-img-size, 1)} nth($dep-space, 1) nth($dep-space, 2)
+			//padding: nth($dep-space, 1) #{nth($dep-space, 2) + nth($dep-img-size, 1)} nth($dep-space, 1) nth($dep-space, 2)
+			padding: nth($dep-space, 1) nth($dep-space, 2)
 			margin: 0
 
 			+media('<mob-lg')
@@ -344,6 +349,12 @@ $dep-img-size: 80px, 120px // width, height
 				overflow: hidden
 
 			&:nth-child(-n+#{$items-in-row--hd})
+				overflow: visible
+
+		+media('<desk-md')
+			width: calc(#{round-float(100%/$items-in-row, 2)} + 1px)
+
+			&:nth-child(-n+#{$items-in-row})
 				overflow: visible
 
 /* departments end
@@ -1607,6 +1618,9 @@ $m-services-thumb-indent--sm: 40px
 	+media('<desk-sm')
 		+font($previews-tab-font-size--sm, $previews-tab-line-height--sm)
 
+	+media('<mob-lg')
+		padding-right: $previews-tab-space--sm
+
 	&::after
 		+pseudo()
 		+size(0, $previews-tab-line-height)
@@ -1621,6 +1635,7 @@ $m-services-thumb-indent--sm: 40px
 
 		+media('<mob-lg')
 			height: $previews-tab-line-height--mob
+			right: round-float($previews-tab-space--sm/2, 1) // нужны десятые
 
 	&:last-child
 		padding-right: 0
@@ -1678,6 +1693,9 @@ $m-services-thumb-indent--sm: 40px
 	margin-bottom: $bottom-space--lg
 	+clear
 
+	+media('<desk-lg')
+		margin-bottom: 3rem
+
 	&:last-child
 		margin-bottom: 0
 
@@ -1687,6 +1705,9 @@ $m-services-thumb-indent--sm: 40px
 	+font-alt-italic
 	+font(1.8rem, round-float(30/18, 2))
 	color: $text-color-light
+
+	+media('<desk-md')
+		display: none
 
 /* box options end
 
