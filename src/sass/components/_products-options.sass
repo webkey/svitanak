@@ -9,6 +9,10 @@
 
 	+media('<desk-lg')
 		margin-bottom: $bottom-space--ml
+		
+	+media('<tab-lg')
+		border: 1px solid $border-color
+		padding: round-float($grid-space*0.8, 1) $grid-space
 
 	&:last-child
 		margin-bottom: 0
@@ -16,6 +20,7 @@
 .p-options__list
 	display: flex
 	justify-content: space-between
+	//justify-content: stretch
 	align-items: center
 	//flex-wrap: wrap
 
@@ -31,7 +36,7 @@
 .p-options__item
 	+font-d
 	text-align: center
-	//flex: 3 3 0
+	flex: 0 0 auto
 
 	+media('<tab-lg')
 		//flex: 1 1 100px
@@ -67,6 +72,14 @@
 
 	.view-switcher
 		+display-inline-block-top
+
+	&.p-options__item--filters-show,
+	&.p-options__item--view-switcher
+		flex: 1 1 0
+
+.btn-filters-show
+	& > span
+		+hide-text
 
 //.view-switcher-wrap
 	+media('<tab-lg')

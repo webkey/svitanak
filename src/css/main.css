@@ -9551,6 +9551,84 @@ a.bag__inner:hover .bag__title {
 	}
 }
 
+.article-entry p:last-child, .article-entry ul:last-child, .article-entry li:last-child {
+	margin-bottom: 0;
+}
+
+.article-entry__holder {
+	position: relative;
+	overflow: hidden;
+	max-height: 9.024rem;
+	margin-bottom: 2rem;
+}
+
+.text-slide__shadow {
+	position: absolute;
+	left: 0;
+	bottom: 0;
+	width: 100%;
+	height: 40px;
+	background: white;
+	background: linear-gradient(to top, white 0, rgba(255, 255, 255, 0) 100%);
+	pointer-events: none;
+}
+
+.text-slide__button a {
+	display: inline-block;
+	vertical-align: top;
+	position: relative;
+	font-size: 1.2rem;
+	line-height: 1.2;
+	color: #1a1a1a;
+	text-decoration: none;
+	text-transform: uppercase;
+	padding-right: 17px;
+}
+
+.text-slide__button a span {
+	border-bottom: 1px dotted;
+}
+
+.no-touchevents .text-slide__button a:hover {
+	color: #ff6501;
+}
+
+.text-slide__button a::before {
+	content: "";
+	display: block;
+	position: absolute;
+	right: 0;
+	top: 0.4rem;
+	width: 0;
+	height: 0;
+	z-index: 2;
+	border-top: 6px solid #1a1a1a;
+	border-left: 3px solid transparent;
+	border-right: 3px solid transparent;
+}
+
+.text-slide__button .btn-arrow--bottom.active::before {
+	-webkit-transform: rotate(-0.5turn);
+	    -ms-transform: rotate(-0.5turn);
+	        transform: rotate(-0.5turn);
+}
+
+.history-info__text p:last-child {
+	margin-bottom: 0;
+}
+
+.text-slide__button .btn-arrow--bottom.active > span::before {
+	-webkit-transform: rotate(-45deg);
+	    -ms-transform: rotate(-45deg);
+	        transform: rotate(-45deg);
+}
+
+.text-slide__button .btn-arrow--bottom.active > span::after {
+	-webkit-transform: rotate(45deg);
+	    -ms-transform: rotate(45deg);
+	        transform: rotate(45deg);
+}
+
 .article-footer {
 	position: relative;
 	height: 126px;
@@ -10467,6 +10545,13 @@ a.btn-to-basket {
 	}
 }
 
+@media (max-width: 991px) {
+	.p-options {
+		border: 1px solid #e6e6e6;
+		padding: 24px 30px;
+	}
+}
+
 .p-options:last-child {
 	margin-bottom: 0;
 }
@@ -10507,6 +10592,10 @@ a.btn-to-basket {
 	letter-spacing: 0.2em;
 	text-transform: uppercase;
 	text-align: center;
+	-webkit-box-flex: 0;
+	-webkit-flex: 0 0 auto;
+	    -ms-flex: 0 0 auto;
+	        flex: 0 0 auto;
 }
 
 @media (max-width: 991px) {
@@ -10553,6 +10642,33 @@ a.btn-to-basket {
 .p-options__item .view-switcher {
 	display: inline-block;
 	vertical-align: top;
+}
+
+.p-options__item.p-options__item--filters-show, .p-options__item.p-options__item--view-switcher {
+	-webkit-box-flex: 1;
+	-webkit-flex: 1 1 0;
+	    -ms-flex: 1 1 0px;
+	        flex: 1 1 0;
+}
+
+.btn-filters-show > span {
+	border: 0;
+	clip: rect(0 0 0 0);
+	height: 1px;
+	margin: -1px;
+	overflow: hidden;
+	padding: 0;
+	position: absolute;
+	width: 1px;
+}
+
+.btn-filters-show > span:active, .btn-filters-show > span:focus {
+	clip: auto;
+	height: auto;
+	margin: 0;
+	overflow: visible;
+	position: static;
+	width: auto;
 }
 
 .p-options__inner {

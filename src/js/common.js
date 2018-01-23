@@ -2756,6 +2756,117 @@ function onlyNumberInput() {
 }
 
 /**
+ * !text slide
+ * */
+function textSlide() {
+	// external js:
+	// 1) TweetMax VERSION: (lib.js);
+	// 2) device.js 0.2.7 (lib.js);
+	// 3) resizeByWidth (resize only width);
+
+	var $textSlide = $('.text-slide-js');
+
+	if (!$textSlide.length) return false;
+
+	var $window = $(window),
+		prefix = 'text-slide',
+		textFull = $textSlide.attr('data-btn-text-full') || 'Подробнее',
+		textShort = $textSlide.attr('data-btn-text-short') || 'Свернуть',
+		maxLines = 3,
+		$tplSlideFull = $('<div class="' + prefix + '__button" style="display: none;"><a href="#" class="btn-arrow btn-arrow--bottom ' + prefix + '__switcher ' + prefix + '__switcher-js"><span>' + textFull + '</span></a></div>'),
+		$tplTextSlideInner = $('<div class="' + prefix + '__inner ' + prefix + '__inner-js" />'),
+		$tplShadow = $('<div class="' + prefix + '__shadow ' + prefix + '__shadow-js" >'),
+		textSlideHeight = $textSlide.outerHeight(),
+		isTextFull = false,
+		minHeight = parseInt($textSlide.css('line-height'), 10) * maxLines;
+
+	// hide elements
+	TweenMax.set($tplShadow, {autoAlpha: 0});
+	// $tplSlideFull.hide(0);
+
+	// build structure
+	$textSlide
+		.wrapInner($tplTextSlideInner)
+		.after($tplSlideFull)
+		.append($tplShadow);
+
+	$window.on('debouncedresize', function () {
+		init();
+	});
+
+	init();
+
+	function init() {
+		var wrapInnerHeight = $('.' + prefix + '__inner-js').outerHeight();
+
+		$textSlide.css('max-height', 'none');
+
+		if (wrapInnerHeight <= minHeight) {
+			TweenMax.set($textSlide, {height: 'auto'});
+			TweenMax.set($tplShadow, {autoAlpha: 0});
+			$tplSlideFull.hide(0);
+		} else if (!isTextFull) {
+			TweenMax.set($textSlide, {height: minHeight});
+			TweenMax.set($tplShadow, {autoAlpha: 1});
+			$tplSlideFull.show(0);
+
+			textSlideHeight = $textSlide.outerHeight();
+		}
+	}
+
+	$textSlide.parent().on('click', '.' + prefix + '__switcher-js', function (e) {
+		e.preventDefault();
+
+		var wrapInnerHeight = $('.' + prefix + '__inner-js').outerHeight();
+
+		if (wrapInnerHeight <= minHeight) return false;
+
+		var $this = $(this);
+
+		if (isTextFull) {
+			TweenMax.to($textSlide, 0.5, {
+				height: textSlideHeight,
+				ease: Power3.easeInOut,
+				onComplete: function () {
+					$textSlide.trigger('heightHeightChange');
+				}
+			});
+			TweenMax.to($tplShadow, 0.5, {autoAlpha: 1});
+
+			$this.removeClass('active').children('span').text(textFull);
+
+			isTextFull = false;
+		} else {
+			TweenMax.to($textSlide, 0.5, {
+				height: wrapInnerHeight,
+				ease: Power3.easeInOut,
+				onComplete: function () {
+					TweenMax.set($textSlide, {height: 'auto'});
+					$textSlide.trigger('afterHeightChange');
+
+					isTextFull = true;
+				}
+			});
+
+			TweenMax.to($tplShadow, 0.5, {autoAlpha: 0});
+			$this.addClass('active').children('span').text(textShort);
+		}
+	});
+
+
+	// sticky kit recalculate
+	// var textSlideTimeout;
+	//
+	// $textSlide.on('afterHeightChange', function () {
+	// 	clearTimeout(textSlideTimeout);
+	//
+	// 	textSlideTimeout = setTimeout(function () {
+	// 		$(document.body).trigger("sticky_kit:recalc");
+	// 	}, 100);
+	// })
+}
+
+/**
  * !Sticky element on page
  */
 function stickyInit() {
@@ -3032,6 +3143,7 @@ $(document).ready(function () {
 	spinnerInit($(".spinner-js"));
 	priceCalculation();
 	onlyNumberInput();
+	textSlide();
 
 	stickyInit();
 	/* for testing validate forms */

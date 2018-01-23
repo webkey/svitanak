@@ -22,6 +22,65 @@
 		+media('<desk-md')
 			content: none
 
+	p, ul, li
+		&:last-child
+			margin-bottom: 0
+
+.article-entry__holder
+	position: relative
+	overflow: hidden
+	max-height: ($font-size*$line-height*3)
+	margin-bottom: 2rem
+
+.text-slide__shadow
+	position: absolute
+	left: 0
+	bottom: 0
+	width: 100%
+	height: 40px
+	+linear-gradient(to top, white 0, rgba(255, 255, 255, 0) 100%)
+	pointer-events: none
+
+.text-slide__button
+	a
+		display: inline-block
+		vertical-align: top
+		position: relative
+		+font(1.2rem, round-float(14/12, 1))
+		color: $text-color
+		text-decoration: none
+		text-transform: uppercase
+		padding-right: 17px
+
+		span
+			border-bottom: 1px dotted
+
+		.no-touchevents &:hover
+			color: $link-color
+
+		&::before
+			+pseudo()
+			right: 0
+			top: 0.4rem
+			+triangle(bottom, $text-color, 3px, 2)
+
+	.btn-arrow--bottom.active
+		&::before
+			transform: rotate(-0.5turn)
+
+.history-info__text
+
+	p:last-child
+		margin-bottom: 0
+
+.text-slide__button
+	.btn-arrow--bottom.active > span
+		&::before
+			transform: rotate(-45deg)
+
+		&::after
+			transform: rotate(45deg)
+
 .article-footer
 	position: relative
 	height: $article-footer-height
