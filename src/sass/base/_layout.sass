@@ -77,13 +77,13 @@ body
 		padding: #{round($layout-spaces--hd*0.9)} #{$layout-spaces--hd}
 
 	+media('<desk-lg')
-		padding: #{round($layout-spaces--lg*0.9)} #{$layout-spaces--lg} #{$layout-spaces--lg}
+		padding: #{round($layout-spaces--lg*0.9)} #{$layout-spaces--lg} #{round($layout-spaces--lg*1.5)}
 
 	+media('<desk-sm')
-		padding: #{round($layout-spaces--sm*0.9)} #{$layout-spaces--sm} #{$layout-spaces--sm}
+		padding: #{round($layout-spaces--sm*0.9)} #{$layout-spaces--sm} #{round($layout-spaces--sm*1.5)}
 
 	+media('<mob-lg')
-		padding: #{round($layout-spaces--mob*0.9)} #{$layout-spaces--mob} #{$layout-spaces--mob}
+		padding: #{round($layout-spaces--mob*0.9)} #{$layout-spaces--mob} #{round($layout-spaces--mob*1.5)}
 
 // актуально только для текущего проекта
 .layout-full-width, .layout-wide
@@ -921,6 +921,9 @@ body
 	+media('<desk-md')
 		width: $aside-width--sm
 
+	+media('<tab-lg')
+		display: none
+
 .m-aside-holder
 	// for sticky-sidebar js
 	transform: translate(0, 0) /* For browsers don't support translate3d. */
@@ -946,6 +949,9 @@ body
 
 	+media('<desk-md')
 		margin-left: $aside-width--sm
+
+	+media('<tab-lg')
+		margin-left: 0
 
 .m-content__holder
 	float: left

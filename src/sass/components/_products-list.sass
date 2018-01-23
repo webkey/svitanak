@@ -20,17 +20,24 @@
 	+media('<desk-lg')
 		+grid-parent($products-space--md)
 
+	+media('<tab-lg')
+		+grid-parent($products-space--sm)
+
 .products__item
 	+grid-item(2, $products-space)
 	+font($font-size, $line-height)
 	letter-spacing: $letter-spacing
 
 	+media('<desk-lg')
-		+grid-item-responsive(2, $products-space--md, $products-space)
+		+grid-item-responsive(2, $products-space--md, 5rem)
 
 	.page--has-m-aside &
 		+media('<desk-md')
 			+grid-item-responsive(1, $products-space--md, $products-space)
+
+	&, .page--has-m-aside &
+		+media('<tab-lg')
+			+grid-item-responsive(2, $products-space--sm, 5rem)
 
 .products__inner
 	position: relative
@@ -62,6 +69,11 @@
 		+media('<desk-md')
 			padding-top: 0
 			width: calc(100% - #{$product-content-width})
+
+	&, .page--has-m-aside &
+		+media('<tab-lg')
+			padding-top: 50px
+			width: calc(100% - #{$product-content-width--lg})
 
 .products__figure
 	display: block
@@ -101,6 +113,10 @@
 
 		+media('<desk-md')
 			width: $product-content-width
+
+	&, .page--has-m-aside &
+		+media('<desk-md')
+			width: $product-content-width--lg
 
 .products__content, .products__footer
 	&:last-child
@@ -272,13 +288,14 @@ a.btn-to-basket
 			margin-bottom: 0
 
 	.products__title
-		+padding-horizontal($grid-space)
+		//+padding-horizontal($grid-space)
 		+font-normal
 		+font(16px, round-float(24/16, 2))
 		letter-spacing: $letter-spacing
 		text-align: center
 		text-transform: none
-		margin-bottom: 1.5rem
+		max-width: 260px
+		margin: 0 auto 1.5rem
 
 		.products__model
 			display: inline
