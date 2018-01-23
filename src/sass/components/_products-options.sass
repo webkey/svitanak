@@ -12,15 +12,13 @@
 		
 	+media('<tab-lg')
 		border: 1px solid $border-color
-		padding: round-float($grid-space*0.8, 1) $grid-space
 
 	&:last-child
 		margin-bottom: 0
 
 .p-options__list
 	display: flex
-	justify-content: space-between
-	//justify-content: stretch
+	justify-content: flex-end
 	align-items: center
 	//flex-wrap: wrap
 
@@ -36,35 +34,16 @@
 .p-options__item
 	+font-d
 	text-align: center
-	flex: 0 0 auto
-
-	+media('<tab-lg')
-		//flex: 1 1 100px
-
-		&:nth-last-child(2)
-			text-align: right
-			//flex: 1 1 100px
-
-	+media('<tab-sm')
-		margin-bottom: $bottom-space--sm
-		text-align: center
-
-		.no-flexbox &
-			display: block
 
 	&:first-child
 		text-align: left
-		//flex: 1 1 100px
+		flex: 1 1
 
-		+media('<tab-sm')
-			text-align: center
+		+media('<tab-lg')
+			padding: 0 $grid-space
 
 	&:last-child
 		text-align: right
-		//flex: 1 1 100px
-
-		+media('<tab-sm')
-			text-align: center
 
 	.no-flexbox &
 		display: table-cell
@@ -73,13 +52,43 @@
 	.view-switcher
 		+display-inline-block-top
 
+		+media('<tab-lg')
+			display: block
+			height: 100%
+
 	&.p-options__item--filters-show,
 	&.p-options__item--view-switcher
-		flex: 1 1 0
+		+media('<tab-lg')
+			+size(60px)
+			border: 1px solid $border-color
+			margin: -1px -1px -1px 0
+
+	&.p-options__item--filters-show
+		display: none
+
+		+media('<tab-lg')
+			display: block
 
 .btn-filters-show
+	position: relative
+	+display-inline-block-top
+
+	+media('<tab-lg')
+		display: block
+		height: 100%
+
 	& > span
 		+hide-text
+
+	& > svg
+		+display-inline-block-top
+		+size(24px)
+
+		+media('<tab-lg')
+			position: absolute
+			left: 50%
+			top: 50%
+			margin: -12px 0 0 -12px
 
 //.view-switcher-wrap
 	+media('<tab-lg')
@@ -87,6 +96,7 @@
 
 .p-options__inner
 	position: relative
+	height: 100% // нужно, когда принимают форму квадрата на девайсах
 
 .p-options__group
 	display: flex

@@ -50,6 +50,14 @@ $view-switcher-icon-size: 16px
 		+media('<desk-md')
 			margin-left: 10px
 
+		+media('<tab-lg')
+			margin-left: 0
+			float: none
+			display: flex
+			align-items: center
+			justify-content: center
+			height: 100%
+
 		&:first-child
 			margin-left: 0
 
@@ -66,6 +74,16 @@ $view-switcher-icon-size: 16px
 			&.svg-ico-menu-short-lg, &.svg-ico-menu-full-lg
 				+size(nth($view-switcher-size-alt, 1), nth($view-switcher-size-alt, 2))
 
+			//+media('<tab-lg')
+				position: absolute
+				left: 50%
+				top: 50%
+
+				&.svg-ico-menu-short, &.svg-ico-menu-full
+					margin: -#{round(nth($view-switcher-size, 2)/2)} 0 0 -#{round(nth($view-switcher-size, 1)/2)}
+
+				&.svg-ico-menu-short-lg, &.svg-ico-menu-full-lg
+					margin: -#{round(nth($view-switcher-size-alt, 2)/2)} 0 0 -#{round(nth($view-switcher-size-alt, 1)/2)}
 
 		path
 			fill: inherit
@@ -78,5 +96,8 @@ $view-switcher-icon-size: 16px
 			color: $base-color
 			fill: $base-color
 			cursor: default
+
+			+media('<tab-lg')
+				display: none
 
 /* view switcher end
