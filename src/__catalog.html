@@ -76,11 +76,17 @@
 						</div>
 					</div>
 					<div class="m-container">
-						<div class="m-aside">
-							<div class="m-aside-holder">
-								<!--filters-->
-								@@include('_tpl_products-filters.html')
-								<!--filters end-->
+						<div class="m-aside m-aside-shutter-js">
+							<div class="shutter__options">
+								<a href="#" class="btn-shutter-close btn-shutter-close-js"><i>&nbsp;</i><span>Закрыть</span></a>
+								<a href="#" class="btn-default-alt btn-filters-apply btn-shutter-close-js"><span>Применить</span></a>
+							</div>
+							<div class="m-aside-align">
+								<div class="m-aside-holder">
+									<!--filters-->
+									@@include('_tpl_products-filters.html')
+									<!--filters end-->
+								</div>
 							</div>
 						</div>
 						<div class="m-content">
@@ -88,6 +94,13 @@
 								<!--options panel-->
 								@@include('_tpl_products-options.html')
 								<!--options panel end-->
+								<div class="p-filters-tags">
+									<div class="p-filters-tags__holder">
+										<div class="p-filters-tags__frame p-filters-tags-js">
+											<!--filters tags-->
+										</div>
+									</div>
+								</div>
 								<!--products-->
 								<div class="products grid-view" data-toggle-view-panels="products">
 									<section class="products__list">

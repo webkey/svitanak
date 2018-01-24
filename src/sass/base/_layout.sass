@@ -916,13 +916,51 @@ body
 	float: left
 	width: $aside-width
 	// for sticky-sidebar js
-	will-change: min-height
+	will-change: min-height, trasform
 
 	+media('<desk-md')
 		width: $aside-width--sm
 
+	+media('>=tab-lg')
+		&
+			transform: translate(0, 0) matrix(1, 0, 0, 1, 0, 0) !important
+
+		@at-root .shutter-overlay--m-aside
+			display: none
+
 	+media('<tab-lg')
-		display: none
+		opacity: 0
+		visibility: hidden
+		position: fixed
+		overflow: hidden
+		right: 0
+		width: $aside-width
+		background-color: white
+		z-index: 9999
+
+		top: $header-height--lg
+		height: calc(100vh - #{$header-height--lg})
+
+	+media('<mob-md')
+		width: 100%
+
+	.shutter__options
+		+media('<tab-lg')
+			display: block
+			box-shadow: 0 0 30px 10px white
+
+		@at-root .btn-filters-apply
+			width: 100%
+			height: $header-height--lg
+			+padding-vertical(19px)
+			display: block
+
+.m-aside-align
+	+media('<tab-lg')
+		overflow-x: hidden
+		overflow-y: auto
+		//height: 100%
+		height: calc(100% - #{$header-height--lg}) // если есть кнопка закрытия
 
 .m-aside-holder
 	// for sticky-sidebar js
@@ -940,8 +978,11 @@ body
 	+media('<desk-sm')
 		padding-right: $layout-spaces--sm
 
+	+media('<tab-lg')
+		padding: $layout-spaces--sm
+
 	+media('<mob-lg')
-		padding-right: $layout-spaces--mob
+		padding: $layout-spaces--mob $layout-spaces--mob round($layout-spaces--mob*2)
 
 .m-content
 	margin-left: $aside-width
@@ -969,6 +1010,9 @@ body
 
 	+media('<desk-md')
 		padding-left: $aside-width--sm
+
+	+media('<tab-lg')
+		padding-left: 0
 
 /* filters tags (layout) end
 

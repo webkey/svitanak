@@ -137,8 +137,18 @@ $p-filters-angle-lines-color: $text-color
 	+media('<desk-lg')
 		margin-bottom: $bottom-space
 
+	+media('<tab-lg')
+		display: none
+		min-height: 0
+
 	&:last-child
 		margin-bottom: 0
+
+	.m-content &
+		display: none
+
+		+media('<tab-lg')
+			display: block
 
 .p-filters-tags__frame
 	cursor: default

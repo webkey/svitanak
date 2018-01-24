@@ -5,13 +5,16 @@
 /* options panel
 .p-options
 	position: relative
-	margin-bottom: $bottom-space--lg
+	margin-bottom: 6rem
 
-	+media('<desk-lg')
-		margin-bottom: $bottom-space--ml
-		
+	+media('<desk-sm')
+		margin-bottom: 4rem
+
 	+media('<tab-lg')
 		border: 1px solid $border-color
+
+	+media('<mob-lg')
+		margin-bottom: 3rem
 
 	&:last-child
 		margin-bottom: 0
@@ -20,27 +23,36 @@
 	display: flex
 	justify-content: flex-end
 	align-items: center
-	//flex-wrap: wrap
+	flex-wrap: nowrap
 
-	.no-flexbox &
+	//.no-flexbox &
 		display: table
 		width: 100%
 		table-layout: fixed
 
-	+media('<tab-sm')
-		&, .no-flexbox &
-			display: block
+	+media('<mob-md')
+		//display: block
+		position: relative
+		padding-right: 60px
+		min-height: 80px
 
 .p-options__item
 	+font-d
+	font-style: normal
 	text-align: center
+
+	+media('<tab-lg')
+		font-size: 12px
 
 	&:first-child
 		text-align: left
 		flex: 1 1
 
 		+media('<tab-lg')
-			padding: 0 $grid-space
+			padding: round($grid-space/2) $grid-space
+
+		+media('<mob-lg')
+			padding: round($grid-space--lg/2) $grid-space--lg
 
 	&:last-child
 		text-align: right
@@ -63,15 +75,28 @@
 			border: 1px solid $border-color
 			margin: -1px -1px -1px 0
 
+		+media('<mob-md')
+			position: absolute
+			right: -1px
+			bottom: -1px
+			margin: 0
+			height: calc(50% + 2px)
+
 	&.p-options__item--filters-show
 		display: none
 
 		+media('<tab-lg')
 			display: block
 
+		+media('<mob-md')
+			top: -1px
+			height: calc(50% + 1px)
+
 .btn-filters-show
 	position: relative
 	+display-inline-block-top
+	color: $text-color
+	user-select: none
 
 	+media('<tab-lg')
 		display: block
@@ -80,7 +105,7 @@
 	& > span
 		+hide-text
 
-	& > svg
+	svg
 		+display-inline-block-top
 		+size(24px)
 
@@ -89,6 +114,14 @@
 			left: 50%
 			top: 50%
 			margin: -12px 0 0 -12px
+
+	path
+		fill: currentColor
+
+	// hover
+	.no-touchevents &:hover
+		color: $base-color
+
 
 //.view-switcher-wrap
 	+media('<tab-lg')
@@ -119,6 +152,9 @@
 
 		+media('<desk-md')
 			margin-right: 15px
+
+		+media('<tab-sm')
+			display: none
 
 .p-sorting
 	+display-inline-block-middle
@@ -171,6 +207,15 @@
 		// hover
 		&:hover
 			color: $base-color
+
+		& > span em
+			display: none
+			font-style: inherit
+			font-weight: inherit
+			font-family: inherit
+
+			+media('<tab-sm')
+				display: inline
 
 	// активное соотояние
 	li.active

@@ -44,7 +44,6 @@ $view-switcher-icon-size: 16px
 		margin-left: 20px
 		//+size(nth($view-switcher-size, 1), nth($view-switcher-size, 2))
 		color: $text-color
-		fill: $text-color
 		z-index: 9
 
 		+media('<desk-md')
@@ -86,15 +85,13 @@ $view-switcher-icon-size: 16px
 					margin: -#{round(nth($view-switcher-size-alt, 2)/2)} 0 0 -#{round(nth($view-switcher-size-alt, 1)/2)}
 
 		path
-			fill: inherit
+			fill: currentColor
 
 		&:hover
 			color: $base-color
-			fill: $base-color
 
 		&.active
 			color: $base-color
-			fill: $base-color
 			cursor: default
 
 			+media('<tab-lg')

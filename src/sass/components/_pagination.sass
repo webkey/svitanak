@@ -20,9 +20,14 @@ $pagination-border-width: 0
 	cursor: default
 	margin-bottom: $bottom-space--lg
 	+push-auto
+	+clear
 
 	+media('<desk-lg')
 		margin-bottom: $bottom-space--ml
+
+	+media('<mob-lg')
+		position: relative
+		padding-bottom: $pagination-height + $pagination-vspace*2
 
 	&:last-child
 		margin-bottom: 0
@@ -30,14 +35,39 @@ $pagination-border-width: 0
 .pg-left
 	float: left
 
+	+media('<mob-lg')
+		float: none
+		position: absolute
+		bottom: 0
+		right: 50%
+
 .pg-right
 	float: right
 
+	+media('<mob-lg')
+		float: none
+		position: absolute
+		bottom: 0
+		left: 50%
+
+	&::before
+		+pseudo()
+		width: 0
+		height: 20px
+		margin-top: -10px
+		top: 50%
+		left: -1px
+		border-left: 2px solid
+		display: none
+
+		+media('<mob-lg')
+			display: block
+
 .pg-first-arr, .pg-last-arr, .pg-prev-arr, .pg-next-arr
-	display: none
+	//display: none
 	position: absolute
 	+position(50%, 0)
-	+size(100%, 2px)
+	+size(12px, 2px)
 	margin-top: -1px
 	letter-spacing: 0
 	border-top: 2px solid $text-color
@@ -50,7 +80,7 @@ $pagination-border-width: 0
 	&::before, &::after
 		+pseudo()
 		top: 0
-		+size(14px)
+		+size(8px)
 		margin-top: -1px
 		border: 0 solid $text-color
 		backface-visibility: hidden
@@ -69,6 +99,9 @@ $pagination-border-width: 0
 		border-width: 2px 0 0 2px
 
 .pg-last-arr, .pg-next-arr
+	left: auto
+	right: 0
+
 	&::before, &::after
 		right: 0
 		margin-right: -1px
@@ -91,7 +124,6 @@ $pagination-border-width: 0
 	&::after
 		display: none
 
-
 .pg-first, .pg-last, .pg-prev, .pg-next
 	+display-inline-block-middle
 	position: relative
@@ -102,6 +134,9 @@ $pagination-border-width: 0
 		margin: #{$pagination-vspace} #{$pagination-hspace}
 	color: inherit
 	text-decoration: none
+
+	span
+		+padding-horizontal(20px)
 
 	&.disabled
 		opacity: 0.5
@@ -116,6 +151,14 @@ $pagination-border-width: 0
 
 	//&:not(.disabled):active
 		margin-top: 1px
+
+.pg-first, .pg-prev
+	span
+		padding-right: 0
+
+.pg-last, .pg-next
+	span
+		padding-left: 0
 
 .pg-first, .pg-last
 	display: none

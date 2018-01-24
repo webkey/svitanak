@@ -7,7 +7,7 @@
 	overflow: hidden
 	margin-bottom: $bottom-space--lg
 
-	+media('<desk-lg')
+	//+media('<desk-lg')
 		margin-bottom: $bottom-space--ml
 
 	&:last-child
@@ -20,7 +20,7 @@
 	+media('<desk-lg')
 		+grid-parent($products-space--md)
 
-	+media('<tab-lg')
+	//+media('<tab-lg')
 		+grid-parent($products-space--sm)
 
 .products__item
@@ -37,7 +37,7 @@
 
 	&, .page--has-m-aside &
 		+media('<tab-lg')
-			+grid-item-responsive(2, $products-space--sm, 5rem)
+			+grid-item-responsive(1, $products-space--md, 5rem)
 
 .products__inner
 	position: relative
@@ -64,16 +64,23 @@
 	.page--has-m-aside &
 		+media('<desk-hd')
 			padding-top: 50px
-			width: calc(100% - #{$product-content-width--lg})
+			width: calc(100% - #{$product-content-width--sm})
 
 		+media('<desk-md')
 			padding-top: 0
 			width: calc(100% - #{$product-content-width})
 
 	&, .page--has-m-aside &
-		+media('<tab-lg')
+		+media('<mob-lg')
 			padding-top: 50px
-			width: calc(100% - #{$product-content-width--lg})
+			width: calc(100% - #{$product-content-width--sm})
+
+		+media('<mob-md')
+			float: none
+			width: 100%
+			padding-right: 0
+			padding-top: 0
+			margin-bottom: 3rem
 
 .products__figure
 	display: block
@@ -82,6 +89,9 @@
 	+push-auto
 	text-decoration: none
 	color: inherit
+
+	+media('<mob-md')
+		max-width: 160px
 
 	&:before
 		+pseudo-block-relative()
@@ -109,14 +119,20 @@
 
 	.page--has-m-aside &
 		+media('<desk-hd')
-			width: $product-content-width--lg
+			width: $product-content-width--sm
 
 		+media('<desk-md')
 			width: $product-content-width
 
 	&, .page--has-m-aside &
-		+media('<desk-md')
-			width: $product-content-width--lg
+		+media('<mob-lg')
+			width: $product-content-width--sm
+
+		+media('<mob-md')
+			float: none
+			clear: none
+			width: 100%
+			margin-bottom: 2rem
 
 .products__content, .products__footer
 	&:last-child
@@ -269,12 +285,25 @@ a.btn-to-basket
 		+grid-parent($products-grid-space)
 		+clear-spacing
 
+		+media('<mob-lg')
+			+grid-parent($products-grid-space--md)
+
 	.products__item
 		+grid-item(4, $products-grid-space, $products-space)
 
-		+media('<desk-md')
-			.page--has-m-aside &
+		.page--has-m-aside &
+			+media('<desk-md')
 				+grid-item-responsive(3, $products-grid-space, $products-space)
+
+			+media('<desk-sm')
+				+grid-item-responsive(3, $products-grid-space, $products-space--md)
+
+		&, .page--has-m-aside &
+			+media('<mob-lg')
+				+grid-item-responsive(2, $products-grid-space--md, $products-space--md)
+
+			+media('<mob-md')
+				+grid-item-responsive(1, $products-grid-space--md, $products-space--md)
 
 	.products__visual, .products__title, .products__content, .products__footer
 		float: none

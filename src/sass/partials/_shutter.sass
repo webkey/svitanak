@@ -39,6 +39,7 @@
 	visibility: hidden
 	z-index: 1000
 	left: #{$sidebar-width}
+	will-change: transform
 	+size(100%, calc(100vh - #{$header-height}))
 
 	+media('<desk-lg')
@@ -47,6 +48,9 @@
 
 	+media('<desk-sm')
 		left: 0
+
+.shutter--before-open .footer
+	z-index: auto
 
 .shutter__align
 	width: calc(100% + 100px)

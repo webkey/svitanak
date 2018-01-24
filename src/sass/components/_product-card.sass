@@ -4,13 +4,16 @@
 
 /*product card*/
 $p-card-space: 100px
-$p-card-space--lg: 50px
+$p-card-space--hd: 80px
+$p-card-space--lg: 60px
 $p-card-ratio: 55% 45%
 $p-card-ratio--lg: 50% 50%
 
 $p-card-elem-bottom-space: 40px
 
 .p-card
+	background-color: rgba(255, 250, 205, 0.51)
+
 	+clear
 	//margin-bottom: $bottom-space--lg
 
@@ -83,6 +86,12 @@ $p-card-elem-bottom-space: 40px
 // product photos
 .p-card, .p-card__content__holder
 	padding: 0 $p-card-space
+
+	+media('<desk-hd')
+		+padding-horizontal($p-card-space--hd)
+
+	+media('<desk-lg')
+		+padding-horizontal($p-card-space--lg)
 
 .p-card__visual
 	float: left
@@ -169,6 +178,8 @@ $p-card-elem-bottom-space: 40px
 	transform: translate(0, 0) /* For browsers don't support translate3d. */
 	transform: translate3d(0, 0, 0)
 	will-change: position, transform
+
+	background-color: rgba(147, 112, 219, 0.21)
 
 // price
 .p-card__price
@@ -306,22 +317,30 @@ $p-card-elem-bottom-space: 40px
 // previous and next products
 .p-card__btn
 	$pc-btn-size: 300px 430px // width height
+	$pc-btn-size--md: 200px 430px // width height
 	$animation-speed: $animation-speed
 	// ==================
 	position: absolute
 	top: 160px
 	+size(nth($pc-btn-size, 1), nth($pc-btn-size, 2))
-	//margin: -#{round(nth($pc-btn-size, 2)/2)} -#{round(nth($pc-btn-size, 1)/2 + $layout-spaces - $p-card-space/2)} 0
 	margin: 0 -#{round($layout-spaces + nth($pc-btn-size, 1)/2)}
 	text-decoration: none
 	color: inherit
-	z-index: 15
-	//background-color: linen
+	//z-index: 15
 	will-change: color, opacity, visibility
 	transition:
 		property: color, opacity, visibility
 		duration: $animation-speed
 		//timing-function: cubic-bezier(0, 0.71, 0.41, 1)
+
+	background-color: rgba(0, 108, 255, 0.51)
+
+	+media('<desk-hd')
+		margin: 0 -#{round($layout-spaces--hd + nth($pc-btn-size, 1)/2)}
+
+	+media('<desk-lg')
+		+size(nth($pc-btn-size--md, 1), nth($pc-btn-size--md, 2))
+		margin: 0 -#{round($layout-spaces--lg + nth($pc-btn-size--md, 1)/2)}
 
 	// zoom on
 	.zoom-on &
