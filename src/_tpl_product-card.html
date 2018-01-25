@@ -1,4 +1,4 @@
-<div class="p-card">
+<div class="p-card p-card-js">
 	<!--button next/previous products-->
 	<a href="product-card.html" class="p-card__btn p-card__btn--prev">
 		<div class="p-card__btn__img">
@@ -17,46 +17,56 @@
 	<!--button next/previous products end-->
 
 	<div class="p-card__visual">
-		<div class="p-card__gallery card-gallery-js">
-			<div class="p-card__gallery__item">
+		<div class="p-card__gallery">
+			<div class="swiper-container p-card__gallery__list card-gallery-js">
+				<div class="swiper-wrapper">
+					<div class="p-card__gallery__item swiper-slide">
 
-				<div class="p-card__gallery__inner" style="background-image: url(img/img-products-05.jpg);">
-					<img src="img/img-products-05.jpg" alt="image description" />
+						<div class="p-card__gallery__inner" style="background-image: url(img/img-products-05.jpg);">
+							<img src="img/img-products-05.jpg" alt="image description" />
+						</div>
+						<!--<img src="img/img-products-08.jpg">-->
+
+					</div>
+					<div class="p-card__gallery__item swiper-slide">
+
+						<div class="p-card__gallery__inner" style="background-image: url(img/img-products-08.jpg);">
+							<img src="img/img-products-08.jpg" alt="image description" />
+						</div>
+						<!--<img src="img/img-products-05.jpg">-->
+
+					</div>
+					<div class="p-card__gallery__item swiper-slide">
+
+						<div class="p-card__gallery__inner" style="background-image: url(img/img-products-01.jpg);">
+							<img src="img/img-products-01.jpg" alt="image description" />
+						</div>
+						<!--<img src="img/img-products-01.jpg">-->
+
+					</div>
+					<div class="p-card__gallery__item swiper-slide">
+
+						<div class="p-card__gallery__inner" style="background-image: url(img/img-products-06.jpg);">
+							<img src="img/img-products-06.jpg" alt="image description" />
+						</div>
+						<!--<img src="img/img-products-06.jpg">-->
+
+					</div>
+					<div class="p-card__gallery__item swiper-slide">
+
+						<div class="p-card__gallery__inner" style="background-image: url(img/img-products-07.jpg);">
+							<img src="img/img-products-07.jpg" alt="image description" />
+						</div>
+						<!--<img src="img/img-products-07.jpg">-->
+
+					</div>
 				</div>
-				<!--<img src="img/img-products-08.jpg">-->
 
-			</div>
-			<div class="p-card__gallery__item">
-
-				<div class="p-card__gallery__inner" style="background-image: url(img/img-products-08.jpg);">
-					<img src="img/img-products-08.jpg" alt="image description" />
-				</div>
-				<!--<img src="img/img-products-05.jpg">-->
-
-			</div>
-			<div class="p-card__gallery__item">
-
-				<div class="p-card__gallery__inner" style="background-image: url(img/img-products-01.jpg);">
-					<img src="img/img-products-01.jpg" alt="image description" />
-				</div>
-				<!--<img src="img/img-products-01.jpg">-->
-
-			</div>
-			<div class="p-card__gallery__item">
-
-				<div class="p-card__gallery__inner" style="background-image: url(img/img-products-06.jpg);">
-					<img src="img/img-products-06.jpg" alt="image description" />
-				</div>
-				<!--<img src="img/img-products-06.jpg">-->
-
-			</div>
-			<div class="p-card__gallery__item">
-
-				<div class="p-card__gallery__inner" style="background-image: url(img/img-products-07.jpg);">
-					<img src="img/img-products-07.jpg" alt="image description" />
-				</div>
-				<!--<img src="img/img-products-07.jpg">-->
-
+				<!-- pagination -->
+				<div class="tape-slider-pagination swiper-pagination"></div>
+				<!-- navigation buttons -->
+				<div class="tape-slider-prev swiper-button-prev">Предыдущий</div>
+				<div class="tape-slider-next swiper-button-next">Слудующий</div>
 			</div>
 		</div>
 	</div>

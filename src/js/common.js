@@ -1667,11 +1667,11 @@ function menuSwitcher() {
  * */
 function zoomImages() {
 	var $toggler = $('.p-card__gallery__item'),
-		$container = $('.p-card');
+		$container = $('.p-card-js');
 	var activeClass = 'zoom-on';
 	var timeout;
 
-	$toggler.on('click', function (e) {
+	$container.on('click', '.p-card__gallery__item', function (e) {
 		e.preventDefault();
 
 		var $this = $(this),
@@ -1688,13 +1688,13 @@ function zoomImages() {
 		}, 300);
 	});
 
-	// $(document).keyup(function(e) {
-	// 	if ($container.hasClass(activeClass) && e.keyCode === 27) {
-	// 		$container.removeClass(activeClass);
-	//
-	// 		$container.trigger('change.zoomImages');
-	// 	}
-	// });
+	$(document).keyup(function(e) {
+		if ($container.hasClass(activeClass) && e.keyCode === 27) {
+			$container.removeClass(activeClass);
+
+			$container.trigger('change.zoomImages');
+		}
+	});
 
 	function scrollTo($element, speed) {
 
@@ -1703,6 +1703,59 @@ function zoomImages() {
 		if (!$(this).is(':animated')) {
 			$('html,body').stop().animate({scrollTop: $element.offset().top}, dur);
 		}
+	}
+
+	//card gallery
+	var $cardGallery = $('.card-gallery-js');
+
+	if($cardGallery.length){
+		$cardGallery.each(function () {
+			var $thisSlider = $(this);
+			var $thisBtnNext = $('.swiper-button-next', $thisSlider);
+			var $thisBtnPrev = $('.swiper-button-prev', $thisSlider);
+			var $thisFractPag = $('.swiper-pagination', $thisSlider);
+
+			new Swiper($thisSlider, {
+				slidesPerView: 1,
+				slidesPerGroup: 1,
+				// autoHeight: true,
+				// Optional parameters
+				loop: true,
+				// Keyboard
+				keyboardControl: true,
+				// Ratio to trigger swipe to next/previous slide during long swipes
+				longSwipesRatio: 0.1,
+				longSwipesMs: 200,
+
+				// Navigation arrows
+				nextButton: $thisBtnNext,
+				prevButton: $thisBtnPrev,
+				// navigation: {
+				// 	nextEl: $thisBtnNext,
+				// 	prevEl: $thisBtnPrev
+				// },
+
+				// Pagination
+				pagination: $thisFractPag,
+				paginationType: 'fraction',
+				// pagination: {
+				// 	el: $thisFractPag,
+				// 	type: 'fraction'
+				// },
+				// Responsive breakpoints
+				// breakpoints: {
+				// 	1919: {
+				// 		spaceBetween: 30
+				// 	}
+				// },
+				// events
+				onInit: function (swiper) {
+					// $(swiper.slides).matchHeight({
+					// 	byRow: true, property: 'height', target: null, remove: false
+					// });
+				}
+			});
+		})
 	}
 }
 

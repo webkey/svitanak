@@ -11287,6 +11287,13 @@ a.btn-to-basket {
 	}
 }
 
+@media (max-width: 991px) {
+	.p-card {
+		padding-right: 0;
+		padding-left: 0;
+	}
+}
+
 .p-card__visual {
 	float: left;
 	width: 55%;
@@ -11303,11 +11310,11 @@ a.btn-to-basket {
 	margin-bottom: 0;
 }
 
-.p-card__gallery {
+.p-card__gallery__list {
 	margin-bottom: 6rem;
 }
 
-.p-card__gallery:last-child {
+.p-card__gallery__list:last-child {
 	margin-bottom: 0;
 }
 
@@ -11613,6 +11620,12 @@ a.btn-to-basket {
 		width: 120px;
 		height: 320px;
 		margin: -187px -90px 0;
+	}
+}
+
+@media (max-width: 991px) {
+	.p-card__btn {
+		display: none;
 	}
 }
 

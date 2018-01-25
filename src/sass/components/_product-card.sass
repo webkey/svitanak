@@ -108,6 +108,10 @@ $p-card-elem-bottom-space--md: 25px
 	+media('<desk-sm')
 		+padding-horizontal($p-card-space--sm)
 
+.p-card
+	+media('<tab-lg')
+		+padding-horizontal(0)
+
 .p-card__visual
 	float: left
 	width: nth($p-card-ratio, 1)
@@ -119,7 +123,7 @@ $p-card-elem-bottom-space--md: 25px
 	&:last-child
 		margin-bottom: 0
 
-.p-card__gallery
+.p-card__gallery__list
 	margin-bottom: $bottom-space--lg
 
 	&:last-child
@@ -357,13 +361,9 @@ $p-card-elem-bottom-space--md: 25px
 	background-color: rgba(0, 108, 255, 0.51)
 
 	+media('<desk-hd')
-		//margin-top: -#{$header-height + round($layout-spaces--hd*0.9)}
-		//margin: 0 -#{round($layout-spaces--hd + nth($pc-btn-size, 1)/2)}
 		margin: -#{round($layout-spaces--hd*0.9 + nth($pc-btn-size, 2)/2)} -#{round($layout-spaces--hd + nth($pc-btn-size, 1)/2)} 0
 
 	+media('<desk-lg')
-		//margin-top: -#{$header-height--lg + round($layout-spaces--lg*0.9)}
-		//margin: 0 -#{round($layout-spaces--lg + nth($pc-btn-size--md, 1)/2)}
 		+size(nth($pc-btn-size--md, 1), nth($pc-btn-size--md, 2))
 		margin: -#{round($layout-spaces--lg*0.9 + nth($pc-btn-size--md, 2)/2)} -#{round($layout-spaces--lg + nth($pc-btn-size--md, 1)/2)} 0
 
@@ -371,8 +371,8 @@ $p-card-elem-bottom-space--md: 25px
 		+size(nth($pc-btn-size--sm, 1), nth($pc-btn-size--sm, 2))
 		margin: -#{round($layout-spaces--sm*0.9 + nth($pc-btn-size--sm, 2)/2)} -#{round($layout-spaces--sm + nth($pc-btn-size--sm, 1)/2)} 0
 
-	//+media('<mob-lg')
-		margin-top: -#{$header-height--lg + round($layout-spaces--mob*0.9)}
+	+media('<tab-lg')
+		display: none
 
 	// zoom on
 	.zoom-on &
