@@ -3,20 +3,60 @@
 <style>
 	.iconsList > div{
 		display: inline-block;
-		vertical-align: top;
-		margin-bottom: 20px;
-		margin-right: 20px;
+		vertical-align: middle;
+		margin: 0.5rem;
+	}
+	.iconsList > svg{
+		display: inline-block;
+		vertical-align: middle;
+		margin: 0.5rem;
 	}
 	.iconsList > div svg{
 		display: inline-block;
 		vertical-align: top;
+		margin: 0;
 	}
 </style>
 <!--NOT USE !!! end-->
 <div class="iconsList">
-	@@loop("_tpl_icons-list-items.html", "includes-json/icons-list-items.json")
-	<div style="display: block;"></div>
-	@@loop("_tpl_icons-list-items.html", "includes-json/icons-list-items--social.json")
-	<div style="display: block;"></div>
+	<div style="display: block;">Иконки</div>
+	@@include("includes-json/svg/icon-arr-l.svg")
+	@@include("includes-json/svg/icon-arr-r.svg")
+	@@include("includes-json/svg/icon-menu-full.svg")
+	@@include("includes-json/svg/icon-menu-short.svg")
+	@@include("includes-json/svg/icon-menu-short-lg.svg")
+	@@include("includes-json/svg/icon-basket-alt.svg")
+	@@include("includes-json/svg/icon-basket.svg")
+	@@include("includes-json/svg/icon-basket-add.svg")
+	@@include("includes-json/svg/icon-email.svg")
+	@@include("includes-json/svg/icon-email-alt.svg")
+	@@include("includes-json/svg/icon-user.svg")
+	@@include("includes-json/svg/icon-search.svg")
+	@@include("includes-json/svg/icon-fax.svg")
+	@@include("includes-json/svg/icon-phone.svg")
+	@@include("includes-json/svg/icon-ql.svg")
+	@@include("includes-json/svg/icon-qr.svg")
+	@@include("includes-json/svg/icon-share.svg")
+	@@include("includes-json/svg/icon-upload.svg")
+	@@include("includes-json/svg/icon-catalog.svg")
+	@@include("includes-json/svg/icon-scroll.svg")
+	@@include("includes-json/svg/icon-bin.svg")
+	@@include("includes-json/svg/icon-filters.svg")
+	<div style="display: block;">Социальные иконки</div>
+	@@include("includes-json/svg/icon-facebook.svg")
+	@@include("includes-json/svg/icon-odnoklassniki.svg")
+	@@include("includes-json/svg/icon-vkontakte.svg")
+	@@include("includes-json/svg/icon-twitter.svg")
+	<div style="display: block;">Документы для скачивания</div>
+	@@include("includes-json/svg/icon-doc.svg")
+	@@include("includes-json/svg/icon-exl.svg")
+	@@include("includes-json/svg/icon-gif.svg")
+	@@include("includes-json/svg/icon-jpg.svg")
+	@@include("includes-json/svg/icon-pdf.svg")
+	@@include("includes-json/svg/icon-png.svg")
+	@@include("includes-json/svg/icon-rar.svg")
+	@@include("includes-json/svg/icon-txt.svg")
+	@@include("includes-json/svg/icon-zip.svg")
 </div>
+<div class="user-spacer">&nbsp;</div>
 <!--icons list end-->

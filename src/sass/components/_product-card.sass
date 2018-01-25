@@ -5,11 +5,13 @@
 /*product card*/
 $p-card-space: 100px
 $p-card-space--hd: 80px
-$p-card-space--lg: 60px
+$p-card-space--md: 50px
+$p-card-space--sm: 30px
 $p-card-ratio: 55% 45%
 $p-card-ratio--lg: 50% 50%
 
 $p-card-elem-bottom-space: 40px
+$p-card-elem-bottom-space--md: 25px
 
 .p-card
 	background-color: rgba(255, 250, 205, 0.51)
@@ -20,9 +22,16 @@ $p-card-elem-bottom-space: 40px
 	//+media('<desk-lg')
 		margin-bottom: $bottom-space--ml
 
+	.breadcrumbs
+		+media('<desk-md')
+			margin-bottom: $p-card-elem-bottom-space--md
+
 // title
 .p-card__title
 	margin-bottom: $p-card-elem-bottom-space
+
+	+media('<desk-md')
+		margin-bottom: $p-card-elem-bottom-space--md
 
 	h1, h2, h3
 		+font-alt-bold
@@ -30,9 +39,12 @@ $p-card-elem-bottom-space: 40px
 		letter-spacing: 0.05em
 		margin-bottom: $p-card-elem-bottom-space
 
+		+media('<desk-md')
+			+font($font-size-h2--md, $line-height-h2--md)
+			margin-bottom: $p-card-elem-bottom-space--md
+
 		+media('<mob-lg')
-			+font(#{$font-size-h1--sm}, #{$line-height-h1--sm})
-			margin-bottom: $bottom-space
+			+font($font-size-h2--sm, $line-height-h2--sm)
 
 		&:last-child
 			margin-bottom: 0
@@ -91,7 +103,10 @@ $p-card-elem-bottom-space: 40px
 		+padding-horizontal($p-card-space--hd)
 
 	+media('<desk-lg')
-		+padding-horizontal($p-card-space--lg)
+		+padding-horizontal($p-card-space--md)
+
+	+media('<desk-sm')
+		+padding-horizontal($p-card-space--sm)
 
 .p-card__visual
 	float: left
@@ -153,6 +168,9 @@ $p-card-elem-bottom-space: 40px
 .p-card__widget
 	margin-top: $p-card-elem-bottom-space
 	+font(#{$font-size}, #{$line-height})
+
+	+media('<desk-md')
+		margin-top: $p-card-elem-bottom-space--md
 
 	&:first-child
 		margin-top: 0
@@ -271,7 +289,7 @@ $p-card-elem-bottom-space: 40px
 
 // list of colors
 .p-card__color
-	+clear-spacing
+	+clear
 
 	&, .#{$user-content} &
 		padding: 0 0 1px 1px
@@ -289,8 +307,9 @@ $p-card-elem-bottom-space: 40px
 
 	li
 		position: relative
-		+display-inline-block-top
-		width: 33.28%
+		float: left
+		width: 33.33%
+		min-width: 170px
 		border: 1px solid $border-color
 		+font($font-size, $line-height)
 		letter-spacing: normal
@@ -317,13 +336,15 @@ $p-card-elem-bottom-space: 40px
 // previous and next products
 .p-card__btn
 	$pc-btn-size: 300px 430px // width height
-	$pc-btn-size--md: 200px 430px // width height
+	$pc-btn-size--md: 180px 430px // width height
+	$pc-btn-size--sm: 120px 320px // width height
 	$animation-speed: $animation-speed
 	// ==================
 	position: absolute
-	top: 160px
+	top: 130px
+	top: 50vh
 	+size(nth($pc-btn-size, 1), nth($pc-btn-size, 2))
-	margin: 0 -#{round($layout-spaces + nth($pc-btn-size, 1)/2)}
+	margin: -#{round($layout-spaces*0.9 + nth($pc-btn-size, 2)/2)} -#{round($layout-spaces + nth($pc-btn-size, 1)/2)} 0
 	text-decoration: none
 	color: inherit
 	//z-index: 15
@@ -336,11 +357,22 @@ $p-card-elem-bottom-space: 40px
 	background-color: rgba(0, 108, 255, 0.51)
 
 	+media('<desk-hd')
-		margin: 0 -#{round($layout-spaces--hd + nth($pc-btn-size, 1)/2)}
+		//margin-top: -#{$header-height + round($layout-spaces--hd*0.9)}
+		//margin: 0 -#{round($layout-spaces--hd + nth($pc-btn-size, 1)/2)}
+		margin: -#{round($layout-spaces--hd*0.9 + nth($pc-btn-size, 2)/2)} -#{round($layout-spaces--hd + nth($pc-btn-size, 1)/2)} 0
 
 	+media('<desk-lg')
+		//margin-top: -#{$header-height--lg + round($layout-spaces--lg*0.9)}
+		//margin: 0 -#{round($layout-spaces--lg + nth($pc-btn-size--md, 1)/2)}
 		+size(nth($pc-btn-size--md, 1), nth($pc-btn-size--md, 2))
-		margin: 0 -#{round($layout-spaces--lg + nth($pc-btn-size--md, 1)/2)}
+		margin: -#{round($layout-spaces--lg*0.9 + nth($pc-btn-size--md, 2)/2)} -#{round($layout-spaces--lg + nth($pc-btn-size--md, 1)/2)} 0
+
+	+media('<desk-sm')
+		+size(nth($pc-btn-size--sm, 1), nth($pc-btn-size--sm, 2))
+		margin: -#{round($layout-spaces--sm*0.9 + nth($pc-btn-size--sm, 2)/2)} -#{round($layout-spaces--sm + nth($pc-btn-size--sm, 1)/2)} 0
+
+	//+media('<mob-lg')
+		margin-top: -#{$header-height--lg + round($layout-spaces--mob*0.9)}
 
 	// zoom on
 	.zoom-on &
@@ -351,6 +383,7 @@ $p-card-elem-bottom-space: 40px
 	.p-card__btn__text
 		// vars ===========
 		$space: 30px
+		$space--sm: 18px
 		$size: 240px 24px
 		//=================
 		position: absolute
@@ -361,7 +394,11 @@ $p-card-elem-bottom-space: 40px
 		right: $space
 		margin: -#{round(nth($size, 2)/2)} 0 0
 
-		//background-color: #05345c
+		+media('<desk-sm')
+			left: $space--sm
+			right: $space--sm
+
+		background-color: #055d93
 
 		span
 			display: block
@@ -378,6 +415,7 @@ $p-card-elem-bottom-space: 40px
 	// arrows in button
 	.p-card__btn__arr
 		$space: 17px
+		$space--sm: 4px
 		//===============
 		position: absolute
 		right: $space
@@ -387,6 +425,10 @@ $p-card-elem-bottom-space: 40px
 			property: transform, opacity
 			duration: $animation-speed
 			//timing-function: cubic-bezier(0, 0.71, 0.41, 1)
+
+		+media('<desk-sm')
+			right: $space--sm
+			left: $space--sm
 
 		&::before, &::after
 			border-color: #e6e6e6

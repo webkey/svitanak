@@ -1752,11 +1752,22 @@ a.c-tr:hover
 	display: table-cell
 
 .c-th
-	padding: 15px #{$grid-space}
-	+font-d($line-height: 20px)
+	padding: round($grid-space*0.5) #{$grid-space}
 	border: solid $bg-color-base
 	border-width: 0 0 0 2px
 	background-color: $bg-color-alt
+	+font-d($line-height: 20px)
+
+	+media('<desk-lg')
+		padding: round($grid-space--md*1.5) #{$grid-space--md}
+
+	+media('<desk-md')
+		font-size: 1.3rem
+		//padding: $grid-space--sm
+
+	+media('<desk-sm')
+		letter-spacing: normal
+		padding: round($grid-space--sm*1.5) #{$grid-space--sm}
 
 	&:first-child
 		border: none
@@ -1769,15 +1780,30 @@ a.c-tr:hover
 		text-align: center
 		+padding-horizontal(5px)
 
-
 		& > span
 			+hide-text
 
 .c-td
-	padding: 28px #{$grid-space}
+	padding: round($grid-space*0.93) #{$grid-space}
 	vertical-align: middle
-	border: solid $border-color
-	border-width: 0 0 1px
+	border-bottom: 1px solid $border-color
+	border-left: 2px solid white
+	+font(1.6rem, round-float(24/16, 1))
+
+	+media('<desk-lg')
+		padding: round($grid-space--md*0.93) #{$grid-space--md}
+
+	+media('<desk-md')
+		font-size: 1.4rem
+
+	+media('<desk-sm')
+		padding: round($grid-space--sm*0.93) #{$grid-space--sm}
+
+	&:first-child
+		border-left: none
+
+	.c-tr:first-child &
+		border-top: 1px solid $border-color
 
 	a
 		text-decoration: none
@@ -1786,9 +1812,25 @@ a.c-tr:hover
 		.no-touchevents &:hover
 			color: $link-color
 
+	// стили для конкретных ячеек
+	&.c-td--growth
+		min-width: 110px
+
+	&.c-td--price
+		min-width: 130px
+
+	&.c-td--spinner
+		text-align: center
+
+// hover
+.c-tr
+	.no-touchevents &:hover
+		.c-td
+			background-color: $bg-color-light
+
 .c-table-result
 	position: relative
-	margin-top: -1px
+	//margin-top: -1px
 	line-height: 0
 	background-color: $bg-color-alt
 	+clear
@@ -1858,9 +1900,20 @@ a.c-tr:hover
 	white-space: nowrap
 	vertical-align: middle
 
+	+media('<desk-sm')
+		text-align: center
+
 	.color-pic
 		vertical-align: middle
 		margin-right: 5px
+
+		+media('<desk-sm')
+			display: block
+			margin: 0 auto
+
+	.dash
+		+media('<desk-sm')
+			display: none
 
 // === results ===
 .c-table-result__text
@@ -1881,8 +1934,12 @@ a.c-tr:hover
 	display: block
 	position: relative
 	+size(90px, 10px)
+	+push-auto
 	background-color: $bg-color-base
 	box-shadow: inset 0 0 0 1px $border-color
+
+	+media('<desk-sm')
+		+size(50px, 16px)
 
 .stock-tape-value
 	background-color: gray

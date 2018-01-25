@@ -521,8 +521,12 @@ function slidersInit() {
 				// Responsive breakpoints
 				breakpoints: {
 					1919: {
-						slidesOffsetBefore: 40,
 						spaceBetween: 40
+					},
+					1199: {
+						spaceBetween: 20,
+						slidesPerView: 4,
+						slidesPerGroup: 4
 					}
 				},
 				// events

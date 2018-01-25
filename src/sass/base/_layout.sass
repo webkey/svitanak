@@ -123,13 +123,13 @@ body
 		margin-bottom: -#{round($layout-spaces--hd*0.9)}
 
 	+media('<desk-lg')
-		margin-bottom: -#{round($layout-spaces--lg*0.9)}
+		margin-bottom: -#{round($layout-spaces--lg*1.5)}
 
 	+media('<desk-sm')
-		margin-bottom: -#{round($layout-spaces--sm*0.9)}
+		margin-bottom: -#{round($layout-spaces--sm*1.5)}
 
 	+media('<mob-lg')
-		margin-bottom: -#{round($layout-spaces--mob*0.9)}
+		margin-bottom: -#{round($layout-spaces--mob*1.5)}
 
 .entry-img
 	padding: #{round($layout-spaces*0.9)} #{$layout-spaces}
@@ -542,19 +542,19 @@ body
 /* fullpage navigation / fp-nav (layout) end
 
 .nav-bottom
-	padding-bottom: #{round($layout-spaces*0.9)}
+	padding-bottom: 80px
 
-	+media('<desk-hd')
+	//+media('<desk-hd')
 		padding-bottom: #{round($layout-spaces--hd*0.9)}
 
 	+media('<desk-lg')
-		padding-bottom: #{round($layout-spaces--lg*0.9)}
+		padding-bottom: 60px
 
 	+media('<desk-sm')
-		padding-bottom: #{round($layout-spaces--sm*0.9)}
+		padding-bottom: 50px
 
 	+media('<mob-lg')
-		padding-bottom: #{round($layout-spaces--mob*0.9)}
+		padding-bottom: 40px
 
 	/* tape slider (layout)
 	.tape-slider-pagination
@@ -1072,16 +1072,19 @@ body
 		margin-top: -#{$header-height + round($layout-spaces--hd*0.9)}
 
 	+media('<desk-lg')
-		margin-top: -#{$header-height + round($layout-spaces--lg*0.9)}
+		margin-top: -#{$header-height--lg + round($layout-spaces--lg*0.9)}
 
 	+media('<desk-sm')
-		margin-top: -#{$header-height + round($layout-spaces--sm*0.9)}
+		margin-top: -#{$header-height--lg + round($layout-spaces--sm*0.9)}
 
 	+media('<mob-lg')
-		margin-top: -#{$header-height + round($layout-spaces--mob*0.9)}
+		margin-top: -#{$header-height--lg + round($layout-spaces--mob*0.9)}
 
 .p-card__gallery__item
 	padding-top: $header-height
+
+	+media('<desk-lg')
+		padding-top: $header-height--lg
 
 /* product card (layout) end
 
