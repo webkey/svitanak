@@ -1668,9 +1668,11 @@ function menuSwitcher() {
 function zoomImages() {
 	var $container = $('.p-card-js');
 	var activeClass = 'zoom-on';
+	var deviceWidth = 992;
 	var timeout;
 
 	$container.on('click', '.p-card__gallery__item', function (e) {
+		if (window.innerWidth <= deviceWidth) {return;}
 		e.preventDefault();
 
 		var $this = $(this),
@@ -2949,6 +2951,7 @@ function textSlide() {
  * !Sticky element on page
  */
 function stickyInit() {
+	var deviceWidth = 992;
 	var $mAside = $('.m-aside');
 	if ($mAside.length) {
 
@@ -3001,8 +3004,7 @@ function stickyInit() {
 			innerWrapperSelector: '.p-card__content__holder',
 			topSpacing: $('.header').outerHeight() + 40,
 			resizeSensor: true, // recalculation sticky on change size of elements
-			minWidth: 992
-
+			minWidth: deviceWidth
 		});
 
 		var shareDropTimeout;

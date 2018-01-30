@@ -527,29 +527,31 @@ $p-card-elem-bottom-space--md: 25px
 		timing-function: cubic-bezier(0,.71,.41,1)
 
 .p-card__gallery__item
-	cursor: url(../../img/cursor-zoom-in.cur), zoom-in
-	user-select: none
+	+media('>tab-lg')
+		cursor: url(../../img/cursor-zoom-in.cur), zoom-in
+		user-select: none
 
 .zoom-on
-	.p-card__content
-		//margin-right: -#{nth($p-card-ratio, 2)}
-		opacity: 0
-		visibility: hidden
+	+media('>tab-lg')
+		.p-card__content
+			//margin-right: -#{nth($p-card-ratio, 2)}
+			opacity: 0
+			visibility: hidden
 
-	.p-card__visual
-		width: 100%
-		margin-right: -#{nth($p-card-ratio, 2)}
+		.p-card__visual
+			width: 100%
+			margin-right: -#{nth($p-card-ratio, 2)}
 
-	.p-card__gallery__item
-		cursor: url(../../img/cursor-zoom-out.cur), zoom-out
-		//height: 100vh
+		.p-card__gallery__item
+			cursor: url(../../img/cursor-zoom-out.cur), zoom-out
+			//height: 100vh
 
-	.p-card__gallery__inner
-		background-size: auto 100%
+		.p-card__gallery__inner
+			background-size: auto 100%
 
-	.p-card__content__frame
-		margin-right: -200px
-		margin-left: 200px
+		.p-card__content__frame
+			margin-right: -200px
+			margin-left: 200px
 
 // для сжатия по высоте / плохо анимируется
 	//.p-card__gallery__inner
