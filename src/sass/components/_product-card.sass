@@ -9,6 +9,7 @@ $p-card-space--md: 50px
 $p-card-space--sm: 30px
 $p-card-ratio: 55% 45%
 $p-card-ratio--lg: 50% 50%
+$p-card-ratio--sm: 100% 100%
 
 $p-card-elem-bottom-space: 40px
 $p-card-elem-bottom-space--md: 25px
@@ -115,10 +116,16 @@ $p-card-elem-bottom-space--md: 25px
 .p-card__visual
 	float: left
 	width: nth($p-card-ratio, 1)
-	margin-bottom: $bottom-space--lg
+	margin-bottom: 5rem
 
 	+media('<desk-lg')
 		width: nth($p-card-ratio--lg, 1)
+		margin-bottom: 4rem
+
+	+media('<tab-lg')
+		float: none
+		width: nth($p-card-ratio--sm, 1)
+		margin-bottom: 3rem
 
 	&:last-child
 		margin-bottom: 0
@@ -193,6 +200,9 @@ $p-card-elem-bottom-space--md: 25px
 
 	+media('<desk-lg')
 		width: nth($p-card-ratio--lg, 2)
+
+	+media('<tab-lg')
+		width: nth($p-card-ratio--sm, 2)
 
 .p-card__content__holder
 	padding-right: 0

@@ -1666,8 +1666,7 @@ function menuSwitcher() {
  * !Zoom images
  * */
 function zoomImages() {
-	var $toggler = $('.p-card__gallery__item'),
-		$container = $('.p-card-js');
+	var $container = $('.p-card-js');
 	var activeClass = 'zoom-on';
 	var timeout;
 
@@ -2958,7 +2957,7 @@ function stickyInit() {
 		// 	innerWrapperSelector: '.m-aside-holder',
 		// 	topSpacing: $('.header').outerHeight() + 20,
 		// 	resizeSensor: false, // recalculation sticky on change size of elements
-		// 	MinWidth: 992
+		// 	minWidth: 992
 		//
 		// });
 		//
@@ -3001,7 +3000,8 @@ function stickyInit() {
 			containerSelector: '.p-card',
 			innerWrapperSelector: '.p-card__content__holder',
 			topSpacing: $('.header').outerHeight() + 40,
-			resizeSensor: true // recalculation sticky on change size of elements
+			resizeSensor: true, // recalculation sticky on change size of elements
+			minWidth: 992
 
 		});
 
