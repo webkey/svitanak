@@ -3161,7 +3161,7 @@ $(window).on('debouncedresize', function () {
 
 $(document).ready(function () {
 	placeholderInit();
-	printShow();
+	printShow(); 
 	inputToggleFocusClass();
 	inputHasValueClass();
 	// inputFilledClass();
