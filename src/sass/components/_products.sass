@@ -1,0 +1,1455 @@
+@import ../utils/_variables
+@import ../utils/_mixins
+@import ../../libs/include-media/dist/_include-media
+
+/* products list
+.products
+	overflow: hidden
+	margin-bottom: $bottom-space--lg
+
+	//+media('<desk-lg')
+		margin-bottom: $bottom-space--ml
+
+	&:last-child
+		margin-bottom: 0
+
+.products__list
+	+grid-parent($products-space)
+	+clear-spacing
+
+	+media('<desk-lg')
+		+grid-parent($products-space--md)
+
+	//+media('<tab-lg')
+		+grid-parent($products-space--sm)
+
+.products__item
+	+grid-item(2, $products-space)
+	+font($font-size, $line-height)
+	letter-spacing: $letter-spacing
+
+	+media('<desk-lg')
+		+grid-item-responsive(2, $products-space--md, 5rem)
+
+	.page--has-m-aside &
+		+media('<desk-md')
+			+grid-item-responsive(1, $products-space--md, $products-space)
+
+	&, .page--has-m-aside &
+		+media('<tab-lg')
+			+grid-item-responsive(1, $products-space--md, 5rem)
+
+.products__inner
+	position: relative
+	display: block
+	text-decoration: none
+	color: inherit
+
+	a
+		text-decoration: none
+		color: inherit
+
+	+clear
+
+.products__brand
+	position: absolute
+	+position(0)
+	z-index: 10
+
+.products__visual
+	float: left
+	width: calc(100% - #{$product-content-width})
+	padding-right: $product-visual-space
+
+	.page--has-m-aside &
+		+media('<desk-hd')
+			padding-top: 50px
+			width: calc(100% - #{$product-content-width--sm})
+
+		+media('<desk-md')
+			padding-top: 0
+			width: calc(100% - #{$product-content-width})
+
+	&, .page--has-m-aside &
+		+media('<mob-lg')
+			padding-top: 50px
+			width: calc(100% - #{$product-content-width--sm})
+
+		+media('<mob-md')
+			float: none
+			width: 100%
+			padding-right: 0
+			padding-top: 0
+			margin-bottom: 3rem
+
+.products__figure
+	display: block
+	position: relative
+	max-width: 240px // ограничиваем ширину изображения продукта
+	+push-auto
+	text-decoration: none
+	color: inherit
+
+	+media('<mob-md')
+		max-width: 160px
+
+	&:before
+		+pseudo-block-relative()
+		+ratio(3, 4)
+
+.products__img
+	+cover-abs()
+
+	.no-image &
+		background: url(../../img/no-img-product.png) no-repeat center
+		background-size: contain
+
+	img
+		display: block
+		width: 100%
+		height: 100%
+		max-width: none
+		+object-fit(cover)
+
+.products__title, .products__content, .products__footer
+	float: right
+	clear: right
+	width: $product-content-width
+	margin-bottom: $bottom-space--ml
+
+	.page--has-m-aside &
+		+media('<desk-hd')
+			width: $product-content-width--sm
+
+		+media('<desk-md')
+			width: $product-content-width
+
+	&, .page--has-m-aside &
+		+media('<mob-lg')
+			width: $product-content-width--sm
+
+		+media('<mob-md')
+			float: none
+			clear: none
+			width: 100%
+			margin-bottom: 2rem
+
+.products__content, .products__footer
+	&:last-child
+		margin-bottom: 0
+
+.products__title
+	+font-d($line-height: round-float(24/14, 2))
+	overflow: hidden
+
+	a
+		padding-top: 0.5em
+		text-decoration: none
+		color: inherit
+		transition: inherit
+
+	.products__model
+		display: none
+
+	//hover
+	.no-touchevents a:hover &
+		color: $base-color
+
+		.products__model
+			color: $text-color-light
+
+.products__model
+	+font-normal
+	color: $text-color-light
+	letter-spacing: $letter-spacing
+
+	&::before
+		content: "/ "
+
+// list of characteristics
+.products__dl
+	margin-bottom: $bottom-space
+
+	&:last-child
+		margin-bottom: 0
+
+.products__di
+	position: relative
+	padding: 5px 0
+	border-bottom: 1px dashed $text-color-light
+	+clear
+
+.products__dt
+	float: left
+	width: $product-dt
+	color: $text-color-light
+	padding-right: 10px
+
+.products__dd
+	margin-left: $product-dt
+
+// colors
+.products__dd
+	.color-pics
+		+clear-spacing
+		margin-top: -10px
+		padding-top: 8px
+
+// footer
+.products__footer
+	+clear
+
+// price
+.products__price
+	float: left
+	width: $product-dt
+	padding-right: 10px
+
+	.cur
+		display: block
+		line-height: 30px
+		color: $base-color
+
+		.val
+			+font-bold
+			font-size: 16px
+			letter-spacing: 0.025em
+
+		.unit
+			+font-normal
+			font-size: 12px
+			letter-spacing: 0.05em
+
+.products__basket
+	margin-left: $product-dt
+	line-height: 1
+
+// btn to basket
+.btn-to-basket, .btn-from-basket
+	$btn-space: 10px
+	//====================
+	+display-inline-block-top
+	cursor: default
+	color: inherit
+	text-align: center
+	white-space: nowrap
+	+clear-spacing
+	user-select: none
+
+	svg, span
+		+display-inline-block-middle
+
+	.svg-ico-basket
+		+size(22px)
+
+	.svg-ico-basket-add
+		+size(32px, 22px)
+
+	path
+		fill: inherit
+
+	span
+		padding-right: $btn-space
+		+font($font-size, $line-height)
+		letter-spacing: $letter-spacing
+		text-align: left
+		white-space: normal
+
+	svg + span
+		padding-right: 0
+		padding-left: $btn-space
+
+// hover
+a.btn-to-basket
+	cursor: pointer
+
+	.no-touchevents &:hover
+		color: $link-color
+		fill: $link-color
+
+.btn-from-basket
+	display: none
+	color: $base-color
+	fill: $base-color
+
+.products__item.in-cart
+	.btn-to-basket
+		display: none
+
+	.btn-from-basket
+		display: inline-block
+
+/* grid view
+.grid-view
+	.products__list
+		+grid-parent($products-grid-space)
+		+clear-spacing
+
+		+media('<mob-lg')
+			+grid-parent($products-grid-space--md)
+
+	.products__item
+		+grid-item(4, $products-grid-space, $products-space)
+
+		.page--has-m-aside &
+			+media('<desk-md')
+				+grid-item-responsive(3, $products-grid-space, $products-space)
+
+			+media('<desk-sm')
+				+grid-item-responsive(3, $products-grid-space, $products-space--md)
+
+		&, .page--has-m-aside &
+			+media('<mob-lg')
+				+grid-item-responsive(2, $products-grid-space--md, $products-space--md)
+
+			+media('<mob-md')
+				+grid-item-responsive(1, $products-grid-space--md, $products-space--md)
+
+	.products__visual, .products__title, .products__content, .products__footer
+		float: none
+		width: auto
+
+	.products__visual
+		padding: 0
+		margin-bottom: $bottom-space--ml
+
+		&:last-child
+			margin-bottom: 0
+
+	.products__title
+		//+padding-horizontal($grid-space)
+		+font-normal
+		+font(16px, round-float(24/16, 2))
+		letter-spacing: $letter-spacing
+		text-align: center
+		text-transform: none
+		max-width: 260px
+		margin: 0 auto 1.5rem
+
+		.products__model
+			display: inline
+
+	.products__content
+		display: none
+
+	// price
+	.products__price
+		text-align: center
+		float: none
+		width: auto
+		padding: 0
+
+	.products__basket
+		position: absolute
+		top: 0
+		right: 0
+		margin: 0
+		z-index: 10
+
+	.btn-to-basket,
+	.btn-from-basket
+		span
+			display: none
+
+/* grid view end
+
+// для маленьких мониторов
+/* for mobile
++media('<tab-lg')
+
+.products__item
+	+media('<mob-lg')
+
+/* for mobile end
+/* products list end
+
+/* ================= */
+/* ================= */
+
+/* products filters
+$p-filters-angle-lines-size: 10px, 2px // width, height
+$p-filters-angle-lines-color: $text-color
+
+.p-filters-list
+	+clear-spacing
+	padding-bottom: 1px
+	margin-bottom: $bottom-space--md
+
+	&:last-child
+		margin-bottom: 0
+
+.p-filters-item
+	position: relative
+	+font($font-size, $line-height)
+	letter-spacing: $letter-spacing
+	border-bottom: 1px solid $text-color
+	margin-bottom: $bottom-space
+
+	&:last-child
+		margin-bottom: 0
+
+.p-filters-inner
+	text-decoration: none
+	color: inherit
+
+.p-filters-select
+	position: relative
+
+.p-filters-select-head
+	padding: 5px 20px 5px 0
+	cursor: pointer
+
+// angle
+.p-filters-angle
+	position: absolute
+	right: 0
+	top: 50%
+	+size(nth($p-filters-angle-lines-size, 1), nth($p-filters-angle-lines-size, 2))
+	margin-top: -#{round(nth($p-filters-angle-lines-size, 2)*0.5)}
+	transition:
+		property: transform
+		duration: $animation-speed
+
+	&::before, &::after
+		+pseudo()
+		left: 0
+		+size(nth($p-filters-angle-lines-size, 1), nth($p-filters-angle-lines-size, 2))
+		background-color: $p-filters-angle-lines-color
+		transition:
+			property: transform
+			duration: $animation-speed
+
+	&::before
+		top: 0
+
+	&::after
+		top: 0
+		transform: rotate(90deg) translateZ(0)
+
+		.ie9 &
+			transform: rotate(90deg)
+
+.p-filters__title
+	+font-d
+	color: inherit
+
+.p-filters-drop
+	position: relative
+	display: none
+
+.p-filters-drop-list
+
+	&, .#{$user-content} &
+		margin: 0
+		padding: #{round($grid-space*0.8)} 0 $grid-space
+
+		li
+			padding-left: 0
+			margin: 0 0 15px
+
+			&::before
+				content: none
+
+			&:last-child
+				margin-bottom: 0
+
+	label
+		display: block
+		font-size: 14px
+		letter-spacing: 0.05em
+		//text-transform: uppercase
+
+		//.no-touchevents &:hover
+			color: $link-color
+
+		[type="checkbox"]:checked
+			& ~ span
+				+font-bold
+
+// hover, active, has checked filters
+.no-touchevents .p-filters-select:hover,
+.p-filters-item.p-filters-on
+	color: $base-color
+
+	.p-filters-angle
+		&::before, &::after
+			background-color: $base-color
+
+// drop open
+.p-filters-item.p-filters-is-open
+	.p-filters-angle
+		transform: rotate(0.5turn) translateZ(0)
+
+		&::after
+			transform: rotate(0) translateZ(0)
+
+		.ie9 &
+			transform: rotate(0.5turn)
+
+			&::after
+				transform: rotate(0)
+
+	.p-filters-drop
+		display: block
+
+/* filters tags
+.p-filters-tags
+	position: relative
+	margin-bottom: $bottom-space
+	min-height: 30px
+
+	+media('<desk-lg')
+		margin-bottom: $bottom-space
+
+	+media('<tab-lg')
+		display: none
+		min-height: 0
+
+	&:last-child
+		margin-bottom: 0
+
+	.m-content &
+		display: none
+
+		+media('<tab-lg')
+			display: block
+
+.p-filters-tags__frame
+	cursor: default
+	background-color: rgba($bg-color-base, 0.8)
+
+.p-filters-tags__item
+	+display-inline-block-top
+	position: relative
+	margin: 6px 25px 6px 0
+	cursor: pointer
+	color: inherit
+	padding: 0 0 0 20px
+	+font(12px, 18px)
+	letter-spacing: 0.05em
+	text-transform: uppercase
+
+	& > span
+		+display-inline-block-top
+		+truncate(120px)
+
+	&:last-child::after
+		content: none
+
+	& > i
+		$this-icon-lines-width: 10px
+		$this-icon-lines-height: 2px
+		$this-icon-lines-color: $text-color
+
+		position: absolute
+		left: 0
+		top: 50%
+		+size(#{round($this-icon-lines-width*1.5)})
+		margin-top: -#{round($this-icon-lines-width*1.5*0.5)}
+		border-radius: 0
+		background-color: transparent
+		+font(0, 0)
+
+		&::before, &::after
+			+pseudo()
+			left: 50%
+			top: 50%
+			backface-visibility: hidden
+			+size($this-icon-lines-width, $this-icon-lines-height)
+			margin: -#{round($this-icon-lines-height*0.5)} 0 0 -#{round($this-icon-lines-width*0.5)}
+			background-color: $this-icon-lines-color
+
+		&::before
+			transform: rotate(-45deg)
+
+		&::after
+			transform: rotate(45deg)
+
+	.no-touchevents &:hover
+		color: $base-color
+
+		& > i
+			&::before, &::after
+				background-color: $base-color
+
+/* filters tags end
+/* products filters end
+
+/* ================= */
+/* ================= */
+
+/* options panel
+.p-options
+	position: relative
+	margin-bottom: 6rem
+
+	+media('<desk-sm')
+		margin-bottom: 4rem
+
+	+media('<tab-lg')
+		border: 1px solid $border-color
+
+	+media('<mob-lg')
+		margin-bottom: 3rem
+
+	&:last-child
+		margin-bottom: 0
+
+.p-options__list
+	display: flex
+	justify-content: flex-end
+	align-items: center
+	flex-wrap: nowrap
+
+	//.no-flexbox &
+		display: table
+		width: 100%
+		table-layout: fixed
+
+	+media('<mob-md')
+		//display: block
+		position: relative
+		padding-right: 60px
+		min-height: 80px
+
+.p-options__item
+	+font-d
+	font-style: normal
+	text-align: center
+
+	+media('<tab-lg')
+		font-size: 12px
+
+	&:first-child
+		text-align: left
+		flex: 1 1
+
+		+media('<tab-lg')
+			padding: round($grid-space/2) $grid-space
+
+		+media('<mob-lg')
+			padding: round($grid-space--md/2) $grid-space--md
+
+	&:last-child
+		text-align: right
+
+	.no-flexbox &
+		display: table-cell
+		vertical-align: middle
+
+	.view-switcher
+		+display-inline-block-top
+
+		+media('<tab-lg')
+			display: block
+			height: 100%
+
+	&.p-options__item--filters-show,
+	&.p-options__item--view-switcher
+		+media('<tab-lg')
+			+size(60px)
+			border: 1px solid $border-color
+			margin: -1px -1px -1px 0
+
+		+media('<mob-md')
+			position: absolute
+			right: -1px
+			bottom: -1px
+			margin: 0
+			height: calc(50% + 2px)
+
+	&.p-options__item--filters-show
+		display: none
+
+		+media('<tab-lg')
+			display: block
+
+		+media('<mob-md')
+			top: -1px
+			height: calc(50% + 1px)
+
+.btn-filters-show
+	position: relative
+	+display-inline-block-top
+	color: $text-color
+	user-select: none
+
+	+media('<tab-lg')
+		display: block
+		height: 100%
+
+	& > span
+		+hide-text
+
+	svg
+		+display-inline-block-top
+		+size(24px)
+
+		+media('<tab-lg')
+			position: absolute
+			left: 50%
+			top: 50%
+			margin: -12px 0 0 -12px
+
+	path
+		fill: currentColor
+
+	// hover
+	.no-touchevents &:hover
+		color: $base-color
+
+
+//.view-switcher-wrap
+	+media('<tab-lg')
+		display: none
+
+.p-options__inner
+	position: relative
+	height: 100% // нужно, когда принимают форму квадрата на девайсах
+
+.p-options__group
+	display: flex
+	justify-content: flex-start
+	align-items: center
+	user-select: none
+	text-align: left
+
+	//+media('<tab-lg')
+		justify-content: flex-end
+
+	//+media('<tab-sm')
+		justify-content: center
+
+	.p-options__label
+		+display-inline-block-middle
+		margin: 4px 25px 4px 0
+		+font(inherit, inherit)
+		color: $text-color-light
+
+		+media('<desk-md')
+			margin-right: 15px
+
+		+media('<tab-sm')
+			display: none
+
+.p-sorting
+	+display-inline-block-middle
+
+	&, .#{$user-content} &
+		margin: 0
+
+		li
+			padding: 0
+			margin: 4px 18px 4px 0
+
+			+media('<desk-md')
+				margin-right: 10px
+
+			&::before
+				content: none
+
+	//&.active
+		padding-right: 38px
+
+	li
+		+display-inline-block-top
+		white-space: nowrap
+		position: relative
+		cursor: pointer
+
+		// стрелочка развернута ВВЕРХ, сортировака ПО ВОЗРАСТАНИЮ
+		.arr
+			position: absolute
+			top: 50%
+			right: 0
+			+triangle(top, #{$text-color}, 4px, 2)
+			margin-top: -4px
+			opacity: 0
+			transform: rotate(0) translateZ(0)
+			transition:
+				property: transform, opacity
+				duration: $animation-speed
+
+			.order-desc &
+				transform: rotate(0.5turn) translateZ(0)
+
+	a
+		display: block
+		position: relative
+		text-decoration: none
+		color: inherit
+		padding: 0 12px 0 0
+
+		// hover
+		&:hover
+			color: $base-color
+
+		& > span em
+			display: none
+			font-style: inherit
+			font-weight: inherit
+			font-family: inherit
+
+			+media('<tab-sm')
+				display: inline
+
+	// активное соотояние
+	li.active
+
+		a
+			color: $base-color
+
+			& > span
+				border-bottom-color: transparent
+
+			// стрелочка развернута ВНИЗ, сортировака ПО УБЫВАНИЮ
+			.arr
+				opacity: 1
+				border-bottom-color: $base-color
+
+/* options panel end
+
+/* ================= */
+/* ================= */
+
+/* product card
+.p-card
+	background-color: rgba(255, 250, 205, 0.51)
+
+	+clear
+	//margin-bottom: $bottom-space--lg
+
+	//+media('<desk-lg')
+		margin-bottom: $bottom-space--ml
+
+	.breadcrumbs
+		+media('<desk-md')
+			margin-bottom: $p-card-elem-bottom-space--md
+
+// title
+.p-card__title
+	margin-bottom: $p-card-elem-bottom-space
+
+	+media('<desk-md')
+		margin-bottom: $p-card-elem-bottom-space--md
+
+	h1, h2, h3
+		+font-alt-bold
+		+font(#{$font-size-h2}, #{$line-height-h2})
+		letter-spacing: 0.05em
+		margin-bottom: $p-card-elem-bottom-space
+
+		+media('<desk-md')
+			+font($font-size-h2--md, $line-height-h2--md)
+			margin-bottom: $p-card-elem-bottom-space--md
+
+		+media('<mob-lg')
+			+font($font-size-h2--sm, $line-height-h2--sm)
+
+		&:last-child
+			margin-bottom: 0
+
+	.to-catalog
+		text-align: right
+		margin-bottom: $bottom-space
+
+.p-card__state
+	+font-d()
+
+	.p-card__model, .p-card__store
+		+display-inline-block-top
+
+.p-card__model
+	color: $text-color-light
+
+.p-card__store
+	&::before
+		content: "/"
+		display: none
+		color: $text-color-light
+
+	.p-card__model + &::before
+		display: inline-block
+
+	svg
+		+display-inline-block-top
+		+size(14px)
+		margin-top: 3px
+
+	path, polygon
+		fill: inherit
+
+	&.on
+		$color: #32b39b
+		// ================
+		color: $color
+		fill: $color
+
+	&.off
+		$color: #ff203b
+		// ================
+		color: $color
+		fill: $color
+
+		svg
+			+size(10px)
+			margin-top: 5px
+
+// product photos
+.p-card, .p-card__content__holder
+	padding: 0 $p-card-space
+
+	+media('<desk-hd')
+		+padding-horizontal($p-card-space--hd)
+
+	+media('<desk-lg')
+		+padding-horizontal($p-card-space--md)
+
+	+media('<desk-sm')
+		+padding-horizontal($p-card-space--sm)
+
+	+media('<tab-lg')
+		+padding-horizontal(0)
+
+.p-card
+	+media('<tab-lg')
+		+padding-horizontal(0)
+
+.p-card__visual
+	float: left
+	width: nth($p-card-ratio, 1)
+	margin-bottom: $bottom-space--lg
+
+	+media('<desk-lg')
+		width: nth($p-card-ratio--lg, 1)
+		margin-bottom: $bottom-space--lg
+
+	+media('<tab-lg')
+		float: none
+		width: nth($p-card-ratio--sm, 1)
+		margin-bottom: $bottom-space--md
+
+	+media('<tab-sm')
+		margin-bottom: $bottom-space--sm
+
+	&:last-child
+		margin-bottom: 0
+
+.p-card__gallery__list
+	margin-bottom: $bottom-space--lg
+
+	background-color: lightgoldenrodyellow
+
+	+media('<desk-hd')
+		margin-bottom: $bottom-space--md
+
+	+media('<tab-sm')
+		margin-bottom: $bottom-space--sm
+
+	&:last-child
+		margin-bottom: 0
+
+.p-card__gallery__item
+	//height: calc(100vh - 264px) // костыль
+	position: relative
+	height: 100vh
+	text-align: center
+	// для сжатия по высоте / плохо анимируется
+	//+clear-spacing
+
+	+media('<tab-lg')
+		height: 620px
+
+	// для сжатия по высоте / плохо анимируется
+	//&::before
+		content: ""
+		display: inline-block
+		vertical-align: middle
+		+size(0, 100%)
+
+	img
+		display: block
+		width: 100%
+		height: 100%
+		max-width: none
+		+object-fit(none)
+		//+object-fit(scale-down)
+		+object-fit(contain)
+		visibility: hidden
+
+		+media('<tab-lg')
+			visibility: visible
+
+		.no-js &
+			width: auto
+			height: auto
+			max-width: 100%
+
+.p-card__gallery__inner
+	// для сжатия по высоте / плохо анимируется
+	//+display-inline-block-middle
+	+size(100%, 100%)
+	font-size: $font-size
+	letter-spacing: normal
+	background-position: center
+	background-repeat: no-repeat
+	background-size: auto 80%
+
+	+media('<tab-lg')
+		background: none !important
+
+/* p-card__gallery
+.p-card__gallery__list
+	.swiper-wrapper
+		+media('>=tab-lg')
+			// remove vendor styles
+			transform: none !important
+			display: block
+			width: auto
+			height: auto
+			z-index: auto
+
+.p-card__gallery__item
+	+media('>=tab-lg')
+		width: auto !important
+
+	&.swiper-slide-duplicate
+		+media('>=tab-lg')
+			display: none
+
+.swiper-lazy-preloader
+	+media('>=tab-lg')
+		display: none
+
+.p-card__gallery__prev,
+.p-card__gallery__next,
+.p-card__gallery__pagination
+	user-select: none
+
+	+media('>=tab-lg')
+		display: none
+
+.p-card__gallery__prev,
+.p-card__gallery__next
+	top: auto
+	bottom: 2.5rem
+	margin-bottom: 3px
+
+	&::before, &::after
+		border-color: $text-color
+
+.p-card__gallery__prev
+	left: 0
+
+.p-card__gallery__next
+	right: 0
+
+.p-card__gallery__pagination
+	position: absolute
+	left: 50%
+	bottom: 2.5rem
+	width: auto
+	min-width: 85px
+	+padding-horizontal(25px)
+	transform: translate(-50%, 0)
+	+font-alt-italic
+	+font(20px, 1)
+	text-align: center
+
+/* p-card__gallery end
+
+// widget
+.p-card__widget
+	margin-top: $p-card-elem-bottom-space
+	+font(#{$font-size}, #{$line-height})
+
+	+media('<desk-md')
+		margin-top: $p-card-elem-bottom-space--md
+
+	&:first-child
+		margin-top: 0
+
+.p-card__widget__title
+	display: block
+	+font-d()
+	margin-bottom: $bottom-space--sm
+
+// info
+.p-card__content
+	width: nth($p-card-ratio, 2)
+	float: right
+	clear: right
+	will-change: min-height
+
+	+media('<desk-lg')
+		width: nth($p-card-ratio--lg, 2)
+
+	+media('<tab-lg')
+		width: nth($p-card-ratio--sm, 2)
+
+.p-card__content__holder
+	padding-right: 0
+	padding-bottom: $bottom-space--lg
+	transform: translate(0, 0) /* For browsers don't support translate3d. */
+	transform: translate3d(0, 0, 0)
+	will-change: position, transform
+
+	background-color: rgba(147, 112, 219, 0.21)
+	
+	+media('<desk-lg')
+		padding-bottom: $bottom-space--md
+
+	+media('<tab-lg')
+		padding-bottom: $bottom-space--ml
+
+	+media('<tab-sm')
+		padding-bottom: $bottom-space--sm
+
+// price
+.p-card__price
+	+font-normal
+	line-height: 24px
+	color: $base-color
+
+	.val
+		display: inline-block
+		vertical-align: baseline
+		+font-bold
+		font-size: 18px
+
+	small
+		display: inline-block
+		vertical-align: baseline
+		font-size: 14px
+
+	.old, .cur
+		position: relative
+		display: inline-block
+		vertical-align: baseline
+		margin-right: $grid-space
+
+	.old
+		color: $text-color-light
+
+		&::after
+			+pseudo()
+			+size(calc(100% + 4px), 0)
+			left: -2px
+			bottom: 50%
+			margin-bottom: -1px
+			border-top: 1px solid $text-color-light
+
+		.val
+			font-size: 14px
+
+		small
+			font-size: 10px
+
+// list of characteristics
+.p-card__options__dl
+	margin-bottom: $p-card-elem-bottom-space
+	$dt-width: 184px
+
+	&:last-child
+		margin-bottom: 0
+
+	.p-card__options__di
+		position: relative
+		padding: 10px 0
+		border-bottom: 1px dashed $text-color-light
+		+clear
+
+	.p-card__options__dt
+		float: left
+		width: $dt-width
+		color: $text-color-light
+		padding-right: 10px
+
+	.p-card__options__dd
+		margin-left: $dt-width
+
+// list of grid view parameters
+.p-card__options__grid
+	+clear
+
+	&, .#{$user-content} &
+		padding: 0 0 1px 1px
+		margin: 0 0 $p-card-elem-bottom-space
+
+		&:last-child
+			margin-bottom: 0
+
+		li
+			padding: 8px
+			margin: 0 0 -1px -1px
+
+			&::before
+				content: none
+
+	li
+		float: left
+		min-width: 60px
+		border: 1px solid $border-color
+		+font(16px, 20px)
+		text-align: center
+
+// list of colors
+.p-card__color
+	+clear
+
+	&, .#{$user-content} &
+		padding: 0 0 1px 1px
+		margin: 0 0 $p-card-elem-bottom-space
+
+		&:last-child
+			margin-bottom: 0
+
+		li
+			padding: 8px 8px 8px 42px
+			margin: 0 0 -1px -1px
+
+			&::before
+				content: none
+
+	li
+		position: relative
+		float: left
+		width: 33.33%
+		min-width: 170px
+		border: 1px solid $border-color
+		+font($font-size, $line-height)
+		letter-spacing: normal
+		+truncate(none)
+		cursor: default
+
+		+media('<tab-lg')
+			width: 25%
+
+	.color-pic
+		position: absolute
+		left: 19px
+		top: 14px
+		margin: 0
+		z-index: 5
+		will-change: transform
+		transition:
+			property: transform
+			duration: 0.6s
+
+	.no-touchevents & li:hover
+		.color-pic
+			$scale: 30
+			transform: scale($scale)
+			transform: scale3d($scale, $scale, $scale)
+
+// previous and next products
+.p-card__btn
+	$pc-btn-size: 300px 430px // width height
+	$pc-btn-size--md: 180px 430px // width height
+	$pc-btn-size--sm: 120px 320px // width height
+	$animation-speed: $animation-speed
+	// ==================
+	position: absolute
+	top: 130px
+	top: 50vh
+	+size(nth($pc-btn-size, 1), nth($pc-btn-size, 2))
+	margin: -#{round($layout-spaces*0.9 + nth($pc-btn-size, 2)/2)} -#{round($layout-spaces + nth($pc-btn-size, 1)/2)} 0
+	text-decoration: none
+	color: inherit
+	//z-index: 15
+	will-change: color, opacity, visibility
+	transition:
+		property: color, opacity, visibility
+		duration: $animation-speed
+	//timing-function: cubic-bezier(0, 0.71, 0.41, 1)
+
+	background-color: rgba(0, 108, 255, 0.51)
+
+	+media('<desk-hd')
+		margin: -#{round($layout-spaces--hd*0.9 + nth($pc-btn-size, 2)/2)} -#{round($layout-spaces--hd + nth($pc-btn-size, 1)/2)} 0
+
+	+media('<desk-lg')
+		+size(nth($pc-btn-size--md, 1), nth($pc-btn-size--md, 2))
+		margin: -#{round($layout-spaces--lg*0.9 + nth($pc-btn-size--md, 2)/2)} -#{round($layout-spaces--lg + nth($pc-btn-size--md, 1)/2)} 0
+
+	+media('<desk-sm')
+		+size(nth($pc-btn-size--sm, 1), nth($pc-btn-size--sm, 2))
+		margin: -#{round($layout-spaces--sm*0.9 + nth($pc-btn-size--sm, 2)/2)} -#{round($layout-spaces--sm + nth($pc-btn-size--sm, 1)/2)} 0
+
+	+media('<tab-lg')
+		display: none
+
+	// zoom on
+	.zoom-on &
+		opacity: 0
+		visibility: hidden
+
+	// title in button
+	.p-card__btn__text
+		// vars ===========
+		$space: 30px
+		$space--sm: 18px
+		$size: 240px 24px
+		//=================
+		position: absolute
+		+size(nth($size, 2))
+		+font(14px, nth($size, 2))
+		top: 50%
+		left: $space
+		right: $space
+		margin: -#{round(nth($size, 2)/2)} 0 0
+
+		+media('<desk-sm')
+			left: $space--sm
+			right: $space--sm
+
+		background-color: #055d93
+
+		span
+			display: block
+			+size(nth($size, 1), nth($size, 2))
+			position: absolute
+			left: 50%
+			top: 50%
+			transform: translate(-50%, -50%) rotate(-0.25turn)
+			text-align: center
+			+truncate(nth($size, 1))
+
+	//background-color: rgba(255, 182, 193, 0.5)
+
+	// arrows in button
+	.p-card__btn__arr
+		$space: 17px
+		$space--sm: 4px
+		//===============
+		position: absolute
+		right: $space
+		left: $space
+		top: 50%
+		transition:
+			property: transform, opacity
+			duration: $animation-speed
+		//timing-function: cubic-bezier(0, 0.71, 0.41, 1)
+
+		+media('<desk-sm')
+			right: $space--sm
+			left: $space--sm
+
+		&::before, &::after
+			border-color: #e6e6e6
+
+	// images in button
+	.p-card__btn__img
+		display: block
+		+size(80%, 100%)
+		+push-auto
+		opacity: 0
+		transition:
+			property: transform, opacity
+			duration: $animation-speed
+		//timing-function: cubic-bezier(0, 0.71, 0.41, 1)
+
+		img
+			display: block
+			width: 100%
+			height: 100%
+			max-width: none
+			+object-fit(none)
+			+object-fit(scale-down)
+
+			.no-js &
+				width: auto
+				height: auto
+				max-width: 100%
+
+	// prev button
+	&.p-card__btn--prev
+		left: 0
+		margin-right: 0
+
+		.p-card__btn__text, .p-card__btn__arr
+			left: auto
+
+		.p-card__btn__img
+			transform: translate(-20px, 0)
+
+	// next button
+	&.p-card__btn--next
+		right: 0
+		margin-left: 0
+
+		.p-card__btn__text, .p-card__btn__arr
+			right: auto
+
+		.p-card__btn__img
+			transform: translate(20px, 0)
+
+	// hover
+	&:hover, &:not(.disabled):hover
+
+		color: $link-color
+
+		// arrows in button
+		.p-card__btn__arr
+			opacity: 0
+
+			&::before, &::after
+				border-color: #e6e6e6
+
+		.p-card__btn__img
+			transform: translate(0, 0)
+			opacity: 0.25
+
+		// hover next btn
+		&.p-card__btn--prev
+
+			// arrows in button
+			.p-card__btn__arr
+				transform: translate(-20px, 0)
+
+		// hover prev btn
+		&.p-card__btn--next
+
+			// arrows in button
+			.p-card__btn__arr
+				transform: translate(20px, 0)
+// zoom on
+.p-card__content, .p-card__visual, .p-card__gallery__item, .p-card__gallery__inner, .p-card__content__frame
+	will-change: margin, width, height, opacity, visibility, background-size
+	transition:
+		property: margin, width, height, opacity, visibility, background-size
+		duration: 0.4s
+		timing-function: cubic-bezier(0,.71,.41,1)
+
+.p-card__gallery__item
+	+media('>=tab-lg')
+		cursor: url(../../img/cursor-zoom-in.cur), zoom-in
+		user-select: none
+
+.zoom-on
+	+media('>=tab-lg')
+		.p-card__content
+			//margin-right: -#{nth($p-card-ratio, 2)}
+			opacity: 0
+			visibility: hidden
+
+		.p-card__visual
+			width: 100%
+			margin-right: -#{nth($p-card-ratio, 2)}
+
+		.p-card__gallery__item
+			cursor: url(../../img/cursor-zoom-out.cur), zoom-out
+		//height: 100vh
+
+		.p-card__gallery__inner
+			background-size: auto 100%
+
+		.p-card__content__frame
+			margin-right: -200px
+			margin-left: 200px
+
+// для сжатия по высоте / плохо анимируется
+	//.p-card__gallery__inner
+		+size(100%)
+
+/* product card end

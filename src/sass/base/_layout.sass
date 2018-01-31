@@ -1078,7 +1078,10 @@ body
 	+media('<desk-sm')
 		margin-top: -#{$header-height--lg + round($layout-spaces--sm*0.9)}
 
-	+media('<mob-lg')
+	+media('<tab-lg')
+		margin-top: 0
+
+	//+media('<mob-lg')
 		margin-top: -#{$header-height--lg + round($layout-spaces--mob*0.9)}
 
 .p-card__gallery__item
@@ -1086,6 +1089,9 @@ body
 
 	+media('<desk-lg')
 		padding-top: $header-height--lg
+
+	+media('<tab-lg')
+		padding-top: 0
 
 /* product card (layout) end
 

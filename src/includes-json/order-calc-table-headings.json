@@ -1,42 +1,48 @@
 [
 	{
-		"class": "",
+		"class": "c-th--photo",
+		"head": "&nbsp;",
+		"colspan": "",
+		"rowspan": ""
+	},
+	{
+		"class": "c-th--title",
 		"head": "Модель",
 		"colspan": "",
 		"rowspan": ""
 	},
 	{
-		"class": "",
+		"class": "c-th--color",
 		"head": "Цвет",
 		"colspan": "",
 		"rowspan": ""
 	},
 	{
-		"class": "",
+		"class": "c-th--size",
 		"head": "Размер",
 		"colspan": "",
 		"rowspan": ""
 	},
 	{
-		"class": "",
+		"class": "c-th--growth",
 		"head": "Рост",
 		"colspan": "",
 		"rowspan": ""
 	},
 	{
-		"class": "",
+		"class": "c-th--stock",
 		"head": "Остаток",
 		"colspan": "",
 		"rowspan": ""
 	},
 	{
-		"class": "",
+		"class": "c-th--price",
 		"head": "Цена",
 		"colspan": "",
 		"rowspan": ""
 	},
 	{
-		"class": "",
+		"class": "c-th--spinner",
 		"head": "Количество",
 		"colspan": "",
 		"rowspan": ""

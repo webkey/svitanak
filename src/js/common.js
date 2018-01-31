@@ -20,7 +20,36 @@ var DESKTOP = device.desktop();
 var MOBILE = device.mobile();
 var TABLET = device.tablet();
 var thisIsHomePage = $('.home-page').length;
-var mediaTablet = 980;
+var mediaTablet = 992;
+var prodCardMediaWidth = 992;
+
+/**
+ * !Lazy load images and iframes
+ * */
+(function () {
+	function lazyLoadPCard() {
+		return new LazyLoad({
+			elements_selector: ".p-card-lazy-js"
+			// , threshold: 0 // fade effect
+		});
+	}
+
+	var pCardLazy = lazyLoadPCard();
+	pCardLazy.destroy();
+	var destroyed = true;
+
+	$(window).on('debouncedresize', function () {
+		if(window.innerWidth < prodCardMediaWidth) {
+			destroyed || pCardLazy.destroy();
+			destroyed || console.log(1);
+			destroyed = true;
+		} else {
+			destroyed && (pCardLazy = lazyLoadPCard());
+			destroyed && console.log(2);
+			destroyed = false;
+		}
+	}).resize();
+})();
 
 /**
  *  Add placeholder for old browsers
@@ -1663,16 +1692,15 @@ function menuSwitcher() {
 }
 
 /**
- * !Zoom images
+ * ! Card gallery
  * */
-function zoomImages() {
+function cardCallery() {
 	var $container = $('.p-card-js');
 	var activeClass = 'zoom-on';
-	var deviceWidth = 992;
 	var timeout;
 
 	$container.on('click', '.p-card__gallery__item', function (e) {
-		if (window.innerWidth <= deviceWidth) {return;}
+		if (window.innerWidth < prodCardMediaWidth) {return;}
 		e.preventDefault();
 
 		var $this = $(this),
@@ -1680,7 +1708,7 @@ function zoomImages() {
 
 		$thisContainer.toggleClass(activeClass);
 
-		$container.trigger('change.zoomImages');
+		$container.trigger('change.cardCallery');
 
 		clearTimeout(timeout);
 
@@ -1693,7 +1721,7 @@ function zoomImages() {
 		if ($container.hasClass(activeClass) && e.keyCode === 27) {
 			$container.removeClass(activeClass);
 
-			$container.trigger('change.zoomImages');
+			$container.trigger('change.cardCallery');
 		}
 	});
 
@@ -1712,21 +1740,24 @@ function zoomImages() {
 	if($cardGallery.length){
 		$cardGallery.each(function () {
 			var $thisSlider = $(this);
-			var $thisBtnNext = $('.swiper-button-next', $thisSlider);
-			var $thisBtnPrev = $('.swiper-button-prev', $thisSlider);
-			var $thisFractPag = $('.swiper-pagination', $thisSlider);
+			var $thisBtnNext = $('.swiper-button-next', $thisSlider),
+				$thisBtnPrev = $('.swiper-button-prev', $thisSlider),
+				$thisFractPag = $('.swiper-pagination', $thisSlider);
+			var detach, mediaTablet = 992;
 
-			new Swiper($thisSlider, {
+			var params = {
 				slidesPerView: 1,
 				slidesPerGroup: 1,
 				// autoHeight: true,
 				// Optional parameters
 				loop: true,
 				// Keyboard
-				keyboardControl: true,
+				keyboardControl: false,
 				// Ratio to trigger swipe to next/previous slide during long swipes
 				longSwipesRatio: 0.1,
 				longSwipesMs: 200,
+				// Lazy Loading
+				lazyLoading: true,
 
 				// Navigation arrows
 				nextButton: $thisBtnNext,
@@ -1755,7 +1786,31 @@ function zoomImages() {
 					// 	byRow: true, property: 'height', target: null, remove: false
 					// });
 				}
-			});
+			};
+
+			var slider = new Swiper($thisSlider, params);
+
+			var attachTimeout;
+			$(window).on('debouncedresize', function () {
+				if (window.innerWidth >= prodCardMediaWidth) {
+					// Detach events swiper slider if window width is >= mediaTablet
+					detach || slider.detachEvents();
+
+					detach = true;
+				} else {
+					// Attach events swiper slider if window width is < mediaTablet
+
+					clearTimeout(attachTimeout);
+
+					attachTimeout = setTimeout(function () {
+						detach && slider.attachEvents();
+						detach && slider.update();
+
+						detach = false;
+					}, 200);
+				}
+
+			}).resize();
 		})
 	}
 }
@@ -2951,7 +3006,6 @@ function textSlide() {
  * !Sticky element on page
  */
 function stickyInit() {
-	var deviceWidth = 992;
 	var $mAside = $('.m-aside');
 	if ($mAside.length) {
 
@@ -3004,7 +3058,7 @@ function stickyInit() {
 			innerWrapperSelector: '.p-card__content__holder',
 			topSpacing: $('.header').outerHeight() + 40,
 			resizeSensor: true, // recalculation sticky on change size of elements
-			minWidth: deviceWidth
+			minWidth: prodCardMediaWidth - 1
 		});
 
 		var shareDropTimeout;
@@ -3017,7 +3071,7 @@ function stickyInit() {
 		});
 
 		var cardInfoTimeout;
-		$('.p-card').on('change.zoomImages', function () {
+		$('.p-card').on('change.cardCallery', function () {
 			clearTimeout(cardInfoTimeout);
 
 			cardInfoTimeout = setTimeout(function () {
@@ -3176,7 +3230,7 @@ $(document).ready(function () {
 	tabSwitcher();
 	toggleDropInit();
 	menuSwitcher();
-	zoomImages();
+	cardCallery();
 	addDataLengthChildren();
 	equalHeight();
 	toggleViewInit();

@@ -1,17 +1,57 @@
 <div class="c-tr">
-	<div class="c-td c-td--title">
-		<a href="#">
-			@@title&nbsp;/ @@ch.Модель
-		</a>
-	</div>
-	<div class="c-td c-td--color">
-		<div class="order-list__color">
-			<span class="color-pic" style="background-color: @@color.html;">@@color.html</span> <span class="dash">–</span> @@color.name
+
+	<div class="c-td c-td--photo" data-label="Изображение">
+		<div class="c-td__val">
+			<a href="#" class="img-wrap">
+				<img src="img/@@src" alt="@@title" />
+			</a>
 		</div>
 	</div>
-	<div class="c-td c-td--size">@@ch.Размеры</div>
-	<div class="c-td c-td--growth">@@ch.Рост см</div>
-	<div class="c-td c-td--stock"><div class="stock-tape" title="На складе осталось @@ch.Остаток"><span class="stock-tape-value" style="width: @@ch.Остаток;">@@ch.Остаток</span></div></div>
-	<div class="c-td c-td--price"><div class="price-js" data-price="@@price.calc">@@price.view @@price.unit</div></div>
-	<div class="c-td c-td--spinner"><input class="spinner spinner-js price-calc__number-js" type="text" name="value" value="0" data-id="@@ch.Модель_@@ch.Рост_@@ch.Размеры" data-only-number></div>
+
+	<div class="c-td c-td--title" data-label="Модель">
+		<div class="c-td__val">
+			<a href="#">
+				@@title&nbsp;/ @@ch.Модель
+			</a>
+		</div>
+	</div>
+
+	<div class="c-td c-td--color" data-label="Цвет">
+		<div class="c-td__val">
+			<div class="order-list__color">
+				<span class="color-pic" style="background-color: @@color.html;">@@color.html</span> <span class="dash">–</span> @@color.name
+			</div>
+		</div>
+	</div>
+
+	<div class="c-td c-td--size" data-label="Размер">
+		<div class="c-td__val">
+			@@ch.Размеры
+		</div>
+	</div>
+
+	<div class="c-td c-td--growth" data-label="Рост">
+		<div class="c-td__val">
+			@@ch.Рост см
+		</div>
+	</div>
+
+	<div class="c-td c-td--stock" data-label="Остаток">
+		<div class="c-td__val">
+			<div class="stock-tape" title="На складе осталось @@ch.Остаток"><span class="stock-tape-value" style="width: @@ch.Остаток;">@@ch.Остаток</span></div>
+		</div>
+	</div>
+
+	<div class="c-td c-td--price" data-label="Цена">
+		<div class="c-td__val">
+			<div class="price-js" data-price="@@price.calc">@@price.view @@price.unit</div>
+		</div>
+	</div>
+
+	<div class="c-td c-td--spinner" data-label="Количество">
+		<div class="c-td__val">
+			<input class="spinner spinner-js price-calc__number-js" type="text" name="value" value="0" data-id="@@ch.Модель_@@ch.Рост_@@ch.Размеры" data-only-number>
+		</div>
+	</div>
+
 </div>

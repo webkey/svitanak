@@ -4,9 +4,12 @@
 
 /* swiper slider & default arrows
 $swiper-button-size: 52px, 22px
+$swiper-button-size--md: 40px, 16px
 $swiper-arrow-weight: 2px // толщина "древка" и линий "острея"
 $swiper-arrow-width: nth($swiper-button-size, 1) - (round($swiper-arrow-weight/2)) // длинна "древка" стрелки должно быть меньше длинны кнопки на несколько пискелов, чтобы не перекрывать "острие"
-$swiper-arrow-size: 13px // размер линий "острея"
+$swiper-arrow-width--md: nth($swiper-button-size--md, 1) - (round($swiper-arrow-weight/2))
+$swiper-arrow-size: 14px // размер линий "острея"
+$swiper-arrow-size--md: 10px // размер линий "острея"
 
 .swiper-button-prev, .swiper-button-next, .def-arrows--prev, .def-arrows--next
 	overflow: hidden
@@ -16,6 +19,10 @@ $swiper-arrow-size: 13px // размер линий "острея"
 	will-change: transform
 	//background: rgba(255, 127, 80, 0.51) // для тестирования, чтобы видеть контуры кнопки
 	background: none
+
+	+media('<tab-lg')
+		+size(nth($swiper-button-size--md, 1), nth($swiper-button-size--md, 2))
+		margin-top: -#{round(nth($swiper-button-size--md, 2)/2)}
 
 	&::before, &::after
 		+pseudo()
@@ -30,10 +37,17 @@ $swiper-arrow-size: 13px // размер линий "острея"
 		border-bottom: none
 		margin: -#{round($swiper-arrow-weight/2)} 0 0 -#{round($swiper-arrow-width/2)}
 
+		+media('<tab-lg')
+			+size($swiper-arrow-width--md, 0)
+			margin: -#{round($swiper-arrow-weight/2)} 0 0 -#{round($swiper-arrow-width--md/2)}
+
 	&::after
 		+size($swiper-arrow-size)
 		border-bottom: none
 		top: 50%
+
+		+media('<tab-lg')
+			+size($swiper-arrow-size--md)
 
 // hover & disabled
 .swiper-button-prev, .swiper-button-next

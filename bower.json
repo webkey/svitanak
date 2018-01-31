@@ -33,7 +33,8 @@
     "swiper": "^3.4.2",
     "magnific-popup": "^1.1.0",
     "sticky-sidebar": "^3.3.0",
-    "resize-sensor": "^0.0.7"
+    "resize-sensor": "^0.0.7",
+    "vanilla-lazyload": "^10.4.2"
   },
   "devDependencies": {
     "mathsass": "^0.9.5"
