@@ -259,6 +259,16 @@
 		padding-right: 0
 		padding-left: $btn-space
 
+.btn-to-basket
+	// hide
+	display: none
+
+	.touchevents &
+		display: inline-block
+
+	.products__inner:hover &
+		display: inline-block
+
 // hover
 a.btn-to-basket
 	cursor: pointer
@@ -272,8 +282,9 @@ a.btn-to-basket
 	color: $base-color
 	fill: $base-color
 
-.products__item.in-cart
-	.btn-to-basket
+.in-cart
+	.btn-to-basket,
+	.products__inner:hover .btn-to-basket
 		display: none
 
 	.btn-from-basket
@@ -606,7 +617,7 @@ $p-filters-angle-lines-color: $text-color
 		width: 100%
 		table-layout: fixed
 
-	+media('<mob-md')
+	+media('<mob-lg')
 		//display: block
 		position: relative
 		padding-right: 60px
@@ -651,7 +662,7 @@ $p-filters-angle-lines-color: $text-color
 			border: 1px solid $border-color
 			margin: -1px -1px -1px 0
 
-		+media('<mob-md')
+		+media('<mob-lg')
 			position: absolute
 			right: -1px
 			bottom: -1px
@@ -664,7 +675,7 @@ $p-filters-angle-lines-color: $text-color
 		+media('<tab-lg')
 			display: block
 
-		+media('<mob-md')
+		+media('<mob-lg')
 			top: -1px
 			height: calc(50% + 1px)
 

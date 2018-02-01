@@ -3,6 +3,8 @@
 		@@if (context.checkboxesExpanded) {
 			@@for (var key in checkboxesExpanded) {
 				<li>
+					<!--Если есть data-filter-tag, то тег берется с этого аттрибута-->
+					<!--Если data-filter-tag не добавлять, то тег берется с .p-filters-label-text-js-->
 					<label class="check-label p-filters-label-js" data-filter-name="`+key+`" data-filter-tag="`+checkboxesExpanded[key].short+`">
 						<input type="checkbox" name="`+key+`" />
 						<i>&nbsp;</i>

@@ -41,11 +41,9 @@ var prodCardMediaWidth = 992;
 	$(window).on('debouncedresize', function () {
 		if(window.innerWidth < prodCardMediaWidth) {
 			destroyed || pCardLazy.destroy();
-			destroyed || console.log(1);
 			destroyed = true;
 		} else {
 			destroyed && (pCardLazy = lazyLoadPCard());
-			destroyed && console.log(2);
 			destroyed = false;
 		}
 	}).resize();

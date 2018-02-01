@@ -7,8 +7,12 @@
 
 		<!--logo-->
 		<strong class="logo">
-			<a href="index.html"><span>Свитанак. Белорусский трикотажиз Жодино</span></a>
-			<img style="display: none;" class="logo-print" src="img/logo-print.png" alt="Свитанак. Белорусский трикотажиз Жодино">
+			@@if(!context.logoNoLink){<a href="index.html">}
+			@@if(context.logoNoLink){<span>}
+			<em>Свитанак. Белорусский трикотаж из Жодино</em>
+			@@if(context.logoNoLink){</span>}
+			@@if(!context.logoNoLink){</a>}
+			<img style="display: none;" class="logo-print" src="img/logo-print.png" alt="Свитанак. Белорусский трикотаж из Жодино">
 		</strong>
 		<!--logo end-->
 
