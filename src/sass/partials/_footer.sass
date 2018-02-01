@@ -80,6 +80,9 @@
 		color: inherit
 		text-decoration: underline
 
+		&:hover
+			color: $base-color
+
 		@if $animation-use
 			transition:
 				property: color
@@ -111,6 +114,13 @@
 	text-align: center
 	+font-d
 	margin-bottom: $bottom-space--sm
+
+	a
+		color: currentColor
+		text-decoration: none
+
+		&:hover
+			color: $base-color
 
 .footer-common-list
 	list-style: none

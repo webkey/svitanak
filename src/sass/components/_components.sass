@@ -1750,7 +1750,7 @@ a.c-tr:hover
 	display: table-cell
 
 .c-th
-	padding: round($grid-space*0.5) #{$grid-space}
+	padding: round($grid-space*0.5) #{$grid-space--md}
 	border: solid $bg-color-base
 	border-width: 0 0 0 2px
 	background-color: $bg-color-alt
@@ -1787,14 +1787,11 @@ a.c-tr:hover
 			display: none
 
 .c-td
-	padding: round($grid-space*0.93) #{$grid-space}
+	padding: round($grid-space*0.93) $grid-space--md
 	vertical-align: middle
 	border-bottom: 1px solid $border-color
 	border-left: 2px solid white
 	+font(1.6rem, round-float(24/16, 1))
-
-	+media('<desk-lg')
-		padding: round($grid-space--md*0.93) #{$grid-space--md}
 
 	+media('<desk-md')
 		font-size: 1.4rem
@@ -1868,10 +1865,7 @@ a.c-tr:hover
 .c-table-result__text
 	+display-inline-block-middle
 	+font-d($line-height: 20px)
-	padding: 15px $grid-space
-
-	+media('<desk-lg')
-		+padding-horizontal($grid-space--md)
+	padding: 15px $grid-space--md
 
 	+media('<desk-sm')
 		+padding-horizontal($grid-space--sm)
@@ -1898,8 +1892,9 @@ a.c-tr:hover
 		column-count: 2
 		column-gap: $grid-space
 
-	+media('<mob-md')
-		column-gap: $grid-space--md
+	+media('<mob-lg')
+		column-count: auto
+		column-gap: 0
 
 .c-tr
 	+media('<tab-lg')
@@ -1908,7 +1903,7 @@ a.c-tr:hover
 		border: 1px solid $border-color
 		margin-bottom: $grid-space
 
-	+media('<mob-md')
+	+media('<mob-lg')
 		margin-bottom: $grid-space--md
 
 .c-td
@@ -2059,9 +2054,17 @@ a.c-tr:hover
 	&.show
 		display: inline-block
 
+		+media('<tab-sm')
+			display: block
+
 .order-calc-btn
 	float: right
 	min-width: 240px
+
+	+media('<tab-sm')
+		float: none
+		display: block
+		width: auto
 
 /* order list end
 

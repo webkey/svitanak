@@ -556,6 +556,18 @@ function slidersInit() {
 						spaceBetween: 20,
 						slidesPerView: 4,
 						slidesPerGroup: 4
+					},
+					979: {
+						slidesPerView: 3,
+						slidesPerGroup: 3
+					},
+					767: {
+						slidesPerView: 2,
+						slidesPerGroup: 2
+					},
+					479: {
+						slidesPerView: 1,
+						slidesPerGroup: 1
 					}
 				},
 				// events

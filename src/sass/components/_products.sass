@@ -814,8 +814,6 @@ $p-filters-angle-lines-color: $text-color
 
 /* product card
 .p-card
-	background-color: rgba(255, 250, 205, 0.51)
-
 	+clear
 	//margin-bottom: $bottom-space--lg
 
@@ -929,16 +927,11 @@ $p-filters-angle-lines-color: $text-color
 		width: nth($p-card-ratio--sm, 1)
 		margin-bottom: $bottom-space--md
 
-	+media('<tab-sm')
-		margin-bottom: $bottom-space--sm
-
 	&:last-child
 		margin-bottom: 0
 
 .p-card__gallery__list
 	margin-bottom: $bottom-space--lg
-
-	background-color: lightgoldenrodyellow
 
 	+media('<desk-hd')
 		margin-bottom: $bottom-space--md
@@ -958,7 +951,16 @@ $p-filters-angle-lines-color: $text-color
 	//+clear-spacing
 
 	+media('<tab-lg')
-		height: 620px
+		height: 560px
+
+	+media('<tab-sm')
+		height: 480px
+
+	+media('<mob-lg')
+		height: 320px
+
+	+media('<mob-md')
+		height: 240px
 
 	// для сжатия по высоте / плохо анимируется
 	//&::before
@@ -986,6 +988,7 @@ $p-filters-angle-lines-color: $text-color
 			max-width: 100%
 
 .p-card__gallery__inner
+	position: relative
 	// для сжатия по высоте / плохо анимируется
 	//+display-inline-block-middle
 	+size(100%, 100%)
@@ -1035,6 +1038,9 @@ $p-filters-angle-lines-color: $text-color
 	bottom: 2.5rem
 	margin-bottom: 3px
 
+	+media('<mob-lg')
+		bottom: 0
+
 	&::before, &::after
 		border-color: $text-color
 
@@ -1055,6 +1061,9 @@ $p-filters-angle-lines-color: $text-color
 	+font-alt-italic
 	+font(20px, 1)
 	text-align: center
+
+	+media('<mob-lg')
+		bottom: 0
 
 /* p-card__gallery end
 
@@ -1093,17 +1102,12 @@ $p-filters-angle-lines-color: $text-color
 	transform: translate(0, 0) /* For browsers don't support translate3d. */
 	transform: translate3d(0, 0, 0)
 	will-change: position, transform
-
-	background-color: rgba(147, 112, 219, 0.21)
 	
 	+media('<desk-lg')
 		padding-bottom: $bottom-space--md
 
 	+media('<tab-lg')
 		padding-bottom: $bottom-space--ml
-
-	+media('<tab-sm')
-		padding-bottom: $bottom-space--sm
 
 // price
 .p-card__price
@@ -1159,14 +1163,25 @@ $p-filters-angle-lines-color: $text-color
 		border-bottom: 1px dashed $text-color-light
 		+clear
 
+		+media('<mob-md')
+			+padding-vertical(15px)
+			+font(1.6rem, round-float(24/16, 1))
+
 	.p-card__options__dt
 		float: left
 		width: $dt-width
 		color: $text-color-light
 		padding-right: 10px
 
+		+media('<mob-md')
+			float: none
+			width: auto
+
 	.p-card__options__dd
 		margin-left: $dt-width
+
+		+media('<mob-md')
+			margin-left: 0
 
 // list of grid view parameters
 .p-card__options__grid
@@ -1192,6 +1207,21 @@ $p-filters-angle-lines-color: $text-color
 		border: 1px solid $border-color
 		+font(16px, 20px)
 		text-align: center
+
+		+media('<639px')
+			width: 12.5%
+
+		+media('<519px')
+			width: 14.28%
+
+		+media('<479px')
+			width: 16.67%
+
+		+media('<399px')
+			width: 20%
+
+		+media('<339px')
+			width: 25%
 
 // list of colors
 .p-card__color
@@ -1225,6 +1255,15 @@ $p-filters-angle-lines-color: $text-color
 		+media('<tab-lg')
 			width: 25%
 
+		+media('<tab-sm')
+			width: 33.3%
+
+		+media('<mob-lg')
+			width: 50%
+
+		+media('<mob-md')
+			width: 100%
+
 	.color-pic
 		position: absolute
 		left: 19px
@@ -1252,9 +1291,12 @@ $p-filters-angle-lines-color: $text-color
 	position: absolute
 	top: 130px
 	top: 50vh
+
+	//top: calc(50vh - #{$header-height + round($layout-spaces--hd*0.9)})
 	+size(nth($pc-btn-size, 1), nth($pc-btn-size, 2))
-	margin: -#{round($layout-spaces*0.9 + nth($pc-btn-size, 2)/2)} -#{round($layout-spaces + nth($pc-btn-size, 1)/2)} 0
-	text-decoration: none
+	//margin: -#{round($layout-spaces*0.9 + nth($pc-btn-size, 2)/2)} -#{round($layout-spaces + nth($pc-btn-size, 1)/2)} 0
+	margin: -#{round($header-height + $layout-spaces*0.9/2 + nth($pc-btn-size, 2)/2)} -#{round($layout-spaces + nth($pc-btn-size, 1)/2)} 0
+	//text-decoration: none
 	color: inherit
 	//z-index: 15
 	will-change: color, opacity, visibility
@@ -1263,18 +1305,16 @@ $p-filters-angle-lines-color: $text-color
 		duration: $animation-speed
 	//timing-function: cubic-bezier(0, 0.71, 0.41, 1)
 
-	background-color: rgba(0, 108, 255, 0.51)
-
 	+media('<desk-hd')
-		margin: -#{round($layout-spaces--hd*0.9 + nth($pc-btn-size, 2)/2)} -#{round($layout-spaces--hd + nth($pc-btn-size, 1)/2)} 0
+		margin: -#{round($header-height + $layout-spaces--hd*0.9/2 + nth($pc-btn-size, 2)/2)} -#{round($layout-spaces--hd + nth($pc-btn-size, 1)/2)} 0
 
 	+media('<desk-lg')
 		+size(nth($pc-btn-size--md, 1), nth($pc-btn-size--md, 2))
-		margin: -#{round($layout-spaces--lg*0.9 + nth($pc-btn-size--md, 2)/2)} -#{round($layout-spaces--lg + nth($pc-btn-size--md, 1)/2)} 0
+		margin: -#{round($header-height--lg + $layout-spaces--lg*0.9/2 + nth($pc-btn-size--md, 2)/2)} -#{round($layout-spaces--lg + nth($pc-btn-size--md, 1)/2)} 0
 
 	+media('<desk-sm')
 		+size(nth($pc-btn-size--sm, 1), nth($pc-btn-size--sm, 2))
-		margin: -#{round($layout-spaces--sm*0.9 + nth($pc-btn-size--sm, 2)/2)} -#{round($layout-spaces--sm + nth($pc-btn-size--sm, 1)/2)} 0
+		margin: -#{round($header-height--lg + $layout-spaces--sm*0.9/2 + nth($pc-btn-size--sm, 2)/2)} -#{round($layout-spaces--sm + nth($pc-btn-size--sm, 1)/2)} 0
 
 	+media('<tab-lg')
 		display: none
@@ -1302,8 +1342,6 @@ $p-filters-angle-lines-color: $text-color
 		+media('<desk-sm')
 			left: $space--sm
 			right: $space--sm
-
-		background-color: #055d93
 
 		span
 			display: block
