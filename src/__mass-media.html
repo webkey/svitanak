@@ -57,21 +57,17 @@
 						<div class="m-container">
 							<div class="m-aside">
 								<div class="m-aside-holder">
-									<!--filters-->
 									@@include('_tpl_news-filters.html')
-									<!--filters end-->
 								</div>
 							</div>
 							<div class="m-content">
 								<div class="m-content__holder">
-									<!--news previews-->
-									<div class="news-preview" data-toggle-view-panels="news">
-										@@loop("_tpl_news-preview.html", "includes-json/promotions-slider-slides.json")
+									<div class="news-preview">
+										<div class="news-preview__list equal-height-js" data-toggle-view-panels="news">
+											@@loop("_tpl_news-preview.html", "includes-json/promotions-slider-slides.json")
+										</div>
+										@@include('_tpl_pagination.html')
 									</div>
-									<!--news previews end-->
-									<!--pagination-->
-									@@include('_tpl_pagination.html')
-									<!--pagination end-->
 								</div>
 							</div>
 						</div>

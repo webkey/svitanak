@@ -1367,6 +1367,10 @@ $m-services-thumb-indent--sm: 40px
 	+media('<mob-md')
 		padding: 0 $layout-spaces--mob $layout-spaces--mob
 
+	.news-preview &
+		+media('<mob-md')
+			padding: 0
+
 .news-preview__date
 	display: block
 	+font-alt-italic
@@ -1382,7 +1386,6 @@ $m-services-thumb-indent--sm: 40px
 	+size(nth($news-preview-img-size, 1), auto)
 	max-width: 100%
 	background-color: $bg-color-alt
-	z-index: -2
 
 	+media('<mob-md')
 		margin-bottom: 2rem
@@ -1410,8 +1413,20 @@ $m-services-thumb-indent--sm: 40px
 		max-width: none
 		+object-fit(cover)
 
+	.news-preview &
+		+media('<desk-ml')
+			width: nth($news-preview-img-size--sm, 1)
+
+		+media('<tab-sm')
+			margin-bottom: 2rem
+
+		&::after
+			+media('<tab-sm')
+				content: none
+
 .news-preview__content
 	display: block
+	position: relative
 	float: right
 	//width: 320px
 	padding: round($grid-space*0.68) #{$grid-space}
@@ -1425,9 +1440,23 @@ $m-services-thumb-indent--sm: 40px
 		padding: 0
 		background: none
 
+	.news-preview &
+		+media('<desk-ml')
+			margin-top: -#{round(nth($news-preview-img-size--sm, 2)/2)}
+			margin-left: #{round(nth($news-preview-img-size--sm, 2)/2)}
+			padding: round($grid-space--md*0.68) #{$grid-space--md}
+
+		+media('<tab-sm')
+			float: none
+			margin: 0 0 2rem
+			padding: 0
+			background: none
+
 .news-preview__text
 	$this-font-size: $font-size
 	$this-line-height: $line-height
+	$this-font-size--sm: 1.5rem
+	$this-line-height--sm: round-float(25/15, 2)
 	// ===============
 	display: block
 	position: relative
@@ -1437,7 +1466,19 @@ $m-services-thumb-indent--sm: 40px
 
 	+media('<mob-md')
 		height: auto
-		max-height: round($this-font-size*$this-line-height*5) // maximum 5 line
+		//max-height: round($this-font-size*$this-line-height*5) // maximum 5 line
+
+	// только для списка новостей (не на главной в слайдере)
+	.news-preview &
+		height: auto
+		min-height: round($this-font-size*$this-line-height*5) // maximum 5 line
+
+		+media('<desk-ml')
+			+font($this-font-size--sm, $this-line-height--sm)
+			min-height: round($this-font-size--sm*$this-line-height--sm*5) // maximum 5 line
+
+		+media('<mob-md')
+			min-height: 0
 
 .news-preview__footer
 	display: block
@@ -1450,6 +1491,12 @@ $m-services-thumb-indent--sm: 40px
 		position: relative
 		bottom: auto
 		left: auto
+
+	.news-preview &
+		+media('<tab-sm')
+			position: relative
+			bottom: auto
+			left: auto
 
 	.more-link
 		+display-inline-block-top
@@ -1478,14 +1525,22 @@ $m-services-thumb-indent--sm: 40px
 		background-repeat: no-repeat
 		background-size: 50%
 
-
 .news-preview
+	// Контейнер с новостями ограничиваем по ширине
+	// Из-за конструкции блочка с текста сложно (невозможно) сохранять одинаковое количество символов
+	max-width: $flood-layout-width
+
+.news-preview__list
 	margin-bottom: $bottom-space--lg
 	+grid-parent($news-preview-space-between)
 	+clear-spacing
 
 	+media('<desk-lg')
-		margin-bottom: $bottom-space--ml
+		margin-bottom: 80px
+		+grid-parent($layout-spaces--lg)
+
+	+media('<desk-sm')
+		+grid-parent($layout-spaces--sm)
 
 	&:last-child
 		margin-bottom: 0
@@ -1493,15 +1548,25 @@ $m-services-thumb-indent--sm: 40px
 .news-previews__item
 	+grid-item(2, $news-preview-space-between)
 
+	+media('<desk-lg')
+		+grid-item-responsive(2, $layout-spaces--lg, 50px)
+
+	+media('<desk-sm')
+		+grid-item-responsive(2, $layout-spaces--sm, 50px)
+
+	+media('<mob-md')
+		+grid-item-responsive(1, $layout-spaces--sm, 40px)
+
 // row view
 .row-view-activated
-	&.news-preview
+	&.news-preview__list
 		+grid-parent(0)
 
 	.news-previews__item
 		+grid-item-responsive(1, 0)
 		border: dashed $border-color
 		border-width: 0 0 1px
+		height: auto !important
 
 		&:first-child
 			border-width: 1px 0
@@ -1509,15 +1574,33 @@ $m-services-thumb-indent--sm: 40px
 	.news-preview__inner
 		padding: $grid-space 0
 
+		+media('<mob-lg')
+			padding: $grid-space--md 0
+
 	.news-preview__date
 		float: left
 		width: 135px
-		margin: -5px 0
+		margin: -4px 0
+
+		+media('<desk-ml')
+			width: 120px
+
+		+media('<mob-lg')
+			float: none
+			width: auto
+			margin: 0 0 0.5em
 
 	.news-preview__img
 		float: left
 		width: 50px
 		margin-right: 50px
+		margin-bottom: 0
+
+		+media('<desk-ml')
+			margin-right: 30px
+
+		+media('<mob-lg')
+			margin-right: 20px
 
 		&::after
 			content: none
@@ -1525,11 +1608,17 @@ $m-services-thumb-indent--sm: 40px
 	.news-preview__content
 		float: none
 		overflow: hidden
-		margin: -10px 0 // Костыль. Выравнять текст и картинку по горизонтали
+		margin: -8px 0 // Костыль. Выравнять текст и картинку по горизонтали
 		padding: 0
+		background-color: transparent
+
+		+media('<desk-ml')
+			margin: -6px 0 // Костыль. Выравнять текст и картинку по горизонтали
 
 	.news-preview__text
 		height: auto
+		min-height: 0
+		max-height: none
 
 	.news-preview__footer
 		display: none
@@ -1586,7 +1675,7 @@ $m-services-thumb-indent--sm: 40px
 
 	+media('<mob-lg')
 		display: block
-		padding-right: 0
+		//padding-right: 0
 		margin-bottom: 1rem
 
 	&::before, &::after
@@ -1629,7 +1718,10 @@ $m-services-thumb-indent--sm: 40px
 		+font($previews-tab-font-size--sm, $previews-tab-line-height--sm)
 
 	+media('<mob-lg')
-		padding-right: $previews-tab-space--sm
+		//padding-right: $previews-tab-space--sm
+		padding-right: 0
+		display: block
+		margin-bottom: 0.2em
 
 	&::after
 		+pseudo()
@@ -1644,8 +1736,9 @@ $m-services-thumb-indent--sm: 40px
 			height: $previews-tab-line-height--sm
 
 		+media('<mob-lg')
-			height: $previews-tab-line-height--mob
-			right: round-float($previews-tab-space--sm/2, 1) // нужны десятые
+			display: none
+			//height: $previews-tab-line-height--mob
+			//right: round-float($previews-tab-space--sm/2, 1) // нужны десятые
 
 	&:last-child
 		padding-right: 0
@@ -2496,3 +2589,234 @@ a.bag__inner:hover
 			max-width: none
 
 /* contacts info end
+
+/* options panel
+.p-options
+	position: relative
+	margin-bottom: 6rem
+
+	+media('<desk-sm')
+		margin-bottom: 4rem
+
+	+media('<tab-lg')
+		border: 1px solid $border-color
+
+	+media('<mob-lg')
+		margin-bottom: 3rem
+
+	&:last-child
+		margin-bottom: 0
+
+.p-options__list
+	display: flex
+	justify-content: flex-end
+	align-items: center
+	flex-wrap: nowrap
+
+	//.no-flexbox &
+		display: table
+		width: 100%
+		table-layout: fixed
+
+	+media('<mob-lg')
+		//display: block
+		position: relative
+		padding-right: 60px
+		min-height: 80px
+
+.p-options__item
+	+font-d($line-height: 1)
+	font-style: normal
+	text-align: center
+
+	+media('<tab-lg')
+		font-size: 12px
+
+	&:first-child
+		text-align: left
+		flex: 1 1
+
+		+media('<tab-lg')
+			padding: round($grid-space/2) $grid-space
+
+		+media('<mob-lg')
+			padding: round($grid-space--md/2) $grid-space--md
+
+	&:last-child
+		text-align: right
+
+	.no-flexbox &
+		display: table-cell
+		vertical-align: middle
+
+	.view-switcher
+		+display-inline-block-top
+
+		+media('<tab-lg')
+			display: block
+			height: 100%
+
+	&.p-options__item--filters-show,
+	&.p-options__item--view-switcher
+		+media('<tab-lg')
+			+size(60px)
+			border: 1px solid $border-color
+			margin: -1px -1px -1px 0
+
+		+media('<mob-lg')
+			position: absolute
+			right: -1px
+			bottom: -1px
+			margin: 0
+			height: calc(50% + 2px)
+
+	&.p-options__item--filters-show
+		display: none
+
+		+media('<tab-lg')
+			display: block
+
+		+media('<mob-lg')
+			top: -1px
+			height: calc(50% + 1px)
+
+.btn-filters-show
+	position: relative
+	+display-inline-block-top
+	color: $text-color
+	user-select: none
+
+	+media('<tab-lg')
+		display: block
+		height: 100%
+
+	& > span
+		+hide-text
+
+	svg
+		+display-inline-block-top
+		+size(24px)
+
+		+media('<tab-lg')
+			position: absolute
+			left: 50%
+			top: 50%
+			margin: -12px 0 0 -12px
+
+	path
+		fill: currentColor
+
+	// hover
+	.no-touchevents &:hover
+		color: $base-color
+
+
+//.view-switcher-wrap
+	+media('<tab-lg')
+		display: none
+
+.p-options__inner
+	position: relative
+	height: 100% // нужно, когда принимают форму квадрата на девайсах
+
+.p-options__group
+	display: flex
+	justify-content: flex-start
+	align-items: center
+	user-select: none
+	text-align: left
+
+	//+media('<tab-lg')
+		justify-content: flex-end
+
+	//+media('<tab-sm')
+		justify-content: center
+
+	.p-options__label
+		+display-inline-block-middle
+		margin: 4px 25px 4px 0
+		+font(inherit, inherit)
+		color: $text-color-light
+
+		+media('<desk-md')
+			margin-right: 15px
+
+		+media('<tab-sm')
+			display: none
+
+.p-sorting
+	+display-inline-block-middle
+
+	&, .#{$user-content} &
+		margin: 0
+
+		li
+			padding: 0
+			margin: 4px 18px 4px 0
+
+			+media('<desk-md')
+				margin-right: 10px
+
+			&::before
+				content: none
+
+	//&.active
+		padding-right: 38px
+
+	li
+		+display-inline-block-top
+		white-space: nowrap
+		position: relative
+		cursor: pointer
+
+		// стрелочка развернута ВВЕРХ, сортировака ПО ВОЗРАСТАНИЮ
+		.arr
+			position: absolute
+			top: 50%
+			right: 0
+			+triangle(top, #{$text-color}, 4px, 2)
+			margin-top: -4px
+			opacity: 0
+			transform: rotate(0) translateZ(0)
+			transition:
+				property: transform, opacity
+				duration: $animation-speed
+
+			.order-desc &
+				transform: rotate(0.5turn) translateZ(0)
+
+	a
+		display: block
+		position: relative
+		text-decoration: none
+		color: inherit
+		padding: 0 12px 0 0
+
+		// hover
+		&:hover
+			color: $base-color
+
+		& > span em
+			display: none
+			font-style: inherit
+			font-weight: inherit
+			font-family: inherit
+
+			+media('<tab-sm')
+				display: inline
+
+	// активное соотояние
+	li.active
+
+		a
+			color: $base-color
+
+			& > span
+				border-bottom-color: transparent
+
+			// стрелочка развернута ВНИЗ, сортировака ПО УБЫВАНИЮ
+			.arr
+				opacity: 1
+				border-bottom-color: $base-color
+
+/* options panel end

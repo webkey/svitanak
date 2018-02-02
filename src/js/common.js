@@ -3256,4 +3256,19 @@ $(document).ready(function () {
 	stickyInit();
 	/* for testing validate forms */
 	formSuccessExample();
+
+	/*удалить после программирования*/
+	// $('.news-preview .news-preview__text').shave(60);
+	var llength = 120;
+	$.each($('.news-preview__text'), function () {
+		var $this = $(this);
+		var val = $this.text();
+		var letterLength = val.length,
+			shortVal = val.substring(llength, 0),
+			hideVal = val.substring(llength);
+		if(letterLength > llength) {
+			$this.html(shortVal + '<span class="character"> ...</span><span style="display: none">' + hideVal + '</span>');
+		}
+		$this.addClass('trimmed');
+	});
 });

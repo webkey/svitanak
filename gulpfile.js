@@ -128,6 +128,9 @@ gulp.task('copyLibsScriptsToJs', ['copyJqueryToJs'], function () { // Таск �
 		, 'src/libs/sticky-sidebar/dist/jquery.sticky-sidebar.min.js' // sticky element on scroll
 
 		, 'src/libs/vanilla-lazyload/dist/lazyload.min.js' // lazyload images
+
+		// временные плагины, удалить после программирования
+		// , 'src/libs/shave/dist/jquery.shave.min.js' // Обрезать текс по количеству символов
 	])
 		.pipe(concat('libs.js')) // Собираем их в кучу в новом файле libs.min.js
 		.pipe(gulp.dest('src/js'))
