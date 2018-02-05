@@ -126,10 +126,32 @@
 					<!--CONTENT-->
 					<div class="content-wrap">
 						<div class="content user-content">
+							<div class="breadcrumbs">
+								<ul class="breadcrumbs__list">
+									<li><a href="#"><span title="Главная">Главная</span></a></li>
+									<li><span title="Контакты">Контакты</span></li>
+								</ul>
+							</div>
+							<div class="heading">
+								<h1>Контакты</h1>
+							</div>
 							<div class="contacts">
-								<div class="contacts-map">
-									<div class="contacts-map__holder">
-										<!--add map-->
+								<div class="contacts__map">
+									<div class="contacts__map__holder">
+										<div class="map-container">
+											<script>
+												var contactsMapBaseImageURL = 'img/';
+												var contactMapInfo = {
+													"title": "ОАО «Свiтанак»",
+													"subtitle": "Отдел продаж",
+													"phones": "+375 1775 70158, 50886",
+													"address": "ул. 8 марта, 1, 222160, г. Жодино, Минская обл., Республика Беларусь",
+													"coord": [54.0859388, 28.3110191]
+												};
+											</script>
+											<div id="contacts-map" class="contacts-map__frame"></div>
+											<img style="display: none;" src="img/map-for-print.jpg" alt="ул. 8 марта, 1, 222160, г. Жодино, Минская обл., Республика Беларусь" class="map-for-print" />
+										</div>
 									</div>
 								</div>
 								<div class="contacts__info">
@@ -1288,6 +1310,8 @@
 	<script src="js/jquery.min.js"></script>
 	<script src="js/libs.min.js"></script>
 	<script src="js/common.js"></script>
+	<!--Map-->
+	<script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU"></script>
 </body>
 
 </html>

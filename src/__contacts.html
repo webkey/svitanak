@@ -18,10 +18,30 @@
 		<!--CONTENT-->
 		<div class="content-wrap">
 			<div class="content user-content">
+				@@include('_tpl_breadcrumbs.html', {
+					"items": ["Главная"],
+					"last": "Контакты"
+				})
+				<div class="heading">
+					<h1>Контакты</h1>
+				</div>
 				<div class="contacts">
-					<div class="contacts-map">
-						<div class="contacts-map__holder">
-							<!--add map-->
+					<div class="contacts__map">
+						<div class="contacts__map__holder">
+							<div class="map-container">
+								<script>
+									var contactsMapBaseImageURL = 'img/';
+									var contactMapInfo = {
+										"title": "ОАО «Свiтанак»",
+										"subtitle": "Отдел продаж",
+										"phones": "+375 1775 70158, 50886",
+										"address": "ул. 8 марта, 1, 222160, г. Жодино, Минская обл., Республика Беларусь",
+										"coord": [54.0859388, 28.3110191]
+									};
+								</script>
+								<div id="contacts-map" class="contacts-map__frame"></div>
+								<img style="display: none;" src="img/map-for-print.jpg" alt="ул. 8 марта, 1, 222160, г. Жодино, Минская обл., Республика Беларусь" class="map-for-print"/>
+							</div>
 						</div>
 					</div>
 
@@ -196,4 +216,4 @@
 
 @@include('_tpl_PAGE_WRAP.html', { "pageWrap": "END" })
 
-@@include('_tpl_layout_foot.html')
+@@include('_tpl_layout_foot.html', {"hasMap":"true"})

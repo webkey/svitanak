@@ -2421,32 +2421,118 @@ a.bag__inner:hover
 	position: relative
 	+clear
 
-.contacts-page .content
-	padding: 0
+.contacts-page
+	.content
+		+media('>=tab-lg')
+			padding: 0
+
+	.breadcrumbs, .heading
+		+media('>=tab-lg')
+			display: none
+
+	+media('<tab-lg')
+		background-color: $bg-color-alt
 
 /* contacts end
 
 /* contacts map
-.contacts-map
+.contacts__map
 	float: left
 	width: 50%
 	will-change: min-height
 	position: relative
+	min-height: 50px
+	height: calc(100vh - #{$header-height})
 
-.contacts-map__holder
+	+media('<desk-lg')
+		height: calc(100vh - #{$header-height--lg})
+
+	+media('<tab-lg')
+		float: none
+		width: auto
+		height: 480px
+		margin-bottom: $bottom-space--ml
+
+	+media('<tab-sm')
+		height: 320px
+
+	+media('<mob-lg')
+		height: 260px
+		+margin-horizontal(-$layout-spaces--mob)
+
+	&:last-child
+		margin-bottom: 0
+
+.contacts__map__holder
+	height: 100%
 	transform: translate(0, 0) /* For browsers don't support translate3d. */
 	transform: translate3d(0, 0, 0)
 	will-change: position, transform
 	background: $bg-color-alt url(../../img/__temp-map.jpg) no-repeat
 	background-size: cover
 
+	.map-container
+		height: 100%
+
+	.contacts-map__frame
+		height: 100%
+		background: $bg-color-selected
+
 /* contacts map end
+
+/* map popup
+.map-popup__title,
+.map-popup__subtitle
+	display: block
+	+font-alt-bold
+	+font(20px, 24px)
+	margin-bottom: 0.3em
+	color: $title-color
+
+.map-popup__subtitle
+	+font(18px, 22px)
+	margin-bottom: 0.7em
+
+.map-popup__row
+	+font(14px, 18px)
+	padding: 0 0 0.8em
+	+clear
+
+	sup, sub
+		font-size: 0.6em
+
+	//[class*="depict"]
+		+size(18px)
+		float: left
+		margin-right: 1rem
+
+		& + div
+			overflow: hidden
+
+/* map popup end
 
 /* contacts info
 .contacts__info
-	float: right
+	float: left
 	width: 50%
 	background-color: $bg-color-light
+	min-height: calc(100vh - #{$header-height})
+	padding: #{round($layout-spaces*0.9)} #{$layout-spaces}
+
+	+media('<desk-hd')
+		padding: #{round($layout-spaces--hd*0.9)} #{$layout-spaces--hd}
+
+	+media('<desk-lg')
+		padding: #{round($layout-spaces--hd*0.9)} #{$layout-spaces--lg}
+
+	+media('<desk-sm')
+		padding: #{round($layout-spaces--sm*0.9)} #{$layout-spaces--sm}
+
+	+media('<tab-lg')
+		float: none
+		width: auto
+		padding: 0
+		background-color: transparent
 	
 // container
 .contacts-tabs
@@ -2460,6 +2546,13 @@ a.bag__inner:hover
 	+media('<desk-lg')
 		margin-bottom: $bottom-space--ml
 
+	+media('<tab-lg')
+		max-width: $text-layout-width
+		+push-auto
+
+	+media('<960px')
+		max-width: none
+
 .contacts-tabs__thumbs
 	+display-inline-block-top
 	+clear-spacing
@@ -2468,6 +2561,8 @@ a.bag__inner:hover
 .contacts-tabs__tab
 	$this-space: 1.6em
 	$this-font-size: 36px
+	$this-font-size--md: 32px
+	$this-font-size--sm: 26px
 	//=================
 	position: relative
 	+display-inline-block-top
@@ -2475,6 +2570,17 @@ a.bag__inner:hover
 	+font($this-font-size, round-float(42/36, 2))
 	letter-spacing: $letter-spacing
 	padding-right: $this-space
+
+	+media('<desk-lg')
+		font-size: $this-font-size--md
+
+	+media('<desk-sm')
+		font-size: $this-font-size--sm
+
+	+media('<mob-lg')
+		display: block
+		padding-right: 0
+		margin-bottom: 0.4em
 
 	&::after
 		+pseudo()
@@ -2485,8 +2591,12 @@ a.bag__inner:hover
 		margin-top: -1px
 		transform: translate(0, -50%)
 
+		+media('<mob-lg')
+			display: none
+
 	&:last-child
 		padding-right: 0
+		margin-bottom: 0
 
 		&::after
 			content: none
@@ -2497,6 +2607,11 @@ a.bag__inner:hover
 
 		span
 			border-bottom: 2px solid transparent
+
+			+media('<mob-lg')
+				border-style: dotted
+				border-color: $text-color
+				border-width: 0 0 2px
 
 		// hover
 		&:hover:not(.active-tab)
@@ -2509,18 +2624,38 @@ a.bag__inner:hover
 			color: $base-color
 			cursor: default
 
-// panels
-.contacts-tabs__panels
+			span
+				+media('<mob-lg')
+					border-color: transparent
 
-.contacts-tabs__panel
+// panels
+//.contacts-tabs__panels
+
+//.contacts-tabs__panel
 
 .contacts-box
 	border-top: 1px dashed #b4b4b4
 	padding: $grid-space 0
 
+	+media('<tab-lg')
+		max-width: $text-layout-width
+		+push-auto
+
+	+media('<960px')
+		max-width: none
+
+	+media('<tab-sm')
+		+padding-vertical(20px)
+
+	&:last-child
+		padding-bottom: 0
+
 .contacts-box__item
 	margin-bottom: $bottom-space--md
 	+clear
+
+	+media('<tab-sm')
+		margin-bottom: $bottom-space--ml
 
 	&:last-child
 		margin-bottom: 0
@@ -2540,6 +2675,20 @@ a.bag__inner:hover
 	padding-right: 120px
 	width: calc(100% - 320px)
 
+	+media('<desk-lg')
+		padding-right: 80px
+		width: calc(100% - 260px)
+
+	+media('<desk-md')
+		padding-right: 10px
+
+	+media('<desk-sm')
+		float: none
+		width: auto
+		padding-right: 0
+		padding-bottom: $bottom-space
+		margin-bottom: $bottom-space
+
 	&::after
 		+pseudo()
 		top: 13px
@@ -2547,6 +2696,21 @@ a.bag__inner:hover
 		+size(50px, 0)
 		border: solid $text-color
 		border-width: 1px 0 0
+
+		+media('<desk-lg')
+			right: 25px
+			width: 40px
+
+		+media('<desk-md')
+			content: none
+
+		+media('<desk-sm')
+			content: ""
+			right: auto
+			left: 0
+			top: auto
+			bottom: 0
+			width: 50px
 
 	.contacts-box__title ~ .contacts-box__item &
 		+font-normal
@@ -2565,8 +2729,14 @@ a.bag__inner:hover
 
 .contacts-box__dd
 	+font-alt
-	+font(30px, 36px)
+	+font(30px, round-float(36/30, 2))
 	margin-bottom: 0.5em
+
+	+media('<desk-hd')
+		font-size: 28px
+
+	+media('<desk-lg')
+		font-size: 24px
 
 	a
 		color: inherit
@@ -2585,7 +2755,47 @@ a.bag__inner:hover
 		background: none
 
 		.layout-text
-			max-width: none
+			+media('>=tab-lg')
+				max-width: none
+
+			+media('<960px')
+				max-width: none
+
+		.input-wrap
+			+media('<desk-sm')
+				margin-bottom: 30px
+
+		.label-holder
+			+media('<desk-md')
+				width: $uf-label-width--md
+
+			+media('<desk-sm')
+				width: $uf-label-width--sm
+
+			+media(#{$media--md})
+				width: auto
+
+			label
+				+media('<desk-sm')
+					font-size: 13px
+
+		.input-holder
+			+media('<desk-md')
+				margin-left: $uf-label-width--md
+
+			+media('<desk-sm')
+				margin-left: $uf-label-width--sm
+
+			+media(#{$media--md})
+				margin-left: 0
+
+		.form-footer
+			+media('<desk-sm')
+				padding-top: 30px
+
+		.form-note
+			+media('<mob-lg')
+				padding-bottom: 0
 
 /* contacts info end
 

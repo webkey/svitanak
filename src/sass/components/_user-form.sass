@@ -3,12 +3,6 @@
 @import ../../libs/include-media/dist/include-media
 
 /* user form
-$uf-label-width: 250px
-$uf-row-bottom-space: 50px
-$uf-row-bottom-space--sm: 30px
-
-$media--md: '<tab-sm'
-$media--sm: '<mob-lg'
 
 .form-caption
 	position: relative
@@ -20,10 +14,10 @@ $media--sm: '<mob-lg'
 
 	+media(#{$media--md})
 		margin-bottom: $uf-row-bottom-space--sm
+		position: static
 
 		.input-wrap + &
 			margin-top: round($uf-row-bottom-space--sm*1.8)
-
 
 .form-title
 	display: block
@@ -37,8 +31,18 @@ $media--sm: '<mob-lg'
 	+media(#{$media--md})
 		margin-bottom: $uf-row-bottom-space--sm
 
+	+media(#{$media--sm})
+		font-size: 24px
+
 	.form-caption &
 		width: 50%
+
+		+media(#{$media--md})
+			width: auto
+
+		br
+			+media(#{$media--md})
+				display: none
 
 	&::after
 		+pseudo()
@@ -46,6 +50,9 @@ $media--sm: '<mob-lg'
 		+size(100px, 0)
 		margin: -0.7em 0 0 20px
 		border-top: 1px solid $text-color
+
+		+media('<tab-sm')
+			display: none
 
 .form-subtitle
 	+font-alt-bold
@@ -78,6 +85,9 @@ $media--sm: '<mob-lg'
 		bottom: 0
 		margin-bottom: 0.6em
 
+		+media(#{$media--md})
+			margin-bottom: 0
+
 .user-form
 	&
 		background: $bg-color-alt
@@ -88,6 +98,7 @@ $media--sm: '<mob-lg'
 
 	form
 		display: block
+		position: relative
 
 	.input-wrap
 		margin-bottom: $uf-row-bottom-space
@@ -143,6 +154,9 @@ $media--sm: '<mob-lg'
 		z-index: 1 // Важно! Отметка подтверждения полей формы имеет z-index: -1
 
 		+clear
+
+		input
+			text-align: center
 
 		img
 			$margin-right: 20px
@@ -225,6 +239,10 @@ $media--sm: '<mob-lg'
 		+media(#{$media--md})
 			max-width: none
 			min-height: 0
+			padding-right: 120px
+
+		+media(#{$media--sm})
+			padding: 0 0 30px
 
 		.form-mark
 			margin-left: 0

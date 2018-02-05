@@ -1028,40 +1028,19 @@ body
 	&, .layout-article &
 		padding: $text-layout-space-horizontal*2 $text-layout-space-horizontal
 
-		+media('<tab-lg')
-			padding: $text-layout-space-horizontal
-			//+padding-vertical($text-layout-space-horizontal--md)
+		+media('<desk-lg')
+			padding: $layout-spaces--lg
 
-		//+media('<mob-lg')
-			+padding-vertical($text-layout-space-horizontal--sm)
+		+media('<desk-sm')
+			padding: $layout-spaces--sm
+
+		+media('<mob-lg')
+			padding: $layout-spaces--mob
 
 /* user-form (layout) end
 
 /* shutter (layout)
 /* shutter (layout) end
-
-/* contacts (layout)
-.contacts-map__holder
-	height: calc(100vh - #{$header-height})
-	//height: 1000px
-
-.contacts__info
-	min-height: calc(100vh - #{$header-height})
-	padding: #{round($layout-spaces*0.9)} #{$layout-spaces}
-
-	+media('<desk-hd')
-		padding: #{round($layout-spaces--hd*0.9)} #{$layout-spaces--hd}
-
-	+media('<desk-lg')
-		padding: #{round($layout-spaces--hd*0.9)} #{$layout-spaces--lg}
-
-	+media('<desk-sm')
-		padding: #{round($layout-spaces--sm*0.9)} #{$layout-spaces--sm}
-
-	+media('<mob-lg')
-		padding: #{round($layout-spaces--mob*0.9)} #{$layout-spaces--mob}
-
-/* contacts info end
 
 /* contacts (layout) end
 

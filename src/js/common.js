@@ -3013,6 +3013,73 @@ function textSlide() {
 }
 
 /**
+ * !Add map on contacts page
+ * */
+function contactsMap() {
+
+	var mapId = "#contacts-map",
+		$mapId = $(mapId);
+
+	/*initial map*/
+	if ( $mapId.length ) {
+
+		var myMap,
+			myPlacemark,
+			contactsMapCoord = contactMapInfo.coord,
+			// center = [];
+			center = contactsMapCoord;
+
+		// if (window.innerWidth > 768) {
+		// 	for (var i = 0; i < contactsMapCoord.length; i++) {
+		// 		if (i === 1) {
+		// 			center.push(contactsMapCoord[i] + 0.0006);
+		// 			continue
+		// 		}
+		// 		center.push(contactsMapCoord[i] + 0.0002);
+		// 	}
+		// } else {
+		// 	center = contactsMapCoord
+		// }
+
+		ymaps.ready(init);
+
+		var balloonContent = '' +
+			'<div class="map-popup">' +
+			'<div class="map-popup__title">' + contactMapInfo.title + '</div>' +
+			'<div class="map-popup__subtitle">' + contactMapInfo.subtitle + '</div>' +
+			'<div class="map-popup__list">' +
+			'<div class="map-popup__row"><div>' + contactMapInfo.address + '</div></div>' +
+			// '<div class="map-popup__row"><i class="depict-time"></i><div>' + contactMapInfo.time + '</div></div>' +
+			'<div class="map-popup__row"><div>' + contactMapInfo.phones + '</div></div>' +
+			'</div>';
+
+		function init(){
+			/*create new map object*/
+			myMap = new ymaps.Map (mapId.substring(1), {
+				center: center,
+				zoom: 17,
+				controls: ['fullscreenControl', 'zoomControl']
+			});
+
+			myPlacemark = new ymaps.Placemark(contactsMapCoord, {
+				balloonContentBody: balloonContent,
+				hintContent: contactMapInfo.title
+			}, {
+				iconLayout: 'default#image',
+				iconImageHref: contactsMapBaseImageURL + 'pin-map.png',
+				iconImageSize: [83, 80],
+				iconImageOffset: [-32, -81]
+			});
+
+			myMap.geoObjects.add(myPlacemark);
+
+			/*behaviors setting map*/
+			myMap.behaviors.disable('scrollZoom');
+		}
+	}
+}
+
+/**
  * !Sticky element on page
  */
 function stickyInit() {
@@ -3037,14 +3104,15 @@ function stickyInit() {
 		// });
 	}
 
-	var contactsMap = '.contacts-map';
+	var contactsMap = '.contacts__map';
 	if ($(contactsMap).length) {
 
 		var contactsMapSticky = new StickySidebar(contactsMap, {
 			containerSelector: '.contacts',
-			innerWrapperSelector: '.contacts-map__holder',
+			innerWrapperSelector: '.contacts__map__holder',
 			topSpacing: $('.header').outerHeight(),
-			resizeSensor: true // recalculation sticky on change size of elements
+			resizeSensor: true, // recalculation sticky on change size of elements
+			minWidth: prodCardMediaWidth - 1
 
 		});
 
@@ -3252,6 +3320,7 @@ $(document).ready(function () {
 	priceCalculation();
 	onlyNumberInput();
 	textSlide();
+	contactsMap();
 
 	stickyInit();
 	/* for testing validate forms */
