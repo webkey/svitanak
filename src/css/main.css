@@ -1634,13 +1634,31 @@ i b, i strong, em b, em strong, b i, b em, strong i, strong em {
 	display: inline-block;
 	vertical-align: top;
 	margin-bottom: 3rem;
-	padding: 7px 0 0;
 }
 
 @media (max-width: 1599px) {
 	.heading__options {
 		margin-bottom: 2rem;
-		padding-top: 5px;
+	}
+}
+
+.heading__options__item {
+	display: inline-block;
+	vertical-align: middle;
+	margin-left: 20px;
+}
+
+.heading__options__item:first-child, .heading__options__item.first-child {
+	margin-left: 0;
+}
+
+.heading__options__item--filters-show {
+	display: none;
+}
+
+@media (max-width: 991px) {
+	.heading__options__item--filters-show {
+		display: inline-block;
 	}
 }
 
@@ -2906,8 +2924,6 @@ input[type="text"], input[type="password"], input[type="email"], input[type="sea
 }
 
 .select2-container--default .select2-selection .select2-selection__rendered, .user-content select, .select, input[type="text"], input[type="password"], input[type="email"], input[type="search"], textarea {
-	font-size: inherit;
-	line-height: inherit;
 	font-size: 16px;
 	line-height: 24px;
 	color: #1a1a1a;
@@ -7733,10 +7749,9 @@ input[type="checkbox"].social-share__check:active, input[type="checkbox"].social
 	font-weight: normal;
 	font-style: normal;
 	font-size: 14px;
-	line-height: 1.43;
+	line-height: 30px;
 	letter-spacing: 0.2em;
 	text-transform: uppercase;
-	line-height: 30px;
 	text-decoration: none;
 	color: inherit;
 }
@@ -8100,7 +8115,7 @@ input[type="checkbox"].social-share__check:active, input[type="checkbox"].social
 	.previews-tabs__tab {
 		padding-right: 0;
 		display: block;
-		margin-bottom: 0.2em;
+		margin-bottom: 0;
 	}
 }
 
@@ -9794,7 +9809,6 @@ a.bag__inner:hover .bag__title {
 	line-height: 1;
 	letter-spacing: 0.2em;
 	text-transform: uppercase;
-	font-style: normal;
 	text-align: center;
 }
 
@@ -9927,7 +9941,7 @@ a.bag__inner:hover .bag__title {
 }
 
 @media (max-width: 991px) {
-	.btn-filters-show svg {
+	.p-options__item .btn-filters-show svg {
 		position: absolute;
 		left: 50%;
 		top: 50%;
@@ -12545,6 +12559,12 @@ a.btn-to-basket {
 	line-height: 0;
 }
 
+.view-switcher::after {
+	content: '';
+	display: table;
+	clear: both;
+}
+
 .view-switcher::before {
 	content: "";
 	display: block;
@@ -12575,14 +12595,8 @@ a.btn-to-basket {
 	margin-bottom: 0;
 }
 
-.heading .view-switcher {
-	margin-bottom: 3rem;
-}
-
-@media (max-width: 1599px) {
-	.heading .view-switcher {
-		margin-bottom: 2rem;
-	}
+.heading__options .view-switcher {
+	margin-bottom: 0;
 }
 
 .view-switcher a {

@@ -11,6 +11,7 @@ $view-switcher-icon-size: 16px
 	position: relative
 	margin-bottom: $bottom-space--md
 	line-height: 0
+	+clear
 
 	&::before
 		+pseudo()
@@ -32,11 +33,14 @@ $view-switcher-icon-size: 16px
 		margin-bottom: 0
 
 	// если лежит в .heading
-	.heading &
+	//.heading &
 		margin-bottom: round($bottom-space--lg/2)
 
 		+media('<desk-lg')
 			margin-bottom: round($bottom-space--ml/2)
+
+	.heading__options &
+		margin-bottom: 0
 
 	a
 		float: left

@@ -310,11 +310,26 @@ i b, i strong, em b, em strong, b i, b em, strong i, strong em
 .heading__options
 	+display-inline-block-top
 	margin-bottom: round($bottom-space--lg/2)
-	padding: 7px 0 0
+	//padding: 7px 0 0
 
 	+media('<desk-lg')
 		margin-bottom: round($bottom-space--ml/2)
-		padding-top: 5px
+		//padding-top: 5px
+
+.heading__options__item
+	display: inline-block
+	vertical-align: middle
+	margin-left: 20px
+
+	&:first-child, &.first-child
+		margin-left: 0
+
+.heading__options__item--filters-show
+	display: none
+
+	+media('<tab-lg')
+		display: inline-block
+
 .mark
 	color: $mark-color
 	font-style: inherit

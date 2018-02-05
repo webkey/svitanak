@@ -91,9 +91,7 @@
 						</div>
 						<div class="m-content">
 							<div class="m-content__holder">
-								<!--options panel-->
 								@@include('_tpl_products-options.html')
-								<!--options panel end-->
 								<div class="p-filters-tags">
 									<div class="p-filters-tags__holder">
 										<div class="p-filters-tags__frame p-filters-tags-js">
@@ -101,16 +99,12 @@
 										</div>
 									</div>
 								</div>
-								<!--products-->
 								<div class="products grid-view" data-toggle-view-panels="products">
 									<section class="products__list">
 										@@loop("_tpl_products-items.html", "includes-json/products-items.json")
 									</section>
 								</div>
-								<!--products end-->
-								<!--pagination-->
 								@@include('_tpl_pagination.html')
-								<!--pagination end-->
 							</div>
 						</div>
 					</div>

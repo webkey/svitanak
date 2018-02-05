@@ -9,7 +9,7 @@
 		"btnMoreText": "Читать"
 	},
 	{
-		"href": false,
+		"href": "#",
 		"img": "img-news-02.jpg",
 		"date": "28 Мар 2017",
 		"datetime": "2017-03-28",
@@ -18,7 +18,7 @@
 		"btnMoreText": "Читать"
 	},
 	{
-		"href": "#",
+		"href": false,
 		"img": "",
 		"date": "14 Мар 2017",
 		"datetime": "2017-03-14",

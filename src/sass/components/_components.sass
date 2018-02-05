@@ -1500,8 +1500,7 @@ $m-services-thumb-indent--sm: 40px
 
 	.more-link
 		+display-inline-block-top
-		+font-d
-		line-height: $news-preview-footer-height
+		+font-d($line-height: $news-preview-footer-height)
 		text-decoration: none
 		color: inherit
 
@@ -1721,7 +1720,7 @@ $m-services-thumb-indent--sm: 40px
 		//padding-right: $previews-tab-space--sm
 		padding-right: 0
 		display: block
-		margin-bottom: 0.2em
+		margin-bottom: 0
 
 	&::after
 		+pseudo()
@@ -2626,7 +2625,6 @@ a.bag__inner:hover
 
 .p-options__item
 	+font-d($line-height: 1)
-	font-style: normal
 	text-align: center
 
 	+media('<tab-lg')
@@ -2697,11 +2695,12 @@ a.bag__inner:hover
 		+display-inline-block-top
 		+size(24px)
 
-		+media('<tab-lg')
-			position: absolute
-			left: 50%
-			top: 50%
-			margin: -12px 0 0 -12px
+		.p-options__item &
+			+media('<tab-lg')
+				position: absolute
+				left: 50%
+				top: 50%
+				margin: -12px 0 0 -12px
 
 	path
 		fill: currentColor
