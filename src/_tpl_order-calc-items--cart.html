@@ -1,17 +1,31 @@
 <div class="c-tr">
-	<div class="c-td">
-		<a href="#" class="order-list__img">
-			<img src="img/@@src" alt="@@title - @@ch.Модель" />
-		</a>
+
+	<div class="c-td c-td--photo" data-label="Модель">
+		<div class="c-td__val">
+			<a href="#" class="order-list__img">
+				<img src="@@src" alt="@@title - @@ch.Модель" />
+			</a>
+		</div>
 	</div>
-	<div class="c-td">@@title</div>
+
+	<div class="c-td c-td--title" data-label="Наименование">
+		<div class="c-td__val">
+			@@title
+		</div>
+	</div>
+
 	<div class="c-td"><div class="price-js" data-price="@@price.calc">@@price.view @@price.unit</div></div>
+
 	<div class="c-td"><div class="stock-tape" title="На складе осталось @@ch.Остаток"><span class="stock-tape-value" style="width: @@ch.Остаток;">@@ch.Остаток</span></div></div>
+
 	<div class="c-td"><input class="spinner spinner-js price-calc__number-js" type="text" name="value" value="1" data-id="@@ch.Модель_@@ch.Рост_@@ch.Размеры" data-only-number></div>
+
 	<div class="c-td"><div class="price-js" data-price="@@price.calc"><span class="sum-js">@@price.view</span> @@price.unit</div></div>
+
 	<div class="c-td">
 		<a href="#" class="btn-del">
 			@@include("includes-json/svg/icon-close.svg")
 		</a>
 	</div>
+
 </div>

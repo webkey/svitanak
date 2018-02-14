@@ -2005,7 +2005,7 @@ a.c-tr:hover
 		align-items: flex-start
 		border: none
 
-	&::before
+	&[data-label]::before
 		content: attr(data-label) ':'
 		width: 120px
 		+font-bold
@@ -2051,7 +2051,7 @@ a.c-tr:hover
 			//.ui-spinner-button
 				width: 40px
 
-.c-td__val
+[data-label] .c-td__val
 	+media('<tab-lg')
 		flex: 1 1
 
@@ -2173,8 +2173,11 @@ a.c-tr:hover
 		+size(50px, 16px)
 
 	+media('<tab-lg')
-		margin: 5px 0 0
 		+size(90px, 10px)
+		margin: 0
+
+		[data-label] &
+			margin: 5px 0 0
 
 .stock-tape-value
 	background-color: gray

@@ -1,13 +1,13 @@
 [
 	{
 		"class": "c-th--photo",
-		"head": "&nbsp;",
+		"head": "Модель",
 		"colspan": "",
 		"rowspan": ""
 	},
 	{
 		"class": "c-th--title",
-		"head": "Модель",
+		"head": "Наименование",
 		"colspan": "",
 		"rowspan": ""
 	},

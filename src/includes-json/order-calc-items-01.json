@@ -1,6 +1,6 @@
 [
 	{
-		"src": "img-products-01.jpg",
+		"src": "img/img-products-01.jpg",
 		"title": "Комплект жен. (фуфайка+брюки)",
 		"price": {
 			"calc": "125.79",
@@ -29,8 +29,8 @@
 		"brand": "img-brand-01.png"
 	},
 	{
-		"src": "img-products-02.jpg",
-		"title": "Комплект жен. (фуфайка+брюки)",
+		"src": "img/img-products-08.jpg",
+		"title": "Комплект жен. (фуфайка+брюки) прошел областной этап республиканского конкурса профессионального мастерства среди швей.",
 		"price": {
 			"calc": "122.15",
 			"view": "122.15",
@@ -58,7 +58,7 @@
 		"brand": "img-brand-01.png"
 	},
 	{
-		"src": "img-products-03.jpg",
+		"src": "img/img-products-03.jpg",
 		"title": "Комплект жен. (фуфайка+брюки)",
 		"price": {
 			"calc": "400.05",
@@ -87,7 +87,7 @@
 		"brand": "img-brand-01.png"
 	},
 	{
-		"src": "img-products-04.jpg",
+		"src": "img/img-products-04.jpg",
 		"title": "Комплект жен. (фуфайка+брюки)",
 		"price": {
 			"calc": "1702.50",
