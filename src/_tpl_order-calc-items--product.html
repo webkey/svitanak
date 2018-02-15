@@ -1,17 +1,14 @@
 <div class="c-tr">
 
-	<div class="c-td c-td--photo" data-label="Модель">
-		<div class="c-td__val">
-			<a href="#" class="img-wrap">
-				<img src="@@src" alt="@@title" />
-			</a>
-		</div>
-	</div>
-
-	<div class="c-td c-td--title" data-label="Наименование">
-		<div class="c-td__val">
-			<a href="#">
-				@@title&nbsp;/ @@ch.Модель
+	<div class="c-td c-td--caption" data-label="Модель">
+		<div class="td__val">
+			<a href="product-card.html" class="caption-for-table">
+				<div class="img-for-table">
+					<img src="@@if(context.src){@@src}@@if(!context.src){img/no-img-product.png}" alt="@@title - @@ch.Модель" />
+				</div>
+				<div class="title-for-table">
+					@@title&nbsp;/ @@ch.Модель
+				</div>
 			</a>
 		</div>
 	</div>

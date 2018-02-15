@@ -419,11 +419,10 @@
 	$btn-size: 20px
 	$icon-size: 12px
 	// ============
-	display: block
-	margin: 0 auto
+	display: inline-block
+	vertical-align: top
 	+size($btn-size)
 	color: $text-color
-	fill: $text-color
 	text-decoration: none
 
 	svg
@@ -433,12 +432,14 @@
 		margin: -#{round($icon-size/2)} 0 0 -#{round($icon-size/2)}
 
 	path
-		fill: inherit
+		fill: currentColor
+
+	& > span
+		display: none
 
 	// hover
 	&:hover
 		color: $link-color
-		fill: $link-color
 
 /* btn-del end
 

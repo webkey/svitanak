@@ -1873,11 +1873,6 @@ a.c-tr:hover
 		& > span
 			+hide-text
 
-	// стили для конкретных заголовков
-	&.c-th--photo
-		.order-calc &
-			display: none
-
 .c-td
 	padding: round($grid-space*0.93) $grid-space--md
 	vertical-align: middle
@@ -1891,11 +1886,15 @@ a.c-tr:hover
 	+media('<desk-sm')
 		padding: round($grid-space--sm*0.93) #{$grid-space--sm}
 
-	&:first-child, &.c-td--title
+	+media('<mob-lg')
+		+padding-vertical(round($grid-space--sm*0.6))
+
+	&:first-child, .order-calc &.c-td--title
 		border-left: none
 
 	.c-tr:first-child &
-		border-top: 1px solid $border-color
+		+media('>=tab-lg')
+			border-top: 1px solid $border-color
 
 	a
 		text-decoration: none
@@ -1905,29 +1904,11 @@ a.c-tr:hover
 			color: $link-color
 
 	// стили для конкретных ячеек
-	&.c-td--title
-		a
-			padding-top: 5px
+	&.c-td--caption
+		+padding-vertical(round($grid-space*0.93 - 18))
 
-	&.c-td--photo
-		.order-calc &
+		.order-calc & .img-for-table
 			display: none
-
-		.img-wrap
-			display: block
-			position: relative
-			min-width: 70px
-
-			&::before
-				content: ""
-				display: block
-				+ratio(1, 1)
-
-			img
-				+cover-abs
-				display: block
-				max-width: none
-				+object-fit(contain)
 
 	&.c-td--growth
 		min-width: 110px
@@ -1935,7 +1916,15 @@ a.c-tr:hover
 	&.c-td--price
 		min-width: 130px
 
-	&.c-td--spinner
+	&.c-td--del
+		+media('>=tab-lg')
+			padding: 0
+			text-align: center
+
+		.btn-del
+			+size($table__del--size)
+
+	//&.c-td--spinner
 		text-align: center
 
 		+media('<tab-lg')
@@ -1954,7 +1943,7 @@ a.c-tr:hover
 	background-color: $bg-color-alt
 	+clear
 
-.c-table-result__text
+.c-table-result__total
 	+display-inline-block-middle
 	+font-d($line-height: 20px)
 	padding: 15px $grid-space--md
@@ -1966,11 +1955,15 @@ a.c-tr:hover
 	+display-inline-block-top
 	margin-right: 10px
 
+	+media('<mob-md')
+		display: block
+		margin-right: 0
+
 .c-table-result__count,
 .c-table-result__price
 	color: $base-color
 
-// for device
+// for device (after transform)
 .c-table, .c-thead, .c-tbody, .c-tfoot, .c-tr, .c-th, .c-td
 	+media('<tab-lg')
 		display: block
@@ -2001,13 +1994,14 @@ a.c-tr:hover
 .c-td
 	+media('<tab-lg')
 		display: flex
-		//justify-content: flex-end
-		align-items: flex-start
+		//align-items: flex-start
+		align-items: center
 		border: none
 
 	&[data-label]::before
 		content: attr(data-label) ':'
-		width: 120px
+		width: 130px
+		padding-right: 15px
 		+font-bold
 		text-transform: uppercase
 
@@ -2015,22 +2009,43 @@ a.c-tr:hover
 
 		+media('<tab-lg')
 			display: block
+			font-size: 12px
 
-	.c-tr:first-child &:not(.c-td--title)
-		+media('<tab-lg')
-			border: none
-
-	&.c-td--title
+	&.c-td--caption
 		+media('<tab-lg')
 			margin: -1px -1px 1rem
 			font-size: 1.6rem
+			line-height: round-float(20/16, 2)
 			border: 1px solid $border-color
 
 		&::before
 			+media('<tab-lg')
 				content: none
 
-	&.c-td--spinner
+	&.c-td--del
+		+media('<tab-lg')
+			border-top: 1px solid $border-color
+			margin-top: 10px
+
+		.btn-del
+			+media('<tab-lg')
+				+size(auto)
+				display: flex
+				align-items: center
+				justify-content: center
+				+push-auto
+				width: 100%
+
+				svg
+					position: relative
+					left: auto
+					top: auto
+					margin: 0 10px 0 0
+
+				& > span
+					display: block
+
+	//&.c-td--spinner
 		+media('<tab-lg')
 			padding: 1rem 0 0
 
@@ -2084,30 +2099,44 @@ a.c-tr:hover
 /* color pic end
 
 /* order list
+// === title ===
+.caption-for-table
+	display: flex
+	align-items: center
+
 // === img ===
-.order-list__img
+.img-for-table
 	display: block
-	+size(70px, auto)
+	width: nth($table__img--size, 1)*1px
 	text-decoration: none
 	color: inherit
 	position: relative
 
-	.c-td &
-		+margin-vertical(-18px)
+	.caption-for-table &
+		margin-right: $grid-space--md
+
+		+media('<desk-sm')
+			margin-right: $grid-space--sm
 
 	.no-image &
 		background: url(../../img/no-img-product.png) no-repeat center
 		background-size: contain
 
 	&::after
-		+pseudo-block-relative()
-		+ratio(1, 1)
+		content: ""
+		display: block
+		+ratio(nth($table__img--size, 1), nth($table__img--size, 2))
 
 	img
 		+cover-abs
 		display: block
 		max-width: none
 		+object-fit(contain)
+
+// === title ===
+.title-for-table
+	.caption-for-table &
+		flex: 1 1
 
 // === color ===
 .order-list__color
@@ -2139,7 +2168,7 @@ a.c-tr:hover
 			display: inline
 
 // === results ===
-.c-table-result__text
+.c-table-result__total
 	&.hide-before-calc
 		display: none
 
@@ -2158,6 +2187,9 @@ a.c-tr:hover
 		display: block
 		width: auto
 
+	+media('<mob-lg')
+		width: 100%
+
 /* order list end
 
 /* stock tape
@@ -2165,7 +2197,7 @@ a.c-tr:hover
 	display: block
 	position: relative
 	+size(90px, 10px)
-	+push-auto
+	//+push-auto
 	background-color: $bg-color-base
 	box-shadow: inset 0 0 0 1px $border-color
 
@@ -2176,7 +2208,7 @@ a.c-tr:hover
 		+size(90px, 10px)
 		margin: 0
 
-		[data-label] &
+		//[data-label] &
 			margin: 5px 0 0
 
 .stock-tape-value
@@ -2186,7 +2218,7 @@ a.c-tr:hover
 	overflow: hidden
 
 	// from 1% to 50%
-	// from 1% to 50%
+	// from 1% to 50%-td--size
 	+grad-per-value($color: #d70000 #d7d700, $val: 1 50)
 
 	// from 51% to 100%

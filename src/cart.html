@@ -86,7 +86,7 @@
 		</a>
 									</li>
 									<li class="user-options__item user-options--login hide--mob-md">
-										<a href="#reg-popup" class="btn-popup-js" title="Вход">
+										<a href="#log-popup" class="btn-popup-js" title="Вход">
 			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 58.7 64" width="24" height="24"><path d="M29.3 32.2c8.9 0 16.1-7.2 16.1-16.1S38.2 0 29.3 0s-16.1 7.2-16.1 16.1C13.2 25 20.4 32.2 29.3 32.2zM29.3 6.7V6.7c5.2 0 9.4 4.2 9.4 9.4s-4.2 9.4-9.4 9.4 -9.4-4.2-9.4-9.4C19.9 10.9 24.1 6.7 29.3 6.7zM29.3 34.7c-7.8 0-15.2 3.1-20.7 8.6C3.1 48.7 0 56.2 0 64h6.7c0-12.5 10.2-22.6 22.6-22.6 12.5 0 22.6 10.2 22.6 22.6h6.7C58.7 47.8 45.5 34.7 29.3 34.7z"></path></svg>
 			<span class="hide-text">Вход</span>
 		</a>
@@ -138,7 +138,7 @@
 								<div class="heading__options">
 									<a href="catalog.html" class="btn-underline btn-with-icon">
 							<svg class="svg-ico-arr-l" xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 62 45.2"><path d="M61.6 20.7c-0.8-2.3-3-3.7-5.6-3.7 -11.3 0-22.6 0-33.9 0h-1.1c0.3-0.3 0.5-0.5 0.7-0.6 2.4-2.1 4.8-4.2 7.1-6.3 2.9-2.6 2.9-6.6 0-8.8C28 0.7 27 0.4 26.1 0h-1.8c-1.8 0.4-3.2 1.6-4.6 2.8C14.1 7.8 8.4 12.8 2.7 17.7 1.4 18.8 0.4 20.1 0 21.8v1.6c0.4 1.9 1.7 3.2 3.1 4.5 5.7 4.9 11.3 9.9 17 14.9 1.2 1.1 2.5 2.1 4.2 2.5h1.8c0.7-0.3 1.5-0.5 2.2-0.9 3.1-1.8 3.7-6.1 1.1-8.6 -2.5-2.4-5.1-4.5-7.6-6.8 -0.2-0.2-0.4-0.4-0.7-0.7h1c11.2 0 22.4 0 33.6 0 3.4 0 5.3-1.4 6.3-4.7 0 0 0.1-0.1 0.1-0.1v-1.6C61.9 21.4 61.8 21.1 61.6 20.7z"></path></svg>
-							<span>Назад к каталогу</span>
+							<span>В каталог</span>
 						</a>
 								</div>
 							</div>
@@ -147,146 +147,189 @@
 									<div class="c-table">
 										<div class="c-thead">
 											<div class="c-tr">
-												<div class="c-th">Модель</div>
-												<div class="c-th">Наименование</div>
-												<div class="c-th">Цена</div>
-												<div class="c-th">Наличие</div>
-												<div class="c-th">Количество</div>
-												<div class="c-th">сумма</div>
+												<div class="c-th c-th--caption">Модель</div>
+												<div class="c-th c-th--stock">Наличие</div>
+												<div class="c-th c-th--price">Цена</div>
+												<div class="c-th c-th--spinner">Количество</div>
+												<div class="c-th c-th--total">сумма</div>
 												<div class="c-th c-th--del"><svg class="svg-ico-bin" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 48 58"><path d="M45 6H30V3c0-1.7-1.3-3-3-3h-6c-1.7 0-3 1.3-3 3v3H3C1.3 6 0 7.3 0 9v3h48V9C48 7.3 46.7 6 45 6zM3 55c0 1.7 1.3 3 3 3h36c1.7 0 3-1.3 3-3V15H3V55zM33 24c0-1.7 1.3-3 3-3s3 1.3 3 3v25c0 1.7-1.3 3-3 3s-3-1.3-3-3V24zM21 24c0-1.7 1.3-3 3-3s3 1.3 3 3v25c0 1.7-1.3 3-3 3s-3-1.3-3-3V24zM9 24c0-1.7 1.3-3 3-3s3 1.3 3 3v25c0 1.7-1.3 3-3 3s-3-1.3-3-3V24z"></path></svg><span>Удалить</span></div>
 											</div>
 										</div>
 										<div class="c-tbody">
 											<div class="c-tr">
-												<div class="c-td c-td--photo" data-label="Модель">
-													<div class="c-td__val">
-														<a href="#" class="order-list__img">
-				<img src="img/img-products-01.jpg" alt="Комплект жен. (фуфайка+брюки) - P209101" />
-			</a>
+												<div class="c-td c-td--caption" data-label="Модель">
+													<div class="td__val">
+														<a href="product-card.html" class="caption-for-table">
+															<div class="img-for-table">
+																<img src="img/img-products-01.jpg" alt="Комплект жен. (фуфайка+брюки) - P209101" />
+															</div>
+															<div class="title-for-table">
+																Комплект жен. (фуфайка+брюки)
+															</div>
+														</a>
 													</div>
 												</div>
-												<div class="c-td c-td--title" data-label="Наименование">
+												<div class="c-td c-td--stock" data-label="Наличие">
 													<div class="c-td__val">
-														Комплект жен. (фуфайка+брюки)
+														<div class="stock-tape" title="На складе осталось 50%"><span class="stock-tape-value" style="width: 50%;">50%</span></div>
 													</div>
 												</div>
-												<div class="c-td">
-													<div class="price-js" data-price="125.79">125.79 р.</div>
+												<div class="c-td c-td--price" data-label="Цена">
+													<div class="c-td__val">
+														<div class="price-js" data-price="125.79">125.79 р.</div>
+													</div>
 												</div>
-												<div class="c-td">
-													<div class="stock-tape" title="На складе осталось 50%"><span class="stock-tape-value" style="width: 50%;">50%</span></div>
+												<div class="c-td c-td--spinner" data-label="Количество">
+													<div class="c-td__val">
+														<input class="spinner spinner-js price-calc__number-js" type="text" name="value" value="1" data-id="P209101_155_44" data-only-number>
+													</div>
 												</div>
-												<div class="c-td"><input class="spinner spinner-js price-calc__number-js" type="text" name="value" value="1" data-id="P209101_155_44" data-only-number></div>
-												<div class="c-td">
-													<div class="price-js" data-price="125.79"><span class="sum-js">125.79</span> р.</div>
+												<div class="c-td c-td--price" data-label="Сумма">
+													<div class="c-td__val">
+														<div class="price-js" data-price="125.79"><span class="sum-js">125.79</span> р.</div>
+													</div>
 												</div>
-												<div class="c-td">
+												<div class="c-td c-td--del">
 													<a href="#" class="btn-del">
 			<svg class="svg-ico-close" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 57.2 57.2">
 	<path d="M34.3 28.6L56 6.9c1.6-1.6 1.6-4.1 0-5.7 -1.6-1.6-4.1-1.6-5.7 0L28.6 22.9 6.9 1.3c-1.6-1.6-4.1-1.6-5.7 0 -1.6 1.6-1.6 4.1 0 5.7l21.7 21.6L1.3 50.3c-1.6 1.5-1.6 4.1 0 5.6 0.8 0.8 1.8 1.2 2.8 1.2s2-0.4 2.8-1.2l21.7-21.6L50.3 56c0.8 0.8 1.8 1.2 2.8 1.2s2-0.4 2.8-1.2c1.6-1.6 1.6-4.1 0-5.7L34.3 28.6z"></path>
 </svg>
+			<span>Удалить с корзины</span>
 		</a>
 												</div>
 											</div>
 											<div class="c-tr">
-												<div class="c-td c-td--photo" data-label="Модель">
-													<div class="c-td__val">
-														<a href="#" class="order-list__img">
-				<img src="img/img-products-08.jpg" alt="Комплект жен. (фуфайка+брюки) прошел областной этап республиканского конкурса профессионального мастерства среди швей. - P209102" />
-			</a>
+												<div class="c-td c-td--caption" data-label="Модель">
+													<div class="td__val">
+														<a href="product-card.html" class="caption-for-table">
+															<div class="img-for-table">
+																<img src="img/img-products-08.jpg" alt="Комплект жен. (фуфайка+брюки) прошел областной этап республиканского конкурса профессионального мастерства среди швей. - P209102" />
+															</div>
+															<div class="title-for-table">
+																Комплект жен. (фуфайка+брюки) прошел областной этап республиканского конкурса профессионального мастерства среди швей.
+															</div>
+														</a>
 													</div>
 												</div>
-												<div class="c-td c-td--title" data-label="Наименование">
+												<div class="c-td c-td--stock" data-label="Наличие">
 													<div class="c-td__val">
-														Комплект жен. (фуфайка+брюки) прошел областной этап республиканского конкурса профессионального мастерства среди швей.
+														<div class="stock-tape" title="На складе осталось 12%"><span class="stock-tape-value" style="width: 12%;">12%</span></div>
 													</div>
 												</div>
-												<div class="c-td">
-													<div class="price-js" data-price="122.15">122.15 р.</div>
+												<div class="c-td c-td--price" data-label="Цена">
+													<div class="c-td__val">
+														<div class="price-js" data-price="122.15">122.15 р.</div>
+													</div>
 												</div>
-												<div class="c-td">
-													<div class="stock-tape" title="На складе осталось 12%"><span class="stock-tape-value" style="width: 12%;">12%</span></div>
+												<div class="c-td c-td--spinner" data-label="Количество">
+													<div class="c-td__val">
+														<input class="spinner spinner-js price-calc__number-js" type="text" name="value" value="1" data-id="P209102_170_48" data-only-number>
+													</div>
 												</div>
-												<div class="c-td"><input class="spinner spinner-js price-calc__number-js" type="text" name="value" value="1" data-id="P209102_170_48" data-only-number></div>
-												<div class="c-td">
-													<div class="price-js" data-price="122.15"><span class="sum-js">122.15</span> р.</div>
+												<div class="c-td c-td--price" data-label="Сумма">
+													<div class="c-td__val">
+														<div class="price-js" data-price="122.15"><span class="sum-js">122.15</span> р.</div>
+													</div>
 												</div>
-												<div class="c-td">
+												<div class="c-td c-td--del">
 													<a href="#" class="btn-del">
 			<svg class="svg-ico-close" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 57.2 57.2">
 	<path d="M34.3 28.6L56 6.9c1.6-1.6 1.6-4.1 0-5.7 -1.6-1.6-4.1-1.6-5.7 0L28.6 22.9 6.9 1.3c-1.6-1.6-4.1-1.6-5.7 0 -1.6 1.6-1.6 4.1 0 5.7l21.7 21.6L1.3 50.3c-1.6 1.5-1.6 4.1 0 5.6 0.8 0.8 1.8 1.2 2.8 1.2s2-0.4 2.8-1.2l21.7-21.6L50.3 56c0.8 0.8 1.8 1.2 2.8 1.2s2-0.4 2.8-1.2c1.6-1.6 1.6-4.1 0-5.7L34.3 28.6z"></path>
 </svg>
+			<span>Удалить с корзины</span>
 		</a>
 												</div>
 											</div>
 											<div class="c-tr">
-												<div class="c-td c-td--photo" data-label="Модель">
-													<div class="c-td__val">
-														<a href="#" class="order-list__img">
-				<img src="img/img-products-03.jpg" alt="Комплект жен. (фуфайка+брюки) - P209103" />
-			</a>
+												<div class="c-td c-td--caption" data-label="Модель">
+													<div class="td__val">
+														<a href="product-card.html" class="caption-for-table">
+															<div class="img-for-table">
+																<img src="img/no-img-product.png" alt="Комплект жен. (фуфайка+брюки) - P209103" />
+															</div>
+															<div class="title-for-table">
+																Комплект жен. (фуфайка+брюки)
+															</div>
+														</a>
 													</div>
 												</div>
-												<div class="c-td c-td--title" data-label="Наименование">
+												<div class="c-td c-td--stock" data-label="Наличие">
 													<div class="c-td__val">
-														Комплект жен. (фуфайка+брюки)
+														<div class="stock-tape" title="На складе осталось 68%"><span class="stock-tape-value" style="width: 68%;">68%</span></div>
 													</div>
 												</div>
-												<div class="c-td">
-													<div class="price-js" data-price="400.05">400.05 р.</div>
+												<div class="c-td c-td--price" data-label="Цена">
+													<div class="c-td__val">
+														<div class="price-js" data-price="400.05">400.05 р.</div>
+													</div>
 												</div>
-												<div class="c-td">
-													<div class="stock-tape" title="На складе осталось 68%"><span class="stock-tape-value" style="width: 68%;">68%</span></div>
+												<div class="c-td c-td--spinner" data-label="Количество">
+													<div class="c-td__val">
+														<input class="spinner spinner-js price-calc__number-js" type="text" name="value" value="1" data-id="P209103_182_50" data-only-number>
+													</div>
 												</div>
-												<div class="c-td"><input class="spinner spinner-js price-calc__number-js" type="text" name="value" value="1" data-id="P209103_182_50" data-only-number></div>
-												<div class="c-td">
-													<div class="price-js" data-price="400.05"><span class="sum-js">400.05</span> р.</div>
+												<div class="c-td c-td--price" data-label="Сумма">
+													<div class="c-td__val">
+														<div class="price-js" data-price="400.05"><span class="sum-js">400.05</span> р.</div>
+													</div>
 												</div>
-												<div class="c-td">
+												<div class="c-td c-td--del">
 													<a href="#" class="btn-del">
 			<svg class="svg-ico-close" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 57.2 57.2">
 	<path d="M34.3 28.6L56 6.9c1.6-1.6 1.6-4.1 0-5.7 -1.6-1.6-4.1-1.6-5.7 0L28.6 22.9 6.9 1.3c-1.6-1.6-4.1-1.6-5.7 0 -1.6 1.6-1.6 4.1 0 5.7l21.7 21.6L1.3 50.3c-1.6 1.5-1.6 4.1 0 5.6 0.8 0.8 1.8 1.2 2.8 1.2s2-0.4 2.8-1.2l21.7-21.6L50.3 56c0.8 0.8 1.8 1.2 2.8 1.2s2-0.4 2.8-1.2c1.6-1.6 1.6-4.1 0-5.7L34.3 28.6z"></path>
 </svg>
+			<span>Удалить с корзины</span>
 		</a>
 												</div>
 											</div>
 											<div class="c-tr">
-												<div class="c-td c-td--photo" data-label="Модель">
-													<div class="c-td__val">
-														<a href="#" class="order-list__img">
-				<img src="img/img-products-04.jpg" alt="Комплект жен. (фуфайка+брюки) - P209104" />
-			</a>
+												<div class="c-td c-td--caption" data-label="Модель">
+													<div class="td__val">
+														<a href="product-card.html" class="caption-for-table">
+															<div class="img-for-table">
+																<img src="img/img-products-04.jpg" alt="Комплект жен. (фуфайка+брюки) - P209104" />
+															</div>
+															<div class="title-for-table">
+																Комплект жен. (фуфайка+брюки)
+															</div>
+														</a>
 													</div>
 												</div>
-												<div class="c-td c-td--title" data-label="Наименование">
+												<div class="c-td c-td--stock" data-label="Наличие">
 													<div class="c-td__val">
-														Комплект жен. (фуфайка+брюки)
+														<div class="stock-tape" title="На складе осталось 100%"><span class="stock-tape-value" style="width: 100%;">100%</span></div>
 													</div>
 												</div>
-												<div class="c-td">
-													<div class="price-js" data-price="1702.50">1702.50 р.</div>
+												<div class="c-td c-td--price" data-label="Цена">
+													<div class="c-td__val">
+														<div class="price-js" data-price="1702.50">1702.50 р.</div>
+													</div>
 												</div>
-												<div class="c-td">
-													<div class="stock-tape" title="На складе осталось 100%"><span class="stock-tape-value" style="width: 100%;">100%</span></div>
+												<div class="c-td c-td--spinner" data-label="Количество">
+													<div class="c-td__val">
+														<input class="spinner spinner-js price-calc__number-js" type="text" name="value" value="1" data-id="P209104_186_52" data-only-number>
+													</div>
 												</div>
-												<div class="c-td"><input class="spinner spinner-js price-calc__number-js" type="text" name="value" value="1" data-id="P209104_186_52" data-only-number></div>
-												<div class="c-td">
-													<div class="price-js" data-price="1702.50"><span class="sum-js">1702.50</span> р.</div>
+												<div class="c-td c-td--price" data-label="Сумма">
+													<div class="c-td__val">
+														<div class="price-js" data-price="1702.50"><span class="sum-js">1702.50</span> р.</div>
+													</div>
 												</div>
-												<div class="c-td">
+												<div class="c-td c-td--del">
 													<a href="#" class="btn-del">
 			<svg class="svg-ico-close" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 57.2 57.2">
 	<path d="M34.3 28.6L56 6.9c1.6-1.6 1.6-4.1 0-5.7 -1.6-1.6-4.1-1.6-5.7 0L28.6 22.9 6.9 1.3c-1.6-1.6-4.1-1.6-5.7 0 -1.6 1.6-1.6 4.1 0 5.7l21.7 21.6L1.3 50.3c-1.6 1.5-1.6 4.1 0 5.6 0.8 0.8 1.8 1.2 2.8 1.2s2-0.4 2.8-1.2l21.7-21.6L50.3 56c0.8 0.8 1.8 1.2 2.8 1.2s2-0.4 2.8-1.2c1.6-1.6 1.6-4.1 0-5.7L34.3 28.6z"></path>
 </svg>
+			<span>Удалить с корзины</span>
 		</a>
 												</div>
 											</div>
 										</div>
 									</div>
 									<div class="c-table-result">
-										<div class="c-table-result__text price-calc__totals-label-js">
+										<div class="c-table-result__total price-calc__totals-label-js">
 											<div class="c-table-result__label">Итого:</div>
-											<span class="c-table-result__count price-calc__counts-total-js">0</span> позиций на <span class="c-table-result__price price-calc__price-total-js">0</span> руб.
+											<span class="c-table-result__count price-calc__counts-total-js">0</span> позиций на&nbsp;<span class="c-table-result__price price-calc__price-total-js">0</span>&nbsp;руб.
 										</div>
 										<button class="btn-default order-calc-btn float-right" style="display: none;">Заказать</button>
 									</div>
@@ -550,7 +593,7 @@
 		</a>
 						</li>
 						<li class="user-options__item user-options--login ">
-							<a href="#reg-popup" class="btn-popup-js" title="Вход">
+							<a href="#log-popup" class="btn-popup-js" title="Вход">
 			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 58.7 64" width="24" height="24"><path d="M29.3 32.2c8.9 0 16.1-7.2 16.1-16.1S38.2 0 29.3 0s-16.1 7.2-16.1 16.1C13.2 25 20.4 32.2 29.3 32.2zM29.3 6.7V6.7c5.2 0 9.4 4.2 9.4 9.4s-4.2 9.4-9.4 9.4 -9.4-4.2-9.4-9.4C19.9 10.9 24.1 6.7 29.3 6.7zM29.3 34.7c-7.8 0-15.2 3.1-20.7 8.6C3.1 48.7 0 56.2 0 64h6.7c0-12.5 10.2-22.6 22.6-22.6 12.5 0 22.6 10.2 22.6 22.6h6.7C58.7 47.8 45.5 34.7 29.3 34.7z"></path></svg>
 			<span class="hide-text">Вход</span>
 		</a>

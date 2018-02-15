@@ -1,41 +1,16 @@
 @@include('_tpl_layout_head.html', {
 	"title": "ajax-order",
-	"pageClass": ""
+	"pageClass": "ajax-order-page"
 })
 
 @@include('_tpl_PAGE_WRAP.html', {"pageWrap": "START" })
 
-<!--HEADER-->
-@@include('_tpl_layout_header.html', {
-	"currentItem": "Клиентам"
-})
-<!--HEADER end-->
-<!--MAIN-->
-<div class="main">
-
-	<div class="main__holder">
-		<!--CONTENT-->
-		<div class="content-wrap">
-			<div class="content user-content">
-				<div class="order-product mfp-with-anim inline-popup">
-					@@include("_tpl_order-calc.html",{
-						"title": "Комплект жен.(фуфайка+брюки)"
-					})
-				</div>
-			</div>
-		</div>
-		<!--CONTENT end-->
-	</div>
-
+<div class="order-product mfp-with-anim inline-popup">
+	@@include("_tpl_order-calc.html",{
+		"title": "Комплект жен.(фуфайка+брюки)"
+	})
 </div>
-<!--MAIN end-->
-
-<!--SIDEBAR-->
-@@include('_tpl_layout_sidebar.html', {
-	"currentItem": ""
-})
-<!--SIDEBAR-->
 
 @@include('_tpl_PAGE_WRAP.html', { "pageWrap": "END" })
 
-@@include('_tpl_layout_foot.html')
+@@include('_tpl_layout_foot.html', {"hasFooter": "false"})
