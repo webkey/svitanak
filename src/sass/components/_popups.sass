@@ -6,24 +6,42 @@
 // inline popup
 .inline-popup
 	max-width: $popup-width
-	padding: $popup-space
 	background-color: $bg-color-base
 	+push-auto
 
 // default popup
 .default-popup
 	max-width: $default-popup-width
-	padding: $default-popup-space
 	background-color: $bg-color-alt
 	+push-auto
+
+.inline-popup, .default-popup
+	padding: $popup-space
+
+	+media('<desk-lg')
+		padding: $layout-spaces--lg
+
+	+media('<desk-sm')
+		padding: $layout-spaces--sm
 
 	+media('<tab-sm')
 		max-width: none
 		min-height: 100vh
-		padding: #{30+$header-height--lg} #{$layout-spaces--sm} #{$layout-spaces--sm}
+		padding-top: #{30+$header-height--lg}
 
 	+media('<mob-lg')
-		padding: #{30+$header-height--lg} #{$layout-spaces--mob} #{$layout-spaces--mob}
+		+padding-horizontal($layout-spaces--mob)
+		padding-bottom: $layout-spaces--mob
+
+	.pseudotabs-nav
+		padding-right: 40px
+		margin-bottom: 20px
+
+		+media('<tab-sm')
+			padding-right: 0
+
+	.pseudotabs-tab
+		margin-bottom: 20px
 
 // popup title
 .inline-popup__title, .default-popup__title
@@ -38,16 +56,63 @@
 	&:last-child
 		margin-bottom: 0
 
-// pseudotabs-nav
-.default-popup, .inline-popup
-	.pseudotabs-nav
-		padding-right: 40px
-		margin-bottom: 20px
+// popup button close
+.mfp-close
+	$mfp-close-btn-size: 40px
+	$mfp-close-btn-size--mob: 60px
+	$mfp-close-icon-size: 12px
+	$mfp-close-icon-size--mob: 16px
+
+	+size($mfp-close-btn-size)
+	opacity: 1
+
+	+media('<tab-sm')
+		+size($mfp-close-btn-size--mob)
+
+	svg
+		position: absolute
+		left: 50%
+		top: 50%
+		+size($mfp-close-icon-size)
+		margin: -#{round($mfp-close-icon-size/2)} 0 0 -#{round($mfp-close-icon-size/2)}
+		z-index: -1
+		pointer-events: none
 
 		+media('<tab-sm')
-			padding-right: 0
+			+size($mfp-close-icon-size--mob)
+			margin: -#{round($mfp-close-icon-size--mob/2)} 0 0 -#{round($mfp-close-icon-size--mob/2)}
 
-	.pseudotabs-tab
-		margin-bottom: 20px
+	path
+		fill: currentColor
+
+	.mfp-close-btn-in &
+		$bt-space: round($popup-space - (($mfp-close-btn-size - $mfp-close-icon-size)/2))
+		$bt-space--lg: round($layout-spaces--lg - (($mfp-close-btn-size - $mfp-close-icon-size)/2))
+		$bt-space--sm: round($layout-spaces--sm - (($mfp-close-btn-size - $mfp-close-icon-size)/2))
+
+		fill: $text-color
+		color: $text-color
+		top: $bt-space
+		right: $bt-space
+		margin-top: 4px
+
+		+media('<desk-lg')
+			top: $bt-space--lg
+			right: $bt-space--lg
+
+		+media('<desk-sm')
+			top: $bt-space--sm
+			right: $bt-space--sm
+
+		+media('<tab-sm')
+			top: 0
+			right: auto
+			left: 0
+			color: white
+			margin-top: 0
+			background-color: $btn-bg-color
+
+		.no-touchevents &:hover
+			color: $link-color
 
 /* popups end

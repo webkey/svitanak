@@ -200,16 +200,19 @@
 				<form action="" method="post">
 
 					<div class="bottom-space-lg order-calc order-calc-js">
+
 						<div class="c-table">
 							<div class="c-thead">
 								<div class="c-tr">
 									@@loop("_tpl_c-thead.html", "includes-json/order-calc__th.json")
 								</div>
 							</div>
+
 							<div class="c-tbody">
 								@@loop("_tpl_order-calc-items--product.html", "includes-json/order-calc__items.json")
 							</div>
 						</div>
+
 						<div class="c-table-result">
 							<div class="c-table-result__total hide-before-calc price-calc__totals-label-js">
 								<div class="c-table-result__label">Итого:</div>

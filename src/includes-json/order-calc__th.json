@@ -40,5 +40,11 @@
 		"head": "Количество",
 		"colspan": "",
 		"rowspan": ""
+	},
+	{
+		"class": "c-th--total",
+		"head": "сумма",
+		"colspan": "",
+		"rowspan": ""
 	}
 ]

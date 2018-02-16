@@ -1846,16 +1846,17 @@ a.c-tr:hover
 	border: solid $bg-color-base
 	border-width: 0 0 0 2px
 	background-color: $bg-color-alt
-	+font-d($line-height: 20px)
+	+font-bold
+	font-size: 13px
+	line-height: round-float(17/13, 2)
+	letter-spacing: 0.1em
+	text-transform: uppercase
 
 	+media('<desk-lg')
-		padding: round($grid-space--md*1.5) #{$grid-space--md}
+		padding: round($grid-space*0.5) #{$grid-space--md}
 
 	+media('<desk-md')
 		font-size: 1.3rem
-		//padding: $grid-space--sm
-
-	+media('<desk-sm')
 		letter-spacing: normal
 		padding: round($grid-space--sm*1.5) #{$grid-space--sm}
 
@@ -1880,11 +1881,12 @@ a.c-tr:hover
 	border-left: 2px solid white
 	+font(1.6rem, round-float(24/16, 1))
 
-	+media('<desk-md')
+	+media('<desk-lg')
 		font-size: 1.4rem
+		padding: round($grid-space--sm*0.93) #{$grid-space--sm}
 
 	+media('<desk-sm')
-		padding: round($grid-space--sm*0.93) #{$grid-space--sm}
+		letter-spacing: normal
 
 	+media('<mob-lg')
 		+padding-vertical(round($grid-space--sm*0.6))
@@ -1907,14 +1909,20 @@ a.c-tr:hover
 	&.c-td--caption
 		+padding-vertical(round($grid-space*0.93 - 18))
 
-		.order-calc & .img-for-table
+		//.order-calc & .img-for-table
 			display: none
 
 	&.c-td--growth
-		min-width: 110px
+		min-width: 100px
+
+		+media('<desk-sm')
+			min-width: 80px
 
 	&.c-td--price
 		min-width: 130px
+
+		+media('<desk-sm')
+			min-width: 110px
 
 	&.c-td--del
 		+media('>=tab-lg')
@@ -1948,7 +1956,7 @@ a.c-tr:hover
 	+font-d($line-height: 20px)
 	padding: 15px $grid-space--md
 
-	+media('<desk-sm')
+	+media('<desk-md')
 		+padding-horizontal($grid-space--sm)
 
 .c-table-result__label
@@ -2104,6 +2112,10 @@ a.c-tr:hover
 	display: flex
 	align-items: center
 
+	.order-calc &
+		+media('<desk-sm', '>=tab-lg')
+			display: block
+
 // === img ===
 .img-for-table
 	display: block
@@ -2117,6 +2129,11 @@ a.c-tr:hover
 
 		+media('<desk-sm')
 			margin-right: $grid-space--sm
+
+		.order-calc &
+			+media('<desk-sm', '>=tab-lg')
+				margin-right: 0
+				margin-bottom: $grid-space--sm
 
 	.no-image &
 		background: url(../../img/no-img-product.png) no-repeat center
@@ -2142,8 +2159,9 @@ a.c-tr:hover
 .order-list__color
 	white-space: nowrap
 	vertical-align: middle
+	overflow: hidden
 
-	+media('<desk-sm')
+	+media('<desk-ml')
 		text-align: center
 
 	+media('<tab-lg')
@@ -2153,7 +2171,7 @@ a.c-tr:hover
 		vertical-align: middle
 		margin-right: 5px
 
-		+media('<desk-sm')
+		+media('<desk-ml')
 			display: block
 			margin: 0 auto
 
@@ -2161,7 +2179,14 @@ a.c-tr:hover
 			display: inline-block
 
 	.dash
-		+media('<desk-sm')
+		+media('<desk-ml')
+			display: none
+
+		+media('<tab-lg')
+			display: inline
+
+	.color-name
+		+media('<desk-md')
 			display: none
 
 		+media('<tab-lg')
@@ -2201,8 +2226,8 @@ a.c-tr:hover
 	background-color: $bg-color-base
 	box-shadow: inset 0 0 0 1px $border-color
 
-	+media('<desk-sm')
-		+size(50px, 16px)
+	+media('<desk-md')
+		+size(70px, 16px)
 
 	+media('<tab-lg')
 		+size(90px, 10px)

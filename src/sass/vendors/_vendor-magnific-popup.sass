@@ -3,6 +3,11 @@
 @import ../../libs/include-media/dist/include-media
 
 /* magnific popup
+.mfp-wrap
+	.css-scroll-fixed &
+		overflow-x: hidden
+		overflow-y: auto
+
 .mfp-bg
 	background-color: #3e3e3d
 
@@ -21,55 +26,6 @@
 //.mfp-content
 	+media('<tab-sm')
 		height: 100%
-
-// popup button close
-.mfp-close
-	$mfp-close-btn-size: 40px
-	$mfp-close-btn-size--mob: 60px
-	$mfp-close-icon-size: 12px
-	$mfp-close-icon-size--mob: 16px
-
-	+size($mfp-close-btn-size)
-	opacity: 1
-
-	+media('<tab-sm')
-		+size($mfp-close-btn-size--mob)
-
-	svg
-		position: absolute
-		left: 50%
-		top: 50%
-		+size($mfp-close-icon-size)
-		margin: -#{round($mfp-close-icon-size/2)} 0 0 -#{round($mfp-close-icon-size/2)}
-		z-index: -1
-		pointer-events: none
-
-		+media('<tab-sm')
-			+size($mfp-close-icon-size--mob)
-			margin: -#{round($mfp-close-icon-size--mob/2)} 0 0 -#{round($mfp-close-icon-size--mob/2)}
-
-	path
-		fill: inherit
-
-	.mfp-close-btn-in &
-		$space: round($popup-space - (($mfp-close-btn-size - $mfp-close-icon-size)/2))
-
-		fill: $text-color
-		color: $text-color
-		top: $space
-		right: $space
-
-		+media('<tab-sm')
-			top: 0
-			right: auto
-			left: 0
-			fill: white
-			color: white
-			background-color: $btn-bg-color
-
-		.no-touchevents &:hover
-			fill: $link-color
-			color: $link-color
 
 /*
  *
