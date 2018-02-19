@@ -588,35 +588,6 @@ function slidersInit() {
 	// 2) device.js (libs);
 	// 3) resizeByWidth (resize only width);
 
-	// add css style
-	// .before-extra-popup-open{
-	// 	width: 100%!important;
-	// 	height: 100%!important;
-	// 	max-width: 100%!important;
-	// 	max-height: 100%!important;
-	// 	margin: 0!important;
-	// 	padding: 0!important;
-	// 	overflow: hidden!important;
-	// }
-
-	// .before-extra-popup-open .wrapper{ z-index: 99; } // z-index of header must be greater than footer
-	//
-	// if nav need to hide
-	// @media only screen and (min-width: [example: 1280px]){
-	// .nav{
-	// 		-webkit-transform: translate(0, 0) matrix(1, 0, 0, 1, 0, 0) !important;
-	// 		-ms-transform: translate(0, 0) matrix(1, 0, 0, 1, 0, 0) !important;
-	// 		transform: translate(0, 0) matrix(1, 0, 0, 1, 0, 0) !important;
-	// 	}
-	// .nav-list > li{
-	// 		-webkit-transform: translate(0, 0) matrix(1, 0, 0, 1, 0, 0) !important;
-	// 		-ms-transform: translate(0, 0) matrix(1, 0, 0, 1, 0, 0) !important;
-	// 		transform: translate(0, 0) matrix(1, 0, 0, 1, 0, 0) !important;
-	// 		opacity: 1 !important;
-	// 		visibility: visible !important;
-	// 	}
-	// }
-
 	var defaults = {
 		mainContainer: 'html', // container wrapping all elements
 		navContainer: null, // main navigation container
@@ -632,7 +603,7 @@ function slidersInit() {
 		overlayIndex: 997,
 		classReturn: null,
 		overlayBoolean: true,
-		animationType: 'ltr', // rtl or ltr
+		animationType: 'ltr', // rtl or ltr, ttb
 		animationScale: 0.85, // default scale for animation
 		animationSpeed: 300, // animation speed of the main element
 		animationSpeedOverlay: null, // animation speed of the overlay
@@ -868,6 +839,7 @@ function slidersInit() {
 		}
 
 		TweenMax.to($navContainer, _animationSpeed / 1000, {
+			yPercent: 0,
 			xPercent: 0,
 			scale: 1,
 			autoAlpha: 1,
@@ -975,6 +947,25 @@ function slidersInit() {
 				}
 			});
 
+		} else if (_animationType === 'ttb') {
+			TweenMax.to($navContainer, duration, {
+				yPercent: -100,
+				ease: ease,
+				onComplete: function () {
+					if (_mediaWidth === null || window.innerWidth < _mediaWidth) {
+						self.preparationAnimation();
+					}
+
+					TweenMax.set($navContainer, {
+						autoAlpha: alpha
+					});
+
+					if(self.cssScrollBlocked){
+						self.cssScrollUnfixed();
+					}
+				}
+			});
+
 		} else if (_animationType === 'surface') {
 			TweenMax.to($navContainer, duration, {
 				scale: self._animationScale,
@@ -1034,6 +1025,15 @@ function slidersInit() {
 		} else if (_animationType === 'rtl') {
 			TweenMax.set($navContainer, {
 				xPercent: 100,
+				autoAlpha: alpha,
+				onComplete: function () {
+					$navContainer.show(0);
+				}
+			});
+
+		} else if (_animationType === 'ttb') {
+			TweenMax.set($navContainer, {
+				yPercent: -100,
 				autoAlpha: alpha,
 				onComplete: function () {
 					$navContainer.show(0);
@@ -1151,6 +1151,7 @@ function shuttersInit(){
 			overlayClass: 'shutter-overlay shutter-overlay--search',
 			overlayAppendTo: 'body',
 			closeOnResize: false,
+			animationType: 'ttb',
 			animationSpeed: 200,
 			overlayAlpha: 0.35,
 			overlayIndex: 999,
@@ -1704,7 +1705,7 @@ function menuSwitcher() {
 /**
  * ! Card gallery
  * */
-function cardCallery() {
+function cardGallery() {
 	var $container = $('.p-card-js');
 	var activeClass = 'zoom-on';
 	var timeout;
@@ -1718,7 +1719,7 @@ function cardCallery() {
 
 		$thisContainer.toggleClass(activeClass);
 
-		$container.trigger('change.cardCallery');
+		$container.trigger('change.cardGallery');
 
 		clearTimeout(timeout);
 
@@ -1731,7 +1732,7 @@ function cardCallery() {
 		if ($container.hasClass(activeClass) && e.keyCode === 27) {
 			$container.removeClass(activeClass);
 
-			$container.trigger('change.cardCallery');
+			$container.trigger('change.cardGallery');
 		}
 	});
 
@@ -2787,7 +2788,7 @@ function popupInitial(){
 			ajaxContentAdded: function() {
 				// Ajax content is loaded and appended to DOM
 				spinnerInit(this.content.find('.spinner-js'));
-				priceCalculation();
+				orderCalculation();
 			}
 		}
 	});
@@ -2824,64 +2825,74 @@ function spinnerInit($spinner) {
 }
 
 /**
- * !product price calculation
+ * !product oreder calculation
  * */
-function priceCalculation() {
+function orderCalculation() {
 	var $container = $('.order-calc-js');
-	var $price = $('.price-js');
-	var objMain = {},
-		objId = {},
-		objCount = {},
-		objPriceSum = {};
+	var $price = $('.order-calc__price-js');
+	var $priceSum = $('.order-calc__price-sum-js');
+	var objMain = {};
 
-	$(document).on('change spin', '.price-calc__number-js', function (e, ui) {
+	var $countInput = $('.price-calc__number-js');
+
+	$countInput.on('change spin', function (e, ui) {
 
 		var $currentInput = $(this);
 		var $currentPrice = $currentInput.closest('.c-tr').find($price);
+		console.log("$currentPrice: ", $currentPrice);
+		var $currentPriceSum = $currentInput.closest('.c-tr').find($priceSum);
 		var priceVal = $currentPrice.data('price');
 
 		var currentItemCount = ui ? ui.value : +$currentInput.val();
-
 		var priceValSum = Math.round(priceVal * currentItemCount * 100) / 100;
 
-		$currentPrice.attr('data-price-sum', priceValSum);
+		// no delete (!!!)
+		// add count items and sum price to DOM
+		// $currentPrice.attr('data-count-sum', currentItemCount);
+		// $currentPrice.attr('data-price-sum', priceValSum);
 
-		// добавляем в ассоциативный ряд значения для каждого элемента
-		objId['count'] = currentItemCount;
-		objId['priceSum'] = priceValSum;
+		// add current item's price sum to DOM
+		$currentPriceSum.html(priceValSum);
 
-		// добавляем в общий объект создаваемые ассоциативные ряды элементов
+		// создаем объект состоящий из id элементов, у которых есть поля количества (count), цены (price) и общей цены (priceSum)
 		var id = $currentInput.data('id');
-		objMain[id] = objId;
+		// objMain[id] = objId;
+		objMain[id] = {
+			'count': currentItemCount,
+			'price': priceVal,
+			'priceSum': priceValSum
+		};
 
-		// console.log(id + ": ", objMain[id]['count']);
+		console.log("objMain: ", objMain);
 
-		// добавляем в отдельный объект параметры каждого элемента
-		objCount[id] = objMain[id]['count']; // объект с количеством выбранных элеметров
-		objPriceSum[id] = objMain[id]['priceSum']; // объект с общей ценой выбранных элементов
-
-		// console.log("objCount: ", objCount);
-		// console.log("objPriceSum: ", objPriceSum);
-
-		// суммируем значения в созданных объектах
-		var countSum = sum(objCount);
-		var priceSum = sum(objPriceSum);
+		// суммируем значения полей количества и общей цены в созданных объектах
+		var countSum = sumParam(objMain, 'count');
+		var priceSum = sumParam(objMain, 'priceSum');
 
 		// console.log("countSum: ", countSum);
 		// console.log("priceSum: ", priceSum);
 
 		var $currentContainer = $currentPrice.closest($container);
-		$currentContainer.find('.price-calc__totals-label-js').toggleClass('show', countSum > 0);
-		$currentContainer.find('.price-calc__counts-total-js').text(countSum);
-		$currentContainer.find('.price-calc__price-total-js').text(priceSum);
+		$currentContainer.find('.order-calc__total-results-js').toggleClass('show', countSum > 0);
+		$currentContainer.find('.order-calc__counts-total-js').text(countSum);
+		$currentContainer.find('.order-calc__price-total-js').text(priceSum);
 	});
 
-	function sum(obj) {
+	// $countInput.trigger('change');
+	// Вызвать триггер change на инпутах со значением отличным от нуля
+	$.each($countInput, function () {
+		var $currentInput = $(this);
+		if($currentInput.val() > 0){
+			$currentInput.trigger('change');
+		}
+	});
+
+	function sumParam(obj, param) {
 		var result = 0;
 		var prop;
 
 		for(prop in obj) {
-			result += obj[prop];
+			result += obj[prop][param];
 		}
 
 		return Math.round(result*100)/100;
@@ -3158,7 +3169,7 @@ function stickyInit() {
 		});
 
 		var cardInfoTimeout;
-		$('.p-card').on('change.cardCallery', function () {
+		$('.p-card').on('change.cardGallery', function () {
 			clearTimeout(cardInfoTimeout);
 
 			cardInfoTimeout = setTimeout(function () {
@@ -3317,7 +3328,7 @@ $(document).ready(function () {
 	tabSwitcher();
 	toggleDropInit();
 	menuSwitcher();
-	cardCallery();
+	cardGallery();
 	addDataLengthChildren();
 	equalHeight();
 	toggleViewInit();
@@ -3326,7 +3337,7 @@ $(document).ready(function () {
 	initMultiAccordion();
 	popupInitial();
 	spinnerInit($(".spinner-js"));
-	priceCalculation();
+	orderCalculation();
 	onlyNumberInput();
 	textSlide();
 	contactsMap();
