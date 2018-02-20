@@ -2825,21 +2825,33 @@ function spinnerInit($spinner) {
 }
 
 /**
+ * ui tooltip initial
+ */
+function tooltipInit() {
+	$( 'a[title]' ).tooltip({
+		position: {
+			my: "center top",
+			at: "center bottom+10"
+		}
+	});
+}
+
+/**
  * !product oreder calculation
  * */
 function orderCalculation() {
 	var $container = $('.order-calc-js');
 	var $price = $('.order-calc__price-js');
 	var $priceSum = $('.order-calc__price-sum-js');
+	var $btnRemove = $('.order-calc__remove-js');
 	var objMain = {};
 
-	var $countInput = $('.price-calc__number-js');
+	var $countInput = $('.order-calc__number-js');
 
 	$countInput.on('change spin', function (e, ui) {
 
 		var $currentInput = $(this);
 		var $currentPrice = $currentInput.closest('.c-tr').find($price);
-		console.log("$currentPrice: ", $currentPrice);
 		var $currentPriceSum = $currentInput.closest('.c-tr').find($priceSum);
 		var priceVal = $currentPrice.data('price');
 
@@ -2863,14 +2875,9 @@ function orderCalculation() {
 			'priceSum': priceValSum
 		};
 
-		console.log("objMain: ", objMain);
-
 		// суммируем значения полей количества и общей цены в созданных объектах
 		var countSum = sumParam(objMain, 'count');
 		var priceSum = sumParam(objMain, 'priceSum');
-
-		// console.log("countSum: ", countSum);
-		// console.log("priceSum: ", priceSum);
 
 		var $currentContainer = $currentPrice.closest($container);
 		$currentContainer.find('.order-calc__total-results-js').toggleClass('show', countSum > 0);
@@ -2885,6 +2892,16 @@ function orderCalculation() {
 		if($currentInput.val() > 0){
 			$currentInput.trigger('change');
 		}
+	});
+
+	$btnRemove.one('click', function (e) {
+		var $currentBtn = $(this);
+		var $currentRow = $currentBtn.closest('.c-tr');
+		$currentRow.fadeOut(300, function () {
+			$(this).remove();
+		});
+
+		e.preventDefault();
 	});
 
 	function sumParam(obj, param) {
@@ -3337,6 +3354,7 @@ $(document).ready(function () {
 	initMultiAccordion();
 	popupInitial();
 	spinnerInit($(".spinner-js"));
+	tooltipInit();
 	orderCalculation();
 	onlyNumberInput();
 	textSlide();

@@ -89,35 +89,11 @@ $spinner-input-size: 54px // width
 
 .ui-spinner-up
 	.ui-button-icon
-		//&::before
-			top: 0
-			right: 50%
-			transform-origin: top right
-			transform: rotate(-45deg)
 
 		&::before
 			transform: rotate(0.25turn)
 
-		//&::after
-			top: 0
-			left: 50%
-			transform-origin: top left
-			transform: rotate(45deg)
-
 .ui-spinner-down
-
-	//.ui-button-icon
-		&::before
-			bottom: 0
-			right: 50%
-			transform-origin: bottom right
-			transform: rotate(45deg)
-
-		//&::after
-			bottom: 0
-			left: 50%
-			transform-origin: bottom left
-			transform: rotate(-45deg)
 
 	[aria-valuenow="0"] ~ &
 		cursor: default

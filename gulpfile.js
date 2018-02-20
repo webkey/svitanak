@@ -83,6 +83,7 @@ gulp.task('mergeCssLibs', function () { // Таск для мержа css биб
 		// jquery ui
 		, 'src/libs/jquery-ui/themes/base/base.css'
 		, 'src/libs/jquery-ui/themes/base/spinner.css'
+		, 'src/libs/jquery-ui/themes/base/tooltip.css'
 		// , 'src/lib/plugin/file.css'
 	]) // Выбираем файлы для конкатенации
 		.pipe(concatCss("src/css/libs.css", {
