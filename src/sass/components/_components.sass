@@ -1982,22 +1982,33 @@ a.c-tr:hover
 
 .c-tbody
 	+media('<tab-lg')
-		column-count: 2
-		column-gap: $grid-space
-
-	+media('<mob-lg')
-		column-count: auto
-		column-gap: 0
+		display: flex
+		flex-wrap: wrap
+		justify-content: space-between
 
 .c-tr
 	+media('<tab-lg')
-		display: inline-block
-		width: 100%
-		border: 1px solid $border-color
+		width: calc(50% - #{round($grid-space/2)})
 		margin-bottom: $grid-space
+		border: 1px solid $border-color
 
 	+media('<mob-lg')
+		width: 100%
 		margin-bottom: $grid-space--md
+
+	// список заказов в кабинете
+	.history-orders &
+		+media('<tab-lg')
+			width: calc(33.3% - #{round($grid-space/2)})
+
+		+media('<tab-sm')
+			width: calc(50.0% - #{round($grid-space/2)})
+
+		+media('<mob-lg')
+			width: calc(50.0% - #{round($grid-space--md/2)})
+
+		+media('<mob-md')
+			width: 100%
 
 .c-td
 	+media('<tab-lg')
@@ -2005,6 +2016,10 @@ a.c-tr:hover
 		//align-items: flex-start
 		align-items: center
 		border: none
+
+		// список заказов в кабинете
+		.history-orders &:nth-child(even)
+			background-color: $bg-color-light
 
 	&[data-label]::before
 		content: attr(data-label) ':'
@@ -2018,6 +2033,11 @@ a.c-tr:hover
 		+media('<tab-lg')
 			display: block
 			font-size: 12px
+
+		// список заказов в кабинете
+		.history-orders &
+			width: 50%
+			font-size: 11px
 
 	&.c-td--caption
 		+media('<tab-lg')
