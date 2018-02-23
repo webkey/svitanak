@@ -2788,7 +2788,9 @@ function popupInitial(){
 			ajaxContentAdded: function() {
 				// Ajax content is loaded and appended to DOM
 				spinnerInit(this.content.find('.spinner-js'));
-				orderCalculation();
+				console.log("this.content: ", this.content);
+				this.content.find('.order-calc-js').msOrderCalc(orderCalcOptions);
+				// orderCalculation();
 			}
 		}
 	});
@@ -2839,7 +2841,7 @@ function tooltipInit() {
 /**
  * !product oreder calculation
  * */
-function orderCalculation() {
+function orderCalculation2() {
 	var $container = $('.order-calc-js');
 	var $price = $('.order-calc__price-js');
 	var $priceSum = $('.order-calc__price-sum-js');
@@ -2936,6 +2938,21 @@ function onlyNumberInput() {
 			e.preventDefault();
 		}
 	});
+}
+
+/** !инициализация плагина */
+
+var orderCalcOptions = {
+	row: '.c-tr'
+	, getTotalResults: function (e, el, results) {
+		$(el).find('.order-calc__total-results-js').toggleClass('show', results.totalCount > 0);
+		$(el).find('.order-calc-btn').prop('disabled', !results.totalCount > 0).toggleClass('disabled', !results.totalCount > 0);
+	}
+};
+
+
+function orderCalculation() {
+	$('.order-calc-js').msOrderCalc(orderCalcOptions);
 }
 
 /**
