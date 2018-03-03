@@ -109,6 +109,7 @@ gulp.task('copyLibsScriptsToJs', ['copyJqueryToJs'], function () { // Таск �
 		// , 'src/libs/jquery-ui/ui/widget.js' // jquery ui (widget)
 		// , 'src/libs/jquery-ui/ui/widgets/spinner.js' // jquery ui (spinner)
 		, 'src/libs/device.js/lib/device.min.js' // определение устройств
+		, 'src/libs/jquery-form/dist/jquery.form.min.js' // jquery form для валидации форм
 		, 'src/libs/jquery-smartresize/jquery.debouncedresize.js' // "умный" ресайз
 		, 'src/libs/jquery-placeholder/jquery.placeholder.min.js' // поддержка плейсхолдера в старых браузерах
 		, 'src/libs/select2/dist/js/select2.full.min.js' // кастомный селект
