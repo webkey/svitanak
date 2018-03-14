@@ -2155,6 +2155,10 @@ function toggleViewInit() {
 
 			self.setLengthCheckedCheckboxes($currentGroup);
 		});
+
+		$.each($checkbox, function () {
+			$(this).is(':checked') && $(this).trigger('change');
+		});
 	};
 
 	MultiFilters.prototype.checkProp = function ($group, cond) {
