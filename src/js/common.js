@@ -2322,26 +2322,20 @@ function toggleViewInit() {
 
 		function openCurrentDrop($elements) {
 			self.addClassCustom($elements, dropIsOpenedClass);
-			// self.dropIsOpened = true;
-			// reinit sticky
-			// $(".m-aside").hcSticky('reinit');
-			// $(".m-aside").updateSticky();
+			$container.trigger('dropChange.multiFilters');
+			$container.trigger('dropOpen.multiFilters');
 		}
 
 		function closeCurrentDrop($elements) {
 			self.removeClassCustom($elements, dropIsOpenedClass);
-			// self.dropIsOpened = true;
-			// reinit sticky
-			// $(".m-aside").hcSticky('reinit');
-			// $(".m-aside").updateSticky();
+			$container.trigger('dropChange.multiFilters');
+			$container.trigger('dropClose.multiFilters');
 		}
 
 		function closeVisibleDrop() {
 			self.removeClassCustom($item, dropIsOpenedClass);
-			// self.dropIsOpened = false;
-			// reinit sticky
-			// $(".m-aside").hcSticky('reinit');
-			// $(".m-aside").updateSticky();
+			$container.trigger('dropChange.multiFilters');
+			$container.trigger('dropClose.multiFilters');
 		}
 	};
 
@@ -2449,7 +2443,7 @@ function sortingOrder() {
 	var $sortingItemParent = $sortingItems.parent();
 
 	$sortingItems.on('click', function (e) {
-		e.preventDefault();
+		// e.preventDefault();
 
 		var $this = $(this);
 		var $thisParent = $this.parent();
@@ -3144,22 +3138,27 @@ function stickyInit() {
 	var $mAside = $('.m-aside');
 	if ($mAside.length) {
 
-		// var mAsideSticky = new StickySidebar('.m-aside', {
-		// 	containerSelector: '.m-container',
-		// 	innerWrapperSelector: '.m-aside-holder',
-		// 	topSpacing: $('.header').outerHeight() + 20,
-		// 	resizeSensor: false, // recalculation sticky on change size of elements
-		// 	minWidth: 992
-		//
-		// });
-		//
-		// $('.view-switcher-news-js').on('changed.toggleView', function () {
-		// 	mAsideSticky.updateSticky();
-		// });
-		//
-		// $('.view-switcher-products-js').on('changed.toggleView', function () {
-		// 	mAsideSticky.updateSticky();
-		// });
+		var mAsideSticky = new StickySidebar('.m-aside', {
+			containerSelector: '.m-container',
+			innerWrapperSelector: '.m-aside-holder',
+			topSpacing: $('.header').outerHeight() + 20,
+			resizeSensor: false, // recalculation sticky on change size of elements
+			minWidth: 992
+
+		});
+
+		$('.view-switcher-news-js').on('changed.toggleView', function () {
+			mAsideSticky.updateSticky();
+		});
+
+		$('.view-switcher-products-js').on('changed.toggleView', function () {
+			mAsideSticky.updateSticky();
+		});
+
+		$('.p-filters-js').on('dropChange.multiFilters', function () {
+			console.log("dropChange.multiFilters");
+			mAsideSticky.updateSticky();
+		});
 	}
 
 	var contactsMap = '.contacts__map';

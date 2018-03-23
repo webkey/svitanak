@@ -923,8 +923,10 @@ body
 		width: $aside-width--sm
 
 	+media('>=tab-lg')
-		&
+		//&
 			transform: translate(0, 0) matrix(1, 0, 0, 1, 0, 0) !important
+		&
+			transform: none !important
 
 		@at-root .shutter-overlay--m-aside
 			display: none

@@ -14668,9 +14668,9 @@ body {
 
 @media (min-width: 992px) {
 	.m-aside {
-		-webkit-transform: translate(0, 0) matrix(1, 0, 0, 1, 0, 0) !important;
-		    -ms-transform: translate(0, 0) matrix(1, 0, 0, 1, 0, 0) !important;
-		        transform: translate(0, 0) matrix(1, 0, 0, 1, 0, 0) !important;
+		-webkit-transform: none !important;
+		    -ms-transform: none !important;
+		        transform: none !important;
 	}
 	.shutter-overlay--m-aside {
 		display: none;
