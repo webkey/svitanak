@@ -947,16 +947,15 @@ body
 	+media('<mob-md')
 		width: 100%
 
-	.shutter__options
-		+media('<tab-lg')
-			display: block
-			box-shadow: 0 0 30px 10px white
+	form
+		height: 100%
 
-		@at-root .btn-filters-apply
-			width: 100%
-			height: $header-height--lg
-			+padding-vertical(19px)
-			display: block
+.m-aside-layout
+	height: 100%
+	// for sticky-sidebar js
+	transform: translate(0, 0) /* For browsers don't support translate3d. */
+	transform: translate3d(0, 0, 0)
+	will-change: position, transform
 
 .m-aside-align
 	+media('<tab-lg')
@@ -964,12 +963,9 @@ body
 		overflow-y: auto
 		//height: 100%
 		height: calc(100% - #{$header-height--lg}) // если есть кнопка закрытия
+		//height: calc(100% - #{$header-height--lg*2}) // если есть кнопка закрытия и футер с дополнительными элементами
 
 .m-aside-holder
-	// for sticky-sidebar js
-	transform: translate(0, 0) /* For browsers don't support translate3d. */
-	transform: translate3d(0, 0, 0)
-	will-change: position, transform
 	padding-right: $layout-spaces
 
 	+media('<desk-hd')
@@ -985,7 +981,84 @@ body
 		padding: $layout-spaces--sm
 
 	+media('<mob-lg')
-		padding: $layout-spaces--mob $layout-spaces--mob round($layout-spaces--mob*2)
+		padding: $layout-spaces--mob $layout-spaces--mob round($layout-spaces--mob*1.5)
+
+.m-aside-footer
+	padding-top: 4rem
+	padding-right: $layout-spaces
+	position: relative
+	line-height: 1
+
+	+media('<desk-hd')
+		padding-right: $layout-spaces--hd
+
+	+media('<desk-lg')
+		padding-right: $layout-spaces--lg
+
+	+media('<desk-sm')
+		padding-right: $layout-spaces--sm
+
+	+media('<tab-lg')
+		display: flex
+		padding: 0
+		height: $header-height--lg
+		box-shadow: 0 0 30px 10px #fff, inset 0 1px 0 $border-color
+		overflow-y: hidden
+		z-index: 20
+
+	.btn-filters-apply, .btn-clear-filters
+		+media('<tab-lg')
+			display: block
+			width: calc(50% - #{$header-height--lg})
+			flex: 1 calc(50% - #{$header-height--lg})
+			height: $header-height--lg
+			padding: 21px 5px 21px calc(5px + #{$letter-spacing})
+
+	.btn-filters-apply
+		display: none
+		background-color: $btn-bg-hover-color
+		border: none
+
+		+media('<tab-lg')
+			display: block
+
+	.btn-clear-filters
+		+media('<tab-lg')
+			border: none
+			background-color: $btn-bg-color
+			color: #fff
+
+		// disabled
+		&:disabled, &.disabled, &[data-disabled]
+			+media('<tab-lg')
+				cursor: default
+				background-color: #eaeaea !important
+
+				&::before, &::after
+					display: none
+
+		.for-mob
+			display: none
+
+			+media('<tab-lg')
+				display: inline-block
+				padding-left: 0
+
+		.for-desk
+			+media('<tab-lg')
+				display: none
+
+		svg
+			+media('<tab-lg')
+				display: none
+
+	.btn-shutter-close
+		display: none
+
+		+media('<tab-lg')
+			z-index: 20
+			display: block
+			flex: 0 0 #{$header-height--lg}
 
 .m-content
 	margin-left: $aside-width

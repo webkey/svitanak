@@ -77,16 +77,25 @@
 					</div>
 					<div class="m-container">
 						<div class="m-aside m-aside-shutter-js">
-							<div class="shutter__options">
-								<a href="#" class="btn-shutter-close btn-shutter-close-js"><i>&nbsp;</i><span>Закрыть</span></a>
-								<a href="#" class="btn-default-alt btn-filters-apply btn-shutter-close-js"><span>Применить</span></a>
-							</div>
-							<div class="m-aside-align">
-								<div class="m-aside-holder">
-									<!--filters-->
-									@@include('_tpl_products-filters.html')
-									<!--filters end-->
-								</div>
+							<div class="m-aside-layout">
+								<form name="_form" action="/content/catalog/childrens/" method="get" class="js-filter-form">
+									<div class="m-aside-align">
+										<div class="m-aside-holder">
+											<!--filters-->
+											@@include('_tpl_products-filters.html')
+											<!--filters end-->
+										</div>
+									</div>
+									<div class="m-aside-footer">
+										<button class="btn-underline btn-with-icon btn-clear-filters btn-clear-filters-js" disabled>
+											@@include("includes-json/svg/icon-close.svg")
+											<span class="for-desk">Очистить фильтр</span>
+											<span class="for-mob">Очистить</span>
+										</button>
+										<a href="#" class="btn-default btn-filters-apply btn-shutter-close-js"><span>Показать</span></a>
+										<a href="#" class="btn-shutter-close btn-shutter-close-js"><i>&nbsp;</i><span>Закрыть</span></a>
+									</div>
+								</form>
 							</div>
 						</div>
 						<div class="m-content">

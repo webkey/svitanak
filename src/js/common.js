@@ -614,6 +614,7 @@ function slidersInit() {
 		closeOnResize: true,
 		cssScrollBlocked: false, // add class to body for blocked scroll
 		closeEsc: true, // close popup on click Esc,
+		closeOutside: true, // close popup on click Outside,
 		activeClass: 'active',
 		openedClass: 'extra-popup-opened',
 		beforeOpenClass: 'extra-popup-before-open',
@@ -655,6 +656,7 @@ function slidersInit() {
 		self.closeOnResize = options.closeOnResize;
 		self.cssScrollBlocked = options.cssScrollBlocked;
 		self.closeEsc = options.closeEsc;
+		self.closeOutside = options.closeOutside;
 
 		self.desktop = device.desktop();
 
@@ -757,6 +759,10 @@ function slidersInit() {
 	// click outside menu
 	ExtraPopup.prototype.outsideClick = function () {
 		var self = this;
+
+		if(!self.closeOutside) {
+			return;
+		}
 
 		$(document).on('click', function () {
 			if ( self.navIsOpened ) {
@@ -1204,6 +1210,7 @@ function shuttersInit(){
 			animationType: 'rtl',
 			animationSpeed: 200,
 			cssScrollBlocked: true,
+			// closeOutside: false,
 			openedClass: 'shutter--opened',
 			beforeOpenClass: 'shutter--before-open',
 			ease: 'Power2.easeInOut'
@@ -2023,6 +2030,7 @@ function toggleViewInit() {
 			btnReset: null,
 			btnResetAll: null,
 			tagsContainer: null,
+			activatedFilters: '.p-filters-activated-js',
 			tagsItem: ".tags-item-js",
 			tagsItemTpl: null,
 			tagTextContainer: ".tag-text-js",
@@ -2052,6 +2060,7 @@ function toggleViewInit() {
 		this.$btnReset = $(options.btnReset, container);
 		this.$btnResetAll = $(options.btnResetAll, container);
 		this.$tagsContainer = $(options.tagsContainer, container);
+		this.$activatedFilters = $(options.activatedFilters, container);
 		this.tagsItem = options.tagsItem; // не jq-объект, чтобы можна было искать в DOM после добавления
 		this.tagTextContainer = options.tagTextContainer; // не jq-объект, чтобы можна было искать в DOM после добавления
 		this.tagsItemTpl = !options.tagsItemTpl ?
@@ -2089,6 +2098,7 @@ function toggleViewInit() {
 		var $group = self.$group;
 		var $checkbox = self.$checkbox;
 		var $btnReset = self.$btnReset;
+		var $activatedFilters = self.$activatedFilters;
 		var filtersOnClass = self.modifiers.filtersOn;
 		var attributes = self.attributes;
 
@@ -2134,9 +2144,12 @@ function toggleViewInit() {
 			if (self.checkProp($currentGroup)) {
 				// включить кнопку очистки чекбоксов в ГРУППЕ
 				self.enabledButton($currentBtnReset);
-				// добавить класс наличия отмеченных чекбоксов с фильтров в ГРУППЕ
+				// добавить класс наличия отмеченных чекбоксов на фильтры в ГРУППЕ
 				self.addClassCustom($currentItem, filtersOnClass);
 			}
+
+			// добавить количество активных фильтров
+			$container.find($activatedFilters).html(self.getLengthActiveFilters()).toggleClass('hide', !self.getLengthActiveFilters());
 
 			// включить кнопку очистки ВСЕХ чекбоксов
 			if (self.checkProp($currentContainer.find($group))) {
@@ -2222,6 +2235,21 @@ function toggleViewInit() {
 		});
 
 		return totalCheckedInput;
+	};
+
+	MultiFilters.prototype.getLengthActiveFilters = function () {
+		var self = this;
+		var totalActiveFilters = 0;
+
+		$.each(self.$item, function () {
+
+			if ($(this).hasClass(self.modifiers.filtersOn)) {
+
+				totalActiveFilters++;
+			}
+		});
+
+		return totalActiveFilters;
 	};
 
 	MultiFilters.prototype.bindTagsEvents = function () {
@@ -3140,11 +3168,10 @@ function stickyInit() {
 
 		var mAsideSticky = new StickySidebar('.m-aside', {
 			containerSelector: '.m-container',
-			innerWrapperSelector: '.m-aside-holder',
+			innerWrapperSelector: '.m-aside-layout',
 			topSpacing: $('.header').outerHeight() + 20,
 			resizeSensor: false, // recalculation sticky on change size of elements
-			minWidth: 992
-
+			minWidth: prodCardMediaWidth - 1
 		});
 
 		$('.view-switcher-news-js').on('changed.toggleView', function () {
@@ -3156,8 +3183,10 @@ function stickyInit() {
 		});
 
 		$('.p-filters-js').on('dropChange.multiFilters', function () {
-			console.log("dropChange.multiFilters");
-			mAsideSticky.updateSticky();
+			// console.log("dropChange.multiFilters");
+			if(window.innerWidth >= prodCardMediaWidth) {
+				mAsideSticky.updateSticky();
+			}
 		});
 	}
 
@@ -3374,7 +3403,7 @@ $(document).ready(function () {
 	initMultiAccordion();
 	popupInitial();
 	spinnerInit($(".spinner-js"));
-	tooltipInit();
+	// tooltipInit();
 	orderCalculation();
 	onlyNumberInput();
 	textSlide();
@@ -3398,4 +3427,8 @@ $(document).ready(function () {
 		}
 		$this.addClass('trimmed');
 	});
+
+	$('.btn-del').on('click', function () {
+		console.log('click-click!');
+	})
 });

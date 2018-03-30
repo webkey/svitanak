@@ -108,13 +108,11 @@
 
 	.no-touchevents &:hover
 		color: $base-color
-		fill: $base-color
 		border-color: $base-color
 
 	&:disabled, &.disabled, &[data-disabled]
 		cursor: default
 		color: $btn-disabled-color !important
-		fill: $btn-disabled-color !important
 		border-color: $btn-disabled-color !important
 
 /* btn-underline end
@@ -131,14 +129,14 @@
 		+display-inline-block-middle
 
 	path
-		fill: inherit
+		fill: currentColor
 
 	span
 		text-align: left
 		white-space: normal
 		padding-right: $btni-space
 
-	svg + span
+	svg ~ span
 		padding-right: 0
 		padding-left: $btni-space
 
@@ -413,6 +411,11 @@
 
 
 /* arrow left end
+
+.btn-clear-filters
+	svg
+		width: 14px
+		height: 14px
 
 /* btn-del
 .btn-del

@@ -43,11 +43,10 @@
 	position: relative
 	display: block
 	text-decoration: none
-	color: inherit
 
 	a
 		text-decoration: none
-		color: inherit
+		color: $text-color
 
 	+clear
 
@@ -102,7 +101,7 @@
 
 	.no-image &
 		background: url(../../img/no-img-product.png) no-repeat center
-		background-size: contain
+		//background-size: contain
 
 	img
 		display: block
@@ -223,12 +222,16 @@
 .products__basket
 	margin-left: $product-dt
 	line-height: 1
+	padding-top: 4px
 
 // btn to basket
 .btn-to-basket, .btn-from-basket
 	$btn-space: 10px
 	//====================
 	+display-inline-block-top
+	//position: absolute
+	//right: 0
+	//top: 0
 	cursor: default
 	color: inherit
 	text-align: center
@@ -236,8 +239,11 @@
 	+clear-spacing
 	user-select: none
 
-	svg, span
+	//svg, span
 		+display-inline-block-middle
+	svg
+		display: block
+		float: left
 
 	.svg-ico-basket
 		+size(22px)
@@ -246,28 +252,19 @@
 		+size(32px, 22px)
 
 	path
-		fill: inherit
+		fill: currentColor
 
 	span
+		display: block
+		overflow: hidden
 		padding-right: $btn-space
-		+font($font-size, $line-height)
+		+font(1.6rem, round-float(20/16, 2))
 		letter-spacing: $letter-spacing
 		text-align: left
 		white-space: normal
 
 	svg + span
-		padding-right: 0
-		padding-left: $btn-space
-
-.btn-to-basket
-	// hide
-	display: none
-
-	.touchevents &
-		display: inline-block
-
-	.products__inner:hover &
-		display: inline-block
+		padding: 2px 0 0 $btn-space
 
 // hover
 a.btn-to-basket
@@ -275,20 +272,16 @@ a.btn-to-basket
 
 	.no-touchevents &:hover
 		color: $link-color
-		fill: $link-color
 
 .btn-from-basket
-	display: none
-	color: $base-color
-	fill: $base-color
-
-.in-cart
-	.btn-to-basket,
-	.products__inner:hover .btn-to-basket
+	&, .grid-view &
 		display: none
 
-	.btn-from-basket
-		display: inline-block
+	.touchevents &
+		color: $base-color
+
+	&:hover
+		color: $base-color
 
 /* grid view
 .grid-view
@@ -361,6 +354,25 @@ a.btn-to-basket
 	.btn-from-basket
 		span
 			display: none
+
+	.btn-to-basket
+		// hide
+		display: none
+
+		.touchevents &
+			display: inline-block
+
+	.products__inner:hover .btn-to-basket
+		display: inline-block
+
+.in-cart
+	.grid-view &, &
+		.btn-to-basket,
+		.products__inner:hover .btn-to-basket
+			display: none
+
+		.btn-from-basket
+			display: inline-block
 
 /* grid view end
 
@@ -528,6 +540,7 @@ $p-filters-angle-lines-color: $text-color
 .p-filters-tags__frame
 	cursor: default
 	background-color: rgba($bg-color-base, 0.8)
+	line-height: 1
 
 .p-filters-tags__item
 	+display-inline-block-top
@@ -539,6 +552,10 @@ $p-filters-angle-lines-color: $text-color
 	+font(12px, 18px)
 	letter-spacing: 0.05em
 	text-transform: uppercase
+
+	+media('<mob-lg')
+		font-size: 10px
+		margin: 4px 15px 4px 0
 
 	& > span
 		+display-inline-block-top
@@ -652,7 +669,7 @@ $p-filters-angle-lines-color: $text-color
 		margin-top: 3px
 
 	path, polygon
-		fill: inherit
+		fill: currentColor
 
 	&.on
 		$color: #32b39b
