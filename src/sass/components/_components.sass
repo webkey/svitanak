@@ -79,7 +79,6 @@
 		+font-d
 		text-decoration: none
 		color: $text-color
-		fill: $text-color
 
 		@if $animation-use
 			transition:
@@ -94,7 +93,7 @@
 			+size(30px)
 
 	path
-		fill: inherit
+		fill: currentColor
 
 		@if $animation-use
 			transition:
@@ -104,7 +103,6 @@
 	// hover
 	a:hover
 		color: $link-color
-		fill: $link-color
 
 /* scroll to end
 

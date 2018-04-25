@@ -5833,7 +5833,6 @@ input[type="checkbox"].social-share__check:active, input[type="checkbox"].social
 	text-transform: uppercase;
 	text-decoration: none;
 	color: #1a1a1a;
-	fill: #1a1a1a;
 }
 
 .scroll-to svg {
@@ -5851,12 +5850,11 @@ input[type="checkbox"].social-share__check:active, input[type="checkbox"].social
 }
 
 .scroll-to path {
-	fill: inherit;
+	fill: currentColor;
 }
 
 .scroll-to a:hover {
 	color: #ff6501;
-	fill: #ff6501;
 }
 
 /* scroll to end */
