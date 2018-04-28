@@ -15822,6 +15822,7 @@ body {
 /* user form */
 /* user form */
 /* NAVIGATION */
+/* nav list */
 .nav {
 	position: relative;
 }
@@ -15850,47 +15851,152 @@ body {
 
 .nav-list li {
 	position: relative;
-	margin-bottom: 8px;
-	font-family: "minionpro-medium", serif;
-	font-weight: normal;
-	font-style: normal;
-	font-size: 30px;
-	line-height: 1.13;
+	overflow: hidden;
 }
 
-@media (max-width: 1919px) {
-	.nav-list li {
-		font-size: 26px;
-	}
-}
-
-@media (max-width: 1599px) {
-	.nav-list li {
-		font-size: 24px;
-	}
-}
-
-.nav-list li:last-child {
-	margin-bottom: 0;
+.nav-list .nav__tab {
+	position: relative;
 }
 
 .nav-list a {
+	display: block;
+	position: relative;
+	padding: 6px 0;
 	color: black;
-	border-color: black;
+	border-color: currentColor;
 	text-decoration: none;
+	font-family: "minionpro-medium", serif;
+	font-weight: normal;
+	font-style: normal;
+	font-size: 1.8rem;
+	line-height: 1.33;
 }
 
-.nav-list a:hover {
+.touchevents .nav-list a {
+	-webkit-user-select: none;
+	   -moz-user-select: none;
+	    -ms-user-select: none;
+	        user-select: none;
+	-webkit-tap-highlight-color: transparent;
+}
+
+.no-touchevents .nav-list a:hover {
 	color: #ff6501;
-	border-color: #ff6501;
 }
 
-.nav-list .current a {
+.nav__drop {
+	position: relative;
+}
+
+.no-js .nav__drop {
+	display: block;
+}
+
+.nav-list li.has-drop > .nav__tab > a {
+	padding-right: 60px;
+}
+
+.no-touchevents .nav-list li.current > a, .no-touchevents .nav-list li.current > a:hover, .no-touchevents .nav-list li.current > .nav__tab a, .no-touchevents .nav-list li.current > .nav__tab a:hover {
 	color: #ff6501;
-	border-color: #ff6501;
 }
 
+.nav-list > li > a, .nav-list > li > .nav__tab a {
+	padding-top: 4px;
+	padding-bottom: 4px;
+	font-size: 3rem;
+	line-height: 1.13;
+}
+
+.nav__angle {
+	position: absolute;
+	right: 0;
+	top: 0;
+	width: 50px;
+	height: 100%;
+	box-shadow: inset 0 0 0 1px dodgerblue;
+	z-index: 2;
+	cursor: pointer;
+	display: none;
+}
+
+.touchevents .nav__angle {
+	-webkit-user-select: none;
+	   -moz-user-select: none;
+	    -ms-user-select: none;
+	        user-select: none;
+	-webkit-tap-highlight-color: transparent;
+}
+
+li.has-drop > .nav__tab > .nav__angle {
+	display: block;
+}
+
+.nav__angle i {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	width: 16px;
+	height: 16px;
+	margin: -8px 0 0 -8px;
+	font-size: 0;
+	line-height: 0;
+	pointer-events: none;
+}
+
+.nav__angle i::before, .nav__angle i::after {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 50%;
+	left: -10px;
+	height: 2px;
+	width: 16px;
+	-webkit-backface-visibility: hidden;
+	        backface-visibility: hidden;
+	background-color: currentColor;
+}
+
+.nav__angle i::after {
+	-webkit-transform: rotate(0.25turn);
+	    -ms-transform: rotate(0.25turn);
+	        transform: rotate(0.25turn);
+}
+
+li.is-open > .nav__tab .nav__angle i::before, li.is-open > .nav__tab .nav__angle i::after {
+	-webkit-transform: rotate(0);
+	    -ms-transform: rotate(0);
+	        transform: rotate(0);
+}
+
+.no-touchevents li > .nav__tab .nav__angle:hover i::before, .no-touchevents li > .nav__tab .nav__angle:hover i::after {
+	background-color: #ff6501;
+}
+
+.nav__drop ul {
+	padding-top: 5px;
+	padding-bottom: 5px;
+}
+
+.nav__drop a {
+	position: relative;
+	padding-left: 30px;
+}
+
+.nav__drop a::before {
+	content: "–";
+	display: block;
+	position: absolute;
+	left: 0;
+	top: 0.3em;
+}
+
+.nav__drop .nav__drop li {
+	padding-left: 30px;
+}
+
+/* nav list end */
 /* NAVIGATION end */
+/* temp */
 /* user form */
 /* user form */
 /* SIDEBAR */

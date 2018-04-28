@@ -1,20 +1,103 @@
 <!--(1) START @@bsKey FIRST level-->
 <ul class="@@bsKey-list @@bsKey-js">
 	<!--@@bsKey item start-->
-	<li class="@@if(currentItem === 'О нас'){current}">
-		@@include('_tpl_nav-link--short.html', { "txt": "О нас", "href": "typography.html", "key": "@@bsKey" })
+	<li class="has-drop@@if(currentItem === 'О нас'){ current}">
+		@@include('_tpl_nav-LINK--full.html', { "txt": "О нас", "href": "typography.html", "key": "@@bsKey" })
+		@@include('_tpl_nav-DROP-WRAP.html', { "dropLevel": "(==========2==========)", "pos": "start", "key": "@@bsKey"})
+	<li>@@include('_tpl_nav-LINK--short.html', { "txt": "История", "href": "#", "key": "@@bsKey" })</li>
+	<li class="has-drop">
+		@@include('_tpl_nav-LINK--full.html', { "txt": "Сертификаты, декларации на выпускаемую продукцию", "href": "#", "key": "@@bsKey" })
+		@@include('_tpl_nav-DROP-WRAP.html', { "dropLevel": "(==========3==========)", "pos": "start", "key": "@@bsKey"})
+	<li>@@include('_tpl_nav-LINK--short.html', { "txt": "Сертификаты, декларации соответствующие в рамках ЕАЭС", "href": "#", "key": "@@bsKey" })</li>
+	<li>@@include('_tpl_nav-LINK--short.html', { "txt": "Свидетельство о государственной регистрации в рамках ЕАЭС", "href": "#", "key": "@@bsKey" })</li>
+	<li>@@include('_tpl_nav-LINK--short.html', { "txt": "Сертификат соответствия РБ для военнослужащих", "href": "#", "key": "@@bsKey" })</li>
+		@@include('_tpl_nav-DROP-WRAP.html', { "dropLevel": "(==========3==========)", "pos": "end", "key": "@@bsKey"})
+
+	<li>@@include('_tpl_nav-LINK--short.html', { "txt": "Возможности", "href": "#", "key": "@@bsKey" })</li>
+	<li>@@include('_tpl_nav-LINK--short.html', { "txt": "Достижения", "href": "#", "key": "@@bsKey" })</li>
+	<li>@@include('_tpl_nav-LINK--short.html', { "txt": "Системы менеджмента", "href": "#", "key": "@@bsKey" })</li>
+
+		@@include('_tpl_nav-DROP-WRAP.html', { "dropLevel": "(==========2==========)", "pos": "end", "key": "@@bsKey"})
+
 	</li>
 	<!--@@bsKey item end-->
 
 	<!--@@bsKey item start-->
-	<li class="@@if(currentItem === 'Наши бренды'){current}">
-		@@include('_tpl_nav-link--short.html', { "txt": "Наши бренды", "href": "#", "key": "@@bsKey" })
+	<li class="has-drop@@if(currentItem === 'Наши бренды'){ current}">
+		@@include('_tpl_nav-LINK--full.html', { "txt": "Наши бренды", "href": "#", "key": "@@bsKey" })
+		@@include('_tpl_nav-DROP-WRAP.html', { "dropLevel": "(==========2==========)", "pos": "start", "key": "@@bsKey"})
+	<li>@@include('_tpl_nav-LINK--short.html', { "txt": "Свiтанак", "href": "#", "key": "@@bsKey" })</li>
+	<li>@@include('_tpl_nav-LINK--short.html', { "txt": "ЭГО", "href": "#", "key": "@@bsKey" })</li>
+	<li>@@include('_tpl_nav-LINK--short.html', { "txt": "Fishka", "href": "#", "key": "@@bsKey" })</li>
+	<li>@@include('_tpl_nav-LINK--short.html', { "txt": "Кука-Вака", "href": "#", "key": "@@bsKey" })</li>
+
+		@@include('_tpl_nav-DROP-WRAP.html', { "dropLevel": "(==========2==========)", "pos": "end", "key": "@@bsKey"})
+
 	</li>
 	<!--@@bsKey item end-->
 
 	<!--@@bsKey item start-->
-	<li class="@@if(currentItem === 'Клиентам'){current}">
-		@@include('_tpl_nav-link--short.html', { "txt": "Клиентам", "href": "#", "key": "@@bsKey" })
+	<li class="has-drop@@if(currentItem === 'Каталог'){ current}">
+		@@include('_tpl_nav-LINK--full.html', { "txt": "Каталог", "href": "catalog.html", "key": "@@bsKey" })
+		@@include('_tpl_nav-DROP-WRAP.html', { "dropLevel": "(==========2==========)", "pos": "start", "key": "@@bsKey"})
+	<li class="has-drop">
+		@@include('_tpl_nav-LINK--full.html', { "txt": "Женский трикотаж", "href": "#", "key": "@@bsKey" })
+		@@include('_tpl_nav-DROP-WRAP.html', { "dropLevel": "(==========3==========)", "pos": "start", "key": "@@bsKey"})
+	<li>@@include('_tpl_nav-LINK--short.html', { "txt": "Белье женское", "href": "#", "key": "@@bsKey" })</li>
+	<li>@@include('_tpl_nav-LINK--short.html', { "txt": "Верх женский", "href": "#", "key": "@@bsKey" })</li>
+		@@include('_tpl_nav-DROP-WRAP.html', { "dropLevel": "(==========3==========)", "pos": "end", "key": "@@bsKey"})
+
+	<li class="has-drop">
+		@@include('_tpl_nav-LINK--full.html', { "txt": "Мужской трикотаж", "href": "#", "key": "@@bsKey" })
+		@@include('_tpl_nav-DROP-WRAP.html', { "dropLevel": "(==========3==========)", "pos": "start", "key": "@@bsKey"})
+	<li>@@include('_tpl_nav-LINK--short.html', { "txt": "Белье мужское", "href": "#", "key": "@@bsKey" })</li>
+	<li>@@include('_tpl_nav-LINK--short.html', { "txt": "Верх мужской", "href": "#", "key": "@@bsKey" })</li>
+		@@include('_tpl_nav-DROP-WRAP.html', { "dropLevel": "(==========3==========)", "pos": "end", "key": "@@bsKey"})
+
+	<li class="has-drop">
+		@@include('_tpl_nav-LINK--full.html', { "txt": "Детский трикотаж", "href": "#", "key": "@@bsKey" })
+		@@include('_tpl_nav-DROP-WRAP.html', { "dropLevel": "(==========3==========)", "pos": "start", "key": "@@bsKey"})
+	<li>@@include('_tpl_nav-LINK--short.html', { "txt": "Белье детское", "href": "#", "key": "@@bsKey" })</li>
+	<li>@@include('_tpl_nav-LINK--short.html', { "txt": "Верх детский", "href": "#", "key": "@@bsKey" })</li>
+		@@include('_tpl_nav-DROP-WRAP.html', { "dropLevel": "(==========3==========)", "pos": "end", "key": "@@bsKey"})
+
+	<li class="has-drop">
+		@@include('_tpl_nav-LINK--full.html', { "txt": "Ясельный трикотаж", "href": "#", "key": "@@bsKey" })
+		@@include('_tpl_nav-DROP-WRAP.html', { "dropLevel": "(==========3==========)", "pos": "start", "key": "@@bsKey"})
+	<li>@@include('_tpl_nav-LINK--short.html', { "txt": "Белье ясельное", "href": "#", "key": "@@bsKey" })</li>
+		@@include('_tpl_nav-DROP-WRAP.html', { "dropLevel": "(==========3==========)", "pos": "end", "key": "@@bsKey"})
+
+		@@include('_tpl_nav-DROP-WRAP.html', { "dropLevel": "(==========2==========)", "pos": "end", "key": "@@bsKey"})
+
+	</li>
+	<!--@@bsKey item end-->
+
+	<!--@@bsKey item start-->
+	<li class="@@if(currentItem === 'Новые модели'){current}">
+		@@include('_tpl_nav-link--short.html', { "txt": "Новые модели", "href": "#", "key": "@@bsKey" })
+	</li>
+	<!--@@bsKey item end-->
+
+	<!--@@bsKey item start-->
+	<li class="@@if(currentItem === 'Рукав медицинский'){current}">
+		@@include('_tpl_nav-link--short.html', { "txt": "Рукав медицинский", "href": "#", "key": "@@bsKey" })
+	</li>
+	<!--@@bsKey item end-->
+
+	<!--@@bsKey item start-->
+	<li class="has-drop@@if(currentItem === 'Где купить'){ current}">
+		@@include('_tpl_nav-LINK--full.html', { "txt": "Где купить", "href": "#", "key": "@@bsKey" })
+		@@include('_tpl_nav-DROP-WRAP.html', { "dropLevel": "(==========2==========)", "pos": "start", "key": "@@bsKey"})
+	<li>@@include('_tpl_nav-LINK--short.html', { "txt": "В Беларуси", "href": "#", "key": "@@bsKey" })</li>
+	<li>@@include('_tpl_nav-LINK--short.html', { "txt": "В России", "href": "#", "key": "@@bsKey" })</li>
+	<li>@@include('_tpl_nav-LINK--short.html', { "txt": "В Казахстане", "href": "#", "key": "@@bsKey" })</li>
+	<li>@@include('_tpl_nav-LINK--short.html', { "txt": "В Латвии", "href": "#", "key": "@@bsKey" })</li>
+	<li>@@include('_tpl_nav-LINK--short.html', { "txt": "В Литве", "href": "#", "key": "@@bsKey" })</li>
+	<li>@@include('_tpl_nav-LINK--short.html', { "txt": "В Германии", "href": "#", "key": "@@bsKey" })</li>
+	<li>@@include('_tpl_nav-LINK--short.html', { "txt": "В Молдове", "href": "#", "key": "@@bsKey" })</li>
+
+		@@include('_tpl_nav-DROP-WRAP.html', { "dropLevel": "(==========2==========)", "pos": "end", "key": "@@bsKey"})
+
 	</li>
 	<!--@@bsKey item end-->
 
