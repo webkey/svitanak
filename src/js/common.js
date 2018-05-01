@@ -2774,9 +2774,20 @@ function initMultiAccordion() {
 			accordionItem: '.js-accordion__item',
 			accordionHeader: '.js-accordion__header',
 			accordionHand: '.js-accordion__hand',
-			// scrollToTop: true,
-			// scrollToTopSpeed: 300,
-			// scrollToTopOffset: $('.header').outerHeight(),
+			indexInit: false,
+			clickOutside: false,
+			animateSpeed: 200
+		});
+	}
+
+	var navMenu = $('.nav-js');
+
+	if (navMenu.length) {
+		new JsAccordion({
+			accordionContainer: '.nav-js',
+			accordionItem: 'li',
+			accordionHeader: '.nav__tab-js',
+			accordionHand: '.nav-handler-js',
 			indexInit: false,
 			clickOutside: false,
 			animateSpeed: 200

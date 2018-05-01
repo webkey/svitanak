@@ -38,11 +38,8 @@
 		text-decoration: none
 		+font-alt-medium
 		+font(1.8rem, round-float(24/18, 2))
-
-		// убрать подсветку при клике на тачскринах
-		.touchevents &
-			user-select: none
-			-webkit-tap-highlight-color: transparent
+		user-select: none
+		-webkit-tap-highlight-color: transparent
 
 		// hover
 		.no-touchevents &:hover
@@ -51,7 +48,7 @@
 // общие стили для подменю навигации
 .nav__drop
 	position: relative
-	//display: none
+	display: none
 
 	.no-js &
 		display: block
@@ -99,8 +96,8 @@
 	i
 		position: absolute
 		+position(50%, 50%)
-		+size(16px)
-		margin: -8px 0 0 -8px
+		+size(8px)
+		margin: -4px 0 0 -4px
 		+font(0, 0)
 		pointer-events: none
 		//will-change: transform
@@ -110,9 +107,9 @@
 
 		&::before, &::after
 			+pseudo()
-			+position(50%, -10px)
+			+position(50%, 0)
 			height: 2px
-			width: 16px
+			width: 8px
 			backface-visibility: hidden
 			background-color: currentColor
 			//$prop: background-color, transform
@@ -121,18 +118,20 @@
 				property: $prop
 				duration: $animation-speed
 
+		&::before
+			transform: rotate(45deg)
+			margin: 0 0 0 -2px
+
 		&::after
-			transform: rotate(0.25turn)
+			transform: rotate(-45deg)
+			margin: 0 0 0 3px
 
 // стили стрелок навигации для разных состояний
 .nav__angle
 
 	// активное (подменю открыто)
 	li.is-open > .nav__tab & i
-		//transform: rotate(0)
-
-		&::before, &::after
-			transform: rotate(0)
+		transform: rotate(0.5turn)
 
 	// ховер
 	.no-touchevents li > .nav__tab &:hover i
