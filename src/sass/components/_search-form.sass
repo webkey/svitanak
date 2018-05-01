@@ -65,7 +65,6 @@ input.search-form__input
 	transition-duration: $animation-speed
 	// цвет текста и svg иконки
 	color: #e5e5e5
-	fill: #e5e5e5
 	pointer-events: none
 
 	+media('<mob-lg')
@@ -75,11 +74,9 @@ input.search-form__input
 	.input--has-value &
 		pointer-events: auto
 		color: $text-color
-		fill: $text-color
 
 	.no-touchevents &:hover
 		color: $base-color
-		fill: $base-color
 
 	input
 		+cover-abs()
@@ -100,7 +97,7 @@ input.search-form__input
 			margin: -#{round($search-form-popup-btn-size--sm*0.5)} 0 0 -#{round($search-form-popup-btn-size--sm*0.5)}
 
 	path
-		fill: inherit
+		fill: currentColor
 		transition: inherit
 
 	span

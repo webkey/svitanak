@@ -2110,7 +2110,6 @@ table th, table thead td {
 	margin-bottom: 6rem;
 	line-height: 1;
 	color: black;
-	fill: black;
 	text-decoration: none;
 }
 
@@ -2139,7 +2138,7 @@ table th, table thead td {
 }
 
 .view-print path {
-	fill: inherit;
+	fill: currentColor;
 }
 
 .view-print span {
@@ -4327,7 +4326,6 @@ input.search-form__input.placeholder:focus {
 	transition-property: color, fill, opacity;
 	transition-duration: 0.2s;
 	color: #e5e5e5;
-	fill: #e5e5e5;
 	pointer-events: none;
 }
 
@@ -4342,12 +4340,10 @@ input.search-form__input.placeholder:focus {
 .input--has-value .search-form__btn {
 	pointer-events: auto;
 	color: #1a1a1a;
-	fill: #1a1a1a;
 }
 
 .no-touchevents .search-form__btn:hover {
 	color: #ff6501;
-	fill: #ff6501;
 }
 
 .search-form__btn input {
@@ -4381,7 +4377,7 @@ input.search-form__input.placeholder:focus {
 }
 
 .search-form__btn path {
-	fill: inherit;
+	fill: currentColor;
 	transition: inherit;
 }
 
@@ -5033,7 +5029,6 @@ a.search-results__inner:hover .search-results__title {
 	height: 50px;
 	border: 2px solid #1a1a1a;
 	color: #1a1a1a;
-	fill: #1a1a1a;
 	border-radius: 50%;
 }
 
@@ -5069,7 +5064,7 @@ a.search-results__inner:hover .search-results__title {
 }
 
 .social-networks__item a path {
-	fill: inherit;
+	fill: currentColor;
 }
 
 .no-touchevents .social-networks__item a:hover.fb {
@@ -5145,7 +5140,6 @@ input[type="checkbox"].social-share__check:active, input[type="checkbox"].social
 	line-height: 1.88;
 	letter-spacing: normal;
 	color: #1a1a1a;
-	fill: #1a1a1a;
 	text-decoration: none;
 	cursor: pointer;
 	border: 2px solid #1a1a1a;
@@ -5214,7 +5208,7 @@ input[type="checkbox"].social-share__check:active, input[type="checkbox"].social
 }
 
 .social-share__opener path {
-	fill: inherit;
+	fill: currentColor;
 }
 
 .social-share__list {
@@ -5240,7 +5234,6 @@ input[type="checkbox"].social-share__check:active, input[type="checkbox"].social
 	height: 50px;
 	border: 2px solid #1a1a1a;
 	color: #1a1a1a;
-	fill: #1a1a1a;
 	border-radius: 50%;
 }
 
@@ -5276,7 +5269,7 @@ input[type="checkbox"].social-share__check:active, input[type="checkbox"].social
 }
 
 .social-share__item a path {
-	fill: inherit;
+	fill: currentColor;
 }
 
 .social-share__item a:hover.fb {
@@ -5432,7 +5425,6 @@ input[type="checkbox"].social-share__check:active, input[type="checkbox"].social
 	font-size: 0;
 	letter-spacing: -4px;
 	color: inherit;
-	fill: inherit;
 	text-align: center;
 	cursor: default;
 	margin-bottom: 6rem;

@@ -47,7 +47,6 @@ $social-space--lg: 20px !default
 		+size(50px)
 		border: 2px solid $text-color
 		color: $text-color
-		fill: $text-color
 		border-radius: 50%
 
 		span
@@ -58,7 +57,7 @@ $social-space--lg: 20px !default
 			+size(20px)
 
 		path
-			fill: inherit
+			fill: currentColor
 
 		.no-touchevents &:hover
 			&.fb
@@ -112,7 +111,6 @@ input[type="checkbox"].social-share__check
 		+font($font-size, $line-height)
 		letter-spacing: normal
 		color: $text-color
-		fill: $text-color
 		text-decoration: none
 		cursor: pointer
 		border: 2px solid $text-color
@@ -154,7 +152,7 @@ input[type="checkbox"].social-share__check
 		margin: -13px 0 0 -15px
 
 	path
-		fill: inherit
+		fill: currentColor
 
 .social-share__list
 	display: none
@@ -174,7 +172,6 @@ input[type="checkbox"].social-share__check
 		+size($social-share-size)
 		border: 2px solid $text-color
 		color: $text-color
-		fill: $text-color
 		border-radius: 50%
 
 		span
@@ -185,7 +182,7 @@ input[type="checkbox"].social-share__check
 			+size(20px)
 
 		path
-			fill: inherit
+			fill: currentColor
 
 		&:hover
 			&.fb
