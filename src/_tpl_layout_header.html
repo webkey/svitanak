@@ -19,14 +19,90 @@
 		<div class="header__holder">
 			<div class="header__col header__col--slogan">
 				<div class="header__cell">
-					<a href="index.html" class="slogan">Белорусский трикотаж <br> из Жодино</a>
+					<span class="slogan">Белорусский трикотаж <br> из Жодино</span>
 				</div>
 			</div>
 			<div class="header__col header__col--menu">
 				<div class="header__cell">
 					<ul class="menu-list">
-						<li @@if(context.currentItem === "Продукция"){class="current"}><a href="catalog.html"><span>Продукция</span></a></li>
-						<li @@if(context.currentItem === "Клиентам"){class="current"}><a href="404.html"><span>Клиентам</span></a></li>
+						<li @@if(context.currentItem === "Продукция"){class="current"}>
+							<a href="catalog.html"><span>Продукция</span></a>
+							<div class="menu-list__drop drop--departments">
+								<div class="drop__layout">
+									<!--departments-->
+									<ul class="dep-list equal-height-js">
+										@@loop('_tpl_dep-items.html', [
+										{
+										"title": "",
+										"alt": "Женский трикотаж",
+										"items": ["Белье женское", "Верх женский"],
+										"img": "dep-img-01.png"
+										},
+										{
+										"title": "",
+										"alt": "Мужской трикотаж",
+										"items": ["Белье мужское", "Верх мужской"],
+										"img": "dep-img-02.png"
+										},
+										{
+										"title": "",
+										"alt": "Детский трикотаж",
+										"items": ["Белье детское", "Верх детский"],
+										"img": "dep-img-03.png"
+										},
+										{
+										"title": "",
+										"alt": "Ясельный трикотаж",
+										"items": ["Белье ясельное"],
+										"img": "dep-img-04.png"
+										}
+										])
+									</ul>
+									<!--departments end-->
+								</div>
+							</div>
+						</li>
+						<li @@if(context.currentItem === "Клиентам"){class="current"}>
+							<a href="404.html"><span>Клиентам</span></a>
+							<div class="menu-list__drop">
+								<div class="drop__layout">
+									<ul>
+										<li>
+											<a href="#">Наши предложения</a>
+											<ul>
+												<li><a href="#">Акции</a></li>
+												<li><a href="#">Распродажа</a></li>
+												<li><a href="#">Низкие цены</a></li>
+												<li><a href="#">Большие скидки</a></li>
+											</ul>
+										</li>
+										<li>
+											<a href="#">Как заказать</a>
+											<ul>
+												<li><a href="#">Онлайн магазин</a></li>
+												<li><a href="#">Самовывоз</a></li>
+											</ul>
+										</li>
+										<li>
+											<a href="#">Положения</a>
+											<ul>
+												<li><a href="#">Положение о порядке закупок товаров (работ, услуг) за счет собственных средств</a></li>
+											</ul>
+										</li>
+										<li>
+											<a href="#">Сотрудничество</a>
+											<ul>
+												<li><a href="#">Оптовым клиентам</a></li>
+												<li><a href="#">Индивидуальным предпринимателям</a></li>
+												<li><a href="#">Розничная торговля</a></li>
+												<li><a href="#">Франчайзинг</a></li>
+												<li><a href="#">Инвестирование</a></li>
+											</ul>
+										</li>
+									</ul>
+								</div>
+							</div>
+						</li>
 						<li @@if(context.currentItem === "Контакты"){class="current"}><a href="contacts.html"><span>Контакты</span></a></li>
 					</ul>
 				</div>

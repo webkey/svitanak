@@ -74,16 +74,18 @@
 /* scroll to
 .scroll-to
 	text-align: center
+	color: $text-color
+	transition:
+		property: color
+		duration: $animation-speed
+
+	.scroll-is-bottom &
+		color: #ccc
 
 	a
 		+font-d
 		text-decoration: none
-		color: $text-color
-
-		@if $animation-use
-			transition:
-				property: color
-				duration: $animation-speed
+		color: inherit
 
 	svg
 		+display-inline-block-middle
@@ -94,11 +96,6 @@
 
 	path
 		fill: currentColor
-
-		@if $animation-use
-			transition:
-				property: fill
-				duration: $animation-speed
 
 	// hover
 	a:hover
@@ -2309,9 +2306,11 @@ a.c-tr:hover
 		text-align: center
 
 .pseudotabs-tab
-	+font-d
 	+display-inline-block-top
 	margin: 0 20px round($bottom-space--lg/2)
+	+font-alt-bold
+	+font(2.8rem, round-float(18/14, 2))
+	letter-spacing: $letter-spacing
 
 	+media('<desk-lg')
 		margin-bottom: round($bottom-space--ml/2)
@@ -2325,6 +2324,7 @@ a.c-tr:hover
 		text-decoration: none
 		
 		span
+			line-height: 1
 			border-bottom: 2px dotted $text-color
 			display: inline-block
 			vertical-align: top

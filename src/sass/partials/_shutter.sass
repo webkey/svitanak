@@ -53,10 +53,19 @@
 	z-index: auto
 
 .shutter__align
-	width: calc(100% + 100px)
+	//width: calc(100% + 100px)
 	overflow-x: hidden
 	overflow-y: auto
 	height: 100%
+
+	.no-touchevents &
+		overflow-y: hidden
+
+		+media('<desk-sm')
+			overflow: auto
+
+		&:hover
+			overflow-y: auto
 
 	+media('<desk-sm')
 		width: 100%
@@ -324,13 +333,13 @@
 		z-index: 1040
 
 	&, .shutter__holder
-		max-width: $shutter-width
+		width: $shutter-width
 
 		+media('<desk-lg')
-			max-width: $shutter-width--lg
+			width: $shutter-width--lg
 
 		+media('<desk-sm')
-			max-width: none
+			width: 100%
 
 		+media('<tab-sm')
 			padding: 0

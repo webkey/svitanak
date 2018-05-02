@@ -61,14 +61,107 @@
 					<div class="header__holder">
 						<div class="header__col header__col--slogan">
 							<div class="header__cell">
-								<a href="index.html" class="slogan">Белорусский трикотаж <br> из Жодино</a>
+								<span class="slogan">Белорусский трикотаж <br> из Жодино</span>
 							</div>
 						</div>
 						<div class="header__col header__col--menu">
 							<div class="header__cell">
 								<ul class="menu-list">
-									<li><a href="catalog.html"><span>Продукция</span></a></li>
-									<li><a href="404.html"><span>Клиентам</span></a></li>
+									<li>
+										<a href="catalog.html"><span>Продукция</span></a>
+										<div class="menu-list__drop drop--departments">
+											<div class="drop__layout">
+												<!--departments-->
+												<ul class="dep-list equal-height-js">
+													<li class="dep-item">
+														<figure class="dep-img">
+															<!--need to put double images-->
+															<div><img src="img/dep-img-01.png" alt="Женский трикотаж"></div>
+															<div><img src="img/dep-img-01.png" alt="Женский трикотаж"></div>
+														</figure>
+														<ul class="dep-sub-list">
+															<li><a href="#" title="Белье женское"><span>Белье женское</span></a></li>
+															<li><a href="#" title="Верх женский"><span>Верх женский</span></a></li>
+														</ul>
+													</li>
+													<li class="dep-item">
+														<figure class="dep-img">
+															<!--need to put double images-->
+															<div><img src="img/dep-img-02.png" alt="Мужской трикотаж"></div>
+															<div><img src="img/dep-img-02.png" alt="Мужской трикотаж"></div>
+														</figure>
+														<ul class="dep-sub-list">
+															<li><a href="#" title="Белье мужское"><span>Белье мужское</span></a></li>
+															<li><a href="#" title="Верх мужской"><span>Верх мужской</span></a></li>
+														</ul>
+													</li>
+													<li class="dep-item">
+														<figure class="dep-img">
+															<!--need to put double images-->
+															<div><img src="img/dep-img-03.png" alt="Детский трикотаж"></div>
+															<div><img src="img/dep-img-03.png" alt="Детский трикотаж"></div>
+														</figure>
+														<ul class="dep-sub-list">
+															<li><a href="#" title="Белье детское"><span>Белье детское</span></a></li>
+															<li><a href="#" title="Верх детский"><span>Верх детский</span></a></li>
+														</ul>
+													</li>
+													<li class="dep-item">
+														<figure class="dep-img">
+															<!--need to put double images-->
+															<div><img src="img/dep-img-04.png" alt="Ясельный трикотаж"></div>
+															<div><img src="img/dep-img-04.png" alt="Ясельный трикотаж"></div>
+														</figure>
+														<ul class="dep-sub-list">
+															<li><a href="#" title="Белье ясельное"><span>Белье ясельное</span></a></li>
+														</ul>
+													</li>
+												</ul>
+												<!--departments end-->
+											</div>
+										</div>
+									</li>
+									<li>
+										<a href="404.html"><span>Клиентам</span></a>
+										<div class="menu-list__drop">
+											<div class="drop__layout">
+												<ul>
+													<li>
+														<a href="#">Наши предложения</a>
+														<ul>
+															<li><a href="#">Акции</a></li>
+															<li><a href="#">Распродажа</a></li>
+															<li><a href="#">Низкие цены</a></li>
+															<li><a href="#">Большие скидки</a></li>
+														</ul>
+													</li>
+													<li>
+														<a href="#">Как заказать</a>
+														<ul>
+															<li><a href="#">Онлайн магазин</a></li>
+															<li><a href="#">Самовывоз</a></li>
+														</ul>
+													</li>
+													<li>
+														<a href="#">Положения</a>
+														<ul>
+															<li><a href="#">Положение о порядке закупок товаров (работ, услуг) за счет собственных средств</a></li>
+														</ul>
+													</li>
+													<li>
+														<a href="#">Сотрудничество</a>
+														<ul>
+															<li><a href="#">Оптовым клиентам</a></li>
+															<li><a href="#">Индивидуальным предпринимателям</a></li>
+															<li><a href="#">Розничная торговля</a></li>
+															<li><a href="#">Франчайзинг</a></li>
+															<li><a href="#">Инвестирование</a></li>
+														</ul>
+													</li>
+												</ul>
+											</div>
+										</div>
+									</li>
 									<li><a href="contacts.html"><span>Контакты</span></a></li>
 								</ul>
 							</div>
@@ -219,8 +312,36 @@
 									</li>
 									<!--nav item end-->
 									<!--nav item start-->
-									<li class="">
-										<a href="#" title=""><span>Где купить</span></a>
+									<li class="has-drop">
+										<div class="nav__tab nav__tab-js">
+											<a href="typography.html" title=""><span>О нас</span></a>
+											<span class="nav__angle nav-handler-js"><i>&nbsp;</i></span>
+										</div>
+										<!--(2) START nav SECOND level-->
+										<div class="nav__drop nav-drop-js">
+											<ul class="sub-nav__list">
+												<li><a href="#" title=""><span>История</span></a></li>
+												<li class="has-drop">
+													<div class="nav__tab nav__tab-js">
+														<a href="#" title=""><span>Сертификаты, декларации на выпускаемую продукцию</span></a>
+														<span class="nav__angle nav-handler-js"><i>&nbsp;</i></span>
+													</div>
+													<!--(3) START nav THIRD level-->
+													<div class="nav__drop nav-drop-js">
+														<ul class="sub-nav__list">
+															<li><a href="#" title=""><span>Сертификаты, декларации соответствующие в рамках ЕАЭС</span></a></li>
+															<li><a href="#" title=""><span>Свидетельство о государственной регистрации в рамках ЕАЭС</span></a></li>
+															<li><a href="#" title=""><span>Сертификат соответствия РБ для военнослужащих</span></a></li>
+														</ul>
+													</div>
+													<!--(3) END nav THIRD level-->
+												</li>
+												<li><a href="#" title=""><span>Возможности</span></a></li>
+												<li><a href="#" title=""><span>Достижения</span></a></li>
+												<li><a href="#" title=""><span>Системы менеджмента</span></a></li>
+											</ul>
+										</div>
+										<!--(2) END nav SECOND level-->
 									</li>
 									<!--nav item end-->
 								</ul>

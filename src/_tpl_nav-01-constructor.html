@@ -13,8 +13,24 @@
 	<!--@@bsKey item end-->
 
 	<!--@@bsKey item start-->
-	<li class="@@if(currentItem === 'Где купить'){current}">
-		@@include('_tpl_nav-link--short.html', { "txt": "Где купить", "href": "#", "key": "@@bsKey" })
+	<li class="has-drop@@if(currentItem === 'О нас'){ current}">
+		@@include('_tpl_nav-LINK--full.html', { "txt": "О нас", "href": "typography.html", "key": "@@bsKey" })
+		@@include('_tpl_nav-DROP-WRAP.html', { "dropLevel": "(==========2==========)", "pos": "start", "key": "@@bsKey"})
+	<li>@@include('_tpl_nav-LINK--short.html', { "txt": "История", "href": "#", "key": "@@bsKey" })</li>
+	<li class="has-drop">
+		@@include('_tpl_nav-LINK--full.html', { "txt": "Сертификаты, декларации на выпускаемую продукцию", "href": "#", "key": "@@bsKey" })
+		@@include('_tpl_nav-DROP-WRAP.html', { "dropLevel": "(==========3==========)", "pos": "start", "key": "@@bsKey"})
+	<li>@@include('_tpl_nav-LINK--short.html', { "txt": "Сертификаты, декларации соответствующие в рамках ЕАЭС", "href": "#", "key": "@@bsKey" })</li>
+	<li>@@include('_tpl_nav-LINK--short.html', { "txt": "Свидетельство о государственной регистрации в рамках ЕАЭС", "href": "#", "key": "@@bsKey" })</li>
+	<li>@@include('_tpl_nav-LINK--short.html', { "txt": "Сертификат соответствия РБ для военнослужащих", "href": "#", "key": "@@bsKey" })</li>
+		@@include('_tpl_nav-DROP-WRAP.html', { "dropLevel": "(==========3==========)", "pos": "end", "key": "@@bsKey"})
+
+	<li>@@include('_tpl_nav-LINK--short.html', { "txt": "Возможности", "href": "#", "key": "@@bsKey" })</li>
+	<li>@@include('_tpl_nav-LINK--short.html', { "txt": "Достижения", "href": "#", "key": "@@bsKey" })</li>
+	<li>@@include('_tpl_nav-LINK--short.html', { "txt": "Системы менеджмента", "href": "#", "key": "@@bsKey" })</li>
+
+		@@include('_tpl_nav-DROP-WRAP.html', { "dropLevel": "(==========2==========)", "pos": "end", "key": "@@bsKey"})
+
 	</li>
 	<!--@@bsKey item end-->
 </ul>

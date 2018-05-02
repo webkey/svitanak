@@ -76,12 +76,13 @@
 	color: #b2b2b2
 	+font-alt-italic
 	+font(18px, round-float(22/18, 2))
-
-	&:hover
-		color: $link-color
+	cursor: default
 
 	+media('<desk-lg')
 		+font(16px, round-float(19/16, 2))
+
+a.slogan:hover
+	color: $link-color
 
 /* slogan end
 
@@ -137,11 +138,162 @@
 	// current
 	li
 		&.current
-			a
+			& > a
 				color: $link-color
 
 				span
 					border-bottom-color: $base-color
+
+$ml-drop-space-vertical: 40px
+$ml-item-space: 30px 30px //v h
+//=================
+.menu-list__drop
+	position: absolute
+	left: $sidebar-width
+	right: 0
+	top: 100%
+	display: block
+	z-index: 1
+	//==========================
+	$prop: opacity, visibility
+	will-change: $prop
+	opacity: 0
+	visibility: hidden
+	transition:
+		property: $prop
+		duration: $animation-speed
+
+	+media('<desk-lg')
+		left: $sidebar-width--lg
+
+	.home-page &
+		right: $sidebar-width
+
+		+media('<desk-lg')
+			right: $sidebar-width--lg
+
+	li.hover > &
+		opacity: 1
+		visibility: visible
+
+	// overlay
+	&::before
+		content: ""
+		display: block
+		position: absolute
+		top: 0
+		left: 0
+		width: 100%
+		height: calc(100vh - #{$header-height})
+		background-color: rgba(0, 0, 0, 0.36)
+		z-index: -1
+		pointer-events: none
+
+		+media('<desk-lg')
+			height: calc(100vh - #{$header-height--lg})
+
+.drop__layout
+	overflow-x: hidden
+	overflow-y: auto
+	max-height: calc(100vh - #{$header-height})
+	padding: $ml-drop-space-vertical $layout-spaces #{$ml-drop-space-vertical - (nth($ml-item-space, 1))}
+	background-color: #fff
+
+	+media('<desk-hd')
+		+padding-horizontal($layout-spaces--hd)
+
+	+media('<desk-lg')
+		+padding-horizontal($layout-spaces--lg)
+		max-height: calc(100vh - #{$header-height--lg})
+
+	+media('<desk-sm')
+		+padding-horizontal($layout-spaces--sm)
+
+	+media('<mob-lg')
+		+padding-horizontal($layout-spaces--mob)
+
+	& > ul
+		width: $flood-layout-width + (nth($ml-item-space, 2))
+		max-width: 100%
+		margin: 0 auto
+		+clear-spacing
+
+		li
+			display: block
+			+font-alt-medium
+			+font(1.8rem, round-float(24/18, 2))
+			letter-spacing: normal
+			text-transform: none
+			margin: 0 0 1rem
+
+			a
+				display: block
+				position: relative
+				padding-left: 20px
+
+				&::before
+					content: "–"
+					display: block
+					position: absolute
+					left: 0
+					top: 0
+
+		& > li
+			display: inline-block
+			vertical-align: top
+			width: 25%
+			+padding-horizontal(round(nth($ml-item-space, 2)/2))
+			margin-bottom: nth($ml-item-space, 1)
+
+			& > a
+				+font(2.4rem, round-float(24/24, 2))
+				color: inherit
+				padding-left: 0
+				margin-bottom: 20px
+
+				&::before
+					content: none
+
+	.dep-list
+		& > li
+			overflow: visible
+			width: calc(25% - #{nth($ml-item-space, 2)})
+			+margin-horizontal(round(nth($ml-item-space, 2)/2))
+
+	.dep-sub-list
+		li
+			+font-bold
+			+font(1.4rem, round-float(18/14, 2))
+			letter-spacing: 0.2em
+			text-transform: uppercase
+
+			a
+				display: inline
+				padding: 0
+
+				&::before
+					content: none
+
+				span
+					display: inline
+					padding: 0
+					border: none
+
+.menu-list__drop
+	&.drop--departments
+		.drop__layout
+			padding: 30px 30-(round(nth($ml-item-space, 2)/2))
+
+			& > ul
+				width: auto
+
+		.dep-list
+			border: none
+			
+		.dep-item
+			margin-bottom: 0
+			border-color: $border-color
+			border-width: 1px
 
 /* menu end
 /* HEADER end
