@@ -58,15 +58,6 @@
 	overflow-y: auto
 	height: 100%
 
-	.no-touchevents &
-		overflow-y: hidden
-
-		+media('<desk-sm')
-			overflow: auto
-
-		&:hover
-			overflow-y: auto
-
 	+media('<desk-sm')
 		width: 100%
 
@@ -113,7 +104,6 @@
 		width: auto
 		float: none
 		padding: $layout-spaces--sm $layout-spaces--sm 40px
-
 		display: none
 
 		&.active, .no-js &
@@ -129,7 +119,6 @@
 				+margin-horizontal(-$layout-spaces--sm)
 				margin-top: -$layout-spaces--sm
 				border-width: 0 0 1px
-				//padding-bottom: 40px
 
 				li:first-child
 					border-top: none
@@ -349,6 +338,16 @@
 			display: block
 
 	.shutter__align
+
+		.no-touchevents &
+			overflow-y: hidden
+
+			+media('<desk-sm')
+				overflow: auto
+
+			&:hover
+				overflow-y: auto
+
 		+media('<tab-sm')
 			height: calc(100% - #{$header-height--lg})
 

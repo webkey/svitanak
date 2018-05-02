@@ -1,10 +1,7 @@
-@charset "UTF-8";
-/* user form */
-/* user form */
+
 /*======================================================*/
 /* FONTS */
 /*======================================================*/
-/* user form */
 @font-face {
 	font-family: "gothampro-regular";
 	font-style: normal;
@@ -375,8 +372,6 @@ ul {
 }
 
 /* reset end */
-/* user form */
-/* user form */
 /* browserupgrade */
 .old-ie {
 	overflow: hidden;
@@ -413,8 +408,6 @@ ul {
 /*======================================================*/
 /* VENDOR */
 /*======================================================*/
-/* user form */
-/* user form */
 /* jFiler */
 .upload-file {
 	opacity: 0;
@@ -591,8 +584,6 @@ ul {
 }
 
 /* jFiler end */
-/* user form */
-/* user form */
 /* slick sliders */
 .slick-arrow {
 	width: 50px;
@@ -727,8 +718,6 @@ ul {
 }
 
 /* slick sliders end */
-/* user form */
-/* user form */
 /* swiper slider & default arrows */
 .swiper-button-prev, .swiper-button-next, .def-arrows--prev, .def-arrows--next {
 	overflow: hidden;
@@ -839,8 +828,6 @@ ul {
 }
 
 /* swiper slider end */
-/* user form */
-/* user form */
 /* magnific popup */
 .css-scroll-fixed .mfp-wrap {
 	overflow-x: hidden;
@@ -931,8 +918,6 @@ ul {
 }
 
 /* magnific popup end */
-/* user form */
-/* user form */
 .spinner {
 	position: relative;
 	display: inline-block;
@@ -1056,8 +1041,6 @@ ul {
 	background-color: #ff6501;
 }
 
-/* user form */
-/* user form */
 .ui-tooltip {
 	background-color: #262626;
 	color: white;
@@ -1067,8 +1050,6 @@ ul {
 	pointer-events: none;
 }
 
-/* user form */
-/* user form */
 /* full page */
 @media (max-width: 1199px) {
 	.fp-enabled body, html.fp-enabled {
@@ -1086,8 +1067,6 @@ ul {
 /*======================================================*/
 /* TYPOGRAPHY */
 /*======================================================*/
-/* user form */
-/* user form */
 /* v-middle */
 .v-middle {
 	overflow: hidden;
@@ -1127,8 +1106,6 @@ ul {
 }
 
 /* v-middle end */
-/* user form */
-/* user form */
 html {
 	font-size: 62.5%;
 }
@@ -2163,8 +2140,6 @@ table th, table thead td {
 }
 
 /* view print end */
-/* user form */
-/* user form */
 /* DEPICTS */
 .svg-ico-arr-l,
 .svg-ico-arr-r {
@@ -2193,8 +2168,6 @@ table th, table thead td {
 }
 
 /* DEPICTS end */
-/* user form */
-/* user form */
 /* BUTTON */
 [class|="btn"], [class*=" btn-"], input[type="submit"], input[type="button"], input[type="reset"], button {
 	display: inline-block;
@@ -2718,8 +2691,6 @@ table th, table thead td {
 
 /* btn-del end */
 /* BUTTON end */
-/* user form */
-/* user form */
 /* FORM STYLES DEFAULT */
 /* form layout */
 .form-row, .input-wrap {
@@ -3093,11 +3064,11 @@ input[type="checkbox"] ~ label, input[type="radio"] ~ label, .check-label, .radi
 	font-family: "gothampro-regular", sans-serif;
 	font-weight: normal;
 	font-style: normal;
-	font-size: 16px;
-	line-height: 22px;
-	letter-spacing: 0.025em;
+	font-size: 12px;
+	line-height: 15px;
+	letter-spacing: 0.05em;
 	color: #1a1a1a;
-	text-transform: none;
+	text-transform: uppercase;
 	cursor: pointer;
 	position: relative;
 	-webkit-user-select: none;
@@ -3133,7 +3104,7 @@ input[type="radio"] ~ span {
 	display: inline-block;
 	vertical-align: top;
 	position: relative;
-	padding: 0 0 0 34px;
+	padding: 4px 0 3px 34px;
 	z-index: 2;
 }
 
@@ -3141,9 +3112,11 @@ input[type="checkbox"] ~ i,
 input[type="radio"] ~ i {
 	font-size: 0;
 	line-height: 0;
+	width: 22px;
+	height: 22px;
 	position: absolute;
 	left: 0;
-	top: 50%;
+	top: 0;
 }
 
 .no-touchevents .check-label:hover input[type="checkbox"]:not(:disabled) ~ i::before {
@@ -3170,7 +3143,7 @@ input[type="checkbox"] ~ i::after {
 input[type="checkbox"] ~ label::before,
 input[type="checkbox"] ~ i::before {
 	border: 2px solid #1a1a1a;
-	background-color: transparent;
+	background-color: #fff;
 }
 
 input[type="checkbox"] ~ label::after,
@@ -3186,13 +3159,14 @@ input[type="checkbox"] ~ span::after {
 	width: 0;
 	height: 3px;
 	left: 0;
-	top: 50%;
+	top: 0;
 	border-radius: 0;
-	background: #1a1a1a;
+	background: white;
 }
 
 input[type="checkbox"] ~ label > span::before,
 input[type="checkbox"] ~ span::before {
+	margin: 6px 0 0 0;
 	-webkit-transform: rotate(45deg);
 	    -ms-transform: rotate(45deg);
 	        transform: rotate(45deg);
@@ -3204,6 +3178,7 @@ input[type="checkbox"] ~ span::before {
 
 input[type="checkbox"] ~ label > span::after,
 input[type="checkbox"] ~ span::after {
+	margin: 11px 0 0 -6px;
 	-webkit-transform: rotate(-50deg);
 	    -ms-transform: rotate(-50deg);
 	        transform: rotate(-50deg);
@@ -3213,10 +3188,15 @@ input[type="checkbox"] ~ span::after {
 	left: 22px;
 }
 
+input[type="checkbox"]:checked ~ label::before,
+input[type="checkbox"]:checked ~ i::before {
+	border-color: #ff6501;
+	background-color: #ff6501;
+}
+
 input[type="checkbox"]:checked ~ label > span::before,
 input[type="checkbox"]:checked ~ span::before {
 	width: 5px;
-	margin: -5px 0 0 0;
 	-webkit-backface-visibility: hidden;
 	        backface-visibility: hidden;
 }
@@ -3224,7 +3204,6 @@ input[type="checkbox"]:checked ~ span::before {
 input[type="checkbox"]:checked ~ label > span::after,
 input[type="checkbox"]:checked ~ span::after {
 	width: 11px;
-	margin: 0 0 0 -6px;
 	-webkit-backface-visibility: hidden;
 	        backface-visibility: hidden;
 }
@@ -3255,8 +3234,8 @@ input[type="radio"] ~ span::after {
 	height: 22px;
 	position: absolute;
 	left: 0;
-	top: 50%;
-	margin-top: -11px;
+	top: 0;
+	margin-top: 0;
 	border-radius: 50px;
 }
 
@@ -3291,13 +3270,14 @@ input[type="radio"] ~ i {
 
 input[type="radio"]:checked ~ label::before,
 input[type="radio"]:checked ~ span::before {
-	border-color: #1a1a1a;
+	border-color: #ff6501;
+	background-color: #ff6501;
 }
 
 input[type="radio"]:checked ~ label > span::after,
 input[type="radio"]:checked ~ i::after {
 	opacity: 1;
-	background-color: #1a1a1a;
+	background-color: white;
 }
 
 input[type="radio"]:disabled ~ label,
@@ -3681,8 +3661,6 @@ label.input--focus, input[type="text"].input--focus, input[type="password"].inpu
 /* COMMON */
 /*======================================================*/
 /* SLIDERS */
-/* user form */
-/* user form */
 /* SLIDERS */
 /* images slider */
 .images-slider {
@@ -3845,8 +3823,6 @@ label.input--focus, input[type="text"].input--focus, input[type="password"].inpu
 /* SLIDERS end */
 /* SLIDERS end */
 /* FORMS */
-/* user form */
-/* user form */
 /* user form */
 .form-caption {
 	position: relative;
@@ -4216,8 +4192,6 @@ label.input--focus, input[type="text"].input--focus, input[type="password"].inpu
 }
 
 /* user form end */
-/* user form */
-/* user form */
 /* search form */
 .search-form, .search-form__field {
 	position: relative;
@@ -4638,8 +4612,6 @@ a.search-results__inner:hover .search-results__title {
 }
 
 /* search results end */
-/* user form */
-/* user form */
 /* subscription form */
 .subscription-form {
 	position: relative;
@@ -4871,8 +4843,6 @@ a.search-results__inner:hover .search-results__title {
 }
 
 /* subscription form end */
-/* user form */
-/* user form */
 /* msg form */
 .msg-form textarea {
 	resize: none;
@@ -4905,8 +4875,6 @@ a.search-results__inner:hover .search-results__title {
 /* comment form end */
 /* FORMS end */
 /* COMPONENTS */
-/* user form */
-/* user form */
 /*breadcrumbs*/
 .breadcrumbs {
 	position: relative;
@@ -4991,8 +4959,6 @@ a.search-results__inner:hover .search-results__title {
 }
 
 /*breadcrumbs end*/
-/* user form */
-/* user form */
 /* social networks */
 .social-networks {
 	margin-bottom: 2rem;
@@ -5378,8 +5344,6 @@ input[type="checkbox"].social-share__check:active, input[type="checkbox"].social
 }
 
 /* share end */
-/* user form */
-/* user form */
 /* files links */
 .file {
 	display: inline-block;
@@ -5431,8 +5395,6 @@ input[type="checkbox"].social-share__check:active, input[type="checkbox"].social
 }
 
 /* files links end */
-/* user form */
-/* user form */
 /* pagination */
 .pagination {
 	font-family: "gothampro-bold", sans-serif;
@@ -5700,8 +5662,6 @@ input[type="checkbox"].social-share__check:active, input[type="checkbox"].social
 }
 
 /* pagination end */
-/* user form */
-/* user form */
 .m-wrapper {
 	position: relative;
 	padding-right: 1px;
@@ -10608,8 +10568,6 @@ a.bag__inner:hover .bag__title {
 }
 
 /* options panel end */
-/* user form */
-/* user form */
 /* bitrix default search page */
 .search-page {
 	font-size: 1.4rem;
@@ -10775,8 +10733,6 @@ a.bag__inner:hover .bag__title {
 }
 
 /* bitrix default search page end */
-/* user form */
-/* user form */
 /* feature list */
 .feature-list__item {
 	margin-bottom: 4rem;
@@ -10819,8 +10775,6 @@ a.bag__inner:hover .bag__title {
 }
 
 /* feature list end */
-/* user form */
-/* user form */
 /* user options */
 .user-options {
 	position: relative;
@@ -10987,8 +10941,6 @@ a.bag__inner:hover .bag__title {
 }
 
 /* user options */
-/* user form */
-/* user form */
 /* lang */
 .lang {
 	position: relative;
@@ -11013,8 +10965,6 @@ a.bag__inner:hover .bag__title {
 }
 
 /* lang end */
-/* user form */
-/* user form */
 /* article style */
 .article-entry {
 	position: relative;
@@ -11268,8 +11218,6 @@ a.bag__inner:hover .bag__title {
 }
 
 /* article style end */
-/* user form */
-/* user form */
 /* products list */
 .products {
 	overflow: hidden;
@@ -11979,12 +11927,6 @@ a.btn-to-basket {
 	display: block;
 	font-size: 14px;
 	letter-spacing: 0.05em;
-}
-
-.p-filters-drop-list label [type="checkbox"]:checked ~ span {
-	font-family: "gothampro-bold", sans-serif;
-	font-weight: normal;
-	font-style: normal;
 }
 
 .no-touchevents .p-filters-select:hover,
@@ -13085,8 +13027,6 @@ a.btn-to-basket {
 }
 
 /* product card end */
-/* user form */
-/* user form */
 /* view switcher */
 .view-switcher {
 	position: relative;
@@ -13228,8 +13168,6 @@ a.btn-to-basket {
 }
 
 /* view switcher end */
-/* user form */
-/* user form */
 /* popups */
 .inline-popup {
 	max-width: 1600px;
@@ -13390,8 +13328,6 @@ a.btn-to-basket {
 /*======================================================*/
 /* LAYOUT */
 /*======================================================*/
-/* user form */
-/* user form */
 body {
 	height: 100%;
 	min-width: 320px;
@@ -15030,8 +14966,6 @@ body {
 /* shutter (layout) */
 /* shutter (layout) end */
 /* POPUPS / OPENING PANELS */
-/* user form */
-/* user form */
 /* shutter */
 /* shutter layout */
 .shutter {
@@ -15070,20 +15004,6 @@ body {
 	overflow-x: hidden;
 	overflow-y: auto;
 	height: 100%;
-}
-
-.no-touchevents .shutter__align {
-	overflow-y: hidden;
-}
-
-@media (max-width: 1199px) {
-	.no-touchevents .shutter__align {
-		overflow: auto;
-	}
-}
-
-.no-touchevents .shutter__align:hover {
-	overflow-y: auto;
 }
 
 @media (max-width: 1199px) {
@@ -15457,6 +15377,20 @@ body {
 	}
 }
 
+.no-touchevents .nav-shutter .shutter__align {
+	overflow-y: hidden;
+}
+
+@media (max-width: 1199px) {
+	.no-touchevents .nav-shutter .shutter__align {
+		overflow: auto;
+	}
+}
+
+.no-touchevents .nav-shutter .shutter__align:hover {
+	overflow-y: auto;
+}
+
 @media (max-width: 767px) {
 	.nav-shutter .shutter__align {
 		height: calc(100% - 60px);
@@ -15637,8 +15571,6 @@ body {
 /* bag-shutter end */
 /* shutter end */
 /* POPUPS / OPENING PANELS end */
-/* user form */
-/* user form */
 /* HEADER */
 .header {
 	background-color: white;
@@ -16026,8 +15958,6 @@ li.hover > .menu-list__drop {
 
 /* menu end */
 /* HEADER end */
-/* user form */
-/* user form */
 /* NAVIGATION */
 /* nav list */
 .nav {
@@ -16214,8 +16144,6 @@ li.is-open > .nav__tab .nav__angle i {
 /* nav list end */
 /* NAVIGATION end */
 /* temp */
-/* user form */
-/* user form */
 /* SIDEBAR */
 .sidebar {
 	background-color: white;
@@ -16276,8 +16204,6 @@ li.is-open > .nav__tab .nav__angle i {
 }
 
 /* SIDEBAR end */
-/* user form */
-/* user form */
 /* FOOTER */
 .footer .layout {
 	position: relative;
@@ -16628,8 +16554,6 @@ li.is-open > .nav__tab .nav__angle i {
 
 /* developer end */
 /* FOOTER end */
-/* user form */
-/* user form */
 /* HOME PAGE */
 /*scroll sections */
 .main-section-js {
@@ -16823,8 +16747,6 @@ li.is-open > .nav__tab .nav__angle i {
 
 /* special styles for home page end */
 /* HOME PAGE end */
-/* user form */
-/* user form */
 /* CARD PAGE */
 .card-page .breadcrumbs {
 	display: none;
@@ -16847,13 +16769,9 @@ li.is-open > .nav__tab .nav__angle i {
 }
 
 /* CARD PAGE end */
-/* user form */
-/* user form */
 /*======================================================*/
 /* PRINT VERSION */
 /*======================================================*/
-/* user form */
-/* user form */
 @media print {
 	*,
 	*::before,

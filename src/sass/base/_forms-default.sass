@@ -253,10 +253,10 @@ input, textarea
 input[type="checkbox"] ~ label, input[type="radio"] ~ label, .check-label, .radio-label
 	+display-inline-block-top
 	+font-normal
-	+font(16px, 22px)
-	letter-spacing: 0.025em
+	+font(12px, 15px)
+	letter-spacing: 0.05em
 	color: $text-color
-	text-transform: none
+	text-transform: uppercase
 	cursor: pointer
 	position: relative
 	user-select: none
@@ -289,14 +289,15 @@ input[type="radio"]
 		display: inline-block
 		vertical-align: top
 		position: relative
-		padding: 0 0 0 34px
+		padding: 4px 0 3px 34px
 		z-index: 2
 
 	& ~ i
 		+font(0, 0)
+		+size($checkbox-size)
 		position: absolute
 		left: 0
-		top: 50%
+		top: 0
 
 .no-touchevents .check-label:hover
 
@@ -318,21 +319,16 @@ input[type="checkbox"]
 		&::before,
 		&::after
 			content: ''
-			+size(22px)
+			+size($checkbox-size)
 			position: absolute
 			left: 0
 			top: 50%
-			margin-top: -11px
+			margin-top: -#{round($checkbox-size/2)}
 			border-radius: 0
-
-			@if $animation-use
-				transition:
-					property: background-color, border-color
-					duration: $animation-speed
 
 		&::before
 			border: 2px solid $checkbox-color
-			background-color: transparent
+			background-color: #fff
 
 		&::after
 			content: none
@@ -345,22 +341,18 @@ input[type="checkbox"]
 			position: absolute
 			+size(0, 3px)
 			left: 0
-			top: 50%
+			top: 0
 			border-radius: 0
-			background: $checkbox-color
-
-			@if $animation-use
-				transition:
-					property: opacity
-					duration: $animation-speed
-					timing-function: linear
+			background: white
 
 		&::before
+			margin: 6px 0 0 0
 			transform: rotate(45deg)
 			transform-origin: 0 10px
 			z-index: 1
 
 		&::after
+			margin: 11px 0 0 -6px
 			transform: rotate(-50deg)
 			transform-origin: 0 10px
 			left: 22px
@@ -370,14 +362,13 @@ input[type="checkbox"]
 		& ~ label,
 		& ~ i
 			&::before
-				//border-color: $checkbox-color
-				//background-color: $bg-color-base
+				border-color: $base-color
+				background-color: $base-color
 
 		& ~ label > span,
 		& ~ span
 			&::before
 				width: 5px
-				margin: -5px 0 0 0
 				backface-visibility: hidden
 
 				@if $animation-use
@@ -387,7 +378,6 @@ input[type="checkbox"]
 
 			&::after
 				width: 11px
-				margin: 0 0 0 -6px
 				backface-visibility: hidden
 
 				@if $animation-use
@@ -425,25 +415,16 @@ input[type="radio"]
 			+size(22px)
 			position: absolute
 			left: 0
-			top: 50%
-			margin-top: -11px
+			top: 0
+			margin-top: 0
+
 			border-radius: 50px
 
 		&::before
 			border: 2px solid $checkbox-color
 
-			@if $animation-use
-				transition:
-					property: background-color, border-color
-					duration: $animation-speed
-
 		&::after
 			background: none
-
-			@if $animation-use
-				transition:
-					property: opacity
-					duration: 0.2s
 
 	& ~ label > span,
 	& ~ i
@@ -470,7 +451,8 @@ input[type="radio"]
 		& ~ label,
 		& ~ span
 			&::before
-				border-color: $checkbox-color
+				border-color: $base-color
+				background-color: $base-color
 
 		& ~ label > span,
 		& ~ i
@@ -478,7 +460,7 @@ input[type="radio"]
 				//animation: bounce 0.3s
 				//animation-iteration-count: 1
 				opacity: 1
-				background-color: $checkbox-color
+				background-color: white
 
 	//@keyframes bounce
 		0%

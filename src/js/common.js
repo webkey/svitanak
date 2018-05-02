@@ -440,7 +440,6 @@ $(window).on('load debouncedresize scroll', function () {
 				}
 
 				currentItem.prop('hoverIntent', setTimeout(function () {
-					console.log('mouseenter');
 					// self.$html.addClass('css-scroll-fixed');
 					// if($('.main-sections-js').length) {
 					// 	$.fn.fullpage.setAllowScrolling(false); // blocked fullpage scroll
@@ -461,7 +460,6 @@ $(window).on('load debouncedresize scroll', function () {
 				}
 
 				currentItem.prop('hoverTimeout', setTimeout(function () {
-					console.log('mouseleave');
 					// self.$html.removeClass('css-scroll-fixed');
 					// if($('.main-sections-js').length) {
 					// 	$.fn.fullpage.setAllowScrolling(true); // unblocked fullpage scroll
@@ -972,8 +970,6 @@ function slidersInit() {
 
 	// open nav
 	ExtraPopup.prototype.openNav = function() {
-		// console.log("openNav");
-
 		var self = this,
 			$html = self.$mainContainer,
 			$navContainer = self.$navContainer,
@@ -1040,8 +1036,6 @@ function slidersInit() {
 
 	// close nav
 	ExtraPopup.prototype.closeNav = function() {
-		// console.log("closeNav");
-
 		var self = this,
 			$html = self.$mainContainer,
 			$navContainer = self.$navContainer,
@@ -1179,8 +1173,6 @@ function slidersInit() {
 			$staggerElement = self.$staggerElement,
 			_animationType = self._animationType,
 			alpha = self.alpha;
-
-		// console.log('preparationAnimation: ', $navContainer);
 
 		// animation of stagger
 		if($staggerElement) {
@@ -2270,9 +2262,6 @@ function toggleViewInit() {
 			// удалить класс наличия отмеченных чекбоксов с фильтров в ГРУППЕ
 			self.removeClassCustom($currentItem, filtersOnClass);
 
-			// console.log("currentAttrGroup: ", currentAttrGroup);
-			// console.log("currentAttrName: ", currentAttrName);
-
 			if($currentCheckbox.prop('checked')) {
 				// добавляем тэг фильтра
 				self.addTag($currentTagsContainer, currentAttrGroup, currentAttrName, currentAttrTag || $currentLabelText.text());
@@ -2724,8 +2713,6 @@ function sortingOrder() {
 
 				$currentItemContent.slideUp(animateSpeed, function () {
 
-					// console.log('closed');
-
 					if (self._collapseInside) {
 						var $internalContent = $currentItem.find(self.$accordionHeader).next();
 
@@ -2735,7 +2722,6 @@ function sortingOrder() {
 								// self.scrollPosition($currentItem);
 
 								$(this).slideUp(self._animateSpeed, function () {
-									// console.log('closed attachment');
 									self.scrollPosition($currentItem);
 								});
 							}
@@ -2766,7 +2752,6 @@ function sortingOrder() {
 			// self.scrollPosition($currentItem);
 
 			$currentItemContent.slideDown(animateSpeed, function () {
-				// console.log('opened');
 				self.scrollPosition($currentItem);
 			});
 
@@ -2856,8 +2841,6 @@ function sortingOrder() {
 			// self.scrollPosition($currentItem);
 
 			$currentItem.children(self.$accordionHeader).next().addClass(self.modifiers.activeContent).slideDown(self._animateSpeed, function () {
-				// console.log('opened active');
-
 				// self.scrollPosition($currentItem);
 			});
 		});
@@ -3098,7 +3081,6 @@ function popupInitial(){
 			ajaxContentAdded: function() {
 				// Ajax content is loaded and appended to DOM
 				spinnerInit(this.content.find('.spinner-js'));
-				console.log("this.content: ", this.content);
 				this.content.find('.order-calc-js').msOrderCalc(orderCalcOptions);
 				// orderCalculation();
 			}
@@ -3130,8 +3112,14 @@ function popupInitial(){
 /**
  * ui spinner initial
  */
+$.widget( "custom.superSpinner", $.ui.spinner, {
+    _buttonHtml: function() {
+        return"<a data-entity='basket-item-quantity-plus'></a>" +
+            "<a data-entity='basket-item-quantity-minus'></a>"
+    }
+});
 function spinnerInit($spinner) {
-	$spinner.spinner({
+	$spinner.superSpinner({
 		min: 0
 	});
 }
@@ -3447,32 +3435,32 @@ function contactsMap() {
  * !Sticky element on page
  */
 function stickyInit() {
-	var $mAside = $('.m-aside');
-	if ($mAside.length) {
+	// var $mAside = $('.m-aside');
+	// if ($mAside.length) {
+	//
+	// 	var mAsideSticky = new StickySidebar('.m-aside', {
+	// 		containerSelector: '.m-container',
+	// 		innerWrapperSelector: '.m-aside-layout',
+	// 		topSpacing: $('.header').outerHeight() + 20,
+	// 		resizeSensor: false, // recalculation sticky on change size of elements
+	// 		minWidth: prodCardMediaWidth - 1
+	// 	});
+	//
+	// 	$('.view-switcher-news-js').on('changed.toggleView', function () {
+	// 		mAsideSticky.updateSticky();
+	// 	});
+	//
 
-		var mAsideSticky = new StickySidebar('.m-aside', {
-			containerSelector: '.m-container',
-			innerWrapperSelector: '.m-aside-layout',
-			topSpacing: $('.header').outerHeight() + 20,
-			resizeSensor: false, // recalculation sticky on change size of elements
-			minWidth: prodCardMediaWidth - 1
-		});
-
-		$('.view-switcher-news-js').on('changed.toggleView', function () {
-			mAsideSticky.updateSticky();
-		});
-
-		$('.view-switcher-products-js').on('changed.toggleView', function () {
-			mAsideSticky.updateSticky();
-		});
-
-		$('.p-filters-js').on('dropChange.multiFilters', function () {
-			// console.log("dropChange.multiFilters");
-			if(window.innerWidth >= prodCardMediaWidth) {
-				mAsideSticky.updateSticky();
-			}
-		});
-	}
+	// 	$('.view-switcher-products-js').on('changed.toggleView', function () {
+	// 		mAsideSticky.updateSticky();
+	// 	});
+	//
+	// 	$('.p-filters-js').on('dropChange.multiFilters', function () {
+	// 		if(window.innerWidth >= prodCardMediaWidth) {
+	// 			mAsideSticky.updateSticky();
+	// 		}
+	// 	});
+	// }
 
 	var contactsMap = '.contacts__map';
 	if ($(contactsMap).length) {
@@ -3697,7 +3685,7 @@ $(document).ready(function () {
 
 	stickyInit();
 	/* for testing validate forms */
-	formSuccessExample();
+	// formSuccessExample();
 
 	/*удалить после программирования*/
 	// $('.news-preview .news-preview__text').shave(60);
@@ -3713,8 +3701,4 @@ $(document).ready(function () {
 		}
 		$this.addClass('trimmed');
 	});
-
-	$('.btn-del').on('click', function () {
-		console.log('click-click!');
-	})
 });
