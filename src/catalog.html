@@ -31,7 +31,7 @@
 	<link rel="apple-touch-icon" href="apple-touch-icon.png">
 	<!--Style-->
 	<link rel="stylesheet" href="css/libs.min.css">
-	<link rel="stylesheet" href="css/main.css">
+	<link rel="stylesheet" href="css/main.css?20180503_1220">
 	<!--Modernizr-->
 	<script src="js/modernizr.min.js"></script>
 </head>
@@ -303,6 +303,50 @@
 														<!--filters-->
 														<div class="m-wrapper">
 															<div class="p-filters-list">
+																<div class="p-filters-item p-filters-item-js">
+																	<div class="p-filters-inner">
+																		<div class="p-filters-select p-filters-select-js">
+																			<div class="p-filters-select-head">
+																				<div class="p-filters__title" title="">Бренд</div>
+																			</div>
+																			<div class="p-filters-angle"><i>&nbsp;</i></div>
+																		</div>
+																		<div class="p-filters-drop p-filters-drop-js">
+																			<ul class="p-filters-drop-list p-filters-group-js" data-filters-group="brand">
+																				<li>
+																					<label class="check-label p-filters-label-js" for="catalogFilter_4_4252452532" data-filter-name="catalogFilter_4_4252452532" data-filter-tag="FISHKA">
+								<input type="checkbox" value="Y" name="catalogFilter_4_4252452532" id="catalogFilter_4_4252452532">
+								<i>&nbsp;</i>
+								<img src="img/img-brand-02.png" width="50">
+								<span class="p-filters-label-text-js">
+									FISHKA
+								</span>
+							</label>
+																				</li>
+																				<li>
+																					<label class="check-label p-filters-label-js" for="catalogFilter_4_1685985038" data-filter-name="catalogFilter_4_1685985038" data-filter-tag="Кука Вака">
+								<input type="checkbox" value="Y" name="catalogFilter_4_1685985038" id="catalogFilter_4_1685985038">
+								<i>&nbsp;</i>
+								<img src="img/img-brand-03.png" width="50">
+								<span class="p-filters-label-text-js">
+									Кука Вака
+								</span>
+							</label>
+																				</li>
+																				<li>
+																					<label class="check-label p-filters-label-js" for="catalogFilter_4_2367533627" data-filter-name="catalogFilter_4_2367533627" data-filter-tag="Свiтанак">
+								<input type="checkbox" value="Y" name="catalogFilter_4_2367533627" id="catalogFilter_4_2367533627">
+								<i>&nbsp;</i>
+								<img src="img/img-brand-04.png" width="50">
+								<span class="p-filters-label-text-js">
+									Свiтанак
+								</span>
+							</label>
+																				</li>
+																			</ul>
+																		</div>
+																	</div>
+																</div>
 																<div class="p-filters-item p-filters-item-js">
 																	<div class="p-filters-inner">
 																		<div class="p-filters-select p-filters-select-js">
@@ -2331,6 +2375,9 @@
 			</div>
 			<div class="msg-form">
 				<form action="#" method="post">
+					<div class="js-form_result js-ajax_replace" id="form-result-message">
+						<div class="success-text">Спасибо!<br> Ваша заявка принята!</div>
+					</div>
 					<!--<label for="">Ваше имя:</label>-->
 					<input type="text" placeholder="Ваше имя">
 					<div class="error-note">Поле обязательное для заполнения</div>

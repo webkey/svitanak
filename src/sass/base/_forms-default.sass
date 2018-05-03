@@ -152,14 +152,13 @@ input[type="text"], input[type="password"], input[type="email"], input[type="sea
 	.input-wrap &, &:last-child
 		margin-bottom: 0
 
-.error-note
+.error-note, .confirm-note
 	float: left
 	position: relative
 	+size(100%, 22px)
 	+font(12px, 22px)
 	letter-spacing: normal // Важно!
 	+truncate(none)
-	color: $form-error-color
 	display: none
 
 	margin-top: -#{$form-bottom-space}
@@ -169,9 +168,20 @@ input[type="text"], input[type="password"], input[type="email"], input[type="sea
 		position: absolute
 		margin-top: 0
 
+.error-note
+	color: $form-error-color
+
 	// нужно выбрать только ближайший элемент ошибки формы (нельзя использовать ~)
 	form .error + &,
 	form .error + .select2 + &
+		display: block
+
+.confirm-note
+	color: $form-success-color
+
+	// нужно выбрать только ближайший элемент ошибки формы (нельзя использовать ~)
+	form .confirm + &,
+	form .confirm + .select2 + &
 		display: block
 
 .success-note
@@ -218,11 +228,6 @@ input[type="text"], input[type="password"], input[type="email"], input[type="sea
 		backface-visibility: hidden
 		background-color: $this-icon-lines-color
 
-		@if $animation-use
-			transition:
-				property: background-color
-				duration: $animation-speed
-
 	&::before
 		+size(round($this-icon-lines-width*0.75), $this-icon-lines-height)
 		right: 50%
@@ -234,6 +239,25 @@ input[type="text"], input[type="password"], input[type="email"], input[type="sea
 		left: 50%
 		transform-origin: bottom left
 		transform: rotate(-45deg)
+
+.js-form_result
+	+font-bold
+	+font(1.6rem, round-float(20/16, 2))
+	letter-spacing: 0.05em
+	text-align: center
+	color: $base-color
+	margin-bottom: $form-bottom-space
+
+	.success-text
+		position: relative
+		left: auto
+		top: auto
+		width: auto
+		height: auto
+		opacity: 1
+		visibility: visible
+		transform: none
+		background: none
 
 /* form common end
 
@@ -289,8 +313,19 @@ input[type="radio"]
 		display: inline-block
 		vertical-align: top
 		position: relative
-		padding: 4px 0 3px 34px
+		padding: 4px 0 3px #{$checkbox-size + 12}
 		z-index: 2
+
+	& ~ img
+		width: $checkbox-img-size
+		display: block
+		position: absolute
+		left: $checkbox-size + 12
+		top: 50%
+		transform: translate(0, -50%)
+
+		& ~ span
+			padding-left: $checkbox-size + $checkbox-img-size + 12*2
 
 	& ~ i
 		+font(0, 0)
@@ -786,4 +821,60 @@ input[type="text"], input[type="password"], input[type="email"], input[type="sea
 				color: $form-error-color
 
 /* inputs states end
+
+/* captcha
+.captcha
+	+clear-spacing
+	position: relative // Важно! Для позицирования отметки подтверждения полей формы
+	z-index: 1 // Важно! Отметка подтверждения полей формы имеет z-index: -1
+
+	+clear
+
+	input
+		text-align: center
+
+	img
+		$margin-right: 20px
+		display: inline-block
+		vertical-align: middle
+		max-width: 50%
+		margin-right: $margin-right
+		+font(12px, round-float(16/12, 2))
+		letter-spacing: $letter-spacing
+
+		& + input
+			display: inline-block
+			vertical-align: middle
+			width: calc(50% - 20px)
+
+	+media('<tab-lg')
+		img
+			display: block
+			max-width: none
+			margin-bottom: $bottom-space--sm
+
+			& + input
+				display: block
+				max-width: none
+				width: 100%
+
+	.captcha-refresh
+		+font(14px, round-float(18/14, 2))
+		letter-spacing: $letter-spacing
+		margin-bottom: 0.5em
+
+		a
+			color: $text-color
+			text-decoration: none
+
+			span
+				border-bottom: 1px dotted $text-color
+
+			&:hover
+				color: $link-color
+
+				span
+					border-color: $link-color
+
+/* captcha end
 /* FORM STYLE DEFAULT end

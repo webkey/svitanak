@@ -3435,32 +3435,32 @@ function contactsMap() {
  * !Sticky element on page
  */
 function stickyInit() {
-	// var $mAside = $('.m-aside');
-	// if ($mAside.length) {
-	//
-	// 	var mAsideSticky = new StickySidebar('.m-aside', {
-	// 		containerSelector: '.m-container',
-	// 		innerWrapperSelector: '.m-aside-layout',
-	// 		topSpacing: $('.header').outerHeight() + 20,
-	// 		resizeSensor: false, // recalculation sticky on change size of elements
-	// 		minWidth: prodCardMediaWidth - 1
-	// 	});
-	//
-	// 	$('.view-switcher-news-js').on('changed.toggleView', function () {
-	// 		mAsideSticky.updateSticky();
-	// 	});
-	//
+	var $mAside = $('.m-aside');
+	if ($mAside.length) {
 
-	// 	$('.view-switcher-products-js').on('changed.toggleView', function () {
-	// 		mAsideSticky.updateSticky();
-	// 	});
-	//
-	// 	$('.p-filters-js').on('dropChange.multiFilters', function () {
-	// 		if(window.innerWidth >= prodCardMediaWidth) {
-	// 			mAsideSticky.updateSticky();
-	// 		}
-	// 	});
-	// }
+		var mAsideSticky = new StickySidebar('.m-aside', {
+			containerSelector: '.m-container',
+			innerWrapperSelector: '.m-aside-layout',
+			topSpacing: $('.header').outerHeight() + 20,
+			resizeSensor: false, // recalculation sticky on change size of elements
+			minWidth: prodCardMediaWidth - 1
+		});
+
+		$('.view-switcher-news-js').on('changed.toggleView', function () {
+			mAsideSticky.updateSticky();
+		});
+
+
+		$('.view-switcher-products-js').on('changed.toggleView', function () {
+			mAsideSticky.updateSticky();
+		});
+
+		$('.p-filters-js').on('dropChange.multiFilters', function () {
+			if(window.innerWidth >= prodCardMediaWidth) {
+				mAsideSticky.updateSticky();
+			}
+		});
+	}
 
 	var contactsMap = '.contacts__map';
 	if ($(contactsMap).length) {
