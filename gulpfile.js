@@ -187,8 +187,14 @@ gulp.task('copyImgToDist', function () {
 
 gulp.task('build', ['cleanDistFolder', 'htmlCompilation', 'copyImgToDist', 'sassCompilation', 'mergeCssLibs', 'createCustomModernizr', 'copyLibsScriptsToJs'], function () {
 
+	gulp.src(['src/ajax/**/*'])
+		.pipe(gulp.dest('dist/ajax'));
+
+	gulp.src(['src/video/**/*'])
+		.pipe(gulp.dest('dist/video'));
+
 	gulp.src('src/css/*.css')
-	.pipe(gulp.dest('dist/css'));
+		.pipe(gulp.dest('dist/css'));
 
 	gulp.src('src/fonts/**/*') // Переносим шрифты в продакшен
 		.pipe(gulp.dest('dist/fonts'));
@@ -199,7 +205,7 @@ gulp.task('build', ['cleanDistFolder', 'htmlCompilation', 'copyImgToDist', 'sass
 	gulp.src(['!src/js/temp/**/*.js', '!src/js/**/temp-*.js', 'src/js/*.js']) // Переносим скрипты в продакшен
 		.pipe(gulp.dest('dist/js'));
 
-	gulp.src(['!src/__*.html', '!src/ajax*.html', '!src/temp*.html', 'src/forms.html', '!src/_tpl_*.html', 'src/*.html']) // Переносим HTML в продакшен
+	gulp.src(['!src/__*.html', '!src/temp*.html', '!src/_tpl_*.html', 'src/*.html']) // Переносим HTML в продакшен
 		.pipe(gulp.dest('dist'));
 
 	gulp.src(['src/*.png', 'src/*.ico', 'src/.htaccess']) // Переносим favicon и др. файлы в продакшин

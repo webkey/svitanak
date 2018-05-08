@@ -3120,7 +3120,10 @@ $.widget( "custom.superSpinner", $.ui.spinner, {
 });
 function spinnerInit($spinner) {
 	$spinner.superSpinner({
-		min: 0
+		min: 0,
+		spin: function( event, ui ) {
+			$(event.target).trigger('change');
+		}
 	});
 }
 
@@ -3137,87 +3140,23 @@ function tooltipInit() {
 }
 
 /**
- * !product oreder calculation
+ * !инициализация плагина
  * */
-function orderCalculation2() {
-	var $container = $('.order-calc-js');
-	var $price = $('.order-calc__price-js');
-	var $priceSum = $('.order-calc__price-sum-js');
-	var $btnRemove = $('.order-calc__remove-js');
-	var objMain = {};
-
-	var $countInput = $('.order-calc__number-js');
-
-	$countInput.on('change spin', function (e, ui) {
-
-		var $currentInput = $(this);
-		var $currentPrice = $currentInput.closest('.c-tr').find($price);
-		var $currentPriceSum = $currentInput.closest('.c-tr').find($priceSum);
-		var priceVal = $currentPrice.data('price');
-
-		var currentItemCount = ui ? ui.value : +$currentInput.val();
-		var priceValSum = Math.round(priceVal * currentItemCount * 100) / 100;
-
-		// no delete (!!!)
-		// add count items and sum price to DOM
-		// $currentPrice.attr('data-count-sum', currentItemCount);
-		// $currentPrice.attr('data-price-sum', priceValSum);
-
-		// add current item's price sum to DOM
-		$currentPriceSum.html(priceValSum);
-
-		// создаем объект состоящий из id элементов, у которых есть поля количества (count), цены (price) и общей цены (priceSum)
-		var id = $currentInput.data('id');
-		// objMain[id] = objId;
-		objMain[id] = {
-			'count': currentItemCount,
-			'price': priceVal,
-			'priceSum': priceValSum
-		};
-
-		// суммируем значения полей количества и общей цены в созданных объектах
-		var countSum = sumParam(objMain, 'count');
-		var priceSum = sumParam(objMain, 'priceSum');
-
-		var $currentContainer = $currentPrice.closest($container);
-		$currentContainer.find('.order-calc__total-results-js').toggleClass('show', countSum > 0);
-		$currentContainer.find('.order-calc__counts-total-js').text(countSum);
-		$currentContainer.find('.order-calc__price-total-js').text(priceSum);
-	});
-
-	// $countInput.trigger('change');
-	// Вызвать триггер change на инпутах со значением отличным от нуля
-	$.each($countInput, function () {
-		var $currentInput = $(this);
-		if($currentInput.val() > 0){
-			$currentInput.trigger('change');
-		}
-	});
-
-	$btnRemove.one('click', function (e) {
-		var $currentBtn = $(this);
-		var $currentRow = $currentBtn.closest('.c-tr');
-		$currentRow.fadeOut(300, function () {
-			$(this).remove();
-		});
-
-		e.preventDefault();
-	});
-
-	function sumParam(obj, param) {
-		var result = 0;
-		var prop;
-
-		for(prop in obj) {
-			result += obj[prop][param];
-		}
-
-		return Math.round(result*100)/100;
+var orderCalcOptions = {
+	row: '.c-tr'
+	, getTotalResults: function (e, el, results) {
+		$(el).find('.order-calc__total-results-js').toggleClass('show', results.totalCount > 0);
+		$(el).find('.order-calc-btn').prop('disabled', !results.totalCount > 0).toggleClass('disabled', !results.totalCount > 0);
 	}
+};
 
+function orderCalculation() {
+	$('.order-calc-js').msOrderCalc(orderCalcOptions);
 }
 
-/**only number input*/
+/**
+ * !only number input
+ * */
 function onlyNumberInput() {
 	// link: https://stackoverflow.com/questions/995183/how-to-allow-only-numeric-0-9-in-html-inputbox-using-jquery
 
@@ -3236,21 +3175,6 @@ function onlyNumberInput() {
 			e.preventDefault();
 		}
 	});
-}
-
-/** !инициализация плагина */
-
-var orderCalcOptions = {
-	row: '.c-tr'
-	, getTotalResults: function (e, el, results) {
-		$(el).find('.order-calc__total-results-js').toggleClass('show', results.totalCount > 0);
-		$(el).find('.order-calc-btn').prop('disabled', !results.totalCount > 0).toggleClass('disabled', !results.totalCount > 0);
-	}
-};
-
-
-function orderCalculation() {
-	$('.order-calc-js').msOrderCalc(orderCalcOptions);
 }
 
 /**
