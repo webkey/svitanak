@@ -422,6 +422,12 @@ $p-filters-angle-lines-color: $text-color
 	padding: 5px 20px 5px 0
 	cursor: pointer
 
+.p-filters-drop-footer
+	display: none
+
+.p-filters-selected, .p-filters-placeholder
+	display: none
+
 // angle
 .p-filters-angle
 	position: absolute
@@ -490,6 +496,16 @@ $p-filters-angle-lines-color: $text-color
 			& ~ span
 				+font-bold
 
+	// forms
+	.form-row
+		+margin-horizontal(0)
+		padding-left: 1px
+
+		.input-wrap
+			+margin-horizontal(0)
+			width: 50%
+			margin-left: -1px
+
 // hover, active, has checked filters
 .no-touchevents .p-filters-select:hover,
 .p-filters-item.p-filters-on
@@ -530,6 +546,8 @@ $p-filters-angle-lines-color: $text-color
 	+font(1.6rem, round-float(20/16, 2))
 
 /* range-slider end
+
+
 
 /* filters tags
 .p-filters-tags

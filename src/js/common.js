@@ -2154,28 +2154,28 @@ function toggleViewInit() {
 (function ($) {
 	var MultiFilters = function (settings) {
 		var options = $.extend({
-			container: null,
-			item: null,
-			group: null,
-			handler: null,
-			placeholder: null,
-			selected: null,
-			drop: null,
-			filter: null, // checkbox => filter: checkbox, select or range slider
-			labelText: null,
-			btnReset: null,
-			btnResetAll: null,
-			tagsContainer: null,
-			resultsPanel: null,
-			activatedFilters: '.activated-js',
-			tagsItem: ".tags-item-js",
+			container: '.p-filters-js',
+			item: '.p-filters-item-js',
+			group: '.p-filters-group-js',
+			handler: '.p-filters-select-js',
+			placeholder: '.p-filters-placeholder-js',
+			selected: '.p-filters-selected-js',
+			drop: '.p-filters-drop-js',
+			filter: null, // checkbox => filter: checkbox, select or range slider, input
+			labelText: '.p-filters-label-text-js',
+			btnReset: '.btn-reset-js',
+			btnResetAll: '.btn-clear-filters-js',
+			tagsContainer: '.p-filters-tags-js',
+			tagsItem: ".p-filters-tags-item-js",
+			tagTextContainer: '.p-filters-tag-text-js',
+			resultsPanel: '.p-filters-results-js',
+			activatedFilters: '.p-filters-activated-js', // count active filter's group
 			tagsItemTpl: null,
-			tagTextContainer: ".tag-text-js",
 
-			dropOpenClass: 'is-open',
-			filtersOnClass: 'filters-on',
+			dropOpenClass: 'p-filters-is-open',
+			filtersOnClass: 'p-filters-on',
 			showResultsPanelClass: 'filters-results-show',
-			showSelectedClass: 'filters-selected-show',
+			showSelectedClass: 'filters-selected-show', // show counter of an active filter in group
 			showPlaceholderClass: 'filters-placeholder-show',
 			filterActiveClass: 'is-active',
 
@@ -2218,7 +2218,7 @@ function toggleViewInit() {
 			showResultsPanel: options.showResultsPanelClass,
 			showSelected: options.showSelectedClass,
 			showPlaceholder: options.showPlaceholderClass,
-			filterActive: options.filterActiveClass,
+			filterActive: options.filterActiveClass
 		};
 
 		this.attributes = {
@@ -2280,7 +2280,7 @@ function toggleViewInit() {
 	MultiFilters.prototype.changeFilters = function () {
 		var self = this;
 
-		self.$container.on('change', self.options.filter, function () {
+		self.$group.on('change', self.options.filter, function () {
 			var $curFilter = $(this);
 			var $curContainer = $curFilter.closest(self.$container);
 			var $curItem = $curFilter.closest(self.$item);
@@ -2547,18 +2547,6 @@ function toggleViewInit() {
 			openCurrentDrop($currentItem);
 		});
 
-		// $(document).on('click', function () {
-		// 	closeVisibleDrop();
-		// });
-
-		// $(document).keyup(function(e) {
-		// 	// console.log('Is drop opened? - ', self.dropIsOpened);
-		// 	if (self.dropIsOpened && e.keyCode === 27) {
-		// 		closeVisibleDrop();
-		// 		// console.log('Drop closed!');
-		// 	}
-		// });
-
 		$container.on('closeDrop', function () {
 			closeVisibleDrop();
 		});
@@ -2603,38 +2591,6 @@ function toggleViewInit() {
 		return $thisFilter.prop('checked') || $thisFilter.attr(this.attributes.dataDefaultValue) !== undefined && $thisFilter.val() !== $thisFilter.attr(this.attributes.dataDefaultValue);
 	};
 
-	// MultiFilters.prototype.addTag = function ($tagsContainer, attrGroup, attrName, tag) {
-	// 	var self = this;
-	// 	var attributes = self.attributes;
-	//
-	// 	$(self.tagsItemTpl).clone()
-	// 		.find(self.tagTextContainer)
-	// 		.html(tag)
-	// 		.end()
-	// 		.attr(attributes.group, attrGroup)
-	// 		.attr(attributes.name, attrName)
-	// 		.appendTo($tagsContainer);
-	// };
-
-	// MultiFilters.prototype.removeTag = function ($tagsContainer, attrGroup, attrName) {
-	// 	var self = this;
-	//
-	// 	var dataGroup = "[" + self.attributes.dataGroup + "=" + attrGroup + "]",
-	// 		dataName = "[" + self.attributes.dataName + "=" + attrName + "]",
-	// 		$currentTag = $tagsContainer.find(self.tagsItem).filter(dataGroup + dataName);
-	//
-	// 	// отключить соответствующий чекбокс
-	// 	$currentTag.closest(self.$container)
-	// 		.find(self.$group).filter(dataGroup)
-	// 		.find(dataName)
-	// 		.find(self.$filter).filter(':checked')
-	// 		.prop('checked', false)
-	// 		.trigger('change');
-	//
-	// 	// удалить тэг
-	// 	$currentTag.remove();
-	// };
-
 	window.MultiFilters = MultiFilters;
 }(jQuery));
 
@@ -2647,26 +2603,8 @@ function multiFiltersInit() {
 
 	if ($(productFilters).length) {
 		new MultiFilters({
-			container: productFilters,
-			item: '.p-filters-item-js',
-			group: '.p-filters-group-js',
-			handler: '.p-filters-select-js',
-			placeholder: '.p-filters-placeholder-js',
-			selected: '.p-filters-selected-js',
-			drop: '.p-filters-drop-js',
-			filter: '.p-filters-drop-list input[type="checkbox"], .p-filters-drop-list select, .p-filters-drop-list .range-slider-js',
-			labelText: '.p-filters-label-text-js',
-			btnReset: '.btn-reset-js',
-			btnResetAll: '.btn-clear-filters-js',
-			tagsContainer: '.p-filters-tags-js',
-			tagsItem: '.p-filters-tags-item-js',
-			tagTextContainer: '.p-filters-tag-text-js',
-			resultsPanel: '.p-filters-results-js',
-			tagsItemTpl: '<div class="p-filters-tags__item p-filters-tags-item-js"><i>Удалить</i><span class="p-filters-tag-text-js"></span></div>',
-
-			dropOpenClass: 'p-filters-is-open',
-			filtersOnClass: 'p-filters-on',
-			activatedFilters: '.p-filters-activated-js'
+			filter: 'input[type="checkbox"], input[type="text"], select, .range-slider-js',
+			tagsItemTpl: '<div class="p-filters-tags__item p-filters-tags-item-js"><i>X</i><span class="p-filters-tag-text-js"></span></div>',
 		});
 	}
 }

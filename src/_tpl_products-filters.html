@@ -1,278 +1,163 @@
 <div class="m-wrapper">
 	<div class="p-filters-list">
-		<div class="p-filters-item p-filters-item-js p-filters-is-open">
-			<div class="p-filters-inner">
-				<div class="p-filters-select p-filters-select-js">
-					@@include('_tpl_products-filters--head.html', {
-						"title": "Наличие"
-					})
-					<div class="p-filters-angle"><i>&nbsp;</i></div>
-				</div>
-				<div class="p-filters-drop p-filters-drop-js">
-					<ul class="p-filters-drop-list p-filters-group-js" data-filters-group="stock">
-						<li>
-							<div class="select select-minimal">
-								<select class="field-effects-js" name="filter-by-city" data-filter-select="city" data-filter-default="">
-									<option value="" data-filter-name="select-city">Выберите город:</option>
-									<option value="minsk" data-filter-name="minsk" data-filter-tag="Наличие - Минск">Минск</option>
-									<option value="bobruysk" data-filter-name="bobruysk" data-filter-tag="Наличие - Бобруйск">Бобруйск</option>
-								</select>
-							</div>
-						</li>
-						<li>
-							<div class="select select-minimal">
-								<select class="field-effects-js" name="filter-by-shop" data-filter-select="address" data-filter-default="">
-									<option value="" data-filter-name="select-shop">Выберите магазин:</option>
-									<option value="simashko_120" data-filter-name="address_1" data-filter-tag="Адрес 1">Адрес 1</option>
-									<option value="dzerzhinskogo_12_2a" data-filter-name="address_2" data-filter-tag="Адрес 2">Адрес 2</option>
-								</select>
-							</div>
-						</li>
-					</ul>
-				</div>
-			</div>
-		</div>
-		<div class="p-filters-item p-filters-item-js p-filters-is-open">
-			<div class="p-filters-inner">
-				<div class="p-filters-select p-filters-select-js">
-					@@include('_tpl_products-filters--head.html', {
-						"title": "Коллекция"
-					})
-					<div class="p-filters-angle"><i>&nbsp;</i></div>
-				</div>
-				<div class="p-filters-drop p-filters-drop-js">
-					<ul class="p-filters-drop-list p-filters-group-js" data-filters-group="collection">
-						<li>
-							<div class="select select-minimal">
-								<select class="field-effects-js" name="filter-by-city" data-filter-select="collection-season" data-filter-default="">
-									<option value="" data-filter-name="select-city">Выберите город:</option>
-									<option value="minsk" data-filter-name="minsk" data-filter-tag="Наличие - Минск">Минск</option>
-									<option value="bobruysk" data-filter-name="bobruysk" data-filter-tag="Наличие - Бобруйск">Бобруйск</option>
-								</select>
-							</div>
-						</li>
-						<li>
-							<div class="select select-minimal">
-								<select class="field-effects-js" name="filter-by-shop" data-filter-select="collection-year" data-filter-default="">
-									<option value="" data-filter-name="select-shop">Выберите магазин:</option>
-									<option value="simashko_120" data-filter-name="address_1" data-filter-tag="Адрес 1">Адрес 1</option>
-									<option value="dzerzhinskogo_12_2a" data-filter-name="address_2" data-filter-tag="Адрес 2">Адрес 2</option>
-								</select>
-							</div>
-						</li>
-					</ul>
-				</div>
-			</div>
-		</div>
-		<div class="p-filters-item p-filters-item-js p-filters-is-open">
-			<div class="p-filters-inner">
-				<div class="p-filters-select p-filters-select-js">
-					@@include('_tpl_products-filters--head.html', {
-						"title": "Цена"
-					})
-					<div class="p-filters-angle"><i>&nbsp;</i></div>
-				</div>
-				<ul class="p-filters-drop-list p-filters-group-js" data-filters-group="price">
-					<li class="has-slider">
-						<input type="text" id="price-slider-js" class="range-slider-js" name="price-range" value="50;3000" data-type="double" data-min="50" data-max="3000" data-step="50" data-filter-type="range-slider" data-filter-default="50;3000" data-filter-select="price-range" data-filter-name="price-range" />
-						<div class="p-filters-price-value"><span class="range-slider-value-js price-slider-value-js"></span> б.р.</div>
-					</li>
-				</ul>
-			</div>
-		</div>
-		<div class="p-filters-item p-filters-item-js p-filters-is-open">
-			<div class="p-filters-inner">
-				<div class="p-filters-select p-filters-select-js">
-					<div class="p-filters-select-head">
-						<div class="p-filters__title" title="">Бренд</div>
+		@@include('_tpl_products-filters--ITEM_LAYOUT.html', {"itemLayout": "START", "isOpen": "true" })
+
+			@@include('_tpl_products-filters--head.html', {
+				"title": "Размер"
+			})
+
+			@@include('_tpl_products-filters--DROP_LAYOUT.html', {"itemLayout": "START", "group": "size" })
+				<li>
+					<input class="form-light form-minimal" type="text" placeholder="Размер" data-filter-name="size" data-filter-tag="Размер:"/>
+				</li>
+			@@include('_tpl_products-filters--DROP_LAYOUT.html', {"itemLayout": "END"})
+
+		@@include('_tpl_products-filters--ITEM_LAYOUT.html', {"itemLayout": "END" })
+
+		<!--===============-->
+		<!--===============-->
+
+		@@include('_tpl_products-filters--ITEM_LAYOUT.html', {"itemLayout": "START", "isOpen": "true" })
+
+			@@include('_tpl_products-filters--head.html', {
+				"title": "Наличие"
+			})
+
+			@@include('_tpl_products-filters--DROP_LAYOUT.html', {"itemLayout": "START", "group": "stock" })
+				<li>
+					<div class="form-row">
+						<div class="input-wrap">
+							<select class="form-light form-minimal field-effects-js" name="filter-by-city" data-filter-select="city" data-filter-default="">
+								<option value="" data-filter-name="select-city">Город:</option>
+								<option value="minsk" data-filter-name="minsk" data-filter-tag="Наличие - Минск">Минск</option>
+								<option value="bobruysk" data-filter-name="bobruysk" data-filter-tag="Наличие - Бобруйск">Бобруйск</option>
+							</select>
+						</div>
+						<div class="input-wrap">
+							<select class="form-light form-minimal field-effects-js" name="filter-by-shop" data-filter-select="address" data-filter-default="">
+								<option value="" data-filter-name="select-shop">Магазин:</option>
+								<option value="address_1" data-filter-name="address_1" data-filter-tag="Адрес 1">Адрес 1</option>
+								<option value="address_2" data-filter-name="address_2" data-filter-tag="Адрес 2">Адрес 2</option>
+							</select>
+						</div>
 					</div>
-					<div class="p-filters-angle"><i>&nbsp;</i></div>
-				</div>
-				<div class="p-filters-drop p-filters-drop-js">
-					<ul class="p-filters-drop-list p-filters-group-js" data-filters-group="brand">
-						<li>
-							<label class="check-label p-filters-label-js" for="catalogFilter_4_4252452532" data-filter-name="catalogFilter_4_4252452532" data-filter-tag="FISHKA">
-								<input type="checkbox" value="Y" name="catalogFilter_4_4252452532" id="catalogFilter_4_4252452532">
-								<i>&nbsp;</i>
-								<img src="img/img-brand-02.png" width="50">
-								<span class="p-filters-label-text-js">
-									FISHKA
-								</span>
-							</label>
-						</li>
-						<li>
-							<label class="check-label p-filters-label-js" for="catalogFilter_4_1685985038" data-filter-name="catalogFilter_4_1685985038" data-filter-tag="Кука Вака">
-								<input type="checkbox" value="Y" name="catalogFilter_4_1685985038" id="catalogFilter_4_1685985038">
-								<i>&nbsp;</i>
-								<img src="img/img-brand-03.png" width="50">
-								<span class="p-filters-label-text-js">
-									Кука Вака
-								</span>
-							</label>
-						</li>
-						<li>
-							<label class="check-label p-filters-label-js" for="catalogFilter_4_2367533627" data-filter-name="catalogFilter_4_2367533627" data-filter-tag="Свiтанак">
-								<input type="checkbox" value="Y" name="catalogFilter_4_2367533627" id="catalogFilter_4_2367533627">
-								<i>&nbsp;</i>
-								<img src="img/img-brand-04.png" width="50">
-								<span class="p-filters-label-text-js">
-									Свiтанак
-								</span>
-							</label>
-						</li>
-					</ul>
-				</div>
-			</div>
-		</div>
-		<div class="p-filters-item p-filters-item-js p-filters-is-open">
-			<div class="p-filters-inner">
-				<div class="p-filters-select p-filters-select-js">
-					@@include('_tpl_products-filters--head.html', {
-						"title": "Сезон"
-					})
-					<div class="p-filters-angle"><i>&nbsp;</i></div>
-				</div>
-				@@include('_tpl_products-filters--drop.html', {
-					"group": "seasons",
-					"checkboxesExpanded": {
-						"winter": {
-							"full": "Зима",
-							"short": "Сезон - Зима"
-						},
-						"spring": {
-							"full": "Весна",
-							"short": "Сезон - Весна"
-						},
-						"summer": {
-							"full": "Лето",
-							"short": "Сезон - Лето"
-						},
-						"autumn": {
-							"full": "Осень",
-							"short": "Сезон - Осень"
-						}
+				</li>
+			@@include('_tpl_products-filters--DROP_LAYOUT.html', {"itemLayout": "END"})
+
+		@@include('_tpl_products-filters--ITEM_LAYOUT.html', {"itemLayout": "END" })
+
+		<!--===============-->
+		<!--===============-->
+
+		@@include('_tpl_products-filters--ITEM_LAYOUT.html', {"itemLayout": "START", "isOpen": "true" })
+
+			@@include('_tpl_products-filters--head.html', {
+				"title": "Цена"
+			})
+
+			@@include('_tpl_products-filters--DROP_LAYOUT.html', {"itemLayout": "START", "group": "price" })
+				<li class="has-slider">
+					<input type="text" id="price-slider-js" class="range-slider-js" name="price-range" value="50;2350" data-type="double" data-min="50" data-max="2350" data-step="50" data-filter-type="range-slider" data-filter-default="50;2350" data-filter-select="price-range" data-filter-name="price-range" />
+					<div class="p-filters-price-value"><span class="range-slider-value-js price-slider-value-js"></span> BYN</div>
+				</li>
+			@@include('_tpl_products-filters--DROP_LAYOUT.html', {"itemLayout": "END"})
+
+		@@include('_tpl_products-filters--ITEM_LAYOUT.html', {"itemLayout": "END" })
+
+		<!--===============-->
+		<!--===============-->
+
+		@@include('_tpl_products-filters--ITEM_LAYOUT.html', {"itemLayout": "START", "isOpen": "true" })
+
+			@@include('_tpl_products-filters--head.html', {
+				"title": "Бренд"
+			})
+
+			@@include('_tpl_products-filters--drop.html', {
+				"group": "brands",
+				"hasIcon": "true",
+				"checkboxesExpanded": {
+					"fishka": {
+						"full": "FISHKA",
+						"tag": "FISHKA",
+						"icon": "img/img-brand-02.png"
 					},
-					"checkboxes": ""
-				})
-			</div>
-		</div>
-		<div class="p-filters-item p-filters-item-js p-filters-is-open">
-			<div class="p-filters-inner">
-				<div class="p-filters-select p-filters-select-js">
-					@@include('_tpl_products-filters--head.html', {
-						"title": "Бренд"
-					})
-					<div class="p-filters-angle"><i>&nbsp;</i></div>
-				</div>
-				@@include('_tpl_products-filters--drop.html', {
-					"group": "brands",
-					"checkboxesExpanded": {
-						"svitanak": {
-							"full": "Свiтанак",
-							"short": "Свiтанак"
-						},
-						"ego": {
-							"full": "Эго",
-							"short": "Эго"
-						},
-						"fishka": {
-							"full": "Fishka",
-							"short": "Fishka"
-						},
-						"kuka-vaka": {
-							"full": "Кука-Вака",
-							"short": "Кука-Вака"
-						}
+					"kuka-vaka": {
+						"full": "Кука Вака",
+						"tag": "Кука Вака",
+						"icon": "img/img-brand-03.png"
 					},
-					"checkboxes": ""
-					})
-			</div>
-		</div>
-		<div class="p-filters-item p-filters-item-js">
-			<div class="p-filters-inner">
-				<div class="p-filters-select p-filters-select-js">
-					@@include('_tpl_products-filters--head.html', {
-						"title": "Вид полотна"
-					})
-					<div class="p-filters-angle"><i>&nbsp;</i></div>
-				</div>
-				@@include('_tpl_products-filters--drop.html', {
-					"group": "type",
-					"checkboxes": {
-						"kulir": "кулир",
-						"interlok": "интерлок",
-						"comb": "комбинир.",
-						"lastik": "ластик 1*1",
-						"neop": "непол ласт"
+					"svitanak": {
+						"full": "Свiтанак",
+						"tag": "Свiтанак",
+						"icon": "img/img-brand-04.png"
 					}
-				})
-			</div>
-		</div>
-		<div class="p-filters-item p-filters-item-js">
-			<div class="p-filters-inner">
-				<div class="p-filters-select p-filters-select-js">
-					@@include('_tpl_products-filters--head.html', {
-						"title": "Вид отделки"
-					})
-					<div class="p-filters-angle"><i>&nbsp;</i></div>
-				</div>
-				@@include('_tpl_products-filters--drop.html', {
-					"group": "type2",
-					"checkboxes": {
-						"otdelka1": "отделка 1",
-						"otdelka2": "отделка 2",
-						"otdelka3": "отделка 3",
-						"otdelka4": "отделка 4",
-						"otdelka5": "отделка 5"
+				},
+				"checkboxes": ""
+			})
+
+		@@include('_tpl_products-filters--ITEM_LAYOUT.html', {"itemLayout": "END" })
+
+		<!--===============-->
+		<!--===============-->
+
+		@@include('_tpl_products-filters--ITEM_LAYOUT.html', {"itemLayout": "START", "isOpen": "true" })
+
+			@@include('_tpl_products-filters--head.html', {
+				"title": "Сезон"
+			})
+
+			@@include('_tpl_products-filters--drop.html', {
+				"group": "seasons",
+				"hasIcon": "",
+				"checkboxesExpanded": {
+					"winter": {
+						"full": "Зима",
+						"tag": "Сезон - Зима"
+					},
+					"spring": {
+						"full": "Весна",
+						"tag": "Сезон - Весна"
+					},
+					"summer": {
+						"full": "Лето",
+						"tag": "Сезон - Лето"
+					},
+					"autumn": {
+						"full": "Осень",
+						"tag": "Сезон - Осень"
 					}
-				})
-			</div>
-		</div>
-		<div class="p-filters-item p-filters-item-js">
-			<div class="p-filters-inner">
-				<div class="p-filters-select p-filters-select-js">
-					@@include('_tpl_products-filters--head.html', {
-						"title": "Цвет"
-					})
-					<div class="p-filters-angle"><i>&nbsp;</i></div>
-				</div>
-				@@include('_tpl_products-filters--drop.html', {
-					"group": "color",
-					"checkboxes": {
-						"red": "Красны",
-						"black": "Черный",
-						"white": "Белый",
-						"green": "Зеленый",
-						"blue": "Синий",
-						"gray": "Серый",
-						"alizarin": "Ализариновый красный с легким оттенком берюзы",
-						"yellow": "Желный"
-					}
-				})
-			</div>
-		</div>
-		<div class="p-filters-item p-filters-item-js">
-			<div class="p-filters-inner">
-				<div class="p-filters-select p-filters-select-js">
-					@@include('_tpl_products-filters--head.html', {
-						"title": "Размер"
-					})
-					<div class="p-filters-angle"><i>&nbsp;</i></div>
-				</div>
-				@@include('_tpl_products-filters--drop.html', {
-					"group": "size",
-					"checkboxes": {
-						"xxs": "xxs (42)",
-						"xs": "xs (44)",
-						"s": "s (46)",
-						"m": "m (48)",
-						"l": "l (50)",
-						"xl": "xl (52)",
-						"xxl": "xxl (54)",
-						"xxxl": "xxxl (56)"
-					}
-				})
-			</div>
-		</div>
+				},
+				"checkboxes": ""
+			})
+
+		@@include('_tpl_products-filters--ITEM_LAYOUT.html', {"itemLayout": "END" })
+
+		<!--===============-->
+		<!--===============-->
+
+		@@include('_tpl_products-filters--ITEM_LAYOUT.html', {"itemLayout": "START", "isOpen": "true" })
+
+			@@include('_tpl_products-filters--head.html', {
+				"title": "Вид полотна"
+			})
+
+			@@include('_tpl_products-filters--drop.html', {
+				"group": "type",
+				"hasIcon": "",
+				"checkboxesExpanded": "",
+				"checkboxes": {
+					"kulir": "кулир",
+					"interlok": "интерлок",
+					"comb": "комбинир.",
+					"lastik": "ластик 1*1",
+					"neop": "непол ласт"
+				}
+			})
+
+		@@include('_tpl_products-filters--ITEM_LAYOUT.html', {"itemLayout": "END" })
+
+		<!--===============-->
+		<!--===============-->
 	</div>
 </div>

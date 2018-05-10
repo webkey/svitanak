@@ -601,6 +601,14 @@
 	})
 	@@include('_tpl_forms_form-clear.html')
 
+}@@if(context.component === "formLight") {
+
+	@@include('_tpl_title-anchor.html', {
+		"taId": "formElementLightExample",
+		"taText": "Альтернативные поля форм"
+	})
+	@@include('_tpl_forms_form-light.html')
+
 }@@if(context.component === "formDefault") {
 
 	@@include('_tpl_title-anchor.html', {
