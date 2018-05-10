@@ -35,7 +35,8 @@
     "magnific-popup": "^1.1.0",
     "sticky-sidebar": "^3.3.0",
     "resize-sensor": "^0.0.7",
-    "vanilla-lazyload": "^10.4.2"
+    "vanilla-lazyload": "^10.4.2",
+    "ion.rangeSlider": "ionrangeslider#^2.2.0"
   },
   "devDependencies": {
     "mathsass": "^0.9.5"

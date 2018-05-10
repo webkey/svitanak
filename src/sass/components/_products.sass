@@ -516,6 +516,21 @@ $p-filters-angle-lines-color: $text-color
 	.p-filters-drop
 		display: block
 
+/* range-slider
+.range-slider
+	opacity: 0
+	visibility: hidden
+
+	.no-js &
+		opacity: 1
+		visibility: visible
+
+.p-filters-price-value, .p-filters-share-value
+	text-align: center
+	+font(1.6rem, round-float(20/16, 2))
+
+/* range-slider end
+
 /* filters tags
 .p-filters-tags
 	position: relative
@@ -660,6 +675,7 @@ $p-filters-angle-lines-color: $text-color
 		content: "/"
 		display: none
 		color: $text-color-light
+		margin-right: 5px
 
 	.p-card__model + &::before
 		display: inline-block
@@ -668,6 +684,8 @@ $p-filters-angle-lines-color: $text-color
 		+display-inline-block-top
 		+size(14px)
 		margin-top: 3px
+
+		display: none
 
 	path, polygon
 		fill: currentColor
@@ -907,14 +925,25 @@ $p-filters-angle-lines-color: $text-color
 // price
 .p-card__price
 	+font-normal
-	line-height: 24px
+	line-height: 36px
 	color: $base-color
 
 	.val
 		display: inline-block
 		vertical-align: baseline
-		+font-bold
-		font-size: 18px
+		//+font-bold
+
+	.cur
+		.val
+			+font-alt-bold
+			font-size: $font-size-h2
+			letter-spacing: 0.05em
+
+			+media('<desk-md')
+				font-size: $font-size-h2--md
+
+			+media('<mob-lg')
+				font-size: $font-size-h2--sm
 
 	small
 		display: inline-block
@@ -939,6 +968,7 @@ $p-filters-angle-lines-color: $text-color
 			border-top: 1px solid $text-color-light
 
 		.val
+			+font-bold
 			font-size: 14px
 
 		small

@@ -67,6 +67,9 @@
 /* slogan
 .header__col--slogan
 	&.header__col
+		+media('<desk-hd')
+			max-width: 220px
+
 		+media('<desk-sm')
 			display: none
 
@@ -79,7 +82,7 @@
 	cursor: default
 
 	+media('<desk-lg')
-		+font(16px, round-float(19/16, 2))
+		+font(16px, round-float(16/16, 2))
 
 a.slogan:hover
 	color: $link-color
@@ -99,7 +102,9 @@ a.slogan:hover
 
 .menu-list
 	$ml-space: 54px
-	$ml-space--lg: 40px
+	$ml-space--md: 30px
+	$ml-space--sm: 30px
+	$ml-space--min: 20px
 
 	&
 		list-style: none
@@ -107,12 +112,24 @@ a.slogan:hover
 		margin: 0 -#{round($ml-space/2)}
 		+clear-spacing
 
+		+media('<desk-hd')
+			+margin-horizontal(-#{round($ml-space--md/2)})
+
 		+media('<desk-lg')
-			+margin-horizontal(-#{round($ml-space--lg/2)})
+			+margin-horizontal(-#{round($ml-space--sm/2)})
+
+		+media('<desk-md')
+			+margin-horizontal(-#{round($ml-space--min/2)})
 
 	li
 		+display-inline-block-middle
 		+font-d
+
+		+media('<desk-hd')
+			letter-spacing: normal
+
+		+media('<desk-md')
+			font-size: 12px
 
 	a
 		display: table
@@ -127,8 +144,14 @@ a.slogan:hover
 			border: solid transparent
 			border-width: 3px 0
 
+			+media('<desk-hd')
+				+padding-horizontal(round($ml-space--md/2))
+
 			+media('<desk-lg')
-				+padding-horizontal(round($ml-space--lg/2))
+				+padding-horizontal(round($ml-space--sm/2))
+
+			+media('<desk-md')
+				+padding-horizontal(round($ml-space--min/2))
 
 	// hover
 	a

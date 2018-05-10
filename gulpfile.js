@@ -85,6 +85,8 @@ gulp.task('mergeCssLibs', function () { // Таск для мержа css биб
 		, 'src/libs/jquery-ui/themes/base/base.css'
 		, 'src/libs/jquery-ui/themes/base/spinner.css'
 		, 'src/libs/jquery-ui/themes/base/tooltip.css'
+		, 'src/libs/ion.rangeSlider/css/ion.rangeSlider.css' // стили для range slider
+		, 'src/libs/ion.rangeSlider/css/ion.rangeSlider.skinHTML5.css' // стили для range slider
 		// , 'src/lib/plugin/file.css'
 	]) // Выбираем файлы для конкатенации
 		.pipe(concatCss("src/css/libs.css", {
@@ -132,6 +134,7 @@ gulp.task('copyLibsScriptsToJs', ['copyJqueryToJs'], function () { // Таск �
 		, 'src/js/temp/jquery.ms-order-calc.min.js' // cart calculation
 
 		, 'src/libs/vanilla-lazyload/dist/lazyload.min.js' // lazyload images
+		, 'src/libs/ion.rangeSlider/js/ion.rangeSlider.min.js' // range slider
 
 		// временные плагины, удалить после программирования
 		// , 'src/libs/shave/dist/jquery.shave.min.js' // Обрезать текс по количеству символов
