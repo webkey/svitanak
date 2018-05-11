@@ -30,6 +30,16 @@
 			<label for="form-clear-base-disabled">Текстовое поле без js-классов (disabled):</label>
 			<input type="text" placeholder="Текстовое поле (placeholder)" id="form-clear-base-disabled" disabled/>
 			@@include('_tpl_forms_form-validation.html')
+
+			<!--===================================================-->
+			<label for="form-clear-base">Текстовое поле - minimal:</label>
+			<input class="form-minimal" type="text" placeholder="Текстовое поле в фильтрах" id="form-clear-base-minimal"/>
+			@@include('_tpl_forms_form-validation.html')
+			<!--===================================================-->
+			<label for="form-clear-base-disabled">Текстовое поле - minimal (disabled):</label>
+			<input class="form-minimal" type="text" placeholder="Текстовое поле в фильтрах (disabled)" id="form-clear-base-minimal-disabled" disabled/>
+			@@include('_tpl_forms_form-validation.html')
+
 			<!--===================================================-->
 			<label for="form-clear-ph">Текстовое поле с плейсхолдером:</label>
 			<input class="field-effects-js" type="text" placeholder="Текстовое поле (placeholder)" id="form-clear-ph"/>
@@ -176,6 +186,7 @@
 				"taText": "select (default) (рекомендуем)"
 			})
 
+			<!--===================================================-->
 			<label for="form-clear-select-base">Селект - без js-классов:</label>
 			<select name="select-name" id="form-clear-select-base">
 				@@include('_tpl_forms_form-select-options.html')
@@ -224,6 +235,7 @@
 			<div>Если элементы валидаци поместить после <code class="mark">.select</code>, то классы валидации необходимо добавлять и на <code class="mark">.select</code></div>
 			<div class="user-spacer"></div>
 
+			<!--===================================================-->
 			<label for="form-clear-select-arr-base">Селект - без js-классов:</label>
 			<div class="select">
 				<select name="select-name" id="form-clear-select-arr-base">
@@ -235,6 +247,14 @@
 			<label for="form-clear-select-arr">Селект - значение не выбрано:</label>
 			<div class="select">
 				<select class="field-effects-js" name="select-name" id="form-clear-select-arr">
+					@@include('_tpl_forms_form-select-options.html')
+				</select>
+				@@include('_tpl_forms_form-validation.html')
+			</div>
+			<!--===================================================-->
+			<label for="form-clear-select-arr-disabled">Селект - значение не выбрано (disabled):</label>
+			<div class="select">
+				<select class="field-effects-js" name="select-name" id="form-clear-select-arr-disabled" disabled>
 					@@include('_tpl_forms_form-select-options.html')
 				</select>
 				@@include('_tpl_forms_form-validation.html')
@@ -263,6 +283,8 @@
 				</select>
 				@@include('_tpl_forms_form-validation.html')
 			</div>
+
+			<div class="user-spacer">&nbsp;</div>
 		</div>
 	</div>
 

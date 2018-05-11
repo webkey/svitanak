@@ -403,7 +403,7 @@ $p-filters-angle-lines-color: $text-color
 
 .p-filters-item
 	position: relative
-	+font($font-size, $line-height)
+	+font($font-size, 1)
 	letter-spacing: $letter-spacing
 	border-bottom: 1px solid $text-color
 	margin-bottom: $bottom-space
@@ -423,10 +423,43 @@ $p-filters-angle-lines-color: $text-color
 	cursor: pointer
 
 .p-filters-drop-footer
-	display: none
+	//display: none
+	padding-bottom: 30px
+
+	.btn-reset
+		position: relative
+		+font-bold
+		+font(10px, 14px)
+		text-transform: uppercase
+		background-color: black
+		color: white
+		padding: 5px 8px
+		border-radius: 5px
+		border: none
+
+		.no-touchevents &:hover
+			box-shadow: 0 0 5px #000
+
+		.no-touchevents &, &
+			&:active
+				box-shadow: 0 0 0 #000
+				left: 1px
+				top: 1px
+
+		&:disabled
+			background-color: $disabled-color !important
+			box-shadow: none !important
+			cursor: default
 
 .p-filters-selected, .p-filters-placeholder
-	display: none
+	+font(10px, 14px)
+	+display-inline-block-top
+	width: calc(50% - 5px)
+	//display: none
+	+truncate(calc(50% - 5px))
+
+.p-filters-selected
+	+font-bold
 
 // angle
 .p-filters-angle
@@ -502,9 +535,13 @@ $p-filters-angle-lines-color: $text-color
 		padding-left: 1px
 
 		.input-wrap
+			position: relative
 			+margin-horizontal(0)
 			width: 50%
 			margin-left: -1px
+
+			&.input--focus, &.input--has-value
+				z-index: 2
 
 // hover, active, has checked filters
 .no-touchevents .p-filters-select:hover,

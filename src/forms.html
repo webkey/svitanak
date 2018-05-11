@@ -253,6 +253,16 @@
 											<div class="error-note">Поле обязательное для заполнения</div>
 											<div class="success-note">Подтверждено</div>
 											<!--===================================================-->
+											<label for="form-clear-base">Текстовое поле - minimal:</label>
+											<input class="form-minimal" type="text" placeholder="Текстовое поле в фильтрах" id="form-clear-base-minimal" />
+											<div class="error-note">Поле обязательное для заполнения</div>
+											<div class="success-note">Подтверждено</div>
+											<!--===================================================-->
+											<label for="form-clear-base-disabled">Текстовое поле - minimal (disabled):</label>
+											<input class="form-minimal" type="text" placeholder="Текстовое поле в фильтрах (disabled)" id="form-clear-base-minimal-disabled" disabled/>
+											<div class="error-note">Поле обязательное для заполнения</div>
+											<div class="success-note">Подтверждено</div>
+											<!--===================================================-->
 											<label for="form-clear-ph">Текстовое поле с плейсхолдером:</label>
 											<input class="field-effects-js" type="text" placeholder="Текстовое поле (placeholder)" id="form-clear-ph" />
 											<div class="error-note">Поле обязательное для заполнения</div>
@@ -398,6 +408,7 @@
 									<div>
 										<div class="layout-text">
 											<h4><a href="#hash-fcSelectDefault" id="hash-fcSelectDefault" class="hashAnchor"><span class="mark">select (default) (рекомендуем)</span></a></h4>
+											<!--===================================================-->
 											<label for="form-clear-select-base">Селект - без js-классов:</label>
 											<select name="select-name" id="form-clear-select-base">
 				<!--Важно! У первого опшина value должен быть равен ""--><option value="">- Выбрать -</option>
@@ -488,6 +499,7 @@
 											<div>Элементы валидаци поместить в <code class="mark">.select</code> после тэга <code class="mark">select</code></div>
 											<div>Если элементы валидаци поместить после <code class="mark">.select</code>, то классы валидации необходимо добавлять и на <code class="mark">.select</code></div>
 											<div class="user-spacer"></div>
+											<!--===================================================-->
 											<label for="form-clear-select-arr-base">Селект - без js-классов:</label>
 											<div class="select">
 												<select name="select-name" id="form-clear-select-arr-base">
@@ -509,6 +521,24 @@
 											<label for="form-clear-select-arr">Селект - значение не выбрано:</label>
 											<div class="select">
 												<select class="field-effects-js" name="select-name" id="form-clear-select-arr">
+					<!--Важно! У первого опшина value должен быть равен ""--><option value="">- Выбрать -</option>
+<!--<option value="0">- Выбрать -</option>-->
+<option value="1">Размер</option>
+<option value="2">Вес</option>
+<option value="3">Цвет</option>
+<option value="4">Позицию (расположение)</option>
+<option value="5">Опшин очень-очень-очень-очень длинный</option>
+<option value="6">Контраст</option>
+<option value="7">Сочетание</option>
+<option value="8">Расстояние</option>
+				</select>
+												<div class="error-note">Поле обязательное для заполнения</div>
+												<div class="success-note">Подтверждено</div>
+											</div>
+											<!--===================================================-->
+											<label for="form-clear-select-arr-disabled">Селект - значение не выбрано (disabled):</label>
+											<div class="select">
+												<select class="field-effects-js" name="select-name" id="form-clear-select-arr-disabled" disabled>
 					<!--Важно! У первого опшина value должен быть равен ""--><option value="">- Выбрать -</option>
 <!--<option value="0">- Выбрать -</option>-->
 <option value="1">Размер</option>
@@ -577,6 +607,7 @@
 												<div class="error-note">Поле обязательное для заполнения</div>
 												<div class="success-note">Подтверждено</div>
 											</div>
+											<div class="user-spacer">&nbsp;</div>
 										</div>
 									</div>
 									<!--===================================================-->

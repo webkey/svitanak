@@ -316,9 +316,12 @@
 																			<div class="p-filters-angle"><i>&nbsp;</i></div>
 																		</div>
 																		<div class="p-filters-drop p-filters-drop-js">
-																			<ul class="p-filters-drop-list p-filters-group-js" data-filter-group="size">
+																			<ul class="p-filters-drop-list p-filters-group-js" data-filter-group="group-size">
 																				<li>
-																					<input class="form-light form-minimal" type="text" placeholder="Размер" data-filter-name="size" data-filter-tag="Размер:" />
+																					<input class="form-light form-minimal field-effects-js" value="69" type="text" placeholder="Размер" data-filter-default="" data-filter-name="size" data-filter-title="Размер" data-filter-type="input" />
+																				</li>
+																				<li>
+																					<input class="form-light form-minimal field-effects-js" type="text" placeholder="Вес" data-filter-default="" data-filter-name="weight" data-filter-title="Вес" data-filter-type="input" />
 																				</li>
 																			</ul>
 																			<div class="p-filters-drop-footer">
@@ -340,21 +343,26 @@
 																			<div class="p-filters-angle"><i>&nbsp;</i></div>
 																		</div>
 																		<div class="p-filters-drop p-filters-drop-js">
-																			<ul class="p-filters-drop-list p-filters-group-js" data-filter-group="stock">
+																			<ul class="p-filters-drop-list p-filters-group-js" data-filter-group="collection">
 																				<li>
 																					<div class="form-row">
 																						<div class="input-wrap">
-																							<select class="form-light form-minimal field-effects-js" name="filter-by-city" data-filter-select="city" data-filter-default="">
-								<option value="" data-filter-name="select-city">Город:</option>
-								<option value="minsk" data-filter-name="minsk" data-filter-tag="Наличие - Минск">Минск</option>
-								<option value="bobruysk" data-filter-name="bobruysk" data-filter-tag="Наличие - Бобруйск">Бобруйск</option>
+																							<select class="form-light form-minimal field-effects-js" name="filter-by-collection-season" data-filter-name="collection-season" data-filter-title="Коллекция" data-filter-default="">
+
+								<option value="">Сезон:</option>
+								<option value="winter" data-filter-tag="Зима">Зима</option>
+								<option value="spring" data-filter-tag="Весна">Весна</option>
+								<option value="summer" data-filter-tag="Лето">Лето</option>
+								<option value="autumn" data-filter-tag="Осень">Осень</option>
 							</select>
 																						</div>
 																						<div class="input-wrap">
-																							<select class="form-light form-minimal field-effects-js" name="filter-by-shop" data-filter-select="address" data-filter-default="">
-								<option value="" data-filter-name="select-shop">Магазин:</option>
-								<option value="address_1" data-filter-name="address_1" data-filter-tag="Адрес 1">Адрес 1</option>
-								<option value="address_2" data-filter-name="address_2" data-filter-tag="Адрес 2">Адрес 2</option>
+																							<select class="form-light form-minimal field-effects-js" name="filter-by-collection-year" data-filter-name="collection-year" data-filter-default="">
+
+								<option value="">Год:</option>
+								<option value="2018" data-filter-tag="2018">2018</option>
+								<option value="2017" data-filter-tag="2017">2017</option>
+								<option value="2016" data-filter-tag="2016">2016</option>
 							</select>
 																						</div>
 																					</div>
@@ -381,8 +389,8 @@
 																		<div class="p-filters-drop p-filters-drop-js">
 																			<ul class="p-filters-drop-list p-filters-group-js" data-filter-group="price">
 																				<li class="has-slider">
-																					<input type="text" id="price-slider-js" class="range-slider-js" name="price-range" value="50;2350" data-type="double" data-min="50" data-max="2350" data-step="50" data-filter-type="range-slider" data-filter-default="50;2350" data-filter-select="price-range"
-																					    data-filter-name="price-range" />
+																					<input id="price-slider-js" class="range-slider-js" type="text" name="price-range" value="50;2350" data-type="double" data-min="50" data-max="2350" data-step="50" data-filter-type="range-slider" data-filter-title="Цена" data-filter-default="50;2350" data-filter-name="price-range"
+																					/>
 																					<div class="p-filters-price-value"><span class="range-slider-value-js price-slider-value-js"></span> BYN</div>
 																				</li>
 																			</ul>
