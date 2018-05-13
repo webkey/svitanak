@@ -311,17 +311,17 @@
 																	<div class="p-filters-inner">
 																		<div class="p-filters-select p-filters-select-js">
 																			<div class="p-filters-select-head">
-																				<div class="p-filters__title">Размер</div>
+																				<div class="p-filters__title">Название изделия</div>
 																			</div>
 																			<div class="p-filters-angle"><i>&nbsp;</i></div>
 																		</div>
 																		<div class="p-filters-drop p-filters-drop-js">
-																			<ul class="p-filters-drop-list p-filters-group-js" data-filter-group="group-size">
+																			<ul class="p-filters-drop-list p-filters-group-js" data-filter-group="group-title">
 																				<li>
-																					<input class="form-light form-minimal field-effects-js" value="69" type="text" placeholder="Размер" data-filter-default="" data-filter-name="size" data-filter-title="Размер" data-filter-type="input" />
+																					<input class="form-light form-minimal field-effects-js" value="Майка" type="text" placeholder="Название" data-filter-default="" data-filter-name="title" data-filter-title="Название изделия" data-filter-type="input" />
 																				</li>
 																				<li>
-																					<input class="form-light form-minimal field-effects-js" type="text" placeholder="Вес" data-filter-default="" data-filter-name="weight" data-filter-title="Вес" data-filter-type="input" />
+																					<input class="form-light form-minimal field-effects-js" value="" type="text" placeholder="Артикул" data-filter-default="" data-filter-name="vendor" data-filter-title="Артикул изделия" data-filter-type="input" />
 																				</li>
 																			</ul>
 																			<div class="p-filters-drop-footer">
@@ -382,7 +382,7 @@
 																	<div class="p-filters-inner">
 																		<div class="p-filters-select p-filters-select-js">
 																			<div class="p-filters-select-head">
-																				<div class="p-filters__title">Цена</div>
+																				<div class="p-filters__title">Диапазон цен</div>
 																			</div>
 																			<div class="p-filters-angle"><i>&nbsp;</i></div>
 																		</div>
@@ -391,7 +391,33 @@
 																				<li class="has-slider">
 																					<input id="price-slider-js" class="range-slider-js" type="text" name="price-range" value="50;2350" data-type="double" data-min="50" data-max="2350" data-step="50" data-filter-type="range-slider" data-filter-title="Цена" data-filter-default="50;2350" data-filter-name="price-range"
 																					/>
-																					<div class="p-filters-price-value"><span class="range-slider-value-js price-slider-value-js"></span> BYN</div>
+																					<div class="p-filters-price-value"><span class="range-slider-value-js"></span> BYN</div>
+																				</li>
+																			</ul>
+																			<div class="p-filters-drop-footer">
+																				<button class="btn-reset btn-reset-js" disabled><span>Очистить фильтр</span></button>
+																			</div>
+																		</div>
+																	</div>
+																</div>
+																<!--===============-->
+																<!--===============-->
+																<div class="p-filters-item p-filters-item-js p-filters-is-open">
+																	<div class="p-filters-placeholder p-filters-placeholder-js">Отметте необходимое значение</div>
+																	<div class="p-filters-selected p-filters-selected-js" data-filter-value-prefix="Выбрано" data-filter-value-postfix=""></div>
+																	<div class="p-filters-inner">
+																		<div class="p-filters-select p-filters-select-js">
+																			<div class="p-filters-select-head">
+																				<div class="p-filters__title">Диапазон размеров</div>
+																			</div>
+																			<div class="p-filters-angle"><i>&nbsp;</i></div>
+																		</div>
+																		<div class="p-filters-drop p-filters-drop-js">
+																			<ul class="p-filters-drop-list p-filters-group-js" data-filter-group="sizes-group">
+																				<li class="has-slider">
+																					<input id="size-slider-js" class="range-slider-js" type="text" name="size-range" value="5;489" data-type="double" data-min="5" data-max="489" data-step="2" data-filter-type="range-slider" data-filter-title="Размер" data-filter-default="5;489" data-filter-name="size-range"
+																					/>
+																					<div class="p-filters-price-value"><span class="range-slider-value-js"></span></div>
 																				</li>
 																			</ul>
 																			<div class="p-filters-drop-footer">

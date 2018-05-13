@@ -2361,117 +2361,66 @@ function toggleViewInit() {
 
 			// console.log("dataGroup: ", dataGroup);
 			// console.log("dataName: ", dataName);
+			var $filterTag = $curContainer.find(self.tagsItem);
 
 			if(self.getFilterState($curFilter)) {
 				// добавить тэг фильтра
-				var textInsideTag = curAttrTag || $curLabelText.text() || curAttrName;
-				// сформировать шаблон тега и добавить в контейнер тегов
-				// var $tagTpl = $(self.tagsItemTpl).clone()
-				// 	.find(self.tagTextContainer)
-				// 	.html(textInsideTag)
-				// 	.end()
-				// 	.attr(self.attributes.dataGroup, curAttrGroup)
-				// 	.attr(self.attributes.dataName, curAttrName);
+				var _curFilterTagVal = curAttrTag || $curLabelText.text() || curAttrName,
+					curFilterType = $curFilter.attr(self.attributes.dataType);
 
+				// установить значение тега $curFilterTagVal текущего фильтра
 				switch (true) {
-					case $curFilter.is(':checkbox'):
-						$(self.tagsItemTpl).clone()
-							.find(self.tagTextContainer)
-							.html(textInsideTag)
-							.end()
-							.attr(self.attributes.tagTitle, curAttrTitle)
-							.attr(self.attributes.dataGroup, curAttrGroup)
-							.attr(self.attributes.dataName, curAttrName)
-							.appendTo($curContainer.find(self.$tagsContainer));
-
+					case curFilterType === 'range-slider':
+						// если фильтр - диапазон значений
+						var curSliderFilterVal = $curFilter.val().split(';');
+						_curFilterTagVal = curSliderFilterVal[0] + " - " + curSliderFilterVal[1];
 						break;
 
-					case $curFilter.attr(self.attributes.dataType) === 'range-slider':
-						var $curSliderFilter = $curContainer.find(self.tagsItem).filter(dataGroup + dataName);
-						$curSliderFilter.find(self.tagTextContainer).html('');
-
-						var curSliderFilterVal = $curFilter.val().split(';'),
-							curSliderFilterTagVal = curSliderFilterVal[0] + " - " + curSliderFilterVal[1];
-
-						if(!$curSliderFilter.length){
-							$(self.tagsItemTpl).clone()
-								.find(self.tagTextContainer)
-								.html(curSliderFilterTagVal)
-								.end()
-								.attr(self.attributes.tagTitle, curAttrTitle)
-								.attr(self.attributes.dataGroup, curAttrGroup)
-								.attr(self.attributes.dataName, curAttrName)
-								.appendTo($curContainer.find(self.$tagsContainer));
-						} else {
-							$curSliderFilter.find(self.tagTextContainer).html(curSliderFilterTagVal);
-						}
-
+					case curFilterType === 'input':
+						// если фильтр - поле ввода
+						_curFilterTagVal = $curFilter.val();
 						break;
-
-					case $curFilter.attr(self.attributes.dataType) === 'input':
-						var $curInputFilter = $curContainer.find(self.tagsItem).filter(dataGroup + dataName);
-						$curInputFilter.find(self.tagTextContainer).html('');
-
-						var curInputFilterTagVal = $curFilter.val();
-
-						if(!$curInputFilter.length){
-							$(self.tagsItemTpl).clone()
-								.find(self.tagTextContainer)
-								.html(curInputFilterTagVal)
-								.end()
-								.attr(self.attributes.tagTitle, curAttrTitle)
-								.attr(self.attributes.dataGroup, curAttrGroup)
-								.attr(self.attributes.dataName, curAttrName)
-								.appendTo($curContainer.find(self.$tagsContainer));
-						} else {
-							$curInputFilter.find(self.tagTextContainer).html(curInputFilterTagVal);
-						}
-
-						break;
-
-					default:
-						// фильтр по умолчанию - селект
-						var $curSelectFilter = $curContainer.find(self.tagsItem).filter(dataGroup + dataName);
-						$curSelectFilter.find(self.tagTextContainer).html('');
-
-						if(!$curSelectFilter.length){
-							$(self.tagsItemTpl).clone()
-								.find(self.tagTextContainer)
-								.html(textInsideTag)
-								.end()
-								.attr(self.attributes.tagTitle, curAttrTitle)
-								.attr(self.attributes.dataGroup, curAttrGroup)
-								.attr(self.attributes.dataName, curAttrName)
-								.appendTo($curContainer.find(self.$tagsContainer));
-						} else {
-							$curSelectFilter.find(self.tagTextContainer).html(textInsideTag);
-						}
-
 				}
+
+				var createTag = function () {
+					return $(self.tagsItemTpl).clone()
+						.find(self.tagTextContainer)
+						.html(_curFilterTagVal)
+						.end()
+						.attr(self.attributes.tagTitle, curAttrTitle)
+						.attr(self.attributes.dataGroup, curAttrGroup)
+						.attr(self.attributes.dataName, curAttrName);
+				};
+
+				var $filterTags = $curContainer.find(self.$tagsContainer),
+					$curFilterGroup = $filterTag.filter(dataGroup),
+					$curFilterTag = $filterTag.filter(dataGroup + dataName);
+
+				if ($curFilter.is(':checkbox')) {
+					// добавить новый тег вконце списка, либо после последнего уже существующего тега с текущей группы
+					if ($curFilterGroup.length) {
+						$.each($filterTags, function () {
+							createTag().insertAfter($(this).find(self.tagsItem).filter(dataGroup).last());
+						});
+					} else {
+						createTag().appendTo($filterTags);
+					}
+				} else {
+					$curFilterTag.find(self.tagTextContainer).html('');
+
+					// добавить новый тег или заменить значение существующего
+					if ($curFilterTag.length) {
+						$curFilterTag
+							.find(self.tagTextContainer)
+							.html(_curFilterTagVal);
+					} else {
+						createTag().appendTo($filterTags);
+					}
+				}
+
 			} else {
 
-				$curContainer.find(self.tagsItem).filter(dataGroup + dataName).remove();
-
-				// switch (true) {
-				// 	case $curFilter.is(':checkbox'):
-				// 		$curContainer.find(self.tagsItem).filter(dataGroup + dataName).remove();
-				//
-				// 		break;
-				//
-				// 	case $curFilter.attr(self.attributes.dataType) === 'range-slider':
-				// 		$curContainer.find(self.tagsItem).filter(dataGroup + dataName).remove();
-				//
-				// 		break;
-				//
-				// 	case $curFilter.attr(self.attributes.dataType) === 'input':
-				// 		$curContainer.find(self.tagsItem).filter(dataGroup + dataName).remove();
-				//
-				// 		break;
-				//
-				// 	default:
-				// 		// селек и слайдер
-				// 		$curContainer.find(self.tagsItem).filter(dataGroup + dataName).remove();
-				// }
+				$filterTag.filter(dataGroup + dataName).remove();
 
 			}
 		});
