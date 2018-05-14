@@ -972,6 +972,11 @@ ul {
 	line-height: 20px;
 	text-align: center;
 	box-shadow: none;
+	-moz-appearance: textfield;
+}
+
+.ui-spinner-input::-webkit-inner-spin-button, .ui-spinner-input::-webkit-outer-spin-button, .ui-spinner-input[type="text"]::-webkit-inner-spin-button, .ui-spinner-input[type="text"]::-webkit-outer-spin-button {
+	-webkit-appearance: none;
 }
 
 .ui-spinner-input:focus, .ui-spinner-input:hover, .ui-spinner-input[type="text"]:focus, .ui-spinner-input[type="text"]:hover {

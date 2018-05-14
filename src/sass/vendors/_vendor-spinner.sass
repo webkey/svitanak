@@ -49,6 +49,13 @@ $spinner-input-size: 54px // width
 	text-align: center
 	box-shadow: none
 
+	-moz-appearance: textfield
+
+	&::-webkit-inner-spin-button,
+	&::-webkit-outer-spin-button
+		-webkit-appearance: none
+		//margin: 0
+
 	&:focus, &:hover
 		box-shadow: none !important
 		border-color: transparent !important
