@@ -3020,7 +3020,7 @@ function initMultiAccordion() {
 /**
  * !multi accordion initial
  * */
-function ininitNavAccordion() {
+function initNavAccordion() {
 
 	var navMenu = '.nav-js';
 
@@ -3593,7 +3593,7 @@ $(document).ready(function () {
 	multiFiltersInit();
 	sortingOrder();
 	initMultiAccordion();
-	ininitNavAccordion();
+	initNavAccordion();
 	popupInitial();
 	spinnerInit($(".spinner-js"));
 	// tooltipInit();

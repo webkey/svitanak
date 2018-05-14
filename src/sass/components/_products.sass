@@ -423,7 +423,7 @@ $p-filters-angle-lines-color: $text-color
 	cursor: pointer
 
 .p-filters-drop-footer
-	//display: none
+	display: none
 	padding-bottom: 30px
 
 	.btn-reset
@@ -455,7 +455,7 @@ $p-filters-angle-lines-color: $text-color
 	+font(10px, 14px)
 	+display-inline-block-top
 	width: calc(50% - 5px)
-	//display: none
+	display: none
 	+truncate(calc(50% - 5px))
 
 .p-filters-selected
@@ -497,7 +497,8 @@ $p-filters-angle-lines-color: $text-color
 
 .p-filters-drop
 	position: relative
-	display: none
+	overflow: hidden
+	height: 0
 
 .p-filters-drop-list
 
@@ -508,6 +509,9 @@ $p-filters-angle-lines-color: $text-color
 		li
 			padding-left: 0
 			margin: 0 0 15px
+
+			&.has-slider
+				margin-bottom: 25px
 
 			&::before
 				content: none
@@ -545,7 +549,7 @@ $p-filters-angle-lines-color: $text-color
 
 // hover, active, has checked filters
 .no-touchevents .p-filters-select:hover,
-.p-filters-item.p-filters-on
+.p-filters-item.p-filters-on .p-filters-select
 	color: $base-color
 
 	.p-filters-angle
@@ -568,6 +572,8 @@ $p-filters-angle-lines-color: $text-color
 
 	.p-filters-drop
 		display: block
+		height: auto
+		overflow: visible
 
 /* range-slider
 .range-slider
@@ -578,13 +584,19 @@ $p-filters-angle-lines-color: $text-color
 		opacity: 1
 		visibility: visible
 
-.p-filters-price-value, .p-filters-share-value
+.slider-active
+	.irs-slider
+		border-color: $base-color
+
+	.irs-bar, .irs-bar-edge
+		background-color: $base-color
+
+.p-filters-price-value
 	text-align: center
-	+font(1.6rem, round-float(20/16, 2))
+	+font(12px, round-float(15/12, 2))
+	color: $text-color
 
 /* range-slider end
-
-
 
 /* filters tags
 .p-filters-tags
@@ -603,7 +615,7 @@ $p-filters-angle-lines-color: $text-color
 		margin-bottom: 0
 
 	.m-content &
-		//display: none
+		display: none
 
 		+media('<tab-lg')
 			display: block

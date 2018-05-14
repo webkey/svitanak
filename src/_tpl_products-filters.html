@@ -10,7 +10,7 @@
 				<li>
 					<input
 							class="form-light form-minimal field-effects-js"
-							value="Майка"
+							value=""
 							type="text"
 							placeholder="Название"
 							data-filter-default=""
@@ -85,7 +85,7 @@
 		@@include('_tpl_products-filters--ITEM_LAYOUT.html', {"itemLayout": "START", "isOpen": "true" })
 
 			@@include('_tpl_products-filters--head.html', {
-				"title": "Диапазон цен"
+				"title": "Цена"
 			})
 
 			@@include('_tpl_products-filters--DROP_LAYOUT.html', {"itemLayout": "START", "group": "price" })
@@ -106,6 +106,24 @@
 							data-filter-name="price-range" />
 					<div class="p-filters-price-value"><span class="range-slider-value-js"></span> BYN</div>
 				</li>
+				<li class="has-slider">
+					<input
+							id="price-slider-2-js"
+							class="range-slider-js"
+							type="text"
+							name="price-2-range"
+							value="100;2350"
+							data-type="double"
+							data-min="100"
+							data-from="300"
+							data-max="2350"
+							data-step="50"
+							data-filter-type="range-slider"
+							data-filter-title="Цена"
+							data-filter-default="300;2350"
+							data-filter-name="price-2-range" />
+					<div class="p-filters-price-value"><span class="range-slider-value-js"></span> $</div>
+				</li>
 			@@include('_tpl_products-filters--DROP_LAYOUT.html', {"itemLayout": "END"})
 
 		@@include('_tpl_products-filters--ITEM_LAYOUT.html', {"itemLayout": "END" })
@@ -116,7 +134,7 @@
 		@@include('_tpl_products-filters--ITEM_LAYOUT.html', {"itemLayout": "START", "isOpen": "true" })
 
 			@@include('_tpl_products-filters--head.html', {
-				"title": "Диапазон размеров"
+				"title": "Размеры"
 			})
 
 			@@include('_tpl_products-filters--DROP_LAYOUT.html', {"itemLayout": "START", "group": "sizes-group" })
