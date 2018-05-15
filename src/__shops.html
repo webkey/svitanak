@@ -17,26 +17,17 @@
 
 		<!--CONTENT-->
 		<div class="content-wrap">
-			<div class="content user-content">
-
-				@@include('_tpl_breadcrumbs.html', {
-					"items": ["Главная"],
-					"last": "Пресс-релизы"
-				})
-
+			<div class="content user-content tabs-js" data-auto-height="true"> <!--tabs-js, data-auto-height="true" - только для этой страницы-->
 				<div class="heading">
-					<h1>Личный кабинет <span class="sep">&nbsp;</span></h1>
+					<h1>
+						Где купить?
+						<span class="sep">&nbsp;</span>
+					</h1>
 					<div class="heading__options">
 						<div class="heading__options__item">
-							<div class="view-switcher view-switcher-news-js" data-toggle-view-switcher="news">
-								<a href="#" class="grid-view active" title="Сокращенный вид">
-									<svg class="svg-ico-menu-short-lg" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 80 80"><path d="M0 35.6h35.6V0H0V35.6zM44.4 0v35.6c0.5 0 0.9 0 1.2 0 11.4 0 22.9 0 34.3 0V0H44.4zM34.3 44.4C22.9 44.4 11.4 44.4 0 44.4V80h35.6V44.4C35.1 44.4 34.7 44.4 34.3 44.4zM44.4 80H80V44.4H44.4V80z"></path></svg>
-									<span>Сокращенный вид</span>
-								</a>
-								<a href="#" class="list-view" title="Подробный вид">
-									<svg class="svg-ico-menu-full-lg" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 67 66.9"><path d="M0 0v29.8c0.3 0 0.6 0 0.9 0 21.7 0 43.5 0 65.2 0 0.3 0 0.6 0 0.9 0V0H0zM0.9 37.2c-0.3 0-0.6 0-0.9 0v29.8h67V37.2c-0.3 0-0.6 0-0.9 0C44.3 37.2 22.6 37.2 0.9 37.2z"></path></svg>
-									<span>Подробный вид</span>
-								</a>
+							<div class="shops-view-switcher">
+								<a href="#shopsMapView" class="btn-underline tab-anchor-js" title="Показать на карте">На карте</a>
+								<a href="#shopsListView" class="btn-underline tab-anchor-js active-tab" title="В виде списка">Списком</a>
 							</div>
 						</div>
 						<div class="heading__options__item heading__options__item--filters-show">
@@ -49,49 +40,137 @@
 						</div>
 					</div>
 				</div>
-				<div class="m-wrapper p-filters-js">
-						<div class="p-filters-tags">
-							<div class="p-filters-tags__holder">
-								<div class="p-filters-tags__frame p-filters-tags-js">
-									<!--filters tags-->
+				<div class="m-wrapper">
+					<div class="m-container">
+						<div class="m-aside m-aside-shutter-js">
+							<div class="m-aside-layout">
+								<!--<div class="m-aside-options">
+									<a href="#" class="btn-shutter-close btn-shutter-close-js"><i>&nbsp;</i><span>Закрыть</span></a>
+									<a href="#" class="btn-default-alt btn-filters-apply btn-shutter-close-js"><span>Применить</span></a>
+								</div>-->
+								<div class="m-aside-align">
+									<div class="m-aside-holder">
+										<!--selectCity-->
+										<div class="select form-minimal">
+											<select id="selectCity" class="field-effects-js" data-path="ajax">
+												<!--<option value="0">Выберите город</option>-->
+												<!--<option value="0">...</option>-->
+												<option value="minsk">Минск</option>
+												<option value="brest">Брест</option>
+											</select>
+										</div>
+										<!--selectCity end-->
+
+										<!--location filter-->
+										<div class="location-filter-wrap">
+											<div class="location-filter">
+												<div class="location-filter-holder">
+													<div class="location-filter-list">
+														<div class="location-filter-item">
+															<div class="location-filter-inner">
+																<label class="check-label">
+																	<input type="checkbox" value="tag-branches" />
+																	<i></i>
+																	<span>В филиалах предприятия</span>
+																</label>
+															</div>
+														</div>
+														<div class="location-filter-item">
+															<div class="location-filter-inner">
+																<label class="check-label">
+																	<input type="checkbox" value="tag-dealers" />
+																	<i></i>
+																	<span>У наших дилеров</span>
+																</label>
+															</div>
+														</div>
+														<div class="location-filter-item">
+															<div class="location-filter-inner">
+																<label class="check-label">
+																	<input type="checkbox" value="tag-stores" />
+																	<i></i>
+																	<span>В наших фирменных магазинах</span>
+																</label>
+															</div>
+														</div>
+														<div class="location-filter-item">
+															<div class="location-filter-inner">
+																<label class="check-label">
+																	<input type="checkbox" value="tag-partners" />
+																	<i></i>
+																	<span>В магазинах наших партнёров</span>
+																</label>
+															</div>
+														</div>
+														<div class="location-filter-item">
+															<div class="location-filter-inner">
+																<label class="check-label">
+																	<input type="checkbox" value="tag-sections" />
+																	<i></i>
+																	<span>В наших фирменных секциях</span>
+																</label>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+										<!--location filter end-->
+									</div>
+								</div>
+								<div class="m-aside-footer">
+									<button class="btn-underline btn-with-icon btn-clear-form btn-clear-form-js" disabled>
+										@@include("includes-json/svg/icon-close.svg")
+										<span class="for-desk">Очистить фильтр</span>
+										<span class="for-mob">Очистить</span>
+									</button>
+									<a href="#" class="btn-default btn-filters-apply btn-shutter-close-js"><span>Показать</span></a>
+									<a href="#" class="btn-shutter-close btn-shutter-close-js"><i>&nbsp;</i><span>Закрыть</span></a>
 								</div>
 							</div>
 						</div>
-						<div class="m-container">
-							<div class="m-aside m-aside-shutter-js">
-								<div class="m-aside-layout">
-									<div class="shutter__options">
-										<a href="#" class="btn-shutter-close btn-shutter-close-js"><i>&nbsp;</i><span>Закрыть</span></a>
-										<a href="#" class="btn-default-alt btn-filters-apply btn-shutter-close-js"><span>Применить</span></a>
-									</div>
-									<div class="m-aside-align">
-										<div class="m-aside-holder">
-											@@include('_tpl_news-filters.html')
+						<div class="m-content">
+							<div class="m-content__holder">
+
+								<!--shops-->
+								<section class="shops">
+									<div class="shops-holder tab-container-js">
+										<!--shops-by-map-->
+										<div class="shops-opener accordion__hand tab-link-js active-tab">
+											<div class="accordion__header__text">На карте</div>
+											<i class="accordion__header__angle">&nbsp;</i>
 										</div>
-									</div>
-								</div>
-							</div>
-							<div class="m-content">
-								<div class="m-content__holder">
-									<div class="p-filters-tags">
-										<div class="p-filters-tags__holder">
-											<div class="p-filters-tags__frame p-filters-tags-js">
-												<!--filters tags-->
+										<div class="shops-by-map tab-content-js active-tab" id="shopsMapView">
+											<div id="shops-map" class="shops-map"></div>
+										</div>
+										<!--shops-by-map end-->
+
+										<!--shops-by-list-->
+										<div class="shops-opener accordion__hand tab-link-js active-tab">
+											<div class="accordion__header__text">Список магазинов</div>
+											<i class="accordion__header__angle">&nbsp;</i>
+										</div>
+										<div class="shops-by-list tab-content-js" id="shopsListView">
+											<!--shops-by-list layout-->
+											<div class="shops-by-list__frame shops-append-loader-js">
+												<div class="shops-list shops-list-js" data-item-group="brest">
+													@@loop("_tpl_shops-list--items.html", "ajax/brest.json")
+												</div>
+												<div class="shops-list shops-list-js" data-item-group="minsk">
+													@@loop("_tpl_shops-list--items.html", "ajax/minsk.json")
+												</div>
 											</div>
+											<!--shops-by-list layout end-->
 										</div>
+										<!--shops-by-list end-->
 									</div>
-									<div class="news-preview">
-										<div class="news-preview__list equal-height-js" data-toggle-view-panels="news">
-											@@loop("_tpl_news-preview.html", "includes-json/news-slider-slides.json")
-										</div>
-										<!--!!! pagination push inside .news-preview !!!-->
-										@@include('_tpl_pagination.html')
-									</div>
-								</div>
+								</section>
+								<!--shops end-->
+
 							</div>
 						</div>
 					</div>
-
+				</div>
 			</div>
 		</div>
 		<!--CONTENT end-->
@@ -107,4 +186,4 @@
 
 @@include('_tpl_PAGE_WRAP.html', { "pageWrap": "END" })
 
-@@include('_tpl_layout_foot.html')
+@@include('_tpl_layout_foot.html', {"hasMap":"true"})

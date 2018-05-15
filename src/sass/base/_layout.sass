@@ -962,8 +962,10 @@ body
 		overflow-x: hidden
 		overflow-y: auto
 		//height: 100%
-		height: calc(100% - #{$header-height--lg}) // если есть кнопка закрытия
-		//height: calc(100% - #{$header-height--lg*2}) // если есть кнопка закрытия и футер с дополнительными элементами
+		height: calc(100% - #{$header-height--lg}) // если есть футер (с элементами управления)
+
+		.m-aside-options ~ &
+			height: calc(100% - #{$header-height--lg*2}) // если есть шапка (с элементами управления)
 
 .m-aside-holder
 	padding-right: $layout-spaces
@@ -982,6 +984,23 @@ body
 
 	+media('<mob-lg')
 		padding: $layout-spaces--mob $layout-spaces--mob round($layout-spaces--mob*1.5)
+
+.m-aside-options
+	position: relative
+
+	+media('<tab-lg')
+		display: flex
+		height: $header-height--lg
+		z-index: 20
+
+	.btn-filters-apply
+		+media('<tab-lg')
+			display: block
+			//width: calc(100% - #{$header-height--lg})
+			//flex: 1 calc(100% - #{$header-height--lg})
+			flex: 1 1
+			height: $header-height--lg
+			padding: 21px 5px 21px calc(5px + #{$letter-spacing})
 
 .m-aside-footer
 	padding-top: 4rem
@@ -1006,11 +1025,12 @@ body
 		overflow-y: hidden
 		z-index: 20
 
-	.btn-filters-apply, .btn-clear-filters
+	.btn-filters-apply, .btn-clear-filters, .btn-clear-form
 		+media('<tab-lg')
 			display: block
-			width: calc(50% - #{$header-height--lg})
-			flex: 1 calc(50% - #{$header-height--lg})
+			//width: calc(50% - #{$header-height--lg})
+			//flex: 1 calc(50% - #{$header-height--lg})
+			flex: 1 1
 			height: $header-height--lg
 			padding: 21px 5px 21px calc(5px + #{$letter-spacing})
 
@@ -1022,7 +1042,7 @@ body
 		+media('<tab-lg')
 			display: block
 
-	.btn-clear-filters
+	.btn-clear-filters, .btn-clear-form
 		+media('<tab-lg')
 			border: none
 			background-color: $btn-bg-color

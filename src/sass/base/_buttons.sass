@@ -33,6 +33,8 @@
 	background: $btn-bg-color
 	box-shadow: none
 	margin: 0
+	user-select: none
+	-webkit-tap-highlight-color: transparent
 
 	+media('<mob-lg')
 		+padding-horizontal(15px)
@@ -95,12 +97,13 @@
 	+font-bold
 	text-transform: uppercase
 	color: $text-color
-	fill: $text-color
 	padding: 0 0 5px
 	box-shadow: none
 	background: none
-	border: solid $text-color
+	border: solid currentColor
 	border-width: 0 0 2px
+	user-select: none
+	-webkit-tap-highlight-color: transparent
 
 	&, & > span
 		+font(14px, 18px)
@@ -108,12 +111,10 @@
 
 	.no-touchevents &:hover
 		color: $base-color
-		border-color: $base-color
 
 	&:disabled, &.disabled, &[data-disabled]
 		cursor: default
 		color: $disabled-color !important
-		border-color: $disabled-color !important
 
 /* btn-underline end
 
@@ -412,7 +413,7 @@
 
 /* arrow left end
 
-.btn-clear-filters
+.btn-clear-filters, .btn-clear-form
 	svg
 		width: 14px
 		height: 14px

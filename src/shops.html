@@ -220,26 +220,18 @@
 				<div class="main__holder">
 					<!--CONTENT-->
 					<div class="content-wrap">
-						<div class="content user-content">
-							<div class="breadcrumbs">
-								<ul class="breadcrumbs__list">
-									<li><a href="#"><span title="Главная">Главная</span></a></li>
-									<li><span title="Пресс-релизы">Пресс-релизы</span></li>
-								</ul>
-							</div>
+						<div class="content user-content tabs-js" data-auto-height="true">
+							<!--tabs-js, data-auto-height="true" - только для этой страницы-->
 							<div class="heading">
-								<h1>Личный кабинет <span class="sep">&nbsp;</span></h1>
+								<h1>
+									Где купить?
+									<span class="sep">&nbsp;</span>
+								</h1>
 								<div class="heading__options">
 									<div class="heading__options__item">
-										<div class="view-switcher view-switcher-news-js" data-toggle-view-switcher="news">
-											<a href="#" class="grid-view active" title="Сокращенный вид">
-									<svg class="svg-ico-menu-short-lg" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 80 80"><path d="M0 35.6h35.6V0H0V35.6zM44.4 0v35.6c0.5 0 0.9 0 1.2 0 11.4 0 22.9 0 34.3 0V0H44.4zM34.3 44.4C22.9 44.4 11.4 44.4 0 44.4V80h35.6V44.4C35.1 44.4 34.7 44.4 34.3 44.4zM44.4 80H80V44.4H44.4V80z"></path></svg>
-									<span>Сокращенный вид</span>
-								</a>
-											<a href="#" class="list-view" title="Подробный вид">
-									<svg class="svg-ico-menu-full-lg" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 67 66.9"><path d="M0 0v29.8c0.3 0 0.6 0 0.9 0 21.7 0 43.5 0 65.2 0 0.3 0 0.6 0 0.9 0V0H0zM0.9 37.2c-0.3 0-0.6 0-0.9 0v29.8h67V37.2c-0.3 0-0.6 0-0.9 0C44.3 37.2 22.6 37.2 0.9 37.2z"></path></svg>
-									<span>Подробный вид</span>
-								</a>
+										<div class="shops-view-switcher">
+											<a href="#shopsMapView" class="btn-underline tab-anchor-js" title="Показать на карте">На карте</a>
+											<a href="#shopsListView" class="btn-underline tab-anchor-js active-tab" title="В виде списка">Списком</a>
 										</div>
 									</div>
 									<div class="heading__options__item heading__options__item--filters-show">
@@ -252,275 +244,303 @@
 									</div>
 								</div>
 							</div>
-							<div class="m-wrapper p-filters-js">
-								<div class="p-filters-tags">
-									<div class="p-filters-tags__holder">
-										<div class="p-filters-tags__frame p-filters-tags-js">
-											<!--filters tags-->
-										</div>
-									</div>
-								</div>
+							<div class="m-wrapper">
 								<div class="m-container">
 									<div class="m-aside m-aside-shutter-js">
 										<div class="m-aside-layout">
-											<div class="shutter__options">
-												<a href="#" class="btn-shutter-close btn-shutter-close-js"><i>&nbsp;</i><span>Закрыть</span></a>
-												<a href="#" class="btn-default-alt btn-filters-apply btn-shutter-close-js"><span>Применить</span></a>
-											</div>
+											<!--<div class="m-aside-options">
+									<a href="#" class="btn-shutter-close btn-shutter-close-js"><i>&nbsp;</i><span>Закрыть</span></a>
+									<a href="#" class="btn-default-alt btn-filters-apply btn-shutter-close-js"><span>Применить</span></a>
+								</div>-->
 											<div class="m-aside-align">
 												<div class="m-aside-holder">
-													<div class="m-wrapper">
-														<div class="p-filters-list">
-															<div class="p-filters-item p-filters-item-js">
-																<div class="p-filters-inner">
-																	<div class="p-filters-select p-filters-select-js">
-																		<div class="p-filters-select p-filters-select-js">
-																			<div class="p-filters-select-head">
-																				<div class="p-filters__title">Год</div>
-																			</div>
-																			<div class="p-filters-angle"><i>&nbsp;</i></div>
-																		</div>
-																		<div class="p-filters-angle"><i>&nbsp;</i></div>
-																	</div>
-																	<div class="p-filters-drop p-filters-drop-js">
-																		<ul class="p-filters-drop-list p-filters-group-js" data-filter-group="color">
-																			<li>
-																				<label class="check-label">
-						<input type="checkbox" name="2016" data-filter-name="2016" />
-						<i>&nbsp;</i>
-						<span class="p-filters-label-text-js">2016</span>
-					</label>
-																			</li>
-																			<li>
-																				<label class="check-label">
-						<input type="checkbox" name="2017" data-filter-name="2017" />
-						<i>&nbsp;</i>
-						<span class="p-filters-label-text-js">2017</span>
-					</label>
-																			</li>
-																			<li>
-																				<label class="check-label">
-						<input type="checkbox" name="2018" data-filter-name="2018" />
-						<i>&nbsp;</i>
-						<span class="p-filters-label-text-js">2018</span>
-					</label>
-																			</li>
-																		</ul>
-																		<div class="p-filters-drop-footer">
-																			<button class="btn-reset btn-reset-js" disabled><span>Очистить фильтр</span></button>
+													<!--selectCity-->
+													<div class="select form-minimal">
+														<select id="selectCity" class="field-effects-js" data-path="ajax">
+												<!--<option value="0">Выберите город</option>-->
+												<!--<option value="0">...</option>-->
+												<option value="minsk">Минск</option>
+												<option value="brest">Брест</option>
+											</select>
+													</div>
+													<!--selectCity end-->
+													<!--location filter-->
+													<div class="location-filter-wrap">
+														<div class="location-filter">
+															<div class="location-filter-holder">
+																<div class="location-filter-list">
+																	<div class="location-filter-item">
+																		<div class="location-filter-inner">
+																			<label class="check-label">
+																	<input type="checkbox" value="tag-branches" />
+																	<i></i>
+																	<span>В филиалах предприятия</span>
+																</label>
 																		</div>
 																	</div>
-																</div>
-															</div>
-															<div class="p-filters-item p-filters-item-js">
-																<div class="p-filters-inner">
-																	<div class="p-filters-select p-filters-select-js">
-																		<div class="p-filters-select p-filters-select-js">
-																			<div class="p-filters-select-head">
-																				<div class="p-filters__title">Месяц</div>
-																			</div>
-																			<div class="p-filters-angle"><i>&nbsp;</i></div>
+																	<div class="location-filter-item">
+																		<div class="location-filter-inner">
+																			<label class="check-label">
+																	<input type="checkbox" value="tag-dealers" />
+																	<i></i>
+																	<span>У наших дилеров</span>
+																</label>
 																		</div>
-																		<div class="p-filters-angle"><i>&nbsp;</i></div>
 																	</div>
-																	<div class="p-filters-drop p-filters-drop-js">
-																		<ul class="p-filters-drop-list p-filters-group-js" data-filter-group="color">
-																			<li>
-																				<label class="check-label">
-						<input type="checkbox" name="jan" data-filter-name="jan" />
-						<i>&nbsp;</i>
-						<span class="p-filters-label-text-js">Январь</span>
-					</label>
-																			</li>
-																			<li>
-																				<label class="check-label">
-						<input type="checkbox" name="feb" data-filter-name="feb" />
-						<i>&nbsp;</i>
-						<span class="p-filters-label-text-js">Февраль</span>
-					</label>
-																			</li>
-																			<li>
-																				<label class="check-label">
-						<input type="checkbox" name="mar" data-filter-name="mar" />
-						<i>&nbsp;</i>
-						<span class="p-filters-label-text-js">Март</span>
-					</label>
-																			</li>
-																		</ul>
-																		<div class="p-filters-drop-footer">
-																			<button class="btn-reset btn-reset-js" disabled><span>Очистить фильтр</span></button>
+																	<div class="location-filter-item">
+																		<div class="location-filter-inner">
+																			<label class="check-label">
+																	<input type="checkbox" value="tag-stores" />
+																	<i></i>
+																	<span>В наших фирменных магазинах</span>
+																</label>
+																		</div>
+																	</div>
+																	<div class="location-filter-item">
+																		<div class="location-filter-inner">
+																			<label class="check-label">
+																	<input type="checkbox" value="tag-partners" />
+																	<i></i>
+																	<span>В магазинах наших партнёров</span>
+																</label>
+																		</div>
+																	</div>
+																	<div class="location-filter-item">
+																		<div class="location-filter-inner">
+																			<label class="check-label">
+																	<input type="checkbox" value="tag-sections" />
+																	<i></i>
+																	<span>В наших фирменных секциях</span>
+																</label>
 																		</div>
 																	</div>
 																</div>
 															</div>
 														</div>
-														<button class="btn-underline btn-clear-filters-js" disabled>
-		<!--<svg class="svg-ico-reset" xmlns="http://www.w3.org/2000/svg" width="32" height="32" version="1.1" viewBox="0 0 543.9 599.9" enable-background="new 0 0 543.9 599.9"><path d="M291,0c2.6,2.4,5.4,4.8,7.9,7.4c30.7,31,61.5,62,92.2,93c6.5,6.6,6.5,11.2-0.1,17.8c-31.3,31.3-62.7,62.7-94,94  c-1.8,1.8-4,3.8-6.4,4.6c-6.4,2.1-11.8-2.3-11.9-9.4c-0.1-17-0.1-34-0.1-51c0-2,0-3.9,0-6.8c-9.8,0.5-19,0.6-28.2,1.5  c-29.7,3-57.6,11.7-82.5,28.6c-37,25-59.6,59.8-69,103.1c-9.6,44.2-6.7,87.5,13,128.6c23.8,49.9,64.1,79.3,117.6,90.5  c42.3,8.8,83.9,5.8,123.5-12.5c51.2-23.7,81.3-64.5,92.7-119.2c2.8-13.4,3.7-27.4,4.1-41.1c0.8-25.8,18.8-45.6,44.5-47.7  c22.9-1.9,44,15,48.7,39.1c0.1,0.6,0.6,1.1,0.9,1.7c0,6.3,0,12.7,0,19c-0.3,1.8-0.7,3.5-0.9,5.3c-2.2,13.9-3.3,28.1-6.8,41.7  C520,452.5,484,504.2,431.4,544.4c-34.9,26.7-73.9,44.3-117.4,51.7c-9,1.5-18,2.5-27.1,3.8c-10,0-20,0-30,0  c-1.1-0.3-2.2-0.7-3.3-0.8c-14.1-2.3-28.4-3.4-42.2-6.9c-67.7-17.3-121-55.9-161.5-112.4c-25-34.9-41-73.5-47.1-116.2  c-1-7.2-1.9-14.4-2.8-21.6c0-9,0-18,0-27c0.3-1.6,0.7-3.2,0.9-4.8c2.2-14.1,3.2-28.5,6.9-42.2c24.7-90.8,81.3-154.4,167.1-192  c32.7-14.3,67.3-20.3,103.7-19.7c0-1.9,0-3.6,0-5.4c0-12.5,0.2-25-0.1-37.5C278.4,7.5,279.8,3,285,0C287,0,289,0,291,0z"></path></svg>-->
-		<span>Очистить фильтр</span>
-	</button>
-														<!--<div class="p-filters-tags">
-		<div class="p-filters-tags__holder p-filters-tags-js">
-			&lt;!&ndash;filters tags&ndash;&gt;
-		</div>
-	</div>-->
 													</div>
+													<!--location filter end-->
 												</div>
+											</div>
+											<div class="m-aside-footer">
+												<button class="btn-underline btn-with-icon btn-clear-form btn-clear-form-js" disabled>
+										<svg class="svg-ico-close" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 57.2 57.2">
+	<path d="M34.3 28.6L56 6.9c1.6-1.6 1.6-4.1 0-5.7 -1.6-1.6-4.1-1.6-5.7 0L28.6 22.9 6.9 1.3c-1.6-1.6-4.1-1.6-5.7 0 -1.6 1.6-1.6 4.1 0 5.7l21.7 21.6L1.3 50.3c-1.6 1.5-1.6 4.1 0 5.6 0.8 0.8 1.8 1.2 2.8 1.2s2-0.4 2.8-1.2l21.7-21.6L50.3 56c0.8 0.8 1.8 1.2 2.8 1.2s2-0.4 2.8-1.2c1.6-1.6 1.6-4.1 0-5.7L34.3 28.6z"></path>
+</svg>
+										<span class="for-desk">Очистить фильтр</span>
+										<span class="for-mob">Очистить</span>
+									</button>
+												<a href="#" class="btn-default btn-filters-apply btn-shutter-close-js"><span>Показать</span></a>
+												<a href="#" class="btn-shutter-close btn-shutter-close-js"><i>&nbsp;</i><span>Закрыть</span></a>
 											</div>
 										</div>
 									</div>
 									<div class="m-content">
 										<div class="m-content__holder">
-											<div class="p-filters-tags">
-												<div class="p-filters-tags__holder">
-													<div class="p-filters-tags__frame p-filters-tags-js">
-														<!--filters tags-->
+											<!--shops-->
+											<section class="shops">
+												<div class="shops-holder tab-container-js">
+													<!--shops-by-map-->
+													<div class="shops-opener accordion__hand tab-link-js active-tab">
+														<div class="accordion__header__text">На карте</div>
+														<i class="accordion__header__angle">&nbsp;</i>
 													</div>
-												</div>
-											</div>
-											<div class="news-preview">
-												<div class="news-preview__list equal-height-js" data-toggle-view-panels="news">
-													<div class="news-previews__item">
-														<a href="#" class="news-preview__inner">
-
-
-	<time class="news-preview__date" datetime="2017-04-04">4 Апр 2017</time>
-	<div class="news-preview__img">
-		
-		<img src="img/img-news-01.jpg" alt="Прошел областной этап республиканского конкурса..." />
-		
-	</div>
-	<div class="news-preview__content">
-		<div class="news-preview__text">Прошел областной этап республиканского конкурса профессионального мастерства среди швей.</div>
-	</div>
-	<div class="news-preview__footer">
-		<span class="more-link"><span>Читать</span></span>
-	</div>
-
-</a>
+													<div class="shops-by-map tab-content-js active-tab" id="shopsMapView">
+														<div id="shops-map" class="shops-map"></div>
 													</div>
-													<div class="news-previews__item">
-														<a href="#" class="news-preview__inner">
-
-
-	<time class="news-preview__date" datetime="2017-03-28">28 Мар 2017</time>
-	<div class="news-preview__img">
-		
-		<img src="img/img-news-02.jpg" alt="Состоялся художественно..." />
-		
-	</div>
-	<div class="news-preview__content">
-		<div class="news-preview__text">Состоялся художественно - технический совет.  Приглашенным гостям была представлена новая коллекция «Осень 2017.</div>
-	</div>
-	<div class="news-preview__footer">
-		<span class="more-link"><span>Читать</span></span>
-	</div>
-
-</a>
+													<!--shops-by-map end-->
+													<!--shops-by-list-->
+													<div class="shops-opener accordion__hand tab-link-js active-tab">
+														<div class="accordion__header__text">Список магазинов</div>
+														<i class="accordion__header__angle">&nbsp;</i>
 													</div>
-													<div class="news-previews__item">
-														<div class="news-preview__inner no-image">
-															<time class="news-preview__date" datetime="2017-03-14">14 Мар 2017</time>
-															<div class="news-preview__img">
+													<div class="shops-by-list tab-content-js" id="shopsListView">
+														<!--shops-by-list layout-->
+														<div class="shops-by-list__frame shops-append-loader-js">
+															<div class="shops-list shops-list-js" data-item-group="brest">
+																<div class="shops-item" data-location-index="2306">
+																	<div class="shops-item__title"><a href="#">б-р Шевченко, 5</a></div>
+																	<div class="shops-item__list">
+																		<div class="shops-item__list__item">+375 (162) 20 04 46</div>
+																		<div class="shops-item__list__item">Пн – Сб 10.00-20.00; Вс 10.00-18.00</div>
+																	</div>
+																</div>
+																<div class="shops-item" data-location-index="2516">
+																	<div class="shops-item__title"><a href="#">ул. Советская, 85</a></div>
+																	<div class="shops-item__list">
+																		<div class="shops-item__list__item">+375 (162) 52 53 00</div>
+																		<div class="shops-item__list__item">Пн – Пт 10.00-20.00; Сб 10.00-20.00; Вс 10.00-18.00</div>
+																	</div>
+																</div>
+																<div class="shops-item" data-location-index="2542">
+																	<div class="shops-item__title"><a href="#">Варшавское шоссе, 11</a></div>
+																	<div class="shops-item__list">
+																		<div class="shops-item__list__item">+375 (162) 50 11 47</div>
+																		<div class="shops-item__list__item">Пн – Вс 10.00-21.00</div>
+																	</div>
+																</div>
+																<div class="shops-item" data-location-index="2554">
+																	<div class="shops-item__title"><a href="#">ул. Пушкинская, 20</a></div>
+																	<div class="shops-item__list">
+																		<div class="shops-item__list__item">+375 (162) 54 85 63; +375 (162) 54 85 64</div>
+																		<div class="shops-item__list__item">Пн–Сб 10.00-20.00; Вс 10.00-18.00</div>
+																	</div>
+																</div>
+																<div class="shops-item" data-location-index="2615">
+																	<div class="shops-item__title"><a href="#">пр-т Машерова, 17-1 (ЦУМ)</a></div>
+																	<div class="shops-item__list">
+																		<div class="shops-item__list__item">+375 (162) 50 31 06</div>
+																		<div class="shops-item__list__item">Пн- Вс 10.00-22.00</div>
+																	</div>
+																</div>
 															</div>
-															<div class="news-preview__content">
-																<div class="news-preview__text">17 марта состоялось открытие фирменного магазина ОАО «Свiтанак» по новой концепции в городе Рогачеве.</div>
-															</div>
-															<div class="news-preview__footer">
-																<span class="more-link"><span>Читать</span></span>
+															<div class="shops-list shops-list-js" data-item-group="minsk">
+																<div class="shops-item" data-location-index="1203">
+																	<div class="shops-item__title"><a href="#">пр-т Независимости, 74</a></div>
+																	<div class="shops-item__list">
+																		<div class="shops-item__list__item">+375 (17) 292 97 50</div>
+																		<div class="shops-item__list__item">Пн–Сб 10.00-20.00; Вс 10.00-18.00</div>
+																	</div>
+																	<div class="shops-item__info">
+																		<div class="shops-item__info__item text-mark">
+																			<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 92.2 92.2"><path d="M72.5 6.2c0 0-19.2 11.1-26.9 23h-0.5C37.3 17.3 19.6 6.2 19.6 6.2 2.6 28.8 0 80.2 0 80.2l20.4 5.8c2.9-15.5 8.4-30.8 8.4-30.8l16.4 28.5h0.1 0.8 0.1l17.1-28.5c0 0 5.5 15.4 8.4 30.9l20.4-5.8C92.2 80.2 87.6 29.8 72.5 6.2z"></path></svg>
+																			<span>Метро Каменная горка</span>
+																		</div>
+																	</div>
+																</div>
+																<div class="shops-item" data-location-index="1206">
+																	<div class="shops-item__title"><a href="#">ул. Немига, 8</a></div>
+																	<div class="shops-item__list">
+																		<div class="shops-item__list__item">+375 (17) 226 15 34</div>
+																		<div class="shops-item__list__item">Пн - Сб 10.00 - 21.00; Вс 10.00 - 20.00</div>
+																	</div>
+																</div>
+																<div class="shops-item" data-location-index="1207">
+																	<div class="shops-item__title"><a href="#">пл. Независимости, 3-2, ТЦ «Столица»</a></div>
+																	<div class="shops-item__list">
+																		<div class="shops-item__list__item">+375 (17) 327 41 48</div>
+																		<div class="shops-item__list__item">Пн – Вс 10.00-22.00</div>
+																	</div>
+																</div>
+																<div class="shops-item" data-location-index="2201">
+																	<div class="shops-item__title"><a href="#">пр-т Независимости, 56</a></div>
+																	<div class="shops-item__list">
+																		<div class="shops-item__list__item">+375 (17) 202 13 76</div>
+																		<div class="shops-item__list__item">Пн–Сб 10.00-20.00; Вс 10.00-18.00</div>
+																	</div>
+																</div>
+																<div class="shops-item" data-location-index="2203">
+																	<div class="shops-item__title"><a href="#">ул. Московская, 9</a></div>
+																	<div class="shops-item__list">
+																		<div class="shops-item__list__item">+375 (17) 200 21 28, факс +375 (17) 222 79 84</div>
+																		<div class="shops-item__list__item">Пн-Сб 10.00-20.00; Вс 10.00-18.00</div>
+																	</div>
+																</div>
+																<div class="shops-item" data-location-index="2209">
+																	<div class="shops-item__title"><a href="#">пр-т Партизанский, 87</a></div>
+																	<div class="shops-item__list">
+																		<div class="shops-item__list__item">+375 (17) 250 22 92</div>
+																		<div class="shops-item__list__item">Пн–Сб 10.00-20.00; Вс 10.00-18.00</div>
+																	</div>
+																</div>
+																<div class="shops-item" data-location-index="2301">
+																	<div class="shops-item__title"><a href="#">ТРЦ «Экспобел»</a></div>
+																	<div class="shops-item__list">
+																		<div class="shops-item__list__item">+375 (17) 237 94 56</div>
+																		<div class="shops-item__list__item">Пн– Вс 10.00-22.00</div>
+																	</div>
+																</div>
+																<div class="shops-item" data-location-index="2513">
+																	<div class="shops-item__title"><a href="#">ул. Кирова, 1</a></div>
+																	<div class="shops-item__list">
+																		<div class="shops-item__list__item">+375 (17) 200 81 09</div>
+																		<div class="shops-item__list__item">Пн–Сб 10.00-20.00; Вс 10.00-18.00</div>
+																	</div>
+																</div>
+																<div class="shops-item" data-location-index="2519">
+																	<div class="shops-item__title"><a href="#">пр-т Победителей, 65, ТЦ «Замок»</a></div>
+																	<div class="shops-item__list">
+																		<div class="shops-item__list__item">+375 (29) 198 23 36</div>
+																		<div class="shops-item__list__item">Пн–Вс 10.00-22.00</div>
+																	</div>
+																</div>
+																<div class="shops-item" data-location-index="2541">
+																	<div class="shops-item__title"><a href="#">ул. Денисовская, 8/2, ТЦ «Е-Сити»</a></div>
+																	<div class="shops-item__list">
+																		<div class="shops-item__list__item">+375 (17) 366 52 13; +375 (17) 366 51 32</div>
+																		<div class="shops-item__list__item">10.00 - 22.00</div>
+																	</div>
+																</div>
+																<div class="shops-item" data-location-index="2544">
+																	<div class="shops-item__title"><a href="#">Дискаунтер, ул. Я.Коласа,34</a></div>
+																	<div class="shops-item__list">
+																		<div class="shops-item__list__item">+375 (17) 292 02 52</div>
+																		<div class="shops-item__list__item">Пн - Пт 11.00-20.00; Сб 10.00-20.00; Вс 10.00-18.00</div>
+																	</div>
+																</div>
+																<div class="shops-item" data-location-index="2547">
+																	<div class="shops-item__title"><a href="#">ул. Долгобродская, 30</a></div>
+																	<div class="shops-item__list">
+																		<div class="shops-item__list__item">+375 (17) 299 06 07</div>
+																		<div class="shops-item__list__item">Пн -Сб 10.00- 20.00; Вс10.00-18.00</div>
+																	</div>
+																</div>
+																<div class="shops-item" data-location-index="2600">
+																	<div class="shops-item__title"><a href="#">пр-т Дзержинского, 104, ТЦ «Титан» (2 этаж)</a></div>
+																	<div class="shops-item__list">
+																		<div class="shops-item__list__item">+375(17) 336 51 56</div>
+																		<div class="shops-item__list__item">Пн-Вс 10.00 -21.00</div>
+																	</div>
+																</div>
+																<div class="shops-item" data-location-index="2602">
+																	<div class="shops-item__title"><a href="#">пр-т Партизанский, 150 А ТЦ «МОМО»</a></div>
+																	<div class="shops-item__list">
+																		<div class="shops-item__list__item">+375 (17) 316 59 07</div>
+																		<div class="shops-item__list__item">Пн-Вс 10.00-22.00</div>
+																	</div>
+																</div>
+																<div class="shops-item" data-location-index="2612">
+																	<div class="shops-item__title"><a href="#">ул.Владислава Голубка,д.2 ТЦ «Бонус» (2 этаж)</a></div>
+																	<div class="shops-item__list">
+																		<div class="shops-item__list__item">+375 (29) 170 22 35</div>
+																		<div class="shops-item__list__item">Пн - Вс 10:00 -21:00</div>
+																	</div>
+																</div>
+																<div class="shops-item" data-location-index="2613">
+																	<div class="shops-item__title"><a href="#">ул. Мстиславца, 11, ТРЦ «DANA MALL»</a></div>
+																	<div class="shops-item__list">
+																		<div class="shops-item__list__item">+375 (17) 337 94 09</div>
+																		<div class="shops-item__list__item">Пн-Вс 10.00-22.00</div>
+																	</div>
+																</div>
+																<div class="shops-item" data-location-index="2616">
+																	<div class="shops-item__title"><a href="#">ул.Рафиева, 64, ТЦ «Базис» «MEGATOP. Аутлет»</a></div>
+																	<div class="shops-item__list">
+																		<div class="shops-item__list__item">+375 (17) 392 03 78</div>
+																		<div class="shops-item__list__item">Пн - Вс 10.00 - 21.00</div>
+																	</div>
+																</div>
+																<div class="shops-item" data-location-index="2617">
+																	<div class="shops-item__title"><a href="#">ул. Притыцкого, 29 ТЦ «Тивали»</a></div>
+																	<div class="shops-item__list">
+																		<div class="shops-item__list__item">+375 (17) 336 03 10</div>
+																		<div class="shops-item__list__item">Пн-Вс 10.00-21.00</div>
+																	</div>
+																</div>
+																<div class="shops-item" data-location-index="2618">
+																	<div class="shops-item__title"><a href="#">ул. Притыцкого, 156, ТРЦ «Грин Сити»</a></div>
+																	<div class="shops-item__list">
+																		<div class="shops-item__list__item">+375 (17) 240 99 74</div>
+																		<div class="shops-item__list__item">Пн-Вс 10.00-22.00</div>
+																	</div>
+																</div>
 															</div>
 														</div>
+														<!--shops-by-list layout end-->
 													</div>
-													<div class="news-previews__item">
-														<a href="#" class="news-preview__inner">
-
-
-	<time class="news-preview__date" datetime="2017-01-22">22 Фев 2017</time>
-	<div class="news-preview__img">
-		
-		<img src="img/__temp-img-content-carousel-01.jpg" alt="Высота строчных букв..." />
-		
-	</div>
-	<div class="news-preview__content">
-		<div class="news-preview__text">Высота строчных букв без выносных элементов — это расстояние от базовой до верхней линии шрифта, иначе говоря — величина очка строчных. Выбирая шрифты, которые вы хотите использовать при оформлении совместно, нужно следить, чтобы высота их строчных букв была одинакова. Это поможет выдержать одинаковый уровень насыщенности абзаца. Кроме того, такой текст будет легче читаться.</div>
-	</div>
-	<div class="news-preview__footer">
-		<span class="more-link"><span>Читать</span></span>
-	</div>
-
-</a>
-													</div>
-													<div class="news-previews__item">
-														<a href="#" class="news-preview__inner">
-
-
-	<time class="news-preview__date" datetime="2017-12-31">31 Дек 2016</time>
-	<div class="news-preview__img">
-		
-		<img src="img/__temp-img-content-carousel-02.jpg" alt="Выглядеть шрифт..." />
-		
-	</div>
-	<div class="news-preview__content">
-		<div class="news-preview__text">То, как будет выглядеть шрифт, зависит от того, как он будет набран.</div>
-	</div>
-	<div class="news-preview__footer">
-		<span class="more-link"><span>Читать</span></span>
-	</div>
-
-</a>
-													</div>
-													<div class="news-previews__item">
-														<a href="#" class="news-preview__inner">
-
-
-	<time class="news-preview__date" datetime="2016-10-12">12 Окт 2016</time>
-	<div class="news-preview__img">
-		
-		<img src="img/__temp-img-content-sm-01.jpg" alt="Одним из наиболее важных методов..." />
-		
-	</div>
-	<div class="news-preview__content">
-		<div class="news-preview__text">Одним из наиболее важных методов для эффективной передачи содержания является использование типографской иерархии.</div>
-	</div>
-	<div class="news-preview__footer">
-		<span class="more-link"><span>Читать</span></span>
-	</div>
-
-</a>
-													</div>
+													<!--shops-by-list end-->
 												</div>
-												<!--!!! pagination push inside .news-preview !!!-->
-												<div class="pagination max-wrap-text">
-													<div class="pg-left">
-														<a class="pg-first disabled" href="#">
-			<span>В начало</span>
-			<i class="pg-first-arr">&nbsp;</i>
-		</a>
-														<a class="pg-prev disabled" href="#">
-			<span>Назад</span>
-			<i class="pg-prev-arr">&nbsp;</i>
-		</a>
-													</div>
-													<ul class="pg-list">
-														<li><a href="#">1</a></li>
-														<li><span class="dots">...</span></li>
-														<li><a href="#">8</a></li>
-														<li class="active"><a href="">9</a></li>
-														<li><a href="#">10</a></li>
-														<li><span class="dots">...</span></li>
-														<li><a href="#">127</a></li>
-													</ul>
-													<div class="pg-right">
-														<a class="pg-next" href="#">
-			<span>Вперед</span>
-			<i class="pg-next-arr">&nbsp;</i>
-		</a>
-														<a class="pg-last" href="#">
-			<span>В конец</span>
-			<i class="pg-last-arr">&nbsp;</i>
-		</a>
-													</div>
-												</div>
-											</div>
+											</section>
+											<!--shops end-->
 										</div>
 									</div>
 								</div>
@@ -1678,6 +1698,8 @@
 	<script src="js/jquery.min.js"></script>
 	<script src="js/libs.min.js"></script>
 	<script src="js/common.js"></script>
+	<!--Map-->
+	<script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU"></script>
 </body>
 
 </html>

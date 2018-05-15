@@ -201,6 +201,16 @@
 			</select>
 			@@include('_tpl_forms_form-validation.html')
 			<!--===================================================-->
+
+			<!--===========================minimal========================-->
+			<label for="form-clear-select-min">Селект (minimal):</label>
+			<select class="form-minimal field-effects-js" name="select-name" id="form-clear-select-min">
+				@@include('_tpl_forms_form-select-options.html')
+			</select>
+			@@include('_tpl_forms_form-validation.html')
+			<!--===================================================-->
+
+			<!--===================================================-->
 			<label for="form-clear-select-fit">Селект - значение выбрано по умолчанию:</label>
 			<select class="field-effects-js" name="select-name" id="form-clear-select-fit">
 				@@include('_tpl_forms_form-select-options.html', {"placeholder":"false"})
@@ -249,6 +259,16 @@
 			<label for="form-clear-select-arr">Селект - значение не выбрано:</label>
 			<div class="select">
 				<select class="field-effects-js" name="select-name" id="form-clear-select-arr">
+					@@include('_tpl_forms_form-select-options.html')
+				</select>
+				@@include('_tpl_forms_form-validation.html')
+			</div>
+			<!--===================================================-->
+
+			<!--===========================minimal========================-->
+			<label for="form-clear-select-min-arr">Селект (minimal):</label>
+			<div class="select form-minimal">
+				<select class="field-effects-js" name="select-name" id="form-clear-select-min-arr">
 					@@include('_tpl_forms_form-select-options.html')
 				</select>
 				@@include('_tpl_forms_form-validation.html')

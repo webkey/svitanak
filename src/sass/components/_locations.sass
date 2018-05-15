@@ -1,0 +1,241 @@
+@import ../utils/variables
+@import ../utils/mixins
+@import ../../libs/include-media/dist/include-media
+
+/*shops network
+.shops
+	overflow: hidden
+	position: relative
+
+/* shops-view-switcher
+.shops-view-switcher
+	position: relative
+	+margin-horizontal(-15px)
+
+	a
+		+margin-horizontal(15px)
+
+		&.active-tab
+			//display: none
+			color: $base-color
+			border-color: transparent
+			cursor: default
+
+/* shops-view-switcher end
+
+/* shops-opener
+// переключатели, когда табы трансформируются в аккордион
+.shops
+	.tab-link-js
+		display: none
+
+		+media('<tab-lg')
+			display: block
+
+/* shops-opener end
+/* shops-map
+.shops-by-map
+	height: $shops-map-height
+
+	+media('<desk-lg')
+		height: $shops-map-height--md
+
+	// перебить стили назначенные скриптом
+	+media('<tab-lg')
+		float: none !important
+		position: relative !important
+		left: auto !important
+		top: auto !important
+		height: auto !important
+		width: auto !important
+		z-index: auto !important
+		visibility: visible !important
+		opacity: 1 !important
+		border: none
+
+.shops-map
+	position: relative
+	height: 100%
+	background: #f3f3f3
+	z-index: 1
+
+	+media('<tab-lg')
+		height: $shops-map-height--sm
+
+	+media('<mob-lg')
+		height: $shops-map-height--mob
+
+	&::before
+		$size: 50px
+		content: ""
+		display: block
+		position: absolute
+		left: 50%
+		top: 50%
+		+size($size)
+		margin: -#{round($size/2)} 0 0 -#{round($size/2)}
+		background: url(../../img/preloader.svg) 0 0 no-repeat
+		background-size: contain
+		z-index: -1
+
+	[class*="-ground-pane"]
+		filter: grayscale(1)
+
+/* shops-map
+
+/* shops-by-list
+/* shops-by-list layout
+.shops-by-list
+	position: relative
+	background: $bg-color
+
+	// перебить стили назначенные скриптом
+	+media('<tab-lg')
+		float: none !important
+		position: relative !important
+		left: auto !important
+		top: auto !important
+		height: auto !important
+		width: auto !important
+		z-index: auto !important
+		visibility: visible !important
+		opacity: 1 !important
+		border-bottom: 2px solid $border-color
+
+.shops-by-list__frame
+	overflow: hidden
+	position: relative
+
+.shops-list-js
+	display: none
+
+	&.is-show
+		display: block
+
+/* shops-by-list layout end
+
+/* shops-item
+.shops-item
+	padding: $nav-space
+	border-top: 1px solid $border-color
+	background: $bg-color
+	will-change: transform
+
+	&.item-hide
+		display: none
+
+	+media('<tab-lg')
+		padding: 15px $text-layout-space-horizontal--md
+
+	+media('<mob-lg')
+		padding: 10px $text-layout-space-horizontal--sm 12px
+
+	&.is-active
+		background: $bg-color-alt
+
+		+media('<tab-lg')
+			// на девайсах активное соостояние отключаем
+			background-color: $bg-color
+
+	&:first-child
+		border-top: none
+
+.shops-item__title
+	+font-alt-bold
+	+font(1.8rem, round-float(26/18, 2))
+	padding: 0 0 12px
+
+	a
+		text-decoration: none
+		color: inherit
+
+		+media('<tab-lg')
+			cursor: default
+
+		.no-touchevents &:hover
+			color: $base-color
+
+			+media('<tab-lg')
+				// на девайсах активное соостояние отключаем
+				color: inherit
+
+		.no-touchevents .is-active &, .is-active &
+			+media('>=desk-md')
+				color: inherit
+				cursor: default
+
+.shops-item__list, .shops-item__info
+	color: #333
+	margin-bottom: 1.5rem
+	+font(1.4rem, round-float(18/14, 2))
+
+	&:last-child
+		margin-bottom: 0
+
+.shops-item__list__item, .shops-item__info__item
+	position: relative
+	margin-bottom: 0.5em
+
+	&:last-child
+		margin-bottom: 0
+
+	&.text-mark
+		+font(1.2rem, round-float(18/12, 2))
+		letter-spacing: 0.05em
+		text-transform: uppercase
+		color: $base-color
+
+	svg
+		$icon-size: 18px
+		//=============
+		display: block
+		position: absolute
+		left: 0
+		top: 50%
+		+size($icon-size)
+		margin-top: -#{round($icon-size/2)}
+
+		fill: currentColor
+
+		& ~ span
+			display: inline-block
+			vertical-align: top
+			margin-left: $icon-size+10
+
+/* shops-item end
+
+// сообщение, если не найдено никаких результатов
+/* filter-no-item
+.shops .filter-no-item
+	position: absolute
+	left: 30px
+	top: 20px
+	width: 500px
+	padding: 26px 30px
+	background: #fff
+	box-shadow: 0 2px 3px rgba(0, 0, 0, 0.4)
+	box-sizing: border-box
+	border: 2px solid #f00
+	z-index: 999
+
+/* filter-no-item end
+
+// визуализации процесса поиска результатов
+/* loader
+.count-loader
+	position: absolute
+	left: 0
+	top: 0
+	width: 100%
+	height: 100%
+	z-index: 1
+	background: rgba(255, 255, 255, 0.85) url(../../img/preloader.svg) no-repeat 50% 50%
+	-webkit-background-size: 30px
+	background-size: 30px
+
+.no-svg .count-loader
+	background-image: url(../../img/preloader.svg)
+
+/* loader end
+
+/*shops network end
