@@ -3820,8 +3820,95 @@ function shopsLocation() {
 
 			var jsonResult = data;
 
-			console.log("dataTagArr: ", dataTagArr);
+			// console.log("dataTagArr: ", dataTagArr);
 			console.log("jsonResult: ", jsonResult);
+
+			/**test1*/
+			var testNewResult_1 = $.map( jsonResult, function(val, id){
+				if(val.countryCode === 'ru')
+					return val;
+				return null;
+			});
+
+			// console.log("testNewResult_1: ", testNewResult_1);
+
+			/**test2 (для radio. ищим только одно совпадение)*/
+			var testNewResult_2 = $.map( jsonResult, function(val, id){
+				var hasTag;
+				$.each(val.tags, function (idI, elI) {
+					hasTag = elI.tagsLabel === 'tag-branches';
+				});
+				if(hasTag)
+					return val;
+				return null;
+			});
+
+			// console.log("testNewResult_2: ", testNewResult_2);
+
+			/**test3 (для checkbox. ИЛИ. Есть хотя бы одно совпадение)*/
+			var arrCheckboxValuesOr = ["tag-branches", "tag-dealers", "tag-sections"];
+
+			// var testNewResult_3 = $.map( jsonResult, function(val, id){
+			// 	var hasTag, b;
+			// 	$.each(arrCheckboxValuesOr, function (idJ, elJ) {
+			// 		b = false;
+			// 		console.log("        !!!");
+			// 		$.each(val.tags, function (idI, elI) {
+			// 			console.log("[][][] " + val.id + " [][][]");
+			// 			// console.log("tagsItem: ", elI);
+			// 			console.log("===tagsLabel: " + idI + " - " + elI.tagsLabel + "===");
+			// 			console.log("---chbox: " + idJ + " - " + elJ + "---");
+			// 			b = elI.tagsLabel === elJ;
+			// 			console.log("tagsLabel:cont: ", b);
+			// 			return !b;
+			// 		});
+			//
+			// 		hasTag = b;
+			// 		return !b;
+			// 	});
+			// 	console.log("      ???????");
+			//
+			// 	if(hasTag)
+			// 		return val;
+			// 	return null;
+			// });
+
+			// console.log("testNewResult_3: ", testNewResult_3);
+
+			/**test3 (для checkbox. И. Есть совпадают все)*/
+			var arrCheckboxValuesAnd = ["tag-branches", "tag-stores"];
+
+			var hasTag, b;
+			var testNewResult_4 = $.map( jsonResult, function(val, id){
+				$.each(val.tags, function (idI, elI) {
+					b = false;
+					console.log("        !!!");
+					$.each(arrCheckboxValuesAnd, function (idJ, elJ) {
+						console.log("[][][] " + val.id + " [][][]");
+						// console.log("tagsItem: ", elI);
+						console.log("\\\/: " + idJ + " - " + elJ);
+						console.log("\#\#: " + idI + " - " + elI.tagsLabel);
+						b = elJ === elI.tagsLabel;
+						console.log("chbox:cont: ", b);
+						return !b;
+					});
+
+					console.log("hasTag: ", hasTag);
+					// return !b;
+				});
+				hasTag = b;
+				console.log("!!!hasTag(fin): ", hasTag);
+				console.log("      ???????");
+
+				if(hasTag)
+					return val;
+				return null;
+			});
+
+			console.log("testNewResult_4: ", testNewResult_4);
+
+
+
 
 			$.each(jsonResult, function (iId, iItem) {
 
@@ -3852,7 +3939,7 @@ function shopsLocation() {
 				newResult.push(jsonResult[index]);
 			}
 
-			console.log("newResult: ", newResult);
+			// console.log("newResult: ", newResult);
 			console.log("......................................");
 
 			reDrawNewCitiesMarks(newResult);

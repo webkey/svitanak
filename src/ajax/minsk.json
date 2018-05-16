@@ -1,6 +1,9 @@
 [
   {
 	"id": "1203",
+	"countryCode": "by",
+	"country": "Беларусь",
+	"cityCode": "minsk",
 	"city": "г. Минск",
 	"address": "пр-т Независимости, 74",
 	"phones": "+375 (17) 292 97 50",
@@ -14,11 +17,24 @@
 		"tagsLabel": "tag-branches",
 		"tagsUrl": "",
 		"tagsTitle": "Филиал"
+	  },
+	  {
+		"tagsLabel": "woo",
+		"tagsUrl": "",
+		"tagsTitle": "Вуу"
+	  },
+	  {
+		"tagsLabel": "tag-stores",
+		"tagsUrl": "",
+		"tagsTitle": "Фирменный магазин"
 	  }
 	]
   },
   {
 	"id": "1206",
+	  "countryCode": "by",
+	  "country": "Беларусь",
+	  "cityCode": "minsk",
 	"city": "г. Минск",
 	"address": "ул. Немига, 8",
 	"phones": "+375 (17) 226 15 34",
@@ -37,6 +53,9 @@
   },
   {
 	"id": "1207",
+	  "countryCode": "by",
+	  "country": "Беларусь",
+	  "cityCode": "minsk",
 	"city": "г. Минск",
 	"address": "пл. Независимости, 3-2, ТЦ «Столица»",
 	"phones": "+375 (17) 327 41 48",
@@ -55,6 +74,9 @@
   },
   {
 	"id": "2201",
+	  "countryCode": "by",
+	  "country": "Беларусь",
+	  "cityCode": "minsk",
 	"city": "г. Минск",
 	"address": "пр-т Независимости, 56",
 	"phones": "+375 (17) 202 13 76",
@@ -73,6 +95,9 @@
   },
   {
 	"id": "2203",
+	  "countryCode": "by",
+	  "country": "Беларусь",
+	  "cityCode": "minsk",
 	"city": "г. Минск",
 	"address": "ул. Московская, 9",
 	"phones": "+375 (17) 200 21 28, факс +375 (17) 222 79 84",
@@ -91,6 +116,9 @@
   },
   {
 	"id": "2209",
+	  "countryCode": "by",
+	  "country": "Беларусь",
+	  "cityCode": "minsk",
 	"city": "г. Минск",
 	"address": "пр-т Партизанский, 87",
 	"phones": "+375 (17) 250 22 92",
@@ -99,16 +127,19 @@
 	"info": {
 	  "metro": ""
 	},
-	"tags": [
-	  {
-		"tagsLabel": "",
-		"tagsUrl": "",
-		"tagsTitle": ""
-	  }
-	]
+	  "tags": [
+		  {
+			  "tagsLabel": "tag-branches",
+			  "tagsUrl": "",
+			  "tagsTitle": "Филиал"
+		  }
+	  ]
   },
   {
 	"id": "2301",
+	  "countryCode": "by",
+	  "country": "Беларусь",
+	  "cityCode": "minsk",
 	"city": "г. Минск",
 	"address": "ТРЦ «Экспобел»",
 	"phones": "+375 (17) 237 94 56",
@@ -117,16 +148,19 @@
 	"info": {
 	  "metro": ""
 	},
-	"tags": [
-	  {
-		"tagsLabel": "",
-		"tagsUrl": "",
-		"tagsTitle": ""
-	  }
-	]
+	  "tags": [
+		  {
+			  "tagsLabel": "tag-branches",
+			  "tagsUrl": "",
+			  "tagsTitle": "Филиал"
+		  }
+	  ]
   },
   {
 	"id": "2513",
+	  "countryCode": "by",
+	  "country": "Беларусь",
+	  "cityCode": "minsk",
 	"city": "г. Минск",
 	"address": "ул. Кирова, 1",
 	"phones": "+375 (17) 200 81 09",
@@ -145,6 +179,9 @@
   },
   {
 	"id": "2519",
+	  "countryCode": "by",
+	  "country": "Беларусь",
+	  "cityCode": "minsk",
 	"city": "г. Минск",
 	"address": "пр-т Победителей, 65, ТЦ «Замок»",
 	"phones": "+375 (29) 198 23 36",
@@ -163,6 +200,9 @@
   },
   {
 	"id": "2541",
+	  "countryCode": "by",
+	  "country": "Беларусь",
+	  "cityCode": "minsk",
 	"city": "г. Минск",
 	"address": "ул. Денисовская, 8/2, ТЦ «Е-Сити»",
 	"phones": "+375 (17) 366 52 13; +375 (17) 366 51 32",
@@ -181,6 +221,9 @@
   },
   {
 	"id": "2544",
+	  "countryCode": "by",
+	  "country": "Беларусь",
+	  "cityCode": "minsk",
 	"city": "г. Минск",
 	"address": "Дискаунтер, ул. Я.Коласа,34",
 	"phones": "+375 (17) 292 02 52",
@@ -199,6 +242,9 @@
   },
   {
 	"id": "2547",
+	  "countryCode": "by",
+	  "country": "Беларусь",
+	  "cityCode": "minsk",
 	"city": "г. Минск",
 	"address": "ул. Долгобродская, 30",
 	"phones": "+375 (17) 299 06 07",
@@ -217,6 +263,9 @@
   },
   {
 	"id": "2600",
+	  "countryCode": "by",
+	  "country": "Беларусь",
+	  "cityCode": "minsk",
 	"city": "г. Минск",
 	"address": "пр-т Дзержинского, 104, ТЦ «Титан» (2 этаж)",
 	"phones": "+375(17) 336 51 56",
@@ -235,6 +284,9 @@
   },
   {
 	"id": "2602",
+	  "countryCode": "by",
+	  "country": "Беларусь",
+	  "cityCode": "minsk",
 	"city": "г. Минск",
 	"address": "пр-т Партизанский, 150 А ТЦ «МОМО»",
 	"phones": "+375 (17) 316 59 07",
@@ -253,6 +305,9 @@
   },
   {
 	"id": "2612",
+	  "countryCode": "by",
+	  "country": "Беларусь",
+	  "cityCode": "minsk",
 	"city": "г. Минск",
 	"address": "ул.Владислава Голубка,д.2 ТЦ «Бонус» (2 этаж)",
 	"phones": "+375 (29) 170 22 35",
@@ -271,6 +326,9 @@
   },
   {
 	"id": "2613",
+	  "countryCode": "by",
+	  "country": "Беларусь",
+	  "cityCode": "minsk",
 	"city": "г. Минск",
 	"address": "ул. Мстиславца, 11, ТРЦ «DANA MALL»",
 	"phones": "+375 (17) 337 94 09",
@@ -289,6 +347,9 @@
   },
   {
 	"id": "2616",
+	  "countryCode": "by",
+	  "country": "Беларусь",
+	  "cityCode": "minsk",
 	"city": "г. Минск",
 	"address": "ул.Рафиева, 64, ТЦ «Базис» «MEGATOP. Аутлет»",
 	"phones": "+375 (17) 392 03 78",
@@ -307,6 +368,9 @@
   },
   {
 	"id": "2617",
+	  "countryCode": "by",
+	  "country": "Беларусь",
+	  "cityCode": "minsk",
 	"city": "г. Минск",
 	"address": "ул. Притыцкого, 29 ТЦ «Тивали»",
 	"phones": "+375 (17) 336 03 10",
@@ -325,9 +389,14 @@
   },
   {
 	"id": "2618",
-	"city": "г. Минск",
-	"address": "ул. Притыцкого, 156, ТРЦ «Грин Сити»",
-	"phones": "+375 (17) 240 99 74",
+	  "countryCode": "ru",
+	  "country": "Россия",
+	  "cityCode": "minsk",
+	"city": "г. Москва",
+	  "title": "ИП Логинова И. В",
+	"address": "107553, г. Москва, ул. Большая Черкизовская, 30 а",
+	"phones": ["+7(495) 926-11-12", "741-78-31"],
+	"emails": ["bonik07@gmail.com", "www.eliut.ru"],
 	"time": "Пн-Вс 10.00-22.00",
 	"coord": "53.908464, 27.432244",
 	"info": {
