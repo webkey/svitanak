@@ -3880,10 +3880,12 @@ function shopsLocation() {
 
 			var hasTag, b;
 			var testNewResult_4 = $.map( jsonResult, function(val, id){
-				$.each(val.tags, function (idI, elI) {
+				// $.each(val.tags, function (idI, elI) {
+				$.each(arrCheckboxValuesAnd, function (idJ, elJ) {
 					b = false;
 					console.log("        !!!");
-					$.each(arrCheckboxValuesAnd, function (idJ, elJ) {
+					// $.each(arrCheckboxValuesAnd, function (idJ, elJ) {
+					$.each(val.tags, function (idI, elI) {
 						console.log("[][][] " + val.id + " [][][]");
 						// console.log("tagsItem: ", elI);
 						console.log("\\\/: " + idJ + " - " + elJ);
@@ -3894,7 +3896,7 @@ function shopsLocation() {
 					});
 
 					console.log("hasTag: ", hasTag);
-					// return !b;
+					return b;
 				});
 				hasTag = b;
 				console.log("!!!hasTag(fin): ", hasTag);
