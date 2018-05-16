@@ -222,13 +222,16 @@
 					<div class="content-wrap">
 						<div class="content user-content tabs-js" data-auto-height="true">
 							<!--tabs-js, data-auto-height="true" - только для этой страницы-->
+							<script>
+								var shopsJsonPath = "ajax"
+							</script>
 							<div class="heading">
 								<h1>
 									Где купить?
 									<span class="sep">&nbsp;</span>
 								</h1>
 								<div class="heading__options">
-									<div class="heading__options__item">
+									<div class="heading__options__item item--shops-view-switcher">
 										<div class="shops-view-switcher">
 											<a href="#shopsMapView" class="btn-underline tab-anchor-js" title="Показать на карте">На карте</a>
 											<a href="#shopsListView" class="btn-underline tab-anchor-js active-tab" title="В виде списка">Списком</a>
@@ -254,81 +257,84 @@
 								</div>-->
 											<div class="m-aside-align">
 												<div class="m-aside-holder">
-													<!--selectCity-->
-													<div class="select form-minimal">
-														<select id="selectCity" class="field-effects-js" data-path="ajax">
-												<!--<option value="0">Выберите город</option>-->
-												<!--<option value="0">...</option>-->
-												<option value="minsk">Минск</option>
-												<option value="brest">Брест</option>
-											</select>
-													</div>
-													<!--selectCity end-->
 													<!--location filter-->
-													<div class="location-filter-wrap">
-														<div class="location-filter">
-															<div class="location-filter-holder">
-																<div class="location-filter-list">
-																	<div class="location-filter-item">
-																		<div class="location-filter-inner">
-																			<label class="check-label">
-																	<input type="checkbox" value="tag-branches" />
-																	<i></i>
-																	<span>В филиалах предприятия</span>
-																</label>
-																		</div>
-																	</div>
-																	<div class="location-filter-item">
-																		<div class="location-filter-inner">
-																			<label class="check-label">
-																	<input type="checkbox" value="tag-dealers" />
-																	<i></i>
-																	<span>У наших дилеров</span>
-																</label>
-																		</div>
-																	</div>
-																	<div class="location-filter-item">
-																		<div class="location-filter-inner">
-																			<label class="check-label">
-																	<input type="checkbox" value="tag-stores" />
-																	<i></i>
-																	<span>В наших фирменных магазинах</span>
-																</label>
-																		</div>
-																	</div>
-																	<div class="location-filter-item">
-																		<div class="location-filter-inner">
-																			<label class="check-label">
-																	<input type="checkbox" value="tag-partners" />
-																	<i></i>
-																	<span>В магазинах наших партнёров</span>
-																</label>
-																		</div>
-																	</div>
-																	<div class="location-filter-item">
-																		<div class="location-filter-inner">
-																			<label class="check-label">
-																	<input type="checkbox" value="tag-sections" />
-																	<i></i>
-																	<span>В наших фирменных секциях</span>
-																</label>
-																		</div>
-																	</div>
-																</div>
+													<div class="shops-filters shops-filters-js">
+														<div class="shops-filters__item">
+															<div class="select form-minimal">
+																<select id="selectCountry" class="field-effects-js">
+														<option value="">Страна</option>
+														<option value="by">Беларусь</option>
+														<option value="ru">Россия</option>
+														<option value="kz">Казахстан</option>
+													</select>
 															</div>
+														</div>
+														<div class="shops-filters__item">
+															<div class="select form-minimal">
+																<select id="selectCity" class="field-effects-js">
+														<option value="">Город</option>
+														<option value="minsk">Минск</option>
+														<option value="brest">Брест</option>
+														<option value="vitebsk">Витебск</option>
+														<option value="grodno">Гродно</option>
+													</select>
+															</div>
+														</div>
+														<div class="shops-filters__item">
+															<label class="radio-label">
+													<input type="radio" name="volumeSales" value="wholesale" checked />
+													<i>&nbsp;</i><span>Оптом</span>
+												</label>
+														</div>
+														<div class="shops-filters__item">
+															<label class="radio-label">
+													<input type="radio" name="volumeSales" value="retail" />
+													<i>&nbsp;</i><span>В розницу</span>
+												</label>
+														</div>
+														<hr>
+														<div class="shops-filters__item">
+															<label class="check-label">
+													<input type="checkbox" value="branches" />
+													<i>&nbsp;</i><span>В филиалах предприятия</span>
+												</label>
+														</div>
+														<div class="shops-filters__item">
+															<label class="check-label">
+													<input type="checkbox" value="dealers" />
+													<i>&nbsp;</i><span>У наших дилеров</span>
+												</label>
+														</div>
+														<div class="shops-filters__item">
+															<label class="check-label">
+													<input type="checkbox" value="stores" />
+													<i>&nbsp;</i><span>В наших фирменных магазинах</span>
+												</label>
+														</div>
+														<div class="shops-filters__item">
+															<label class="check-label">
+													<input type="checkbox" value="partners" />
+													<i>&nbsp;</i><span>В магазинах наших партнёров</span>
+												</label>
+														</div>
+														<div class="shops-filters__item">
+															<label class="check-label">
+													<input type="checkbox" value="sections" />
+													<i>&nbsp;</i><span>В наших фирменных секциях</span>
+												</label>
 														</div>
 													</div>
 													<!--location filter end-->
 												</div>
 											</div>
 											<div class="m-aside-footer">
-												<button class="btn-underline btn-with-icon btn-clear-form btn-clear-form-js" disabled>
+												<!--<button class="btn-underline btn-with-icon btn-clear-form btn-clear-form-js" disabled>
 										<svg class="svg-ico-close" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 57.2 57.2">
 	<path d="M34.3 28.6L56 6.9c1.6-1.6 1.6-4.1 0-5.7 -1.6-1.6-4.1-1.6-5.7 0L28.6 22.9 6.9 1.3c-1.6-1.6-4.1-1.6-5.7 0 -1.6 1.6-1.6 4.1 0 5.7l21.7 21.6L1.3 50.3c-1.6 1.5-1.6 4.1 0 5.6 0.8 0.8 1.8 1.2 2.8 1.2s2-0.4 2.8-1.2l21.7-21.6L50.3 56c0.8 0.8 1.8 1.2 2.8 1.2s2-0.4 2.8-1.2c1.6-1.6 1.6-4.1 0-5.7L34.3 28.6z"></path>
 </svg>
 										<span class="for-desk">Очистить фильтр</span>
 										<span class="for-mob">Очистить</span>
-									</button>
+									</button>-->
 												<a href="#" class="btn-default btn-filters-apply btn-shutter-close-js"><span>Показать</span></a>
 												<a href="#" class="btn-shutter-close btn-shutter-close-js"><i>&nbsp;</i><span>Закрыть</span></a>
 											</div>
@@ -344,7 +350,7 @@
 														<div class="accordion__header__text">На карте</div>
 														<i class="accordion__header__angle">&nbsp;</i>
 													</div>
-													<div class="shops-by-map tab-content-js active-tab" id="shopsMapView">
+													<div class="shops-by-map tab-content-js" id="shopsMapView">
 														<div id="shops-map" class="shops-map"></div>
 													</div>
 													<!--shops-by-map end-->
@@ -357,180 +363,304 @@
 														<!--shops-by-list layout-->
 														<div class="shops-by-list__frame shops-append-loader-js">
 															<div class="shops-list shops-list-js" data-item-group="brest">
-																<div class="shops-item" data-location-index="2306">
-																	<div class="shops-item__title"><a href="#">б-р Шевченко, 5</a></div>
+																<div class="shops-item" data-location-index="001">
+																	<div class="shops-item__title"><a href="#">г. Минск</a></div>
+																	<div class="shops-item__adr">г. Минск, ул. Платонова, 30</div>
 																	<div class="shops-item__list">
-																		<div class="shops-item__list__item">+375 (162) 20 04 46</div>
-																		<div class="shops-item__list__item">Пн – Сб 10.00-20.00; Вс 10.00-18.00</div>
-																	</div>
-																</div>
-																<div class="shops-item" data-location-index="2516">
-																	<div class="shops-item__title"><a href="#">ул. Советская, 85</a></div>
-																	<div class="shops-item__list">
-																		<div class="shops-item__list__item">+375 (162) 52 53 00</div>
-																		<div class="shops-item__list__item">Пн – Пт 10.00-20.00; Сб 10.00-20.00; Вс 10.00-18.00</div>
-																	</div>
-																</div>
-																<div class="shops-item" data-location-index="2542">
-																	<div class="shops-item__title"><a href="#">Варшавское шоссе, 11</a></div>
-																	<div class="shops-item__list">
-																		<div class="shops-item__list__item">+375 (162) 50 11 47</div>
-																		<div class="shops-item__list__item">Пн – Вс 10.00-21.00</div>
-																	</div>
-																</div>
-																<div class="shops-item" data-location-index="2554">
-																	<div class="shops-item__title"><a href="#">ул. Пушкинская, 20</a></div>
-																	<div class="shops-item__list">
-																		<div class="shops-item__list__item">+375 (162) 54 85 63; +375 (162) 54 85 64</div>
-																		<div class="shops-item__list__item">Пн–Сб 10.00-20.00; Вс 10.00-18.00</div>
-																	</div>
-																</div>
-																<div class="shops-item" data-location-index="2615">
-																	<div class="shops-item__title"><a href="#">пр-т Машерова, 17-1 (ЦУМ)</a></div>
-																	<div class="shops-item__list">
-																		<div class="shops-item__list__item">+375 (162) 50 31 06</div>
-																		<div class="shops-item__list__item">Пн- Вс 10.00-22.00</div>
-																	</div>
-																</div>
-															</div>
-															<div class="shops-list shops-list-js" data-item-group="minsk">
-																<div class="shops-item" data-location-index="1203">
-																	<div class="shops-item__title"><a href="#">пр-т Независимости, 74</a></div>
-																	<div class="shops-item__list">
-																		<div class="shops-item__list__item">+375 (17) 292 97 50</div>
-																		<div class="shops-item__list__item">Пн–Сб 10.00-20.00; Вс 10.00-18.00</div>
-																	</div>
-																	<div class="shops-item__info">
-																		<div class="shops-item__info__item text-mark">
-																			<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 92.2 92.2"><path d="M72.5 6.2c0 0-19.2 11.1-26.9 23h-0.5C37.3 17.3 19.6 6.2 19.6 6.2 2.6 28.8 0 80.2 0 80.2l20.4 5.8c2.9-15.5 8.4-30.8 8.4-30.8l16.4 28.5h0.1 0.8 0.1l17.1-28.5c0 0 5.5 15.4 8.4 30.9l20.4-5.8C92.2 80.2 87.6 29.8 72.5 6.2z"></path></svg>
-																			<span>Метро Каменная горка</span>
+																		<div class="shops-item__list__item">
+																			Тел.: <b>(017) 292-90-43, 292-42-44</b>
 																		</div>
 																	</div>
-																</div>
-																<div class="shops-item" data-location-index="1206">
-																	<div class="shops-item__title"><a href="#">ул. Немига, 8</a></div>
-																	<div class="shops-item__list">
-																		<div class="shops-item__list__item">+375 (17) 226 15 34</div>
-																		<div class="shops-item__list__item">Пн - Сб 10.00 - 21.00; Вс 10.00 - 20.00</div>
+																	<div class="shops-item__footer">
+																		<a href="#" class="btn-to-map btn-to-map-js">
+			<svg class="svg-ico-pin" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 477 477"><path d="M238.4 0C133 0 47.2 85.8 47.2 191.2c0 12 1.1 24.1 3.4 35.9 0.1 0.7 0.5 2.8 1.3 6.4 2.9 12.9 7.2 25.6 12.8 37.7 20.6 48.5 65.9 123 165.3 202.8 2.5 2 5.5 3 8.5 3s6-1 8.5-3c99.3-79.8 144.7-154.3 165.3-202.8 5.6-12.1 9.9-24.7 12.8-37.7 0.8-3.6 1.2-5.7 1.3-6.4 2.2-11.8 3.4-23.9 3.4-35.9C429.6 85.8 343.8 0 238.4 0zM399.6 222.4c0 0.2-0.1 0.4-0.1 0.6 -0.1 0.5-0.4 2-0.9 4.3 0 0.1 0 0.1 0 0.2 -2.5 11.2-6.2 22.1-11.1 32.6 -0.1 0.1-0.1 0.3-0.2 0.4 -18.7 44.3-59.7 111.9-148.9 185.6 -89.2-73.7-130.2-141.3-148.9-185.6 -0.1-0.1-0.1-0.3-0.2-0.4 -4.8-10.4-8.5-21.4-11.1-32.6 0-0.1 0-0.1 0-0.2 -0.6-2.3-0.8-3.8-0.9-4.3 0-0.2-0.1-0.4-0.1-0.7 -2-10.3-3-20.7-3-31.2 0-90.5 73.7-164.2 164.2-164.2s164.2 73.7 164.2 164.2C402.6 201.7 401.6 212.2 399.6 222.4z"></path><path d="M238.4 71.9c-66.9 0-121.4 54.5-121.4 121.4s54.5 121.4 121.4 121.4 121.4-54.5 121.4-121.4S305.3 71.9 238.4 71.9zM238.4 287.7c-52.1 0-94.4-42.4-94.4-94.4s42.4-94.4 94.4-94.4 94.4 42.4 94.4 94.4S290.5 287.7 238.4 287.7z"></path></svg>
+			<span>Смотреть на карте</span>
+		</a>
 																	</div>
 																</div>
-																<div class="shops-item" data-location-index="1207">
-																	<div class="shops-item__title"><a href="#">пл. Независимости, 3-2, ТЦ «Столица»</a></div>
+																<div class="shops-item" data-location-index="002">
+																	<div class="shops-item__title"><a href="#">г. Минск</a></div>
+																	<div class="shops-item__adr">пл. Независимости, 3-2, «ТЦ Столица», п. 325 (нижний уровень)</div>
 																	<div class="shops-item__list">
-																		<div class="shops-item__list__item">+375 (17) 327 41 48</div>
-																		<div class="shops-item__list__item">Пн – Вс 10.00-22.00</div>
+																		<div class="shops-item__list__item">
+																			Тел.: <b>(017) 327-62-11</b>
+																		</div>
+																	</div>
+																	<div class="shops-item__footer">
+																		<a href="#" class="btn-to-map btn-to-map-js">
+			<svg class="svg-ico-pin" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 477 477"><path d="M238.4 0C133 0 47.2 85.8 47.2 191.2c0 12 1.1 24.1 3.4 35.9 0.1 0.7 0.5 2.8 1.3 6.4 2.9 12.9 7.2 25.6 12.8 37.7 20.6 48.5 65.9 123 165.3 202.8 2.5 2 5.5 3 8.5 3s6-1 8.5-3c99.3-79.8 144.7-154.3 165.3-202.8 5.6-12.1 9.9-24.7 12.8-37.7 0.8-3.6 1.2-5.7 1.3-6.4 2.2-11.8 3.4-23.9 3.4-35.9C429.6 85.8 343.8 0 238.4 0zM399.6 222.4c0 0.2-0.1 0.4-0.1 0.6 -0.1 0.5-0.4 2-0.9 4.3 0 0.1 0 0.1 0 0.2 -2.5 11.2-6.2 22.1-11.1 32.6 -0.1 0.1-0.1 0.3-0.2 0.4 -18.7 44.3-59.7 111.9-148.9 185.6 -89.2-73.7-130.2-141.3-148.9-185.6 -0.1-0.1-0.1-0.3-0.2-0.4 -4.8-10.4-8.5-21.4-11.1-32.6 0-0.1 0-0.1 0-0.2 -0.6-2.3-0.8-3.8-0.9-4.3 0-0.2-0.1-0.4-0.1-0.7 -2-10.3-3-20.7-3-31.2 0-90.5 73.7-164.2 164.2-164.2s164.2 73.7 164.2 164.2C402.6 201.7 401.6 212.2 399.6 222.4z"></path><path d="M238.4 71.9c-66.9 0-121.4 54.5-121.4 121.4s54.5 121.4 121.4 121.4 121.4-54.5 121.4-121.4S305.3 71.9 238.4 71.9zM238.4 287.7c-52.1 0-94.4-42.4-94.4-94.4s42.4-94.4 94.4-94.4 94.4 42.4 94.4 94.4S290.5 287.7 238.4 287.7z"></path></svg>
+			<span>Смотреть на карте</span>
+		</a>
 																	</div>
 																</div>
-																<div class="shops-item" data-location-index="2201">
-																	<div class="shops-item__title"><a href="#">пр-т Независимости, 56</a></div>
+																<div class="shops-item" data-location-index="003">
+																	<div class="shops-item__title"><a href="#">г. Минск</a></div>
+																	<div class="shops-item__adr">ул. Независимости, 58-7А</div>
 																	<div class="shops-item__list">
-																		<div class="shops-item__list__item">+375 (17) 202 13 76</div>
-																		<div class="shops-item__list__item">Пн–Сб 10.00-20.00; Вс 10.00-18.00</div>
+																		<div class="shops-item__list__item">
+																			Тел.: <b>(017) 292-44-94</b>
+																		</div>
+																	</div>
+																	<div class="shops-item__footer">
+																		<a href="#" class="btn-to-map btn-to-map-js">
+			<svg class="svg-ico-pin" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 477 477"><path d="M238.4 0C133 0 47.2 85.8 47.2 191.2c0 12 1.1 24.1 3.4 35.9 0.1 0.7 0.5 2.8 1.3 6.4 2.9 12.9 7.2 25.6 12.8 37.7 20.6 48.5 65.9 123 165.3 202.8 2.5 2 5.5 3 8.5 3s6-1 8.5-3c99.3-79.8 144.7-154.3 165.3-202.8 5.6-12.1 9.9-24.7 12.8-37.7 0.8-3.6 1.2-5.7 1.3-6.4 2.2-11.8 3.4-23.9 3.4-35.9C429.6 85.8 343.8 0 238.4 0zM399.6 222.4c0 0.2-0.1 0.4-0.1 0.6 -0.1 0.5-0.4 2-0.9 4.3 0 0.1 0 0.1 0 0.2 -2.5 11.2-6.2 22.1-11.1 32.6 -0.1 0.1-0.1 0.3-0.2 0.4 -18.7 44.3-59.7 111.9-148.9 185.6 -89.2-73.7-130.2-141.3-148.9-185.6 -0.1-0.1-0.1-0.3-0.2-0.4 -4.8-10.4-8.5-21.4-11.1-32.6 0-0.1 0-0.1 0-0.2 -0.6-2.3-0.8-3.8-0.9-4.3 0-0.2-0.1-0.4-0.1-0.7 -2-10.3-3-20.7-3-31.2 0-90.5 73.7-164.2 164.2-164.2s164.2 73.7 164.2 164.2C402.6 201.7 401.6 212.2 399.6 222.4z"></path><path d="M238.4 71.9c-66.9 0-121.4 54.5-121.4 121.4s54.5 121.4 121.4 121.4 121.4-54.5 121.4-121.4S305.3 71.9 238.4 71.9zM238.4 287.7c-52.1 0-94.4-42.4-94.4-94.4s42.4-94.4 94.4-94.4 94.4 42.4 94.4 94.4S290.5 287.7 238.4 287.7z"></path></svg>
+			<span>Смотреть на карте</span>
+		</a>
 																	</div>
 																</div>
-																<div class="shops-item" data-location-index="2203">
-																	<div class="shops-item__title"><a href="#">ул. Московская, 9</a></div>
+																<div class="shops-item" data-location-index="004">
+																	<div class="shops-item__title"><a href="#">г. Минск</a></div>
+																	<div class="shops-item__adr">ул. Бобруйская, 15</div>
 																	<div class="shops-item__list">
-																		<div class="shops-item__list__item">+375 (17) 200 21 28, факс +375 (17) 222 79 84</div>
-																		<div class="shops-item__list__item">Пн-Сб 10.00-20.00; Вс 10.00-18.00</div>
+																	</div>
+																	<div class="shops-item__footer">
+																		<a href="#" class="btn-to-map btn-to-map-js">
+			<svg class="svg-ico-pin" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 477 477"><path d="M238.4 0C133 0 47.2 85.8 47.2 191.2c0 12 1.1 24.1 3.4 35.9 0.1 0.7 0.5 2.8 1.3 6.4 2.9 12.9 7.2 25.6 12.8 37.7 20.6 48.5 65.9 123 165.3 202.8 2.5 2 5.5 3 8.5 3s6-1 8.5-3c99.3-79.8 144.7-154.3 165.3-202.8 5.6-12.1 9.9-24.7 12.8-37.7 0.8-3.6 1.2-5.7 1.3-6.4 2.2-11.8 3.4-23.9 3.4-35.9C429.6 85.8 343.8 0 238.4 0zM399.6 222.4c0 0.2-0.1 0.4-0.1 0.6 -0.1 0.5-0.4 2-0.9 4.3 0 0.1 0 0.1 0 0.2 -2.5 11.2-6.2 22.1-11.1 32.6 -0.1 0.1-0.1 0.3-0.2 0.4 -18.7 44.3-59.7 111.9-148.9 185.6 -89.2-73.7-130.2-141.3-148.9-185.6 -0.1-0.1-0.1-0.3-0.2-0.4 -4.8-10.4-8.5-21.4-11.1-32.6 0-0.1 0-0.1 0-0.2 -0.6-2.3-0.8-3.8-0.9-4.3 0-0.2-0.1-0.4-0.1-0.7 -2-10.3-3-20.7-3-31.2 0-90.5 73.7-164.2 164.2-164.2s164.2 73.7 164.2 164.2C402.6 201.7 401.6 212.2 399.6 222.4z"></path><path d="M238.4 71.9c-66.9 0-121.4 54.5-121.4 121.4s54.5 121.4 121.4 121.4 121.4-54.5 121.4-121.4S305.3 71.9 238.4 71.9zM238.4 287.7c-52.1 0-94.4-42.4-94.4-94.4s42.4-94.4 94.4-94.4 94.4 42.4 94.4 94.4S290.5 287.7 238.4 287.7z"></path></svg>
+			<span>Смотреть на карте</span>
+		</a>
 																	</div>
 																</div>
-																<div class="shops-item" data-location-index="2209">
-																	<div class="shops-item__title"><a href="#">пр-т Партизанский, 87</a></div>
+																<div class="shops-item" data-location-index="005">
+																	<div class="shops-item__title"><a href="#">г. Минск</a></div>
+																	<div class="shops-item__adr">ул. Веры Хоружей, 42</div>
 																	<div class="shops-item__list">
-																		<div class="shops-item__list__item">+375 (17) 250 22 92</div>
-																		<div class="shops-item__list__item">Пн–Сб 10.00-20.00; Вс 10.00-18.00</div>
+																	</div>
+																	<div class="shops-item__footer">
+																		<a href="#" class="btn-to-map btn-to-map-js">
+			<svg class="svg-ico-pin" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 477 477"><path d="M238.4 0C133 0 47.2 85.8 47.2 191.2c0 12 1.1 24.1 3.4 35.9 0.1 0.7 0.5 2.8 1.3 6.4 2.9 12.9 7.2 25.6 12.8 37.7 20.6 48.5 65.9 123 165.3 202.8 2.5 2 5.5 3 8.5 3s6-1 8.5-3c99.3-79.8 144.7-154.3 165.3-202.8 5.6-12.1 9.9-24.7 12.8-37.7 0.8-3.6 1.2-5.7 1.3-6.4 2.2-11.8 3.4-23.9 3.4-35.9C429.6 85.8 343.8 0 238.4 0zM399.6 222.4c0 0.2-0.1 0.4-0.1 0.6 -0.1 0.5-0.4 2-0.9 4.3 0 0.1 0 0.1 0 0.2 -2.5 11.2-6.2 22.1-11.1 32.6 -0.1 0.1-0.1 0.3-0.2 0.4 -18.7 44.3-59.7 111.9-148.9 185.6 -89.2-73.7-130.2-141.3-148.9-185.6 -0.1-0.1-0.1-0.3-0.2-0.4 -4.8-10.4-8.5-21.4-11.1-32.6 0-0.1 0-0.1 0-0.2 -0.6-2.3-0.8-3.8-0.9-4.3 0-0.2-0.1-0.4-0.1-0.7 -2-10.3-3-20.7-3-31.2 0-90.5 73.7-164.2 164.2-164.2s164.2 73.7 164.2 164.2C402.6 201.7 401.6 212.2 399.6 222.4z"></path><path d="M238.4 71.9c-66.9 0-121.4 54.5-121.4 121.4s54.5 121.4 121.4 121.4 121.4-54.5 121.4-121.4S305.3 71.9 238.4 71.9zM238.4 287.7c-52.1 0-94.4-42.4-94.4-94.4s42.4-94.4 94.4-94.4 94.4 42.4 94.4 94.4S290.5 287.7 238.4 287.7z"></path></svg>
+			<span>Смотреть на карте</span>
+		</a>
 																	</div>
 																</div>
-																<div class="shops-item" data-location-index="2301">
-																	<div class="shops-item__title"><a href="#">ТРЦ «Экспобел»</a></div>
+																<div class="shops-item" data-location-index="006">
+																	<div class="shops-item__title"><a href="#">г. Минск</a></div>
+																	<div class="shops-item__adr">ул. Романовская Слобода, 1</div>
 																	<div class="shops-item__list">
-																		<div class="shops-item__list__item">+375 (17) 237 94 56</div>
-																		<div class="shops-item__list__item">Пн– Вс 10.00-22.00</div>
+																	</div>
+																	<div class="shops-item__footer">
+																		<a href="#" class="btn-to-map btn-to-map-js">
+			<svg class="svg-ico-pin" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 477 477"><path d="M238.4 0C133 0 47.2 85.8 47.2 191.2c0 12 1.1 24.1 3.4 35.9 0.1 0.7 0.5 2.8 1.3 6.4 2.9 12.9 7.2 25.6 12.8 37.7 20.6 48.5 65.9 123 165.3 202.8 2.5 2 5.5 3 8.5 3s6-1 8.5-3c99.3-79.8 144.7-154.3 165.3-202.8 5.6-12.1 9.9-24.7 12.8-37.7 0.8-3.6 1.2-5.7 1.3-6.4 2.2-11.8 3.4-23.9 3.4-35.9C429.6 85.8 343.8 0 238.4 0zM399.6 222.4c0 0.2-0.1 0.4-0.1 0.6 -0.1 0.5-0.4 2-0.9 4.3 0 0.1 0 0.1 0 0.2 -2.5 11.2-6.2 22.1-11.1 32.6 -0.1 0.1-0.1 0.3-0.2 0.4 -18.7 44.3-59.7 111.9-148.9 185.6 -89.2-73.7-130.2-141.3-148.9-185.6 -0.1-0.1-0.1-0.3-0.2-0.4 -4.8-10.4-8.5-21.4-11.1-32.6 0-0.1 0-0.1 0-0.2 -0.6-2.3-0.8-3.8-0.9-4.3 0-0.2-0.1-0.4-0.1-0.7 -2-10.3-3-20.7-3-31.2 0-90.5 73.7-164.2 164.2-164.2s164.2 73.7 164.2 164.2C402.6 201.7 401.6 212.2 399.6 222.4z"></path><path d="M238.4 71.9c-66.9 0-121.4 54.5-121.4 121.4s54.5 121.4 121.4 121.4 121.4-54.5 121.4-121.4S305.3 71.9 238.4 71.9zM238.4 287.7c-52.1 0-94.4-42.4-94.4-94.4s42.4-94.4 94.4-94.4 94.4 42.4 94.4 94.4S290.5 287.7 238.4 287.7z"></path></svg>
+			<span>Смотреть на карте</span>
+		</a>
 																	</div>
 																</div>
-																<div class="shops-item" data-location-index="2513">
-																	<div class="shops-item__title"><a href="#">ул. Кирова, 1</a></div>
+																<div class="shops-item" data-location-index="007">
+																	<div class="shops-item__title"><a href="#">г. Минск</a></div>
+																	<div class="shops-item__adr">пр-т Независимости, 54, «ЦУМ» (женская, детская секции)</div>
 																	<div class="shops-item__list">
-																		<div class="shops-item__list__item">+375 (17) 200 81 09</div>
-																		<div class="shops-item__list__item">Пн–Сб 10.00-20.00; Вс 10.00-18.00</div>
+																	</div>
+																	<div class="shops-item__footer">
+																		<a href="#" class="btn-to-map btn-to-map-js">
+			<svg class="svg-ico-pin" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 477 477"><path d="M238.4 0C133 0 47.2 85.8 47.2 191.2c0 12 1.1 24.1 3.4 35.9 0.1 0.7 0.5 2.8 1.3 6.4 2.9 12.9 7.2 25.6 12.8 37.7 20.6 48.5 65.9 123 165.3 202.8 2.5 2 5.5 3 8.5 3s6-1 8.5-3c99.3-79.8 144.7-154.3 165.3-202.8 5.6-12.1 9.9-24.7 12.8-37.7 0.8-3.6 1.2-5.7 1.3-6.4 2.2-11.8 3.4-23.9 3.4-35.9C429.6 85.8 343.8 0 238.4 0zM399.6 222.4c0 0.2-0.1 0.4-0.1 0.6 -0.1 0.5-0.4 2-0.9 4.3 0 0.1 0 0.1 0 0.2 -2.5 11.2-6.2 22.1-11.1 32.6 -0.1 0.1-0.1 0.3-0.2 0.4 -18.7 44.3-59.7 111.9-148.9 185.6 -89.2-73.7-130.2-141.3-148.9-185.6 -0.1-0.1-0.1-0.3-0.2-0.4 -4.8-10.4-8.5-21.4-11.1-32.6 0-0.1 0-0.1 0-0.2 -0.6-2.3-0.8-3.8-0.9-4.3 0-0.2-0.1-0.4-0.1-0.7 -2-10.3-3-20.7-3-31.2 0-90.5 73.7-164.2 164.2-164.2s164.2 73.7 164.2 164.2C402.6 201.7 401.6 212.2 399.6 222.4z"></path><path d="M238.4 71.9c-66.9 0-121.4 54.5-121.4 121.4s54.5 121.4 121.4 121.4 121.4-54.5 121.4-121.4S305.3 71.9 238.4 71.9zM238.4 287.7c-52.1 0-94.4-42.4-94.4-94.4s42.4-94.4 94.4-94.4 94.4 42.4 94.4 94.4S290.5 287.7 238.4 287.7z"></path></svg>
+			<span>Смотреть на карте</span>
+		</a>
 																	</div>
 																</div>
-																<div class="shops-item" data-location-index="2519">
-																	<div class="shops-item__title"><a href="#">пр-т Победителей, 65, ТЦ «Замок»</a></div>
+																<div class="shops-item" data-location-index="101">
+																	<div class="shops-item__title"><a href="#">г. Брест</a></div>
+																	<div class="shops-item__adr">г. Брест, ул. Заводская 2-я, 3а</div>
 																	<div class="shops-item__list">
-																		<div class="shops-item__list__item">+375 (29) 198 23 36</div>
-																		<div class="shops-item__list__item">Пн–Вс 10.00-22.00</div>
+																		<div class="shops-item__list__item">
+																			Тел.: <b>(0162) 44-90-36</b>
+																		</div>
+																	</div>
+																	<div class="shops-item__footer">
+																		<a href="#" class="btn-to-map btn-to-map-js">
+			<svg class="svg-ico-pin" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 477 477"><path d="M238.4 0C133 0 47.2 85.8 47.2 191.2c0 12 1.1 24.1 3.4 35.9 0.1 0.7 0.5 2.8 1.3 6.4 2.9 12.9 7.2 25.6 12.8 37.7 20.6 48.5 65.9 123 165.3 202.8 2.5 2 5.5 3 8.5 3s6-1 8.5-3c99.3-79.8 144.7-154.3 165.3-202.8 5.6-12.1 9.9-24.7 12.8-37.7 0.8-3.6 1.2-5.7 1.3-6.4 2.2-11.8 3.4-23.9 3.4-35.9C429.6 85.8 343.8 0 238.4 0zM399.6 222.4c0 0.2-0.1 0.4-0.1 0.6 -0.1 0.5-0.4 2-0.9 4.3 0 0.1 0 0.1 0 0.2 -2.5 11.2-6.2 22.1-11.1 32.6 -0.1 0.1-0.1 0.3-0.2 0.4 -18.7 44.3-59.7 111.9-148.9 185.6 -89.2-73.7-130.2-141.3-148.9-185.6 -0.1-0.1-0.1-0.3-0.2-0.4 -4.8-10.4-8.5-21.4-11.1-32.6 0-0.1 0-0.1 0-0.2 -0.6-2.3-0.8-3.8-0.9-4.3 0-0.2-0.1-0.4-0.1-0.7 -2-10.3-3-20.7-3-31.2 0-90.5 73.7-164.2 164.2-164.2s164.2 73.7 164.2 164.2C402.6 201.7 401.6 212.2 399.6 222.4z"></path><path d="M238.4 71.9c-66.9 0-121.4 54.5-121.4 121.4s54.5 121.4 121.4 121.4 121.4-54.5 121.4-121.4S305.3 71.9 238.4 71.9zM238.4 287.7c-52.1 0-94.4-42.4-94.4-94.4s42.4-94.4 94.4-94.4 94.4 42.4 94.4 94.4S290.5 287.7 238.4 287.7z"></path></svg>
+			<span>Смотреть на карте</span>
+		</a>
 																	</div>
 																</div>
-																<div class="shops-item" data-location-index="2541">
-																	<div class="shops-item__title"><a href="#">ул. Денисовская, 8/2, ТЦ «Е-Сити»</a></div>
+																<div class="shops-item" data-location-index="102">
+																	<div class="shops-item__title"><a href="#">г. Брест</a></div>
+																	<div class="shops-item__adr">ул. Машерова, 39</div>
 																	<div class="shops-item__list">
-																		<div class="shops-item__list__item">+375 (17) 366 52 13; +375 (17) 366 51 32</div>
-																		<div class="shops-item__list__item">10.00 - 22.00</div>
+																	</div>
+																	<div class="shops-item__footer">
+																		<a href="#" class="btn-to-map btn-to-map-js">
+			<svg class="svg-ico-pin" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 477 477"><path d="M238.4 0C133 0 47.2 85.8 47.2 191.2c0 12 1.1 24.1 3.4 35.9 0.1 0.7 0.5 2.8 1.3 6.4 2.9 12.9 7.2 25.6 12.8 37.7 20.6 48.5 65.9 123 165.3 202.8 2.5 2 5.5 3 8.5 3s6-1 8.5-3c99.3-79.8 144.7-154.3 165.3-202.8 5.6-12.1 9.9-24.7 12.8-37.7 0.8-3.6 1.2-5.7 1.3-6.4 2.2-11.8 3.4-23.9 3.4-35.9C429.6 85.8 343.8 0 238.4 0zM399.6 222.4c0 0.2-0.1 0.4-0.1 0.6 -0.1 0.5-0.4 2-0.9 4.3 0 0.1 0 0.1 0 0.2 -2.5 11.2-6.2 22.1-11.1 32.6 -0.1 0.1-0.1 0.3-0.2 0.4 -18.7 44.3-59.7 111.9-148.9 185.6 -89.2-73.7-130.2-141.3-148.9-185.6 -0.1-0.1-0.1-0.3-0.2-0.4 -4.8-10.4-8.5-21.4-11.1-32.6 0-0.1 0-0.1 0-0.2 -0.6-2.3-0.8-3.8-0.9-4.3 0-0.2-0.1-0.4-0.1-0.7 -2-10.3-3-20.7-3-31.2 0-90.5 73.7-164.2 164.2-164.2s164.2 73.7 164.2 164.2C402.6 201.7 401.6 212.2 399.6 222.4z"></path><path d="M238.4 71.9c-66.9 0-121.4 54.5-121.4 121.4s54.5 121.4 121.4 121.4 121.4-54.5 121.4-121.4S305.3 71.9 238.4 71.9zM238.4 287.7c-52.1 0-94.4-42.4-94.4-94.4s42.4-94.4 94.4-94.4 94.4 42.4 94.4 94.4S290.5 287.7 238.4 287.7z"></path></svg>
+			<span>Смотреть на карте</span>
+		</a>
 																	</div>
 																</div>
-																<div class="shops-item" data-location-index="2544">
-																	<div class="shops-item__title"><a href="#">Дискаунтер, ул. Я.Коласа,34</a></div>
+																<div class="shops-item" data-location-index="111">
+																	<div class="shops-item__title"><a href="#">г. Гродно</a></div>
+																	<div class="shops-item__adr">г. Гродно, ул. Дзержинского, 94а</div>
 																	<div class="shops-item__list">
-																		<div class="shops-item__list__item">+375 (17) 292 02 52</div>
-																		<div class="shops-item__list__item">Пн - Пт 11.00-20.00; Сб 10.00-20.00; Вс 10.00-18.00</div>
+																		<div class="shops-item__list__item">
+																			Тел.: <b>(0152) 74-28-05</b>
+																		</div>
+																	</div>
+																	<div class="shops-item__footer">
+																		<a href="#" class="btn-to-map btn-to-map-js">
+			<svg class="svg-ico-pin" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 477 477"><path d="M238.4 0C133 0 47.2 85.8 47.2 191.2c0 12 1.1 24.1 3.4 35.9 0.1 0.7 0.5 2.8 1.3 6.4 2.9 12.9 7.2 25.6 12.8 37.7 20.6 48.5 65.9 123 165.3 202.8 2.5 2 5.5 3 8.5 3s6-1 8.5-3c99.3-79.8 144.7-154.3 165.3-202.8 5.6-12.1 9.9-24.7 12.8-37.7 0.8-3.6 1.2-5.7 1.3-6.4 2.2-11.8 3.4-23.9 3.4-35.9C429.6 85.8 343.8 0 238.4 0zM399.6 222.4c0 0.2-0.1 0.4-0.1 0.6 -0.1 0.5-0.4 2-0.9 4.3 0 0.1 0 0.1 0 0.2 -2.5 11.2-6.2 22.1-11.1 32.6 -0.1 0.1-0.1 0.3-0.2 0.4 -18.7 44.3-59.7 111.9-148.9 185.6 -89.2-73.7-130.2-141.3-148.9-185.6 -0.1-0.1-0.1-0.3-0.2-0.4 -4.8-10.4-8.5-21.4-11.1-32.6 0-0.1 0-0.1 0-0.2 -0.6-2.3-0.8-3.8-0.9-4.3 0-0.2-0.1-0.4-0.1-0.7 -2-10.3-3-20.7-3-31.2 0-90.5 73.7-164.2 164.2-164.2s164.2 73.7 164.2 164.2C402.6 201.7 401.6 212.2 399.6 222.4z"></path><path d="M238.4 71.9c-66.9 0-121.4 54.5-121.4 121.4s54.5 121.4 121.4 121.4 121.4-54.5 121.4-121.4S305.3 71.9 238.4 71.9zM238.4 287.7c-52.1 0-94.4-42.4-94.4-94.4s42.4-94.4 94.4-94.4 94.4 42.4 94.4 94.4S290.5 287.7 238.4 287.7z"></path></svg>
+			<span>Смотреть на карте</span>
+		</a>
 																	</div>
 																</div>
-																<div class="shops-item" data-location-index="2547">
-																	<div class="shops-item__title"><a href="#">ул. Долгобродская, 30</a></div>
+																<div class="shops-item" data-location-index="112">
+																	<div class="shops-item__title"><a href="#">г. Гродно</a></div>
+																	<div class="shops-item__adr">ул. Советских пограничников, 106-58</div>
 																	<div class="shops-item__list">
-																		<div class="shops-item__list__item">+375 (17) 299 06 07</div>
-																		<div class="shops-item__list__item">Пн -Сб 10.00- 20.00; Вс10.00-18.00</div>
+																	</div>
+																	<div class="shops-item__footer">
+																		<a href="#" class="btn-to-map btn-to-map-js">
+			<svg class="svg-ico-pin" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 477 477"><path d="M238.4 0C133 0 47.2 85.8 47.2 191.2c0 12 1.1 24.1 3.4 35.9 0.1 0.7 0.5 2.8 1.3 6.4 2.9 12.9 7.2 25.6 12.8 37.7 20.6 48.5 65.9 123 165.3 202.8 2.5 2 5.5 3 8.5 3s6-1 8.5-3c99.3-79.8 144.7-154.3 165.3-202.8 5.6-12.1 9.9-24.7 12.8-37.7 0.8-3.6 1.2-5.7 1.3-6.4 2.2-11.8 3.4-23.9 3.4-35.9C429.6 85.8 343.8 0 238.4 0zM399.6 222.4c0 0.2-0.1 0.4-0.1 0.6 -0.1 0.5-0.4 2-0.9 4.3 0 0.1 0 0.1 0 0.2 -2.5 11.2-6.2 22.1-11.1 32.6 -0.1 0.1-0.1 0.3-0.2 0.4 -18.7 44.3-59.7 111.9-148.9 185.6 -89.2-73.7-130.2-141.3-148.9-185.6 -0.1-0.1-0.1-0.3-0.2-0.4 -4.8-10.4-8.5-21.4-11.1-32.6 0-0.1 0-0.1 0-0.2 -0.6-2.3-0.8-3.8-0.9-4.3 0-0.2-0.1-0.4-0.1-0.7 -2-10.3-3-20.7-3-31.2 0-90.5 73.7-164.2 164.2-164.2s164.2 73.7 164.2 164.2C402.6 201.7 401.6 212.2 399.6 222.4z"></path><path d="M238.4 71.9c-66.9 0-121.4 54.5-121.4 121.4s54.5 121.4 121.4 121.4 121.4-54.5 121.4-121.4S305.3 71.9 238.4 71.9zM238.4 287.7c-52.1 0-94.4-42.4-94.4-94.4s42.4-94.4 94.4-94.4 94.4 42.4 94.4 94.4S290.5 287.7 238.4 287.7z"></path></svg>
+			<span>Смотреть на карте</span>
+		</a>
 																	</div>
 																</div>
-																<div class="shops-item" data-location-index="2600">
-																	<div class="shops-item__title"><a href="#">пр-т Дзержинского, 104, ТЦ «Титан» (2 этаж)</a></div>
+																<div class="shops-item" data-location-index="121">
+																	<div class="shops-item__title"><a href="#">г. Витебск</a></div>
+																	<div class="shops-item__adr">г. Витебск, ул. Горького, 62</div>
 																	<div class="shops-item__list">
-																		<div class="shops-item__list__item">+375(17) 336 51 56</div>
-																		<div class="shops-item__list__item">Пн-Вс 10.00 -21.00</div>
+																		<div class="shops-item__list__item">
+																			Тел.: <b>(0212) 34-26-71, 34-26-60</b>
+																		</div>
+																	</div>
+																	<div class="shops-item__footer">
+																		<a href="#" class="btn-to-map btn-to-map-js">
+			<svg class="svg-ico-pin" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 477 477"><path d="M238.4 0C133 0 47.2 85.8 47.2 191.2c0 12 1.1 24.1 3.4 35.9 0.1 0.7 0.5 2.8 1.3 6.4 2.9 12.9 7.2 25.6 12.8 37.7 20.6 48.5 65.9 123 165.3 202.8 2.5 2 5.5 3 8.5 3s6-1 8.5-3c99.3-79.8 144.7-154.3 165.3-202.8 5.6-12.1 9.9-24.7 12.8-37.7 0.8-3.6 1.2-5.7 1.3-6.4 2.2-11.8 3.4-23.9 3.4-35.9C429.6 85.8 343.8 0 238.4 0zM399.6 222.4c0 0.2-0.1 0.4-0.1 0.6 -0.1 0.5-0.4 2-0.9 4.3 0 0.1 0 0.1 0 0.2 -2.5 11.2-6.2 22.1-11.1 32.6 -0.1 0.1-0.1 0.3-0.2 0.4 -18.7 44.3-59.7 111.9-148.9 185.6 -89.2-73.7-130.2-141.3-148.9-185.6 -0.1-0.1-0.1-0.3-0.2-0.4 -4.8-10.4-8.5-21.4-11.1-32.6 0-0.1 0-0.1 0-0.2 -0.6-2.3-0.8-3.8-0.9-4.3 0-0.2-0.1-0.4-0.1-0.7 -2-10.3-3-20.7-3-31.2 0-90.5 73.7-164.2 164.2-164.2s164.2 73.7 164.2 164.2C402.6 201.7 401.6 212.2 399.6 222.4z"></path><path d="M238.4 71.9c-66.9 0-121.4 54.5-121.4 121.4s54.5 121.4 121.4 121.4 121.4-54.5 121.4-121.4S305.3 71.9 238.4 71.9zM238.4 287.7c-52.1 0-94.4-42.4-94.4-94.4s42.4-94.4 94.4-94.4 94.4 42.4 94.4 94.4S290.5 287.7 238.4 287.7z"></path></svg>
+			<span>Смотреть на карте</span>
+		</a>
 																	</div>
 																</div>
-																<div class="shops-item" data-location-index="2602">
-																	<div class="shops-item__title"><a href="#">пр-т Партизанский, 150 А ТЦ «МОМО»</a></div>
+																<div class="shops-item" data-location-index="0001">
+																	<div class="shops-item__title"><a href="#">г. Москва</a></div>
+																	<div class="shops-item__adr">107553, г. Москва, ул. Большая Черкизовская, 30 а</div>
 																	<div class="shops-item__list">
-																		<div class="shops-item__list__item">+375 (17) 316 59 07</div>
-																		<div class="shops-item__list__item">Пн-Вс 10.00-22.00</div>
+																		<div class="shops-item__list__item">
+																			Тел.: <b>+7(495) 926-11-12</b>
+																		</div>
+																		<div class="shops-item__list__item">
+																			Факс: <b>741-78-31</b>
+																		</div>
+																		<div class="shops-item__list__item">
+																			E-mail: <b><a href="mailto:bonik07@gmail.com">bonik07@gmail.com</a></b>
+																		</div>
+																		<div class="shops-item__list__item">
+																			Сайт: <b><a href="http://www.eliut.ru">www.eliut.ru</a></b>
+																		</div>
+																	</div>
+																	<div class="shops-item__footer">
+																		<a href="#" class="btn-to-map btn-to-map-js">
+			<svg class="svg-ico-pin" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 477 477"><path d="M238.4 0C133 0 47.2 85.8 47.2 191.2c0 12 1.1 24.1 3.4 35.9 0.1 0.7 0.5 2.8 1.3 6.4 2.9 12.9 7.2 25.6 12.8 37.7 20.6 48.5 65.9 123 165.3 202.8 2.5 2 5.5 3 8.5 3s6-1 8.5-3c99.3-79.8 144.7-154.3 165.3-202.8 5.6-12.1 9.9-24.7 12.8-37.7 0.8-3.6 1.2-5.7 1.3-6.4 2.2-11.8 3.4-23.9 3.4-35.9C429.6 85.8 343.8 0 238.4 0zM399.6 222.4c0 0.2-0.1 0.4-0.1 0.6 -0.1 0.5-0.4 2-0.9 4.3 0 0.1 0 0.1 0 0.2 -2.5 11.2-6.2 22.1-11.1 32.6 -0.1 0.1-0.1 0.3-0.2 0.4 -18.7 44.3-59.7 111.9-148.9 185.6 -89.2-73.7-130.2-141.3-148.9-185.6 -0.1-0.1-0.1-0.3-0.2-0.4 -4.8-10.4-8.5-21.4-11.1-32.6 0-0.1 0-0.1 0-0.2 -0.6-2.3-0.8-3.8-0.9-4.3 0-0.2-0.1-0.4-0.1-0.7 -2-10.3-3-20.7-3-31.2 0-90.5 73.7-164.2 164.2-164.2s164.2 73.7 164.2 164.2C402.6 201.7 401.6 212.2 399.6 222.4z"></path><path d="M238.4 71.9c-66.9 0-121.4 54.5-121.4 121.4s54.5 121.4 121.4 121.4 121.4-54.5 121.4-121.4S305.3 71.9 238.4 71.9zM238.4 287.7c-52.1 0-94.4-42.4-94.4-94.4s42.4-94.4 94.4-94.4 94.4 42.4 94.4 94.4S290.5 287.7 238.4 287.7z"></path></svg>
+			<span>Смотреть на карте</span>
+		</a>
 																	</div>
 																</div>
-																<div class="shops-item" data-location-index="2612">
-																	<div class="shops-item__title"><a href="#">ул.Владислава Голубка,д.2 ТЦ «Бонус» (2 этаж)</a></div>
+																<div class="shops-item" data-location-index="0002">
+																	<div class="shops-item__title"><a href="#">г. Москва</a></div>
+																	<div class="shops-item__adr">г. Москва, ул. Маршала Федоренко, д.3</div>
 																	<div class="shops-item__list">
-																		<div class="shops-item__list__item">+375 (29) 170 22 35</div>
-																		<div class="shops-item__list__item">Пн - Вс 10:00 -21:00</div>
+																		<div class="shops-item__list__item">
+																			Тел.: <b>(+7(495) 486-30-84, +7(499) 753-05-58</b>
+																		</div>
+																		<div class="shops-item__list__item">
+																			Сайт: <b><a href="http://www.armis-m.ru">www.armis-m.ru</a></b>
+																		</div>
+																	</div>
+																	<div class="shops-item__footer">
+																		<a href="#" class="btn-to-map btn-to-map-js">
+			<svg class="svg-ico-pin" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 477 477"><path d="M238.4 0C133 0 47.2 85.8 47.2 191.2c0 12 1.1 24.1 3.4 35.9 0.1 0.7 0.5 2.8 1.3 6.4 2.9 12.9 7.2 25.6 12.8 37.7 20.6 48.5 65.9 123 165.3 202.8 2.5 2 5.5 3 8.5 3s6-1 8.5-3c99.3-79.8 144.7-154.3 165.3-202.8 5.6-12.1 9.9-24.7 12.8-37.7 0.8-3.6 1.2-5.7 1.3-6.4 2.2-11.8 3.4-23.9 3.4-35.9C429.6 85.8 343.8 0 238.4 0zM399.6 222.4c0 0.2-0.1 0.4-0.1 0.6 -0.1 0.5-0.4 2-0.9 4.3 0 0.1 0 0.1 0 0.2 -2.5 11.2-6.2 22.1-11.1 32.6 -0.1 0.1-0.1 0.3-0.2 0.4 -18.7 44.3-59.7 111.9-148.9 185.6 -89.2-73.7-130.2-141.3-148.9-185.6 -0.1-0.1-0.1-0.3-0.2-0.4 -4.8-10.4-8.5-21.4-11.1-32.6 0-0.1 0-0.1 0-0.2 -0.6-2.3-0.8-3.8-0.9-4.3 0-0.2-0.1-0.4-0.1-0.7 -2-10.3-3-20.7-3-31.2 0-90.5 73.7-164.2 164.2-164.2s164.2 73.7 164.2 164.2C402.6 201.7 401.6 212.2 399.6 222.4z"></path><path d="M238.4 71.9c-66.9 0-121.4 54.5-121.4 121.4s54.5 121.4 121.4 121.4 121.4-54.5 121.4-121.4S305.3 71.9 238.4 71.9zM238.4 287.7c-52.1 0-94.4-42.4-94.4-94.4s42.4-94.4 94.4-94.4 94.4 42.4 94.4 94.4S290.5 287.7 238.4 287.7z"></path></svg>
+			<span>Смотреть на карте</span>
+		</a>
 																	</div>
 																</div>
-																<div class="shops-item" data-location-index="2613">
-																	<div class="shops-item__title"><a href="#">ул. Мстиславца, 11, ТРЦ «DANA MALL»</a></div>
+																<div class="shops-item" data-location-index="0003">
+																	<div class="shops-item__title"><a href="#">г. Москва</a></div>
+																	<div class="shops-item__adr">Фирменная секция розничной торговли №1, ст.м. Алтуфьево, Алтуфьевское шоссе, 80, ТЦ «Арфа», 2 этаж</div>
 																	<div class="shops-item__list">
-																		<div class="shops-item__list__item">+375 (17) 337 94 09</div>
-																		<div class="shops-item__list__item">Пн-Вс 10.00-22.00</div>
+																		<div class="shops-item__list__item">
+																			Тел.: <b>(017) 292-90-43, 292-42-44</b>
+																		</div>
+																		<div class="shops-item__list__item">
+																			Время работы: <b>ежедневно с 10-00 до 20-00 <br>без перерыва и выходных</b>
+																		</div>
+																	</div>
+																	<div class="shops-item__footer">
+																		<a href="#" class="btn-to-map btn-to-map-js">
+			<svg class="svg-ico-pin" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 477 477"><path d="M238.4 0C133 0 47.2 85.8 47.2 191.2c0 12 1.1 24.1 3.4 35.9 0.1 0.7 0.5 2.8 1.3 6.4 2.9 12.9 7.2 25.6 12.8 37.7 20.6 48.5 65.9 123 165.3 202.8 2.5 2 5.5 3 8.5 3s6-1 8.5-3c99.3-79.8 144.7-154.3 165.3-202.8 5.6-12.1 9.9-24.7 12.8-37.7 0.8-3.6 1.2-5.7 1.3-6.4 2.2-11.8 3.4-23.9 3.4-35.9C429.6 85.8 343.8 0 238.4 0zM399.6 222.4c0 0.2-0.1 0.4-0.1 0.6 -0.1 0.5-0.4 2-0.9 4.3 0 0.1 0 0.1 0 0.2 -2.5 11.2-6.2 22.1-11.1 32.6 -0.1 0.1-0.1 0.3-0.2 0.4 -18.7 44.3-59.7 111.9-148.9 185.6 -89.2-73.7-130.2-141.3-148.9-185.6 -0.1-0.1-0.1-0.3-0.2-0.4 -4.8-10.4-8.5-21.4-11.1-32.6 0-0.1 0-0.1 0-0.2 -0.6-2.3-0.8-3.8-0.9-4.3 0-0.2-0.1-0.4-0.1-0.7 -2-10.3-3-20.7-3-31.2 0-90.5 73.7-164.2 164.2-164.2s164.2 73.7 164.2 164.2C402.6 201.7 401.6 212.2 399.6 222.4z"></path><path d="M238.4 71.9c-66.9 0-121.4 54.5-121.4 121.4s54.5 121.4 121.4 121.4 121.4-54.5 121.4-121.4S305.3 71.9 238.4 71.9zM238.4 287.7c-52.1 0-94.4-42.4-94.4-94.4s42.4-94.4 94.4-94.4 94.4 42.4 94.4 94.4S290.5 287.7 238.4 287.7z"></path></svg>
+			<span>Смотреть на карте</span>
+		</a>
 																	</div>
 																</div>
-																<div class="shops-item" data-location-index="2616">
-																	<div class="shops-item__title"><a href="#">ул.Рафиева, 64, ТЦ «Базис» «MEGATOP. Аутлет»</a></div>
+																<div class="shops-item" data-location-index="0101">
+																	<div class="shops-item__title"><a href="#">г. Санкт-Петербург</a></div>
+																	<div class="shops-item__adr">197374, г. Санкт-Петербург, ул. Оптиков, 4</div>
 																	<div class="shops-item__list">
-																		<div class="shops-item__list__item">+375 (17) 392 03 78</div>
-																		<div class="shops-item__list__item">Пн - Вс 10.00 - 21.00</div>
+																		<div class="shops-item__list__item">
+																			Тел.: <b>+7(812) 655-79-39 доб.100</b>
+																		</div>
+																		<div class="shops-item__list__item">
+																			E-mail: <b><a href="mailto:optcenter@yandex.ru">optcenter@yandex.ru</a></b>
+																		</div>
+																		<div class="shops-item__list__item">
+																			Сайт: <b><a href="http://www.optcenter.net">www.optcenter.net</a></b>
+																		</div>
+																		<div class="shops-item__list__item">
+																			Оптовый интернет-магазин: <b><a href="http://www.optcenter.ru">www.optcenter.ru</a></b>
+																		</div>
+																	</div>
+																	<div class="shops-item__footer">
+																		<a href="#" class="btn-to-map btn-to-map-js">
+			<svg class="svg-ico-pin" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 477 477"><path d="M238.4 0C133 0 47.2 85.8 47.2 191.2c0 12 1.1 24.1 3.4 35.9 0.1 0.7 0.5 2.8 1.3 6.4 2.9 12.9 7.2 25.6 12.8 37.7 20.6 48.5 65.9 123 165.3 202.8 2.5 2 5.5 3 8.5 3s6-1 8.5-3c99.3-79.8 144.7-154.3 165.3-202.8 5.6-12.1 9.9-24.7 12.8-37.7 0.8-3.6 1.2-5.7 1.3-6.4 2.2-11.8 3.4-23.9 3.4-35.9C429.6 85.8 343.8 0 238.4 0zM399.6 222.4c0 0.2-0.1 0.4-0.1 0.6 -0.1 0.5-0.4 2-0.9 4.3 0 0.1 0 0.1 0 0.2 -2.5 11.2-6.2 22.1-11.1 32.6 -0.1 0.1-0.1 0.3-0.2 0.4 -18.7 44.3-59.7 111.9-148.9 185.6 -89.2-73.7-130.2-141.3-148.9-185.6 -0.1-0.1-0.1-0.3-0.2-0.4 -4.8-10.4-8.5-21.4-11.1-32.6 0-0.1 0-0.1 0-0.2 -0.6-2.3-0.8-3.8-0.9-4.3 0-0.2-0.1-0.4-0.1-0.7 -2-10.3-3-20.7-3-31.2 0-90.5 73.7-164.2 164.2-164.2s164.2 73.7 164.2 164.2C402.6 201.7 401.6 212.2 399.6 222.4z"></path><path d="M238.4 71.9c-66.9 0-121.4 54.5-121.4 121.4s54.5 121.4 121.4 121.4 121.4-54.5 121.4-121.4S305.3 71.9 238.4 71.9zM238.4 287.7c-52.1 0-94.4-42.4-94.4-94.4s42.4-94.4 94.4-94.4 94.4 42.4 94.4 94.4S290.5 287.7 238.4 287.7z"></path></svg>
+			<span>Смотреть на карте</span>
+		</a>
 																	</div>
 																</div>
-																<div class="shops-item" data-location-index="2617">
-																	<div class="shops-item__title"><a href="#">ул. Притыцкого, 29 ТЦ «Тивали»</a></div>
+																<div class="shops-item" data-location-index="0102">
+																	<div class="shops-item__title"><a href="#">г. Санкт-Петербург</a></div>
+																	<div class="shops-item__adr">ул. Ефимова 2, ТРЦ «ПИК», (3й эт., второй блок эскалаторов)</div>
 																	<div class="shops-item__list">
-																		<div class="shops-item__list__item">+375 (17) 336 03 10</div>
-																		<div class="shops-item__list__item">Пн-Вс 10.00-21.00</div>
+																	</div>
+																	<div class="shops-item__footer">
+																		<a href="#" class="btn-to-map btn-to-map-js">
+			<svg class="svg-ico-pin" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 477 477"><path d="M238.4 0C133 0 47.2 85.8 47.2 191.2c0 12 1.1 24.1 3.4 35.9 0.1 0.7 0.5 2.8 1.3 6.4 2.9 12.9 7.2 25.6 12.8 37.7 20.6 48.5 65.9 123 165.3 202.8 2.5 2 5.5 3 8.5 3s6-1 8.5-3c99.3-79.8 144.7-154.3 165.3-202.8 5.6-12.1 9.9-24.7 12.8-37.7 0.8-3.6 1.2-5.7 1.3-6.4 2.2-11.8 3.4-23.9 3.4-35.9C429.6 85.8 343.8 0 238.4 0zM399.6 222.4c0 0.2-0.1 0.4-0.1 0.6 -0.1 0.5-0.4 2-0.9 4.3 0 0.1 0 0.1 0 0.2 -2.5 11.2-6.2 22.1-11.1 32.6 -0.1 0.1-0.1 0.3-0.2 0.4 -18.7 44.3-59.7 111.9-148.9 185.6 -89.2-73.7-130.2-141.3-148.9-185.6 -0.1-0.1-0.1-0.3-0.2-0.4 -4.8-10.4-8.5-21.4-11.1-32.6 0-0.1 0-0.1 0-0.2 -0.6-2.3-0.8-3.8-0.9-4.3 0-0.2-0.1-0.4-0.1-0.7 -2-10.3-3-20.7-3-31.2 0-90.5 73.7-164.2 164.2-164.2s164.2 73.7 164.2 164.2C402.6 201.7 401.6 212.2 399.6 222.4z"></path><path d="M238.4 71.9c-66.9 0-121.4 54.5-121.4 121.4s54.5 121.4 121.4 121.4 121.4-54.5 121.4-121.4S305.3 71.9 238.4 71.9zM238.4 287.7c-52.1 0-94.4-42.4-94.4-94.4s42.4-94.4 94.4-94.4 94.4 42.4 94.4 94.4S290.5 287.7 238.4 287.7z"></path></svg>
+			<span>Смотреть на карте</span>
+		</a>
 																	</div>
 																</div>
-																<div class="shops-item" data-location-index="2618">
-																	<div class="shops-item__title"><a href="#">107553, г. Москва, ул. Большая Черкизовская, 30 а</a></div>
+																<div class="shops-item" data-location-index="1001">
+																	<div class="shops-item__title"><a href="#">г. Алматы</a></div>
+																	<div class="shops-item__adr">пр. Рыскулова, 52, оф. 204</div>
 																	<div class="shops-item__list">
-																		<div class="shops-item__list__item">@@phones</div>
-																		<div class="shops-item__list__item">Пн-Вс 10.00-22.00</div>
+																		<div class="shops-item__list__item">
+																			Тел.: <b>+7(727) 384-35-53</b>
+																		</div>
+																		<div class="shops-item__list__item">
+																			Факс: <b>+7(727) 384-35-53</b>
+																		</div>
+																		<div class="shops-item__list__item">
+																			E-mail: <b><a href="mailto:avva_kym@mail.ru">avva_kym@mail.ru</a></b>
+																		</div>
+																	</div>
+																	<div class="shops-item__footer">
+																		<a href="#" class="btn-to-map btn-to-map-js">
+			<svg class="svg-ico-pin" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 477 477"><path d="M238.4 0C133 0 47.2 85.8 47.2 191.2c0 12 1.1 24.1 3.4 35.9 0.1 0.7 0.5 2.8 1.3 6.4 2.9 12.9 7.2 25.6 12.8 37.7 20.6 48.5 65.9 123 165.3 202.8 2.5 2 5.5 3 8.5 3s6-1 8.5-3c99.3-79.8 144.7-154.3 165.3-202.8 5.6-12.1 9.9-24.7 12.8-37.7 0.8-3.6 1.2-5.7 1.3-6.4 2.2-11.8 3.4-23.9 3.4-35.9C429.6 85.8 343.8 0 238.4 0zM399.6 222.4c0 0.2-0.1 0.4-0.1 0.6 -0.1 0.5-0.4 2-0.9 4.3 0 0.1 0 0.1 0 0.2 -2.5 11.2-6.2 22.1-11.1 32.6 -0.1 0.1-0.1 0.3-0.2 0.4 -18.7 44.3-59.7 111.9-148.9 185.6 -89.2-73.7-130.2-141.3-148.9-185.6 -0.1-0.1-0.1-0.3-0.2-0.4 -4.8-10.4-8.5-21.4-11.1-32.6 0-0.1 0-0.1 0-0.2 -0.6-2.3-0.8-3.8-0.9-4.3 0-0.2-0.1-0.4-0.1-0.7 -2-10.3-3-20.7-3-31.2 0-90.5 73.7-164.2 164.2-164.2s164.2 73.7 164.2 164.2C402.6 201.7 401.6 212.2 399.6 222.4z"></path><path d="M238.4 71.9c-66.9 0-121.4 54.5-121.4 121.4s54.5 121.4 121.4 121.4 121.4-54.5 121.4-121.4S305.3 71.9 238.4 71.9zM238.4 287.7c-52.1 0-94.4-42.4-94.4-94.4s42.4-94.4 94.4-94.4 94.4 42.4 94.4 94.4S290.5 287.7 238.4 287.7z"></path></svg>
+			<span>Смотреть на карте</span>
+		</a>
+																	</div>
+																</div>
+																<div class="shops-item" data-location-index="1101">
+																	<div class="shops-item__title"><a href="#">г. Астана</a></div>
+																	<div class="shops-item__adr">ул. Кенесары, 40, БЦ «7 Континент», офис 203</div>
+																	<div class="shops-item__list">
+																		<div class="shops-item__list__item">
+																			Тел.: <b>+7(701) 951-92-10, +7(775) 915-05-62, +7(7172) 968-900</b>
+																		</div>
+																		<div class="shops-item__list__item">
+																			Факс: <b>968-901</b>
+																		</div>
+																		<div class="shops-item__list__item">
+																			E-mail: <b><a href="mailto:astana@16line.kz, www.16line.kz">astana@16line.kz, www.16line.kz</a></b>
+																		</div>
+																	</div>
+																	<div class="shops-item__footer">
+																		<a href="#" class="btn-to-map btn-to-map-js">
+			<svg class="svg-ico-pin" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 477 477"><path d="M238.4 0C133 0 47.2 85.8 47.2 191.2c0 12 1.1 24.1 3.4 35.9 0.1 0.7 0.5 2.8 1.3 6.4 2.9 12.9 7.2 25.6 12.8 37.7 20.6 48.5 65.9 123 165.3 202.8 2.5 2 5.5 3 8.5 3s6-1 8.5-3c99.3-79.8 144.7-154.3 165.3-202.8 5.6-12.1 9.9-24.7 12.8-37.7 0.8-3.6 1.2-5.7 1.3-6.4 2.2-11.8 3.4-23.9 3.4-35.9C429.6 85.8 343.8 0 238.4 0zM399.6 222.4c0 0.2-0.1 0.4-0.1 0.6 -0.1 0.5-0.4 2-0.9 4.3 0 0.1 0 0.1 0 0.2 -2.5 11.2-6.2 22.1-11.1 32.6 -0.1 0.1-0.1 0.3-0.2 0.4 -18.7 44.3-59.7 111.9-148.9 185.6 -89.2-73.7-130.2-141.3-148.9-185.6 -0.1-0.1-0.1-0.3-0.2-0.4 -4.8-10.4-8.5-21.4-11.1-32.6 0-0.1 0-0.1 0-0.2 -0.6-2.3-0.8-3.8-0.9-4.3 0-0.2-0.1-0.4-0.1-0.7 -2-10.3-3-20.7-3-31.2 0-90.5 73.7-164.2 164.2-164.2s164.2 73.7 164.2 164.2C402.6 201.7 401.6 212.2 399.6 222.4z"></path><path d="M238.4 71.9c-66.9 0-121.4 54.5-121.4 121.4s54.5 121.4 121.4 121.4 121.4-54.5 121.4-121.4S305.3 71.9 238.4 71.9zM238.4 287.7c-52.1 0-94.4-42.4-94.4-94.4s42.4-94.4 94.4-94.4 94.4 42.4 94.4 94.4S290.5 287.7 238.4 287.7z"></path></svg>
+			<span>Смотреть на карте</span>
+		</a>
 																	</div>
 																</div>
 															</div>

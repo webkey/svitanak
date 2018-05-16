@@ -18,13 +18,16 @@
 		<!--CONTENT-->
 		<div class="content-wrap">
 			<div class="content user-content tabs-js" data-auto-height="true"> <!--tabs-js, data-auto-height="true" - только для этой страницы-->
+				<script>
+					var shopsJsonPath = "ajax"
+				</script>
 				<div class="heading">
 					<h1>
 						Где купить?
 						<span class="sep">&nbsp;</span>
 					</h1>
 					<div class="heading__options">
-						<div class="heading__options__item">
+						<div class="heading__options__item item--shops-view-switcher">
 							<div class="shops-view-switcher">
 								<a href="#shopsMapView" class="btn-underline tab-anchor-js" title="Показать на карте">На карте</a>
 								<a href="#shopsListView" class="btn-underline tab-anchor-js active-tab" title="В виде списка">Списком</a>
@@ -50,80 +53,85 @@
 								</div>-->
 								<div class="m-aside-align">
 									<div class="m-aside-holder">
-										<!--selectCity-->
-										<div class="select form-minimal">
-											<select id="selectCity" class="field-effects-js" data-path="ajax">
-												<!--<option value="0">Выберите город</option>-->
-												<!--<option value="0">...</option>-->
-												<option value="minsk">Минск</option>
-												<option value="brest">Брест</option>
-											</select>
-										</div>
-										<!--selectCity end-->
-
 										<!--location filter-->
-										<div class="location-filter-wrap">
-											<div class="location-filter">
-												<div class="location-filter-holder">
-													<div class="location-filter-list">
-														<div class="location-filter-item">
-															<div class="location-filter-inner">
-																<label class="check-label">
-																	<input type="checkbox" value="tag-branches" />
-																	<i></i>
-																	<span>В филиалах предприятия</span>
-																</label>
-															</div>
-														</div>
-														<div class="location-filter-item">
-															<div class="location-filter-inner">
-																<label class="check-label">
-																	<input type="checkbox" value="tag-dealers" />
-																	<i></i>
-																	<span>У наших дилеров</span>
-																</label>
-															</div>
-														</div>
-														<div class="location-filter-item">
-															<div class="location-filter-inner">
-																<label class="check-label">
-																	<input type="checkbox" value="tag-stores" />
-																	<i></i>
-																	<span>В наших фирменных магазинах</span>
-																</label>
-															</div>
-														</div>
-														<div class="location-filter-item">
-															<div class="location-filter-inner">
-																<label class="check-label">
-																	<input type="checkbox" value="tag-partners" />
-																	<i></i>
-																	<span>В магазинах наших партнёров</span>
-																</label>
-															</div>
-														</div>
-														<div class="location-filter-item">
-															<div class="location-filter-inner">
-																<label class="check-label">
-																	<input type="checkbox" value="tag-sections" />
-																	<i></i>
-																	<span>В наших фирменных секциях</span>
-																</label>
-															</div>
-														</div>
-													</div>
+										<div class="shops-filters shops-filters-js">
+											<div class="shops-filters__item">
+												<div class="select form-minimal">
+													<select id="selectCountry" class="field-effects-js">
+														<option value="">Страна</option>
+														<option value="by">Беларусь</option>
+														<option value="ru">Россия</option>
+														<option value="kz">Казахстан</option>
+													</select>
 												</div>
+											</div>
+											<div class="shops-filters__item">
+												<div class="select form-minimal">
+													<select id="selectCity" class="field-effects-js">
+														<option value="">Город</option>
+														<option value="minsk">Минск</option>
+														<option value="brest">Брест</option>
+														<option value="vitebsk">Витебск</option>
+														<option value="grodno">Гродно</option>
+													</select>
+												</div>
+											</div>
+
+											<div class="shops-filters__item">
+												<label class="radio-label">
+													<input type="radio" name="volumeSales" value="wholesale" checked />
+													<i>&nbsp;</i><span>Оптом</span>
+												</label>
+											</div>
+											<div class="shops-filters__item">
+												<label class="radio-label">
+													<input type="radio" name="volumeSales" value="retail" />
+													<i>&nbsp;</i><span>В розницу</span>
+												</label>
+											</div>
+
+											<hr>
+
+											<div class="shops-filters__item">
+												<label class="check-label">
+													<input type="checkbox" value="branches" />
+													<i>&nbsp;</i><span>В филиалах предприятия</span>
+												</label>
+											</div>
+											<div class="shops-filters__item">
+												<label class="check-label">
+													<input type="checkbox" value="dealers" />
+													<i>&nbsp;</i><span>У наших дилеров</span>
+												</label>
+											</div>
+											<div class="shops-filters__item">
+												<label class="check-label">
+													<input type="checkbox" value="stores" />
+													<i>&nbsp;</i><span>В наших фирменных магазинах</span>
+												</label>
+											</div>
+											<div class="shops-filters__item">
+												<label class="check-label">
+													<input type="checkbox" value="partners" />
+													<i>&nbsp;</i><span>В магазинах наших партнёров</span>
+												</label>
+											</div>
+											<div class="shops-filters__item">
+												<label class="check-label">
+													<input type="checkbox" value="sections" />
+													<i>&nbsp;</i><span>В наших фирменных секциях</span>
+												</label>
 											</div>
 										</div>
 										<!--location filter end-->
 									</div>
 								</div>
 								<div class="m-aside-footer">
-									<button class="btn-underline btn-with-icon btn-clear-form btn-clear-form-js" disabled>
+									<!--<button class="btn-underline btn-with-icon btn-clear-form btn-clear-form-js" disabled>
 										@@include("includes-json/svg/icon-close.svg")
 										<span class="for-desk">Очистить фильтр</span>
 										<span class="for-mob">Очистить</span>
-									</button>
+									</button>-->
 									<a href="#" class="btn-default btn-filters-apply btn-shutter-close-js"><span>Показать</span></a>
 									<a href="#" class="btn-shutter-close btn-shutter-close-js"><i>&nbsp;</i><span>Закрыть</span></a>
 								</div>
@@ -140,7 +148,7 @@
 											<div class="accordion__header__text">На карте</div>
 											<i class="accordion__header__angle">&nbsp;</i>
 										</div>
-										<div class="shops-by-map tab-content-js active-tab" id="shopsMapView">
+										<div class="shops-by-map tab-content-js" id="shopsMapView">
 											<div id="shops-map" class="shops-map"></div>
 										</div>
 										<!--shops-by-map end-->
@@ -154,10 +162,7 @@
 											<!--shops-by-list layout-->
 											<div class="shops-by-list__frame shops-append-loader-js">
 												<div class="shops-list shops-list-js" data-item-group="brest">
-													@@loop("_tpl_shops-list--items.html", "ajax/brest.json")
-												</div>
-												<div class="shops-list shops-list-js" data-item-group="minsk">
-													@@loop("_tpl_shops-list--items.html", "ajax/minsk.json")
+													@@loop("_tpl_shops-list--items.html", "ajax/shops.json")
 												</div>
 											</div>
 											<!--shops-by-list layout end-->

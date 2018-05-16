@@ -2581,7 +2581,7 @@ a.bag__inner:hover
 	display: block
 	+font-alt-bold
 	+font(20px, 24px)
-	margin-bottom: 0.3em
+	margin-bottom: 0.5em
 	color: $title-color
 
 .map-popup__subtitle
@@ -3161,11 +3161,15 @@ a.bag__inner:hover
 
 .accordion__hand
 	position: relative
-	border-top: 2px solid $border-color
+	border: solid $border-color
+	border-width: 0 0 1px
 	padding: nth($accordion-space, 1) nth($accordion-space, 2)
 	padding-right: nth($accordion-space, 1)*2+nth($accordion-angle-size, 2)
 	cursor: pointer
 	user-select: none
+
+	&:first-child
+		border-top-width: 1px
 
 	+media('<tab-lg')
 		padding: nth($accordion-space--sm, 1) nth($accordion-space--sm, 2)
@@ -3193,7 +3197,7 @@ a.bag__inner:hover
 		right: nth($accordion-space, 2)
 		top: 50%
 		+size(nth($accordion-angle-size, 1), nth($accordion-angle-size, 2))
-		border: 2px solid $border-color
+		border: 2px solid currentColor
 		border-radius: 50%
 		margin-top: -#{round(nth($accordion-angle-size, 2)*0.5)}
 		backface-visibility: hidden
@@ -3211,7 +3215,7 @@ a.bag__inner:hover
 			margin: -#{round(nth($accordion-angle-line-size, 2)/2)} 0 0 -#{round(nth($accordion-angle-line-size, 1)/2)}
 			backface-visibility: hidden
 			+size(nth($accordion-angle-line-size, 1), nth($accordion-angle-line-size, 2))
-			background-color: $border-color
+			background-color: currentColor
 			will-change: transform
 			transition:
 				property: transform
@@ -3231,7 +3235,7 @@ a.bag__inner:hover
 
 	// hover, active
 	.no-touchevents &:hover, &.is-open
-		background-color: $bg-color-alt
+		color: $link-color
 
 	// active
 	&.is-open, &.active-tab

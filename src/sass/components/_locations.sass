@@ -7,6 +7,11 @@
 	overflow: hidden
 	position: relative
 
+	&.no-shops-items
+		.shops-holder
+			overflow: hidden !important
+			height: 0 !important
+
 /* shops-view-switcher
 .shops-view-switcher
 	position: relative
@@ -23,6 +28,34 @@
 
 /* shops-view-switcher end
 
+/* shops-filters
+.shops-filters
+	margin-bottom: $bottom-space--md
+
+	&:last-child
+		margin-bottom: 0
+
+	hr
+		margin-bottom: 3rem
+
+	.select.form-minimal select
+		+font-bold
+		font-size: 14px
+		letter-spacing: 0.2em
+		text-transform: uppercase
+
+.shops-filters__item
+	line-height: 1
+	margin-bottom: $bottom-space
+
+	&:last-child
+		margin-bottom: 0
+
+	.radio-label, .check-label
+		margin-bottom: 0
+
+/* shops-filters end
+
 /* shops-opener
 // переключатели, когда табы трансформируются в аккордион
 .shops
@@ -36,6 +69,13 @@
 /* shops-map
 .shops-by-map
 	height: $shops-map-height
+
+	opacity: 0
+	visibility: hidden
+
+	.no-js &
+		opacity: 1
+		visibility: visible
 
 	+media('<desk-lg')
 		height: $shops-map-height--md
@@ -86,6 +126,13 @@
 	position: relative
 	background: $bg-color
 
+	opacity: 0
+	visibility: hidden
+
+	.no-js &
+		opacity: 1
+		visibility: visible
+
 	// перебить стили назначенные скриптом
 	+media('<tab-lg')
 		float: none !important
@@ -97,37 +144,65 @@
 		z-index: auto !important
 		visibility: visible !important
 		opacity: 1 !important
-		border-bottom: 2px solid $border-color
 
 .shops-by-list__frame
 	overflow: hidden
 	position: relative
+	
+	+media('<tab-lg')
+		border-bottom: 1px solid $border-color
 
-.shops-list-js
+//.shops-list-js
 	display: none
 
 	&.is-show
 		display: block
 
+.shops-list
+	+margin-horizontal(-50px)
+	margin-bottom: -80px
+	+clear-spacing
+
+	+media('<desk-hd')
+		+margin-horizontal(-20px)
+		margin-bottom: -50px
+
+	+media('<tab-lg')
+		padding: 20px 0
+		margin-bottom: -20px
+
 /* shops-by-list layout end
 
 /* shops-item
 .shops-item
-	padding: $nav-space
-	border-top: 1px solid $border-color
+	display: inline-block
+	vertical-align: top
+	width: #{round-float(100%/4, 2)}
+	padding: 0 50px
+	margin-bottom: 80px
 	background: $bg-color
 	will-change: transform
+	+font(1.6rem, round-float(30/16, 2))
+	letter-spacing: normal
+	//outline: 1px solid red
 
 	&.item-hide
 		display: none
 
+	+media('<desk-hd')
+		padding: 0 20px
+		margin-bottom: 50px
+
+	+media('<desk-lg')
+		width: #{round-float(100%/3, 2)}
+
+	+media('<desk-md')
+		width: #{round-float(100%/2, 2)}
+
 	+media('<tab-lg')
-		padding: 15px $text-layout-space-horizontal--md
+		margin-bottom: 20px
 
-	+media('<mob-lg')
-		padding: 10px $text-layout-space-horizontal--sm 12px
-
-	&.is-active
+	//&.is-active
 		background: $bg-color-alt
 
 		+media('<tab-lg')
@@ -139,8 +214,11 @@
 
 .shops-item__title
 	+font-alt-bold
-	+font(1.8rem, round-float(26/18, 2))
-	padding: 0 0 12px
+	+font(2.4rem, round-float(32/24, 2))
+	padding-bottom: 1em
+
+	+media('<tab-lg')
+		padding-bottom: 0.5em
 
 	a
 		text-decoration: none
@@ -162,9 +240,9 @@
 				cursor: default
 
 .shops-item__list, .shops-item__info
-	color: #333
+	color: $text-color
 	margin-bottom: 1.5rem
-	+font(1.4rem, round-float(18/14, 2))
+	+font(1.6rem, round-float(30/16, 2))
 
 	&:last-child
 		margin-bottom: 0
@@ -176,44 +254,52 @@
 	&:last-child
 		margin-bottom: 0
 
-	&.text-mark
-		+font(1.2rem, round-float(18/12, 2))
-		letter-spacing: 0.05em
-		text-transform: uppercase
-		color: $base-color
+	b
+		+font-medium
 
-	svg
-		$icon-size: 18px
-		//=============
-		display: block
-		position: absolute
-		left: 0
-		top: 50%
-		+size($icon-size)
-		margin-top: -#{round($icon-size/2)}
+.shops-item__footer
+	$height: 24px
+	//==============
 
-		fill: currentColor
+	+media('<tab-lg')
+		display: none
 
-		& ~ span
+	.btn-to-map
+		display: inline-block
+		vertical-align: top
+		color: inherit
+		font-size: 1.6rem
+		line-height: $height
+		height: $height
+
+		svg
 			display: inline-block
-			vertical-align: top
-			margin-left: $icon-size+10
+			vertical-align: middle
+			+size(16px)
+
+		path
+			fill: $base-color
+			
+		& > span
+			border-bottom: 1px solid #9a9a9a
+
+		//hover
+		.no-touchevents &:hover
+			color: $link-color
+
+			path
+				fill: currentColor
+
+			& > span
+				border-color: currentColor
 
 /* shops-item end
 
 // сообщение, если не найдено никаких результатов
 /* filter-no-item
 .shops .filter-no-item
-	position: absolute
-	left: 30px
-	top: 20px
-	width: 500px
-	padding: 26px 30px
-	background: #fff
-	box-shadow: 0 2px 3px rgba(0, 0, 0, 0.4)
-	box-sizing: border-box
-	border: 2px solid #f00
-	z-index: 999
+	+font-d()
+	color: $form-error-color
 
 /* filter-no-item end
 

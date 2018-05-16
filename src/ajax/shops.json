@@ -1,0 +1,650 @@
+[
+  {
+	"id": "001",
+	"country": [
+	  {
+		"id": "by",
+		"title": "Беларусь"
+	  }
+	],
+	"city": [
+	  {
+		"id": "minsk",
+		"title": "г. Минск"
+	  }
+	],
+	"_tempCityTitle": "г. Минск",
+	"title": "ОАО «Трикотажторг»",
+	"address": "г. Минск, ул. Платонова, 30",
+	"coord": "53.9114278, 27.5986889",
+	"phones": "(017) 292-90-43, 292-42-44",
+	"time": "",
+	"site": "",
+	"siteOpt": "",
+	"volumeSales": [
+	  {
+		"id": "wholesale",
+		"title": "Оптом"
+	  }
+	],
+	"shopType": [
+	  {
+		"id": "dealers",
+		"title": "Дилер"
+	  }
+	]
+  },
+  {
+	"id": "002",
+	"country": [
+	  {
+		"id": "by",
+		"title": "Беларусь"
+	  }
+	],
+	"city": [
+	  {
+		"id": "minsk",
+		"title": "г. Минск"
+	  }
+	],
+	"_tempCityTitle": "г. Минск",
+	"title": "",
+	"address": "пл. Независимости, 3-2, «ТЦ Столица», п. 325 (нижний уровень)",
+	"coord": "53.8955867, 27.5479633",
+	"phones": "(017) 327-62-11",
+	"time": "",
+	"site": "",
+	"siteOpt": "",
+	"volumeSales": [
+	  {
+		"id": "retail",
+		"title": "В розницу"
+	  }
+	],
+	"shopType": [
+	  {
+		"id": "stores",
+		"title": "Фирменный магазин"
+	  }
+	]
+  },
+  {
+	"id": "003",
+	"country": [
+	  {
+		"id": "by",
+		"title": "Беларусь"
+	  }
+	],
+	"city": [
+	  {
+		"id": "minsk",
+		"title": "г. Минск"
+	  }
+	],
+	"_tempCityTitle": "г. Минск",
+	"title": "",
+	"address": "ул. Независимости, 58-7А",
+	"coord": "53.9178642, 27.5891664",
+	"phones": "(017) 292-44-94",
+	"time": "",
+	"site": "",
+	"siteOpt": "",
+	"volumeSales": [
+	  {
+		"id": "retail",
+		"title": "В розницу"
+	  }
+	],
+	"shopType": [
+	  {
+		"id": "stores",
+		"title": "Фирменный магазин"
+	  }
+	]
+  },
+  {
+	"id": "004",
+	"country": [
+	  {
+		"id": "by",
+		"title": "Беларусь"
+	  }
+	],
+	"city": [
+	  {
+		"id": "minsk",
+		"title": "г. Минск"
+	  }
+	],
+	"_tempCityTitle": "г. Минск",
+	"title": "",
+	"address": "ул. Бобруйская, 15",
+	"coord": "53.8915984, 27.5526863",
+	"phones": "",
+	"time": "",
+	"site": "",
+	"siteOpt": "",
+	"volumeSales": [
+	  {
+		"id": "retail",
+		"title": "В розницу"
+	  }
+	],
+	"shopType": [
+	  {
+		"id": "partners",
+		"title": "Партнер"
+	  }
+	]
+  },
+  {
+	"id": "005",
+	"country": [
+	  {
+		"id": "by",
+		"title": "Беларусь"
+	  }
+	],
+	"city": [
+	  {
+		"id": "minsk",
+		"title": "г. Минск"
+	  }
+	],
+	"_tempCityTitle": "г. Минск",
+	"title": "",
+	"address": "ул. Веры Хоружей, 42",
+	"coord": "53.9235093, 27.5548884",
+	"phones": "",
+	"time": "",
+	"site": "",
+	"siteOpt": "",
+	"volumeSales": [
+	  {
+		"id": "retail",
+		"title": "В розницу"
+	  }
+	],
+	"shopType": [
+	  {
+		"id": "partners",
+		"title": "Партнер"
+	  }
+	]
+  },
+  {
+	"id": "006",
+	"country": [
+	  {
+		"id": "by",
+		"title": "Беларусь"
+	  }
+	],
+	"city": [
+	  {
+		"id": "minsk",
+		"title": "г. Минск"
+	  }
+	],
+	"_tempCityTitle": "г. Минск",
+	"title": "",
+	"address": "ул. Романовская Слобода, 1",
+	"coord": "53.9019876, 27.5476277",
+	"phones": "",
+	"time": "",
+	"site": "",
+	"siteOpt": "",
+	"volumeSales": [
+	  {
+		"id": "retail",
+		"title": "В розницу"
+	  }
+	],
+	"shopType": [
+	  {
+		"id": "partners",
+		"title": "Партнер"
+	  }
+	]
+  },
+  {
+	"id": "007",
+	"country": [
+	  {
+		"id": "by",
+		"title": "Беларусь"
+	  }
+	],
+	"city": [
+	  {
+		"id": "minsk",
+		"title": "г. Минск"
+	  }
+	],
+	"_tempCityTitle": "г. Минск",
+	"title": "",
+	"address": "пр-т Независимости, 54, «ЦУМ» (женская, детская секции)",
+	"coord": "53.9161863, 27.586171",
+	"phones": "",
+	"time": "",
+	"site": "",
+	"siteOpt": "",
+	"volumeSales": [
+	  {
+		"id": "retail",
+		"title": "В розницу"
+	  }
+	],
+	"shopType": [
+	  {
+		"id": "sections",
+		"title": "Секция"
+	  }
+	]
+  },
+  {
+	"id": "101",
+	"country": [
+	  {
+		"id": "by",
+		"title": "Беларусь"
+	  }
+	],
+	"city": [
+	  {
+		"id": "brest",
+		"title": "г. Брест"
+	  }
+	],
+	"_tempCityTitle": "г. Брест",
+	"title": "Филиал № 4 в г. Бресте",
+	"address": "г. Брест, ул. Заводская 2-я, 3а",
+	"coord": "52.1014786, 23.7398664",
+	"phones": "(0162) 44-90-36",
+	"time": "",
+	"site": "",
+	"siteOpt": "",
+	"volumeSales": [
+	  {
+		"id": "wholesale",
+		"title": "Оптом"
+	  }
+	],
+	"shopType": [
+	  {
+		"id": "branches",
+		"title": "Филиал"
+	  }
+	]
+  },
+  {
+	"id": "102",
+	"country": [
+	  {
+		"id": "by",
+		"title": "Беларусь"
+	  }
+	],
+	"city": [
+	  {
+		"id": "brest",
+		"title": "г. Брест"
+	  }
+	],
+	"_tempCityTitle": "г. Брест",
+	"title": "",
+	"address": "ул. Машерова, 39",
+	"coord": "52.0870645, 23.7015547",
+	"phones": "",
+	"time": "",
+	"site": "",
+	"siteOpt": "",
+	"volumeSales": [
+	  {
+		"id": "retail",
+		"title": "В розницу"
+	  }
+	],
+	"shopType": [
+	  {
+		"id": "stores",
+		"title": "Фирменный магазин"
+	  }
+	]
+  },
+  {
+	"id": "111",
+	"country": [
+	  {
+		"id": "by",
+		"title": "Беларусь"
+	  }
+	],
+	"city": [
+	  {
+		"id": "grodno",
+		"title": "г. Гродно"
+	  }
+	],
+	"_tempCityTitle": "г. Гродно",
+	"title": "УП «Торгодежда» г. Гродно",
+	"address": "г. Гродно, ул. Дзержинского, 94а",
+	"coord": "53.6993888, 23.8399021",
+	"phones": "(0152) 74-28-05",
+	"time": "",
+	"site": "",
+	"siteOpt": "",
+	"volumeSales": [
+	  {
+		"id": "wholesale",
+		"title": "Оптом"
+	  }
+	],
+	"shopType": [
+	  {
+		"id": "dealers",
+		"title": "Дилер"
+	  }
+	]
+  },
+  {
+	"id": "112",
+	"country": [
+	  {
+		"id": "by",
+		"title": "Беларусь"
+	  }
+	],
+	"city": [
+	  {
+		"id": "grodno",
+		"title": "г. Гродно"
+	  }
+	],
+	"_tempCityTitle": "г. Гродно",
+	"title": "",
+	"address": "ул. Советских пограничников, 106-58",
+	"coord": "53.6715968, 23.8041765",
+	"phones": "",
+	"time": "",
+	"site": "",
+	"siteOpt": "",
+	"volumeSales": [
+	  {
+		"id": "retail",
+		"title": "В розницу"
+	  }
+	],
+	"shopType": [
+	  {
+		"id": "partners",
+		"title": "Партнер"
+	  }
+	]
+  },
+  {
+	"id": "121",
+	"country": [
+	  {
+		"id": "by",
+		"title": "Беларусь"
+	  }
+	],
+	"city": [
+	  {
+		"id": "vitebsk",
+		"title": "г. Витебск"
+	  }
+	],
+	"_tempCityTitle": "г. Витебск",
+	"title": "Филиал № 1 в г. Витебске",
+	"address": "г. Витебск, ул. Горького, 62",
+	"coord": "55.1725918, 30.1566773",
+	"phones": "(0212) 34-26-71, 34-26-60",
+	"time": "",
+	"site": "",
+	"siteOpt": "",
+	"volumeSales": [
+	  {
+		"id": "wholesale",
+		"title": "Оптом"
+	  }
+	],
+	"shopType": [
+	  {
+		"id": "branches",
+		"title": "Филиал"
+	  }
+	]
+  },
+  {
+	"id": "0001",
+	"country": [
+	  {
+		"id": "ru",
+		"title": "Россия"
+	  }
+	],
+	"city": [
+	  {
+		"id": "moscow",
+		"title": "г. Москва"
+	  }
+	],
+	"_tempCityTitle": "г. Москва",
+	"title": "ИП Логинова И. В.",
+	"address": "107553, г. Москва, ул. Большая Черкизовская, 30 а",
+	"coord": "55.8003615, 37.740917",
+	"phones": "+7(495) 926-11-12",
+	"fax": "741-78-31",
+	"email": "bonik07@gmail.com",
+	"site": "www.eliut.ru",
+	"siteOpt": "",
+	"time": "",
+	"volumeSales": [
+	  {
+		"id": "wholesale",
+		"title": "Оптом"
+	  }
+	],
+	"shopType": ""
+  },
+  {
+	"id": "0002",
+	"country": [
+	  {
+		"id": "ru",
+		"title": "Россия"
+	  }
+	],
+	"city": [
+	  {
+		"id": "moscow",
+		"title": "г. Москва"
+	  }
+	],
+	"_tempCityTitle": "г. Москва",
+	"title": "ООО «Армис М»",
+	"address": "г. Москва, ул. Маршала Федоренко, д.3",
+	"coord": "55.879003, 37.492689",
+	"phones": "(+7(495) 486-30-84, +7(499) 753-05-58",
+	"fax": "",
+	"email": "",
+	"site": "www.armis-m.ru",
+	"siteOpt": "",
+	"time": "",
+	"volumeSales": [
+	  {
+		"id": "wholesale",
+		"title": "Оптом"
+	  }
+	],
+	"shopType": ""
+  },
+  {
+	"id": "0003",
+	"country": [
+	  {
+		"id": "ru",
+		"title": "Россия"
+	  }
+	],
+	"city": [
+	  {
+		"id": "moscow",
+		"title": "г. Москва"
+	  }
+	],
+	"_tempCityTitle": "г. Москва",
+	"title": "ООО «Дивес»",
+	"address": "Фирменная секция розничной торговли №1, ст.м. Алтуфьево, Алтуфьевское шоссе, 80, ТЦ «Арфа», 2 этаж",
+	"coord": "55.894378, 37.588208",
+	"phones": "(017) 292-90-43, 292-42-44",
+	"email": "",
+	"site": "",
+	"siteOpt": "",
+	"time": "ежедневно с 10-00 до 20-00 <br>без перерыва и выходных",
+	"volumeSales": [
+	  {
+		"id": "retail",
+		"title": "В розницу"
+	  }
+	],
+	"shopType": ""
+  },
+  {
+	"id": "0101",
+	"country": [
+	  {
+		"id": "ru",
+		"title": "Россия"
+	  }
+	],
+	"city": [
+	  {
+		"id": "peterburg",
+		"title": "г. Санкт-Петербург "
+	  }
+	],
+	"_tempCityTitle": "г. Санкт-Петербург",
+	"title": "ООО «Оптический центр» (Дистрибьютор по Северо-Западному округу)",
+	"address": "197374, г. Санкт-Петербург, ул. Оптиков, 4",
+	"coord": "59.9954862, 30.2485154",
+	"phones": "+7(812) 655-79-39 доб.100",
+	"email": "optcenter@yandex.ru",
+	"site": "www.optcenter.net",
+	"siteOpt": "www.optcenter.ru",
+	"time": "",
+	"volumeSales": [
+	  {
+		"id": "wholesale",
+		"title": "Оптом"
+	  }
+	],
+	"shopType": ""
+  },
+  {
+	"id": "0102",
+	"country": [
+	  {
+		"id": "ru",
+		"title": "Россия"
+	  }
+	],
+	"city": [
+	  {
+		"id": "peterburg",
+		"title": "г. Санкт-Петербург "
+	  }
+	],
+	"_tempCityTitle": "г. Санкт-Петербург",
+	"title": "",
+	"address": "ул. Ефимова 2, ТРЦ «ПИК», (3й эт., второй блок эскалаторов)",
+	"coord": "59.92645, 30.3206291",
+	"phones": "",
+	"time": "",
+	"site": "",
+	"siteOpt": "",
+	"volumeSales": [
+	  {
+		"id": "retail",
+		"title": "В розницу"
+	  }
+	],
+	"shopType": ""
+  },
+  {
+	"id": "1001",
+	"country": [
+	  {
+		"id": "kz",
+		"title": "Казахстан"
+	  }
+	],
+	"city": [
+	  {
+		"id": "almaty",
+		"title": "г. Алматы"
+	  }
+	],
+	"_tempCityTitle": "г. Алматы",
+	"title": "ТОО «Аввакум»",
+	"address": "пр. Рыскулова, 52, оф. 204",
+	"coord": "43.2711708, 76.8829077",
+	"phones": "+7(727) 384-35-53",
+	"fax": "+7(727) 384-35-53",
+	"email": "avva_kym@mail.ru",
+	"site": "",
+	"siteOpt": "",
+	"time": "",
+	"volumeSales": [
+	  {
+		"id": "wholesale",
+		"title": "Оптом"
+	  },
+	  {
+		"id": "retail",
+		"title": "В розницу"
+	  }
+	],
+	"shopType": ""
+  },
+  {
+	"id": "1101",
+	"country": [
+	  {
+		"id": "kz",
+		"title": "Казахстан"
+	  }
+	],
+	"city": [
+	  {
+		"id": "astana",
+		"title": "г. Астана"
+	  }
+	],
+	"_tempCityTitle": "г. Астана",
+	"title": "ОАО «Трикотажторг»",
+	"address": "ул. Кенесары, 40, БЦ «7 Континент», офис 203",
+	"coord": "51.1653431, 71.4310357",
+	"phones": "+7(701) 951-92-10, +7(775) 915-05-62, +7(7172) 968-900",
+	"fax": "968-901",
+	"email": "astana@16line.kz, www.16line.kz",
+	"site": "",
+	"siteOpt": "",
+	"time": "",
+	"volumeSales": [
+	  {
+		"id": "wholesale",
+		"title": "Оптом"
+	  },
+	  {
+		"id": "retail",
+		"title": "В розницу"
+	  }
+	],
+	"shopType": ""
+  }
+]
