@@ -4283,7 +4283,7 @@ $(document).ready(function () {
 	/*! shops location */
 	shopsLocation();
 
-	stickyInit();
+	/* stickyInit(); */
 	/* for testing validate forms */
 	/*! formSuccessExample(); */
 

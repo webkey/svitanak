@@ -38,14 +38,21 @@
 	hr
 		margin-bottom: 3rem
 
-	.select.form-minimal select
-		+font-bold
-		font-size: 14px
-		letter-spacing: 0.2em
-		text-transform: uppercase
+	.select
+		margin: 0
 
-	.select.hide
-		display: none
+		&.form-minimal select
+			+font-bold
+			font-size: 14px
+			letter-spacing: 0.2em
+			text-transform: uppercase
+
+		&.disabled
+			&::before, &::after
+				background-color: $disabled-color
+
+		&.hide
+			display: none
 
 .shops-filters__item
 	line-height: 1

@@ -213,6 +213,7 @@ gulp.task('build', ['cleanDistFolder', 'htmlCompilation', 'copyImgToDist', 'sass
 			safe: true,
 			ignore: /\/\*\*\s*\n([^\*]*(\*[^\/])?)*\*\//g // Не удалять /**...*/
 		}))
+		// .pipe(removeEmptyLines())
 		.pipe(gulp.dest('dist/js'));
 
 	gulp.src(['!src/js/temp/**/*.js', '!src/js/**/temp-*.js', '!src/js/common.js', 'src/js/*.js']) // Переносим скрипты в продакшен
