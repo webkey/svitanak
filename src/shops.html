@@ -260,8 +260,8 @@
 													<!--location filter-->
 													<div class="shops-filters shops-filters-js">
 														<div class="shops-filters__item">
-															<div class="select form-minimal">
-																<select id="selectCountry" class="field-effects-js">
+															<div class="select shops-select-country form-minimal">
+																<select class="field-effects-js">
 														<option value="">Страна</option>
 														<option value="by">Беларусь</option>
 														<option value="ru">Россия</option>
@@ -270,13 +270,32 @@
 															</div>
 														</div>
 														<div class="shops-filters__item">
-															<div class="select form-minimal">
-																<select id="selectCity" class="field-effects-js">
+															<div class="select shops-select-city form-minimal" data-country="">
+																<select class="field-effects-js">
+														<option value="">Город</option>
+													</select>
+															</div>
+															<div class="select shops-select-city form-minimal hide" data-country="by">
+																<select class="field-effects-js">
 														<option value="">Город</option>
 														<option value="minsk">Минск</option>
 														<option value="brest">Брест</option>
 														<option value="vitebsk">Витебск</option>
 														<option value="grodno">Гродно</option>
+													</select>
+															</div>
+															<div class="select shops-select-city form-minimal hide" data-country="ru">
+																<select class="field-effects-js">
+														<option value="">Город</option>
+														<option value="moscow">Москва</option>
+														<option value="peterburg">Санкт-Петербург</option>
+													</select>
+															</div>
+															<div class="select shops-select-city form-minimal hide" data-country="kz">
+																<select class="field-effects-js">
+														<option value="">Город</option>
+														<option value="almaty">Алматы</option>
+														<option value="astana">Астана</option>
 													</select>
 															</div>
 														</div>
@@ -364,7 +383,7 @@
 														<div class="shops-by-list__frame shops-append-loader-js">
 															<div class="shops-list shops-list-js" data-item-group="brest">
 																<div class="shops-item" data-location-index="001">
-																	<div class="shops-item__title"><a href="#">г. Минск</a></div>
+																	<div class="shops-item__title">г. Минск</div>
 																	<div class="shops-item__adr">г. Минск, ул. Платонова, 30</div>
 																	<div class="shops-item__list">
 																		<div class="shops-item__list__item">
@@ -379,7 +398,7 @@
 																	</div>
 																</div>
 																<div class="shops-item" data-location-index="002">
-																	<div class="shops-item__title"><a href="#">г. Минск</a></div>
+																	<div class="shops-item__title">г. Минск</div>
 																	<div class="shops-item__adr">пл. Независимости, 3-2, «ТЦ Столица», п. 325 (нижний уровень)</div>
 																	<div class="shops-item__list">
 																		<div class="shops-item__list__item">
@@ -394,7 +413,7 @@
 																	</div>
 																</div>
 																<div class="shops-item" data-location-index="003">
-																	<div class="shops-item__title"><a href="#">г. Минск</a></div>
+																	<div class="shops-item__title">г. Минск</div>
 																	<div class="shops-item__adr">ул. Независимости, 58-7А</div>
 																	<div class="shops-item__list">
 																		<div class="shops-item__list__item">
@@ -409,7 +428,7 @@
 																	</div>
 																</div>
 																<div class="shops-item" data-location-index="004">
-																	<div class="shops-item__title"><a href="#">г. Минск</a></div>
+																	<div class="shops-item__title">г. Минск</div>
 																	<div class="shops-item__adr">ул. Бобруйская, 15</div>
 																	<div class="shops-item__list">
 																	</div>
@@ -421,7 +440,7 @@
 																	</div>
 																</div>
 																<div class="shops-item" data-location-index="005">
-																	<div class="shops-item__title"><a href="#">г. Минск</a></div>
+																	<div class="shops-item__title">г. Минск</div>
 																	<div class="shops-item__adr">ул. Веры Хоружей, 42</div>
 																	<div class="shops-item__list">
 																	</div>
@@ -433,7 +452,7 @@
 																	</div>
 																</div>
 																<div class="shops-item" data-location-index="006">
-																	<div class="shops-item__title"><a href="#">г. Минск</a></div>
+																	<div class="shops-item__title">г. Минск</div>
 																	<div class="shops-item__adr">ул. Романовская Слобода, 1</div>
 																	<div class="shops-item__list">
 																	</div>
@@ -445,7 +464,7 @@
 																	</div>
 																</div>
 																<div class="shops-item" data-location-index="007">
-																	<div class="shops-item__title"><a href="#">г. Минск</a></div>
+																	<div class="shops-item__title">г. Минск</div>
 																	<div class="shops-item__adr">пр-т Независимости, 54, «ЦУМ» (женская, детская секции)</div>
 																	<div class="shops-item__list">
 																	</div>
@@ -457,7 +476,7 @@
 																	</div>
 																</div>
 																<div class="shops-item" data-location-index="101">
-																	<div class="shops-item__title"><a href="#">г. Брест</a></div>
+																	<div class="shops-item__title">г. Брест</div>
 																	<div class="shops-item__adr">г. Брест, ул. Заводская 2-я, 3а</div>
 																	<div class="shops-item__list">
 																		<div class="shops-item__list__item">
@@ -472,7 +491,7 @@
 																	</div>
 																</div>
 																<div class="shops-item" data-location-index="102">
-																	<div class="shops-item__title"><a href="#">г. Брест</a></div>
+																	<div class="shops-item__title">г. Брест</div>
 																	<div class="shops-item__adr">ул. Машерова, 39</div>
 																	<div class="shops-item__list">
 																	</div>
@@ -484,7 +503,7 @@
 																	</div>
 																</div>
 																<div class="shops-item" data-location-index="111">
-																	<div class="shops-item__title"><a href="#">г. Гродно</a></div>
+																	<div class="shops-item__title">г. Гродно</div>
 																	<div class="shops-item__adr">г. Гродно, ул. Дзержинского, 94а</div>
 																	<div class="shops-item__list">
 																		<div class="shops-item__list__item">
@@ -499,7 +518,7 @@
 																	</div>
 																</div>
 																<div class="shops-item" data-location-index="112">
-																	<div class="shops-item__title"><a href="#">г. Гродно</a></div>
+																	<div class="shops-item__title">г. Гродно</div>
 																	<div class="shops-item__adr">ул. Советских пограничников, 106-58</div>
 																	<div class="shops-item__list">
 																	</div>
@@ -511,7 +530,7 @@
 																	</div>
 																</div>
 																<div class="shops-item" data-location-index="121">
-																	<div class="shops-item__title"><a href="#">г. Витебск</a></div>
+																	<div class="shops-item__title">г. Витебск</div>
 																	<div class="shops-item__adr">г. Витебск, ул. Горького, 62</div>
 																	<div class="shops-item__list">
 																		<div class="shops-item__list__item">
@@ -526,7 +545,7 @@
 																	</div>
 																</div>
 																<div class="shops-item" data-location-index="0001">
-																	<div class="shops-item__title"><a href="#">г. Москва</a></div>
+																	<div class="shops-item__title">г. Москва</div>
 																	<div class="shops-item__adr">107553, г. Москва, ул. Большая Черкизовская, 30 а</div>
 																	<div class="shops-item__list">
 																		<div class="shops-item__list__item">
@@ -550,7 +569,7 @@
 																	</div>
 																</div>
 																<div class="shops-item" data-location-index="0002">
-																	<div class="shops-item__title"><a href="#">г. Москва</a></div>
+																	<div class="shops-item__title">г. Москва</div>
 																	<div class="shops-item__adr">г. Москва, ул. Маршала Федоренко, д.3</div>
 																	<div class="shops-item__list">
 																		<div class="shops-item__list__item">
@@ -568,7 +587,7 @@
 																	</div>
 																</div>
 																<div class="shops-item" data-location-index="0003">
-																	<div class="shops-item__title"><a href="#">г. Москва</a></div>
+																	<div class="shops-item__title">г. Москва</div>
 																	<div class="shops-item__adr">Фирменная секция розничной торговли №1, ст.м. Алтуфьево, Алтуфьевское шоссе, 80, ТЦ «Арфа», 2 этаж</div>
 																	<div class="shops-item__list">
 																		<div class="shops-item__list__item">
@@ -586,7 +605,7 @@
 																	</div>
 																</div>
 																<div class="shops-item" data-location-index="0101">
-																	<div class="shops-item__title"><a href="#">г. Санкт-Петербург</a></div>
+																	<div class="shops-item__title">г. Санкт-Петербург</div>
 																	<div class="shops-item__adr">197374, г. Санкт-Петербург, ул. Оптиков, 4</div>
 																	<div class="shops-item__list">
 																		<div class="shops-item__list__item">
@@ -610,7 +629,7 @@
 																	</div>
 																</div>
 																<div class="shops-item" data-location-index="0102">
-																	<div class="shops-item__title"><a href="#">г. Санкт-Петербург</a></div>
+																	<div class="shops-item__title">г. Санкт-Петербург</div>
 																	<div class="shops-item__adr">ул. Ефимова 2, ТРЦ «ПИК», (3й эт., второй блок эскалаторов)</div>
 																	<div class="shops-item__list">
 																	</div>
@@ -622,7 +641,7 @@
 																	</div>
 																</div>
 																<div class="shops-item" data-location-index="1001">
-																	<div class="shops-item__title"><a href="#">г. Алматы</a></div>
+																	<div class="shops-item__title">г. Алматы</div>
 																	<div class="shops-item__adr">пр. Рыскулова, 52, оф. 204</div>
 																	<div class="shops-item__list">
 																		<div class="shops-item__list__item">
@@ -643,7 +662,7 @@
 																	</div>
 																</div>
 																<div class="shops-item" data-location-index="1101">
-																	<div class="shops-item__title"><a href="#">г. Астана</a></div>
+																	<div class="shops-item__title">г. Астана</div>
 																	<div class="shops-item__adr">ул. Кенесары, 40, БЦ «7 Континент», офис 203</div>
 																	<div class="shops-item__list">
 																		<div class="shops-item__list__item">

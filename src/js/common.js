@@ -3171,7 +3171,7 @@ function initMultiAccordion() {
 /**
  * !multi accordion initial
  * */
-function ininitNavAccordion() {
+function initNavAccordion() {
 
 	var navMenu = '.nav-js';
 
@@ -3517,7 +3517,8 @@ function shopsLocation() {
 		$mapId = $(mapId),
 		baseImageURL = 'img/',
 		// $selectCity = $('#selectCity'),
-		jsonPath = shopsJsonPath, // объявить на странице html
+		jsonPath = shopsJsonPath, // объявить на странице html,
+		$selectCountry = $('select', '.shops-select-country'),
 		// currentCity = $selectCity.attr('data-current'),
 		$shopsItem = $('.shops-item'),
 		shopsItemActiveClass = 'is-active',
@@ -3707,8 +3708,7 @@ function shopsLocation() {
 					id = item.id,
 					cityId = item.city[0].id;
 
-				console.log("cityId: ", cityId);
-
+				// console.log("cityId: ", cityId);
 				/*toggle item on shops list*/
 				$('[data-location-index = ' + id + ']').removeClass(shopsItemHideClass);
 
@@ -3804,15 +3804,13 @@ function shopsLocation() {
 			addCountLoader();
 
 			var $checkbox = $('input:checkbox:checked', $shopsFilters),
-				$radio = $('input:radio:checked', $shopsFilters),
-				$selectCountry = $('#selectCountry'),
-				selectCity = $('#selectCity');
+				$radio = $('input:radio:checked', $shopsFilters);
 
-			// filters by $selectCountry
+			// filters by selectCountry
 			if ($selectCountry.val().length && $selectCountry.val() !== 0) {
 				$.each($selectCountry, function () {
 					// создаем массив из атрибутов фильтра
-					console.log("$(this).val(): ", $(this).val());
+					// console.log("$(this).val(): ", $(this).val());
 					if(!!$(this).val().length){
 						filterTags.push($(this).val());
 					}
@@ -3821,11 +3819,17 @@ function shopsLocation() {
 				createNewResult('or', 'country');
 			}
 
+			var $curSelectCity = $('.shops-select-city');
+
+			$curSelectCity.not().addClass('hide');
+			$curSelectCity.filter('[data-country="' + $selectCountry.val() + '"]').removeClass('hide');
+
 			// filters by selectCity
-			if (selectCity.val().length && selectCity.val() !== 0) {
-				$.each(selectCity, function () {
+			var $selectCity = $('select', '.shops-select-city').filter(':visible');
+			if ($selectCity.val().length && $selectCity.val() !== 0) {
+				$.each($selectCity, function () {
 					// создаем массив из атрибутов фильтра
-					console.log("$(this).val(): ", $(this).val());
+					// console.log("$(this).val(): ", $(this).val());
 					if(!!$(this).val().length){
 						filterTags.push($(this).val());
 					}
@@ -3854,7 +3858,7 @@ function shopsLocation() {
 				createNewResult('or', 'shopType');
 			}
 
-			console.log("filterTags: ", filterTags);
+			// console.log("filterTags: ", filterTags);
 
 			reDrawNewCitiesMarks(jsonResult);
 
@@ -4244,20 +4248,12 @@ function formSuccessExample() {
  * =========== !ready document, load/resize window ===========
  */
 
-$(window).on('load', function () {
-	// add functions
-});
-
-$(window).on('debouncedresize', function () {
-	// $(document.body).trigger("sticky_kit:recalc");
-});
-
 $(document).ready(function () {
 	placeholderInit();
 	printShow(); 
 	inputToggleFocusClass();
 	inputHasValueClass();
-	// inputFilledClass();
+	/*! inputFilledClass(); */
 	customSelect($('select.cselect'));
 	fileInput();
 	fullPageInitial();
@@ -4275,24 +4271,23 @@ $(document).ready(function () {
 	multiFiltersInit();
 	sortingOrder();
 	initMultiAccordion();
-	ininitNavAccordion();
+	initNavAccordion();
 	popupInitial();
 	spinnerInit($(".spinner-js"));
-	// tooltipInit();
+	/*! tooltipInit(); */
 	orderCalculation();
 	onlyNumberInput();
 	textSlide();
 	contactsMap();
 
-	// shops location
+	/*! shops location */
 	shopsLocation();
 
 	stickyInit();
 	/* for testing validate forms */
-	// formSuccessExample();
+	/*! formSuccessExample(); */
 
-	/*удалить после программирования*/
-	// $('.news-preview .news-preview__text').shave(60);
+	/*! удалить после программирования */
 	var llength = 120;
 	$.each($('.news-preview__text'), function () {
 		var $this = $(this);

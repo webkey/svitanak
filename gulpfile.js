@@ -21,7 +21,9 @@ var gulp = require('gulp'), // Подключаем Gulp
 	fs = require('fs'), // For compiling modernizr.min.js
 	modernizr = require('modernizr'), // For compiling modernizr.min.js
 	config = require('./modernizr-config'), // Path to modernizr-config.json
-	replace = require('gulp-string-replace')
+	replace = require('gulp-string-replace'),
+	strip = require('gulp-strip-comments'), // Удалить комментарии
+	removeEmptyLines = require('gulp-remove-empty-lines')
 	;
 
 gulp.task('htmlCompilation', function () { // Таск формирования ДОМ страниц
@@ -197,6 +199,7 @@ gulp.task('build', ['cleanDistFolder', 'htmlCompilation', 'copyImgToDist', 'sass
 		.pipe(gulp.dest('dist/video'));
 
 	gulp.src('src/css/*.css')
+		.pipe(removeEmptyLines())
 		.pipe(gulp.dest('dist/css'));
 
 	gulp.src('src/fonts/**/*') // Переносим шрифты в продакшен
@@ -205,7 +208,14 @@ gulp.task('build', ['cleanDistFolder', 'htmlCompilation', 'copyImgToDist', 'sass
 	gulp.src('src/assets/**/*') // Переносим дополнительные файлы в продакшен
 		.pipe(gulp.dest('dist/assets'));
 
-	gulp.src(['!src/js/temp/**/*.js', '!src/js/**/temp-*.js', 'src/js/*.js']) // Переносим скрипты в продакшен
+	gulp.src('src/js/common.js')
+		.pipe(strip({
+			safe: true,
+			ignore: /\/\*\*\s*\n([^\*]*(\*[^\/])?)*\*\//g // Не удалять /**...*/
+		}))
+		.pipe(gulp.dest('dist/js'));
+
+	gulp.src(['!src/js/temp/**/*.js', '!src/js/**/temp-*.js', '!src/js/common.js', 'src/js/*.js']) // Переносим скрипты в продакшен
 		.pipe(gulp.dest('dist/js'));
 
 	gulp.src(['!src/__*.html', '!src/temp*.html', '!src/_tpl_*.html', 'src/*.html']) // Переносим HTML в продакшен
