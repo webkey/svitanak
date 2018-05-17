@@ -8474,6 +8474,11 @@ a.c-tr:hover {
 	padding-bottom: 10px;
 }
 
+.c-td.c-td--photo {
+	padding-top: 10px;
+	padding-bottom: 10px;
+}
+
 .c-td.c-td--growth {
 	min-width: 100px;
 }
@@ -12945,6 +12950,10 @@ a.btn-to-basket {
 		padding-right: 0;
 		padding-left: 0;
 	}
+}
+
+.p-card {
+	position: relative;
 }
 
 @media (max-width: 991px) {

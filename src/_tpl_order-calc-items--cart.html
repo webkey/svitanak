@@ -4,7 +4,7 @@
 		<div class="td__val">
 			<a href="product-card.html" class="caption-for-table">
 				<div class="img-for-table">
-					<img src="@@if(context.src){@@src}@@if(!context.src){img/no-img-product.png}" alt="@@title - @@ch.Модель" />
+					<img src="@@if(context.src){@@src}@@if(!context.src){img/no-img-product.png}" alt="@@title" />
 				</div>
 				<div class="title-for-table">
 					@@title
@@ -13,9 +13,45 @@
 		</div>
 	</div>
 
-	<div class="c-td c-td--stock" data-label="Наличие">
+	<!--<div class="c-td c-td&#45;&#45;stock" data-label="Наличие">
 		<div class="c-td__val">
 			<div class="stock-tape" title="На складе осталось @@ch.Остаток"><span class="stock-tape-value" style="width: @@ch.Остаток;">@@ch.Остаток</span></div>
+		</div>
+	</div>-->
+
+	<div class="c-td c-td--model" data-label="Модель">
+		<div class="c-td__val">
+			@@ch.Модель
+		</div>
+	</div>
+
+	<div class="c-td c-td--size" data-label="Размер">
+		<div class="c-td__val">
+			@@ch.Размер
+		</div>
+	</div>
+
+	<div class="c-td c-td--height" data-label="Рост">
+		<div class="c-td__val">
+			@@ch.Рост
+		</div>
+	</div>
+
+	<div class="c-td c-td--length" data-label="Кол-во уп.">
+		<div class="c-td__val">
+			<input class="spinner spinner-js order-calc__number-js" type="text" name="value" value="1" data-id="@@ch.Модель_@@ch.Рост_@@ch.Размер" data-only-number>
+		</div>
+	</div>
+
+	<div class="c-td c-td--pack-length" data-label="В уп.">
+		<div class="c-td__val">
+			<span class="order-calc__packs-js">@@ch.Количество</span> шт.
+		</div>
+	</div>
+
+	<div class="c-td c-td--pack-total" data-label="Всего">
+		<div class="c-td__val">
+			<span class="order-calc__packs-total-js">@@ch.Количество</span> шт.
 		</div>
 	</div>
 
@@ -25,13 +61,7 @@
 		</div>
 	</div>
 
-	<div class="c-td c-td--spinner" data-label="Количество">
-		<div class="c-td__val">
-			<input class="spinner spinner-js order-calc__number-js" type="text" name="value" value="1" data-id="@@ch.Модель_@@ch.Рост_@@ch.Размеры" data-only-number>
-		</div>
-	</div>
-
-	<div class="c-td c-td--price" data-label="Сумма">
+	<div class="c-td c-td--price-total" data-label="Сумма">
 		<div class="c-td__val">
 			<span class="order-calc__price-sum-js">0</span> @@price.unit
 		</div>

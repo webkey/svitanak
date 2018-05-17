@@ -1907,6 +1907,9 @@ a.c-tr:hover
 		//.order-calc & .img-for-table
 			display: none
 
+	&.c-td--photo
+		+padding-vertical(round($grid-space*0.93 - 18))
+
 	&.c-td--growth
 		min-width: 100px
 
@@ -1927,7 +1930,7 @@ a.c-tr:hover
 		.btn-del
 			+size($table__del--size)
 
-	//&.c-td--spinner
+	//&.c-td--length
 		text-align: center
 
 		+media('<tab-lg')
@@ -2069,7 +2072,7 @@ a.c-tr:hover
 				& > span
 					display: block
 
-	//&.c-td--spinner
+	//&.c-td--length
 		+media('<tab-lg')
 			padding: 1rem 0 0
 

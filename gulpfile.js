@@ -23,7 +23,8 @@ var gulp = require('gulp'), // Подключаем Gulp
 	config = require('./modernizr-config'), // Path to modernizr-config.json
 	replace = require('gulp-string-replace'),
 	strip = require('gulp-strip-comments'), // Удалить комментарии
-	removeEmptyLines = require('gulp-remove-empty-lines')
+	removeEmptyLines = require('gulp-remove-empty-lines'), // Удалить пустые строки
+	revts = require('gulp-rev-timestamp')
 	;
 
 gulp.task('htmlCompilation', function () { // Таск формирования ДОМ страниц
@@ -40,6 +41,7 @@ gulp.task('htmlCompilation', function () { // Таск формирования 
 			"indent_with_tabs": true,
 			"max_preserve_newlines": 0
 		}))
+		.pipe(revts())
 		.pipe(gulp.dest('./src/'));
 });
 
@@ -132,7 +134,8 @@ gulp.task('copyLibsScriptsToJs', ['copyJqueryToJs'], function () { // Таск �
 
 		, 'src/js/temp/rAF.js' // resize-sensor for "sticky-sidebar.js"
 		, 'src/libs/resize-sensor/ResizeSensor.min.js' // resize-sensor for "sticky-sidebar.js"
-		, 'src/libs/sticky-sidebar/dist/jquery.sticky-sidebar.min.js' // sticky element on scroll
+		// , 'src/libs/sticky-sidebar/dist/jquery.sticky-sidebar.min.js' // sticky element on scroll
+		, 'src/libs/sticky-sidebar/dist/sticky-sidebar.min.js' // sticky element on scroll
 		, 'src/js/temp/jquery.ms-order-calc.min.js' // cart calculation
 
 		, 'src/libs/vanilla-lazyload/dist/lazyload.min.js' // lazyload images
@@ -147,6 +150,8 @@ gulp.task('copyLibsScriptsToJs', ['copyJqueryToJs'], function () { // Таск �
 		.pipe(uglify()) // Сжимаем JS файл
 		.pipe(gulp.dest('src/js')); // Выгружаем в папку src/js
 });
+
+console.log(1);
 
 gulp.task('copyJqueryToJs', function () { // Таск для копирования jquery в js папку
 	return gulp.src([

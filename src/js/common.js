@@ -3258,6 +3258,7 @@ $.widget( "custom.superSpinner", $.ui.spinner, {
 });
 function spinnerInit($spinner) {
 	if($spinner.length){
+		console.log(1);
 		$.each($spinner, function () {
 			var $curSpinner = $(this);
 			$curSpinner.superSpinner({
@@ -4283,8 +4284,8 @@ $(document).ready(function () {
 	/*! shops location */
 	shopsLocation();
 
-	/* stickyInit(); */
-	/* for testing validate forms */
+	stickyInit();
+	/*! for testing validate forms */
 	/*! formSuccessExample(); */
 
 	/*! удалить после программирования */

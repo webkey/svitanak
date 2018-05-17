@@ -30,8 +30,8 @@
 	<link rel="icon" sizes="16x16 32x32 64x64" href="favicon.ico">
 	<link rel="apple-touch-icon" href="apple-touch-icon.png">
 	<!--Style-->
-	<link rel="stylesheet" href="css/libs.min.css">
-	<link rel="stylesheet" href="css/main.css?20180517_1130">
+	<link rel="stylesheet" href="css/libs.min.css?rev=0cc0a2d7d16c37645776fc819bf09af6">
+	<link rel="stylesheet" href="css/main.css?rev=dd8854e6cddc36a26eb36ffe38f6fc04">
 	<!--Modernizr-->
 	<script src="js/modernizr.min.js"></script>
 </head>
@@ -242,11 +242,17 @@
 									<div class="c-table">
 										<div class="c-thead">
 											<div class="c-tr">
-												<div class="c-th c-th--caption">Модель</div>
-												<div class="c-th c-th--stock">Наличие</div>
+												<div class="c-th c-th--caption">
+													Фото &nbsp;&nbsp;&nbsp; Наименование
+												</div>
+												<div class="c-th c-th--model">Модель</div>
+												<div class="c-th c-th--size">Размер</div>
+												<div class="c-th c-th--height">Рост</div>
+												<div class="c-th c-th--spinner">Кол-во уп.</div>
+												<div class="c-th c-th--pack-length">В уп.</div>
+												<div class="c-th c-th--pack-total">Всего</div>
 												<div class="c-th c-th--price">Цена</div>
-												<div class="c-th c-th--spinner">Количество</div>
-												<div class="c-th c-th--total">сумма</div>
+												<div class="c-th c-th--price-total">Стоимость</div>
 												<div class="c-th c-th--del"><svg class="svg-ico-bin" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 48 58"><path d="M45 6H30V3c0-1.7-1.3-3-3-3h-6c-1.7 0-3 1.3-3 3v3H3C1.3 6 0 7.3 0 9v3h48V9C48 7.3 46.7 6 45 6zM3 55c0 1.7 1.3 3 3 3h36c1.7 0 3-1.3 3-3V15H3V55zM33 24c0-1.7 1.3-3 3-3s3 1.3 3 3v25c0 1.7-1.3 3-3 3s-3-1.3-3-3V24zM21 24c0-1.7 1.3-3 3-3s3 1.3 3 3v25c0 1.7-1.3 3-3 3s-3-1.3-3-3V24zM9 24c0-1.7 1.3-3 3-3s3 1.3 3 3v25c0 1.7-1.3 3-3 3s-3-1.3-3-3V24z"></path></svg><span>Удалить</span></div>
 											</div>
 										</div>
@@ -256,7 +262,7 @@
 													<div class="td__val">
 														<a href="product-card.html" class="caption-for-table">
 															<div class="img-for-table">
-																<img src="img/img-products-01.jpg" alt="Комплект жен. (фуфайка+брюки) - P209101" />
+																<img src="img/img-products-01.jpg" alt="Комплект жен. (фуфайка+брюки)" />
 															</div>
 															<div class="title-for-table">
 																Комплект жен. (фуфайка+брюки)
@@ -264,9 +270,39 @@
 														</a>
 													</div>
 												</div>
-												<div class="c-td c-td--stock" data-label="Наличие">
+												<!--<div class="c-td c-td&#45;&#45;stock" data-label="Наличие">
+		<div class="c-td__val">
+			<div class="stock-tape" title="На складе осталось 50%"><span class="stock-tape-value" style="width: 50%;">50%</span></div>
+		</div>
+	</div>-->
+												<div class="c-td c-td--model" data-label="Модель">
 													<div class="c-td__val">
-														<div class="stock-tape" title="На складе осталось 50%"><span class="stock-tape-value" style="width: 50%;">50%</span></div>
+														P209101
+													</div>
+												</div>
+												<div class="c-td c-td--size" data-label="Размер">
+													<div class="c-td__val">
+														44
+													</div>
+												</div>
+												<div class="c-td c-td--height" data-label="Рост">
+													<div class="c-td__val">
+														155
+													</div>
+												</div>
+												<div class="c-td c-td--spinner" data-label="Кол-во уп.">
+													<div class="c-td__val">
+														<input class="spinner spinner-js order-calc__number-js" type="text" name="value" value="1" data-id="P209101_155_44" data-only-number>
+													</div>
+												</div>
+												<div class="c-td c-td--pack-length" data-label="В уп.">
+													<div class="c-td__val">
+														<span class="order-calc__packs-js">2</span> шт.
+													</div>
+												</div>
+												<div class="c-td c-td--pack-total" data-label="Всего">
+													<div class="c-td__val">
+														<span class="order-calc__packs-total-js">2</span> шт.
 													</div>
 												</div>
 												<div class="c-td c-td--price" data-label="Цена">
@@ -274,12 +310,7 @@
 														<div class="order-calc__price-js" data-price="125.79">125.79 р.</div>
 													</div>
 												</div>
-												<div class="c-td c-td--spinner" data-label="Количество">
-													<div class="c-td__val">
-														<input class="spinner spinner-js order-calc__number-js" type="text" name="value" value="1" data-id="P209101_155_44" data-only-number>
-													</div>
-												</div>
-												<div class="c-td c-td--price" data-label="Сумма">
+												<div class="c-td c-td--price-total" data-label="Сумма">
 													<div class="c-td__val">
 														<span class="order-calc__price-sum-js">0</span> р.
 													</div>
@@ -298,7 +329,74 @@
 													<div class="td__val">
 														<a href="product-card.html" class="caption-for-table">
 															<div class="img-for-table">
-																<img src="img/img-products-08.jpg" alt="Комплект жен. (фуфайка+брюки) прошел областной этап республиканского конкурса профессионального мастерства среди швей. - P209102" />
+																<img src="img/img-products-01.jpg" alt="Комплект жен. (фуфайка+брюки)" />
+															</div>
+															<div class="title-for-table">
+																Комплект жен. (фуфайка+брюки)
+															</div>
+														</a>
+													</div>
+												</div>
+												<!--<div class="c-td c-td&#45;&#45;stock" data-label="Наличие">
+		<div class="c-td__val">
+			<div class="stock-tape" title="На складе осталось 50%"><span class="stock-tape-value" style="width: 50%;">50%</span></div>
+		</div>
+	</div>-->
+												<div class="c-td c-td--model" data-label="Модель">
+													<div class="c-td__val">
+														P209101
+													</div>
+												</div>
+												<div class="c-td c-td--size" data-label="Размер">
+													<div class="c-td__val">
+														44
+													</div>
+												</div>
+												<div class="c-td c-td--height" data-label="Рост">
+													<div class="c-td__val">
+														155
+													</div>
+												</div>
+												<div class="c-td c-td--spinner" data-label="Кол-во уп.">
+													<div class="c-td__val">
+														<input class="spinner spinner-js order-calc__number-js" type="text" name="value" value="1" data-id="P209101_155_44" data-only-number>
+													</div>
+												</div>
+												<div class="c-td c-td--pack-length" data-label="В уп.">
+													<div class="c-td__val">
+														<span class="order-calc__packs-js">2</span> шт.
+													</div>
+												</div>
+												<div class="c-td c-td--pack-total" data-label="Всего">
+													<div class="c-td__val">
+														<span class="order-calc__packs-total-js">2</span> шт.
+													</div>
+												</div>
+												<div class="c-td c-td--price" data-label="Цена">
+													<div class="c-td__val">
+														<div class="order-calc__price-js" data-price="125.79">125.79 р.</div>
+													</div>
+												</div>
+												<div class="c-td c-td--price-total" data-label="Сумма">
+													<div class="c-td__val">
+														<span class="order-calc__price-sum-js">0</span> р.
+													</div>
+												</div>
+												<div class="c-td c-td--del">
+													<a href="#" class="btn-del order-calc__remove-js" title="Удалить товар с корзины">
+			<svg class="svg-ico-close" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 57.2 57.2">
+	<path d="M34.3 28.6L56 6.9c1.6-1.6 1.6-4.1 0-5.7 -1.6-1.6-4.1-1.6-5.7 0L28.6 22.9 6.9 1.3c-1.6-1.6-4.1-1.6-5.7 0 -1.6 1.6-1.6 4.1 0 5.7l21.7 21.6L1.3 50.3c-1.6 1.5-1.6 4.1 0 5.6 0.8 0.8 1.8 1.2 2.8 1.2s2-0.4 2.8-1.2l21.7-21.6L50.3 56c0.8 0.8 1.8 1.2 2.8 1.2s2-0.4 2.8-1.2c1.6-1.6 1.6-4.1 0-5.7L34.3 28.6z"></path>
+</svg>
+			<span>Удалить с корзины</span>
+		</a>
+												</div>
+											</div>
+											<div class="c-tr">
+												<div class="c-td c-td--caption" data-label="Модель">
+													<div class="td__val">
+														<a href="product-card.html" class="caption-for-table">
+															<div class="img-for-table">
+																<img src="img/img-products-08.jpg" alt="Комплект жен. (фуфайка+брюки) прошел областной этап республиканского конкурса профессионального мастерства среди швей." />
 															</div>
 															<div class="title-for-table">
 																Комплект жен. (фуфайка+брюки) прошел областной этап республиканского конкурса профессионального мастерства среди швей.
@@ -306,9 +404,39 @@
 														</a>
 													</div>
 												</div>
-												<div class="c-td c-td--stock" data-label="Наличие">
+												<!--<div class="c-td c-td&#45;&#45;stock" data-label="Наличие">
+		<div class="c-td__val">
+			<div class="stock-tape" title="На складе осталось 12%"><span class="stock-tape-value" style="width: 12%;">12%</span></div>
+		</div>
+	</div>-->
+												<div class="c-td c-td--model" data-label="Модель">
 													<div class="c-td__val">
-														<div class="stock-tape" title="На складе осталось 12%"><span class="stock-tape-value" style="width: 12%;">12%</span></div>
+														P209102
+													</div>
+												</div>
+												<div class="c-td c-td--size" data-label="Размер">
+													<div class="c-td__val">
+														48
+													</div>
+												</div>
+												<div class="c-td c-td--height" data-label="Рост">
+													<div class="c-td__val">
+														170
+													</div>
+												</div>
+												<div class="c-td c-td--spinner" data-label="Кол-во уп.">
+													<div class="c-td__val">
+														<input class="spinner spinner-js order-calc__number-js" type="text" name="value" value="1" data-id="P209102_170_48" data-only-number>
+													</div>
+												</div>
+												<div class="c-td c-td--pack-length" data-label="В уп.">
+													<div class="c-td__val">
+														<span class="order-calc__packs-js">3</span> шт.
+													</div>
+												</div>
+												<div class="c-td c-td--pack-total" data-label="Всего">
+													<div class="c-td__val">
+														<span class="order-calc__packs-total-js">3</span> шт.
 													</div>
 												</div>
 												<div class="c-td c-td--price" data-label="Цена">
@@ -316,12 +444,7 @@
 														<div class="order-calc__price-js" data-price="122.15">122.15 р.</div>
 													</div>
 												</div>
-												<div class="c-td c-td--spinner" data-label="Количество">
-													<div class="c-td__val">
-														<input class="spinner spinner-js order-calc__number-js" type="text" name="value" value="1" data-id="P209102_170_48" data-only-number>
-													</div>
-												</div>
-												<div class="c-td c-td--price" data-label="Сумма">
+												<div class="c-td c-td--price-total" data-label="Сумма">
 													<div class="c-td__val">
 														<span class="order-calc__price-sum-js">0</span> р.
 													</div>
@@ -340,7 +463,7 @@
 													<div class="td__val">
 														<a href="product-card.html" class="caption-for-table">
 															<div class="img-for-table">
-																<img src="img/no-img-product.png" alt="Комплект жен. (фуфайка+брюки) - P209103" />
+																<img src="img/no-img-product.png" alt="Комплект жен. (фуфайка+брюки)" />
 															</div>
 															<div class="title-for-table">
 																Комплект жен. (фуфайка+брюки)
@@ -348,9 +471,39 @@
 														</a>
 													</div>
 												</div>
-												<div class="c-td c-td--stock" data-label="Наличие">
+												<!--<div class="c-td c-td&#45;&#45;stock" data-label="Наличие">
+		<div class="c-td__val">
+			<div class="stock-tape" title="На складе осталось 68%"><span class="stock-tape-value" style="width: 68%;">68%</span></div>
+		</div>
+	</div>-->
+												<div class="c-td c-td--model" data-label="Модель">
 													<div class="c-td__val">
-														<div class="stock-tape" title="На складе осталось 68%"><span class="stock-tape-value" style="width: 68%;">68%</span></div>
+														P209103
+													</div>
+												</div>
+												<div class="c-td c-td--size" data-label="Размер">
+													<div class="c-td__val">
+														50
+													</div>
+												</div>
+												<div class="c-td c-td--height" data-label="Рост">
+													<div class="c-td__val">
+														182
+													</div>
+												</div>
+												<div class="c-td c-td--spinner" data-label="Кол-во уп.">
+													<div class="c-td__val">
+														<input class="spinner spinner-js order-calc__number-js" type="text" name="value" value="1" data-id="P209103_182_50" data-only-number>
+													</div>
+												</div>
+												<div class="c-td c-td--pack-length" data-label="В уп.">
+													<div class="c-td__val">
+														<span class="order-calc__packs-js">1</span> шт.
+													</div>
+												</div>
+												<div class="c-td c-td--pack-total" data-label="Всего">
+													<div class="c-td__val">
+														<span class="order-calc__packs-total-js">1</span> шт.
 													</div>
 												</div>
 												<div class="c-td c-td--price" data-label="Цена">
@@ -358,12 +511,7 @@
 														<div class="order-calc__price-js" data-price="400.05">400.05 р.</div>
 													</div>
 												</div>
-												<div class="c-td c-td--spinner" data-label="Количество">
-													<div class="c-td__val">
-														<input class="spinner spinner-js order-calc__number-js" type="text" name="value" value="1" data-id="P209103_182_50" data-only-number>
-													</div>
-												</div>
-												<div class="c-td c-td--price" data-label="Сумма">
+												<div class="c-td c-td--price-total" data-label="Сумма">
 													<div class="c-td__val">
 														<span class="order-calc__price-sum-js">0</span> р.
 													</div>
@@ -382,7 +530,7 @@
 													<div class="td__val">
 														<a href="product-card.html" class="caption-for-table">
 															<div class="img-for-table">
-																<img src="img/img-products-04.jpg" alt="Комплект жен. (фуфайка+брюки) - P209104" />
+																<img src="img/img-products-04.jpg" alt="Комплект жен. (фуфайка+брюки)" />
 															</div>
 															<div class="title-for-table">
 																Комплект жен. (фуфайка+брюки)
@@ -390,9 +538,39 @@
 														</a>
 													</div>
 												</div>
-												<div class="c-td c-td--stock" data-label="Наличие">
+												<!--<div class="c-td c-td&#45;&#45;stock" data-label="Наличие">
+		<div class="c-td__val">
+			<div class="stock-tape" title="На складе осталось 100%"><span class="stock-tape-value" style="width: 100%;">100%</span></div>
+		</div>
+	</div>-->
+												<div class="c-td c-td--model" data-label="Модель">
 													<div class="c-td__val">
-														<div class="stock-tape" title="На складе осталось 100%"><span class="stock-tape-value" style="width: 100%;">100%</span></div>
+														P209104
+													</div>
+												</div>
+												<div class="c-td c-td--size" data-label="Размер">
+													<div class="c-td__val">
+														52
+													</div>
+												</div>
+												<div class="c-td c-td--height" data-label="Рост">
+													<div class="c-td__val">
+														186
+													</div>
+												</div>
+												<div class="c-td c-td--spinner" data-label="Кол-во уп.">
+													<div class="c-td__val">
+														<input class="spinner spinner-js order-calc__number-js" type="text" name="value" value="1" data-id="P209104_186_52" data-only-number>
+													</div>
+												</div>
+												<div class="c-td c-td--pack-length" data-label="В уп.">
+													<div class="c-td__val">
+														<span class="order-calc__packs-js">2</span> шт.
+													</div>
+												</div>
+												<div class="c-td c-td--pack-total" data-label="Всего">
+													<div class="c-td__val">
+														<span class="order-calc__packs-total-js">2</span> шт.
 													</div>
 												</div>
 												<div class="c-td c-td--price" data-label="Цена">
@@ -400,12 +578,7 @@
 														<div class="order-calc__price-js" data-price="1702.50">1702.50 р.</div>
 													</div>
 												</div>
-												<div class="c-td c-td--spinner" data-label="Количество">
-													<div class="c-td__val">
-														<input class="spinner spinner-js order-calc__number-js" type="text" name="value" value="1" data-id="P209104_186_52" data-only-number>
-													</div>
-												</div>
-												<div class="c-td c-td--price" data-label="Сумма">
+												<div class="c-td c-td--price-total" data-label="Сумма">
 													<div class="c-td__val">
 														<span class="order-calc__price-sum-js">0</span> р.
 													</div>
@@ -1595,8 +1768,8 @@
 	</div>
 	<!--footer end-->
 	<script src="js/jquery.min.js"></script>
-	<script src="js/libs.min.js"></script>
-	<script src="js/common.js"></script>
+	<script src="js/libs.min.js?rev=1e35586841f9a9d5aaa4f81ecc96e2a5"></script>
+	<script src="js/common.js?rev=6b85ed2761a7f0e23899d4b659cba373"></script>
 </body>
 
 </html>
