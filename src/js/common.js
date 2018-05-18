@@ -2220,6 +2220,8 @@ function toggleViewInit() {
 			activatedFilters: '.p-filters-activated-js', // count active filter's group
 			rangeSlider: '.range-slider-js', // range slider js class
 			rangeSliderValContainer: '.range-slider-value-js', // container has values of range slider
+			rangeSliderFrom: '.rs-from-js',
+			rangeSliderTo: '.rs-to-js',
 			tagsItemTpl: null,
 
 			dropOpenClass: 'p-filters-is-open',
@@ -2259,6 +2261,8 @@ function toggleViewInit() {
 		this.$activatedFilters = $(options.activatedFilters, container);
 		this.$rangeSlider = $(options.rangeSlider, container);
 		this.$rangeSliderValContainer = $(options.rangeSliderValContainer, container);
+		this.$rangeSliderFrom = $(options.rangeSliderFrom, container);
+		this.$rangeSliderTo = $(options.rangeSliderTo, container);
 		this.tagsItem = options.tagsItem; // не jq-объект, чтобы можна было искать в DOM после добавления
 		this.tagTextContainer = options.tagTextContainer; // не jq-объект, чтобы можна было искать в DOM после добавления
 		this.tagsItemTpl = !options.tagsItemTpl ?
@@ -2326,14 +2330,20 @@ function toggleViewInit() {
 		function setValue(data, dataDef, $slider) {
 			var from = data.from,
 				to = data.to,
-				$curSliderValue = $slider.closest('li').find(self.$rangeSliderValContainer);
+				$curSliderItem = $slider.closest('li'),
+				$curSliderValue = $curSliderItem.find(self.$rangeSliderValContainer),
+				$rsFrom = $curSliderItem.find(self.$rangeSliderFrom),
+				$rsTo = $curSliderItem.find(self.$rangeSliderTo);
 
 			$slider.parent().toggleClass('slider-active', (data.from !== +dataDef[0] || data.to !== +dataDef[1]));
 
 			if (data.input.attr('data-type') === "double") {
 				$curSliderValue.html(from + " - " + to);
+				$rsFrom.val(from);
+				$rsTo.val(to);
 			} else {
 				$curSliderValue.html(from);
+				$rsFrom.val(from);
 			}
 		}
 	};
