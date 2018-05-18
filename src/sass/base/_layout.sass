@@ -317,12 +317,15 @@ body
 	//+padding-horizontal(#{$text-layout-indent + $text-layout-space-horizontal}, $text-layout-space-horizontal)
 	//max-width: #{$text-layout-width + $text-layout-space-horizontal*2}
 	//+padding-horizontal($text-layout-space-horizontal)
-	max-width: #{$text-layout-width}
+	max-width: $text-layout-width
 	+push-auto
 
-	//+media('<desk-lg')
-		max-width: #{$text-layout-width + $text-layout-space-horizontal--lg*2}
-		+padding-horizontal($text-layout-space-horizontal--lg)
+	+media('<tab-lg')
+		max-width: none
+
+//+media('<desk-lg')
+	max-width: #{$text-layout-width + $text-layout-space-horizontal--lg*2}
+	+padding-horizontal($text-layout-space-horizontal--lg)
 
 	//+media('<tab-lg')
 		max-width: #{$text-layout-width + $text-layout-space-horizontal--md*2}
@@ -336,7 +339,10 @@ body
 .max-wrap-flood
 	//max-width: #{$flood-layout-width + $text-layout-space-horizontal*2}
 	//max-width: #{$flood-layout-width + $text-layout-space-horizontal*2 + $text-layout-indent}
-	max-width: #{$flood-layout-width }
+	max-width: $flood-layout-width
+
+	+media('<desk-md')
+		max-width: none
 
 	//+media('<desk-lg')
 		max-width: #{$flood-layout-width + $text-layout-space-horizontal--lg*2}
@@ -356,6 +362,9 @@ body
 	//+padding-horizontal($text-layout-space-horizontal)
 	max-width: #{$flood-layout-width}
 	+push-auto
+
+	+media('<desk-md')
+		max-width: none
 
 	//+media('<desk-lg')
 		max-width: #{$flood-layout-width + $text-layout-space-horizontal--lg*2}
@@ -419,6 +428,9 @@ body
 		+padding-horizontal(0)
 		+push-auto
 
+		+media('<tab-lg')
+			max-width: none
+
 	& > h1, & > img, .imgc
 		display: block
 		max-width: $flood-layout-width
@@ -434,8 +446,14 @@ body
 	.layout-text
 		max-width: $text-layout-width
 
+		+media('<tab-lg')
+			max-width: none
+
 	.max-wrap-text
 		max-width: $text-layout-width
+
+		+media('<tab-lg')
+			max-width: none
 
 	//& .pagination
 		max-width: $text-layout-width
@@ -446,8 +464,14 @@ body
 		//+padding-horizontal($text-layout-indent, 0)
 		max-width: $flood-layout-width
 
+		+media('<desk-md')
+			max-width: none
+
 	.max-wrap-flood
 		max-width: $flood-layout-width
+
+		+media('<desk-md')
+			max-width: none
 
 	// элеметы без отступов по бокам
 	// минусовые маржины по горизонтале имеют значение только внутри .layout-article
@@ -848,18 +872,6 @@ body
 		padding-top: 145px
 
 /* subscription form end
-
-/* bottom space
-.bottom-space
-	margin-bottom: $bottom-space--lg
-
-	+media('<desk-lg')
-		margin-bottom: $bottom-space--ml
-
-	&:last-child
-		margin-bottom: 0
-
-/* bottom space end
 
 /* footer at bottom
 .spacer

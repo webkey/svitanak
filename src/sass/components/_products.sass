@@ -1044,38 +1044,70 @@ $p-filters-angle-lines-color: $text-color
 			font-size: 10px
 
 // list of characteristics
+$dt-width: 50%
+$dt-width--p-card: 184px
+//=================
+
+// dl list
+.dl-list, .p-card__options__dl
+	position: relative
+
 .p-card__options__dl
 	margin-bottom: $p-card-elem-bottom-space
-	$dt-width: 184px
 
 	&:last-child
 		margin-bottom: 0
 
-	.p-card__options__di
-		position: relative
-		padding: 10px 0
-		border-bottom: 1px dashed $text-color-light
-		+clear
+// dl item
+.dl-list__di, .p-card__options__di
+	position: relative
+	+padding-vertical(15px)
+	border-top: 1px dashed $text-color-light
+	+clear-spacing
 
-		+media('<mob-md')
-			+padding-vertical(15px)
-			+font(1.6rem, round-float(24/16, 1))
+	&:first-child
+		border-top: 0
 
-	.p-card__options__dt
-		float: left
-		width: $dt-width
-		color: $text-color-light
-		padding-right: 10px
+// dt, dd
+.dl-list__dt,
+.p-card__options__dt,
+.dl-list__dd,
+.p-card__options__dd
+	display: inline-block
+	vertical-align: top
+	+font(1.6rem, round-float(24/16, 1))
+	letter-spacing: normal
 
-		+media('<mob-md')
-			float: none
-			width: auto
+// dt
+.dl-list__dt, .p-card__options__dt
+	width: $dt-width
+	color: $text-color-light
+	padding-right: $grid-space
 
-	.p-card__options__dd
-		margin-left: $dt-width
+	+media('<desk-md')
+		padding-right: $grid-space--md
 
-		+media('<mob-md')
-			margin-left: 0
+	+media('<mob-md')
+		padding-right: 0
+
+.p-card__options__dt
+	width: $dt-width--p-card
+
+// dd
+.dl-list__dd, .p-card__options__dd
+	width: calc(100% - #{$dt-width})
+
+.p-card__options__dd
+	width: calc(100% - #{$dt-width--p-card})
+
+// dt, dd for mob
+.dl-list__dt,
+.p-card__options__dt,
+.dl-list__dd,
+.p-card__options__dd
+	+media('<mob-md')
+		display: block
+		width: auto
 
 // list of grid view parameters
 .p-card__options__grid

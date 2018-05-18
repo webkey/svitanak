@@ -34,6 +34,19 @@
 					</div>
 				</div>
 
+				<div class="c-info bottom-space-lg layout-flood">
+					<div class="c-info__heading bottom-space">
+						<h2>Заказ №astro/175</h2>
+						<div class="note">от 10 мая 2018 (заявка на текущий месяц)</div>
+					</div>
+
+					<p>
+						Цены в белорусских рублях приведены с учетом НДС, цены в других валютах — без НДС.
+						<br>
+						Обратите внимание! В связи с обновлением каталога были изменены некоторые данные в заказе.
+					</p>
+				</div>
+
 				<form action="" method="post">
 
 					<div class="bottom-space-lg order-calc-js">
@@ -46,16 +59,65 @@
 							<tbody class="c-tbody">
 								@@loop("_tpl_order-calc-items--cart.html", "includes-json/order-calc__items.json")
 							</tbody>
+							<tfoot class="c-tfoot order-calc__total-results-js">
+								<tr class="c-tr">
+
+									<td class="c-td" colspan="4">
+										<div class="td__val">Итого:</div>
+									</td>
+
+									<td class="c-td" colspan="2">
+										<div class="c-td__val">
+											<span class="mark order-calc__counts-total-js">0</span>&nbsp;уп.
+										</div>
+									</td>
+
+									<td class="c-td" colspan="2">
+										<div class="c-td__val">
+											<span class="mark order-calc__counts-total-js">0</span>&nbsp;шт.
+										</div>
+									</td>
+
+									<td class="c-td" colspan="2">
+										<div class="c-td__val">
+											<span class="mark order-calc__price-total-js">0</span>&nbsp;руб.
+										</div>
+									</td>
+
+								</tr>
+							</tfoot>
 						</table>
-						<div class="c-table-result">
-							<div class="c-table-result__total order-calc__total-results-js">
-								<div class="c-table-result__label">Итого:</div>
-								<span class="c-table-result__count order-calc__counts-total-js">0</span> позиций на&nbsp;<span class="c-table-result__price order-calc__price-total-js">0</span>&nbsp;руб.
-							</div>
-							<button class="btn-default order-calc-btn float-right" style="display: none;">Заказать</button>
-						</div>
 						<!--!!! Текст, который будет отображаться, когда нет товаров-->
 						<div class="order-calc__empty">- Корзина пуста -</div>
+					</div>
+
+					<div class="heading">
+						<h2>Личные данные <span class="sep">&nbsp;</span></h2>
+					</div>
+
+					<div class="layout-flood bottom-space-lg">
+						<div class="dl-list bottom-space">
+							<div class="dl-list__di">
+								<div class="dl-list__dt">Название компании:</div>
+								<div class="dl-list__dd">Astronim</div>
+							</div>
+							<div class="dl-list__di">
+								<div class="dl-list__dt">Электронная почта:</div>
+								<div class="dl-list__dd">petrov@astronim.com</div>
+							</div>
+							<div class="dl-list__di">
+								<div class="dl-list__dt">Телефон:</div>
+								<div class="dl-list__dd">+375 (29) 577-12-13</div>
+							</div>
+							<div class="dl-list__di">
+								<div class="dl-list__dt">ФИО контактного лица:</div>
+								<div class="dl-list__dd">Валерий Шотаевич Меладзе</div>
+							</div>
+							<div class="dl-list__di">
+								<div class="dl-list__dt">Дата поставки:</div>
+								<div class="dl-list__dd">&mdash;</div>
+							</div>
+						</div>
 					</div>
 
 					<div class="heading">

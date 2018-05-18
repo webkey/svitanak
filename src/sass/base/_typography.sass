@@ -330,9 +330,23 @@ i b, i strong, em b, em strong, b i, b em, strong i, strong em
 	+media('<tab-lg')
 		display: inline-block
 
+.c-info
+	.c-info__heading
+		color: $base-color
+
+		h1, h2, h3, h4
+			margin-bottom: 0
+			color: inherit
+
 .item--shops-view-switcher
 	+media('<tab-lg')
 		display: none
+
+.note
+	color: #b3b3b3
+	text-transform: uppercase
+	+font(1.2rem, round-float(16/12, 2))
+	letter-spacing: 0.05em
 
 .mark
 	color: $mark-color
@@ -379,6 +393,16 @@ body
 		+media('<mob-md')
 			display: none !important
 
+/* bottom space
+.bottom-space
+	margin-bottom: $bottom-space--lg
+
+	+media('<desk-lg')
+		margin-bottom: $bottom-space--ml
+
+	&:last-child
+		margin-bottom: 0
+
 .bottom-space-lg
 	margin-bottom: $bottom-space--lg
 
@@ -387,6 +411,8 @@ body
 
 	&:last-child
 		margin-bottom: 0
+
+/* bottom space end
 
 /* content img
 .imgc
