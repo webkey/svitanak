@@ -3258,7 +3258,7 @@ $.widget( "custom.superSpinner", $.ui.spinner, {
 });
 function spinnerInit($spinner) {
 	if($spinner.length){
-		console.log(1);
+		// console.log(1);
 		$.each($spinner, function () {
 			var $curSpinner = $(this);
 			$curSpinner.superSpinner({
@@ -3299,6 +3299,27 @@ var orderCalcOptions = {
 
 function orderCalculation() {
 	$('.order-calc-js').msOrderCalc(orderCalcOptions);
+
+	var removeCandidateClass = 'remove-candidate-js';
+	$('.order-calc__remove-group-js').on('mouseenter', function () {
+		var i = 0;
+		var $curBtn = $(this),
+			$curNextRow = $curBtn.closest('.c-tr').next();
+
+		var lightChildren = function () {
+			$curNextRow.addClass(removeCandidateClass);
+			$curNextRow = $curNextRow.next();
+			if(i > 20) return;//на случай, если что-то пойдет нетак, рекурсия остановится на 20-й итерации
+
+			if($curNextRow.length && !$curNextRow.hasClass('c-tr--head') && !$curNextRow.hasClass('c-tr--removed')){
+				i++;
+				lightChildren();
+			}
+		};
+		lightChildren();
+	}).on('mouseleave', function () {
+		$('.c-tr').removeClass(removeCandidateClass);
+	});
 }
 
 /**

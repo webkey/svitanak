@@ -37,16 +37,16 @@
 				<form action="" method="post">
 
 					<div class="bottom-space-lg order-calc-js">
-						<div class="c-table">
-							<div class="c-thead">
-								<div class="c-tr">
+						<table class="c-table">
+							<thead class="c-thead">
+								<tr class="c-tr">
 									@@loop("_tpl_c-thead.html", "includes-json/order-calc__th--cart.json")
-								</div>
-							</div>
-							<div class="c-tbody">
+								</tr>
+							</thead>
+							<tbody class="c-tbody">
 								@@loop("_tpl_order-calc-items--cart.html", "includes-json/order-calc__items.json")
-							</div>
-						</div>
+							</tbody>
+						</table>
 						<div class="c-table-result">
 							<div class="c-table-result__total order-calc__total-results-js">
 								<div class="c-table-result__label">Итого:</div>

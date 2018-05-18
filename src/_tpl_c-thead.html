@@ -1,10 +1,11 @@
 @@if(!context.caption){
-<div class="c-th@@if(context.class){ @@class}">@@head</div>
+<th class="c-th@@if(context.class){ @@class}">@@head</th>
 }
 @@if(context.caption){
-<div class="c-th@@if(context.class){ @@class}">
-	Фото
-	&nbsp;&nbsp;&nbsp;
-	Наименование
-</div>
+<th class="c-th@@if(context.class){ @@class @@class-complex}">
+	<div class="box">
+		<div class="cell">Фото</div>
+		<div class="cell">Наименование</div>
+	</div>
+</th>
 }

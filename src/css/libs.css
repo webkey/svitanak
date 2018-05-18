@@ -1526,7 +1526,7 @@ button.swiper-pagination-bullet {
   }
 }
 /*!
- * fullPage 2.9.7
+ * fullPage 2.9.4
  * https://github.com/alvarotrigo/fullPage.js
  * MIT licensed
  *
@@ -1539,6 +1539,13 @@ html.fp-enabled {
   padding: 0;
   overflow: hidden;
   -webkit-tap-highlight-color: rgba(0,0,0,0);
+}
+
+#superContainer {
+  height: 100%;
+  position: relative;
+  -ms-touch-action: none;
+  touch-action: none;
 }
 
 .fp-section {
@@ -1655,13 +1662,11 @@ html.fp-enabled {
 .fp-slidesNav {
   position: absolute;
   z-index: 4;
+  left: 50%;
   opacity: 1;
   -webkit-transform: translate3d(0,0,0);
   -ms-transform: translate3d(0,0,0);
   transform: translate3d(0,0,0);
-  left: 0!important;
-  right: 0;
-  margin: 0 auto!important;
 }
 
 .fp-slidesNav.bottom {

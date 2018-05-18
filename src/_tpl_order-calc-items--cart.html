@@ -1,17 +1,46 @@
-<div class="c-tr">
+@@if(!context.head && !context.removed){
+<tr class="c-tr">
+}
+@@if(context.head && !context.removed){
+<tr class="c-tr c-tr--head">
+}
+@@if(context.removed){
+<tr class="c-tr c-tr--removed">
+}
 
-	<div class="c-td c-td--caption" data-label="Модель">
+	<td class="c-td c-td--caption" data-label="Наименование">
 		<div class="td__val">
+			@@if(!context.removed){
 			<a href="product-card.html" class="caption-for-table">
+			}
+			@@if(context.removed){
+			<div class="caption-for-table">
+			}
+				@@if(!context.head){
+				<div class="img-for-table">&nbsp;</div>
+				}
+				@@if(context.head){
 				<div class="img-for-table">
 					<img src="@@if(context.src){@@src}@@if(!context.src){img/no-img-product.png}" alt="@@title" />
 				</div>
+				}
+
+				@@if(!context.head){
+				<div class="title-for-table">...</div>
+				}
+				@@if(context.head){
 				<div class="title-for-table">
 					@@title
 				</div>
+				}
+			@@if(context.removed){
+			</div>
+			}
+			@@if(!context.removed){
 			</a>
+			}
 		</div>
-	</div>
+	</td>
 
 	<!--<div class="c-td c-td&#45;&#45;stock" data-label="Наличие">
 		<div class="c-td__val">
@@ -19,59 +48,102 @@
 		</div>
 	</div>-->
 
-	<div class="c-td c-td--model" data-label="Модель">
+	<td class="c-td c-td--model" data-label="Модель">
 		<div class="c-td__val">
-			@@ch.Модель
+			@@if(!context.head){ ... }
+			@@if(context.head){ @@ch.Модель }
 		</div>
-	</div>
+	</td>
 
-	<div class="c-td c-td--size" data-label="Размер">
+	@@if(!context.removed){
+	<td class="c-td c-td--size" data-label="Размер">
 		<div class="c-td__val">
-			@@ch.Размер
+			@@if(!context.head){ @@ch.Размер }
+			@@if(context.head){ &mdash; }
 		</div>
-	</div>
-
-	<div class="c-td c-td--height" data-label="Рост">
+	</td>
+	}
+	@@if(context.removed){
+	<td class="c-td c-td--removed-info" data-label="" colspan="7">
 		<div class="c-td__val">
-			@@ch.Рост
+			данный товар удалён из каталога
 		</div>
-	</div>
+	</td>
+	}
 
-	<div class="c-td c-td--length" data-label="Кол-во уп.">
+	@@if(!context.removed){
+	<td class="c-td c-td--height" data-label="Рост">
 		<div class="c-td__val">
-			<input class="spinner spinner-js order-calc__number-js" type="text" name="value" value="1" data-id="@@ch.Модель_@@ch.Рост_@@ch.Размер" data-only-number>
+			@@if(!context.head){ @@ch.Рост }
+			@@if(context.head){ &mdash; }
 		</div>
-	</div>
+	</td>
 
-	<div class="c-td c-td--pack-length" data-label="В уп.">
+	<td class="c-td c-td--packs-length" data-label="Кол-во уп.">
 		<div class="c-td__val">
-			<span class="order-calc__packs-js">@@ch.Количество</span> шт.
+			@@if(!context.head){
+			<input class="spinner spinner-js order-calc__number-js" type="number" name="value" value="@@value" data-id="@@ch.Модель_@@ch.Рост_@@ch.Размер" data-only-number>
+			}
+			@@if(context.head){
+			<span class="order-calc__number-group-js">0</span> шт.
+			}
 		</div>
-	</div>
+	</td>
 
-	<div class="c-td c-td--pack-total" data-label="Всего">
+	<td class="c-td c-td--length" data-label="В уп.">
 		<div class="c-td__val">
-			<span class="order-calc__packs-total-js">@@ch.Количество</span> шт.
+			@@if(!context.head){
+			<span class="order-calc__length-js">@@ch.Вупаковке</span> шт.
+			}
+			@@if(context.head){ &mdash; }
 		</div>
-	</div>
+	</td>
 
-	<div class="c-td c-td--price" data-label="Цена">
+	<td class="c-td c-td--length-total" data-label="Всего">
 		<div class="c-td__val">
+			@@if(!context.head){
+			<span class="order-calc__length-total-js">0</span> шт.
+			}
+			@@if(context.head){
+			<span class="order-calc__length-total-group-js">0</span> шт.
+			}
+		</div>
+	</td>
+
+	<td class="c-td c-td--price" data-label="Цена">
+		<div class="c-td__val">
+			@@if(!context.head){
 			<div class="order-calc__price-js" data-price="@@price.calc">@@price.view @@price.unit</div>
+			}
+			@@if(context.head){ &mdash; }
 		</div>
-	</div>
+	</td>
 
-	<div class="c-td c-td--price-total" data-label="Сумма">
+	<td class="c-td c-td--price-total" data-label="Сумма">
 		<div class="c-td__val">
+			@@if(!context.head){
 			<span class="order-calc__price-sum-js">0</span> @@price.unit
+			}
+			@@if(context.head){
+			<span class="order-calc__price-sum-group-js">0</span> @@price.unit
+			}
 		</div>
-	</div>
+	</td>
+	}
 
-	<div class="c-td c-td--del">
+	<td class="c-td c-td--del">
+		@@if(!context.head || context.removed){
 		<a href="#" class="btn-del order-calc__remove-js" title="Удалить товар с корзины">
 			@@include("includes-json/svg/icon-close.svg")
 			<span>Удалить с корзины</span>
 		</a>
-	</div>
+		}
+		@@if(context.head && !context.removed){
+		<a href="#" class="btn-del order-calc__remove-group-js" title="Удалить группу товаров с корзины">
+			@@include("includes-json/svg/icon-close.svg")
+			<span>Удалить группу товаров с корзины</span>
+		</a>
+		}
+	</td>
 
-</div>
+</tr>

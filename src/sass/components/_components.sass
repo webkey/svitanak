@@ -1830,6 +1830,23 @@ $m-services-thumb-indent--sm: 40px
 	color: inherit
 	text-decoration: none
 
+	// строка-заголовок объеденяющая несколько строк
+	&.c-tr--head
+		.c-td
+			background-color: #fafafa
+
+	&.c-tr--removed
+		.c-td
+			background-color: #fff7f2
+			color: #b3b3b3
+			text-decoration: line-through
+
+		.caption-for-table
+			pointer-events: none
+
+		.img-for-table
+			opacity: 0.35
+
 a.c-tr:hover
 	color: $link-color
 
@@ -1843,17 +1860,18 @@ a.c-tr:hover
 	background-color: $bg-color-alt
 	+font-bold
 	font-size: 13px
-	line-height: round-float(17/13, 2)
+	line-height: 20px
 	letter-spacing: 0.1em
+	text-align: left
 	text-transform: uppercase
+	vertical-align: middle
 
 	+media('<desk-lg')
-		padding: round($grid-space*0.5) #{$grid-space--md}
+		padding: round($grid-space*0.5) $grid-space--sm
 
 	+media('<desk-md')
-		font-size: 1.3rem
 		letter-spacing: normal
-		padding: round($grid-space--sm*1.5) #{$grid-space--sm}
+		padding: round($grid-space--sm*1.5) $grid-space--sm
 
 	&:first-child, &.c-th--title
 		border: none
@@ -1869,16 +1887,44 @@ a.c-tr:hover
 		& > span
 			+hide-text
 
+	//&.c-th--caption-complex
+		padding: 0
+
+		.box
+			display: flex
+			align-items: center
+
+		.cell
+			padding: round($grid-space*0.5) $grid-space--md
+			border: solid white
+			border-width: 0 0 0 2px
+			background-color: $bg-color-alt
+
+			+media('<desk-lg')
+				padding: round($grid-space*0.5) $grid-space--sm
+
+			+media('<desk-md')
+				padding: round($grid-space--sm*1.5) $grid-space--sm
+
+			&:first-child
+				border: none
+
+			&:nth-child(1)
+				width: nth($table__img--size, 1)*1px + $grid-space--md*2
+
+			&:nth-child(2)
+				flex: 1 1
+
 .c-td
 	padding: round($grid-space*0.93) $grid-space--md
 	vertical-align: middle
-	border-bottom: 1px solid $border-color
-	border-left: 2px solid white
+	border-bottom: 1px dotted $border-color
+	//border-left: 2px solid white
 	+font(1.6rem, round-float(24/16, 1))
 
 	+media('<desk-lg')
 		font-size: 1.4rem
-		padding: round($grid-space--sm*0.93) #{$grid-space--sm}
+		padding: round($grid-space--sm*0.93) $grid-space--sm
 
 	+media('<desk-sm')
 		letter-spacing: normal
@@ -1886,12 +1932,13 @@ a.c-tr:hover
 	+media('<mob-lg')
 		+padding-vertical(round($grid-space--sm*0.6))
 
-	&:first-child, .order-calc &.c-td--title
+	//&:first-child, .order-calc &.c-td--title
 		border-left: none
 
 	.c-tr:first-child &
 		+media('>=tab-lg')
-			border-top: 1px solid $border-color
+			//border-top: 1px solid $border-color
+			border-top: 1px dotted $border-color
 
 	a
 		text-decoration: none
@@ -1902,6 +1949,7 @@ a.c-tr:hover
 
 	// стили для конкретных ячеек
 	&.c-td--caption
+		width: 400px
 		+padding-vertical(round($grid-space*0.93 - 18))
 
 		//.order-calc & .img-for-table
@@ -1929,6 +1977,12 @@ a.c-tr:hover
 
 		.btn-del
 			+size($table__del--size)
+
+	&.c-td--length, &.c-td--length-total, .c-td--price, .c-td--price-total
+		white-space: nowrap
+
+	&.c-td--removed-info
+		text-align: right
 
 	//&.c-td--length
 		text-align: center
@@ -1968,6 +2022,22 @@ a.c-tr:hover
 .c-table-result__count,
 .c-table-result__price
 	color: $base-color
+
+// Удаление группы товаров
+.c-td
+	//======================
+	+antialiased
+	$prop: transform, opacity
+	$scale: 0.9
+	will-change: $prop
+	transition:
+		property: $prop
+		duration: $animation-speed
+
+	.remove-candidate-js &
+		//transform: scale($scale)
+		//transform: scale3d($scale, $scale, 1)
+		opacity: 0.15
 
 // for device (after transform)
 .c-table, .c-thead, .c-tbody, .c-tfoot, .c-tr, .c-th, .c-td
@@ -2138,7 +2208,7 @@ a.c-tr:hover
 // === img ===
 .img-for-table
 	display: block
-	width: nth($table__img--size, 1)*1px
+	+size(nth($table__img--size, 1)*1px)
 	text-decoration: none
 	color: inherit
 	position: relative
@@ -2159,7 +2229,7 @@ a.c-tr:hover
 		background: url(../../img/no-img-product.png) no-repeat center
 		background-size: contain
 
-	&::after
+	//&::after
 		content: ""
 		display: block
 		+ratio(nth($table__img--size, 1), nth($table__img--size, 2))
