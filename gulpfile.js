@@ -136,7 +136,7 @@ gulp.task('copyLibsScriptsToJs', ['copyJqueryToJs'], function () { // Таск �
 		, 'src/libs/resize-sensor/ResizeSensor.min.js' // resize-sensor for "sticky-sidebar.js"
 		// , 'src/libs/sticky-sidebar/dist/jquery.sticky-sidebar.min.js' // sticky element on scroll
 		, 'src/libs/sticky-sidebar/dist/sticky-sidebar.min.js' // sticky element on scroll
-		, 'src/js/temp/jquery.ms-order-calc.min.js' // cart calculation
+		// , 'src/js/temp/jquery.ms-order-calc.min.js' // cart calculation
 
 		, 'src/libs/vanilla-lazyload/dist/lazyload.min.js' // lazyload images
 		, 'src/libs/ion.rangeSlider/js/ion.rangeSlider.min.js' // range slider

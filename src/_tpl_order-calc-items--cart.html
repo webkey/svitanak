@@ -1,8 +1,11 @@
-@@if(!context.head && !context.removed){
+@@if(!context.head && !context.child && !context.removed){
 <tr class="c-tr">
 }
 @@if(context.head && !context.removed){
-<tr class="c-tr c-tr--head">
+<tr class="c-tr c-tr--head order-calc__head-js" id="@@ch.Модель">
+}
+@@if(context.child && !context.removed){
+<tr class="c-tr c-tr--child order-calc__child-js">
 }
 @@if(context.removed){
 <tr class="c-tr c-tr--removed">
@@ -82,7 +85,7 @@
 	<td class="c-td c-td--packs-length" data-label="Кол-во уп.">
 		<div class="c-td__val">
 			@@if(!context.head){
-			<input class="spinner spinner-js order-calc__number-js" type="number" name="value" value="@@value" data-id="@@ch.Модель_@@ch.Рост_@@ch.Размер" data-only-number>
+			<input class="spinner spinner-js order-calc__spin-length-js" type="number" name="value" value="@@value" data-id="@@ch.Модель_@@ch.Рост_@@ch.Размер" data-group-id="@@ch.Модель" data-only-number>
 			}
 			@@if(context.head){
 			<span class="order-calc__packs-length-js">0</span> шт.
@@ -93,7 +96,7 @@
 	<td class="c-td c-td--length" data-label="В уп.">
 		<div class="c-td__val">
 			@@if(!context.head){
-			<span class="order-calc__length-js">@@ch.Вупаковке</span> шт.
+			<span class="order-calc__length-in-pack-js" data-length-in-pack="@@ch.Вупаковке">@@ch.Вупаковке</span> шт.
 			}
 			@@if(context.head){ &mdash; }
 		</div>
@@ -119,7 +122,7 @@
 		</div>
 	</td>
 
-	<td class="c-td c-td--price-total" data-label="Сумма">
+	<td class="c-td c-td--price-sum" data-label="Сумма">
 		<div class="c-td__val">
 			@@if(!context.head){
 			<span class="order-calc__price-sum-js">0</span> @@price.unit

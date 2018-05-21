@@ -1859,7 +1859,7 @@ a.c-tr:hover
 	border-width: 0 0 0 2px
 	background-color: $bg-color-alt
 	+font-bold
-	font-size: 13px
+	font-size: 1.3rem
 	line-height: 20px
 	letter-spacing: 0.1em
 	text-align: left
@@ -1873,6 +1873,10 @@ a.c-tr:hover
 		letter-spacing: normal
 		padding: round($grid-space--sm*1.5) $grid-space--sm
 
+	+media('<desk-sm')
+		+padding-horizontal(5px)
+		font-size: 1.2rem
+
 	&:first-child, &.c-th--title
 		border: none
 
@@ -1883,6 +1887,10 @@ a.c-tr:hover
 		width: 82px
 		text-align: center
 		+padding-horizontal(5px)
+
+		+media('<desk-sm')
+			width: 60px
+			+padding-horizontal(0)
 
 		& > span
 			+hide-text
@@ -1895,14 +1903,18 @@ a.c-tr:hover
 	+font(1.6rem, round-float(24/16, 1))
 
 	+media('<desk-lg')
-		font-size: 1.4rem
 		padding: round($grid-space--sm*0.93) $grid-space--sm
+		font-size: 1.4rem
 
 	+media('<desk-sm')
 		letter-spacing: normal
 
+	+media('<desk-sm')
+		+padding-horizontal(5px)
+		font-size: 1.3rem
+
 	+media('<mob-lg')
-		+padding-vertical(round($grid-space--sm*0.6))
+		+padding-vertical(6px)
 
 	.c-tr:first-child &
 		+media('>=tab-lg')
@@ -1921,7 +1933,7 @@ a.c-tr:hover
 
 	// стили для конкретных ячеек
 	&.c-td--caption
-		width: 400px
+		min-width: 400px
 		+padding-vertical(round($grid-space*0.93 - 18))
 
 		//.order-calc & .img-for-table
@@ -1936,7 +1948,7 @@ a.c-tr:hover
 		+media('<desk-sm')
 			min-width: 80px
 
-	&.c-td--price
+	&.c-td--price, .c-td--price-total
 		min-width: 140px
 
 		+media('<desk-sm')
@@ -2275,18 +2287,6 @@ a.c-tr:hover
 
 		+media('<tab-sm')
 			display: block
-
-.order-calc-btn
-	float: right
-	min-width: 240px
-
-	+media('<tab-sm')
-		float: none
-		display: block
-		width: auto
-
-	+media('<mob-lg')
-		width: 100%
 
 // собщение, если коризна пуста или нет элементов
 .order-calc__empty

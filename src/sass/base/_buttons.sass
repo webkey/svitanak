@@ -43,11 +43,6 @@
 		+font(14px, 18px)
 		letter-spacing: 0.2em
 
-	@if $animation-use
-		transition:
-			property: background-color, color, border-color
-			duration: $animation-speed
-
 	// hover
 	.no-touchevents &:hover
 		background-color: $btn-bg-hover-color
@@ -55,6 +50,7 @@
 	// disabled
 	&:disabled, &.disabled, &[data-disabled]
 		cursor: default
+		color: $btn-text-color !important
 		background-color: $disabled-color !important
 
 		&::before, &::after
@@ -89,6 +85,26 @@
 				fill: $disabled-color !important
 
 /* btn-default-alt end
+
+/* btn-default-clean
+.btn-default-clean
+	+padding-horizontal(0)
+	color: $btn-bg-color
+	border-color: transparent
+	background-color: transparent
+
+	+media('<mob-lg')
+		+padding-horizontal(0)
+
+	.no-touchevents &:hover
+		color: $btn-bg-hover-color
+		background-color: transparent
+
+	&:disabled, &.disabled, &[data-disabled]
+		color: $disabled-color !important
+		background-color: transparent !important
+
+/* btn-default-clean end
 
 /* btn-underline
 .btn-underline

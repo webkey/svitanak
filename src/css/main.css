@@ -1699,8 +1699,19 @@ i b, i strong, em b, em strong, b i, b em, strong i, strong em {
 	color: #b3b3b3;
 	text-transform: uppercase;
 	font-size: 1.2rem;
-	line-height: 1.33;
+	line-height: 2;
 	letter-spacing: 0.05em;
+}
+
+.note.note--align-right {
+	max-width: 528px;
+	margin-left: auto;
+}
+
+@media (max-width: 991px) {
+	.note.note--align-right {
+		max-width: none;
+	}
 }
 
 .mark {
@@ -1755,6 +1766,18 @@ i b, i strong, em b, em strong, b i, b em, strong i, strong em {
 	overflow: visible;
 	position: static;
 	width: auto;
+}
+
+@media (min-width: 992px) {
+	.for-mob {
+		display: none !important;
+	}
+}
+
+@media (max-width: 991px) {
+	.for-desk {
+		display: none !important;
+	}
 }
 
 body .hide--always {
@@ -2320,6 +2343,7 @@ table th, table thead td {
 
 [class*="btn-default"]:disabled, [class*="btn-default"].disabled, [class*="btn-default"][data-disabled] {
 	cursor: default;
+	color: white !important;
 	background-color: #ccc !important;
 }
 
@@ -2359,6 +2383,33 @@ table th, table thead td {
 }
 
 /* btn-default-alt end */
+/* btn-default-clean */
+.btn-default-clean {
+	padding-right: 0;
+	padding-left: 0;
+	color: #262626;
+	border-color: transparent;
+	background-color: transparent;
+}
+
+@media (max-width: 639px) {
+	.btn-default-clean {
+		padding-right: 0;
+		padding-left: 0;
+	}
+}
+
+.no-touchevents .btn-default-clean:hover {
+	color: #ff6501;
+	background-color: transparent;
+}
+
+.btn-default-clean:disabled, .btn-default-clean.disabled, .btn-default-clean[data-disabled] {
+	color: #ccc !important;
+	background-color: transparent !important;
+}
+
+/* btn-default-clean end */
 /* btn-underline */
 .btn-underline {
 	display: inline-block;
@@ -2900,10 +2951,53 @@ label, .label {
 	margin-bottom: 2rem;
 }
 
+.form-buttons {
+	margin: 0 -15px 3rem;
+}
+
 .form-buttons::after {
 	content: '';
 	display: table;
 	clear: both;
+}
+
+@media (max-width: 767px) {
+	.form-buttons {
+		margin: 0 0 2rem;
+	}
+}
+
+.form-buttons:last-child {
+	margin-bottom: 0;
+}
+
+.form-buttons > * {
+	margin-right: 15px;
+	margin-left: 15px;
+}
+
+@media (max-width: 767px) {
+	.form-buttons > * {
+		margin-right: 0;
+		margin-left: 0;
+		margin-bottom: 10px;
+	}
+}
+
+.form-buttons [class*="btn-"] {
+	min-width: 236px;
+}
+
+@media (max-width: 767px) {
+	.form-buttons [class*="btn-"] {
+		float: none;
+		display: block;
+		width: 100%;
+	}
+}
+
+.form-buttons .btn-default-clean {
+	min-width: 0;
 }
 
 /* form layout end */
@@ -8416,7 +8510,7 @@ a.c-tr:hover {
 	font-family: "gothampro-bold", sans-serif;
 	font-weight: normal;
 	font-style: normal;
-	font-size: 13px;
+	font-size: 1.3rem;
 	line-height: 20px;
 	letter-spacing: 0.1em;
 	text-align: left;
@@ -8437,6 +8531,14 @@ a.c-tr:hover {
 	}
 }
 
+@media (max-width: 1199px) {
+	.c-th {
+		padding-right: 5px;
+		padding-left: 5px;
+		font-size: 1.2rem;
+	}
+}
+
 .c-th:first-child, .c-th.c-th--title {
 	border: none;
 }
@@ -8451,6 +8553,14 @@ a.c-tr:hover {
 	text-align: center;
 	padding-right: 5px;
 	padding-left: 5px;
+}
+
+@media (max-width: 1199px) {
+	.c-th.c-th--del {
+		width: 60px;
+		padding-right: 0;
+		padding-left: 0;
+	}
 }
 
 .c-th.c-th--del > span {
@@ -8484,14 +8594,22 @@ a.c-tr:hover {
 
 @media (max-width: 1599px) {
 	.c-td {
-		font-size: 1.4rem;
 		padding: 9px 10px;
+		font-size: 1.4rem;
 	}
 }
 
 @media (max-width: 1199px) {
 	.c-td {
 		letter-spacing: normal;
+	}
+}
+
+@media (max-width: 1199px) {
+	.c-td {
+		padding-right: 5px;
+		padding-left: 5px;
+		font-size: 1.3rem;
 	}
 }
 
@@ -8523,7 +8641,7 @@ a.c-tr:hover {
 }
 
 .c-td.c-td--caption {
-	width: 400px;
+	min-width: 400px;
 	padding-top: 10px;
 	padding-bottom: 10px;
 }
@@ -8543,12 +8661,12 @@ a.c-tr:hover {
 	}
 }
 
-.c-td.c-td--price {
+.c-td.c-td--price, .c-td .c-td--price-total {
 	min-width: 140px;
 }
 
 @media (max-width: 1199px) {
-	.c-td.c-td--price {
+	.c-td.c-td--price, .c-td .c-td--price-total {
 		min-width: 110px;
 	}
 }
@@ -8981,25 +9099,6 @@ a.c-tr:hover {
 @media (max-width: 767px) {
 	.c-table-result__total.show {
 		display: block;
-	}
-}
-
-.order-calc-btn {
-	float: right;
-	min-width: 240px;
-}
-
-@media (max-width: 767px) {
-	.order-calc-btn {
-		float: none;
-		display: block;
-		width: auto;
-	}
-}
-
-@media (max-width: 639px) {
-	.order-calc-btn {
-		width: 100%;
 	}
 }
 

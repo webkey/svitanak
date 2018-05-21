@@ -345,8 +345,15 @@ i b, i strong, em b, em strong, b i, b em, strong i, strong em
 .note
 	color: #b3b3b3
 	text-transform: uppercase
-	+font(1.2rem, round-float(16/12, 2))
+	+font(1.2rem, round-float(24/12, 2))
 	letter-spacing: 0.05em
+
+	&.note--align-right
+		max-width: 528px
+		margin-left: auto
+
+		+media('<tab-lg')
+			max-width: none
 
 .mark
 	color: $mark-color
@@ -376,6 +383,14 @@ i b, i strong, em b, em strong, b i, b em, strong i, strong em
 
 .hide-text
 	+hide-text
+
+.for-mob
+	+media('>=tab-lg')
+		display: none !important
+
+.for-desk
+	+media('<tab-lg')
+		display: none !important
 
 body
 	.hide--always

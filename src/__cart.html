@@ -129,8 +129,18 @@
 						<textarea placeholder="Ваше сообщение..." class="dark-form"></textarea>
 						@@include('_tpl_forms_form-validation.html')
 						<div class="form-buttons">
-							<button class="btn-default order-calc-btn float-right">Заказать</button>
+							<button class="btn-default-clean btn-with-icon btn-clear-filters btn-clear-filters-js" disabled>
+								@@include("includes-json/svg/icon-close--btn.svg")
+								<span class="for-desk">Очистить корзину</span>
+								<span class="for-mob">Очистить</span>
+							</button>
+							<button class="btn-default order-calc-btn float-right">
+								<span class="for-desk">Оформить заказ</span>
+								<span class="for-mob">Оформить</span>
+							</button>
+							<button class="btn-default-alt order-calc-btn float-right">Сохранить</button>
 						</div>
+						<div class="note note--align-right">После оформления заказа менеджер ОАО «Свiтанак» свяжется с Вами для уточнения окончательных деталей заказа.</div>
 					</div>
 
 				</form>

@@ -89,7 +89,32 @@ label, .label
 	margin-bottom: $bottom-space
 
 .form-buttons
+	margin: 0 -#{round($grid-space/2)} 3rem
 	+clear
+
+	+media('<tab-sm')
+		margin: 0 0 2rem
+
+	&:last-child
+		margin-bottom: 0
+
+	& > *
+		+margin-horizontal(round($grid-space/2))
+
+		+media('<tab-sm')
+			+margin-horizontal(0)
+			margin-bottom: 10px
+
+	[class*="btn-"]
+		min-width: 236px
+
+		+media('<tab-sm')
+			float: none
+			display: block
+			width: 100%
+
+	.btn-default-clean
+		min-width: 0
 
 /* form layout end
 
