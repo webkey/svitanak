@@ -3308,12 +3308,18 @@ function tooltipInit() {
 ;(function($){
 	var defaults = {
 		spinnerLength: '.order-calc__spin-length-js',
-		spinnerPacks: '.order-calc__spin-packs-js',
-		lengthInPacks: '.order-calc__length-in-pack-js',
 		price: '.order-calc__price-js',
 		priceSum: '.order-calc__price-sum-js',
 		btnRemove: '.order-calc__remove-js',
 		row: 'tr',
+		// in group
+		spinnerPacks: '.order-calc__spin-packs-js',
+		lengthInPacks: '.order-calc__length-in-pack-js',
+		packsInGroup: '.order-calc__packs-in-group-js',
+		lengthSum: '.order-calc__length-sum-js',
+		lengthSumInGroup: '.order-calc__length-sum-in-group-js',
+		priceSumInGroup: '.order-calc__price-sum-in-group-js',
+		// total results
 		totalResult: '.order-calc__total-results-js',
 		totalCount: '.order-calc__counts-total-js',
 		totalPrice: '.order-calc__price-total-js',
@@ -3326,6 +3332,9 @@ function tooltipInit() {
 			init: 'ms-order-calc--initialized',
 			hasNotItems: 'order-calc__hasnt-items'
 		}
+
+		// callbacks
+		/* getObjParams: function () {} */
 	};
 
 	function MsOrderCalc(element, options) {
@@ -3338,7 +3347,7 @@ function tooltipInit() {
 		self.callbacks();
 
 		self.calcAll();
-		self.changeNumber();
+		self.changeLength();
 
 		self.removeTimeout = 0;
 		if(!self.config.warningRemove) {
@@ -3365,7 +3374,8 @@ function tooltipInit() {
 
 	MsOrderCalc.prototype.calcAll = function () {
 		// console.log('===calcAll===');
-		var self = this, counter = 0;
+		var self = this;
+		// var counter = 0;
 
 		var $spinner = self.element.find(self.config.spinnerLength);
 		$.each($spinner, function () {
@@ -3374,17 +3384,21 @@ function tooltipInit() {
 			if(!curSpinnerVal) {
 				return;
 			}
-			counter++;
+			// counter++;
 
 			self.createObjParams($curSpinner, curSpinnerVal);
 		});
 
+		// add callback after created params's object
+		self.element.trigger('getObjParams.msOrderCalc', self.config.objParams);
+
 		// call the function to recalculate the total result, if there is at least one item
 		// counter && self.calcTotalResult();
+		self.calcResultsInGroups();
 		self.calcTotalResult();
 	};
 
-	MsOrderCalc.prototype.changeNumber = function () {
+	MsOrderCalc.prototype.changeLength = function () {
 		var self = this;
 
 		self.element.on('change spin', self.config.spinnerLength, function (e, ui) {
@@ -3394,6 +3408,10 @@ function tooltipInit() {
 
 			self.createObjParams($curSpinner, curSpinnerVal);
 
+			// add callback after created params's object
+			self.element.trigger('getObjParams.msOrderCalc', self.config.objParams);
+
+			self.calcResultsInGroups();
 			self.calcTotalResult();
 		});
 	};
@@ -3506,23 +3524,20 @@ function tooltipInit() {
 	MsOrderCalc.prototype.createObjParams = function (spinner, length) {
 		var self = this;
 
-		var $curRow = $(spinner).closest(self.config.row);
-		var $curPrice = $curRow.find(self.config.price);
-		var priceVal = +$curPrice.data('price');
-		var priceValSum = Math.round(priceVal * length * 100) / 100;
+		var id = spinner.attr('data-id'),
+			$curRow = $(spinner).closest(self.config.row),
+			$curPrice = $curRow.find(self.config.price),
+			priceVal = +$curPrice.data('price'),
+			priceValSum = Math.round(priceVal * length * 100) / 100,
+			idGroup = spinner.attr('data-id-group');
 
 		// create the object with id's item
-		var id = spinner.data('id');
 		self.config.objParams[id] = {
+			'idGroup': idGroup,
 			'length': length,
 			'price': priceVal,
 			'priceSum': priceValSum
 		};
-
-		// console.log("self.config.objParams: ", self.config.objParams);
-
-		// add callback createdObjParams
-		self.element.trigger('createdObjParams.msOrderCalc', self.config.objParams);
 
 		// add length items and sum price to DOM (data-attributes)
 		$curPrice.attr('data-length-sum', length);
@@ -3532,15 +3547,26 @@ function tooltipInit() {
 		$curRow.find(self.config.priceSum).html(priceValSum);
 	};
 
+	MsOrderCalc.prototype.calcResultsInGroups = function () {
+		// console.log('===calcResultsInGroups===');
+		var self = this;
+
+		var resultInGroup = self.sumParamInGroup(self.config.objParams, ['length', 'price']);
+
+		// add callback getTotalResults
+		self.element.trigger('getResultsInGroup.msOrderCalc', resultInGroup);
+
+		// add total results to DOM
+		// self.element.find(self.config.totalCount).text(totalCount);
+		// self.element.find(self.config.totalPrice).text(totalPrice);
+	};
+
 	MsOrderCalc.prototype.calcTotalResult = function () {
 		// console.log('===calcTotalResult===');
 		var self = this;
 
 		var totalCount = self.sumParam(self.config.objParams, 'length');
 		var totalPrice = self.sumParam(self.config.objParams, 'priceSum');
-
-		console.log("totalCount: ", totalCount);
-		console.log("totalPrice: ", totalPrice);
 
 		// add callback getTotalResults
 		self.element.trigger('getTotalResults.msOrderCalc', {'totalCount': totalCount, 'totalPrice': totalPrice});
@@ -3550,12 +3576,29 @@ function tooltipInit() {
 		self.element.find(self.config.totalPrice).text(totalPrice);
 	};
 
+	MsOrderCalc.prototype.sumParamInGroup = function (obj, param) {
+
+		// var i = 0;
+		//
+		// for(i; i < param.length; i++) {
+		// 	console.log("param[i]: ", param[i]);
+		// }
+		//
+		// var result = 0,
+		// 	prop;
+		//
+		// for(prop in obj) {
+		// 	console.log("obj: ", obj);
+		// }
+	};
+
 	MsOrderCalc.prototype.sumParam = function (obj, param) {
 
-		var result = 0;
-		var prop;
+		var result = 0,
+			prop;
 
 		for(prop in obj) {
+			console.log("obj: ", obj);
 			result += obj[prop][param];
 		}
 
@@ -3590,9 +3633,9 @@ var orderCalcOptions = {
 		$(el).find('.order-calc__total-results-js').toggleClass('show', results.totalCount > 0);
 		$(el).find('.order-calc-btn').prop('disabled', !results.totalCount > 0).toggleClass('disabled', !results.totalCount > 0);
 	}
-	// , createdObjParams: function (e, el, obj) {
-	// 	console.log("obj: ", obj);
-	// }
+	, getObjParams: function (e, el, obj) {
+		// console.log("obj: ", obj);
+	}
 };
 
 function orderCalculation() {

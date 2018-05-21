@@ -13,10 +13,10 @@
 
 	<td class="c-td c-td--caption" data-label="Наименование">
 		<div class="td__val">
-			@@if(!context.removed){
+			@@if(context.head){
 			<a href="product-card.html" class="caption-for-table">
 			}
-			@@if(context.removed){
+			@@if(!context.head){
 			<div class="caption-for-table">
 			}
 				@@if(!context.head){
@@ -36,10 +36,10 @@
 					@@title
 				</div>
 				}
-			@@if(context.removed){
+			@@if(!context.head){
 			</div>
 			}
-			@@if(!context.removed){
+			@@if(context.head){
 			</a>
 			}
 		</div>
@@ -85,10 +85,10 @@
 	<td class="c-td c-td--packs-length" data-label="Кол-во уп.">
 		<div class="c-td__val">
 			@@if(!context.head){
-			<input class="spinner spinner-js order-calc__spin-length-js" type="number" name="value" value="@@value" data-id="@@ch.Модель_@@ch.Рост_@@ch.Размер" data-group-id="@@ch.Модель" data-only-number>
+			<input class="spinner spinner-js order-calc__spin-length-js" type="number" name="value" value="@@value" data-id="@@ch.Модель_@@ch.Рост_@@ch.Размер"@@if(context.ch.Модель != 'P209104'){ data-id-group="@@ch.Модель"} data-only-number>
 			}
 			@@if(context.head){
-			<span class="order-calc__packs-length-js">0</span> шт.
+			<span class=".order-calc__packs-in-group-js">0</span> шт.
 			}
 		</div>
 	</td>
@@ -105,10 +105,10 @@
 	<td class="c-td c-td--length-total" data-label="Всего">
 		<div class="c-td__val">
 			@@if(!context.head){
-			<span class="order-calc__length-total-js">0</span> шт.
+			<span class="order-calc__length-sum-js">0</span> шт.
 			}
 			@@if(context.head){
-			<span class="order-calc__length-total-group-js">0</span> шт.
+			<span class="order-calc__length-in-group-js">0</span> шт.
 			}
 		</div>
 	</td>
@@ -128,7 +128,7 @@
 			<span class="order-calc__price-sum-js">0</span> @@price.unit
 			}
 			@@if(context.head){
-			<span class="order-calc__price-sum-group-js">0</span> @@price.unit
+			<span class="order-calc__price-sum-in-group-js">0</span> @@price.unit
 			}
 		</div>
 	</td>

@@ -8683,7 +8683,7 @@ a.c-tr:hover {
 	height: 40px;
 }
 
-.c-td.c-td--length, .c-td.c-td--length-total, .c-td .c-td--price, .c-td .c-td--price-total {
+.c-td.c-td--length, .c-td.c-td--length-sum, .c-td .c-td--price, .c-td .c-td--price-sum {
 	white-space: nowrap;
 }
 
