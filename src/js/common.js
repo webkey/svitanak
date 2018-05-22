@@ -3325,7 +3325,6 @@ function tooltipInit() {
 		totalPacks: '.order-calc__packs-total-js',
 		totalCount: '.order-calc__counts-total-js',
 		totalPrice: '.order-calc__price-total-js',
-		objParams: {},
 
 		classes: {
 			init: 'ms-order-calc--initialized',
@@ -3344,6 +3343,8 @@ function tooltipInit() {
 		self.element = element;
 
 		self.callbacks();
+		
+		self.objParams = {};
 
 		self.calcAll();
 		self.changeLength();
@@ -3384,8 +3385,11 @@ function tooltipInit() {
 			self.createObjParams($curSpinner, curSpinnerVal);
 		});
 
+		// создать объект с параметрамы групп
+		self.createGroupObj();
+
 		// add callback after created params's object
-		self.element.trigger('getObjParams.msOrderCalc', self.config.objParams);
+		self.element.trigger('getObjParams.msOrderCalc', self.objParams);
 
 		// call the function to recalculate the total result, if there is at least one item
 		// counter && self.calcTotalResult();
@@ -3404,7 +3408,7 @@ function tooltipInit() {
 			self.createObjParams($curSpinner, curSpinnerVal);
 
 			// add callback after created params's object
-			self.element.trigger('getObjParams.msOrderCalc', self.config.objParams);
+			self.element.trigger('getObjParams.msOrderCalc', self.objParams);
 
 			self.calcTotalResult();
 		});
@@ -3419,7 +3423,7 @@ function tooltipInit() {
 				itemId = $curRow.find(self.config.spinnerPacks).attr('data-id');
 
 			// remove current item from object
-			delete self.config.objParams[itemId];
+			delete self.objParams[itemId];
 
 			self.calcTotalResult();
 
@@ -3437,13 +3441,13 @@ function tooltipInit() {
 
 			var $groupHead = $(this).closest(self.config.row),
 				groupId = $groupHead.attr('id'),
-				$curRows = $('[data-id-group=' + groupId + ']');
+				$curRows = $('[data-group-id=' + groupId + ']');
 
 			$.each($curRows, function () {
 				var $curRow = $(this);
 				var itemId = $curRow.find(self.config.spinnerPacks).attr('data-id');
 				// remove current item from object
-				delete self.config.objParams[itemId];
+				delete self.objParams[itemId];
 				self.removeItem($curRows);
 			});
 
@@ -3467,7 +3471,7 @@ function tooltipInit() {
 		var curElement = row.closest(self.element);
 
 		// remove current item from object
-		// delete self.config.objParams[id];
+		// delete self.objParams[id];
 		row.remove();
 
 		self.calcAll();
@@ -3492,38 +3496,69 @@ function tooltipInit() {
 		var id = spinner.attr('data-id'),// id товара
 			$curRow = $(spinner).closest(self.config.row),// элемент dom содержащий один товар
 			$curPrice = $curRow.find(self.config.price),// елемент с ценой за единицу товара
-			lengthInPack = $curRow.find(self.config.lengthInPacks).attr('data-length-in-pack'),// количество товаров в одной упаковке
-			lengthSum = length*lengthInPack,// всего товаров
+			lengthInPack = +$curRow.find(self.config.lengthInPacks).attr('data-length-in-pack'),// количество товаров в одной упаковке
+			// lengthSum = length*lengthInPack,// всего товаров
 			priceVal = +$curPrice.attr('data-price'),// цена товара (в дата-атрибуте)
-			priceValSum = Math.round(priceVal * lengthSum * 100) / 100;// общая цена одного товара
+			// priceValSum = Math.round(priceVal * lengthSum * 100) / 100;// общая цена одного товара
+			groupId = $curRow.attr('data-group-id');
 
 		// create the object with id's item
-		self.config.objParams[id] = {
+
+		var obj = self.objParams[id] = {
+			'group': groupId,
 			'packsLength': length,
-			'lengthSum': lengthSum,
-			'price': priceVal,
-			'priceSum': priceValSum
+			'lengthInPack': lengthInPack,
+			// 'lengthSum': lengthSum,
+			'price': priceVal, // 'priceSum': priceValSum
 		};
 
-		// add length items and sum price to DOM (data-attributes)
-		$curPrice.attr('data-length-sum', self.config.objParams[id].lengthSum);
-		$curPrice.attr('data-price-sum', self.config.objParams[id].priceSum);
+		// console.log("self.objParams: ", self.objParams);
 
-		// add current item's length sum to DOM
-		$curRow.find(self.config.lengthSum).html(self.config.objParams[id].lengthSum);
+		// add length items and sum price to DOM and to data-attributes
+		var lengthSum = self.objParams[id].packsLength * self.objParams[id].lengthInPack;
+		$curRow.find(self.config.lengthSum).html(lengthSum);
+		/*!$curPrice.attr('data-length-sum', lengthSum);*/
 
-		// add current item's price sum to DOM
-		$curRow.find(self.config.priceSum).html(self.config.objParams[id].priceSum);
+		var priceSum = Math.round(lengthSum * self.objParams[id].price * 100) / 100;
+		$curRow.find(self.config.priceSum).html(priceSum);
+		/*!$curPrice.attr('data-price-sum', priceSum);*/
+
+		// console.log("lengthSum: ", lengthSum);
+		// console.log("priceSum: ", priceSum);
 	};
 
+	MsOrderCalc.prototype.createGroupObj = function () {
+		var self = this;
+		var objParams = self.objParams;
+
+		console.log("objParams: ", objParams);
+		//создать новый обект с ключами groupId
+		var objGroup = {};
+
+		for (var key in objParams) {
+			var group = objParams[key].group;
+			console.log("group: ", group);
+			console.log("packsLength: ", objParams[key].packsLength);
+			console.log("lengthInPack: ", objParams[key].lengthInPack);
+			console.log("price: ", objParams[key].price);
+			// console.log('packsLength: ', obj.packsLength);
+			objGroup[group] = {
+				'packsLength': objParams[key].packsLength,
+				'lengthInPack': objParams[key].lengthInPack,
+				'price': objParams[key].price
+			}
+		}
+
+		console.log("objGroup: ", objGroup);
+	};
 
 	MsOrderCalc.prototype.calcTotalResult = function () {
 		// console.log('===calcTotalResult===');
 		var self = this;
 
-		var totalPacks = self.sumParam(self.config.objParams, 'packsLength');
-		var totalCount = self.sumParam(self.config.objParams, 'lengthSum');
-		var totalPrice = self.sumParam(self.config.objParams, 'priceSum');
+		var totalPacks = self.sumParam(self.objParams, 'packsLength');
+		var totalCount = self.sumParam(self.objParams, 'lengthSum');
+		var totalPrice = self.sumParam(self.objParams, 'priceSum');
 
 		// add callback getTotalResults
 		self.element.trigger('getTotalResults.msOrderCalc', {'totalCount': totalCount, 'totalPrice': totalPrice});
@@ -3607,7 +3642,7 @@ function orderCalculation() {
 		var $curBtn = $(this),
 			$curId = $curBtn.closest('.c-tr').attr('id');
 
-		$('[data-id-group=' + $curId + ']').addClass(removeCandidateClass);
+		$('[data-group-id=' + $curId + ']').addClass(removeCandidateClass);
 	}).on('mouseleave', function () {
 		$('.c-tr').removeClass(removeCandidateClass);
 	});
@@ -3617,7 +3652,7 @@ function orderCalculation() {
 			$curRow = $curBtn.closest('.c-tr'),
 			$curId = $curRow.attr('id');
 
-		$('[data-id-group=' + $curId + ']').remove();
+		$('[data-group-id=' + $curId + ']').remove();
 		$curRow.remove();
 
 		setTimeout(function () {
@@ -3748,7 +3783,6 @@ function textSlide() {
 			$this.addClass('active').children('span').text(textShort);
 		}
 	});
-
 
 	// sticky kit recalculate
 	// var textSlideTimeout;
