@@ -5,7 +5,7 @@
 <tr class="c-tr c-tr--head order-calc__head-js" id="@@ch.Модель">
 }
 @@if(context.child && !context.removed){
-<tr class="c-tr c-tr--child order-calc__child-js">
+<tr class="c-tr c-tr--child order-calc__child-js" data-id-group="@@ch.Модель">
 }
 @@if(context.removed){
 <tr class="c-tr c-tr--removed">
@@ -85,7 +85,7 @@
 	<td class="c-td c-td--packs-length" data-label="Кол-во уп.">
 		<div class="c-td__val">
 			@@if(!context.head){
-			<input class="spinner spinner-js order-calc__spin-length-js" type="number" name="value" value="@@value" data-id="@@ch.Модель_@@ch.Рост_@@ch.Размер"@@if(context.ch.Модель != 'P209104'){ data-id-group="@@ch.Модель"} data-only-number>
+			<input class="spinner spinner-js order-calc__spin-packs-js" type="number" name="value" value="@@value" data-id="@@ch.Модель_@@ch.Рост_@@ch.Размер" data-only-number>
 			}
 			@@if(context.head){
 			<span class=".order-calc__packs-in-group-js">0</span> шт.

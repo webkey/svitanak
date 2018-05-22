@@ -98,7 +98,7 @@
 	  "name": "Серый"
 	},
 	"brand": "img-brand-01.png",
-	"value": 15,
+	"value": 5,
 	"max": 100
   },
   {
@@ -132,7 +132,7 @@
 	  "name": "Серый"
 	},
 	"brand": "img-brand-01.png",
-	"value": 10,
+	"value": 5,
 	"max": 100
   },
   {
@@ -167,7 +167,7 @@
 	  "name": "Розовый"
 	},
 	"brand": "img-brand-01.png",
-	"value": 2,
+	"value": 5,
 	"max": 10
   },
   {
@@ -202,7 +202,7 @@
 	  "name": "Лиловый"
 	},
 	"brand": "img-brand-01.png",
-	"value": 10,
+	"value": 5,
 	"max": 80
   },
   {
@@ -236,7 +236,7 @@
 	  "name": "Лиловый"
 	},
 	"brand": "img-brand-01.png",
-	"value": 10,
+	"value": 5,
 	"max": 80
   },
   {
@@ -270,7 +270,7 @@
 	  "name": "Коричневый"
 	},
 	"brand": "img-brand-01.png",
-	"value": 15,
+	"value": 5,
 	"max": 80
   },
   {
@@ -304,7 +304,7 @@
 	  "name": "Коричневый"
 	},
 	"brand": "img-brand-01.png",
-	"value": 15,
+	"value": 5,
 	"max": 80
   },
   {
@@ -338,7 +338,7 @@
 	  "name": "Коричневый"
 	},
 	"brand": "img-brand-01.png",
-	"value": 15,
+	"value": 5,
 	"max": 80
   }
 ]
