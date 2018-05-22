@@ -3326,6 +3326,7 @@ function tooltipInit() {
 		warningRemove: false,
 		warningRemoveDelay: 3000,
 		objParams: {},
+		objGroups: {},
 		tplRemoveItem: '<div><div><span>Товар удален</span> <a class="order-calc__cancel-js">Отмена</a></div></div>',
 
 		classes: {
@@ -3578,18 +3579,37 @@ function tooltipInit() {
 
 	MsOrderCalc.prototype.sumParamInGroup = function (obj, param) {
 
-		// var i = 0;
+		var self = this;
+		var i = 0;
+
+		for(i; i < param.length; i++) {
+			var p = param[i];
+			var newId;
+			var result = 0;
+			console.log("p: ", p);
+
+			for(prop in obj) {
+
+				var id = obj[prop].idGroup;
+				var pObj = obj[prop][p];
+				if(newId !== id) {
+					console.log("newId: ", newId);
+					newId = id;
+					result = pObj;
+				} else {
+					result += obj[prop][p];
+				}
+				console.log("result: ", result);
+				self.config.objGroups[id] = {};
+				self.config.objGroups[id][p] = result;
+			}
+		}
 		//
-		// for(i; i < param.length; i++) {
-		// 	console.log("param[i]: ", param[i]);
-		// }
-		//
-		// var result = 0,
-		// 	prop;
-		//
-		// for(prop in obj) {
-		// 	console.log("obj: ", obj);
-		// }
+		var result = 0,
+			prop;
+
+
+		console.log(": ", self.config.objGroups);
 	};
 
 	MsOrderCalc.prototype.sumParam = function (obj, param) {
@@ -3598,7 +3618,6 @@ function tooltipInit() {
 			prop;
 
 		for(prop in obj) {
-			console.log("obj: ", obj);
 			result += obj[prop][param];
 		}
 
