@@ -3274,6 +3274,7 @@ function spinnerInit($spinner) {
 			$curSpinner.superSpinner({
 				min: 0,
 				max: $curSpinner.data('max') || null,
+				disabled: $curSpinner.data('disabled') || false,
 				spin: function( event, ui ) {
 					setTimeout(function () {
 						$(event.target).trigger('spin'); // shame! do not work trigger spin, after widget create

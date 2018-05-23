@@ -197,32 +197,86 @@
 				</div>
 				<!--product card end-->
 
-
-					<div class="bottom-space-lg order-calc order-calc-js">
-						<form action="" method="post">
-							<div class="c-table">
-								<div class="c-thead">
-									<div class="c-tr">
-										@@loop("_tpl_c-thead.html", "includes-json/order-calc__th.json")
+				<div class="bottom-space-lg">
+					<form action="" method="post">
+						<div class="order">
+							<div class="order__caption">
+								<div class="order__caption__th">Модель</div>
+								<div class="order__caption__th">Цвет</div>
+								<div class="order__caption__th">Цена</div>
+							</div>
+							<div class="order__group">
+								<div class="order__head">
+									<div class="order__head__th caption-for-table">
+										<div class="img-for-table">
+											<img src="img/img-products-01.jpg" alt="Комплект жен. (фуфайка+брюки)" />
+										</div>
+										<div class="title-for-table" data-label="Модель">
+											Комплект жен.(фуфайка+брюки) <span class="light-color">/</span> Р219044
+										</div>
+									</div>
+									<div class="order__head__th" data-label="Цвет">
+										<div class="color-indicator">
+											<span class="color-pic" style="background-color: #8f8288;">#8f8288</span> <span class="dash">–</span> <span class="color-name">Серый</span>
+										</div>
+									</div>
+									<div class="order__head__th" data-label="Цена">
+										<div data-price="125.75">125.75 р.</div>
 									</div>
 								</div>
-
-								<div class="c-tbody">
-									@@loop("_tpl_order-calc-items--product.html", "includes-json/order-calc__items.json")
+								<div class="order__labels">
+									<div class="order__labels__th">Рост</div>
+									<div class="order__labels__th">
+										<div data-price="125.75">Доступные размеры</div>
+									</div>
+								</div>
+								<div class="order__list">
+									<div class="order__list__side">
+										<div>160 см</div>
+										<div>170 см</div>
+										<div>180 см</div>
+									</div>
+									<div class="order__list__content">
+										<table>
+											<thead>
+												<tr>
+													<th>130</th>
+													<th>134</th>
+													<th>138</th>
+													<th>142</th>
+													<th>146</th>
+													<th>150</th>
+													<th>154</th>
+												</tr>
+											</thead>
+											<tbody class="c-tbody">
+												<tr>
+													@@loop("_tpl_order-items.html", "includes-json/order-items--1.json")
+												</tr>
+												<tr>
+													@@loop("_tpl_order-items.html", "includes-json/order-items--2.json")
+												</tr>
+												<tr>
+													@@loop("_tpl_order-items.html", "includes-json/order-items--3.json")
+												</tr>
+											</tbody>
+										</table>
+									</div>
+								</div>
+								<div class="order-result">
+									<div class="note">Заказ набирается упаковками</div>
+									<div class="order-result__group">
+										<div class="order-result__total">
+											<!--<div class="order-result__label">Итого:</div>-->
+											<span class="text-mark">27</span> упаковок на&nbsp;<span class="text-mark">2 150</span>&nbsp;руб.
+										</div>
+										<a href="#" class="btn-default">Заказать</a>
+									</div>
 								</div>
 							</div>
-
-							<div class="c-table-result">
-								<div class="c-table-result__total hide-before-calc order-calc__total-results-js">
-									<div class="c-table-result__label">Итого:</div>
-									<span class="c-table-result__count order-calc__counts-total-js">0</span> позиций на&nbsp;<span class="c-table-result__price order-calc__price-total-js">0</span>&nbsp;руб.
-								</div>
-								<a href="#" class="btn-default order-calc-btn">Заказать</a>
-							</div>
-
-							<div class="order-calc__empty">Ваша корзина пуста</div>
-						</form>
-					</div>
+						</div>
+					</form>
+				</div>
 
 				<div class="heading">
 					<h2>Похожие модели <span class="sep">&nbsp;</span></h2>

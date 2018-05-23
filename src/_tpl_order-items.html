@@ -1,0 +1,15 @@
+<td>
+	<div class="">
+		<input class="spinner spinner-js"@@if(context.max){ data-max="@@max"}@@if(context.disabled){ data-disabled="@@disabled" disabled} type="number" name="value" value="@@value" data-only-number>
+		@@if(!context.disabled){
+		<div class="stock-tape stock-empty" title="На складе осталось @@stock">
+			<span class="stock-tape-value" style="width: @@stock;">@@stock</span>
+		</div>
+		}
+		@@if(context.disabled){
+		<div class="stock-tape" title="Нет в наличии">
+			<span class="stock-tape-value" style="width: 0%;">Нет в наличии</span>
+		</div>
+		}
+	</div>
+</td>

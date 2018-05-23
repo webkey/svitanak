@@ -42,7 +42,6 @@ gulp.task('htmlCompilation', function () { // Таск формирования 
 			"indent_with_tabs": true,
 			"max_preserve_newlines": 0
 		}))
-		.pipe(revts())
 		.pipe(gulp.dest('./src/'));
 });
 
@@ -231,6 +230,7 @@ gulp.task('build', ['cleanDistFolder', 'htmlCompilation', 'copyImgToDist', 'sass
 		.pipe(gulp.dest('dist/js'));
 
 	gulp.src(['!src/__*.html', '!src/temp*.html', '!src/_tpl_*.html', 'src/*.html']) // Переносим HTML в продакшен
+		.pipe(revts()) // Добавить версии подключаемых файлов
 		.pipe(gulp.dest('dist'));
 
 	gulp.src(['src/*.png', 'src/*.ico', 'src/.htaccess']) // Переносим favicon и др. файлы в продакшин

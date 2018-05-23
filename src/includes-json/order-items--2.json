@@ -1,0 +1,39 @@
+[
+  {
+	"value": 0,
+	"max": 100,
+	"stock": "50%"
+  },
+  {
+	"value": 0,
+	"max": 100,
+	"stock": "80%"
+  },
+  {
+	"value": 0,
+	"max": 100,
+	"disabled": "true",
+	"stock": "20%"
+  },
+  {
+	"value": 0,
+	"max": 100,
+	"disabled": "true",
+	"stock": "15%"
+  },
+  {
+	"value": 0,
+	"max": 100,
+	"stock": "100%"
+  },
+  {
+	"value": 0,
+	"max": 100,
+	"stock": "80%"
+  },
+  {
+	"value": 0,
+	"max": 100,
+	"stock": "85%"
+  }
+]
