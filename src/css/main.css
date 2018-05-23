@@ -8504,8 +8504,8 @@ a.c-tr:hover {
 
 .c-th {
 	padding: 15px 20px;
-	border: solid white;
-	border-width: 0 0 0 2px;
+	border-left: 2px solid white;
+	border-bottom: 1px solid #e6e6e6;
 	background-color: #f2f2f2;
 	font-family: "gothampro-bold", sans-serif;
 	font-weight: normal;
@@ -8540,12 +8540,16 @@ a.c-tr:hover {
 }
 
 .c-th:first-child, .c-th.c-th--title {
-	border: none;
+	border-left: none;
 }
 
 .c-th > svg {
 	display: inline-block;
 	vertical-align: top;
+}
+
+.c-th.c-th--pack-length, .c-th.c-th--pack-total {
+	white-space: nowrap;
 }
 
 .c-th.c-th--del {
@@ -8620,17 +8624,6 @@ a.c-tr:hover {
 	}
 }
 
-@media (min-width: 992px) {
-	.c-tr:first-child .c-td {
-		border-top-width: 1px;
-	}
-}
-
-.c-tr:last-child .c-td {
-	border-top-width: 0;
-	border-bottom-width: 0;
-}
-
 .c-td a {
 	text-decoration: none;
 	color: inherit;
@@ -8683,7 +8676,7 @@ a.c-tr:hover {
 	height: 40px;
 }
 
-.c-td.c-td--length, .c-td.c-td--length-sum, .c-td .c-td--price, .c-td .c-td--price-sum {
+.c-td.c-td--length, .c-td.c-td--length-sum, .c-td.c-td--price, .c-td.c-td--price-sum, .c-td.c-td--length-total {
 	white-space: nowrap;
 }
 

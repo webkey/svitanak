@@ -24,7 +24,8 @@ var gulp = require('gulp'), // Подключаем Gulp
 	replace = require('gulp-string-replace'),
 	strip = require('gulp-strip-comments'), // Удалить комментарии
 	removeEmptyLines = require('gulp-remove-empty-lines'), // Удалить пустые строки
-	revts = require('gulp-rev-timestamp')
+	revts = require('gulp-rev-timestamp'), // Дабавить версии к подключаемым файлам
+	beautify = require('gulp-beautify') // Причесать js
 	;
 
 gulp.task('htmlCompilation', function () { // Таск формирования ДОМ страниц
@@ -219,6 +220,11 @@ gulp.task('build', ['cleanDistFolder', 'htmlCompilation', 'copyImgToDist', 'sass
 			ignore: /\/\*\*\s*\n([^\*]*(\*[^\/])?)*\*\//g // Не удалять /**...*/
 		}))
 		// .pipe(removeEmptyLines())
+		// .pipe(beautify({
+		// 	"indent_with_tabs": true,
+		// 	"space_after_anon_function": true,
+		// 	"max_preserve_newlines": 2
+		// }))
 		.pipe(gulp.dest('dist/js'));
 
 	gulp.src(['!src/js/temp/**/*.js', '!src/js/**/temp-*.js', '!src/js/common.js', 'src/js/*.js']) // Переносим скрипты в продакшен

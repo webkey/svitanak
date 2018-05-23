@@ -1855,8 +1855,8 @@ a.c-tr:hover
 
 .c-th
 	padding: round($grid-space*0.5) #{$grid-space--md}
-	border: solid $bg-color-base
-	border-width: 0 0 0 2px
+	border-left: 2px solid white
+	border-bottom: 1px solid $border-color
 	background-color: $bg-color-alt
 	+font-bold
 	font-size: 1.3rem
@@ -1878,10 +1878,13 @@ a.c-tr:hover
 		font-size: 1.2rem
 
 	&:first-child, &.c-th--title
-		border: none
+		border-left: none
 
 	& > svg
 		+display-inline-block-top
+
+	&.c-th--pack-length, &.c-th--pack-total
+		white-space: nowrap
 
 	&.c-th--del
 		width: 82px
@@ -1916,11 +1919,11 @@ a.c-tr:hover
 	+media('<mob-lg')
 		+padding-vertical(6px)
 
-	.c-tr:first-child &
+	//.c-tr:first-child &
 		+media('>=tab-lg')
 			border-top-width: 1px
 
-	.c-tr:last-child &
+	//.c-tr:last-child &
 		border-top-width: 0
 		border-bottom-width: 0
 
@@ -1962,7 +1965,7 @@ a.c-tr:hover
 		.btn-del
 			+size($table__del--size)
 
-	&.c-td--length, &.c-td--length-sum, .c-td--price, .c-td--price-sum
+	&.c-td--length, &.c-td--length-sum, &.c-td--price, &.c-td--price-sum, &.c-td--length-total
 		white-space: nowrap
 
 	&.c-td--removed-info

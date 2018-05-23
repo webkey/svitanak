@@ -1,14 +1,14 @@
 @@if(!context.head && !context.child && !context.removed){
-<tr class="c-tr order-calc__item-js">
+<tr class="c-tr order-calc__item-js" data-id="@@ch.Модель_@@ch.Рост_@@ch.Размер">
 }
 @@if(context.head && !context.removed){
 <tr class="c-tr c-tr--head order-calc__item-js order-calc__head-js" id="@@ch.Модель">
 }
 @@if(context.child && !context.removed){
-<tr class="c-tr c-tr--child order-calc__item-js order-calc__child-js" data-group-id="@@ch.Модель">
+<tr class="c-tr c-tr--child order-calc__item-js order-calc__child-js" data-id="@@ch.Модель_@@ch.Рост_@@ch.Размер" data-group-id="@@ch.Модель">
 }
 @@if(context.removed){
-<tr class="c-tr c-tr--removed order-calc__item-js">
+<tr class="c-tr c-tr--removed order-calc__item-js" data-id="@@ch.Модель_@@ch.Рост_@@ch.Размер">
 }
 
 	<td class="c-td c-td--caption" data-label="Наименование">
@@ -85,10 +85,10 @@
 	<td class="c-td c-td--packs-length" data-label="Кол-во уп.">
 		<div class="c-td__val">
 			@@if(!context.head){
-			<input class="spinner spinner-js order-calc__spin-packs-js" type="number" name="value" value="@@value" data-id="@@ch.Модель_@@ch.Рост_@@ch.Размер" data-only-number>
+			<input class="spinner spinner-js order-calc__spin-packs-js"@@if(context.max){ data-max="@@max"} type="number" name="value" value="@@value" data-only-number>
 			}
 			@@if(context.head){
-			<span class=".order-calc__packs-in-group-js">0</span> шт.
+			<span class="order-calc__packs-in-group-js">0</span> шт.
 			}
 		</div>
 	</td>
@@ -138,13 +138,13 @@
 		@@if(!context.head || context.removed){
 		<a href="#" class="btn-del order-calc__remove-js" title="Удалить товар с корзины">
 			@@include("includes-json/svg/icon-close.svg")
-			<span>Удалить с корзины</span>
+			<span>Удалить из корзины</span>
 		</a>
 		}
 		@@if(context.head && !context.removed){
 		<a href="#" class="btn-del order-calc__remove-group-js" title="Удалить группу товаров с корзины">
 			@@include("includes-json/svg/icon-close.svg")
-			<span>Удалить группу товаров с корзины</span>
+			<span>Удалить группу товаров из корзины</span>
 		</a>
 		}
 	</td>

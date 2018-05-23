@@ -3313,11 +3313,12 @@ function tooltipInit() {
 		btnRemove: '.order-calc__remove-js',
 		row: '.order-calc__item-js',
 		// in group
+		headOfGroup: '.order-calc__head-js',
 		spinnerPacks: '.order-calc__spin-packs-js',
 		lengthInPacks: '.order-calc__length-in-pack-js',
-		packsInGroup: '.order-calc__packs-in-group-js',
 		lengthSum: '.order-calc__length-sum-js',
-		lengthSumInGroup: '.order-calc__length-sum-in-group-js',
+		packsInGroup: '.order-calc__packs-in-group-js',
+		lengthInGroup: '.order-calc__length-in-group-js',
 		priceSumInGroup: '.order-calc__price-sum-in-group-js',
 		btnRemoveGroup: '.order-calc__remove-group-js',
 		// total results
@@ -3331,8 +3332,10 @@ function tooltipInit() {
 			hasNotItems: 'order-calc__hasnt-items'
 		}
 
-		// callbacks
-		/* getObjParams: function () {} */
+		/*! callbacks */
+		/*! afterChangedLengthItem: function () {} // after changed length of elements in the cart */
+		/*! removedItem: function () {} // after removed each element from the cart */
+		/*! removedAllItems: function () {} // after removed all elements from the cart */
 	};
 
 	function MsOrderCalc(element, options) {
@@ -3349,8 +3352,8 @@ function tooltipInit() {
 		self.calcAll();
 		self.changeLength();
 
-		self.immediateRemoveItem();
-		self.immediateRemoveGroup();
+		self.removeItem();
+		self.removeGroup();
 
 		self.init(); // create DOM structure of the plugins
 	}
@@ -3370,30 +3373,22 @@ function tooltipInit() {
 	MsOrderCalc.prototype.calcAll = function () {
 		// console.log('===calcAll===');
 		var self = this;
-		// var counter = 0;
 
-		// var $spinner = self.element.find(self.config.spinnerLength);
-		var $spinner = self.element.find(self.config.spinnerPacks);
-		$.each($spinner, function () {
-			var $curSpinner = $(this);
-			var curSpinnerVal = +$curSpinner.val();
-			if(!curSpinnerVal) {
+		var $item = $(self.config.row, self.element);
+
+		$.each($item, function () {
+			var $curItem = $(this);
+			var spinnerVal = +$(self.config.spinnerPacks, $curItem).val();
+
+			if(!spinnerVal) {
 				return;
 			}
-			// counter++;
 
-			self.createObjParams($curSpinner, curSpinnerVal);
+			self.createObjParams($curItem, spinnerVal);
 		});
 
-		// создать объект с параметрамы групп
-		self.createGroupObj();
-
-		// add callback after created params's object
-		self.element.trigger('getObjParams.msOrderCalc', self.objParams);
-
-		// call the function to recalculate the total result, if there is at least one item
-		// counter && self.calcTotalResult();
 		self.calcTotalResult();
+		self.calcTotalResultInGroup();
 	};
 
 	MsOrderCalc.prototype.changeLength = function () {
@@ -3405,168 +3400,214 @@ function tooltipInit() {
 
 			var curSpinnerVal = ui ? ui.value : +$curSpinner.val();
 
-			self.createObjParams($curSpinner, curSpinnerVal);
-
-			// add callback after created params's object
-			self.element.trigger('getObjParams.msOrderCalc', self.objParams);
+			self.createObjParams($curSpinner.closest(self.config.row), curSpinnerVal);
 
 			self.calcTotalResult();
+			self.calcTotalResultInGroup();
 		});
 	};
 
-	MsOrderCalc.prototype.immediateRemoveItem = function () {
+	MsOrderCalc.prototype.removeItem = function () {
 		var self = this;
 
 		self.element.on('click', self.config.btnRemove, function (e) {
 
-			var $curRow = $(this).closest(self.config.row),
-				itemId = $curRow.find(self.config.spinnerPacks).attr('data-id');
+			var $curRow = $(this).closest(self.config.row);
 
-			// remove current item from object
-			delete self.objParams[itemId];
-
-			self.calcTotalResult();
-
-			self.removeItem($curRow);
+			self.deleteItem($curRow);
 
 			e.preventDefault();
 
 		});
 	};
 
-	MsOrderCalc.prototype.immediateRemoveGroup = function () {
+	MsOrderCalc.prototype.removeGroup = function () {
 		var self = this;
 
 		self.element.on('click', self.config.btnRemoveGroup, function (e) {
 
-			var $groupHead = $(this).closest(self.config.row),
-				groupId = $groupHead.attr('id'),
-				$curRows = $('[data-group-id=' + groupId + ']');
+			var $head = $(this).closest(self.config.row),
+				$children = $('[data-group-id=' + $head.attr('id') + ']', self.element);
 
-			$.each($curRows, function () {
-				var $curRow = $(this);
-				var itemId = $curRow.find(self.config.spinnerPacks).attr('data-id');
-				// remove current item from object
-				delete self.objParams[itemId];
-				self.removeItem($curRows);
-			});
-
-			self.calcTotalResult();
-			// $curRows.remove();
-			$groupHead.remove();
-
-			// self.calcAll();
+			self.deleteItem($children);
 
 			e.preventDefault();
 
 		});
 	};
 
-	MsOrderCalc.prototype.removeItem = function (row) {
-		// console.log('===removeItem===');
+	MsOrderCalc.prototype.deleteItem = function (row) {
+		// console.log('===deleteItem===');
 		var self = this;
-		console.log("row: ", row);
+		var $row = row;
 
-		var id = row.find(self.config.spinnerPacks).attr('data-id');
-		var curElement = row.closest(self.element);
+		$.each($row, function () {
+			var itemId = $(this).attr('data-id');
 
-		// remove current item from object
-		// delete self.objParams[id];
-		row.remove();
+			// console.log("itemId: ", itemId);
 
-		self.calcAll();
+			// remove current item from object
+			delete self.objParams[itemId];
+		});
+
+		self.calcTotalResult();// пересчет общего результата по корзине
+
+		$row.remove();// удаление строки из корзины
+
+		self.calcTotalResultInGroup();// пересчет результатов в группах
+
+		// опеределение количества строк в группе
+		var $head = $(self.config.headOfGroup, self.element);
+
+		$.each($head, function () {
+			var $curHead = $(this),
+				groupId = $curHead.attr('id'),
+				$curChildren = $('[data-group-id=' + groupId + ']', self.element);
+
+			// console.log("$curChildren: ", $curChildren.length);
+			if(!$curChildren.length){
+				// add callback removedAllItem
+				// console.log('Группа товаров ' + groupId + ' пуста!');
+
+				// $curHead.css('opacity', 0.2);
+				$curHead.remove();
+
+				// console.log('Группа товаров ' + groupId + ' удалена!');
+			}
+		});
+
+		var rowsLength = self.countLengthRow();
+		// console.log("rowsLength: ", rowsLength);
 
 		// add callback removedItem
 		self.element.trigger('removedItem.msOrderCalc');
-		// count length of items
-		var rowsLengths = curElement.find('.c-tbody').find(self.config.row).length;
 
-		if(!rowsLengths) {
+		if (!rowsLength) {
 			// add callback removedAllItem
-			console.log(1);
 			self.element.trigger('removedAllItems.msOrderCalc');
-
-			curElement.addClass(self.config.classes.hasNotItems);
 		}
 	};
 
-	MsOrderCalc.prototype.createObjParams = function (spinner, length) {
+	MsOrderCalc.prototype.createObjParams = function (element, length) {
 		var self = this;
 
-		var id = spinner.attr('data-id'),// id товара
-			$curRow = $(spinner).closest(self.config.row),// элемент dom содержащий один товар
+		var id = element.attr('data-id'),// id товара
+			$curRow = element,// элемент dom содержащий один товар
 			$curPrice = $curRow.find(self.config.price),// елемент с ценой за единицу товара
-			lengthInPack = +$curRow.find(self.config.lengthInPacks).attr('data-length-in-pack'),// количество товаров в одной упаковке
-			// lengthSum = length*lengthInPack,// всего товаров
+			lengthInPack = +$curRow.find(self.config.lengthInPacks).data('length-in-pack'),// количество товаров в одной упаковке
+			lengthSum = length*lengthInPack,// всего товаров
 			priceVal = +$curPrice.attr('data-price'),// цена товара (в дата-атрибуте)
-			// priceValSum = Math.round(priceVal * lengthSum * 100) / 100;// общая цена одного товара
-			groupId = $curRow.attr('data-group-id');
+			priceValSum = self.round(priceVal * lengthSum),// общая цена одного товара
+			groupId = $curRow.attr('data-group-id') || null;
 
 		// create the object with id's item
+		if (id) {
+			self.objParams[id] = {
+				'group': groupId,
+				'packsLength': length,
+				'lengthInPack': lengthInPack,
+				'lengthSum': lengthSum,
+				'price': priceVal,
+				'priceSum': priceValSum
+			};
 
-		var obj = self.objParams[id] = {
-			'group': groupId,
-			'packsLength': length,
-			'lengthInPack': lengthInPack,
-			// 'lengthSum': lengthSum,
-			'price': priceVal, // 'priceSum': priceValSum
-		};
+			// add length items and sum price to DOM and to data-attributes
+			// var lengthSum = self.objParams[id].packsLength * self.objParams[id].lengthInPack;
+			$curRow.find(self.config.lengthSum).html(lengthSum).attr('data-val', lengthSum);
+			/*!$curPrice.attr('data-length-sum', lengthSum);*/
 
-		// console.log("self.objParams: ", self.objParams);
-
-		// add length items and sum price to DOM and to data-attributes
-		var lengthSum = self.objParams[id].packsLength * self.objParams[id].lengthInPack;
-		$curRow.find(self.config.lengthSum).html(lengthSum);
-		/*!$curPrice.attr('data-length-sum', lengthSum);*/
-
-		var priceSum = Math.round(lengthSum * self.objParams[id].price * 100) / 100;
-		$curRow.find(self.config.priceSum).html(priceSum);
-		/*!$curPrice.attr('data-price-sum', priceSum);*/
-
-		// console.log("lengthSum: ", lengthSum);
-		// console.log("priceSum: ", priceSum);
+			// var priceSum = Math.round(lengthSum * self.objParams[id].price * 100) / 100;
+			$curRow.find(self.config.priceSum).html(priceValSum).attr('data-val', priceValSum);
+			/*!$curPrice.attr('data-price-sum', priceValSum);*/
+		}
 	};
 
-	MsOrderCalc.prototype.createGroupObj = function () {
-		var self = this;
-		var objParams = self.objParams;
+	MsOrderCalc.prototype.calcTotalResultInGroup = function () {
+		// console.log("===calcTotalResultInGroup===");
+		var self = this,
+			$head = $(self.config.headOfGroup, self.element);
 
-		console.log("objParams: ", objParams);
-		//создать новый обект с ключами groupId
-		var objGroup = {};
+		$.each($head, function () {
+			var $curHead = $(this),
+				groupId = $curHead.attr('id'),
+				$curChildren = $('[data-group-id=' + groupId + ']', self.element);
 
-		for (var key in objParams) {
-			var group = objParams[key].group;
-			console.log("group: ", group);
-			console.log("packsLength: ", objParams[key].packsLength);
-			console.log("lengthInPack: ", objParams[key].lengthInPack);
-			console.log("price: ", objParams[key].price);
-			// console.log('packsLength: ', obj.packsLength);
-			objGroup[group] = {
-				'packsLength': objParams[key].packsLength,
-				'lengthInPack': objParams[key].lengthInPack,
-				'price': objParams[key].price
-			}
-		}
+			// console.log("groupId: ", groupId);
 
-		console.log("objGroup: ", objGroup);
+			var packsSumToGroup = 0,
+				lengthSumToGroup = 0,
+				priceSumToGroup = 0;
+
+			$.each($curChildren, function () {
+				var packsSum = $(this).find(self.config.spinnerPacks).val();
+				packsSumToGroup = packsSumToGroup + +packsSum;
+				// console.log("packsSum: ", +packsSum);
+
+				var lengthSum = $(this).find(self.config.lengthSum).attr('data-val');
+				lengthSumToGroup = lengthSumToGroup + +lengthSum;
+				// console.log("lengthSum: ", +lengthSum);
+
+				var priceSum = $(this).find(self.config.priceSum).attr('data-val');
+				priceSumToGroup = priceSumToGroup + +priceSum;
+				// console.log("priceSum: ", +priceSum);
+			});
+
+			// console.log("packsSumToGroup (before round): ", packsSumToGroup);
+			// console.log("lengthSumToGroup (before round): ", lengthSumToGroup);
+			// console.log("priceSumToGroup (before round): ", priceSumToGroup);
+
+			packsSumToGroup = self.round(packsSumToGroup);
+			lengthSumToGroup = self.round(lengthSumToGroup);
+			priceSumToGroup = self.round(priceSumToGroup);
+
+			// console.log("packsSumToGroup: ", packsSumToGroup);
+			// console.log("lengthSumToGroup: ", lengthSumToGroup);
+			// console.log("priceSumToGroup: ", priceSumToGroup);
+
+			$(self.config.packsInGroup, $curHead).html(packsSumToGroup).attr('data-val', packsSumToGroup);
+			$(self.config.lengthInGroup, $curHead).html(lengthSumToGroup).attr('data-val', lengthSumToGroup);
+			$(self.config.priceSumInGroup, $curHead).html(priceSumToGroup).attr('data-val', priceSumToGroup);
+		});
+
+		self.countLengthRow();
 	};
 
 	MsOrderCalc.prototype.calcTotalResult = function () {
 		// console.log('===calcTotalResult===');
 		var self = this;
 
+		// console.log("self.objParams (before calc total results): ", self.objParams);
+
 		var totalPacks = self.sumParam(self.objParams, 'packsLength');
 		var totalCount = self.sumParam(self.objParams, 'lengthSum');
 		var totalPrice = self.sumParam(self.objParams, 'priceSum');
 
 		// add callback getTotalResults
-		self.element.trigger('getTotalResults.msOrderCalc', {'totalCount': totalCount, 'totalPrice': totalPrice});
+		self.element.trigger('getTotalResults.msOrderCalc', {'totalPacks': totalPacks, 'totalCount': totalCount, 'totalPrice': totalPrice});
 
 		// add total results to DOM
 		self.element.find(self.config.totalPacks).text(totalPacks);
 		self.element.find(self.config.totalCount).text(totalCount);
 		self.element.find(self.config.totalPrice).text(totalPrice);
+
+		self.countLengthRow();
+	};
+
+	MsOrderCalc.prototype.countLengthRow = function () {
+		var self = this;
+
+		// опеределение количества строк в корзине
+		var rowsLength = $(self.config.row, self.element).length;
+		// console.log('rowsLengths (countLengthRow): ', rowsLength);
+
+		// add callback removedItem
+		self.element.trigger('afterChangedLengthItem.msOrderCalc', rowsLength);
+
+		if (!rowsLength) {
+			self.element.addClass(self.config.classes.hasNotItems);
+		}
+
+		return rowsLength;
 	};
 
 	MsOrderCalc.prototype.sumParam = function (obj, param) {
@@ -3578,7 +3619,13 @@ function tooltipInit() {
 			result += obj[prop][param];
 		}
 
-		return Math.round(result*100)/100;
+		return this.round(result);
+
+	};
+
+	MsOrderCalc.prototype.round = function (val) {
+
+		return Math.round(+val * 100) / 100;
 
 	};
 
@@ -3604,41 +3651,22 @@ function tooltipInit() {
  * !order calc
  * */
 var orderCalcOptions = {
-	row: '.c-tr'
-	, getTotalResults: function (e, el, results) {
+	getTotalResults: function (e, el, results) {
 		$(el).find('.order-calc__total-results-js').toggleClass('show', results.totalCount > 0);
 		$(el).find('.order-calc-btn').prop('disabled', !results.totalCount > 0).toggleClass('disabled', !results.totalCount > 0);
 	}
-	, getObjParams: function (e, el, obj) {
-		// console.log("obj: ", obj);
+	, afterChangedLengthItem: function (e, el, length) {
+		var itemsLength = $('.order-calc__item-js').length;
+		$('.order-calc__clear-cart-js').prop('disabled', !itemsLength);
 	}
 };
 
 function orderCalculation() {
 	$('.order-calc-js').msOrderCalc(orderCalcOptions);
 
+	// подсветить удаляемые товары
 	var removeCandidateClass = 'remove-candidate-js';
-	// $('.order-calc__remove-group-js').on('mouseenter', function () {
-	// 	var i = 0;
-	// 	var $curBtn = $(this),
-	// 		$curNextRow = $curBtn.closest('.c-tr').next();
-	//
-	// 	var lightChildren = function () {
-	// 		$curNextRow.addClass(removeCandidateClass);
-	// 		$curNextRow = $curNextRow.next();
-	// 		if(i > 20) return;//на случай, если что-то пойдет не так, рекурсия остановится на 20-й итерации
-	//
-	// 		if($curNextRow.length && !$curNextRow.hasClass('c-tr--head') && !$curNextRow.hasClass('c-tr--removed')){
-	// 			i++;
-	// 			lightChildren();
-	// 		}
-	// 	};
-	// 	lightChildren();
-	// }).on('mouseleave', function () {
-	// 	$('.c-tr').removeClass(removeCandidateClass);
-	// });
-
-	$('.order-calc__remove-group-js2222').on('mouseenter', function () {
+	$('.order-calc__remove-group-js').on('mouseenter', function () {
 		var $curBtn = $(this),
 			$curId = $curBtn.closest('.c-tr').attr('id');
 
@@ -3647,19 +3675,13 @@ function orderCalculation() {
 		$('.c-tr').removeClass(removeCandidateClass);
 	});
 
-	$('.order-calc__remove-group-js2222').on('click', function (e) {
-		var $curBtn = $(this),
-			$curRow = $curBtn.closest('.c-tr'),
-			$curId = $curRow.attr('id');
+	// очистить корзину
+	$('form').on('click', '.order-calc__clear-cart-js', function (e) {
 
-		$('[data-group-id=' + $curId + ']').remove();
-		$curRow.remove();
-
-		setTimeout(function () {
-			$('.order-calc-js').trigger('msOrderCalc.recalc');
-		}, 2000);
+		$('.order-calc__remove-js').trigger('click');
 
 		e.preventDefault();
+
 	});
 }
 
