@@ -3211,7 +3211,6 @@ a.bag__inner:hover
 /* accordion
 .accordion
 	margin-bottom: $bottom-space--ml
-	border-bottom: 2px solid $border-color
 
 	+media('<desk-lg')
 		margin-bottom: $bottom-space
@@ -3229,6 +3228,10 @@ a.bag__inner:hover
 	.accordion__panel &
 		z-index: 1
 
+	// active
+	&.is-open
+		background-color: $bg-color-alt
+
 .accordion__hand
 	position: relative
 	border: solid $border-color
@@ -3238,83 +3241,104 @@ a.bag__inner:hover
 	cursor: pointer
 	user-select: none
 
-	&:first-child
+	.shops &:first-child
+		border-top-width: 1px
+
+	.accordion__item:first-child &
 		border-top-width: 1px
 
 	+media('<tab-lg')
 		padding: nth($accordion-space--sm, 1) nth($accordion-space--sm, 2)
-		padding-right: nth($accordion-space--sm, 1)*2+nth($accordion-angle-size, 2)
+		padding-right: nth($accordion-space--sm, 1)*2+nth($accordion-angle-size--sm, 2)
 
 	+media('<mob-lg')
 		padding: nth($accordion-space--mob, 1) nth($accordion-space--mob, 2)
-		padding-right: nth($accordion-space--mob, 1)*2+nth($accordion-angle-size, 2)
+		padding-right: nth($accordion-space--mob, 1)*2+nth($accordion-angle-size--sm, 2)
 
-	.accordion__header__text
-		//+font-alt-bold
-		+font-alt-medium
-		//+font(21px, round-float(27/21, 2))
-		+font(28px, round-float(34/28, 2))
+.accordion__header__text
+	//+font-alt-bold
+	+font-alt-medium
+	//+font(21px, round-float(27/21, 2))
+	+font(28px, round-float(34/28, 2))
 
-		+media('<tab-lg')
-			font-size: 24px
+	+media('<tab-lg')
+		font-size: 24px
 
-		+media('<mob-lg')
-			font-size: 20px
+	+media('<mob-lg')
+		font-size: 20px
 
-	.accordion__header__angle
-		display: block
-		position: absolute
-		right: nth($accordion-space, 2)
+.accordion__header__angle
+	display: block
+	position: absolute
+	right: nth($accordion-space, 2)
+	top: 50%
+	+size(nth($accordion-angle-size, 1), nth($accordion-angle-size, 2))
+	border: 2px solid currentColor
+	border-radius: 50%
+	margin-top: -#{round(nth($accordion-angle-size, 2)*0.5)}
+	cursor: pointer
+	//backface-visibility: hidden
+	-webkit-tap-highlight-color: transparent
+	user-select: none
+
+	+media('<tab-lg')
+		right: nth($accordion-space--sm, 2)
+		+size(nth($accordion-angle-size--sm, 1), nth($accordion-angle-size--sm, 2))
+		margin-top: -#{round(nth($accordion-angle-size--sm, 2)*0.5)}
+
+	+media('<mob-lg')
+		right: nth($accordion-space--mob, 2)
+
+	&::before, &::after
+		+pseudo()
+		left: 50%
 		top: 50%
-		+size(nth($accordion-angle-size, 1), nth($accordion-angle-size, 2))
-		border: 2px solid currentColor
-		border-radius: 50%
-		margin-top: -#{round(nth($accordion-angle-size, 2)*0.5)}
-		backface-visibility: hidden
+		//margin-top: -#{round(nth($accordion-angle-line-size, 1)*0.1)}
+		//backface-visibility: hidden
+		+size(nth($accordion-angle-line-size, 1), nth($accordion-angle-line-size, 2))
+		border-right: 2px
+		background-color: currentColor
+		will-change: transform, opacity
+		transition:
+			property: transform
+			duration: $animation-speed
 
-		+media('<tab-lg')
-			right: nth($accordion-space--sm, 2)
+	&::before
+		$prop: 45deg
+		transform: rotate($prop)
+		transform: rotate($prop) translateZ(0)
+		margin-left: -#{round(nth($accordion-angle-line-size, 1)*0.8)}
 
-		+media('<mob-lg')
-			right: nth($accordion-space--mob, 2)
+	&::after
+		$prop: -45deg
+		transform: rotate($prop)
+		transform: rotate($prop) translateZ(0)
+		margin-left: -#{round(nth($accordion-angle-line-size, 1)*0.2)}
 
-		&::before, &::after
-			+pseudo()
-			left: 50%
-			top: 50%
-			margin: -#{round(nth($accordion-angle-line-size, 2)/2)} 0 0 -#{round(nth($accordion-angle-line-size, 1)/2)}
-			backface-visibility: hidden
-			+size(nth($accordion-angle-line-size, 1), nth($accordion-angle-line-size, 2))
-			background-color: currentColor
-			will-change: transform
-			transition:
-				property: transform
-				duration: $animation-speed
+// hover, active
+.no-touchevents .accordion__hand-js:hover, .accordion__hand-js.is-open
+	color: $link-color
 
+// active
+.accordion__header__angle
+	.accordion__hand-js.is-open &, .accordion__hand.active-tab &, &.is-open
 		&::before
-			transform: rotate(-180deg) translateZ(0)
-
-			.ie9 &
-				transform: rotate(-180deg)
+			$prop: -45deg
+			transform: rotate($prop)
+			transform: rotate($prop) translateZ(0)
 
 		&::after
-			transform: rotate(-270deg) translateZ(0)
+			$prop: 45deg
+			transform: rotate($prop)
+			transform: rotate($prop) translateZ(0)
 
-			.ie9 &
-				transform: rotate(-270deg)
+// click
+.accordion__hand:active
+	.accordion__header__angle
+		transform: scale(0.933)
 
-	// hover, active
-	.no-touchevents &:hover, &.is-open
-		color: $link-color
-
-	// active
-	&.is-open, &.active-tab
-		.accordion__header__angle
-			&::before, &::after
-				transform: rotate(0) translateZ(0)
-
-				.ie9 &
-					transform: rotate(0)
+.accordion__header__angle:active
+	transform: scale(0.933)
 
 .accordion__panel
 	display: none
@@ -3322,7 +3346,8 @@ a.bag__inner:hover
 
 .accordion__panel__frame
 	position: relative
-	will-change: opacity
+	border-bottom: 1px solid $border-color
+	will-change: opacity, transform
 	opacity: 0
 	transition:
 		property: opacity
@@ -3344,12 +3369,17 @@ a.bag__inner:hover
 /* accordion end
 
 /* order
-// order caption
+// order accordion
+.accordion__panel
 
+// order caption
 .order__caption,
 .order__head
+	position: relative
 	display: flex
-	//padding-right: $order-space-right
+
+	.accordion__container-js &
+		padding-right: $order-space-h
 
 .order__caption
 	background-color: $bg-color-alt
@@ -3404,6 +3434,11 @@ a.bag__inner:hover
 
 .order__head
 	min-height: 80px
+	border: solid $border-color
+	border-width: 1px 0 0
+
+	.order__item:first-child &
+		border-top: 0
 
 .order__head__th
 	&:first-child
@@ -3421,6 +3456,28 @@ a.bag__inner:hover
 
 .order__group
 	position: relative
+
+	.accordion__container-js &
+		display: none
+
+		.no-js &
+			display: block
+
+.order__group__holder
+	padding-bottom: 28px
+
+	.accordion__container-js &
+		+padding-horizontal($order-space-h)
+		position: relative
+		will-change: opacity, transform
+		opacity: 0
+		transition:
+			property: opacity
+			duration: $animation-speed
+
+	.accordion__container-js .is-open > &
+			opacity: 1
+			transition-delay: 0.08s
 
 .order__labels
 	display: flex
@@ -3453,7 +3510,8 @@ a.bag__inner:hover
 	padding-top: $order-list-th--height
 
 	& > div
-		height: 50px
+		padding-bottom: 28px
+		line-height: 31px
 
 .order__list__content
 	overflow-y: hidden
@@ -3464,17 +3522,37 @@ a.bag__inner:hover
 	table
 		border-collapse: collapse
 		border-spacing: 0
+		margin-bottom: 0
+		min-width: 100%
 
 		th, td
 			text-align: center
 			padding: 0 25px
 
 		th
+			+font-normal
 			color: $text-color-light
 			height: $order-list-th--height
 
 		td
-			padding-bottom: 29px
+			padding-bottom: 28px
+
+.order-select
+	display: inline-block
+	vertical-align: top
+	max-width: 114px
+
+	.stock-tape
+		width: 100%
+		height: 2px
+		position: relative
+		margin-top: -1px
+		background: none
+		box-shadow: none
+
+		&.stock-empty
+			visibility: hidden
+			opacity: 0
 
 // order result
 .order-result

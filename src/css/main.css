@@ -10819,7 +10819,6 @@ a.bag__inner:hover .bag__title {
 /* accordion */
 .accordion {
 	margin-bottom: 2.6rem;
-	border-bottom: 2px solid #e6e6e6;
 }
 
 @media (max-width: 1599px) {
@@ -10845,12 +10844,16 @@ a.bag__inner:hover .bag__title {
 	z-index: 1;
 }
 
+.accordion__header.is-open {
+	background-color: #f2f2f2;
+}
+
 .accordion__hand {
 	position: relative;
 	border: solid #e6e6e6;
 	border-width: 0 0 1px;
 	padding: 20px 0;
-	padding-right: 72px;
+	padding-right: 80px;
 	cursor: pointer;
 	-webkit-user-select: none;
 	   -moz-user-select: none;
@@ -10858,7 +10861,11 @@ a.bag__inner:hover .bag__title {
 	        user-select: none;
 }
 
-.accordion__hand:first-child {
+.shops .accordion__hand:first-child {
+	border-top-width: 1px;
+}
+
+.accordion__item:first-child .accordion__hand {
 	border-top-width: 1px;
 }
 
@@ -10876,7 +10883,7 @@ a.bag__inner:hover .bag__title {
 	}
 }
 
-.accordion__hand .accordion__header__text {
+.accordion__header__text {
 	font-family: "minionpro-medium", serif;
 	font-weight: normal;
 	font-style: normal;
@@ -10885,89 +10892,103 @@ a.bag__inner:hover .bag__title {
 }
 
 @media (max-width: 991px) {
-	.accordion__hand .accordion__header__text {
+	.accordion__header__text {
 		font-size: 24px;
 	}
 }
 
 @media (max-width: 639px) {
-	.accordion__hand .accordion__header__text {
+	.accordion__header__text {
 		font-size: 20px;
 	}
 }
 
-.accordion__hand .accordion__header__angle {
+.accordion__header__angle {
 	display: block;
 	position: absolute;
 	right: 0;
 	top: 50%;
-	width: 32px;
-	height: 32px;
+	width: 40px;
+	height: 40px;
 	border: 2px solid currentColor;
 	border-radius: 50%;
-	margin-top: -16px;
-	-webkit-backface-visibility: hidden;
-	        backface-visibility: hidden;
+	margin-top: -20px;
+	cursor: pointer;
+	-webkit-tap-highlight-color: transparent;
+	-webkit-user-select: none;
+	   -moz-user-select: none;
+	    -ms-user-select: none;
+	        user-select: none;
 }
 
 @media (max-width: 991px) {
-	.accordion__hand .accordion__header__angle {
+	.accordion__header__angle {
 		right: 0;
+		width: 32px;
+		height: 32px;
+		margin-top: -16px;
 	}
 }
 
 @media (max-width: 639px) {
-	.accordion__hand .accordion__header__angle {
+	.accordion__header__angle {
 		right: 0;
 	}
 }
 
-.accordion__hand .accordion__header__angle::before, .accordion__hand .accordion__header__angle::after {
+.accordion__header__angle::before, .accordion__header__angle::after {
 	content: "";
 	display: block;
 	position: absolute;
 	left: 50%;
 	top: 50%;
-	margin: -1px 0 0 -6px;
-	-webkit-backface-visibility: hidden;
-	        backface-visibility: hidden;
-	width: 12px;
+	width: 10px;
 	height: 2px;
+	border-right: 2px;
 	background-color: currentColor;
-	will-change: transform;
+	will-change: transform, opacity;
 	transition-property: transform;
 	transition-duration: 0.2s;
 }
 
-.accordion__hand .accordion__header__angle::before {
-	transform: rotate(-180deg) translateZ(0);
+.accordion__header__angle::before {
+	-ms-transform: rotate(45deg);
+	    transform: rotate(45deg);
+	transform: rotate(45deg) translateZ(0);
+	margin-left: -8px;
 }
 
-.ie9 .accordion__hand .accordion__header__angle::before {
-	-ms-transform: rotate(-180deg);
-	    transform: rotate(-180deg);
+.accordion__header__angle::after {
+	-ms-transform: rotate(-45deg);
+	    transform: rotate(-45deg);
+	transform: rotate(-45deg) translateZ(0);
+	margin-left: -2px;
 }
 
-.accordion__hand .accordion__header__angle::after {
-	transform: rotate(-270deg) translateZ(0);
-}
-
-.ie9 .accordion__hand .accordion__header__angle::after {
-	-ms-transform: rotate(-270deg);
-	    transform: rotate(-270deg);
-}
-
-.no-touchevents .accordion__hand:hover, .accordion__hand.is-open {
+.no-touchevents .accordion__hand-js:hover, .accordion__hand-js.is-open {
 	color: #ff6501;
 }
 
-.accordion__hand.is-open .accordion__header__angle::before, .accordion__hand.is-open .accordion__header__angle::after, .accordion__hand.active-tab .accordion__header__angle::before, .accordion__hand.active-tab .accordion__header__angle::after {
-	transform: rotate(0) translateZ(0);
+.accordion__hand-js.is-open .accordion__header__angle::before, .accordion__hand.active-tab .accordion__header__angle::before, .accordion__header__angle.is-open::before {
+	-ms-transform: rotate(-45deg);
+	    transform: rotate(-45deg);
+	transform: rotate(-45deg) translateZ(0);
 }
 
-.ie9 .accordion__hand.is-open .accordion__header__angle::before, .ie9 .accordion__hand.is-open .accordion__header__angle::after, .ie9 .accordion__hand.active-tab .accordion__header__angle::before, .ie9 .accordion__hand.active-tab .accordion__header__angle::after {
-	-ms-transform: rotate(0);
-	    transform: rotate(0);
+.accordion__hand-js.is-open .accordion__header__angle::after, .accordion__hand.active-tab .accordion__header__angle::after, .accordion__header__angle.is-open::after {
+	-ms-transform: rotate(45deg);
+	    transform: rotate(45deg);
+	transform: rotate(45deg) translateZ(0);
+}
+
+.accordion__hand:active .accordion__header__angle {
+	-ms-transform: scale(0.933);
+	    transform: scale(0.933);
+}
+
+.accordion__header__angle:active {
+	-ms-transform: scale(0.933);
+	    transform: scale(0.933);
 }
 
 .accordion__panel {
@@ -10977,7 +10998,8 @@ a.bag__inner:hover .bag__title {
 
 .accordion__panel__frame {
 	position: relative;
-	will-change: opacity;
+	border-bottom: 1px solid #e6e6e6;
+	will-change: opacity, transform;
 	opacity: 0;
 	transition-property: opacity;
 	transition-duration: 0.2s;
@@ -11008,8 +11030,14 @@ a.bag__inner:hover .bag__title {
 /* order */
 .order__caption,
 .order__head {
+	position: relative;
 	display: -ms-flexbox;
 	display: flex;
+}
+
+.accordion__container-js .order__caption, .accordion__container-js
+.order__head {
+	padding-right: 100px;
 }
 
 .order__caption {
@@ -11099,6 +11127,12 @@ a.bag__inner:hover .bag__title {
 
 .order__head {
 	min-height: 80px;
+	border: solid #e6e6e6;
+	border-width: 1px 0 0;
+}
+
+.order__item:first-child .order__head {
+	border-top: 0;
 }
 
 .order__head__th:first-child {
@@ -11122,6 +11156,33 @@ a.bag__inner:hover .bag__title {
 
 .order__group {
 	position: relative;
+}
+
+.accordion__container-js .order__group {
+	display: none;
+}
+
+.no-js .accordion__container-js .order__group {
+	display: block;
+}
+
+.order__group__holder {
+	padding-bottom: 28px;
+}
+
+.accordion__container-js .order__group__holder {
+	padding-right: 100px;
+	padding-left: 100px;
+	position: relative;
+	will-change: opacity, transform;
+	opacity: 0;
+	transition-property: opacity;
+	transition-duration: 0.2s;
+}
+
+.accordion__container-js .is-open > .order__group__holder {
+	opacity: 1;
+	transition-delay: 0.08s;
 }
 
 .order__labels {
@@ -11166,7 +11227,8 @@ a.bag__inner:hover .bag__title {
 }
 
 .order__list__side > div {
-	height: 50px;
+	padding-bottom: 28px;
+	line-height: 31px;
 }
 
 .order__list__content {
@@ -11178,6 +11240,8 @@ a.bag__inner:hover .bag__title {
 .order__list__content table {
 	border-collapse: collapse;
 	border-spacing: 0;
+	margin-bottom: 0;
+	min-width: 100%;
 }
 
 .order__list__content table th, .order__list__content table td {
@@ -11186,12 +11250,35 @@ a.bag__inner:hover .bag__title {
 }
 
 .order__list__content table th {
+	font-family: "gothampro-regular", sans-serif;
+	font-weight: normal;
+	font-style: normal;
 	color: #b2b2b2;
 	height: 70px;
 }
 
 .order__list__content table td {
-	padding-bottom: 29px;
+	padding-bottom: 28px;
+}
+
+.order-select {
+	display: inline-block;
+	vertical-align: top;
+	max-width: 114px;
+}
+
+.order-select .stock-tape {
+	width: 100%;
+	height: 2px;
+	position: relative;
+	margin-top: -1px;
+	background: none;
+	box-shadow: none;
+}
+
+.order-select .stock-tape.stock-empty {
+	visibility: hidden;
+	opacity: 0;
 }
 
 .order-result {

@@ -2888,16 +2888,12 @@ function sortingOrder() {
 
 			var $siblings = $currentItem.siblings();
 
-			$siblings.find(self.$accordionHeader).next().slideUp(self._animateSpeed, function () {
-				// console.log('closed siblings');
-			});
+			$siblings.find(self.$accordionHeader).next().slideUp(self._animateSpeed);
 
 			$siblings.removeClass(modifiers.activeItem);
 			$siblings.find(self.$accordionHeader).removeClass(modifiers.activeHeader);
 			$siblings.find(self.$accordionHand).removeClass(modifiers.activeHand);
 			$siblings.find(self.$accordionHeader).next().removeClass(modifiers.activeContent);
-
-			// self.scrollPosition($currentItem);
 
 			$currentItemContent.slideDown(animateSpeed, function () {
 				self.scrollPosition($currentItem);
@@ -2988,9 +2984,7 @@ function sortingOrder() {
 
 			// self.scrollPosition($currentItem);
 
-			$currentItem.children(self.$accordionHeader).next().addClass(self.modifiers.activeContent).slideDown(self._animateSpeed, function () {
-				// self.scrollPosition($currentItem);
-			});
+			$currentItem.children(self.$accordionHeader).next().addClass(self.modifiers.activeContent).slideDown(self._animateSpeed);
 		});
 	};
 
@@ -2998,9 +2992,7 @@ function sortingOrder() {
 	JsAccordion.prototype.closeAllAccordions = function() {
 		var self = this;
 
-		self.$accordionHeader.next().slideUp(self._animateSpeed, function () {
-			// console.log('closed all');
-		});
+		self.$accordionHeader.next().slideUp(self._animateSpeed);
 
 		var modifiers = self.modifiers;
 
@@ -3014,9 +3006,7 @@ function sortingOrder() {
 	JsAccordion.prototype.openAllAccordions = function() {
 		var self = this;
 
-		self.$accordionHeader.next().slideDown(self._animateSpeed, function () {
-			// console.log('open all');
-		});
+		self.$accordionHeader.next().slideDown(self._animateSpeed);
 
 		var modifiers = self.modifiers;
 
@@ -3039,16 +3029,19 @@ function sortingOrder() {
 /**
  * Initial accordion
  * */
-function initMultiAccordion() {
+function accordionInit() {
 	// accordion default
-	var $accordion = $('.js-accordion__container');
+	var $accordion = $('.accordion__container-js');
 
 	if($accordion.length){
 		new JsAccordion({
-			accordionContainer: '.js-accordion__container',
-			accordionItem: '.js-accordion__item',
-			accordionHeader: '.js-accordion__header',
-			accordionHand: '.js-accordion__hand',
+			accordionContainer: '.accordion__container-js',
+			accordionItem: '.accordion__item-js',
+			accordionHeader: '.accordion__header-js',
+			accordionHand: '.accordion__hand-js',
+			// scrollToTop: true,
+			// scrollToTopSpeed: 300,
+			// scrollToTopOffset: $('.header').outerHeight(),
 			indexInit: false,
 			clickOutside: false,
 			animateSpeed: 200
@@ -4655,7 +4648,7 @@ $(document).ready(function () {
 	toggleViewInit();
 	multiFiltersInit();
 	sortingOrder();
-	initMultiAccordion();
+	accordionInit();
 	initNavAccordion();
 	popupInitial();
 	spinnerInit($(".spinner-js"));

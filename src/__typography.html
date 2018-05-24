@@ -162,6 +162,69 @@
 					})
 					<!--feature-list end-->
 
+					<!--accordion-->
+					@@include('_tpl_title-anchor.html', {
+						"taId": "accordionDefault",
+						"taText": "Список-аккордеон (каты)"
+					})
+					<div class="accordion accordion__container-js">
+						<div class="accordion__item accordion__item-js">
+							<div class="accordion__header accordion__header-js">
+								<div class="accordion__hand accordion__hand-js">
+									<div class="accordion__header__text">{{Заголовок 1}}</div>
+									<i class="accordion__header__angle">&nbsp;</i>
+								</div>
+							</div>
+							<div class="accordion__panel">
+								<div class="accordion__panel__frame">
+									<div class="accordion__panel__content">
+										<h4>
+											<span class="mark">h4</span>
+											Экспериментировать с большим количеством шрифтов на начальном этапе не стоит. Двух вполне достаточно. Вы же не хотите превратить текст в разномастную ерунду
+										</h4>
+										<p>Одним из наиболее важных методов для эффективной передачи содержания является использование типографской иерархии.</p>
+										<p>Она представляет собой систему организации данных, которая устанавливает порядок их важности, что позволяет пользователю найти то, что ему нужно.</p>
+										<ul>
+											<li>Смешивайте только контрастные шрифты. Выравнивайте по левой стороне. Избегайте большого числа переносов</li>
+											<li>Размер шрифта</li>
+											<li>Без отступа</li>
+											<li>Узкая колонка. Висячая пунктуация. Не злоупотребляйте пробелами</li>
+										</ul>
+									</div>
+									<!--<div class="accordion accordion__container-js">{{Вложенный аккордеон}}</div>-->
+								</div>
+							</div>
+						</div>
+						<div class="accordion__item accordion__item-js">
+							<div class="accordion__header accordion__header-js">
+								<div class="accordion__hand accordion__hand-js">
+									<div class="accordion__header__text">{{Заголовок 2}}</div>
+									<i class="accordion__header__angle">&nbsp;</i>
+								</div>
+							</div>
+							<div class="accordion__panel">
+								<div class="accordion__panel__frame">
+									<div class="accordion__panel__content">
+										<h4>
+											<span class="mark">h4</span>
+											Экспериментировать с большим количеством шрифтов на начальном этапе не стоит. Двух вполне достаточно. Вы же не хотите превратить текст в разномастную ерунду
+										</h4>
+										<p>Одним из наиболее важных методов для эффективной передачи содержания является использование типографской иерархии.</p>
+										<p>Она представляет собой систему организации данных, которая устанавливает порядок их важности, что позволяет пользователю найти то, что ему нужно.</p>
+										<ul>
+											<li>Смешивайте только контрастные шрифты. Выравнивайте по левой стороне. Избегайте большого числа переносов</li>
+											<li>Размер шрифта</li>
+											<li>Без отступа</li>
+											<li>Узкая колонка. Висячая пунктуация. Не злоупотребляйте пробелами</li>
+										</ul>
+									</div>
+									<!--<div class="accordion accordion__container-js">{{Вложенный аккордеон}}</div>-->
+								</div>
+							</div>
+						</div>
+					</div>
+					<!--accordion end-->
+
 					<!--iconsList-->
 					@@include('_tpl_typography_components.html', {
 						"component": "iconsList"
