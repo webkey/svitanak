@@ -474,7 +474,7 @@
 								</div>
 							</div>
 							<!--product card end-->
-							<div class="bottom-space-lg accordion__container-js">
+							<div class="bottom-space-lg order-accordion order-accordion__container-js order-js">
 								<form action="" method="post">
 									<div class="order__caption">
 										<div class="order__caption__th">Модель</div>
@@ -482,8 +482,8 @@
 										<div class="order__caption__th">Цена</div>
 									</div>
 									<div class="order">
-										<div class="order__item accordion__item-js is-open">
-											<div class="order__head accordion__header-js is-open">
+										<div class="order__item order-item-js order-accordion__item-js is-open">
+											<div class="order__head order-accordion__header-js is-open">
 												<div class="order__head__th caption-for-table">
 													<div class="img-for-table">
 														<img src="img/img-products-01.jpg" alt="Комплект жен. (фуфайка+брюки)" />
@@ -500,14 +500,18 @@
 												<div class="order__head__th" data-label="Цена">
 													<div data-price="125.75">125.75 р.</div>
 												</div>
-												<i class="accordion__header__angle accordion__hand-js is-open">&nbsp;</i>
+												<div class="order-accordion__hand order-accordion__hand-js is-open">
+													<i class="accordion__header__angle">&nbsp;</i>
+													<span>Развернуть</span>
+													<span>Свернуть</span>
+												</div>
 											</div>
 											<div class="order__group is-open" style="display: block;">
 												<div class="order__group__holder">
 													<div class="order__labels">
 														<div class="order__labels__th">Рост</div>
 														<div class="order__labels__th">
-															<div data-price="125.75">Доступные размеры</div>
+															<div data-price="125.75" data-short="Доступн. размеры">Доступные размеры</div>
 														</div>
 													</div>
 													<div class="order__list">
@@ -517,212 +521,213 @@
 															<div>180 см</div>
 														</div>
 														<div class="order__list__content">
-															<table>
-																<thead>
-																	<tr>
-																		<th>130</th>
-																		<th>134</th>
-																		<th>138</th>
-																		<th>142</th>
-																		<th>146</th>
-																		<th>150</th>
-																		<th>154</th>
-																	</tr>
-																</thead>
-																<tbody class="c-tbody">
-																	<tr>
-																		<td>
-																			<div class="order-select">
-																				<input class="spinner spinner-js" data-max="100" data-disabled="true" disabled type="number" name="value" value="0" data-only-number>
-																				<div class="stock-tape stock-empty" title="Нет в наличии">
-																					<span class="stock-tape-value" style="width: 0%;">Нет в наличии</span>
+															<div class="order__list__layout">
+																<table>
+																	<thead>
+																		<tr>
+																			<th>130</th>
+																			<th>134</th>
+																			<th>138</th>
+																			<th>142</th>
+																			<th>146</th>
+																			<th>150</th>
+																			<th>154</th>
+																		</tr>
+																	</thead>
+																	<tbody class="c-tbody">
+																		<tr>
+																			<td>
+																				<div class="order-select order-select-js">
+																					<input class="spinner spinner-js" data-max="100" data-disabled="true" disabled type="number" name="value" placeholder="0" data-only-number>
+																					<div class="stock-tape stock-empty" title="Нет в наличии">
+																						<span class="stock-tape-value" style="width: 0%;">Нет в наличии</span>
+																					</div>
 																				</div>
-																			</div>
-																		</td>
-																		<td>
-																			<div class="order-select">
-																				<input class="spinner spinner-js" data-max="100" type="number" name="value" value="0" data-only-number>
-																				<div class="stock-tape" title="На складе осталось 50%">
-																					<span class="stock-tape-value" style="width: 50%;">50%</span>
+																			</td>
+																			<td>
+																				<div class="order-select order-select-js">
+																					<input class="spinner spinner-js" data-max="100" type="number" name="value" placeholder="0" data-only-number>
+																					<div class="stock-tape" title="На складе осталось 50%">
+																						<span class="stock-tape-value" style="width: 50%;">50%</span>
+																					</div>
 																				</div>
-																			</div>
-																		</td>
-																		<td>
-																			<div class="order-select">
-																				<input class="spinner spinner-js" data-max="100" type="number" name="value" value="0" data-only-number>
-																				<div class="stock-tape" title="На складе осталось 30%">
-																					<span class="stock-tape-value" style="width: 30%;">30%</span>
+																			</td>
+																			<td>
+																				<div class="order-select order-select-js">
+																					<input class="spinner spinner-js" data-max="100" type="number" name="value" value="5" data-only-number>
+																					<div class="stock-tape" title="На складе осталось 30%">
+																						<span class="stock-tape-value" style="width: 30%;">30%</span>
+																					</div>
 																				</div>
-																			</div>
-																		</td>
-																		<td>
-																			<div class="order-select">
-																				<input class="spinner spinner-js" data-max="100" type="number" name="value" value="0" data-only-number>
-																				<div class="stock-tape" title="На складе осталось 45%">
-																					<span class="stock-tape-value" style="width: 45%;">45%</span>
+																			</td>
+																			<td>
+																				<div class="order-select order-select-js">
+																					<input class="spinner spinner-js" data-max="100" type="number" name="value" placeholder="0" data-only-number>
+																					<div class="stock-tape" title="На складе осталось 45%">
+																						<span class="stock-tape-value" style="width: 45%;">45%</span>
+																					</div>
 																				</div>
-																			</div>
-																		</td>
-																		<td>
-																			<div class="order-select">
-																				<input class="spinner spinner-js" data-max="100" type="number" name="value" value="0" data-only-number>
-																				<div class="stock-tape" title="На складе осталось 85%">
-																					<span class="stock-tape-value" style="width: 85%;">85%</span>
+																			</td>
+																			<td>
+																				<div class="order-select order-select-js">
+																					<input class="spinner spinner-js" data-max="100" type="number" name="value" placeholder="0" data-only-number>
+																					<div class="stock-tape" title="На складе осталось 85%">
+																						<span class="stock-tape-value" style="width: 85%;">85%</span>
+																					</div>
 																				</div>
-																			</div>
-																		</td>
-																		<td>
-																			<div class="order-select">
-																				<input class="spinner spinner-js" data-max="100" type="number" name="value" value="0" data-only-number>
-																				<div class="stock-tape" title="На складе осталось 50%">
-																					<span class="stock-tape-value" style="width: 50%;">50%</span>
+																			</td>
+																			<td>
+																				<div class="order-select order-select-js">
+																					<input class="spinner spinner-js" data-max="100" type="number" name="value" placeholder="0" data-only-number>
+																					<div class="stock-tape" title="На складе осталось 50%">
+																						<span class="stock-tape-value" style="width: 50%;">50%</span>
+																					</div>
 																				</div>
-																			</div>
-																		</td>
-																		<td>
-																			<div class="order-select">
-																				<input class="spinner spinner-js" data-max="100" type="number" name="value" value="0" data-only-number>
-																				<div class="stock-tape" title="На складе осталось 10%">
-																					<span class="stock-tape-value" style="width: 10%;">10%</span>
+																			</td>
+																			<td>
+																				<div class="order-select order-select-js">
+																					<input class="spinner spinner-js" data-max="100" type="number" name="value" placeholder="0" data-only-number>
+																					<div class="stock-tape" title="На складе осталось 10%">
+																						<span class="stock-tape-value" style="width: 10%;">10%</span>
+																					</div>
 																				</div>
-																			</div>
-																		</td>
-																	</tr>
-																	<tr>
-																		<td>
-																			<div class="order-select">
-																				<input class="spinner spinner-js" data-max="100" type="number" name="value" value="0" data-only-number>
-																				<div class="stock-tape" title="На складе осталось 50%">
-																					<span class="stock-tape-value" style="width: 50%;">50%</span>
+																			</td>
+																		</tr>
+																		<tr>
+																			<td>
+																				<div class="order-select order-select-js">
+																					<input class="spinner spinner-js" data-max="100" type="number" name="value" placeholder="0" data-only-number>
+																					<div class="stock-tape" title="На складе осталось 50%">
+																						<span class="stock-tape-value" style="width: 50%;">50%</span>
+																					</div>
 																				</div>
-																			</div>
-																		</td>
-																		<td>
-																			<div class="order-select">
-																				<input class="spinner spinner-js" data-max="100" type="number" name="value" value="0" data-only-number>
-																				<div class="stock-tape" title="На складе осталось 80%">
-																					<span class="stock-tape-value" style="width: 80%;">80%</span>
+																			</td>
+																			<td>
+																				<div class="order-select order-select-js">
+																					<input class="spinner spinner-js" data-max="100" type="number" name="value" placeholder="0" data-only-number>
+																					<div class="stock-tape" title="На складе осталось 80%">
+																						<span class="stock-tape-value" style="width: 80%;">80%</span>
+																					</div>
 																				</div>
-																			</div>
-																		</td>
-																		<td>
-																			<div class="order-select">
-																				<input class="spinner spinner-js" data-max="100" data-disabled="true" disabled type="number" name="value" value="0" data-only-number>
-																				<div class="stock-tape stock-empty" title="Нет в наличии">
-																					<span class="stock-tape-value" style="width: 0%;">Нет в наличии</span>
+																			</td>
+																			<td>
+																				<div class="order-select order-select-js">
+																					<input class="spinner spinner-js" data-max="100" data-disabled="true" disabled type="number" name="value" placeholder="0" data-only-number>
+																					<div class="stock-tape stock-empty" title="Нет в наличии">
+																						<span class="stock-tape-value" style="width: 0%;">Нет в наличии</span>
+																					</div>
 																				</div>
-																			</div>
-																		</td>
-																		<td>
-																			<div class="order-select">
-																				<input class="spinner spinner-js" data-max="100" data-disabled="true" disabled type="number" name="value" value="0" data-only-number>
-																				<div class="stock-tape stock-empty" title="Нет в наличии">
-																					<span class="stock-tape-value" style="width: 0%;">Нет в наличии</span>
+																			</td>
+																			<td>
+																				<div class="order-select order-select-js">
+																					<input class="spinner spinner-js" data-max="100" data-disabled="true" disabled type="number" name="value" placeholder="0" data-only-number>
+																					<div class="stock-tape stock-empty" title="Нет в наличии">
+																						<span class="stock-tape-value" style="width: 0%;">Нет в наличии</span>
+																					</div>
 																				</div>
-																			</div>
-																		</td>
-																		<td>
-																			<div class="order-select">
-																				<input class="spinner spinner-js" data-max="100" type="number" name="value" value="0" data-only-number>
-																				<div class="stock-tape" title="На складе осталось 100%">
-																					<span class="stock-tape-value" style="width: 100%;">100%</span>
+																			</td>
+																			<td>
+																				<div class="order-select order-select-js">
+																					<input class="spinner spinner-js" data-max="100" type="number" name="value" placeholder="0" data-only-number>
+																					<div class="stock-tape" title="На складе осталось 100%">
+																						<span class="stock-tape-value" style="width: 100%;">100%</span>
+																					</div>
 																				</div>
-																			</div>
-																		</td>
-																		<td>
-																			<div class="order-select">
-																				<input class="spinner spinner-js" data-max="100" type="number" name="value" value="0" data-only-number>
-																				<div class="stock-tape" title="На складе осталось 80%">
-																					<span class="stock-tape-value" style="width: 80%;">80%</span>
+																			</td>
+																			<td>
+																				<div class="order-select order-select-js">
+																					<input class="spinner spinner-js" data-max="100" type="number" name="value" placeholder="0" data-only-number>
+																					<div class="stock-tape" title="На складе осталось 80%">
+																						<span class="stock-tape-value" style="width: 80%;">80%</span>
+																					</div>
 																				</div>
-																			</div>
-																		</td>
-																		<td>
-																			<div class="order-select">
-																				<input class="spinner spinner-js" data-max="100" type="number" name="value" value="0" data-only-number>
-																				<div class="stock-tape" title="На складе осталось 85%">
-																					<span class="stock-tape-value" style="width: 85%;">85%</span>
+																			</td>
+																			<td>
+																				<div class="order-select order-select-js">
+																					<input class="spinner spinner-js" data-max="100" type="number" name="value" placeholder="0" data-only-number>
+																					<div class="stock-tape" title="На складе осталось 85%">
+																						<span class="stock-tape-value" style="width: 85%;">85%</span>
+																					</div>
 																				</div>
-																			</div>
-																		</td>
-																	</tr>
-																	<tr>
-																		<td>
-																			<div class="order-select">
-																				<input class="spinner spinner-js" data-max="100" data-disabled="true" disabled type="number" name="value" value="0" data-only-number>
-																				<div class="stock-tape stock-empty" title="Нет в наличии">
-																					<span class="stock-tape-value" style="width: 0%;">Нет в наличии</span>
+																			</td>
+																		</tr>
+																		<tr>
+																			<td>
+																				<div class="order-select order-select-js">
+																					<input class="spinner spinner-js" data-max="100" data-disabled="true" disabled type="number" name="value" placeholder="0" data-only-number>
+																					<div class="stock-tape stock-empty" title="Нет в наличии">
+																						<span class="stock-tape-value" style="width: 0%;">Нет в наличии</span>
+																					</div>
 																				</div>
-																			</div>
-																		</td>
-																		<td>
-																			<div class="order-select">
-																				<input class="spinner spinner-js" data-max="100" data-disabled="true" disabled type="number" name="value" value="0" data-only-number>
-																				<div class="stock-tape stock-empty" title="Нет в наличии">
-																					<span class="stock-tape-value" style="width: 0%;">Нет в наличии</span>
+																			</td>
+																			<td>
+																				<div class="order-select order-select-js">
+																					<input class="spinner spinner-js" data-max="100" data-disabled="true" disabled type="number" name="value" placeholder="0" data-only-number>
+																					<div class="stock-tape stock-empty" title="Нет в наличии">
+																						<span class="stock-tape-value" style="width: 0%;">Нет в наличии</span>
+																					</div>
 																				</div>
-																			</div>
-																		</td>
-																		<td>
-																			<div class="order-select">
-																				<input class="spinner spinner-js" data-max="100" type="number" name="value" value="0" data-only-number>
-																				<div class="stock-tape" title="На складе осталось 15%">
-																					<span class="stock-tape-value" style="width: 15%;">15%</span>
+																			</td>
+																			<td>
+																				<div class="order-select order-select-js">
+																					<input class="spinner spinner-js" data-max="100" type="number" name="value" placeholder="0" data-only-number>
+																					<div class="stock-tape" title="На складе осталось 15%">
+																						<span class="stock-tape-value" style="width: 15%;">15%</span>
+																					</div>
 																				</div>
-																			</div>
-																		</td>
-																		<td>
-																			<div class="order-select">
-																				<input class="spinner spinner-js" data-max="100" type="number" name="value" value="0" data-only-number>
-																				<div class="stock-tape" title="На складе осталось 25%">
-																					<span class="stock-tape-value" style="width: 25%;">25%</span>
+																			</td>
+																			<td>
+																				<div class="order-select order-select-js">
+																					<input class="spinner spinner-js" data-max="100" type="number" name="value" placeholder="0" data-only-number>
+																					<div class="stock-tape" title="На складе осталось 25%">
+																						<span class="stock-tape-value" style="width: 25%;">25%</span>
+																					</div>
 																				</div>
-																			</div>
-																		</td>
-																		<td>
-																			<div class="order-select">
-																				<input class="spinner spinner-js" data-max="100" type="number" name="value" value="0" data-only-number>
-																				<div class="stock-tape" title="На складе осталось 63%">
-																					<span class="stock-tape-value" style="width: 63%;">63%</span>
+																			</td>
+																			<td>
+																				<div class="order-select order-select-js">
+																					<input class="spinner spinner-js" data-max="100" type="number" name="value" placeholder="0" data-only-number>
+																					<div class="stock-tape" title="На складе осталось 63%">
+																						<span class="stock-tape-value" style="width: 63%;">63%</span>
+																					</div>
 																				</div>
-																			</div>
-																		</td>
-																		<td>
-																			<div class="order-select">
-																				<input class="spinner spinner-js" data-max="100" data-disabled="true" disabled type="number" name="value" value="0" data-only-number>
-																				<div class="stock-tape stock-empty" title="Нет в наличии">
-																					<span class="stock-tape-value" style="width: 0%;">Нет в наличии</span>
+																			</td>
+																			<td>
+																				<div class="order-select order-select-js">
+																					<input class="spinner spinner-js" data-max="100" data-disabled="true" disabled type="number" name="value" placeholder="0" data-only-number>
+																					<div class="stock-tape stock-empty" title="Нет в наличии">
+																						<span class="stock-tape-value" style="width: 0%;">Нет в наличии</span>
+																					</div>
 																				</div>
-																			</div>
-																		</td>
-																		<td>
-																			<div class="order-select">
-																				<input class="spinner spinner-js" data-max="100" type="number" name="value" value="0" data-only-number>
-																				<div class="stock-tape" title="На складе осталось 50%">
-																					<span class="stock-tape-value" style="width: 50%;">50%</span>
+																			</td>
+																			<td>
+																				<div class="order-select order-select-js">
+																					<input class="spinner spinner-js" data-max="100" type="number" name="value" placeholder="0" data-only-number>
+																					<div class="stock-tape" title="На складе осталось 50%">
+																						<span class="stock-tape-value" style="width: 50%;">50%</span>
+																					</div>
 																				</div>
-																			</div>
-																		</td>
-																	</tr>
-																</tbody>
-															</table>
+																			</td>
+																		</tr>
+																	</tbody>
+																</table>
+															</div>
 														</div>
 													</div>
 													<div class="order-result">
 														<div class="note">Заказ набирается упаковками</div>
 														<div class="order-result__group">
 															<div class="order-result__total">
-																<!--<div class="order-result__label">Итого:</div>-->
-																<span class="text-mark">27</span> упаковок на&nbsp;<span class="text-mark">2 150</span>&nbsp;руб.
+																<span class="text-mark order-group-length-js">0</span> <span data-short="уп.">упаковок</span> на&nbsp;<span class="text-mark order-group-price-js">0</span>&nbsp;руб.
 															</div>
-															<a href="#" class="btn-default">Заказать</a>
+															<button class="btn-default order-group-btn-js" disabled>Заказать</button>
 														</div>
 													</div>
 												</div>
 											</div>
 										</div>
-										<div class="order__item accordion__item-js">
-											<div class="order__head accordion__header-js">
+										<div class="order__item order-item-js order-accordion__item-js">
+											<div class="order__head order-accordion__header-js">
 												<div class="order__head__th caption-for-table">
 													<div class="img-for-table">
 														<img src="img/img-products-01.jpg" alt="Комплект жен. (фуфайка+брюки)" />
@@ -737,231 +742,177 @@
 													</div>
 												</div>
 												<div class="order__head__th" data-label="Цена">
-													<div data-price="125.75">125.75 р.</div>
+													<div data-price="99.15">99.15 р.</div>
 												</div>
-												<i class="accordion__header__angle accordion__hand-js">&nbsp;</i>
+												<div class="order-accordion__hand order-accordion__hand-js">
+													<i class="accordion__header__angle">&nbsp;</i>
+													<span>Развернуть</span>
+													<span>Свернуть</span>
+												</div>
 											</div>
 											<div class="order__group">
 												<div class="order__group__holder">
 													<div class="order__labels">
 														<div class="order__labels__th">Рост</div>
 														<div class="order__labels__th">
-															<div data-price="125.75">Доступные размеры</div>
+															<div data-price="125.75" data-short="Доступн. размеры">Доступные размеры</div>
 														</div>
 													</div>
 													<div class="order__list">
 														<div class="order__list__side">
-															<div>160 см</div>
 															<div>170 см</div>
 															<div>180 см</div>
 														</div>
 														<div class="order__list__content">
-															<table>
-																<thead>
-																	<tr>
-																		<th>130</th>
-																		<th>134</th>
-																		<th>138</th>
-																		<th>142</th>
-																		<th>146</th>
-																		<th>150</th>
-																		<th>154</th>
-																	</tr>
-																</thead>
-																<tbody class="c-tbody">
-																	<tr>
-																		<td>
-																			<div class="order-select">
-																				<input class="spinner spinner-js" data-max="100" data-disabled="true" disabled type="number" name="value" value="0" data-only-number>
-																				<div class="stock-tape stock-empty" title="Нет в наличии">
-																					<span class="stock-tape-value" style="width: 0%;">Нет в наличии</span>
+															<div class="order__list__layout">
+																<table>
+																	<thead>
+																		<tr>
+																			<th>130</th>
+																			<th>134</th>
+																			<th>138</th>
+																			<th>142</th>
+																			<th>146</th>
+																			<th>150</th>
+																			<th>154</th>
+																		</tr>
+																	</thead>
+																	<tbody class="c-tbody">
+																		<tr>
+																			<td>
+																				<div class="order-select order-select-js">
+																					<input class="spinner spinner-js" data-max="100" type="number" name="value" placeholder="0" data-only-number>
+																					<div class="stock-tape" title="На складе осталось 50%">
+																						<span class="stock-tape-value" style="width: 50%;">50%</span>
+																					</div>
 																				</div>
-																			</div>
-																		</td>
-																		<td>
-																			<div class="order-select">
-																				<input class="spinner spinner-js" data-max="100" type="number" name="value" value="0" data-only-number>
-																				<div class="stock-tape" title="На складе осталось 50%">
-																					<span class="stock-tape-value" style="width: 50%;">50%</span>
+																			</td>
+																			<td>
+																				<div class="order-select order-select-js">
+																					<input class="spinner spinner-js" data-max="100" type="number" name="value" placeholder="0" data-only-number>
+																					<div class="stock-tape" title="На складе осталось 80%">
+																						<span class="stock-tape-value" style="width: 80%;">80%</span>
+																					</div>
 																				</div>
-																			</div>
-																		</td>
-																		<td>
-																			<div class="order-select">
-																				<input class="spinner spinner-js" data-max="100" type="number" name="value" value="0" data-only-number>
-																				<div class="stock-tape" title="На складе осталось 30%">
-																					<span class="stock-tape-value" style="width: 30%;">30%</span>
+																			</td>
+																			<td>
+																				<div class="order-select order-select-js">
+																					<input class="spinner spinner-js" data-max="100" data-disabled="true" disabled type="number" name="value" placeholder="0" data-only-number>
+																					<div class="stock-tape stock-empty" title="Нет в наличии">
+																						<span class="stock-tape-value" style="width: 0%;">Нет в наличии</span>
+																					</div>
 																				</div>
-																			</div>
-																		</td>
-																		<td>
-																			<div class="order-select">
-																				<input class="spinner spinner-js" data-max="100" type="number" name="value" value="0" data-only-number>
-																				<div class="stock-tape" title="На складе осталось 45%">
-																					<span class="stock-tape-value" style="width: 45%;">45%</span>
+																			</td>
+																			<td>
+																				<div class="order-select order-select-js">
+																					<input class="spinner spinner-js" data-max="100" data-disabled="true" disabled type="number" name="value" placeholder="0" data-only-number>
+																					<div class="stock-tape stock-empty" title="Нет в наличии">
+																						<span class="stock-tape-value" style="width: 0%;">Нет в наличии</span>
+																					</div>
 																				</div>
-																			</div>
-																		</td>
-																		<td>
-																			<div class="order-select">
-																				<input class="spinner spinner-js" data-max="100" type="number" name="value" value="0" data-only-number>
-																				<div class="stock-tape" title="На складе осталось 85%">
-																					<span class="stock-tape-value" style="width: 85%;">85%</span>
+																			</td>
+																			<td>
+																				<div class="order-select order-select-js">
+																					<input class="spinner spinner-js" data-max="100" type="number" name="value" placeholder="0" data-only-number>
+																					<div class="stock-tape" title="На складе осталось 100%">
+																						<span class="stock-tape-value" style="width: 100%;">100%</span>
+																					</div>
 																				</div>
-																			</div>
-																		</td>
-																		<td>
-																			<div class="order-select">
-																				<input class="spinner spinner-js" data-max="100" type="number" name="value" value="0" data-only-number>
-																				<div class="stock-tape" title="На складе осталось 50%">
-																					<span class="stock-tape-value" style="width: 50%;">50%</span>
+																			</td>
+																			<td>
+																				<div class="order-select order-select-js">
+																					<input class="spinner spinner-js" data-max="100" type="number" name="value" placeholder="0" data-only-number>
+																					<div class="stock-tape" title="На складе осталось 80%">
+																						<span class="stock-tape-value" style="width: 80%;">80%</span>
+																					</div>
 																				</div>
-																			</div>
-																		</td>
-																		<td>
-																			<div class="order-select">
-																				<input class="spinner spinner-js" data-max="100" type="number" name="value" value="0" data-only-number>
-																				<div class="stock-tape" title="На складе осталось 10%">
-																					<span class="stock-tape-value" style="width: 10%;">10%</span>
+																			</td>
+																			<td>
+																				<div class="order-select order-select-js">
+																					<input class="spinner spinner-js" data-max="100" type="number" name="value" placeholder="0" data-only-number>
+																					<div class="stock-tape" title="На складе осталось 85%">
+																						<span class="stock-tape-value" style="width: 85%;">85%</span>
+																					</div>
 																				</div>
-																			</div>
-																		</td>
-																	</tr>
-																	<tr>
-																		<td>
-																			<div class="order-select">
-																				<input class="spinner spinner-js" data-max="100" type="number" name="value" value="0" data-only-number>
-																				<div class="stock-tape" title="На складе осталось 50%">
-																					<span class="stock-tape-value" style="width: 50%;">50%</span>
+																			</td>
+																		</tr>
+																		<tr>
+																			<td>
+																				<div class="order-select order-select-js">
+																					<input class="spinner spinner-js" data-max="100" data-disabled="true" disabled type="number" name="value" placeholder="0" data-only-number>
+																					<div class="stock-tape stock-empty" title="Нет в наличии">
+																						<span class="stock-tape-value" style="width: 0%;">Нет в наличии</span>
+																					</div>
 																				</div>
-																			</div>
-																		</td>
-																		<td>
-																			<div class="order-select">
-																				<input class="spinner spinner-js" data-max="100" type="number" name="value" value="0" data-only-number>
-																				<div class="stock-tape" title="На складе осталось 80%">
-																					<span class="stock-tape-value" style="width: 80%;">80%</span>
+																			</td>
+																			<td>
+																				<div class="order-select order-select-js">
+																					<input class="spinner spinner-js" data-max="100" data-disabled="true" disabled type="number" name="value" placeholder="0" data-only-number>
+																					<div class="stock-tape stock-empty" title="Нет в наличии">
+																						<span class="stock-tape-value" style="width: 0%;">Нет в наличии</span>
+																					</div>
 																				</div>
-																			</div>
-																		</td>
-																		<td>
-																			<div class="order-select">
-																				<input class="spinner spinner-js" data-max="100" data-disabled="true" disabled type="number" name="value" value="0" data-only-number>
-																				<div class="stock-tape stock-empty" title="Нет в наличии">
-																					<span class="stock-tape-value" style="width: 0%;">Нет в наличии</span>
+																			</td>
+																			<td>
+																				<div class="order-select order-select-js">
+																					<input class="spinner spinner-js" data-max="100" type="number" name="value" placeholder="0" data-only-number>
+																					<div class="stock-tape" title="На складе осталось 15%">
+																						<span class="stock-tape-value" style="width: 15%;">15%</span>
+																					</div>
 																				</div>
-																			</div>
-																		</td>
-																		<td>
-																			<div class="order-select">
-																				<input class="spinner spinner-js" data-max="100" data-disabled="true" disabled type="number" name="value" value="0" data-only-number>
-																				<div class="stock-tape stock-empty" title="Нет в наличии">
-																					<span class="stock-tape-value" style="width: 0%;">Нет в наличии</span>
+																			</td>
+																			<td>
+																				<div class="order-select order-select-js">
+																					<input class="spinner spinner-js" data-max="100" type="number" name="value" placeholder="0" data-only-number>
+																					<div class="stock-tape" title="На складе осталось 25%">
+																						<span class="stock-tape-value" style="width: 25%;">25%</span>
+																					</div>
 																				</div>
-																			</div>
-																		</td>
-																		<td>
-																			<div class="order-select">
-																				<input class="spinner spinner-js" data-max="100" type="number" name="value" value="0" data-only-number>
-																				<div class="stock-tape" title="На складе осталось 100%">
-																					<span class="stock-tape-value" style="width: 100%;">100%</span>
+																			</td>
+																			<td>
+																				<div class="order-select order-select-js">
+																					<input class="spinner spinner-js" data-max="100" type="number" name="value" placeholder="0" data-only-number>
+																					<div class="stock-tape" title="На складе осталось 63%">
+																						<span class="stock-tape-value" style="width: 63%;">63%</span>
+																					</div>
 																				</div>
-																			</div>
-																		</td>
-																		<td>
-																			<div class="order-select">
-																				<input class="spinner spinner-js" data-max="100" type="number" name="value" value="0" data-only-number>
-																				<div class="stock-tape" title="На складе осталось 80%">
-																					<span class="stock-tape-value" style="width: 80%;">80%</span>
+																			</td>
+																			<td>
+																				<div class="order-select order-select-js">
+																					<input class="spinner spinner-js" data-max="100" data-disabled="true" disabled type="number" name="value" placeholder="0" data-only-number>
+																					<div class="stock-tape stock-empty" title="Нет в наличии">
+																						<span class="stock-tape-value" style="width: 0%;">Нет в наличии</span>
+																					</div>
 																				</div>
-																			</div>
-																		</td>
-																		<td>
-																			<div class="order-select">
-																				<input class="spinner spinner-js" data-max="100" type="number" name="value" value="0" data-only-number>
-																				<div class="stock-tape" title="На складе осталось 85%">
-																					<span class="stock-tape-value" style="width: 85%;">85%</span>
+																			</td>
+																			<td>
+																				<div class="order-select order-select-js">
+																					<input class="spinner spinner-js" data-max="100" type="number" name="value" placeholder="0" data-only-number>
+																					<div class="stock-tape" title="На складе осталось 50%">
+																						<span class="stock-tape-value" style="width: 50%;">50%</span>
+																					</div>
 																				</div>
-																			</div>
-																		</td>
-																	</tr>
-																	<tr>
-																		<td>
-																			<div class="order-select">
-																				<input class="spinner spinner-js" data-max="100" data-disabled="true" disabled type="number" name="value" value="0" data-only-number>
-																				<div class="stock-tape stock-empty" title="Нет в наличии">
-																					<span class="stock-tape-value" style="width: 0%;">Нет в наличии</span>
-																				</div>
-																			</div>
-																		</td>
-																		<td>
-																			<div class="order-select">
-																				<input class="spinner spinner-js" data-max="100" data-disabled="true" disabled type="number" name="value" value="0" data-only-number>
-																				<div class="stock-tape stock-empty" title="Нет в наличии">
-																					<span class="stock-tape-value" style="width: 0%;">Нет в наличии</span>
-																				</div>
-																			</div>
-																		</td>
-																		<td>
-																			<div class="order-select">
-																				<input class="spinner spinner-js" data-max="100" type="number" name="value" value="0" data-only-number>
-																				<div class="stock-tape" title="На складе осталось 15%">
-																					<span class="stock-tape-value" style="width: 15%;">15%</span>
-																				</div>
-																			</div>
-																		</td>
-																		<td>
-																			<div class="order-select">
-																				<input class="spinner spinner-js" data-max="100" type="number" name="value" value="0" data-only-number>
-																				<div class="stock-tape" title="На складе осталось 25%">
-																					<span class="stock-tape-value" style="width: 25%;">25%</span>
-																				</div>
-																			</div>
-																		</td>
-																		<td>
-																			<div class="order-select">
-																				<input class="spinner spinner-js" data-max="100" type="number" name="value" value="0" data-only-number>
-																				<div class="stock-tape" title="На складе осталось 63%">
-																					<span class="stock-tape-value" style="width: 63%;">63%</span>
-																				</div>
-																			</div>
-																		</td>
-																		<td>
-																			<div class="order-select">
-																				<input class="spinner spinner-js" data-max="100" data-disabled="true" disabled type="number" name="value" value="0" data-only-number>
-																				<div class="stock-tape stock-empty" title="Нет в наличии">
-																					<span class="stock-tape-value" style="width: 0%;">Нет в наличии</span>
-																				</div>
-																			</div>
-																		</td>
-																		<td>
-																			<div class="order-select">
-																				<input class="spinner spinner-js" data-max="100" type="number" name="value" value="0" data-only-number>
-																				<div class="stock-tape" title="На складе осталось 50%">
-																					<span class="stock-tape-value" style="width: 50%;">50%</span>
-																				</div>
-																			</div>
-																		</td>
-																	</tr>
-																</tbody>
-															</table>
+																			</td>
+																		</tr>
+																	</tbody>
+																</table>
+															</div>
 														</div>
 													</div>
 													<div class="order-result">
 														<div class="note">Заказ набирается упаковками</div>
 														<div class="order-result__group">
 															<div class="order-result__total">
-																<!--<div class="order-result__label">Итого:</div>-->
-																<span class="text-mark">27</span> упаковок на&nbsp;<span class="text-mark">2 150</span>&nbsp;руб.
+																<span class="text-mark order-group-length-js">0</span> <span data-short="уп.">упаковок</span> на&nbsp;<span class="text-mark order-group-price-js">0</span>&nbsp;руб.
 															</div>
-															<a href="#" class="btn-default">Заказать</a>
+															<button class="btn-default order-group-btn-js" disabled>Заказать</button>
 														</div>
 													</div>
 												</div>
 											</div>
 										</div>
-										<div class="order__item accordion__item-js">
-											<div class="order__head accordion__header-js">
+										<div class="order__item order-item-js order-accordion__item-js">
+											<div class="order__head order-accordion__header-js">
 												<div class="order__head__th caption-for-table">
 													<div class="img-for-table">
 														<img src="img/img-products-01.jpg" alt="Комплект жен. (фуфайка+брюки)" />
@@ -976,16 +927,20 @@
 													</div>
 												</div>
 												<div class="order__head__th" data-label="Цена">
-													<div data-price="125.75">125.75 р.</div>
+													<div data-price="200">200.00 р.</div>
 												</div>
-												<i class="accordion__header__angle accordion__hand-js">&nbsp;</i>
+												<div class="order-accordion__hand order-accordion__hand-js">
+													<i class="accordion__header__angle">&nbsp;</i>
+													<span>Развернуть</span>
+													<span>Свернуть</span>
+												</div>
 											</div>
 											<div class="order__group">
 												<div class="order__group__holder">
 													<div class="order__labels">
 														<div class="order__labels__th">Рост</div>
 														<div class="order__labels__th">
-															<div data-price="125.75">Доступные размеры</div>
+															<div data-price="125.75" data-short="Доступн. размеры">Доступные размеры</div>
 														</div>
 													</div>
 													<div class="order__list">
@@ -995,205 +950,206 @@
 															<div>180 см</div>
 														</div>
 														<div class="order__list__content">
-															<table>
-																<thead>
-																	<tr>
-																		<th>130</th>
-																		<th>134</th>
-																		<th>138</th>
-																		<th>142</th>
-																		<th>146</th>
-																		<th>150</th>
-																		<th>154</th>
-																	</tr>
-																</thead>
-																<tbody class="c-tbody">
-																	<tr>
-																		<td>
-																			<div class="order-select">
-																				<input class="spinner spinner-js" data-max="100" data-disabled="true" disabled type="number" name="value" value="0" data-only-number>
-																				<div class="stock-tape stock-empty" title="Нет в наличии">
-																					<span class="stock-tape-value" style="width: 0%;">Нет в наличии</span>
+															<div class="order__list__layout">
+																<table>
+																	<thead>
+																		<tr>
+																			<th>130</th>
+																			<th>134</th>
+																			<th>138</th>
+																			<th>142</th>
+																			<th>146</th>
+																			<th>150</th>
+																			<th>154</th>
+																		</tr>
+																	</thead>
+																	<tbody class="c-tbody">
+																		<tr>
+																			<td>
+																				<div class="order-select order-select-js">
+																					<input class="spinner spinner-js" data-max="100" data-disabled="true" disabled type="number" name="value" placeholder="0" data-only-number>
+																					<div class="stock-tape stock-empty" title="Нет в наличии">
+																						<span class="stock-tape-value" style="width: 0%;">Нет в наличии</span>
+																					</div>
 																				</div>
-																			</div>
-																		</td>
-																		<td>
-																			<div class="order-select">
-																				<input class="spinner spinner-js" data-max="100" type="number" name="value" value="0" data-only-number>
-																				<div class="stock-tape" title="На складе осталось 50%">
-																					<span class="stock-tape-value" style="width: 50%;">50%</span>
+																			</td>
+																			<td>
+																				<div class="order-select order-select-js">
+																					<input class="spinner spinner-js" data-max="100" type="number" name="value" placeholder="0" data-only-number>
+																					<div class="stock-tape" title="На складе осталось 50%">
+																						<span class="stock-tape-value" style="width: 50%;">50%</span>
+																					</div>
 																				</div>
-																			</div>
-																		</td>
-																		<td>
-																			<div class="order-select">
-																				<input class="spinner spinner-js" data-max="100" type="number" name="value" value="0" data-only-number>
-																				<div class="stock-tape" title="На складе осталось 30%">
-																					<span class="stock-tape-value" style="width: 30%;">30%</span>
+																			</td>
+																			<td>
+																				<div class="order-select order-select-js">
+																					<input class="spinner spinner-js" data-max="100" type="number" name="value" value="5" data-only-number>
+																					<div class="stock-tape" title="На складе осталось 30%">
+																						<span class="stock-tape-value" style="width: 30%;">30%</span>
+																					</div>
 																				</div>
-																			</div>
-																		</td>
-																		<td>
-																			<div class="order-select">
-																				<input class="spinner spinner-js" data-max="100" type="number" name="value" value="0" data-only-number>
-																				<div class="stock-tape" title="На складе осталось 45%">
-																					<span class="stock-tape-value" style="width: 45%;">45%</span>
+																			</td>
+																			<td>
+																				<div class="order-select order-select-js">
+																					<input class="spinner spinner-js" data-max="100" type="number" name="value" placeholder="0" data-only-number>
+																					<div class="stock-tape" title="На складе осталось 45%">
+																						<span class="stock-tape-value" style="width: 45%;">45%</span>
+																					</div>
 																				</div>
-																			</div>
-																		</td>
-																		<td>
-																			<div class="order-select">
-																				<input class="spinner spinner-js" data-max="100" type="number" name="value" value="0" data-only-number>
-																				<div class="stock-tape" title="На складе осталось 85%">
-																					<span class="stock-tape-value" style="width: 85%;">85%</span>
+																			</td>
+																			<td>
+																				<div class="order-select order-select-js">
+																					<input class="spinner spinner-js" data-max="100" type="number" name="value" placeholder="0" data-only-number>
+																					<div class="stock-tape" title="На складе осталось 85%">
+																						<span class="stock-tape-value" style="width: 85%;">85%</span>
+																					</div>
 																				</div>
-																			</div>
-																		</td>
-																		<td>
-																			<div class="order-select">
-																				<input class="spinner spinner-js" data-max="100" type="number" name="value" value="0" data-only-number>
-																				<div class="stock-tape" title="На складе осталось 50%">
-																					<span class="stock-tape-value" style="width: 50%;">50%</span>
+																			</td>
+																			<td>
+																				<div class="order-select order-select-js">
+																					<input class="spinner spinner-js" data-max="100" type="number" name="value" placeholder="0" data-only-number>
+																					<div class="stock-tape" title="На складе осталось 50%">
+																						<span class="stock-tape-value" style="width: 50%;">50%</span>
+																					</div>
 																				</div>
-																			</div>
-																		</td>
-																		<td>
-																			<div class="order-select">
-																				<input class="spinner spinner-js" data-max="100" type="number" name="value" value="0" data-only-number>
-																				<div class="stock-tape" title="На складе осталось 10%">
-																					<span class="stock-tape-value" style="width: 10%;">10%</span>
+																			</td>
+																			<td>
+																				<div class="order-select order-select-js">
+																					<input class="spinner spinner-js" data-max="100" type="number" name="value" placeholder="0" data-only-number>
+																					<div class="stock-tape" title="На складе осталось 10%">
+																						<span class="stock-tape-value" style="width: 10%;">10%</span>
+																					</div>
 																				</div>
-																			</div>
-																		</td>
-																	</tr>
-																	<tr>
-																		<td>
-																			<div class="order-select">
-																				<input class="spinner spinner-js" data-max="100" type="number" name="value" value="0" data-only-number>
-																				<div class="stock-tape" title="На складе осталось 50%">
-																					<span class="stock-tape-value" style="width: 50%;">50%</span>
+																			</td>
+																		</tr>
+																		<tr>
+																			<td>
+																				<div class="order-select order-select-js">
+																					<input class="spinner spinner-js" data-max="100" type="number" name="value" placeholder="0" data-only-number>
+																					<div class="stock-tape" title="На складе осталось 50%">
+																						<span class="stock-tape-value" style="width: 50%;">50%</span>
+																					</div>
 																				</div>
-																			</div>
-																		</td>
-																		<td>
-																			<div class="order-select">
-																				<input class="spinner spinner-js" data-max="100" type="number" name="value" value="0" data-only-number>
-																				<div class="stock-tape" title="На складе осталось 80%">
-																					<span class="stock-tape-value" style="width: 80%;">80%</span>
+																			</td>
+																			<td>
+																				<div class="order-select order-select-js">
+																					<input class="spinner spinner-js" data-max="100" type="number" name="value" placeholder="0" data-only-number>
+																					<div class="stock-tape" title="На складе осталось 80%">
+																						<span class="stock-tape-value" style="width: 80%;">80%</span>
+																					</div>
 																				</div>
-																			</div>
-																		</td>
-																		<td>
-																			<div class="order-select">
-																				<input class="spinner spinner-js" data-max="100" data-disabled="true" disabled type="number" name="value" value="0" data-only-number>
-																				<div class="stock-tape stock-empty" title="Нет в наличии">
-																					<span class="stock-tape-value" style="width: 0%;">Нет в наличии</span>
+																			</td>
+																			<td>
+																				<div class="order-select order-select-js">
+																					<input class="spinner spinner-js" data-max="100" data-disabled="true" disabled type="number" name="value" placeholder="0" data-only-number>
+																					<div class="stock-tape stock-empty" title="Нет в наличии">
+																						<span class="stock-tape-value" style="width: 0%;">Нет в наличии</span>
+																					</div>
 																				</div>
-																			</div>
-																		</td>
-																		<td>
-																			<div class="order-select">
-																				<input class="spinner spinner-js" data-max="100" data-disabled="true" disabled type="number" name="value" value="0" data-only-number>
-																				<div class="stock-tape stock-empty" title="Нет в наличии">
-																					<span class="stock-tape-value" style="width: 0%;">Нет в наличии</span>
+																			</td>
+																			<td>
+																				<div class="order-select order-select-js">
+																					<input class="spinner spinner-js" data-max="100" data-disabled="true" disabled type="number" name="value" placeholder="0" data-only-number>
+																					<div class="stock-tape stock-empty" title="Нет в наличии">
+																						<span class="stock-tape-value" style="width: 0%;">Нет в наличии</span>
+																					</div>
 																				</div>
-																			</div>
-																		</td>
-																		<td>
-																			<div class="order-select">
-																				<input class="spinner spinner-js" data-max="100" type="number" name="value" value="0" data-only-number>
-																				<div class="stock-tape" title="На складе осталось 100%">
-																					<span class="stock-tape-value" style="width: 100%;">100%</span>
+																			</td>
+																			<td>
+																				<div class="order-select order-select-js">
+																					<input class="spinner spinner-js" data-max="100" type="number" name="value" placeholder="0" data-only-number>
+																					<div class="stock-tape" title="На складе осталось 100%">
+																						<span class="stock-tape-value" style="width: 100%;">100%</span>
+																					</div>
 																				</div>
-																			</div>
-																		</td>
-																		<td>
-																			<div class="order-select">
-																				<input class="spinner spinner-js" data-max="100" type="number" name="value" value="0" data-only-number>
-																				<div class="stock-tape" title="На складе осталось 80%">
-																					<span class="stock-tape-value" style="width: 80%;">80%</span>
+																			</td>
+																			<td>
+																				<div class="order-select order-select-js">
+																					<input class="spinner spinner-js" data-max="100" type="number" name="value" placeholder="0" data-only-number>
+																					<div class="stock-tape" title="На складе осталось 80%">
+																						<span class="stock-tape-value" style="width: 80%;">80%</span>
+																					</div>
 																				</div>
-																			</div>
-																		</td>
-																		<td>
-																			<div class="order-select">
-																				<input class="spinner spinner-js" data-max="100" type="number" name="value" value="0" data-only-number>
-																				<div class="stock-tape" title="На складе осталось 85%">
-																					<span class="stock-tape-value" style="width: 85%;">85%</span>
+																			</td>
+																			<td>
+																				<div class="order-select order-select-js">
+																					<input class="spinner spinner-js" data-max="100" type="number" name="value" placeholder="0" data-only-number>
+																					<div class="stock-tape" title="На складе осталось 85%">
+																						<span class="stock-tape-value" style="width: 85%;">85%</span>
+																					</div>
 																				</div>
-																			</div>
-																		</td>
-																	</tr>
-																	<tr>
-																		<td>
-																			<div class="order-select">
-																				<input class="spinner spinner-js" data-max="100" data-disabled="true" disabled type="number" name="value" value="0" data-only-number>
-																				<div class="stock-tape stock-empty" title="Нет в наличии">
-																					<span class="stock-tape-value" style="width: 0%;">Нет в наличии</span>
+																			</td>
+																		</tr>
+																		<tr>
+																			<td>
+																				<div class="order-select order-select-js">
+																					<input class="spinner spinner-js" data-max="100" data-disabled="true" disabled type="number" name="value" placeholder="0" data-only-number>
+																					<div class="stock-tape stock-empty" title="Нет в наличии">
+																						<span class="stock-tape-value" style="width: 0%;">Нет в наличии</span>
+																					</div>
 																				</div>
-																			</div>
-																		</td>
-																		<td>
-																			<div class="order-select">
-																				<input class="spinner spinner-js" data-max="100" data-disabled="true" disabled type="number" name="value" value="0" data-only-number>
-																				<div class="stock-tape stock-empty" title="Нет в наличии">
-																					<span class="stock-tape-value" style="width: 0%;">Нет в наличии</span>
+																			</td>
+																			<td>
+																				<div class="order-select order-select-js">
+																					<input class="spinner spinner-js" data-max="100" data-disabled="true" disabled type="number" name="value" placeholder="0" data-only-number>
+																					<div class="stock-tape stock-empty" title="Нет в наличии">
+																						<span class="stock-tape-value" style="width: 0%;">Нет в наличии</span>
+																					</div>
 																				</div>
-																			</div>
-																		</td>
-																		<td>
-																			<div class="order-select">
-																				<input class="spinner spinner-js" data-max="100" type="number" name="value" value="0" data-only-number>
-																				<div class="stock-tape" title="На складе осталось 15%">
-																					<span class="stock-tape-value" style="width: 15%;">15%</span>
+																			</td>
+																			<td>
+																				<div class="order-select order-select-js">
+																					<input class="spinner spinner-js" data-max="100" type="number" name="value" placeholder="0" data-only-number>
+																					<div class="stock-tape" title="На складе осталось 15%">
+																						<span class="stock-tape-value" style="width: 15%;">15%</span>
+																					</div>
 																				</div>
-																			</div>
-																		</td>
-																		<td>
-																			<div class="order-select">
-																				<input class="spinner spinner-js" data-max="100" type="number" name="value" value="0" data-only-number>
-																				<div class="stock-tape" title="На складе осталось 25%">
-																					<span class="stock-tape-value" style="width: 25%;">25%</span>
+																			</td>
+																			<td>
+																				<div class="order-select order-select-js">
+																					<input class="spinner spinner-js" data-max="100" type="number" name="value" placeholder="0" data-only-number>
+																					<div class="stock-tape" title="На складе осталось 25%">
+																						<span class="stock-tape-value" style="width: 25%;">25%</span>
+																					</div>
 																				</div>
-																			</div>
-																		</td>
-																		<td>
-																			<div class="order-select">
-																				<input class="spinner spinner-js" data-max="100" type="number" name="value" value="0" data-only-number>
-																				<div class="stock-tape" title="На складе осталось 63%">
-																					<span class="stock-tape-value" style="width: 63%;">63%</span>
+																			</td>
+																			<td>
+																				<div class="order-select order-select-js">
+																					<input class="spinner spinner-js" data-max="100" type="number" name="value" placeholder="0" data-only-number>
+																					<div class="stock-tape" title="На складе осталось 63%">
+																						<span class="stock-tape-value" style="width: 63%;">63%</span>
+																					</div>
 																				</div>
-																			</div>
-																		</td>
-																		<td>
-																			<div class="order-select">
-																				<input class="spinner spinner-js" data-max="100" data-disabled="true" disabled type="number" name="value" value="0" data-only-number>
-																				<div class="stock-tape stock-empty" title="Нет в наличии">
-																					<span class="stock-tape-value" style="width: 0%;">Нет в наличии</span>
+																			</td>
+																			<td>
+																				<div class="order-select order-select-js">
+																					<input class="spinner spinner-js" data-max="100" data-disabled="true" disabled type="number" name="value" placeholder="0" data-only-number>
+																					<div class="stock-tape stock-empty" title="Нет в наличии">
+																						<span class="stock-tape-value" style="width: 0%;">Нет в наличии</span>
+																					</div>
 																				</div>
-																			</div>
-																		</td>
-																		<td>
-																			<div class="order-select">
-																				<input class="spinner spinner-js" data-max="100" type="number" name="value" value="0" data-only-number>
-																				<div class="stock-tape" title="На складе осталось 50%">
-																					<span class="stock-tape-value" style="width: 50%;">50%</span>
+																			</td>
+																			<td>
+																				<div class="order-select order-select-js">
+																					<input class="spinner spinner-js" data-max="100" type="number" name="value" placeholder="0" data-only-number>
+																					<div class="stock-tape" title="На складе осталось 50%">
+																						<span class="stock-tape-value" style="width: 50%;">50%</span>
+																					</div>
 																				</div>
-																			</div>
-																		</td>
-																	</tr>
-																</tbody>
-															</table>
+																			</td>
+																		</tr>
+																	</tbody>
+																</table>
+															</div>
 														</div>
 													</div>
 													<div class="order-result">
 														<div class="note">Заказ набирается упаковками</div>
 														<div class="order-result__group">
 															<div class="order-result__total">
-																<!--<div class="order-result__label">Итого:</div>-->
-																<span class="text-mark">27</span> упаковок на&nbsp;<span class="text-mark">2 150</span>&nbsp;руб.
+																<span class="text-mark order-group-length-js">0</span> <span data-short="уп.">упаковок</span> на&nbsp;<span class="text-mark order-group-price-js">0</span>&nbsp;руб.
 															</div>
-															<a href="#" class="btn-default">Заказать</a>
+															<button class="btn-default order-group-btn-js" disabled>Заказать</button>
 														</div>
 													</div>
 												</div>
@@ -1201,12 +1157,12 @@
 										</div>
 									</div>
 									<div class="order-result">
-										<div class="order-result__label">Общая сумма заказа:</div>
+										<div class="order-result__label" data-short="Итоги:">Общая сумма заказа:</div>
 										<div class="order-result__group">
 											<div class="order-result__total">
-												<span class="text-mark">27</span> упаковок на&nbsp;<span class="text-mark">2 150</span>&nbsp;руб.
+												<span class="text-mark order-total-length-js">0</span> <span data-short="уп.">упаковок</span> на&nbsp;<span class="text-mark order-total-price-js">0</span>&nbsp;руб.
 											</div>
-											<a href="#" class="btn-default">Заказать</a>
+											<button class="btn-default order-total-btn-js" disabled>Заказать</button>
 										</div>
 									</div>
 								</form>

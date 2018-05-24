@@ -2251,23 +2251,23 @@ a.c-tr:hover
 	white-space: nowrap
 	vertical-align: middle
 	overflow: hidden
-	line-height: 1
+	line-height: 16px
 
-	+media('<desk-ml')
+	//+media('<desk-ml')
 		text-align: center
 
-	+media('<tab-lg')
+	//+media('<tab-lg')
 		text-align: left
 
 	.color-pic
 		vertical-align: middle
 		margin-right: 5px
 
-		+media('<desk-ml')
+		//+media('<desk-ml')
 			display: block
 			margin: 0 auto
 
-		+media('<tab-lg')
+		//+media('<tab-lg')
 			display: inline-block
 
 	.dash
@@ -2277,7 +2277,7 @@ a.c-tr:hover
 		+media('<desk-ml')
 			display: none
 
-		+media('<tab-lg')
+		//+media('<tab-lg')
 			display: inline
 
 	.color-name
@@ -2288,7 +2288,7 @@ a.c-tr:hover
 		+media('<desk-md')
 			display: none
 
-		+media('<tab-lg')
+		//+media('<tab-lg')
 			display: inline
 
 // === results ===
@@ -2314,7 +2314,7 @@ a.c-tr:hover
 	.order-calc__empty
 		display: block
 
-	.c-table, .c-table-result
+	//.c-table, .c-table-result
 		display: none
 
 /* order list end
@@ -3283,8 +3283,8 @@ a.bag__inner:hover
 
 	+media('<tab-lg')
 		right: nth($accordion-space--sm, 2)
-		+size(nth($accordion-angle-size--sm, 1), nth($accordion-angle-size--sm, 2))
-		margin-top: -#{round(nth($accordion-angle-size--sm, 2)*0.5)}
+		//+size(nth($accordion-angle-size--sm, 1), nth($accordion-angle-size--sm, 2))
+		//margin-top: -#{round(nth($accordion-angle-size--sm, 2)*0.5)}
 
 	+media('<mob-lg')
 		right: nth($accordion-space--mob, 2)
@@ -3316,12 +3316,13 @@ a.bag__inner:hover
 		margin-left: -#{round(nth($accordion-angle-line-size, 1)*0.2)}
 
 // hover, active
-.no-touchevents .accordion__hand-js:hover, .accordion__hand-js.is-open
+.no-touchevents .accordion__hand:hover, .accordion__hand.is-open,
+.no-touchevents .order-accordion__hand:hover, .order-accordion__hand.is-open
 	color: $link-color
 
 // active
 .accordion__header__angle
-	.accordion__hand-js.is-open &, .accordion__hand.active-tab &, &.is-open
+	.accordion__hand-js.is-open &, .accordion__hand.active-tab &, &.is-open, .is-open > &
 		&::before
 			$prop: -45deg
 			transform: rotate($prop)
@@ -3361,16 +3362,21 @@ a.bag__inner:hover
 	padding: nth($accordion-space, 1) nth($accordion-space, 2) nth($accordion-space, 1)*2
 
 	+media('<tab-lg')
-		padding: nth($accordion-space--sm, 1) nth($accordion-space--sm, 2) nth($accordion-space--sm, 1)*2
+		padding: nth($accordion-space--sm, 1) nth($accordion-space, 2) nth($accordion-space--sm, 1)*2
 
 	+media('<mob-lg')
-		padding: nth($accordion-space--mob, 1) nth($accordion-space--mob, 2) nth($accordion-space--mob, 1)*2
+		padding: nth($accordion-space--mob, 1) nth($accordion-space, 2) nth($accordion-space--mob, 1)*2
 
 /* accordion end
 
 /* order
-// order accordion
-.accordion__panel
+// order layout
+.order
+	margin-bottom: $bottom-space
+	border: 0 solid $border-color
+
+	+media('<mob-lg')
+		border-bottom-width: 1px
 
 // order caption
 .order__caption,
@@ -3378,11 +3384,20 @@ a.bag__inner:hover
 	position: relative
 	display: flex
 
-	.accordion__container-js &
+	.order-accordion &
 		padding-right: $order-space-h
+
+		+media('<tab-lg')
+			padding-right: $order-space-h--md
+
+		+media('<mob-lg')
+			padding-right: 0
 
 .order__caption
 	background-color: $bg-color-alt
+
+	+media('<tab-lg')
+		display: none
 
 .order__head__th,
 .order__caption__th,
@@ -3392,15 +3407,16 @@ a.bag__inner:hover
 	display: flex
 	align-items: center
 	padding: round($grid-space*0.5) #{$grid-space--md}
+	+font(1.6rem, round-float(24/16, 2))
 	text-align: left
 
-	+media('<desk-lg')
+	//+media('<desk-lg')
 		padding: round($grid-space*0.5) $grid-space--sm
 
-	+media('<desk-md')
+	//+media('<desk-md')
 		padding: round($grid-space--sm*1.5) $grid-space--sm
 
-	+media('<desk-sm')
+	//+media('<desk-sm')
 		+padding-horizontal(5px)
 
 .order__caption__th
@@ -3413,10 +3429,10 @@ a.bag__inner:hover
 	letter-spacing: 0.1em
 	text-transform: uppercase
 
-	+media('<desk-md')
+	//+media('<desk-md')
 		letter-spacing: normal
 
-	+media('<desk-sm')
+	//+media('<desk-sm')
 		font-size: 1.2rem
 
 	&:first-child
@@ -3437,27 +3453,126 @@ a.bag__inner:hover
 	border: solid $border-color
 	border-width: 1px 0 0
 
+	+media('<tab-lg')
+		min-height: 60px
+
+	+media('<mob-lg')
+		flex-direction: column
+
 	.order__item:first-child &
-		border-top: 0
+		border-top-width: 0
+
+		+media('<tab-lg')
+			border-top-width: 1px
+
+	[data-label]
+		&::before
+			content: attr(data-label)':'
+			+font-d()
+			color: $text-color-light
+			margin-bottom: 5px
+			display: none
+
+			+media('<tab-lg')
+				display: block
+
+.order-accordion__hand
+	cursor: pointer
+	border: solid $border-color
+	border-width: 0
+	-webkit-tap-highlight-color: transparent
+	user-select: none
+
+	+media('<mob-lg')
+		display: flex
+		justify-content: flex-start
+		align-items: center
+		position: relative
+		height: 80px
+		border-top-width: 1px
+		padding-left: nth($table__img--size, 1)*1px + $grid-space--sm
+
+	.accordion__header__angle
+		right: round($order-space-h/2)
+		margin-right: -#{round(nth($accordion-angle-size, 1)/2)}
+
+		+media('<tab-lg')
+			right: 0
+			margin-right: 0
+
+		+media('<mob-lg')
+			position: relative
+			top: auto
+			right: auto
+			margin: 0 10px 0 0
+
+		.no-touchevents &:hover, &.is-open
+			color: $link-color
+
+	span
+		display: none
+		+font(1.6rem, round-float(24/16, 2))
+
+		+media('<mob-lg')
+			display: block
+
+			& + span
+				display: none
+
+		.is-open &
+			+media('<mob-lg')
+				display: none
+
+				& + span
+					display: block
 
 .order__head__th
+	+media('<tab-lg')
+		display: block
+
+	+media('<mob-lg')
+		padding: 0 0 20px
+
 	&:first-child
 		border-left: none
 		flex: 1 1
+		padding-left: 0
+
+		+media('<tab-lg')
+			display: flex
 
 	&:nth-child(2)
 		width: $order-color--width
 
+		+media('<tab-lg')
+			width: $order-color--width--sm
+
+		+media('<mob-lg')
+			width: auto
+			padding-left: nth($table__img--size, 1)*1px + $grid-space--sm
+
 	&:nth-child(3)
 		width: $order-price--width
+		white-space: nowrap
+
+		+media('<tab-lg')
+			width: $order-color--width--sm
+
+		+media('<mob-lg')
+			width: auto
+			padding-left: nth($table__img--size, 1)*1px + $grid-space--sm
 
 	&.caption-for-table
 		+padding-vertical(10px)
 
+	.color-indicator
+		.color-name
+			display: inline-block
+
 .order__group
 	position: relative
 
-	.accordion__container-js &
+	.order-accordion &
 		display: none
 
 		.no-js &
@@ -3466,7 +3581,10 @@ a.bag__inner:hover
 .order__group__holder
 	padding-bottom: 28px
 
-	.accordion__container-js &
+	+media('<tab-lg')
+		padding-bottom: 0
+
+	.order-accordion &
 		+padding-horizontal($order-space-h)
 		position: relative
 		will-change: opacity, transform
@@ -3475,7 +3593,10 @@ a.bag__inner:hover
 			property: opacity
 			duration: $animation-speed
 
-	.accordion__container-js .is-open > &
+		+media('<desk-md')
+			+padding-horizontal(0)
+
+	.order-accordion .is-open > &
 			opacity: 1
 			transition-delay: 0.08s
 
@@ -3486,9 +3607,14 @@ a.bag__inner:hover
 	border-width: 1px 0
 	min-height: 80px
 
+	+media('<tab-lg')
+		min-height: 60px
+
 .order__labels__th
 	+font-bold
+	display: flex
 	font-size: 1.3rem
+	line-height: round-float(18/13, 2)
 	letter-spacing: 0.1em
 	text-transform: uppercase
 
@@ -3496,8 +3622,21 @@ a.bag__inner:hover
 		width: $order-list-side--width
 		padding-left: 0
 
+		+media('<mob-lg')
+			width: nth($table__img--size, 1)*1px + $grid-space--sm
+
 	&:nth-child(2)
 		padding-left: 0
+
+		+media('<tab-lg')
+			flex: 1 1
+			justify-content: center
+			text-align: center
+
+	[data-short]
+		&::before
+			font-size: 1.3rem
+			line-height: round-float(18/13, 2)
 
 // order list
 .order__list
@@ -3509,25 +3648,87 @@ a.bag__inner:hover
 	color: $text-color-light
 	padding-top: $order-list-th--height
 
+	+media('<mob-lg')
+		width: nth($table__img--size, 1)*1px + $grid-space--sm
+
 	& > div
 		padding-bottom: 28px
 		line-height: 31px
 
 .order__list__content
-	overflow-y: hidden
-	overflow-x: auto
+	position: relative
 	margin-left: $order-list-side--width
 
-.order__list__content
+	+media('<mob-lg')
+		margin-left: nth($table__img--size, 1)*1px + $grid-space--sm
+
+	&::before, &::after
+		content: ""
+		position: absolute
+		top: 0
+		bottom: 0
+		width: 25px
+		z-index: 5
+		pointer-events: none
+		-webkit-tap-highlight-color: transparent
+		user-select: none
+		display: none
+
+		+media('<desk-md')
+			display: block
+
+	&::before
+		left: 0
+		$color: white
+		+linear-gradient(to right, $color 0%, rgba($color, 0.75) 50%, rgba($color, 0) 100%)
+
+	&::after
+		right: 0
+		$color: white
+		+linear-gradient(to left, $color 0%, rgba($color, 0.75) 50%, rgba($color, 0) 100%)
+
+	table, tbody, thead, tfoot
+		display: flex
+		flex-direction: column
+
 	table
 		border-collapse: collapse
 		border-spacing: 0
 		margin-bottom: 0
-		min-width: 100%
+
+		tr
+			display: flex
+			justify-content: space-between
+			width: 100%
+
+			&::before, &::after
+				content: ""
+				min-width: 20px
+				display: none
+
+				+media('<desk-md')
+					display: table-cell
+					display: flex
 
 		th, td
+			display: flex
+			justify-content: center
+			align-items: center
 			text-align: center
-			padding: 0 25px
+			padding: 0 15px
+			width: $order-select-w
+			min-width: $order-select-w
+			box-sizing: content-box
+
+			+media('<tab-lg')
+				width: $order-select-w--md
+				min-width: $order-select-w--md
+
+			&:first-child
+				padding-left: 0
+
+			&:last-child
+				padding-right: 0
 
 		th
 			+font-normal
@@ -3537,10 +3738,31 @@ a.bag__inner:hover
 		td
 			padding-bottom: 28px
 
+.order__list__layout
+	overflow-y: hidden
+	overflow-x: auto
+
 .order-select
 	display: inline-block
 	vertical-align: top
-	max-width: 114px
+	max-width: $order-select-w
+
+	+media('<tab-lg')
+		max-width: $order-select-w--md
+
+	.ui-spinner
+		+media('<tab-lg')
+			padding-left: 0
+			padding-right: 0
+			height: auto !important
+
+	a.ui-spinner-button
+		+media('<tab-lg')
+			display: none
+
+	.ui-spinner-input, .ui-spinner-input[type="text"]
+		+media('<tab-lg')
+			width: $order-select-w--md
 
 	.stock-tape
 		width: 100%
@@ -3563,33 +3785,72 @@ a.bag__inner:hover
 	line-height: 0
 	background-color: $bg-color-alt
 
-	.note
-		float: left
-		text-transform: none
-		font-size: 16px
+	+media('<mob-lg')
+		padding-top: $grid-space--sm
+		background-color: transparent
+		display: block
 
 	.order__group &
 		background-color: transparent
 
+	.note
+		display: inline-block
+		vertical-align: top
+		text-transform: none
+		font-size: 16px
+		line-height: 20px
+		padding-right: $grid-space
+
+		+media('<mob-lg')
+			display: block
+			padding: 0
+			margin-bottom: $grid-space--sm
+			text-align: right
+
+	[class*="btn-"]
+		+media('<mob-lg')
+			display: block
+			width: 100%
+
 .order-result__group
-	float: right
+	display: inline-block
+	vertical-align: top
 	display: flex
 	align-items: center
 
-.order-result__total
+	+media('<mob-lg')
+		justify-content: space-between
+
+	+media('<mob-lg')
+		display: block
+
+.order-result__total, .order-result__label
 	+display-inline-block-middle
 	+font-d($line-height: 20px)
-	padding: 0 $grid-space--md
+	padding: 5px $grid-space
 
 	+media('<desk-lg')
-		+padding-horizontal($grid-space--sm)
+		+padding-horizontal($grid-space--md)
+
+	+media('<mob-lg')
+		display: block
+		text-align: right
+		padding: 0
+		margin-bottom: $grid-space--sm
+
+	[data-short]
+		+media('<mob-lg')
+			letter-spacing: normal
+
+			&::before
+				+font-d($line-height: 20px)
 
 .order-result__label
-	+display-inline-block-top
-	margin-right: 10px
+	+media('<mob-lg')
+		font-size: 0
+		line-height: 0
 
-	+media('<mob-md')
-		display: block
-		margin-right: 0
+	&::before
+		+font-d($line-height: 20px)
 
 /* order end

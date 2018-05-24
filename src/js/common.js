@@ -3047,6 +3047,24 @@ function accordionInit() {
 			animateSpeed: 200
 		});
 	}
+
+	// accordion by order
+	var $accordionOrder = $('.order-accordion__container-js');
+
+	if($accordionOrder.length){
+		new JsAccordion({
+			accordionContainer: '.order-accordion__container-js',
+			accordionItem: '.order-accordion__item-js',
+			accordionHeader: '.order-accordion__header-js',
+			accordionHand: '.order-accordion__hand-js',
+			// scrollToTop: true,
+			// scrollToTopSpeed: 300,
+			// scrollToTopOffset: $('.header').outerHeight(),
+			indexInit: false,
+			clickOutside: false,
+			animateSpeed: 200
+		});
+	}
 }
 
 /**
@@ -3680,6 +3698,70 @@ function orderCalculation() {
 }
 
 /**
+ * !order
+ * */
+function order() {
+	var $container = $('.order');
+	if($container.length) {
+		var $item = $('.order-item-js', $container),
+			$select = $('.order-select-js', $container),
+			$spin = $('.spinner'),
+			$totalLengthElem = $('.order-total-length-js'),
+			$totalPriceElem = $('.order-total-price-js'),
+			$totalBtn = $('.order-total-btn-js'),
+			$groupLengthElem = $('.order-group-length-js'),
+			$groupPriceElem = $('.order-group-price-js'),
+			$groupBtn = $('.order-group-btn-js'),
+			totalLength, totalPrice, groupLength, groupPrice;
+
+		// общий результат заказа
+		function totalResultCount() {
+			totalLength = 0;
+			totalPrice = 0;
+
+			$.each($item, function () {
+				groupLength = 0;
+				groupPrice = 0;
+
+				var $thisItem = $(this),
+					$thisSelect = $('.order-select-js', $thisItem);
+
+				$.each($thisSelect, function () {
+					var $curSelect = $(this),
+						$curSpin = $curSelect.find($spin),
+						length = +$curSpin.val(),
+						price = +$curSpin.closest($item).find('[data-price]').data('price');
+
+					groupLength = Math.round((groupLength + length) * 100) / 100;
+					groupPrice = Math.round((groupPrice + price * length) * 100) / 100;
+
+					totalLength = Math.round((totalLength + length) * 100) / 100;
+					totalPrice = Math.round((totalPrice + price * length) * 100) / 100;
+				});
+
+				$thisItem.find($groupLengthElem).html(groupLength);
+				$thisItem.find($groupPriceElem).html(groupPrice);
+
+				// активировать кнопку заказа товара
+				$totalBtn.prop('disabled', !totalLength);
+			});
+
+			$totalLengthElem.html(totalLength);
+			$totalPriceElem.html(totalPrice);
+
+			// активировать кнопку заказа товара
+			$groupBtn.prop('disabled', !groupLength);
+		}
+
+		totalResultCount();
+
+		$container.on('change spin keyup', '.spinner', function () {
+			totalResultCount();
+		});
+	}
+}
+
+/**
  * !only number input
  * */
 function onlyNumberInput() {
@@ -4093,12 +4175,16 @@ function shopsLocation() {
 				if ( $mapId.length ) {
 
 					/*create balloon content*/
+					var includeTime = "", includePhone = "";
+					if(item.time) includeTime = '<div class="map-popup__row work-time">Время работы:' + item.time + '</div>';
+					if(item.phones) includePhone = '<div class="map-popup__row">' + item.phones + '</div>';
+
 					var balloonContent = '' +
 						'<div class="map-popup">' +
 						'<div class="map-popup__title">' + item.address + '</div>' +
 						'<div class="map-popup__list">' +
-						'<div class="map-popup__row work-time">Время работы:' + item.time + '</div>' +
-						'<div class="map-popup__row">Тел.:' + item.phones + '</div>' +
+						includeTime +
+						includePhone +
 						// '<div class="map-popup__row link-more"><a href="#" class="more" data-more-id="' + id + '"><span>Подробнее</span></a></div>' +
 						'</div>' +
 						'</div>';
@@ -4654,6 +4740,7 @@ $(document).ready(function () {
 	spinnerInit($(".spinner-js"));
 	/*! tooltipInit(); */
 	orderCalculation();
+	order();
 	onlyNumberInput();
 	textSlide();
 	contactsMap();

@@ -1,6 +1,6 @@
 <td>
-	<div class="order-select">
-		<input class="spinner spinner-js"@@if(context.max){ data-max="@@max"}@@if(context.disabled){ data-disabled="@@disabled" disabled} type="number" name="value" value="@@value" data-only-number>
+	<div class="order-select order-select-js">
+		<input class="spinner spinner-js"@@if(context.max){ data-max="@@max"}@@if(context.disabled){ data-disabled="@@disabled" disabled} type="number" name="value" @@if(context.value != "0"){ value="@@value"}@@if(context.value == "0"){ placeholder="0"} data-only-number>
 		@@if(!context.disabled){
 		<div class="stock-tape" title="На складе осталось @@stock">
 			<span class="stock-tape-value" style="width: @@stock;">@@stock</span>

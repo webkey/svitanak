@@ -218,12 +218,12 @@ gulp.task('build', ['cleanDistFolder', 'htmlCompilation', 'copyImgToDist', 'sass
 			safe: true,
 			ignore: /\/\*\*\s*\n([^\*]*(\*[^\/])?)*\*\//g // Не удалять /**...*/
 		}))
-		// .pipe(removeEmptyLines())
-		// .pipe(beautify({
-		// 	"indent_with_tabs": true,
-		// 	"space_after_anon_function": true,
-		// 	"max_preserve_newlines": 2
-		// }))
+		.pipe(removeEmptyLines())
+		.pipe(beautify({
+			"indent_with_tabs": true,
+			"space_after_anon_function": true,
+			"max_preserve_newlines": 2
+		}))
 		.pipe(gulp.dest('dist/js'));
 
 	gulp.src(['!src/js/temp/**/*.js', '!src/js/**/temp-*.js', '!src/js/common.js', 'src/js/*.js']) // Переносим скрипты в продакшен

@@ -398,6 +398,21 @@ i b, i strong, em b, em strong, b i, b em, strong i, strong em
 	+media('<tab-lg')
 		display: none !important
 
+[data-short]
+	+media('<mob-lg')
+		display: inline-block
+		vertical-align: baseline
+		font-size: 0
+		line-height: 0
+
+	&::before
+		content: attr(data-short)
+		+font($font-size, $line-height)
+		display: none
+
+		+media('<mob-lg')
+			display: inherit
+
 body
 	.hide--always
 		display: none !important
@@ -419,7 +434,7 @@ body
 	margin-bottom: $bottom-space--lg
 
 	+media('<desk-lg')
-		margin-bottom: $bottom-space--ml
+		margin-bottom: round($bottom-space--lg*0.8)
 
 	&:last-child
 		margin-bottom: 0
@@ -428,7 +443,7 @@ body
 	margin-bottom: $bottom-space--lg
 
 	+media('<desk-lg')
-		margin-bottom: $bottom-space--ml
+		margin-bottom: round($bottom-space--lg*0.8)
 
 	&:last-child
 		margin-bottom: 0
