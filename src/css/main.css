@@ -10990,10 +10990,6 @@ a.bag__inner:hover .bag__title {
 	z-index: 1;
 }
 
-.accordion__header.is-open {
-	background-color: #f2f2f2;
-}
-
 .accordion__hand {
 	position: relative;
 	border: solid #e6e6e6;
@@ -11137,7 +11133,6 @@ a.bag__inner:hover .bag__title {
 
 .accordion__panel {
 	display: none;
-	background-color: #f2f2f2;
 }
 
 .accordion__panel__frame {
