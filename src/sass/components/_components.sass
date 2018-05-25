@@ -3854,3 +3854,333 @@ a.bag__inner:hover
 		+font-d($line-height: 20px)
 
 /* order end
+
+/* js-loading
+.loader-cover
+	+size(100%)
+	position: absolute
+	left: 0
+	top: 0
+	z-index: 15
+	background-color: rgba(255, 255, 255, 0.50)
+	opacity: 0
+	visibility: hidden
+	transition:
+		property: opacity, visibility
+		duration: $animation-speed
+
+	+media('<tab-lg')
+		position: fixed
+		z-index: 10100
+
+	.js-loading &
+		opacity: 1
+		visibility: visible
+
+	&::before
+		$loader-size: 120px
+		// ==================
+		content: ""
+		display: block
+		position: fixed
+		left: 50%
+		top: 50%
+		+size($loader-size)
+		transform: translate(-50%, -50%)
+		background-image: url(../../img/preloader.svg)
+		background-repeat: no-repeat
+		background-position: center
+		background-size: contain
+
+//$loader--size: 600px
+
+//.container
+	height: 100vh
+	width: 100vw
+
+//.loader
+	+size($loader--size)
+	//position: absolute
+	position: fixed
+	top: 0
+	bottom: 0
+	left: 0
+	right: 0
+	margin: auto
+
+	outline: 1px solid red
+
+	&--dot
+		animation:
+			name: loader
+			timing-function: ease-in-out
+			duration: 3s
+			iteration-count: infinite
+			direction: alternate
+		border-radius: 100%
+		position: absolute
+		//background-color: cornflowerblue
+		+size(round($loader--size/5))
+
+		@for $i from 1 through 25
+			&:nth-child(#{$i})
+				animation-delay: random(200)/100 + s
+
+			&::before
+				content: ""
+				display: block
+				position: absolute
+				left: 0
+				top: 2%
+				+size(100%, 96%)
+				background-color: $base-color
+				border-radius: 100%
+
+		&:nth-child(1)
+			left: 0
+			top: 0
+			opacity: 0
+
+		&:nth-child(2)
+			left: round($loader--size/5)
+			top: 0
+
+			&::before
+				transform: scale(0.62) translateX(21px) translateY(-2px)
+
+		&:nth-child(3)
+			left: round($loader--size/5)*2
+			top: 0
+
+			&::before
+				transform: scale(0.8) translateY(-17px)
+
+		&:nth-child(4)
+			left: round($loader--size/5)*3
+			top: 0
+
+			&::before
+				transform: scale(0.62) translateX(-21px) translateY(-2px)
+
+		&:nth-child(5)
+			left: round($loader--size/5)*4
+			top: 0
+			opacity: 0
+
+
+		&:nth-child(6)
+			left: 0
+			top: round($loader--size/5)
+
+			&::before
+				transform: scale(0.62) translateX(20px) translateY(-17px)
+
+		&:nth-child(7)
+			left: round($loader--size/5)
+			top: round($loader--size/5)
+
+			&::before
+				transform: scale(0.98) translateX(1px) translateY(-12px)
+
+		&:nth-child(8)
+			left: round($loader--size/5)*2
+			top: round($loader--size/5)
+
+			&::before
+				transform: scale(1.12) translateY(-10px)
+
+		&:nth-child(9)
+			left: round($loader--size/5)*3
+			top: round($loader--size/5)
+
+			&::before
+				transform: scale(0.98) translateX(-1px) translateY(-12px)
+
+		&:nth-child(10)
+			left: round($loader--size/5)*4
+			top: round($loader--size/5)
+
+			&::before
+				transform: scale(0.62) translateX(-19px) translateY(-17px)
+
+
+		&:nth-child(11)
+			left: 0
+			top: round($loader--size/5)*2
+
+			&::before
+				transform: scale(0.88) translateX(-8px)
+
+		&:nth-child(12)
+			left: round($loader--size/5)
+			top: round($loader--size/5)*2
+
+			&::before
+				transform: scale(1.23) translateX(-10px)
+
+		&:nth-child(13)
+			left: round($loader--size/5)*2
+			top: round($loader--size/5)*2
+
+			&::before
+				transform: scale(1.48)
+
+		&:nth-child(14)
+			left: round($loader--size/5)*3
+			top: round($loader--size/5)*2
+
+			&::before
+				transform: scale(1.23) translateX(10px)
+
+		&:nth-child(15)
+			left: round($loader--size/5)*4
+			top: round($loader--size/5)*2
+
+			&::before
+				transform: scale(0.88) translateX(8px)
+
+
+		&:nth-child(16)
+			left: 0
+			top: round($loader--size/5)*3
+
+			&::before
+				transform: scale(0.75) translateX(27px) translateY(11px)
+
+		&:nth-child(17)
+			left: round($loader--size/5)
+			top: round($loader--size/5)*3
+
+			&::before
+				transform: scale(1.05) translateX(-6px) translateY(7px)
+
+		&:nth-child(18)
+			left: round($loader--size/5)*2
+			top: round($loader--size/5)*3
+
+			&::before
+				transform: scale(1.22) translateY(11px)
+
+		&:nth-child(19)
+			left: round($loader--size/5)*3
+			top: round($loader--size/5)*3
+
+			&::before
+				transform: scale(1.05) translateX(6px) translateY(7px)
+
+		&:nth-child(20)
+			left: round($loader--size/5)*4
+			top: round($loader--size/5)*3
+
+			&::before
+				transform: scale(0.75) translateX(-25px) translateY(11px)
+
+
+		&:nth-child(21)
+			left: 0
+			top: round($loader--size/5)*4
+			opacity: 0
+
+		&:nth-child(22)
+			left: round($loader--size/5)
+			top: round($loader--size/5)*4
+
+			&::before
+				transform: scale(0.72) translateX(14px) translateY(-7px)
+
+		&:nth-child(23)
+			left: round($loader--size/5)*2
+			top: round($loader--size/5)*4
+
+			&::before
+				transform: scale(0.98) translateY(3px)
+
+		&:nth-child(24)
+			left: round($loader--size/5)*3
+			top: round($loader--size/5)*4
+
+			&::before
+				transform: scale(0.72) translateX(-14px) translateY(-7px)
+
+		&:nth-child(25)
+			left: round($loader--size/5)*4
+			top: round($loader--size/5)*4
+			opacity: 0
+
+		//&:nth-child(1)
+		//	background-color: #8cc759
+		//	animation-delay: 0.5s
+		//
+		//&:nth-child(2)
+		//	background-color: #8c6daf
+		//	animation-delay: 0.4s
+		//
+		//&:nth-child(3)
+		//	background-color: #ef5d74
+		//	animation-delay: 0.3s
+		//
+		//&:nth-child(4)
+		//	background-color: #f9a74b
+		//	animation-delay: 0.2s
+		//
+		//&:nth-child(5)
+		//	background-color: #60beeb
+		//	animation-delay: 0.1s
+		//
+		//&:nth-child(6)
+		//	background-color: #fbef5a
+		//	animation-delay: 0s
+
+	&--text
+		position: absolute
+		top: 200%
+		left: 0
+		right: 0
+		width: 4rem
+		margin: auto
+
+		&:after
+			content: "Loading"
+			font-weight: bold
+			animation:
+				name: loading-text
+				duration: 3s
+				iteration-count: infinite
+
+//@keyframes loader
+	0%
+		transform: scale3d(1, 1, 1)
+
+	50%
+		transform: scale3d(0.5, 0.5, 1)
+
+	100%
+		transform: scale3d(1.5, 1.5, 1)
+
+//@keyframes loader
+	15%
+		transform: translateX(0)
+
+	45%
+		transform: translateX( $loader--size - $loader-dot--size )
+
+	65%
+		transform: translateX( $loader--size - $loader-dot--size )
+
+	95%
+		transform: translateX(0)
+
+//@keyframes loading-text
+	0%
+		content: "Loading"
+
+	25%
+		content: "Loading."
+
+	50%
+		content: "Loading.."
+
+	75%
+		content: "Loading..."
+
+/* js-loading end
