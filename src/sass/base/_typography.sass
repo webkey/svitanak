@@ -413,6 +413,125 @@ i b, i strong, em b, em strong, b i, b em, strong i, strong em
 		+media('<mob-lg')
 			display: inherit
 
+.warning-success, .warning-error
+	//display: inline-block
+	//vertical-align: top
+	position: relative
+	//padding: round($grid-space/2) $grid-space round($grid-space/2) 60px
+	padding-left: 40px
+	//border: 1px solid currentColor
+	margin-bottom: $bottom-space
+
+	+media('<desk-md')
+		padding-left: 35px
+
+	+media('<mob-lg')
+		padding-left: 30px
+
+	&:last-child
+		margin-bottom: 0
+
+	p
+		margin: 0
+
+	p:first-child
+		+font-alt-bold
+		+font($font-size-h2, $line-height-h2)
+
+		+media('<desk-md')
+			+font($font-size-h2--md, $line-height-h2--md)
+
+		+media('<mob-lg')
+			+font($font-size-h2--sm, $line-height-h2--sm)
+
+	p:nth-child(2)
+		color: $text-color-light
+		text-transform: uppercase
+		font-size: 1.2rem
+		line-height: 2
+		letter-spacing: 0.05em
+
+	&::before, &::after
+		content: ""
+		display: block
+		position: absolute
+		left: 0
+		top: 0
+		border: solid currentColor
+		border-width: 4px 0 0
+		height: 0
+
+		+media('<desk-md')
+			border-top-width: 3px
+
+		+media('<mob-lg')
+			border-top-width: 2px
+
+.warning-success
+	color: $form-success-color
+	//background: rgba($form-success-color, 0.1)
+
+	&::before
+		width: 16px
+		transform: rotate(45deg)
+		//left: 16px
+		//top: 31px
+		left: -1px
+		top: 17px
+
+		+media('<desk-md')
+			width: 12px
+			left: -1px
+			top: 14px
+
+		+media('<mob-lg')
+			width: 10px
+			left: -1px
+			top: 13px
+
+	&::after
+		width: 24px
+		transform: rotate(-45deg)
+		//left: 24px
+		//top: 28px
+		left: 7px
+		top: 14px
+
+		+media('<desk-md')
+			width: 20px
+			left: 5px
+			top: 12px
+
+		+media('<mob-lg')
+			width: 16px
+			left: 4px
+			top: 11px
+
+.warning-error
+	color: $form-error-color
+	//background: rgba($form-error-color, 0.1)
+
+	&::before, &::after
+		width: 24px
+		//left: 20px
+		//top: 28px
+		left: -2px
+		top: 14px
+
+		+media('<desk-md')
+			width: 22px
+			top: 12px
+
+		+media('<mob-lg')
+			width: 20px
+			top: 10px
+
+	&::before
+		transform: rotate(45deg)
+
+	&::after
+		transform: rotate(-45deg)
+
 body
 	.hide--always
 		display: none !important
