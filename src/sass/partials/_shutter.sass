@@ -40,11 +40,11 @@
 	z-index: 1000
 	left: #{$sidebar-width}
 	will-change: transform
-	+size(100%, calc(100vh - #{$header-height}))
+	+size(100%, calc(100% - #{$header-height}))
 
 	+media('<desk-lg')
 		left: #{$sidebar-width--lg}
-		height: calc(100vh - #{$header-height--lg})
+		height: calc(100% - #{$header-height--lg})
 
 	+media('<desk-sm')
 		left: 0

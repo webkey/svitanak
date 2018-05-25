@@ -3370,6 +3370,15 @@ a.bag__inner:hover
 /* accordion end
 
 /* order
+.order-container
+	&[id]
+		padding-top: $header-height
+		margin-top: -$header-height
+
+		+media('<tab-lg')
+			padding-top: $header-height--lg
+			margin-top: -$header-height--lg
+
 // order layout
 .order
 	margin-bottom: $bottom-space
@@ -3477,11 +3486,15 @@ a.bag__inner:hover
 				display: block
 
 .order-accordion__hand
+	display: none
 	cursor: pointer
 	border: solid $border-color
 	border-width: 0
 	-webkit-tap-highlight-color: transparent
 	user-select: none
+
+	.order-accordion &
+		display: block
 
 	+media('<mob-lg')
 		display: flex

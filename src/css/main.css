@@ -11007,6 +11007,18 @@ a.bag__inner:hover .bag__title {
 
 /* accordion end */
 /* order */
+.order-container[id] {
+	padding-top: 100px;
+	margin-top: -100px;
+}
+
+@media (max-width: 991px) {
+	.order-container[id] {
+		padding-top: 60px;
+		margin-top: -60px;
+	}
+}
+
 .order {
 	margin-bottom: 2rem;
 	border: 0 solid #e6e6e6;
@@ -11150,6 +11162,7 @@ a.bag__inner:hover .bag__title {
 }
 
 .order-accordion__hand {
+	display: none;
 	cursor: pointer;
 	border: solid #e6e6e6;
 	border-width: 0;
@@ -11158,6 +11171,10 @@ a.bag__inner:hover .bag__title {
 	   -moz-user-select: none;
 	    -ms-user-select: none;
 	        user-select: none;
+}
+
+.order-accordion .order-accordion__hand {
+	display: block;
 }
 
 @media (max-width: 639px) {
@@ -16748,13 +16765,13 @@ body {
 	left: 100px;
 	will-change: transform;
 	width: 100%;
-	height: calc(100vh - 100px);
+	height: calc(100% - 100px);
 }
 
 @media (max-width: 1599px) {
 	.shutter {
 		left: 60px;
-		height: calc(100vh - 60px);
+		height: calc(100% - 60px);
 	}
 }
 
