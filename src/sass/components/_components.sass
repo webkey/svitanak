@@ -2207,7 +2207,8 @@ a.c-tr:hover
 			padding: $c-table__td-space--md
 
 	.c-td--caption
-		padding-left: 0
+		+media('<tab-lg')
+			padding-left: 0
 
 	.c-td--del
 		+media('<tab-lg')
@@ -2236,17 +2237,18 @@ a.c-tr:hover
 				background-color: transparent
 				border: none
 
-			&::before
-				content: attr(data-label)
-				display: block
-				+font-d(13px)
-				color: #999
+				&::before
+					content: attr(data-label)
+					display: block
+					+font-d(13px)
+					color: #999
 
 		.c-td--caption
 			+media('<tab-lg')
 				display: flex
-				width: $td-width--caption
+				width: auto
 				min-width: $td-width--caption
+				max-width: $td-width--caption
 				border-bottom: none
 				+font-bold
 
@@ -2257,8 +2259,9 @@ a.c-tr:hover
 			+media('<tab-lg')
 				display: flex
 				flex: 1 1
-				width: calc(100% - #{$td-width--caption})
+				width: auto
 				min-width: calc(100% - #{$td-width--caption})
+				max-width: calc(100% - #{$td-width--caption})
 				border-bottom: none
 				+font-bold
 
@@ -2298,14 +2301,28 @@ a.c-tr:hover
 
 	// product removed
 	.c-tr--removed
-		background-color: #fff7f2
-		padding-left: $layout-spaces--sm
+		+media('<tab-lg')
+			background-color: #fff7f2
+			padding-left: $layout-spaces--sm
+
+		.c-td--caption
+			+media('<tab-lg')
+				width: auto
+				min-width: $td-width--caption
+				max-width: $td-width--caption
 
 		.c-td--model
 			+media('<tab-lg')
-				flex: 1 1
-				width: calc(100% - #{$td-width--caption})
-				min-width: calc(100% - #{$td-width--caption})
+				width: auto
+				max-width: 100px
+				min-width: 100px
+
+	// table footer
+	.c-tfoot
+		.c-tr
+			+media('<tab-lg')
+				background-color: $bg-color-alt
+				padding-left: $layout-spaces--sm
 
 // hover for device
 //.c-tr

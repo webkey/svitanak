@@ -9095,8 +9095,10 @@ a.c-tr:hover {
 	}
 }
 
-.cart-order .c-td--caption {
-	padding-left: 0;
+@media (max-width: 991px) {
+	.cart-order .c-td--caption {
+		padding-left: 0;
+	}
 }
 
 .cart-order .c-td--del {
@@ -9129,27 +9131,27 @@ a.c-tr:hover {
 		background-color: transparent;
 		border: none;
 	}
-}
-
-.cart-order .c-tr--head .c-td::before {
-	content: attr(data-label);
-	display: block;
-	font-family: "gothampro-bold", sans-serif;
-	font-weight: normal;
-	font-style: normal;
-	font-size: 13px;
-	line-height: 1.43;
-	letter-spacing: 0.2em;
-	text-transform: uppercase;
-	color: #999;
+	.cart-order .c-tr--head .c-td::before {
+		content: attr(data-label);
+		display: block;
+		font-family: "gothampro-bold", sans-serif;
+		font-weight: normal;
+		font-style: normal;
+		font-size: 13px;
+		line-height: 1.43;
+		letter-spacing: 0.2em;
+		text-transform: uppercase;
+		color: #999;
+	}
 }
 
 @media (max-width: 991px) {
 	.cart-order .c-tr--head .c-td--caption {
 		display: -ms-flexbox;
 		display: flex;
-		width: 400px;
+		width: auto;
 		min-width: 400px;
+		max-width: 400px;
 		border-bottom: none;
 		font-family: "gothampro-bold", sans-serif;
 		font-weight: normal;
@@ -9166,8 +9168,9 @@ a.c-tr:hover {
 		display: flex;
 		-ms-flex: 1 1;
 		    flex: 1 1;
-		width: calc(100% - 400px);
+		width: auto;
 		min-width: calc(100% - 400px);
+		max-width: calc(100% - 400px);
 		border-bottom: none;
 		font-family: "gothampro-bold", sans-serif;
 		font-weight: normal;
@@ -9220,17 +9223,33 @@ a.c-tr:hover {
 	}
 }
 
-.cart-order .c-tr--removed {
-	background-color: #fff7f2;
-	padding-left: 30px;
+@media (max-width: 991px) {
+	.cart-order .c-tr--removed {
+		background-color: #fff7f2;
+		padding-left: 30px;
+	}
+}
+
+@media (max-width: 991px) {
+	.cart-order .c-tr--removed .c-td--caption {
+		width: auto;
+		min-width: 400px;
+		max-width: 400px;
+	}
 }
 
 @media (max-width: 991px) {
 	.cart-order .c-tr--removed .c-td--model {
-		-ms-flex: 1 1;
-		    flex: 1 1;
-		width: calc(100% - 400px);
-		min-width: calc(100% - 400px);
+		width: auto;
+		max-width: 100px;
+		min-width: 100px;
+	}
+}
+
+@media (max-width: 991px) {
+	.cart-order .c-tfoot .c-tr {
+		background-color: #f2f2f2;
+		padding-left: 30px;
 	}
 }
 
