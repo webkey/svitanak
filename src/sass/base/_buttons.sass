@@ -48,10 +48,11 @@
 		background-color: $btn-bg-hover-color
 
 	// disabled
-	&:disabled, &.disabled, &[data-disabled]
+	&:disabled, &.disabled, &[data-disabled], &[disabled]
 		cursor: default
 		color: $btn-text-color !important
 		background-color: $disabled-color !important
+		pointer-events: none
 
 		&::before, &::after
 			display: none
@@ -69,12 +70,13 @@
 		color: $btn-text-color
 		fill: $btn-text-color
 
-	&:disabled, &.disabled, &[data-disabled]
+	&:disabled, &.disabled, &[data-disabled], &[disabled]
 		cursor: default
 		background-color: white !important
 		border-color: $disabled-color !important
 		color: $disabled-color !important
 		fill: $disabled-color !important
+		pointer-events: none
 
 		&::before, &::after
 			display: none
@@ -100,9 +102,10 @@
 		color: $btn-bg-hover-color
 		background-color: transparent
 
-	&:disabled, &.disabled, &[data-disabled]
+	&:disabled, &.disabled, &[data-disabled], &[disabled]
 		color: $disabled-color !important
 		background-color: transparent !important
+		pointer-events: none
 
 /* btn-default-clean end
 
@@ -128,9 +131,10 @@
 	.no-touchevents &:hover
 		color: $base-color
 
-	&:disabled, &.disabled, &[data-disabled]
+	&:disabled, &.disabled, &[data-disabled], &[disabled]
 		cursor: default
 		color: $disabled-color !important
+		pointer-events: none
 
 /* btn-underline end
 

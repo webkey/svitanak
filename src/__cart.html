@@ -49,7 +49,7 @@
 
 				<form action="" method="post">
 
-					<div class="bottom-space-lg order-calc-js">
+					<div class="cart-order bottom-space-lg order-calc-js">
 						<table class="c-table">
 							<thead class="c-thead">
 								<tr class="c-tr">
@@ -89,6 +89,8 @@
 						</table>
 						<!--!!! Текст, который будет отображаться, когда нет товаров-->
 						<div class="order-calc__empty">- Корзина пуста -</div>
+						<!--!!! Текст, который всплывает после очистки корзины-->
+						<div class="order-calc__empty-alert">Ваша корзина пуста</div>
 					</div>
 
 					<div class="heading">
@@ -129,16 +131,16 @@
 						<textarea placeholder="Ваше сообщение..." class="dark-form"></textarea>
 						@@include('_tpl_forms_form-validation.html')
 						<div class="form-buttons">
-							<button class="btn-default-clean btn-with-icon order-calc__clear-cart-js" disabled>
+							<a href="#" class="btn-default-clean btn-with-icon order-calc__clear-cart-js disabled">
 								@@include("includes-json/svg/icon-close--btn.svg")
 								<span class="for-desk">Очистить корзину</span>
 								<span class="for-mob">Очистить</span>
-							</button>
+							</a>
 							<button class="btn-default order-calc-btn float-right">
 								<span class="for-desk">Оформить заказ</span>
 								<span class="for-mob">Оформить</span>
 							</button>
-							<button class="btn-default-alt order-calc-btn float-right">Сохранить</button>
+							<a href="#" class="btn-default-alt order-calc-btn float-right">Сохранить</a>
 						</div>
 						<div class="note note--align-right">После оформления заказа менеджер ОАО «Свiтанак» свяжется с Вами для уточнения окончательных деталей заказа.</div>
 					</div>

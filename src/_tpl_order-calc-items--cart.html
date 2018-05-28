@@ -136,13 +136,13 @@
 
 	<td class="c-td c-td--del">
 		@@if(!context.head || context.removed){
-		<a href="#" class="btn-del order-calc__remove-js" title="Удалить товар с корзины">
+		<a href="#" class="btn-del order-calc__remove-js" title="Удалить товар из корзины">
 			@@include("includes-json/svg/icon-close.svg")
 			<span>Удалить из корзины</span>
 		</a>
 		}
 		@@if(context.head && !context.removed){
-		<a href="#" class="btn-del order-calc__remove-group-js" title="Удалить группу товаров с корзины">
+		<a href="#" class="btn-del order-calc__remove-group-js" title="Удалить группу товаров из корзины">
 			@@include("includes-json/svg/icon-close.svg")
 			<span>Удалить группу товаров из корзины</span>
 		</a>

@@ -2,7 +2,6 @@
 @import ../utils/placeholders
 
 // medium query
-//$breakpoints: ('mob-sm': 320px, 'mob-md': 480px, 'mob-lg': 640px, 'tab-sm': 768px, 'tab-lg': 992px, 'desk-sm': 1200px, 'desk-md': 1366px, 'desk-lg': 1600px, 'desk-hd': 1920px)
 $breakpoints: ('desk-hd': 1920px, 'desk-lg': 1600px, 'desk-ml': 1440px, 'desk-md': 1366px, 'desk-sm': 1200px, 'tab-lg': 992px, 'tab-sm': 768px, 'mob-lg': 640px, 'mob-md': 480px, 'mob-sm': 320px)
 
 // base
@@ -262,9 +261,16 @@ $p-card-ratio--sm: 100% 100% !default
 $p-card-elem-bottom-space: 40px !default
 $p-card-elem-bottom-space--md: 25px !default
 
-// product in table
-$table__img--size: 70, 70 // width, height (in px). В коде высота вычисляется с соотношения ширины к высоте, а размер изображение берется в зависимости от ширины
-$table__del--size: 40px // размер кнопки (с крестиком) для удаления товара с таблицы
+// custom table, expl: cart, product
+$c-table__th-space: 15px 18px !default // h v
+$c-table__th-space--md: 15px 8px !default // h v
+$c-table__th-space--sm: 9px 5px !default // h v
+//=======
+$c-table__td-space: 28px 18px !default // h v
+$c-table__td-space--md: 9px 8px !default // h v
+$c-table__td-space--sm: 9px 5px !default // h v
+$c-table__del-size: 40px !default // размер кнопки (с крестиком) для удаления товара с таблицы
+$c-table__img-size: 70px 70px !default // width, height (in px). В коде высота вычисляется с соотношения ширины к высоте, а размер изображение берется в зависимости от ширины
 
 // shops
 $shops-map-height: 662px !default

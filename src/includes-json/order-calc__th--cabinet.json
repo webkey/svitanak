@@ -1,32 +1,32 @@
 [
-	{
-		"class": "",
-		"head": "№&nbsp;п/п",
-		"colspan": "",
-		"rowspan": ""
-	},
-	{
-		"class": "",
-		"head": "№&nbsp;заказа",
-		"colspan": "",
-		"rowspan": ""
-	},
-	{
-		"class": "",
-		"head": "Дата",
-		"colspan": "",
-		"rowspan": ""
-	},
-	{
-		"class": "",
-		"head": "статус",
-		"colspan": "",
-		"rowspan": ""
-	},
-	{
-		"class": "",
-		"head": "Остаток",
-		"colspan": "",
-		"rowspan": ""
-	}
+  {
+	"class": "",
+	"head": "№&nbsp;п/п",
+	"colspan": "",
+	"rowspan": ""
+  },
+  {
+	"class": "",
+	"head": "№&nbsp;заказа",
+	"colspan": "",
+	"rowspan": ""
+  },
+  {
+	"class": "",
+	"head": "Дата",
+	"colspan": "",
+	"rowspan": ""
+  },
+  {
+	"class": "",
+	"head": "статус",
+	"colspan": "",
+	"rowspan": ""
+  },
+  {
+	"class": "",
+	"head": "Остаток",
+	"colspan": "",
+	"rowspan": ""
+  }
 ]

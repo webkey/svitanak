@@ -532,6 +532,38 @@ i b, i strong, em b, em strong, b i, b em, strong i, strong em
 	&::after
 		transform: rotate(-45deg)
 
+.order-calc__empty-alert
+	position: fixed
+	right: $layout-spaces
+	top: $header-height + 20
+	+font-alt
+	+font(2.0rem, 1)
+	color: $form-error-color
+	padding: round($grid-space/2) $grid-space
+	border: 1px solid currentColor
+	//border-radius: 5px
+	background-color: rgba(#fff, 0.85)
+	box-shadow: 2px 2px 5px rgba(black, 0.13)
+	z-index: 999
+	user-select: none
+	pointer-events: none
+	-webkit-tap-highlight-color: transparent
+	will-change: opacity, visibility, transform
+
+	@include media('<desk-hd')
+		right: $layout-spaces--hd
+
+	@include media('<desk-lg')
+		right: $layout-spaces--lg
+		top: $header-height--lg + 20
+
+	@include media('<desk-sm')
+		right: $layout-spaces--sm
+
+	@include media('<mob-lg')
+		right: $layout-spaces--mob
+		font-size: 1.6rem
+
 body
 	.hide--always
 		display: none !important

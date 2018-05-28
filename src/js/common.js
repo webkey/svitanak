@@ -3407,7 +3407,7 @@ function tooltipInit() {
 		var self = this;
 
 		// self.element.on('change spin', self.config.spinnerLength, function (e, ui) {
-		self.element.on('change spin', self.config.spinnerPacks, function (e, ui) {
+		self.element.on('change spin keyup', self.config.spinnerPacks, function (e, ui) {
 			var $curSpinner = $(this);
 
 			var curSpinnerVal = ui ? ui.value : +$curSpinner.val();
@@ -3669,7 +3669,9 @@ var orderCalcOptions = {
 	}
 	, afterChangedLengthItem: function (e, el, length) {
 		var itemsLength = $('.order-calc__item-js').length;
-		$('.order-calc__clear-cart-js').prop('disabled', !itemsLength);
+		var $btn = $('.order-calc__clear-cart-js');
+		$btn.prop('disabled', !itemsLength);
+		$btn.toggleClass('disabled', !itemsLength);
 	}
 };
 

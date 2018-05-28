@@ -1854,7 +1854,7 @@ a.c-tr:hover
 	display: table-cell
 
 .c-th
-	padding: round($grid-space*0.5) #{$grid-space--md}
+	padding: $c-table__th-space
 	border-left: 2px solid white
 	border-bottom: 1px solid $border-color
 	background-color: $bg-color-alt
@@ -1867,15 +1867,16 @@ a.c-tr:hover
 	vertical-align: middle
 
 	+media('<desk-lg')
-		padding: round($grid-space*0.5) $grid-space--sm
+		padding: $c-table__th-space--md
+		letter-spacing: normal
 
 	+media('<desk-md')
-		letter-spacing: normal
-		padding: round($grid-space--sm*1.5) $grid-space--sm
+		//font-size: 1.2rem
+		font-size: 1.1rem
 
 	+media('<desk-sm')
-		+padding-horizontal(5px)
-		font-size: 1.2rem
+		padding: $c-table__th-space--sm
+		letter-spacing: -0.05em
 
 	&:first-child, &.c-th--title
 		border-left: none
@@ -1883,49 +1884,31 @@ a.c-tr:hover
 	& > svg
 		+display-inline-block-top
 
-	&.c-th--pack-length, &.c-th--pack-total
-		white-space: nowrap
+// стили для конкретных ячеек
+.c-th--pack-length, .c-th--pack-total
+	white-space: nowrap
 
-	&.c-th--del
-		width: 82px
-		text-align: center
-		+padding-horizontal(5px)
+.c-th--del
+	text-align: center
 
-		+media('<desk-sm')
-			width: 60px
-			+padding-horizontal(0)
-
-		& > span
-			+hide-text
+	& > span
+		+hide-text
 
 .c-td
-	padding: round($grid-space*0.93) $grid-space--md
+	padding: $c-table__td-space
 	vertical-align: middle
 	border: solid $border-color
 	border-width: 0 0 1px
 	+font(1.6rem, round-float(24/16, 1))
 
 	+media('<desk-lg')
-		padding: round($grid-space--sm*0.93) $grid-space--sm
+		padding: $c-table__td-space--md
 		font-size: 1.4rem
 
 	+media('<desk-sm')
 		letter-spacing: normal
-
-	+media('<desk-sm')
-		+padding-horizontal(5px)
-		font-size: 1.3rem
-
-	+media('<mob-lg')
-		+padding-vertical(6px)
-
-	//.c-tr:first-child &
-		+media('>=tab-lg')
-			border-top-width: 1px
-
-	//.c-tr:last-child &
-		border-top-width: 0
-		border-bottom-width: 0
+		padding: $c-table__td-space--sm
+		font-size: 1.2rem
 
 	a
 		text-decoration: none
@@ -1934,65 +1917,78 @@ a.c-tr:hover
 		.no-touchevents &:hover
 			color: $link-color
 
-	// стили для конкретных ячеек
-	&.c-td--caption
-		min-width: 400px
-		+padding-vertical(round($grid-space*0.93 - 18))
+// стили для конкретных ячеек
+.c-td--caption
+	min-width: 240px
+	width: 400px
+	+padding-vertical(round($grid-space*0.93 - 18))
 
-		//.order-calc & .img-for-table
-			display: none
+	+media('<desk-md') // 1366
+		width: 280px
 
-	&.c-td--photo
-		+padding-vertical(round($grid-space*0.93 - 18))
+.c-td--photo
+	+padding-vertical(round($grid-space*0.93 - 18))
 
-	&.c-td--growth
+.c-td--growth
+	min-width: 100px
+
+	+media('<desk-sm')
+		min-width: 80px
+
+.c-td--packs-length
+	$width: 114px
+	box-sizing: content-box
+	min-width: $width
+	width: $width
+
+.c-td--price, .c-td--price-sum
+	min-width: 140px
+
+	+media('<desk-lg')
+		min-width: 110px
+
+	+media('<desk-md')
 		min-width: 100px
 
-		+media('<desk-sm')
-			min-width: 80px
+	+media('<desk-sm')
+		min-width: 80px
 
-	&.c-td--price, .c-td--price-total
-		min-width: 140px
+.c-td--del
+	min-width: $c-table__del-size + 20
+	text-align: center
+	padding: 5px 0
 
-		+media('<desk-sm')
-			min-width: 110px
+	+media('<desk-sm')
+		min-width: $c-table__del-size
 
-	&.c-td--del
-		+media('>=tab-lg')
-			padding: 0
-			text-align: center
+	.btn-del
+		+size($c-table__del-size)
 
-		.btn-del
-			+size($table__del--size)
+.c-td--length, .c-td--length-sum, .c-td--price, .c-td--price-sum, .c-td--length-total
+	white-space: nowrap
 
-	&.c-td--length, &.c-td--length-sum, &.c-td--price, &.c-td--price-sum, &.c-td--length-total
-		white-space: nowrap
+.c-td--removed-info
+	text-align: right
 
-	&.c-td--removed-info
-		text-align: right
+//&.c-td--length
+	text-align: center
 
-	//&.c-td--length
-		text-align: center
-
-		+media('<tab-lg')
-			text-align: left
+	+media('<tab-lg')
+		text-align: left
 			
 // table footer
 .c-tfoot
 	.c-td
 		background-color: $bg-color-alt
 		+font-d($line-height: 20px)
-		padding: 15px $grid-space--md
+		+padding-vertical(15px)
 		border-width: 0
 
 		+media('<desk-lg')
-			+padding-horizontal($grid-space--sm)
+			font-size: 1.3rem
 
-// hover
-//.c-tr
-	.no-touchevents &:hover
-		.c-td
-			background-color: $bg-color-light
+		+media('<desk-sm')
+			font-size: 1.2rem
 
 .c-table-result
 	position: relative
@@ -2004,10 +2000,15 @@ a.c-tr:hover
 .c-table-result__total
 	+display-inline-block-middle
 	+font-d($line-height: 20px)
-	padding: 15px $grid-space--md
+	padding: $c-table__th-space
 
 	+media('<desk-lg')
-		+padding-horizontal($grid-space--sm)
+		font-size: 1.3rem
+		padding: $c-table__th-space--md
+
+	+media('<desk-sm')
+		padding: $c-table__th-space--sm
+		font-size: 1.2rem
 
 .c-table-result__label
 	+display-inline-block-top
@@ -2038,135 +2039,276 @@ a.c-tr:hover
 		opacity: 0.15
 
 // for device (after transform)
-.c-table, .c-thead, .c-tbody, .c-tfoot, .c-tr, .c-th, .c-td
+//.c-table, .c-thead, .c-tbody, .c-tfoot, .c-tr, .c-th, .c-td
 	+media('<tab-lg')
 		display: block
 
-.c-thead, .c-th
-	+media('<tab-lg')
-		display: none
+//.c-table, .c-thead, .c-tbody, .c-tfoot, .c-tr, .c-th, .c-td
+//	+media('<tab-lg')
+//		display: block
+//
+//.c-thead, .c-th
+//	+media('<tab-lg')
+//		display: none
+//
+//.c-tbody
+//	+media('<tab-lg')
+//		display: flex
+//		flex-wrap: wrap
+//		justify-content: space-between
+//		align-items: flex-start
+//
+//.c-tr
+//	+media('<tab-lg')
+//		width: calc(50% - #{round($grid-space/2)})
+//		margin-bottom: $grid-space
+//		border: 1px solid $border-color
+//
+//	+media('<mob-lg')
+//		width: 100%
+//		margin-bottom: $grid-space--md
+//
+//	// список заказов в кабинете
+//	.history-orders &
+//		+media('<tab-lg')
+//			width: calc(33.3% - #{round($grid-space/2)})
+//
+//		+media('<tab-sm')
+//			width: calc(50.0% - #{round($grid-space/2)})
+//
+//		+media('<mob-lg')
+//			width: calc(50.0% - #{round($grid-space--md/2)})
+//
+//		+media('<mob-md')
+//			width: 100%
+//
+//.c-td
+//	+media('<tab-lg')
+//		display: flex
+//		//align-items: flex-start
+//		align-items: center
+//		border: none
+//
+//		// список заказов в кабинете
+//		.history-orders &:nth-child(even)
+//			background-color: $bg-color-light
+//
+//	&[data-label]::before
+//		content: attr(data-label) ':'
+//		width: 130px
+//		padding-right: 15px
+//		+font-bold
+//		text-transform: uppercase
+//
+//		display: none
+//
+//		+media('<tab-lg')
+//			display: block
+//			font-size: 12px
+//
+//		// список заказов в кабинете
+//		.history-orders &
+//			width: 50%
+//			font-size: 11px
+//
+//	&.c-td--caption
+//		+media('<tab-lg')
+//			margin: -1px -1px 1rem
+//			font-size: 1.6rem
+//			line-height: round-float(20/16, 2)
+//			border: 1px solid $border-color
+//
+//		&::before
+//			+media('<tab-lg')
+//				content: none
+//
+//	&.c-td--del
+//		+media('<tab-lg')
+//			border-top: 1px solid $border-color
+//			margin-top: 10px
+//
+//		.btn-del
+//			+media('<tab-lg')
+//				+size(auto)
+//				display: flex
+//				align-items: center
+//				justify-content: center
+//				+push-auto
+//				width: 100%
+//
+//				svg
+//					position: relative
+//					left: auto
+//					top: auto
+//					margin: 0 10px 0 0
+//
+//				& > span
+//					display: block
+//
+//	&.c-td--length
+//		+media('<tab-lg')
+//			padding: 1rem 0 0
+//
+//		&::before
+//			+media('<tab-lg')
+//				content: none
+//
+//		+media('<tab-lg')
+//			.ui-spinner
+//				display: block
+//				margin: 0 -1px -1px
+//				+padding-horizontal(30px)
+//
+//			.ui-spinner-input, .ui-spinner-input[type="text"]
+//				width: 100%
+//				//height: 40px
+//
+//			//.ui-spinner-button
+//				width: 40px
+//
+//[data-label] .c-td__val
+//	+media('<tab-lg')
+//		flex: 1 1
 
-.c-tbody
-	+media('<tab-lg')
-		display: flex
-		flex-wrap: wrap
-		justify-content: space-between
-		align-items: flex-start
-
-.c-tr
-	+media('<tab-lg')
-		width: calc(50% - #{round($grid-space/2)})
-		margin-bottom: $grid-space
-		border: 1px solid $border-color
-
-	+media('<mob-lg')
-		width: 100%
-		margin-bottom: $grid-space--md
-
-	// список заказов в кабинете
-	.history-orders &
-		+media('<tab-lg')
-			width: calc(33.3% - #{round($grid-space/2)})
-
-		+media('<tab-sm')
-			width: calc(50.0% - #{round($grid-space/2)})
-
-		+media('<mob-lg')
-			width: calc(50.0% - #{round($grid-space--md/2)})
-
-		+media('<mob-md')
-			width: 100%
-
-.c-td
-	+media('<tab-lg')
-		display: flex
-		//align-items: flex-start
-		align-items: center
-		border: none
-
-		// список заказов в кабинете
-		.history-orders &:nth-child(even)
-			background-color: $bg-color-light
-
-	&[data-label]::before
-		content: attr(data-label) ':'
-		width: 130px
-		padding-right: 15px
-		+font-bold
-		text-transform: uppercase
-
-		display: none
-
+// cart-order
+.cart-order
+	$td-width--caption: 400px
+	//============
+	.c-table, .c-thead, .c-tbody, .c-tfoot, .c-tr, .c-th, .c-td
 		+media('<tab-lg')
 			display: block
-			font-size: 12px
 
-		// список заказов в кабинете
-		.history-orders &
-			width: 50%
-			font-size: 11px
-
-	&.c-td--caption
+	.c-table
 		+media('<tab-lg')
-			margin: -1px -1px 1rem
+			+margin-horizontal(-#{$layout-spaces--sm})
+			width: auto
+
+	.c-thead
+		+media('<tab-lg')
+			display: none
+
+	.c-tr
+		+media('<tab-lg')
+			position: relative
+			display: flex
+			flex-wrap: wrap
+			+padding-horizontal(#{$layout-spaces--sm + nth($c-table__img-size, 2) + nth($c-table__td-space--md, 2)}, $layout-spaces--sm)
+
+	.c-th
+		+media('<tab-lg')
+			padding: $c-table__th-space--md
+
+	.c-td
+		+media('<tab-lg')
+			display: flex
+			align-items: center
+			flex: 1 1
 			font-size: 1.6rem
-			line-height: round-float(20/16, 2)
-			border: 1px solid $border-color
+			padding: $c-table__td-space--md
 
-		&::before
-			+media('<tab-lg')
-				content: none
+	.c-td--caption
+		padding-left: 0
 
-	&.c-td--del
+	.c-td--del
 		+media('<tab-lg')
-			border-top: 1px solid $border-color
-			margin-top: 10px
+		width: $c-table__del-size
+		min-width: $c-table__del-size
+		max-width: $c-table__del-size
+		padding-right: 0
 
-		.btn-del
+	.c-td--size
+		padding-left: 0
+
+	.caption-for-table
+		.img-for-table
 			+media('<tab-lg')
-				+size(auto)
-				display: flex
-				align-items: center
-				justify-content: center
-				+push-auto
-				width: 100%
+				margin-right: nth($c-table__td-space--md, 2)
 
-				svg
-					position: relative
-					left: auto
-					top: auto
-					margin: 0 10px 0 0
-
-				& > span
-					display: block
-
-	//&.c-td--length
+	//product group head
+	.c-tr--head
 		+media('<tab-lg')
-			padding: 1rem 0 0
+			background-color: #f7f7f7
+			padding-left: $layout-spaces--sm
 
-		&::before
+		.c-td
 			+media('<tab-lg')
-				content: none
-
-		+media('<tab-lg')
-			.ui-spinner
 				display: block
-				margin: 0 -1px -1px
-				+padding-horizontal(30px)
+				background-color: transparent
+				border: none
 
-			.ui-spinner-input, .ui-spinner-input[type="text"]
-				width: 100%
-				//height: 40px
+			&::before
+				content: attr(data-label)
+				display: block
+				+font-d(13px)
+				color: #999
 
-			//.ui-spinner-button
-				width: 40px
+		.c-td--caption
+			+media('<tab-lg')
+				display: flex
+				width: $td-width--caption
+				min-width: $td-width--caption
+				border-bottom: none
+				+font-bold
 
-[data-label] .c-td__val
-	+media('<tab-lg')
-		flex: 1 1
+				&::before
+					content: none
+
+		.c-td--model
+			+media('<tab-lg')
+				display: flex
+				flex: 1 1
+				width: calc(100% - #{$td-width--caption})
+				min-width: calc(100% - #{$td-width--caption})
+				border-bottom: none
+				+font-bold
+
+				&::before
+					content: none
+
+		.c-td--size
+			+media('<tab-lg')
+				margin-left: #{nth($c-table__img-size, 2) + nth($c-table__td-space--md, 2)}
+
+		.c-td--price-sum
+			+media('<tab-lg')
+				margin-right: $c-table__del-size
+
+		.c-td--del
+			+media('<tab-lg')
+				position: absolute
+				right: $layout-spaces--sm
+				top: 20px
+				padding: 0
+				//+margin-horizontal(-14px)
+				+size($c-table__del-size)
+				border: none
+
+			+media('<mob-lg')
+				right: $layout-spaces--mob
+
+	//product group child
+	.c-tr--child
+		.c-td--caption
+			+media('<tab-lg')
+				display: none
+
+		.c-td--model
+			+media('<tab-lg')
+				display: none
+
+	// product removed
+	.c-tr--removed
+		background-color: #fff7f2
+		padding-left: $layout-spaces--sm
+
+		.c-td--model
+			+media('<tab-lg')
+				flex: 1 1
+				width: calc(100% - #{$td-width--caption})
+				min-width: calc(100% - #{$td-width--caption})
 
 // hover for device
-.c-tr
+//.c-tr
 	+media('<tab-lg')
 		.no-touchevents &:hover
 			.c-td
@@ -2206,17 +2348,20 @@ a.c-tr:hover
 // === img ===
 .img-for-table
 	display: block
-	+size(nth($table__img--size, 1)*1px)
+	+size(nth($c-table__img-size, 1))
 	text-decoration: none
 	color: inherit
 	position: relative
 	background-color: #fff
 
 	.caption-for-table &
-		margin-right: $grid-space--md
+		margin-right: nth($c-table__td-space, 2)
+
+		+media('<desk-lg')
+			margin-right: nth($c-table__td-space--md, 2)
 
 		+media('<desk-sm')
-			margin-right: $grid-space--sm
+			margin-right: nth($c-table__td-space--sm, 2)
 
 		.order-calc &
 			+media('<desk-sm', '>=tab-lg')
@@ -2233,7 +2378,10 @@ a.c-tr:hover
 		+ratio(nth($table__img--size, 1), nth($table__img--size, 2))
 
 	img
-		+cover-abs
+		position: absolute
+		left: 0
+		top: 0
+		+size(nth($c-table__img-size, 1))
 		display: block
 		max-width: none
 		+object-fit(contain)
@@ -2306,15 +2454,56 @@ a.c-tr:hover
 .order-calc__empty
 	display: none
 	padding: 8px
-	+font-d()
+	+font-d(16px)
 	text-align: center
+	color: $form-error-color
+
+	+media('<mob-lg')
+		font-size: 14px
+
+.order-calc__empty-alert
+	//position: fixed
+	//right: $grid-space
+	//top: $header-height + $grid-space
+	animation:
+		delay: 0.33s
+		duration: 2s
+	opacity: 0
+	visibility: hidden
+	transform: translateX(50px)
+
+@keyframes cartEmpty
+	0%
+		opacity: 0
+		visibility: visible
+		transform: translateX(50px)
+
+	13%
+		opacity: 1
+		transform: translateX(0)
+
+	87%
+		opacity: 1
+		transform: translateX(0)
+
+	100%
+		opacity: 0
+		visibility: hidden
+		transform: translateX(50px)
 
 // если корзина пуста
 .order-calc__hasnt-items
 	.order-calc__empty
 		display: block
 
-	//.c-table, .c-table-result
+	.order-calc__empty-alert
+		animation:
+			name: cartEmpty
+			//duration: 1s
+			//fill-mode: forwards
+			//direction: alternate
+
+	.c-table, .c-table-result
 		display: none
 
 /* order list end
@@ -3503,7 +3692,7 @@ a.bag__inner:hover
 		position: relative
 		height: 80px
 		border-top-width: 1px
-		padding-left: nth($table__img--size, 1)*1px + $grid-space--sm
+		padding-left: nth($c-table__img-size, 1) + $grid-space--sm
 
 	.accordion__header__angle
 		right: round($order-space-h/2)
@@ -3562,7 +3751,7 @@ a.bag__inner:hover
 
 		+media('<mob-lg')
 			width: auto
-			padding-left: nth($table__img--size, 1)*1px + $grid-space--sm
+			padding-left: nth($c-table__img-size, 1) + $grid-space--sm
 
 	&:nth-child(3)
 		width: $order-price--width
@@ -3573,7 +3762,7 @@ a.bag__inner:hover
 
 		+media('<mob-lg')
 			width: auto
-			padding-left: nth($table__img--size, 1)*1px + $grid-space--sm
+			padding-left: nth($c-table__img-size, 1) + $grid-space--sm
 
 	&.caption-for-table
 		+padding-vertical(10px)
@@ -3636,7 +3825,7 @@ a.bag__inner:hover
 		padding-left: 0
 
 		+media('<mob-lg')
-			width: nth($table__img--size, 1)*1px + $grid-space--sm
+			width: nth($c-table__img-size, 1) + $grid-space--sm
 
 	&:nth-child(2)
 		padding-left: 0
@@ -3662,7 +3851,7 @@ a.bag__inner:hover
 	padding-top: $order-list-th--height
 
 	+media('<mob-lg')
-		width: nth($table__img--size, 1)*1px + $grid-space--sm
+		width: nth($c-table__img-size, 1) + $grid-space--sm
 
 	& > div
 		padding-bottom: 28px
@@ -3673,7 +3862,7 @@ a.bag__inner:hover
 	margin-left: $order-list-side--width
 
 	+media('<mob-lg')
-		margin-left: nth($table__img--size, 1)*1px + $grid-space--sm
+		margin-left: nth($c-table__img-size, 1) + $grid-space--sm
 
 	&::before, &::after
 		content: ""
