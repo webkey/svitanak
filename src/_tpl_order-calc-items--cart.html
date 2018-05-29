@@ -69,7 +69,8 @@
 	@@if(context.removed){
 	<td class="c-td c-td--removed-info" data-label="" colspan="7">
 		<div class="c-td__val">
-			данный товар удалён из каталога
+			<span class="for-desk">Данный товар удалён из каталога</span>
+			<span class="for-mob">Товар удалён</span>
 		</div>
 	</td>
 	}
@@ -85,7 +86,7 @@
 	<td class="c-td c-td--packs-length" data-label="Кол-во уп.">
 		<div class="c-td__val">
 			@@if(!context.head){
-			<input class="spinner spinner-js order-calc__spin-packs-js"@@if(context.max){ data-max="@@max"} type="number" name="value" value="@@value" data-only-number>
+			<input class="spinner spinner-js order-calc__spin-packs-js"@@if(context.max){ max="@@max"} min="0" type="number" name="value" value="@@value" data-only-number>
 			}
 			@@if(context.head){
 			<span class="order-calc__packs-in-group-js">0</span> шт.
@@ -102,7 +103,7 @@
 		</div>
 	</td>
 
-	<td class="c-td c-td--length-total" data-label="Всего">
+	<td class="c-td c-td--length-total" data-label="Всего шт.">
 		<div class="c-td__val">
 			@@if(!context.head){
 			<span class="order-calc__length-sum-js">0</span> шт.
@@ -138,13 +139,13 @@
 		@@if(!context.head || context.removed){
 		<a href="#" class="btn-del order-calc__remove-js" title="Удалить товар из корзины">
 			@@include("includes-json/svg/icon-close.svg")
-			<span>Удалить из корзины</span>
+			<span>Удалить товар из корзины</span>
 		</a>
 		}
 		@@if(context.head && !context.removed){
-		<a href="#" class="btn-del order-calc__remove-group-js" title="Удалить группу товаров из корзины">
+		<a href="#" class="btn-del order-calc__remove-group-js" title="Удалить группу из корзины">
 			@@include("includes-json/svg/icon-close.svg")
-			<span>Удалить группу товаров из корзины</span>
+			<span>Удалить группу из корзины</span>
 		</a>
 		}
 	</td>

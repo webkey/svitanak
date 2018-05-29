@@ -403,11 +403,10 @@ i b, i strong, em b, em strong, b i, b em, strong i, strong em
 		display: inline-block
 		vertical-align: baseline
 		font-size: 0
-		line-height: 0
 
 	&::before
 		content: attr(data-short)
-		+font($font-size, $line-height)
+		font-size: $font-size
 		display: none
 
 		+media('<mob-lg')
@@ -582,10 +581,16 @@ body
 
 /* bottom space
 .bottom-space
-	margin-bottom: $bottom-space--lg
+	margin-bottom: $bottom-space
 
 	+media('<desk-lg')
-		margin-bottom: round($bottom-space--lg*0.8)
+		margin-bottom: round-float($bottom-space*0.8, 2)
+
+	+media('<tab-lg')
+		margin-bottom: round-float($bottom-space*0.7, 2)
+
+	+media('<mob-lg')
+		margin-bottom: round-float($bottom-space*0.6, 2)
 
 	&:last-child
 		margin-bottom: 0
@@ -594,7 +599,13 @@ body
 	margin-bottom: $bottom-space--lg
 
 	+media('<desk-lg')
-		margin-bottom: round($bottom-space--lg*0.8)
+		margin-bottom: round-float($bottom-space--lg*0.8, 2)
+
+	+media('<tab-lg')
+		margin-bottom: round-float($bottom-space--lg*0.65, 2)
+
+	+media('<mob-lg')
+		margin-bottom: round-float($bottom-space--lg*0.5, 2)
 
 	&:last-child
 		margin-bottom: 0
@@ -768,6 +779,15 @@ table
 .#{$user-content}
 	table
 		margin-bottom: $bottom-space--lg
+
+		+media('<desk-lg')
+			margin-bottom: round-float($bottom-space--lg*0.8, 2)
+
+		+media('<tab-lg')
+			margin-bottom: round-float($bottom-space--lg*0.65, 2)
+
+		+media('<mob-lg')
+			margin-bottom: round-float($bottom-space--lg*0.5, 2)
 
 	.table-auto table
 		margin-bottom: 0

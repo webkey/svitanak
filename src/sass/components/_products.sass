@@ -1070,6 +1070,13 @@ $dt-width--p-card: 184px
 	&:first-child
 		border-top: 0
 
+		+media('<mob-md')
+			padding-top: 0
+
+	&:last-child
+		+media('<mob-md')
+			padding-bottom: 0
+
 // dt, dd
 .dl-list__dt,
 .p-card__options__dt,

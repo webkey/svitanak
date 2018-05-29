@@ -3283,8 +3283,8 @@ function spinnerInit($spinner) {
 		$.each($spinner, function () {
 			var $curSpinner = $(this);
 			$curSpinner.superSpinner({
-				min: 0,
-				max: $curSpinner.data('max') || null,
+				min: $curSpinner.attr('min') || 0,
+				max: $curSpinner.attr('max') || null,
 				disabled: $curSpinner.data('disabled') || false,
 				spin: function( event, ui ) {
 					setTimeout(function () {
@@ -3294,6 +3294,17 @@ function spinnerInit($spinner) {
 			});
 		})
 	}
+
+	$('input[type="number"]').on('change keyup', function() {
+		var max = parseInt($(this).attr('max'));
+		var min = parseInt($(this).attr('min'));
+		if ($(this).val() > max) {
+			$(this).val(max);
+		}
+		else if ($(this).val() < min) {
+			$(this).val(min);
+		}
+	})
 }
 
 /**

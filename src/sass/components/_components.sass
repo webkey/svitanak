@@ -2172,7 +2172,8 @@ a.c-tr:hover
 
 // cart-order
 .cart-order
-	$td-width--caption: 400px
+	$td-width-caption: 400px
+	$td-width-caption--sm: 300px
 	//============
 	.c-table, .c-thead, .c-tbody, .c-tfoot, .c-tr, .c-th, .c-td
 		+media('<tab-lg')
@@ -2180,8 +2181,13 @@ a.c-tr:hover
 
 	.c-table
 		+media('<tab-lg')
-			+margin-horizontal(-#{$layout-spaces--sm})
+			+margin-horizontal(-$layout-spaces--sm)
 			width: auto
+
+		// 640
+		+media('<mob-lg')
+			margin-left: -$layout-spaces--mob
+			margin-right: -$layout-spaces--mob
 
 	.c-thead
 		+media('<tab-lg')
@@ -2192,19 +2198,36 @@ a.c-tr:hover
 			position: relative
 			display: flex
 			flex-wrap: wrap
-			+padding-horizontal(#{$layout-spaces--sm + nth($c-table__img-size, 2) + nth($c-table__td-space--md, 2)}, $layout-spaces--sm)
+			padding-right: $layout-spaces--sm
+			padding-left: #{$layout-spaces--sm + nth($c-table__img-size, 2) + $c-table__img-space--sm}
+			border: solid $border-color
+			border-width: 1px 0 0
 
-	.c-th
-		+media('<tab-lg')
-			padding: $c-table__th-space--md
+		// 768
+		+media('<tab-sm')
+			padding-left: $layout-spaces--sm
+
+		// 640
+		+media('<mob-lg')
+			padding-right: $layout-spaces--mob
+			padding-left: $layout-spaces--mob
 
 	.c-td
 		+media('<tab-lg')
 			display: flex
 			align-items: center
 			flex: 1 1
-			font-size: 1.6rem
-			padding: $c-table__td-space--md
+			font-size: 1.4rem
+			border-bottom-width: 0
+
+		&::before
+			content: attr(data-label)
+			+font-bold
+			text-transform: uppercase
+			font-size: 12px
+			letter-spacing: normal
+			color: #999
+			display: none
 
 	.c-td--caption
 		+media('<tab-lg')
@@ -2212,24 +2235,98 @@ a.c-tr:hover
 
 	.c-td--del
 		+media('<tab-lg')
-		width: $c-table__del-size
-		min-width: $c-table__del-size
-		max-width: $c-table__del-size
-		padding-right: 0
+			width: $c-table__del-size
+			min-width: $c-table__del-size
+			max-width: $c-table__del-size
+			padding: 0
+
+		+media('<tab-sm')
+			position: relative
+			top: auto
+			right: auto
+			height: auto
+			width: auto
+			max-width: 100%
+			min-width: 100%
+			font-size: 12px
+			line-height: 1
+			//text-align: right
+			//justify-content: flex-end
+			text-align: left
+			justify-content: flex-start
+
+	.btn-del
+		+media('<tab-sm')
+			height: auto
+			width: auto
+			padding: $c-table__td-space--sm
+			padding-left: 20px
+			position: relative
+			text-align: left
+
+		.svg-ico-close
+			+media('<tab-sm')
+				position: absolute
+				left: 0
+				top: 50%
+				margin: 0
+				transform: translate(0, -50%)
+
+		span
+			+media('<tab-sm')
+				display: block
 
 	.c-td--size
-		padding-left: 0
+		+media('<tab-lg')
+			padding-left: 0
+
+	.c-td--price, .c-td--price-sum
+		+media('<tab-lg')
+			$width: 100px
+			width: auto
+			max-width: $width
+			min-width: $width
+
+		+media('<tab-sm')
+			max-width: none
+			min-width: 0
 
 	.caption-for-table
 		.img-for-table
 			+media('<tab-lg')
-				margin-right: nth($c-table__td-space--md, 2)
+				margin-right: $c-table__img-space--sm
+
+	.c-td--packs-length
+		// 768
+		+media('<tab-sm')
+			width: auto
+			max-width: 70px
+			min-width: 70px
+
+	.ui-spinner
+		// 768
+		+media('<tab-sm')
+			height: auto !important
+			vertical-align: top
+			+padding-horizontal(0)
+
+			a.ui-spinner-button
+				display: none
 
 	//product group head
 	.c-tr--head
 		+media('<tab-lg')
+			flex-wrap: wrap
 			background-color: #f7f7f7
 			padding-left: $layout-spaces--sm
+
+		// 768
+		+media('<tab-sm')
+			justify-content: flex-start
+
+		// 640
+		+media('<mob-lg')
+			padding-left: $layout-spaces--mob
 
 		.c-td
 			+media('<tab-lg')
@@ -2237,44 +2334,102 @@ a.c-tr:hover
 				background-color: transparent
 				border: none
 
-				&::before
-					content: attr(data-label)
+			// 768
+			+media('<tab-sm')
+				$width: calc(100% / 3)
+				width: auto
+				max-width: none
+				min-width: 0
+				box-sizing: border-box
+
+			// 640
+			+media('<mob-lg')
+				$width: calc(100% / 3)
+				flex-basis: $width
+				max-width: $width
+				min-width: $width
+
+			&:nth-child(3)
+				+media('<tab-lg')
+					margin-left: #{nth($c-table__img-size, 2) + $c-table__img-space--sm}
+
+				+media('<tab-sm')
+					margin-left: 0
+
+			&[data-label]::before
+				+media('<tab-lg')
 					display: block
-					+font-d(13px)
-					color: #999
+					margin-bottom: 0.2em
 
 		.c-td--caption
 			+media('<tab-lg')
 				display: flex
 				width: auto
-				min-width: $td-width--caption
-				max-width: $td-width--caption
+				max-width: $td-width-caption
+				min-width: $td-width-caption
+				padding-bottom: 0
 				border-bottom: none
 				+font-bold
+				font-size: 1.6rem
 
 				&::before
 					content: none
+
+			// 768
+			+media('<tab-sm')
+				max-width: $td-width-caption--sm
+				min-width: $td-width-caption--sm
+				font-size: 1.4rem
+
+			// 480
+			+media('<mob-md')
+				max-width: 100%
+				min-width: 100%
+				+padding-horizontal(0)
 
 		.c-td--model
 			+media('<tab-lg')
 				display: flex
 				flex: 1 1
 				width: auto
-				min-width: calc(100% - #{$td-width--caption})
-				max-width: calc(100% - #{$td-width--caption})
+				min-width: calc(100% - #{$td-width-caption})
+				max-width: calc(100% - #{$td-width-caption})
+				padding-bottom: 0
 				border-bottom: none
+				padding-right: $c-table__del-size
 				+font-bold
+				font-size: 1.6rem
 
 				&::before
 					content: none
 
-		.c-td--size
+			// 768
+			+media('<tab-sm')
+				min-width: calc(100% - #{$td-width-caption--sm})
+				max-width: calc(100% - #{$td-width-caption--sm})
+				padding-right: 0
+
+			// 480
+			+media('<mob-md')
+				max-width: 100%
+				min-width: 100%
+				+padding-horizontal(0)
+
+		.c-td--size, .c-td--height, .c-td--length, .c-td--price
+			+media('<tab-sm')
+				display: none
+
+		.c-td--packs-length
 			+media('<tab-lg')
-				margin-left: #{nth($c-table__img-size, 2) + nth($c-table__td-space--md, 2)}
+				padding-left: 0 // костыль
 
 		.c-td--price-sum
 			+media('<tab-lg')
 				margin-right: $c-table__del-size
+
+			+media('<tab-sm')
+				margin-right: 0
+				padding-right: 0 // костыль
 
 		.c-td--del
 			+media('<tab-lg')
@@ -2286,11 +2441,48 @@ a.c-tr:hover
 				+size($c-table__del-size)
 				border: none
 
-			+media('<mob-lg')
-				right: $layout-spaces--mob
+			+media('<tab-sm')
+				position: relative
+				top: auto
+				right: auto
+				width: auto
+				min-width: 100%
+				max-width: 100%
+				height: auto
 
 	//product group child
 	.c-tr--child
+		.c-td
+			// 768
+			+media('<tab-sm')
+				flex-direction: column
+				justify-content: flex-start
+				align-items: flex-start
+				padding-bottom: 0
+				flex: auto
+				box-sizing: border-box
+
+			// 480
+			+media('<mob-md')
+				$width: calc(100% / 4)
+				max-width: $width
+				min-width: $width
+
+			&::before
+				+media('<tab-sm')
+					display: block
+					font-size: 10px
+					+font-normal
+					+truncate(100%)
+					min-width: 100%
+					margin-bottom: 0.4em
+
+			.c-td__val
+				// 768
+				+media('<tab-sm')
+				min-width: 100%
+				line-height: 30px // равно высоте спиннера
+
 		.c-td--caption
 			+media('<tab-lg')
 				display: none
@@ -2298,6 +2490,34 @@ a.c-tr:hover
 		.c-td--model
 			+media('<tab-lg')
 				display: none
+
+		.c-td--length
+			// 480
+			+media('<mob-md')
+				padding-right: 0 // костыль
+
+		.c-td--length-total
+			// 480
+			+media('<mob-md')
+				padding-left: 0 // костыль
+
+		.c-td--price-sum
+			// 768
+			+media('<tab-sm')
+				padding-right: 0 // костиль
+
+		.c-td--del
+			margin-top: 10px
+
+			// 480
+			+media('<mob-md')
+				$width: 100%
+				max-width: $width
+				min-width: $width
+
+			&::before
+				+media('<tab-sm')
+					display: none
 
 	// product removed
 	.c-tr--removed
@@ -2305,11 +2525,26 @@ a.c-tr:hover
 			background-color: #fff7f2
 			padding-left: $layout-spaces--sm
 
+		+media('<mob-lg')
+			padding-left: $layout-spaces--mob
+
+		.c-td
+			+media('<tab-sm')
+				padding-bottom: 0
+
 		.c-td--caption
 			+media('<tab-lg')
 				width: auto
-				min-width: $td-width--caption
-				max-width: $td-width--caption
+				min-width: $td-width-caption
+				max-width: $td-width-caption
+
+			+media('<tab-sm')
+				min-width: $td-width-caption--sm
+				max-width: $td-width-caption--sm
+
+			.td__val
+				+media('<tab-lg')
+					width: 100%
 
 		.c-td--model
 			+media('<tab-lg')
@@ -2317,12 +2552,52 @@ a.c-tr:hover
 				max-width: 100px
 				min-width: 100px
 
+		.c-td--removed-info
+			// 640
+			+media('<mob-lg')
+				max-width: 100%
+				min-width: 100%
+				+padding-horizontal(0)
+
+		.c-td--del
+			+media('<tab-sm')
+				text-decoration: none
+
+		.title-for-table
+			+media('<tab-lg')
+				+truncate(100%)
+
 	// table footer
 	.c-tfoot
 		.c-tr
 			+media('<tab-lg')
+				justify-content: flex-end
 				background-color: $bg-color-alt
 				padding-left: $layout-spaces--sm
+				border-bottom-width: 1px
+
+			// 640
+			+media('<mob-lg')
+				padding-left: $layout-spaces--mob
+				padding-bottom: 10px
+
+		.c-td
+			+media('<tab-lg')
+				flex: 0 1
+				font-size: 1.4rem
+
+			// 640
+			+media('<mob-lg')
+				font-size: 1.2rem
+				padding-top: 10px
+				padding-bottom: 0
+
+			&:first-child
+				+media('<mob-lg')
+					max-width: 100%
+					min-width: 100%
+					text-align: right
+					justify-content: flex-end
 
 // hover for device
 //.c-tr
@@ -2357,6 +2632,7 @@ a.c-tr:hover
 .caption-for-table
 	display: flex
 	align-items: center
+	width: 100%
 
 	.order-calc &
 		+media('<desk-sm', '>=tab-lg')
@@ -2370,6 +2646,9 @@ a.c-tr:hover
 	color: inherit
 	position: relative
 	background-color: #fff
+
+	.c-tr--child &
+		height: 0
 
 	.caption-for-table &
 		margin-right: nth($c-table__td-space, 2)
