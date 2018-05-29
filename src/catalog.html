@@ -629,12 +629,40 @@
 													<div class="p-options__item">
 														<div class="p-options__inner">
 															<div class="p-options__group sorting-js order-asc">
-																<div class="p-options__label">Сортировать по:</div>
-																<ul class="p-sorting sorting-thumbs-js">
+																<!--<div class="p-options__label">Сортировать по:</div>-->
+																<!--<ul class="p-sorting sorting-thumbs-js">
+						<li class="active"><a href="#"><span><em>По&nbsp;</em>Названию</span><i class="arr">&nbsp;</i></a></li>
+						<li><a href="#"><span><em>По&nbsp;</em>Модели</span><i class="arr">&nbsp;</i></a></li>
+						<li><a href="#"><span><em>По&nbsp;</em>Цене</span><i class="arr">&nbsp;</i></a></li>
+					</ul>-->
+																<ul class="p-sorting">
 																	<li class="active"><a href="#"><span><em>По&nbsp;</em>Названию</span><i class="arr">&nbsp;</i></a></li>
 																	<li><a href="#"><span><em>По&nbsp;</em>Модели</span><i class="arr">&nbsp;</i></a></li>
 																	<li><a href="#"><span><em>По&nbsp;</em>Цене</span><i class="arr">&nbsp;</i></a></li>
 																</ul>
+																<ul class="p-thumbs">
+																	<li>
+																		<select class="form-light field-effects-js" name="season">
+								<option value="">Сезон</option>
+								<option value="1">Текущий месяц</option>
+								<option value="2">Будущий месяц</option>
+								<option value="3">Архив моделей</option>
+							</select>
+																	</li>
+																	<li>
+																		<select class="form-light field-effects-js" name="sorting">
+								<option value="">Сортировка</option>
+								<option value="1">По названию</option>
+								<option value="2">По модели</option>
+								<option value="3">По цене</option>
+							</select>
+																	</li>
+																	<li>
+																	</li>
+																</ul>
+															</div>
+															<div class="p-options__group sorting-js order-asc">
+																<a href="#">Архив моделей</a>
 															</div>
 														</div>
 													</div>
@@ -667,6 +695,7 @@
 													</div>
 												</div>
 											</div>
+											<div class="note bottom-space-lg">Цены в белорусских рублях приведены с учетом НДС, цены в других валютах – без НДС.</div>
 											<div class="p-filters-tags">
 												<div class="p-filters-tags__holder">
 													<div class="p-filters-tags__frame p-filters-tags-js">

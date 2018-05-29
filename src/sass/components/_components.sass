@@ -3452,16 +3452,23 @@ a.bag__inner:hover
 /* options panel
 .p-options
 	position: relative
-	margin-bottom: 6rem
+	margin-bottom: round-float($bottom-space--lg/2, 2)
+	padding-bottom: round-float($bottom-space--lg/2, 2)
+	border: solid $border-color
+	border-width: 0 0 1px
 
-	+media('<desk-sm')
-		margin-bottom: 4rem
+	+media('<desk-lg')
+		margin-bottom: round-float($bottom-space--lg*0.8/2, 2)
+		padding-bottom: round-float($bottom-space--lg*0.8/2, 2)
 
 	+media('<tab-lg')
-		border: 1px solid $border-color
+		margin-bottom: round-float($bottom-space--lg*0.65/2, 2)
+		padding-bottom: round-float($bottom-space--lg*0.65/2, 2)
+		border-width: 1px
 
 	+media('<mob-lg')
-		margin-bottom: 3rem
+		margin-bottom: round-float($bottom-space--lg*0.5/2, 2)
+		padding-bottom: round-float($bottom-space--lg*0.5/2, 2)
 
 	&:last-child
 		margin-bottom: 0
@@ -3484,7 +3491,8 @@ a.bag__inner:hover
 		min-height: 80px
 
 .p-options__item
-	+font-d($line-height: 1)
+	//+font-d($line-height: 1)
+	+font-d()
 	text-align: center
 
 	+media('<tab-lg')
@@ -3513,36 +3521,42 @@ a.bag__inner:hover
 		+media('<tab-lg')
 			display: block
 			height: 100%
+			width: 100%
 
-	&.p-options__item--filters-show,
-	&.p-options__item--view-switcher
-		+media('<tab-lg')
-			+size(60px)
-			border: 1px solid $border-color
-			margin: -1px -1px -1px 0
+.p-options__item--filters-show,
+.p-options__item--view-switcher
+	+media('<tab-lg')
+		+size(60px)
+		border: 1px solid $border-color
+		margin: -1px -1px -1px 0
 
-		+media('<mob-lg')
-			position: absolute
-			right: -1px
-			bottom: -1px
-			margin: 0
-			height: calc(50% + 2px)
+	+media('<mob-lg')
+		position: absolute
+		right: -1px
+		bottom: -1px
+		margin: 0
+		height: calc(50% + 2px)
 
-	&.p-options__item--filters-show
-		display: none
+.p-options__item--view-switcher
+	margin-left: 150px
 
-		+media('<tab-lg')
-			display: block
+.p-options__item--filters-show
+	display: none
 
-		+media('<mob-lg')
-			top: -1px
-			height: calc(50% + 1px)
+	+media('<tab-lg')
+		display: block
+
+	+media('<mob-lg')
+		top: -1px
+		height: calc(50% + 1px)
 
 .btn-filters-show
 	position: relative
 	+display-inline-block-top
 	color: $text-color
 	user-select: none
+	min-width: 100%
+	max-width: 100%
 
 	+media('<tab-lg')
 		display: block
@@ -3589,7 +3603,15 @@ a.bag__inner:hover
 
 .p-options__inner
 	position: relative
+	display: flex
+	justify-content: space-between
 	height: 100% // нужно, когда принимают форму квадрата на девайсах
+
+	.p-options__item:first-child &
+		&::after
+			content: ""
+			display: block
+			width: 1px
 
 .p-options__group
 	display: flex
@@ -3606,7 +3628,7 @@ a.bag__inner:hover
 
 	.p-options__label
 		+display-inline-block-middle
-		margin: 4px 25px 4px 0
+		margin: 5px 25px 5px 0
 		+font(inherit, inherit)
 		color: $text-color-light
 
