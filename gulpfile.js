@@ -23,6 +23,7 @@ var gulp = require('gulp'), // Подключаем Gulp
 	config = require('./modernizr-config'), // Path to modernizr-config.json
 	replace = require('gulp-string-replace'),
 	strip = require('gulp-strip-comments'), // Удалить комментарии
+	stripCssComments = require('gulp-strip-css-comments'), // Удалить комментарии (css)
 	removeEmptyLines = require('gulp-remove-empty-lines'), // Удалить пустые строки
 	revts = require('gulp-rev-timestamp'), // Дабавить версии к подключаемым файлам
 	beautify = require('gulp-beautify') // Причесать js
@@ -47,11 +48,10 @@ gulp.task('htmlCompilation', function () { // Таск формирования 
 
 /// Таск для переноса normalize.css и его минификации
 gulp.task('compressNormalizeCss', function () {
-	return gulp.src('src/libs/normalize-css/normalize.css')
-		.pipe(gulp.dest('src/sass/base/'))
-		.pipe(cssnano())
-		.pipe(rename({suffix: '.min'}))
-		.pipe(gulp.dest('src/sass/base/'));
+	return gulp.src('src/libs/normalize-scss/sass/**/*.+(scss|sass)')
+		.pipe(stripCssComments())
+		// .pipe(removeEmptyLines())
+		.pipe(gulp.dest('src/sass/normalize/'));
 });
 
 gulp.task('sassCompilation', ['compressNormalizeCss'], function () { // Создаем таск для компиляции sass файлов
