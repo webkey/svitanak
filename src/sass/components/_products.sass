@@ -820,6 +820,9 @@ $p-filters-angle-lines-color: $text-color
 	&:last-child
 		margin-bottom: 0
 
+.p-card__gallery
+	position: relative
+
 .p-card__gallery__list
 	margin-bottom: $bottom-space--lg
 
@@ -1402,7 +1405,9 @@ $dt-width--p-card: 184px
 
 .p-card__gallery__item
 	+media('>=tab-lg')
-		cursor: url(../../img/cursor-zoom-in.cur), zoom-in
+		//cursor: url(../../img/cursor-zoom-in.cur), zoom-in
+		//cursor: none
+		cursor: zoom-in
 		user-select: none
 
 .zoom-on
@@ -1417,8 +1422,9 @@ $dt-width--p-card: 184px
 			margin-right: -#{nth($p-card-ratio, 2)}
 
 		.p-card__gallery__item
-			cursor: url(../../img/cursor-zoom-out.cur), zoom-out
-		//height: 100vh
+			cursor: zoom-out
+			//cursor: url(../../img/cursor-zoom-out.cur), zoom-out
+			//height: 100vh
 
 		.p-card__gallery__inner
 			background-size: auto 100%
