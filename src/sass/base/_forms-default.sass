@@ -143,7 +143,7 @@ input[type="text"], input[type="password"], input[type="email"], input[type="sea
 		letter-spacing: $form-letter-spacing
 	background: $form-bg-color
 	box-shadow: none
-	border: #{$form-border-width} solid #{$form-border-color}
+	border: 0 solid #{$form-border-color}
 	cursor: pointer
 
 	+media('<mob-lg')
@@ -643,6 +643,7 @@ input[type="radio"]
 	background: $form-bg-color
 	box-shadow: inset 0 -2px 0 $form-border-color
 	outline: none
+	-webkit-tap-highlight-color: transparent
 
 	//=== form minimal
 	&.form-minimal
@@ -660,7 +661,8 @@ input[type="radio"]
 		&.form-light
 			box-shadow: none
 			border: 1px solid #{$form-light-border-color}
-
+			padding-top: $form-input-space-vt - 1
+			padding-bottom: $form-input-space-vb - 1
 .select
 	select, .select2
 		margin-bottom: 0

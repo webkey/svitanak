@@ -635,35 +635,47 @@
 						<li><a href="#"><span><em>По&nbsp;</em>Модели</span><i class="arr">&nbsp;</i></a></li>
 						<li><a href="#"><span><em>По&nbsp;</em>Цене</span><i class="arr">&nbsp;</i></a></li>
 					</ul>-->
-																<ul class="p-sorting">
-																	<li class="active"><a href="#"><span><em>По&nbsp;</em>Названию</span><i class="arr">&nbsp;</i></a></li>
-																	<li><a href="#"><span><em>По&nbsp;</em>Модели</span><i class="arr">&nbsp;</i></a></li>
-																	<li><a href="#"><span><em>По&nbsp;</em>Цене</span><i class="arr">&nbsp;</i></a></li>
-																</ul>
+																<!--<ul class="p-sorting">
+						<li class="active"><a href="#"><span><em>По&nbsp;</em>Названию</span><i class="arr">&nbsp;</i></a></li>
+						<li><a href="#"><span><em>По&nbsp;</em>Модели</span><i class="arr">&nbsp;</i></a></li>
+						<li><a href="#"><span><em>По&nbsp;</em>Цене</span><i class="arr">&nbsp;</i></a></li>
+					</ul>-->
 																<ul class="p-thumbs">
 																	<li>
-																		<select class="form-light field-effects-js" name="season">
-								<option value="">Сезон</option>
-								<option value="1">Текущий месяц</option>
-								<option value="2">Будущий месяц</option>
-								<option value="3">Архив моделей</option>
-							</select>
+																		<div class="select">
+																			<select name="season">
+									<option value="">Сезон:</option>
+									<option value="1">Текущий месяц</option>
+									<option value="2">Будущий месяц</option>
+									<option value="3">Архив моделей</option>
+								</select>
+																		</div>
 																	</li>
 																	<li>
-																		<select class="form-light field-effects-js" name="sorting">
-								<option value="">Сортировка</option>
-								<option value="1">По названию</option>
-								<option value="2">По модели</option>
-								<option value="3">По цене</option>
-							</select>
+																		<div class="select">
+																			<select name="sorting">
+									<option value="">Сортировка по:</option>
+									<option value="1">По названию</option>
+									<option value="2">По модели</option>
+									<option value="3">По цене</option>
+								</select>
+																		</div>
 																	</li>
 																	<li>
+																		<div class="select">
+																			<select name="currency">
+									<option value="price_brb">BYN</option>
+									<option value="price_rub">RUB</option>
+									<option value="price_usd">USD</option>
+									<option value="price_euro">EUR</option>
+								</select>
+																		</div>
 																	</li>
 																</ul>
 															</div>
-															<div class="p-options__group sorting-js order-asc">
-																<a href="#">Архив моделей</a>
-															</div>
+															<!--<div class="p-options__group sorting-js order-asc">
+					<a href="#">Архив моделей</a>
+				</div>-->
 														</div>
 													</div>
 													<div class="p-options__item p-options__item--view-switcher">

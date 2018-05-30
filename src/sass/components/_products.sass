@@ -306,7 +306,7 @@ a.btn-to-basket
 			+media('<mob-lg')
 				+grid-item-responsive(2, $products-grid-space--md, $products-space--md)
 
-			+media('<mob-md')
+			//+media('<mob-md')
 				+grid-item-responsive(1, $products-grid-space--md, $products-space--md)
 
 	.products__visual, .products__title, .products__content, .products__footer
@@ -316,6 +316,9 @@ a.btn-to-basket
 	.products__visual
 		padding: 0
 		margin-bottom: $bottom-space--ml
+
+		+media('<mob-lg')
+			padding-top: 40px
 
 		&:last-child
 			margin-bottom: 0
@@ -329,6 +332,9 @@ a.btn-to-basket
 		text-transform: none
 		max-width: 260px
 		margin: 0 auto 1.5rem
+
+		+media('<mob-md')
+			font-size: 13px
 
 		.products__model
 			display: inline
