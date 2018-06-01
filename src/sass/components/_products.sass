@@ -1406,9 +1406,11 @@ $dt-width--p-card: 184px
 .p-card__gallery__item
 	+media('>=tab-lg')
 		//cursor: url(../../img/cursor-zoom-in.cur), zoom-in
-		//cursor: none
-		cursor: zoom-in
+		cursor: none
 		user-select: none
+
+		.no-js &
+			cursor: zoom-in
 
 .zoom-on
 	+media('>=tab-lg')
@@ -1422,9 +1424,12 @@ $dt-width--p-card: 184px
 			margin-right: -#{nth($p-card-ratio, 2)}
 
 		.p-card__gallery__item
-			cursor: zoom-out
 			//cursor: url(../../img/cursor-zoom-out.cur), zoom-out
+			cursor: none
 			//height: 100vh
+
+			.no-js &
+				cursor: zoom-out
 
 		.p-card__gallery__inner
 			background-size: auto 100%
@@ -1436,5 +1441,93 @@ $dt-width--p-card: 184px
 // для сжатия по высоте / плохо анимируется
 	//.p-card__gallery__inner
 		+size(100%)
+
+/* custom zoom in-out cursor
+.ccur
+	$size: 50px
+	$dur: 0.5s
+	position: absolute
+	left: 0
+	top: 0
+	z-index: 99
+	cursor: none
+	pointer-events: none
+	user-select: none
+	-webkit-tap-highlight-color: transparent
+
+	.no-js &
+		cursor: zoom-in
+
+	display: block
+	+size($size)
+
+	.ccur__inside
+		position: relative
+		+size(100%)
+		margin: -#{round($size/2)} 0 0 -#{round($size/2)}
+		transform: rotate(-0.25turn)
+		background-color: rgba(lightcoral, 0.05)
+
+		&::before, &::after
+			content: ""
+			display: block
+			position: absolute
+			left: 50%
+			top: 50%
+			width: 17px
+			height: 3px
+			margin: -1px 0 0 -8px
+			background-color: currentColor
+			z-index: 1
+			opacity: 0
+			transition:
+				property: transform, opacity
+				duration: $dur
+				timing-function: cubic-bezier(0.65, 0.05, 0.36, 1)
+
+		svg
+			display: block
+			+size(100%)
+			transform: rotate(-0.2turn)
+			opacity: 0
+			transition:
+				property: transform, opacity
+				duration: $dur
+				timing-function: cubic-bezier(0.4, 0, 0.2, 1)
+
+		circle
+			fill: rgba(lightskyblue, 0.0)
+			stroke: currentColor
+			stroke-width: 3px
+			stroke-dasharray: 138px
+			stroke-dashoffset: 138px
+			transition:
+				property: stroke-dashoffset
+				duration: $dur
+				timing-function: cubic-bezier(0.4, 0, 0.2, 1)
+
+	&.active
+		.ccur__inside
+			&::before
+				opacity: 1
+				transform: rotate(1.00turn)
+
+			&::after
+				opacity: 1
+				transform: rotate(1.25turn)
+
+			svg
+				opacity: 1
+				transform: rotate(0)
+
+			circle
+				stroke-dashoffset: 0
+
+	.zoom-on &.active
+		.ccur__inside
+			&::before
+				transform: rotate(1.75turn)
+
+/* custom zoom in-out cursor end
 
 /* product card end

@@ -12688,84 +12688,6 @@ a.bag__inner:hover .bag__title {
 }
 
 /* js-loading end */
-/* custom zoom in-out cursor */
-.ccur {
-	position: relative;
-	position: absolute;
-	left: 0;
-	top: 0;
-	background-color: rgba(240, 128, 128, 0.05);
-	z-index: 99;
-	display: block;
-	width: 50px;
-	height: 50px;
-	-ms-transform: rotate(-0.25turn);
-	    transform: rotate(-0.25turn);
-}
-
-.ccur::before, .ccur::after {
-	content: "";
-	display: block;
-	position: absolute;
-	left: 50%;
-	top: 50%;
-	width: 17px;
-	height: 3px;
-	margin: -1px 0 0 -8px;
-	background-color: currentColor;
-	z-index: 1;
-	opacity: 0;
-	transition-property: transform, opacity;
-	transition-duration: 0.5s;
-	transition-timing-function: cubic-bezier(0.65, 0.05, 0.36, 1);
-}
-
-.ccur svg {
-	display: block;
-	width: 100%;
-	height: 100%;
-	-ms-transform: rotate(-0.1turn);
-	    transform: rotate(-0.1turn);
-	opacity: 0;
-	transition-property: transform, opacity;
-	transition-duration: 0.5s;
-	transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.ccur circle {
-	fill: rgba(135, 206, 250, 0);
-	stroke: currentColor;
-	stroke-width: 3px;
-	stroke-dasharray: 138px;
-	stroke-dashoffset: 138px;
-	transition-property: stroke-dashoffset;
-	transition-duration: 0.5s;
-	transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.ccur.active::before {
-	opacity: 1;
-	-ms-transform: rotate(1turn);
-	    transform: rotate(1turn);
-}
-
-.ccur.active::after {
-	opacity: 1;
-	-ms-transform: rotate(1.25turn);
-	    transform: rotate(1.25turn);
-}
-
-.ccur.active svg {
-	opacity: 1;
-	-ms-transform: rotate(0);
-	    transform: rotate(0);
-}
-
-.ccur.active circle {
-	stroke-dashoffset: 0;
-}
-
-/* custom zoom in-out cursor end */
 /*shops network */
 .shops {
 	overflow: hidden;
@@ -15730,11 +15652,14 @@ a.btn-to-basket {
 
 @media (min-width: 992px) {
 	.p-card__gallery__item {
-		cursor: zoom-in;
+		cursor: none;
 		-webkit-user-select: none;
 		   -moz-user-select: none;
 		    -ms-user-select: none;
 		        user-select: none;
+	}
+	.no-js .p-card__gallery__item {
+		cursor: zoom-in;
 	}
 }
 
@@ -15748,6 +15673,9 @@ a.btn-to-basket {
 		margin-right: -45%;
 	}
 	.zoom-on .p-card__gallery__item {
+		cursor: none;
+	}
+	.no-js .zoom-on .p-card__gallery__item {
 		cursor: zoom-out;
 	}
 	.zoom-on .p-card__gallery__inner {
@@ -15759,6 +15687,106 @@ a.btn-to-basket {
 	}
 }
 
+/* custom zoom in-out cursor */
+.ccur {
+	position: absolute;
+	left: 0;
+	top: 0;
+	z-index: 99;
+	cursor: none;
+	pointer-events: none;
+	-webkit-user-select: none;
+	   -moz-user-select: none;
+	    -ms-user-select: none;
+	        user-select: none;
+	-webkit-tap-highlight-color: transparent;
+	display: block;
+	width: 50px;
+	height: 50px;
+}
+
+.no-js .ccur {
+	cursor: zoom-in;
+}
+
+.ccur .ccur__inside {
+	position: relative;
+	width: 100%;
+	height: 100%;
+	margin: -25px 0 0 -25px;
+	-ms-transform: rotate(-0.25turn);
+	    transform: rotate(-0.25turn);
+	background-color: rgba(240, 128, 128, 0.05);
+}
+
+.ccur .ccur__inside::before, .ccur .ccur__inside::after {
+	content: "";
+	display: block;
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	width: 17px;
+	height: 3px;
+	margin: -1px 0 0 -8px;
+	background-color: currentColor;
+	z-index: 1;
+	opacity: 0;
+	transition-property: transform, opacity;
+	transition-duration: 0.5s;
+	transition-timing-function: cubic-bezier(0.65, 0.05, 0.36, 1);
+}
+
+.ccur .ccur__inside svg {
+	display: block;
+	width: 100%;
+	height: 100%;
+	-ms-transform: rotate(-0.2turn);
+	    transform: rotate(-0.2turn);
+	opacity: 0;
+	transition-property: transform, opacity;
+	transition-duration: 0.5s;
+	transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.ccur .ccur__inside circle {
+	fill: rgba(135, 206, 250, 0);
+	stroke: currentColor;
+	stroke-width: 3px;
+	stroke-dasharray: 138px;
+	stroke-dashoffset: 138px;
+	transition-property: stroke-dashoffset;
+	transition-duration: 0.5s;
+	transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.ccur.active .ccur__inside::before {
+	opacity: 1;
+	-ms-transform: rotate(1turn);
+	    transform: rotate(1turn);
+}
+
+.ccur.active .ccur__inside::after {
+	opacity: 1;
+	-ms-transform: rotate(1.25turn);
+	    transform: rotate(1.25turn);
+}
+
+.ccur.active .ccur__inside svg {
+	opacity: 1;
+	-ms-transform: rotate(0);
+	    transform: rotate(0);
+}
+
+.ccur.active .ccur__inside circle {
+	stroke-dashoffset: 0;
+}
+
+.zoom-on .ccur.active .ccur__inside::before {
+	-ms-transform: rotate(1.75turn);
+	    transform: rotate(1.75turn);
+}
+
+/* custom zoom in-out cursor end */
 /* product card end */
 /* view switcher */
 .view-switcher {

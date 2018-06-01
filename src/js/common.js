@@ -4632,54 +4632,57 @@ function stickyInit() {
 /**
  * !Custom cursor
  * */
-function initCustomCursor() {
-	$(function () {
-		// var mouseX = 0, mouseY = 0, limitX = 150 - 10, limitY = 150 - 10;
-		var mouseX = 0, mouseY = 0, limitX = 1000, limitY = 1000;
-		var cursor = $("#ccur");
-		var $wrap = $('.p-card__gallery');
-		// Определяет границы, по которым будет двигаться объект
-		$(window).mousemove(function (e) {
-			var offset = $wrap.offset();
-			limitX = $wrap.outerWidth();
-			limitY = $wrap.outerHeight();
-			mouseX = Math.min(e.pageX - offset.left, limitX);
-			mouseY = Math.min(e.pageY - offset.top, limitY);
-			// Ищет координаты курсора
-			if (mouseX < 0) mouseX = 0;
-			// С какого момента (координат) начинать движение за курсором
-			if (mouseY < 0) mouseY = 0;
-			// Если курсор находится вне веб-страницы на момент загрузки, то установит объект в координатах x=0, y=0.
+$(function () {
+	// var mouseX = 0, mouseY = 0, limitX = 150 - 10, limitY = 150 - 10;
+	var mouseX = 0, mouseY = 0, limitX = 1000, limitY = 1000;
+	var cursor = $("#ccur");
+	var $wrap = $('.p-card__gallery');
+	// Определяет границы, по которым будет двигаться объект
+	$(window).on('mousemove', function (e) {
+		var offset = $wrap.offset();
+		limitX = $wrap.outerWidth();
+		limitY = $wrap.outerHeight();
+		console.log("e: ", e);
+		mouseX = Math.min(e.pageX - offset.left, limitX);
+		mouseY = Math.min(e.pageY - offset.top, limitY);
+		// Ищет координаты курсора
+		if (mouseX < 0) mouseX = 0;
+		// С какого момента (координат) начинать движение за курсором
+		if (mouseY < 0) mouseY = 0;
+		// Если курсор находится вне веб-страницы на момент загрузки, то установит объект в координатах x=0, y=0.
 
-			// var cond = $(e.target).closest($wrap).length;
-			// console.log("cont: ", cond);
-			// follower.css({left: mouseX, top: mouseY});
-			cursor.css({'transform': 'translate(' + mouseX + 'px, ' + mouseY + 'px)'});
-		});
-
-		$($wrap).on({
-			'mouseenter': function f() {
-				cursor.addClass('active');
-			},
-			'mouseleave': function f() {
-				cursor.removeClass('active');
-			}
-		})
-
-		// var xp = 0, yp = 0; // Начальные координаты объекта на момент загрузки страницы
-		// var loop = setInterval(function () {
-		// 	// Далее определяется скорость, с которой будет двигаться объект.
-		// 	// Изменить значение 20, для изменения скорости. Чем больше это значение, тем медленнее движется объект.
-		//
-		// 	xp += (mouseX - xp) / 20;
-		// 	yp += (mouseY - yp) / 20;
-		// 	follower.css({left: xp, top: yp});
-		// 	// Изменение позиционирования объекта с помощью css
-		//
-		// }, 10);
-		//В данном случае это значение определяет, насколько плавно и быстро будет происходить движение
+		// var cond = $(e.target).closest($wrap).length;
+		// console.log("cont: ", cond);
+		// follower.css({left: mouseX, top: mouseY});
+		cursor.css({'transform': 'translate(' + mouseX + 'px, ' + mouseY + 'px)'});
 	});
-}
+
+	$(window).on('scroll', function () {
+		$(window).trigger('mousemove');
+	});
+
+	$('.p-card__gallery__item').on({
+		'mouseenter': function() {
+			cursor.addClass('active');
+		},
+		'mouseleave': function() {
+			cursor.removeClass('active');
+		}
+	})
+
+	// var xp = 0, yp = 0; // Начальные координаты объекта на момент загрузки страницы
+	// var loop = setInterval(function () {
+	// 	// Далее определяется скорость, с которой будет двигаться объект.
+	// 	// Изменить значение 20, для изменения скорости. Чем больше это значение, тем медленнее движется объект.
+	//
+	// 	xp += (mouseX - xp) / 20;
+	// 	yp += (mouseY - yp) / 20;
+	// 	follower.css({left: xp, top: yp});
+	// 	// Изменение позиционирования объекта с помощью css
+	//
+	// }, 10);
+	//В данном случае это значение определяет, насколько плавно и быстро будет происходить движение
+});
 
 /**
  * !Always place the footer at the bottom of the page
@@ -4814,7 +4817,6 @@ $(document).ready(function () {
 	shopsLocation();
 
 	stickyInit();
-	initCustomCursor();
 	/*! for testing validate forms */
 	/*! formSuccessExample(); */
 
