@@ -47,14 +47,14 @@ gulp.task('htmlCompilation', function () { // Таск формирования 
 });
 
 /// Таск для переноса normalize.css и его минификации
-gulp.task('compressNormalizeCss', function () {
+gulp.task('normalize', function () {
 	return gulp.src('src/libs/normalize-scss/sass/**/*.+(scss|sass)')
 		.pipe(stripCssComments())
 		// .pipe(removeEmptyLines())
-		.pipe(gulp.dest('src/sass/normalize/'));
+		.pipe(gulp.dest('src/_temp/'));
 });
 
-gulp.task('sassCompilation', ['compressNormalizeCss'], function () { // Создаем таск для компиляции sass файлов
+gulp.task('sassCompilation', ['normalize'], function () { // Создаем таск для компиляции sass файлов
 	return gulp.src('src/sass/**/*.+(scss|sass)') // Берем источник
 		.pipe(sourcemaps.init())
 		.pipe(sass({
@@ -195,7 +195,7 @@ gulp.task('copyImgToDist', function () {
 		.pipe(gulp.dest('dist/img')); // Выгружаем на продакшен
 });
 
-gulp.task('build', ['cleanDistFolder', 'htmlCompilation', 'copyImgToDist', 'sassCompilation', 'mergeCssLibs', 'createCustomModernizr', 'copyLibsScriptsToJs'], function () {
+gulp.task('buildDist', ['cleanDist', 'htmlCompilation', 'copyImgToDist', 'sassCompilation', 'mergeCssLibs', 'createCustomModernizr', 'copyLibsScriptsToJs'], function () {
 
 	gulp.src(['src/ajax/**/*'])
 		.pipe(gulp.dest('dist/ajax'));
@@ -238,7 +238,7 @@ gulp.task('build', ['cleanDistFolder', 'htmlCompilation', 'copyImgToDist', 'sass
 
 });
 
-gulp.task('cleanDistFolder', function () {
+gulp.task('cleanDist', function () {
 	return del.sync(['dist/']); // Удаляем папку dist
 });
 

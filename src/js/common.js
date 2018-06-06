@@ -1924,9 +1924,10 @@ function menuSwitcher() {
  * ! Card gallery
  * */
 function cardGallery() {
-	var $container = $('.p-card-js');
-	var activeClass = 'zoom-on';
-	var timeout;
+	var $html = $('html'),
+		$container = $('.p-card-js'),
+		activeClass = 'zoom-on',
+		timeout;
 
 	$container.on('click', '.p-card__gallery__item', function (e) {
 		if (window.innerWidth < prodCardMediaWidth) {return;}
@@ -1936,6 +1937,7 @@ function cardGallery() {
 			$thisContainer = $this.closest($container);
 
 		$thisContainer.toggleClass(activeClass);
+		$html.toggleClass(activeClass);
 
 		$container.trigger('change.cardGallery');
 
@@ -1949,6 +1951,7 @@ function cardGallery() {
 	$(document).keyup(function(e) {
 		if ($container.hasClass(activeClass) && e.keyCode === 27) {
 			$container.removeClass(activeClass);
+			$html.removeClass(activeClass);
 
 			$container.trigger('change.cardGallery');
 		}
@@ -4633,40 +4636,51 @@ function stickyInit() {
  * !Custom cursor
  * */
 $(function () {
-	// var mouseX = 0, mouseY = 0, limitX = 150 - 10, limitY = 150 - 10;
-	var mouseX = 0, mouseY = 0, limitX = 1000, limitY = 1000;
-	var cursor = $("#ccur");
-	var $wrap = $('.p-card__gallery');
+	var $cursor = $('#ccur');
+
+	if(!$cursor.length) {
+		return false;
+	}
+
+	var mouseX = 0, mouseY = 0;
+	// var limitX = 1000, limitY = 1000;
+	var $html = $('html'),
+		$wrap = $('.p-card__gallery');
+
 	// Определяет границы, по которым будет двигаться объект
 	$(window).on('mousemove', function (e) {
-		var offset = $wrap.offset();
-		limitX = $wrap.outerWidth();
-		limitY = $wrap.outerHeight();
-		console.log("e: ", e);
-		mouseX = Math.min(e.pageX - offset.left, limitX);
-		mouseY = Math.min(e.pageY - offset.top, limitY);
+		var scrollTop = $(window).scrollTop(),
+			offset = $wrap.offset();
+
+		// limitX = $wrap.outerWidth() + offset.left;
+		// limitY = $wrap.outerHeight();
+
+		// mouseX = Math.min(e.pageX, limitX);
+		// mouseY = Math.min(e.pageY - scrollTop - offset.top, limitY);
+
+		mouseX = e.pageX;
+		mouseY = e.pageY - scrollTop - offset.top;
 		// Ищет координаты курсора
 		if (mouseX < 0) mouseX = 0;
 		// С какого момента (координат) начинать движение за курсором
 		if (mouseY < 0) mouseY = 0;
 		// Если курсор находится вне веб-страницы на момент загрузки, то установит объект в координатах x=0, y=0.
 
-		// var cond = $(e.target).closest($wrap).length;
-		// console.log("cont: ", cond);
-		// follower.css({left: mouseX, top: mouseY});
-		cursor.css({'transform': 'translate(' + mouseX + 'px, ' + mouseY + 'px)'});
+		$cursor.css({'transform': 'translate(' + mouseX + 'px, ' + mouseY + 'px)'});
 	});
 
-	$(window).on('scroll', function () {
-		$(window).trigger('mousemove');
-	});
+	// $(window).on('load', function () {
+	// 	$(window).trigger('mousemove');
+	// });
 
 	$('.p-card__gallery__item').on({
-		'mouseenter': function() {
-			cursor.addClass('active');
+		'mouseenter mouseover': function() {
+			$cursor.addClass('active');
+			$html.addClass('activated-ccur');
 		},
-		'mouseleave': function() {
-			cursor.removeClass('active');
+		'mouseleave mouseout': function() {
+			$cursor.removeClass('active');
+			$html.removeClass('activated-ccur');
 		}
 	})
 

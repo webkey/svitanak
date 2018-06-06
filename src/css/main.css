@@ -15652,14 +15652,10 @@ a.btn-to-basket {
 
 @media (min-width: 992px) {
 	.p-card__gallery__item {
-		cursor: none;
-		-webkit-user-select: none;
-		   -moz-user-select: none;
-		    -ms-user-select: none;
-		        user-select: none;
-	}
-	.no-js .p-card__gallery__item {
 		cursor: zoom-in;
+	}
+	.activated-ccur .p-card__gallery__item {
+		cursor: none;
 	}
 }
 
@@ -15673,9 +15669,6 @@ a.btn-to-basket {
 		margin-right: -45%;
 	}
 	.zoom-on .p-card__gallery__item {
-		cursor: none;
-	}
-	.no-js .zoom-on .p-card__gallery__item {
 		cursor: zoom-out;
 	}
 	.zoom-on .p-card__gallery__inner {
@@ -15685,15 +15678,17 @@ a.btn-to-basket {
 		margin-right: -200px;
 		margin-left: 200px;
 	}
+	.zoom-on.activated-ccur .p-card__gallery__item {
+		cursor: none;
+	}
 }
 
 /* custom zoom in-out cursor */
 .ccur {
-	position: absolute;
+	position: fixed;
 	left: 0;
 	top: 0;
-	z-index: 99;
-	cursor: none;
+	z-index: 9999;
 	pointer-events: none;
 	-webkit-user-select: none;
 	   -moz-user-select: none;
@@ -15732,7 +15727,7 @@ a.btn-to-basket {
 	z-index: 1;
 	opacity: 0;
 	transition-property: transform, opacity;
-	transition-duration: 0.5s;
+	transition-duration: 0s;
 	transition-timing-function: cubic-bezier(0.65, 0.05, 0.36, 1);
 }
 
@@ -15744,7 +15739,7 @@ a.btn-to-basket {
 	    transform: rotate(-0.2turn);
 	opacity: 0;
 	transition-property: transform, opacity;
-	transition-duration: 0.5s;
+	transition-duration: 0s;
 	transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
@@ -15755,8 +15750,16 @@ a.btn-to-basket {
 	stroke-dasharray: 138px;
 	stroke-dashoffset: 138px;
 	transition-property: stroke-dashoffset;
-	transition-duration: 0.5s;
+	transition-duration: 0s;
 	transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.ccur.active {
+	display: block;
+}
+
+.ccur.active .ccur__inside::before, .ccur.active .ccur__inside::after {
+	transition-duration: 0.5s;
 }
 
 .ccur.active .ccur__inside::before {
@@ -15775,10 +15778,12 @@ a.btn-to-basket {
 	opacity: 1;
 	-ms-transform: rotate(0);
 	    transform: rotate(0);
+	transition-duration: 0.5s;
 }
 
 .ccur.active .ccur__inside circle {
 	stroke-dashoffset: 0;
+	transition-duration: 0.5s;
 }
 
 .zoom-on .ccur.active .ccur__inside::before {

@@ -1406,11 +1406,11 @@ $dt-width--p-card: 184px
 .p-card__gallery__item
 	+media('>=tab-lg')
 		//cursor: url(../../img/cursor-zoom-in.cur), zoom-in
-		cursor: none
-		user-select: none
+		cursor: zoom-in
+		//user-select: none
 
-		.no-js &
-			cursor: zoom-in
+		.activated-ccur &
+			cursor: none
 
 .zoom-on
 	+media('>=tab-lg')
@@ -1425,11 +1425,8 @@ $dt-width--p-card: 184px
 
 		.p-card__gallery__item
 			//cursor: url(../../img/cursor-zoom-out.cur), zoom-out
-			cursor: none
+			cursor: zoom-out
 			//height: 100vh
-
-			.no-js &
-				cursor: zoom-out
 
 		.p-card__gallery__inner
 			background-size: auto 100%
@@ -1437,6 +1434,9 @@ $dt-width--p-card: 184px
 		.p-card__content__frame
 			margin-right: -200px
 			margin-left: 200px
+
+		&.activated-ccur .p-card__gallery__item
+			cursor: none
 
 // для сжатия по высоте / плохо анимируется
 	//.p-card__gallery__inner
@@ -1446,11 +1446,12 @@ $dt-width--p-card: 184px
 .ccur
 	$size: 50px
 	$dur: 0.5s
-	position: absolute
+	//position: absolute
+	position: fixed
 	left: 0
 	top: 0
-	z-index: 99
-	cursor: none
+	z-index: 9999
+	//cursor: none
 	pointer-events: none
 	user-select: none
 	-webkit-tap-highlight-color: transparent
@@ -1482,7 +1483,7 @@ $dt-width--p-card: 184px
 			opacity: 0
 			transition:
 				property: transform, opacity
-				duration: $dur
+				duration: 0s
 				timing-function: cubic-bezier(0.65, 0.05, 0.36, 1)
 
 		svg
@@ -1492,7 +1493,7 @@ $dt-width--p-card: 184px
 			opacity: 0
 			transition:
 				property: transform, opacity
-				duration: $dur
+				duration: 0s
 				timing-function: cubic-bezier(0.4, 0, 0.2, 1)
 
 		circle
@@ -1503,11 +1504,17 @@ $dt-width--p-card: 184px
 			stroke-dashoffset: 138px
 			transition:
 				property: stroke-dashoffset
-				duration: $dur
+				duration: 0s
 				timing-function: cubic-bezier(0.4, 0, 0.2, 1)
 
 	&.active
+		display: block
+
 		.ccur__inside
+			&::before, &::after
+				transition:
+					duration: $dur
+
 			&::before
 				opacity: 1
 				transform: rotate(1.00turn)
@@ -1519,9 +1526,13 @@ $dt-width--p-card: 184px
 			svg
 				opacity: 1
 				transform: rotate(0)
+				transition:
+					duration: $dur
 
 			circle
 				stroke-dashoffset: 0
+				transition:
+					duration: $dur
 
 	.zoom-on &.active
 		.ccur__inside
