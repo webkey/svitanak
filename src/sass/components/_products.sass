@@ -1452,6 +1452,7 @@ $dt-width--p-card: 184px
 	top: 0
 	z-index: 9999
 	//cursor: none
+	will-change: transform
 	pointer-events: none
 	user-select: none
 	-webkit-tap-highlight-color: transparent
@@ -1467,7 +1468,8 @@ $dt-width--p-card: 184px
 		+size(100%)
 		margin: -#{round($size/2)} 0 0 -#{round($size/2)}
 		transform: rotate(-0.25turn)
-		background-color: rgba(lightcoral, 0.05)
+		//background-color: rgba(lightcoral, 0.05)
+		will-change: transform
 
 		&::before, &::after
 			content: ""
@@ -1475,9 +1477,9 @@ $dt-width--p-card: 184px
 			position: absolute
 			left: 50%
 			top: 50%
-			width: 17px
-			height: 3px
-			margin: -1px 0 0 -8px
+			width: 18px
+			height: 2px
+			margin: -1px 0 0 -9px
 			background-color: currentColor
 			z-index: 1
 			opacity: 0
@@ -1499,7 +1501,7 @@ $dt-width--p-card: 184px
 		circle
 			fill: rgba(lightskyblue, 0.0)
 			stroke: currentColor
-			stroke-width: 3px
+			stroke-width: 2px
 			stroke-dasharray: 138px
 			stroke-dashoffset: 138px
 			transition:

@@ -15689,6 +15689,7 @@ a.btn-to-basket {
 	left: 0;
 	top: 0;
 	z-index: 9999;
+	will-change: transform;
 	pointer-events: none;
 	-webkit-user-select: none;
 	   -moz-user-select: none;
@@ -15711,7 +15712,7 @@ a.btn-to-basket {
 	margin: -25px 0 0 -25px;
 	-ms-transform: rotate(-0.25turn);
 	    transform: rotate(-0.25turn);
-	background-color: rgba(240, 128, 128, 0.05);
+	will-change: transform;
 }
 
 .ccur .ccur__inside::before, .ccur .ccur__inside::after {
@@ -15720,9 +15721,9 @@ a.btn-to-basket {
 	position: absolute;
 	left: 50%;
 	top: 50%;
-	width: 17px;
-	height: 3px;
-	margin: -1px 0 0 -8px;
+	width: 18px;
+	height: 2px;
+	margin: -1px 0 0 -9px;
 	background-color: currentColor;
 	z-index: 1;
 	opacity: 0;
@@ -15746,7 +15747,7 @@ a.btn-to-basket {
 .ccur .ccur__inside circle {
 	fill: rgba(135, 206, 250, 0);
 	stroke: currentColor;
-	stroke-width: 3px;
+	stroke-width: 2px;
 	stroke-dasharray: 138px;
 	stroke-dashoffset: 138px;
 	transition-property: stroke-dashoffset;
