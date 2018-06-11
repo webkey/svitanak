@@ -17,7 +17,8 @@
 		margin-bottom: 0
 
 input.search-form__input
-	padding: 0 #{$search-form-popup-btn-size+12} 0 0
+	//padding: 0 #{$search-form-popup-btn-size+12} 0 0
+	padding: 0
 	height: 72px
 	+font-alt-bold
 	+font(72px, 72px)
@@ -34,7 +35,7 @@ input.search-form__input
 	+media('<mob-lg')
 		height: 22px
 		+font(22px, 22px)
-		padding-right: #{$search-form-popup-btn-size--sm+12}
+		//padding-right: #{$search-form-popup-btn-size--sm+12}
 
 	&, &:hover, &:focus, &.error, &.input--has-value
 		box-shadow: none
@@ -52,6 +53,7 @@ input.search-form__input
 
 // кнопка поиска
 .search-form__btn
+	display: none
 	position: absolute
 	right: 0
 	top: 50%
