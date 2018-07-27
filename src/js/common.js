@@ -4521,7 +4521,7 @@ function shopsLocation() {
  */
 function stickyInit() {
 	var $mAside = $('.m-aside');
-	if ($mAside.length) {
+	if ($mAside.length && window.innerWidth > 991) {
 
 		var mAsideSticky = new StickySidebar('.m-aside', {
 			containerSelector: '.m-container',

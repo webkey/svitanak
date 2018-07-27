@@ -29,6 +29,10 @@ var gulp = require('gulp'), // Подключаем Gulp
 	beautify = require('gulp-beautify') // Причесать js
 	;
 
+var path = {
+	'dist': '1'
+};
+
 gulp.task('htmlCompilation', function () { // Таск формирования ДОМ страниц
 	return gulp.src(['src/__*.html'])
 		.pipe(fileinclude({
@@ -192,26 +196,26 @@ gulp.task('copyImgToDist', function () {
 			optimizationLevel: 7, //степень сжатия от 0 до 7
 			use: [pngquant()]
 		})))
-		.pipe(gulp.dest('dist/img')); // Выгружаем на продакшен
+		.pipe(gulp.dest(path.dist + '/img')); // Выгружаем на продакшен
 });
 
 gulp.task('buildDist', ['cleanDist', 'htmlCompilation', 'copyImgToDist', 'sassCompilation', 'mergeCssLibs', 'createCustomModernizr', 'copyLibsScriptsToJs'], function () {
 
 	gulp.src(['src/ajax/**/*'])
-		.pipe(gulp.dest('dist/ajax'));
+		.pipe(gulp.dest(path.dist + '/ajax'));
 
 	gulp.src(['src/video/**/*'])
-		.pipe(gulp.dest('dist/video'));
+		.pipe(gulp.dest(path.dist + '/video'));
 
 	gulp.src('src/css/*.css')
 		.pipe(removeEmptyLines())
-		.pipe(gulp.dest('dist/css'));
+		.pipe(gulp.dest(path.dist + '/css'));
 
 	gulp.src('src/fonts/**/*') // Переносим шрифты в продакшен
-		.pipe(gulp.dest('dist/fonts'));
+		.pipe(gulp.dest(path.dist + '/fonts'));
 
 	gulp.src('src/assets/**/*') // Переносим дополнительные файлы в продакшен
-		.pipe(gulp.dest('dist/assets'));
+		.pipe(gulp.dest(path.dist + '/assets'));
 
 	gulp.src('src/js/common.js')
 		.pipe(strip({
@@ -224,22 +228,22 @@ gulp.task('buildDist', ['cleanDist', 'htmlCompilation', 'copyImgToDist', 'sassCo
 			"space_after_anon_function": true,
 			"max_preserve_newlines": 2
 		}))
-		.pipe(gulp.dest('dist/js'));
+		.pipe(gulp.dest(path.dist + '/js'));
 
 	gulp.src(['!src/js/temp/**/*.js', '!src/js/**/temp-*.js', '!src/js/common.js', 'src/js/*.js']) // Переносим скрипты в продакшен
-		.pipe(gulp.dest('dist/js'));
+		.pipe(gulp.dest(path.dist + '/js'));
 
 	gulp.src(['!src/__*.html', '!src/temp*.html', '!src/_tpl_*.html', 'src/*.html']) // Переносим HTML в продакшен
 		.pipe(revts()) // Добавить версии подключаемых файлов
-		.pipe(gulp.dest('dist'));
+		.pipe(gulp.dest(path.dist));
 
 	gulp.src(['src/*.png', 'src/*.ico', 'src/.htaccess']) // Переносим favicon и др. файлы в продакшин
-		.pipe(gulp.dest('dist'));
+		.pipe(gulp.dest(path.dist));
 
 });
 
 gulp.task('cleanDist', function () {
-	return del.sync(['dist/']); // Удаляем папку dist
+	return del.sync([path.dist + '/']); // Удаляем папку dist
 });
 
 gulp.task('clearCache', function () { // Создаем такс для очистки кэша
