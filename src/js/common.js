@@ -564,9 +564,11 @@ function slidersInit() {
 
 			new Swiper($thisSlider, {
 				// Optional parameters
-				loop: false,
+				loop: true,
 				// Keyboard
 				keyboardControl: true,
+				// Autoplay
+				autoplay: 3000,
 
 				// Navigation arrows
 				nextButton: $thisBtnNext,
