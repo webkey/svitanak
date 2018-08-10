@@ -12709,11 +12709,12 @@ a.bag__inner:hover .bag__title {
 .shops-view-switcher a {
 	margin-right: 15px;
 	margin-left: 15px;
+	border-bottom-color: transparent;
 }
 
 .shops-view-switcher a.active-tab {
 	color: #ff6501;
-	border-color: transparent;
+	border-color: currentColor;
 	cursor: default;
 }
 
