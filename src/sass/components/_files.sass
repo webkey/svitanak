@@ -4,12 +4,13 @@
 
 /* files links
 .file
-	$file-icon-size: 42px
+	$file-icon-size: 30px
 	+display-inline-block-top
+	position: relative
 	min-height: $file-icon-size
-	//padding: 0.5em
-	+font(16px, 20px)
-	color: $text-color
+	padding-left: #{$file-icon-size}
+	+font($font-size, $line-height)
+	color: $link-color
 	text-decoration: none
 
 	@if $animation-use
@@ -20,11 +21,13 @@
 	+clear
 
 	svg
-		float: left
+		position: absolute
+		left: 0
+		top: 0
 		+size($file-icon-size)
 
 	path
-		fill: $text-color
+		fill: currentColor
 
 		@if $animation-use
 			transition:
@@ -34,7 +37,6 @@
 	& > span, & > em
 		+font-normal
 		display: block
-		margin-left: #{$file-icon-size}
 		padding-left: 1em
 
 		@if $animation-use
@@ -42,17 +44,18 @@
 				property: color
 				duration: $animation-speed
 
+	& > span
+		text-decoration: underline
+
 	& > em
 		display: block
-		font-size: 1.4rem
+		font-size: 0.8em
+		+font-italic
 		color: $text-color-light
 
 	.no-touchevents &:hover
 
 		& > span
-			color: $base-color
-
-		path
-			fill: $base-color
+			text-decoration: none
 
 /* files links end

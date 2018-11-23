@@ -221,6 +221,18 @@ $ml-item-space: 30px 30px //v h
 	max-height: calc(100vh - #{$header-height})
 	padding: $ml-drop-space-vertical $layout-spaces #{$ml-drop-space-vertical - (nth($ml-item-space, 1))}
 	background-color: #fff
+	transform: scale(1, 0.92) translateZ(0)
+	transform-origin: center top
+	// transition
+	$prop: transform
+	will-change: $prop
+	transition:
+		property: $prop
+		duration: $animation-speed
+		timing-function: ease-in-out
+
+	li.hover > .menu-list__drop > &
+		transform: scale(1) translateZ(0)
 
 	+media('<desk-hd')
 		+padding-horizontal($layout-spaces--hd)

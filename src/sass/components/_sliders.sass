@@ -6,6 +6,7 @@
 /* images slider
 .images-slider
 	position: relative
+	border: 1px solid $border-color
 
 .images-slider__list, .slick-dotted.images-slider__list
 	padding-bottom: 0
@@ -19,7 +20,7 @@
 	float: none
 	+display-inline-block-top
 	white-space: normal
-	background: #494949
+	//background: #494949
 	opacity: 0
 
 	.slick-initialized &
@@ -32,13 +33,13 @@
 		width: 100%
 		opacity: 1
 
-	&::before
+	//&::before
 		content: ''
 		display: block
 		height: 0
 		padding-top: 62.5%
 
-	img
+	//img
 		position: absolute
 		+position(0)
 		text-align: center
@@ -46,6 +47,9 @@
 		width: 100%
 		height: 100%
 		+object-fit(contain)
+
+	img
+		margin: 0 auto
 
 .images-slider
 

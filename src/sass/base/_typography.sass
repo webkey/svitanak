@@ -266,32 +266,28 @@ i b, i strong, em b, em strong, b i, b em, strong i, strong em
 	justify-content: space-between
 	//align-items: flex-start
 	align-items: center
-	flex-wrap: wrap
+	//flex-wrap: wrap
 	line-height: 1
+	//max-width: $flood-layout-width
+	margin: 0 auto 2rem
 
-	margin-bottom: round($bottom-space--lg/2)
-
-	+media('<desk-lg')
-		margin-bottom: round($bottom-space--ml/2)
-
-	+media('<mob-lg')
-		margin-bottom: round($bottom-space--sm/2)
+	+media('<tab-lg')
+		display: block
+		margin-bottom: 4rem
 
 	h1, h2, h3
 		position: relative
 		+display-inline-block-middle
 		padding-right: 50px
-		margin-bottom: round($bottom-space--lg/2)
-		max-width: 80%
-
-		+media('<desk-lg')
-			margin-bottom: round($bottom-space--ml/2)
+		margin-bottom: 2rem
+		//max-width: 80%
 
 		+media('<tab-lg')
-			padding-right: $grid-space
+			padding-right: 0
+			text-align: center
 
 		+media('<mob-lg')
-			margin-bottom: round($bottom-space--sm/2)
+			margin-bottom: 1rem
 
 		&:last-child
 			margin-right: 0
@@ -309,12 +305,13 @@ i b, i strong, em b, em strong, b i, b em, strong i, strong em
 
 .heading__options
 	+display-inline-block-top
-	margin-bottom: round($bottom-space--lg/2)
-	//padding: 7px 0 0
+	margin-bottom: 2rem
+	flex-shrink: 0
 
-	+media('<desk-lg')
-		margin-bottom: round($bottom-space--ml/2)
-		//padding-top: 5px
+	+media('<tab-lg')
+		display: block
+		text-align: center
+		margin-bottom: 1rem
 
 .heading__options__item
 	display: inline-block

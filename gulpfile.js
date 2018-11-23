@@ -192,7 +192,7 @@ gulp.task('copyImgToDist', function () {
 		.pipe(cache(imagemin({ // Сжимаем их с наилучшими настройками с учетом кеширования
 			interlaced: true,
 			progressive: true,
-			svgoPlugins: [{removeViewBox: false}],
+			// svgoPlugins: [{removeViewBox: false}],
 			optimizationLevel: 7, //степень сжатия от 0 до 7
 			use: [pngquant()]
 		})))
