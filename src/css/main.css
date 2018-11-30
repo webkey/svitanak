@@ -1832,6 +1832,12 @@ i b, i strong, em b, em strong, b i, b em, strong i, strong em {
 	}
 }
 
+@media (min-width: 1200px) {
+	.hide-min-1200 {
+		display: none !important;
+	}
+}
+
 @media (max-width: 639px) {
 	[data-short] {
 		display: inline-block;
