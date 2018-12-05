@@ -568,7 +568,7 @@ function slidersInit() {
 				// Keyboard
 				keyboardControl: true,
 				// Autoplay
-				autoplay: 3000,
+				// autoplay: 3000,
 
 				// Navigation arrows
 				nextButton: $thisBtnNext,

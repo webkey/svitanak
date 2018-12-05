@@ -5,15 +5,13 @@
 /* article style
 .article-entry
 	position: relative
-	margin-bottom: $bottom-space--lg
-
-	+media('<desk-lg')
-		margin-bottom: $bottom-space--ml
+	margin-bottom: 2rem
+	+clear
 
 	&:last-child
 		margin-bottom: 0
 
-	&::before
+	//&::before
 		+pseudo()
 		+position(1em, 0)
 		+size(100px, 0)
@@ -25,6 +23,24 @@
 	p, ul, li
 		&:last-child
 			margin-bottom: 0
+
+	p
+		overflow: hidden
+
+	h1, .h1
+		width: $aside-width
+		float: left
+		margin-bottom: 0
+		padding-right: 20px
+
+		+media('<desk-md')
+			width: $aside-width--sm
+
+		+media('<tab-lg')
+			width: auto
+			float: none
+			margin-bottom: 0.25em
+			padding-right: 0
 
 .article-entry__holder
 	position: relative
@@ -43,6 +59,13 @@
 
 .text-slide__button
 	line-height: 1
+	margin-left: $aside-width
+
+	+media('<desk-md')
+		margin-left: $aside-width--sm
+
+	+media('<tab-lg')
+		margin-left: 0
 
 	a
 		display: inline-block

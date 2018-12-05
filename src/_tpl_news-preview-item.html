@@ -5,11 +5,11 @@
 <div class="news-preview__inner@@if(!context.img){ no-image}">
 }
 	<time class="news-preview__date" datetime="@@datetime">@@date</time>
+	@@if(context.img){
 	<div class="news-preview__img">
-		@@if(context.img){
 		<img src="img/@@img" alt="@@title" />
-		}
 	</div>
+	}
 	<div class="news-preview__content">
 		<div class="news-preview__text">@@text</div>
 	</div>

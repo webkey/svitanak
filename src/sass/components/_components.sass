@@ -398,6 +398,7 @@ $dep-img-size: 80px, 120px // width, height
 	padding-right: 20px
 	+font-alt-italic
 	+font(20px, 1)
+	pointer-events: none
 
 	+media('<mob-lg')
 		position: absolute
@@ -425,8 +426,11 @@ $dep-img-size: 80px, 120px // width, height
 			content: none
 
 .main-slider__item
+	display: block
 	position: relative
 	text-align: center
+	text-decoration: none
+	color: currentColor
 
 	&::before
 		$grad-color: black
@@ -481,6 +485,7 @@ $dep-img-size: 80px, 120px // width, height
 
 .main-slider__content
 	+display-inline-block-top
+	vertical-align: middle
 	width: 1200px
 	max-width: calc(100% - 10px)
 	text-align: left
@@ -489,7 +494,6 @@ $dep-img-size: 80px, 120px // width, height
 		width: 980px
 
 	+media('<desk-sm')
-		vertical-align: middle
 		width: 750px
 
 .main-slider__title
@@ -504,13 +508,14 @@ $dep-img-size: 80px, 120px // width, height
 	// ===============
 	display: block
 	overflow: hidden
-	margin-bottom: $bottom-space--lg
+	margin: 0 auto $bottom-space--lg
 	+font-alt-bold
 	+font($font-size, $line-height)
+	text-align: center
 	width: 700px
 	max-width: 100%
 	max-height: round($font-size*$line-height*5) // maximum 5 line
-	cursor: default
+	//cursor: default
 
 	+media('<desk-sm')
 		width: 600px
@@ -523,6 +528,7 @@ $dep-img-size: 80px, 120px // width, height
 		line-height: $line-height--sm
 		max-height: round($font-size--sm*$line-height--sm*5) // maximum 5 line
 		margin-bottom: 2rem
+		text-align: left
 
 	+media('<mob-md')
 		font-size: $font-size--mob
@@ -657,6 +663,14 @@ $dep-img-size: 80px, 120px // width, height
 					+media('<desk-sm')
 						height: calc((100vh - #{$header-height--lg})/2 + 1px)
 
+					+media('<mob-lg')
+						height: auto
+						min-height: 168px
+						width: calc(100% + 1px)
+
+					+media('<mob-md')
+						min-height: 138px
+
 					&:nth-child(-n+#{$i})
 						display: block
 
@@ -680,6 +694,14 @@ $dep-img-size: 80px, 120px // width, height
 
 					+media('<desk-sm')
 						height: calc((100vh - #{$header-height--lg})/2 + 1px)
+
+					+media('<mob-lg')
+						height: auto
+						min-height: 168px
+						width: calc(100% + 1px)
+
+					+media('<mob-md')
+						min-height: 138px
 
 					&:nth-child(-n+#{$i})
 						display: block
@@ -714,6 +736,14 @@ $dep-img-size: 80px, 120px // width, height
 							.m-catalog-img
 								right: nth($m-catalog__space, 2)
 
+						+media('<mob-lg')
+							height: auto
+							min-height: 168px
+							width: calc(100% + 1px)
+
+						+media('<mob-md')
+							min-height: 138px
+
 					.m-catalog-img
 						left: auto
 						right: nth($m-catalog__space, 2)
@@ -722,11 +752,28 @@ $dep-img-size: 80px, 120px // width, height
 						+media('<desk-sm')
 							right: -6%
 
+
+					+media('<mob-lg')
+						height: auto
+						min-height: 168px
+						width: calc(100% + 1px)
+
+					+media('<mob-md')
+						min-height: 138px
+
 		@if $i == 4
 			&[#{$data-length}="#{$i}"]
 				& > li
 					width: calc(100%/2 + 1px)
 					display: none
+
+					+media('<mob-lg')
+						height: auto
+						min-height: 168px
+						width: calc(100% + 1px)
+
+					+media('<mob-md')
+						min-height: 138px
 
 					&:nth-child(-n+#{$i})
 						display: block
@@ -769,6 +816,14 @@ $dep-img-size: 80px, 120px // width, height
 							+media('<desk-sm')
 								right: nth($m-catalog__space, 2)
 
+					+media('<mob-lg')
+						height: auto
+						min-height: 168px
+						width: calc(100% + 1px)
+
+					+media('<mob-md')
+						min-height: 138px
+
 					.m-catalog-img
 						left: auto
 						right: -6%
@@ -804,6 +859,14 @@ $dep-img-size: 80px, 120px // width, height
 							right: -6%
 							transform: none
 
+					+media('<mob-lg')
+						height: auto
+						min-height: 168px
+						width: calc(100% + 1px)
+
+					+media('<mob-md')
+						min-height: 138px
+
 		@if $i == 7
 			&[#{$data-length}="#{$i}"]
 				& > li
@@ -835,6 +898,14 @@ $dep-img-size: 80px, 120px // width, height
 						.m-catalog-img
 							+media('<desk-sm')
 								right: nth($m-catalog__space, 2)
+
+					+media('<mob-lg')
+						height: auto
+						min-height: 168px
+						width: calc(100% + 1px)
+
+					+media('<mob-md')
+						min-height: 138px
 
 					.m-catalog-img
 						left: auto
@@ -1422,27 +1493,40 @@ $m-services-thumb-indent--sm: 40px
 .news-preview__content
 	display: block
 	position: relative
-	float: right
-	//width: 320px
-	padding: round($grid-space*0.68) #{$grid-space}
-	margin-top: -#{round(nth($news-preview-img-size, 2)/2)}
-	margin-left: #{round(nth($news-preview-img-size, 2)/2)}
+	margin-bottom: 2.6rem
 	background-color: $bg-color-base
 
 	+media('<mob-md')
-		float: none
 		margin: 0 0 2rem
 		padding: 0
 		background: none
 
-	.news-preview &
+	.news-preview__img ~ &
+		float: right
+		width: calc(100% - #{round(nth($news-preview-img-size, 2)/2)})
+		margin-top: -#{round(nth($news-preview-img-size, 2)/2)}
+		margin-left: #{round(nth($news-preview-img-size, 2)/2)}
+		margin-bottom: 0
+		padding: round($grid-space*0.68) #{$grid-space}
+
+		+media('<mob-md')
+			float: none
+			width: auto
+			margin-top: 0
+			margin-left: 0
+			padding: 0
+
+	.news-preview .news-preview__img ~ &
 		+media('<desk-ml')
+			width: calc(100% - #{round(nth($news-preview-img-size--sm, 2)/2)})
 			margin-top: -#{round(nth($news-preview-img-size--sm, 2)/2)}
 			margin-left: #{round(nth($news-preview-img-size--sm, 2)/2)}
+			margin-bottom: 0
 			padding: round($grid-space--md*0.68) #{$grid-space--md}
 
 		+media('<tab-sm')
 			float: none
+			width: auto
 			margin: 0 0 2rem
 			padding: 0
 			background: none
@@ -1457,11 +1541,14 @@ $m-services-thumb-indent--sm: 40px
 	position: relative
 	overflow: hidden
 	+font($this-font-size, $this-line-height)
-	height: round($this-font-size*$this-line-height*5) // maximum 5 line
 
-	+media('<mob-md')
-		height: auto
-		//max-height: round($this-font-size*$this-line-height*5) // maximum 5 line
+
+	.news-preview__img ~ .news-preview__content &
+		height: round($this-font-size*$this-line-height*5) // maximum 5 line
+
+		+media('<mob-md')
+			height: auto
+			//max-height: round($this-font-size*$this-line-height*5) // maximum 5 line
 
 	// только для списка новостей (не на главной в слайдере)
 	.news-preview &
@@ -1599,7 +1686,7 @@ $m-services-thumb-indent--sm: 40px
 		&::after
 			content: none
 
-	.news-preview__content
+	.news-preview__content, .news-preview__img ~ .news-preview__content
 		float: none
 		overflow: hidden
 		margin: -8px 0 // Костыль. Выравнять текст и картинку по горизонтали
@@ -1609,7 +1696,7 @@ $m-services-thumb-indent--sm: 40px
 		+media('<desk-ml')
 			margin: -6px 0 // Костыль. Выравнять текст и картинку по горизонтали
 
-	.news-preview__text
+	.news-preview__text, .news-preview__img ~ .news-preview__content .news-preview__text
 		height: auto
 		min-height: 0
 		max-height: none
@@ -1670,6 +1757,7 @@ $m-services-thumb-indent--sm: 40px
 	+media('<mob-lg')
 		display: block
 		//padding-right: 0
+		padding-right: 0
 		margin-bottom: 1rem
 
 	&::before, &::after
@@ -1713,8 +1801,9 @@ $m-services-thumb-indent--sm: 40px
 
 	+media('<mob-lg')
 		//padding-right: $previews-tab-space--sm
-		padding-right: 0
-		display: block
+		//padding-right: 0
+		//display: block
+		padding-right: 10px
 		margin-bottom: 0
 
 	&::after
@@ -1787,11 +1876,8 @@ $m-services-thumb-indent--sm: 40px
 
 /* box options
 .box-options
-	margin-bottom: $bottom-space--lg
+	margin-bottom: 2rem
 	+clear
-
-	+media('<desk-lg')
-		margin-bottom: 3rem
 
 	+media('<mob-lg')
 		display: none
@@ -3584,8 +3670,8 @@ a.bag__inner:hover
 
 	.p-filters-activated-js
 		position: absolute
-		left: 5px
-		top: 5px
+		left: -8px
+		top: -8px
 		font-size: 10px
 		line-height: 1
 		letter-spacing: normal
