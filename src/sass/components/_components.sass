@@ -485,20 +485,23 @@ $dep-img-size: 80px, 120px // width, height
 
 .main-slider__content
 	+display-inline-block-top
-	vertical-align: middle
-	width: 1200px
+	vertical-align: bottom
+	//width: 1200px
+	padding: 0 100px
 	max-width: calc(100% - 10px)
 	text-align: left
 
-	+media('<desk-hd')
+	//+media('<desk-hd')
 		width: 980px
 
-	+media('<desk-sm')
+	//+media('<desk-sm')
 		width: 750px
 
 .main-slider__title
-	$font-size: 72px
-	$font-size--hd: 60px
+	//$font-size: 72px
+	$font-size: 60px
+	//$font-size--hd: 60px
+	$font-size--hd: 52px
 	$font-size--lg: 48px
 	$font-size--md: 44px
 	$font-size--sm: 30px
@@ -512,18 +515,18 @@ $dep-img-size: 80px, 120px // width, height
 	+font-alt-bold
 	+font($font-size, $line-height)
 	text-align: center
-	width: 700px
+	//width: 700px
 	max-width: 100%
 	max-height: round($font-size*$line-height*5) // maximum 5 line
 	//cursor: default
 
 	+media('<desk-sm')
-		width: 600px
+		//width: 600px
 		font-size: $font-size--md
 		max-height: round($font-size--md*$line-height*5) // maximum 5 line
 
 	+media('<mob-lg')
-		width: auto
+		//width: auto
 		font-size: $font-size--sm
 		line-height: $line-height--sm
 		max-height: round($font-size--sm*$line-height--sm*5) // maximum 5 line

@@ -640,6 +640,7 @@ body
 
 /* home-page (layout)
 .main-section
+	height: 100vh
 	padding-top: $header-height
 
 	+media('<desk-lg')
@@ -719,16 +720,16 @@ body
 			right: #{$layout-spaces--mob}
 
 	.main-slider__item
-		padding: #{round($layout-spaces*0.9*2)} #{$layout-spaces}
+		padding: #{round($layout-spaces*0.9*2)} #{$layout-spaces} 38px
 
 		+media('<desk-hd')
-			padding: #{round($layout-spaces--hd*0.9*2)} #{$layout-spaces--hd}
+			padding: #{round($layout-spaces--hd*0.9*2)} #{$layout-spaces--hd} 38px
 
 		+media('<desk-lg')
-			padding: #{round($layout-spaces--lg*0.9*2.5)} #{$layout-spaces--lg}
+			padding: #{round($layout-spaces--lg*0.9*2.5)} #{$layout-spaces--lg} 38px
 
 		+media('<desk-sm')
-			padding: #{round($layout-spaces--sm*0.9*2.5)} #{$layout-spaces--sm}
+			padding: #{round($layout-spaces--sm*0.9*2.5)} #{$layout-spaces--sm} 30px
 
 		+media('<mob-lg')
 			padding: #{$layout-spaces--mob}

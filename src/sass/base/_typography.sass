@@ -25,10 +25,8 @@ h1, h2, h3, h4, h5, h6
 	padding: 0
 	+font-alt-bold
 	color: $title-color
-	margin: 0 0 $bottom-space--md
-
-	+media('<mob-lg')
-		margin-bottom: round-float($bottom-space*0.85, 1)
+	//margin: 0 0 $bottom-space--md
+	margin: 0 0 0.8em
 
 	&:last-child
 		margin-bottom: 0
@@ -42,15 +40,11 @@ h1, h2, h3, h4, h5, h6
 			text-decoration: underline
 
 h1
-	margin-bottom: $bottom-space--lg
 	+font($font-size-h1, $line-height-h1)
 	letter-spacing: 0.05em
 
 	+media('<desk-hd')
 		+font($font-size-h1--lg, $line-height-h1--lg)
-
-	+media('<desk-lg')
-		margin-bottom: $bottom-space--ml
 
 	+media('<desk-md')
 		+font($font-size-h1--md, $line-height-h1--md)
@@ -82,6 +76,16 @@ h5
 h6
 	+font($font-size-h6, $line-height-h6)
 	text-transform: uppercase
+
+.#{$user-content}
+	@each $tags in h2, h3, h4, h5
+		p + #{$tags},
+		ul + #{$tags},
+		ol + #{$tags},
+		hr + #{$tags},
+		table + #{$tags},
+		.table-auto + #{$tags}
+			margin-top: 1.4em
 
 p
 	padding: 0
@@ -681,13 +685,6 @@ body
 
 /* columnize end
 
-.#{$user-content}
-	@each $tags in h2, h3, h4, h5
-		p + #{$tags},
-		ul + #{$tags},
-		ol + #{$tags}
-			margin-top: round-float($bottom-space--lg, 1)
-
 /* list
 .#{$user-content}
 	//list
@@ -763,8 +760,14 @@ table
 		+font-normal
 		+font($font-size, round-float(20/16,2))
 		color: inherit
-		padding: 20px 30px
+		padding: 10px 20px
 		border-color: $border-color
+
+		+media('<tab-lg')
+			padding: 10px 15px
+
+		p:last-child
+			margin-bottom: 0
 
 	th, thead td
 		+font-bold
@@ -804,14 +807,15 @@ table
 			color: $text-color
 			background-color: $bg-color
 			border: 0 solid $border-color
+			border-width: 0 1px
 
-			&:first-child, &:first-child
+			//&:first-child, &:first-child
 				border-left-width: 0
 
-			&:last-child, &:last-child
+			//&:last-child, &:last-child
 				border-right-width: 0
 
-		tr:hover
+		//tr:hover
 			td, th
 				background-color: $bg-color-alt
 
@@ -829,14 +833,14 @@ table
 			background: $base-color
 			color: $bg-color-base
 
-		th, thead td
+		th, thead td, .theader
 			+font-bold
 			font-size: $font-size--sm
 			letter-spacing: 0.025em
 			text-align: left
 			text-transform: uppercase
 
-		th, thead td, tfoot td
+		th, thead td, tfoot td, .theader
 			background: $bg-color-alt
 			border-top-width: 0
 			border-bottom-width: 0
