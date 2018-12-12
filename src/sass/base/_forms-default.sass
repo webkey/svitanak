@@ -180,7 +180,7 @@ input[type="text"], input[type="password"], input[type="email"], input[type="sea
 		color: $form-text-color
 
 		//=== form minimal
-		&.form-minimal
+		&.form-minimal, .form-minimal &
 			+font(12px, 16px)
 			text-transform: uppercase
 			letter-spacing: 0.05em
@@ -661,6 +661,16 @@ input[type="radio"]
 			height: 40px
 			padding: 11px 6px
 
+.select2-container--default .select2-selection
+	padding-right: $select-arrow-width
+
+	.form-minimal &
+		height: 40px
+		padding: 11px 20px 11px 0
+		+font(12px, 16px)
+		text-transform: uppercase
+		letter-spacing: 0.05em
+
 .#{$user-content}, .select
 	select
 		&.form-light
@@ -725,6 +735,9 @@ input[type="radio"]
 			background-color: transparent
 			z-index: 2
 
+			.form-minimal &
+				display: none
+
 			b
 				border: none
 				+cover()
@@ -787,11 +800,10 @@ input[type="radio"]
 			border-color: $form-border-color
 			border-width: 1px
 			line-height: 24px
+			box-shadow: none
 
 			&:focus
 				border-color: $form-border-focus-color
-				//box-shadow: inset 0 0 0 1px $form-border-focus-color
-				box-shadow: none
 
 	.select2-results>.select2-results__options
 		max-height: 200px
@@ -804,9 +816,21 @@ input[type="radio"]
 		background-color: $text-color
 		color: $bg-color-base
 
+	// disabled
+	&.select2-container--disabled
+		.select2-selection--single
+			background: none
+
+		.select2-selection
+			box-shadow: inset 0 -2px 0 $disabled-color
+
+			.select2-selection__rendered
+				color: $disabled-color
+
 // dropdown
 .select2-dropdown
-	border: #{$form-border-width} solid #{$form-border-focus-color}
+	//border: #{$form-border-width} solid #{$form-border-focus-color}
+	border: 1px solid #{$form-border-focus-color}
 	border-radius: 0
 	z-index: 9999
 

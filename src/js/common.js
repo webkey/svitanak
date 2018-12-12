@@ -1931,7 +1931,7 @@ function cardGallery() {
 		activeClass = 'zoom-on',
 		timeout;
 
-	$container.on('click', '.p-card__gallery__item', function (e) {
+	/*$container.on('click', '.p-card__gallery__item', function (e) {
 		if (window.innerWidth < prodCardMediaWidth) {return;}
 		e.preventDefault();
 
@@ -1948,25 +1948,25 @@ function cardGallery() {
 		timeout = setTimeout(function () {
 			scrollTo($this, 300);
 		}, 300);
-	});
+	});*/
 
-	$(document).keyup(function(e) {
+	/*$(document).keyup(function(e) {
 		if ($container.hasClass(activeClass) && e.keyCode === 27) {
 			$container.removeClass(activeClass);
 			$html.removeClass(activeClass);
 
 			$container.trigger('change.cardGallery');
 		}
-	});
+	});*/
 
-	function scrollTo($element, speed) {
+	/*function scrollTo($element, speed) {
 
 		var dur = speed || 300;
 
 		if (!$(this).is(':animated')) {
 			$('html,body').stop().animate({scrollTop: $element.offset().top}, dur);
 		}
-	}
+	}*/
 
 	//card gallery
 	var $cardGallery = $('.card-gallery-js');
@@ -1991,7 +1991,7 @@ function cardGallery() {
 				longSwipesRatio: 0.1,
 				longSwipesMs: 200,
 				// Lazy Loading
-				lazyLoading: true,
+				// lazyLoading: true,
 
 				// Navigation arrows
 				nextButton: $thisBtnNext,
@@ -4634,71 +4634,69 @@ function stickyInit() {
 	});
 })();
 
-/**
- * !Custom cursor
- * */
-$(function () {
-	var $cursor = $('#ccur');
-
-	if(!$cursor.length) {
-		return false;
-	}
-
-	var mouseX = 0, mouseY = 0;
-	// var limitX = 1000, limitY = 1000;
-	var $html = $('html'),
-		$wrap = $('.p-card__gallery');
-
-	// Определяет границы, по которым будет двигаться объект
-	$(window).on('mousemove', function (e) {
-		var scrollTop = $(window).scrollTop(),
-			offset = $wrap.offset();
-
-		// limitX = $wrap.outerWidth() + offset.left;
-		// limitY = $wrap.outerHeight();
-
-		// mouseX = Math.min(e.pageX, limitX);
-		// mouseY = Math.min(e.pageY - scrollTop - offset.top, limitY);
-
-		mouseX = e.pageX;
-		mouseY = e.pageY - scrollTop - offset.top;
-		// Ищет координаты курсора
-		if (mouseX < 0) mouseX = 0;
-		// С какого момента (координат) начинать движение за курсором
-		if (mouseY < 0) mouseY = 0;
-		// Если курсор находится вне веб-страницы на момент загрузки, то установит объект в координатах x=0, y=0.
-
-		$cursor.css({'transform': 'translate(' + mouseX + 'px, ' + mouseY + 'px)'});
-	});
-
-	// $(window).on('load', function () {
-	// 	$(window).trigger('mousemove');
-	// });
-
-	$('.p-card__gallery__item').on({
-		'mouseenter mouseover': function() {
-			$cursor.addClass('active');
-			$html.addClass('activated-ccur');
-		},
-		'mouseleave mouseout': function() {
-			$cursor.removeClass('active');
-			$html.removeClass('activated-ccur');
-		}
-	})
-
-	// var xp = 0, yp = 0; // Начальные координаты объекта на момент загрузки страницы
-	// var loop = setInterval(function () {
-	// 	// Далее определяется скорость, с которой будет двигаться объект.
-	// 	// Изменить значение 20, для изменения скорости. Чем больше это значение, тем медленнее движется объект.
-	//
-	// 	xp += (mouseX - xp) / 20;
-	// 	yp += (mouseY - yp) / 20;
-	// 	follower.css({left: xp, top: yp});
-	// 	// Изменение позиционирования объекта с помощью css
-	//
-	// }, 10);
-	//В данном случае это значение определяет, насколько плавно и быстро будет происходить движение
-});
+// /** Custom cursor */
+// function customCursor() {
+// 	var $cursor = $('#ccur');
+//
+// 	if(!$cursor.length) {
+// 		return false;
+// 	}
+//
+// 	var mouseX = 0, mouseY = 0;
+// 	// var limitX = 1000, limitY = 1000;
+// 	var $html = $('html'),
+// 		$wrap = $('.p-card__gallery');
+//
+// 	// Определяет границы, по которым будет двигаться объект
+// 	$(window).on('mousemove', function (e) {
+// 		var scrollTop = $(window).scrollTop(),
+// 			offset = $wrap.offset();
+//
+// 		// limitX = $wrap.outerWidth() + offset.left;
+// 		// limitY = $wrap.outerHeight();
+//
+// 		// mouseX = Math.min(e.pageX, limitX);
+// 		// mouseY = Math.min(e.pageY - scrollTop - offset.top, limitY);
+//
+// 		mouseX = e.pageX;
+// 		mouseY = e.pageY - scrollTop - offset.top;
+// 		// Ищет координаты курсора
+// 		if (mouseX < 0) mouseX = 0;
+// 		// С какого момента (координат) начинать движение за курсором
+// 		if (mouseY < 0) mouseY = 0;
+// 		// Если курсор находится вне веб-страницы на момент загрузки, то установит объект в координатах x=0, y=0.
+//
+// 		$cursor.css({'transform': 'translate(' + mouseX + 'px, ' + mouseY + 'px)'});
+// 	});
+//
+// 	// $(window).on('load', function () {
+// 	// 	$(window).trigger('mousemove');
+// 	// });
+//
+// 	$('.p-card__gallery__item').on({
+// 		'mouseenter mouseover': function() {
+// 			$cursor.addClass('active');
+// 			$html.addClass('activated-ccur');
+// 		},
+// 		'mouseleave mouseout': function() {
+// 			$cursor.removeClass('active');
+// 			$html.removeClass('activated-ccur');
+// 		}
+// 	})
+//
+// 	// var xp = 0, yp = 0; // Начальные координаты объекта на момент загрузки страницы
+// 	// var loop = setInterval(function () {
+// 	// 	// Далее определяется скорость, с которой будет двигаться объект.
+// 	// 	// Изменить значение 20, для изменения скорости. Чем больше это значение, тем медленнее движется объект.
+// 	//
+// 	// 	xp += (mouseX - xp) / 20;
+// 	// 	yp += (mouseY - yp) / 20;
+// 	// 	follower.css({left: xp, top: yp});
+// 	// 	// Изменение позиционирования объекта с помощью css
+// 	//
+// 	// }, 10);
+// 	//В данном случае это значение определяет, насколько плавно и быстро будет происходить движение
+// }
 
 /**
  * !Always place the footer at the bottom of the page
@@ -4738,59 +4736,95 @@ $(function () {
 	}
 })();
 
+// /** Testing form validation (for example). Do not use on release! */
+// function formSuccessExample() {
+// 	var $form = $('.user-form form, .subscription-form form, .msg-form form');
+//
+// 	if ( $form.length ) {
+//
+// 		$form.submit(function (event) {
+// 			var $thisForm = $(this);
+//
+// 			if ($thisForm.parent().hasClass('success-form')) return;
+//
+// 			event.preventDefault();
+//
+// 			testValidateForm($thisForm);
+// 		});
+//
+// 		// $(':text, input[type="email"], textarea', $form).on('keyup change', function () {
+// 		// 	var $form = $(this).closest('form');
+// 		// 	if ($form.parent().hasClass('error-form')) {
+// 		// 		testValidateForm($form);
+// 		// 	}
+// 		// })
+//
+// 	}
+//
+// 	function testValidateForm(form) {
+// 		var $thisFormWrap = form.parent();
+//
+// 		var $inputs = $(':text, input[type="email"], input[type="password"], textarea', form);
+//
+// 		var inputsLength = $inputs.length;
+// 		var inputsHasValueLength = $inputs.filter(function () {
+// 			return $(this).val().length;
+// 		}).length;
+//
+// 		$thisFormWrap.toggleClass('error-form', inputsLength !== inputsHasValueLength);
+// 		$thisFormWrap.toggleClass('success-form', inputsLength === inputsHasValueLength);
+//
+// 		$.each($inputs, function () {
+// 			var $thisInput = $(this);
+// 			var thisInputVal = $thisInput.val();
+// 			var $thisInputWrap = $thisInput.parent();
+//
+// 			$thisInput.toggleClass('error', !thisInputVal.length);
+// 			$thisInput.toggleClass('success', !!thisInputVal.length);
+//
+// 			$thisInputWrap.toggleClass('error', !thisInputVal.length);
+// 			$thisInputWrap.toggleClass('success', !!thisInputVal.length);
+// 		});
+// 	}
+// }
+
 /**
- * !Testing form validation (for example). Do not use on release!
+ * ! Zoom Image
  * */
-function formSuccessExample() {
-	var $form = $('.user-form form, .subscription-form form, .msg-form form');
+function imgZoom() {
+	var $pane = $('.pane-container-js');
+	// function changePaneSize() {
+	// 	$pane.width($('.card-info-js').outerWidth());
+	// }
+	//
+	// changePaneSize();
+	//
+	// $(window).on('debouncedresize', function () {
+	// 	changePaneSize();
+	// });
 
-	if ( $form.length ) {
+	var thumbs = document.querySelectorAll('.p-card__gallery__item img'),
+		pane = document.querySelector('.pane-container-js');
 
-		$form.submit(function (event) {
-			var $thisForm = $(this);
+	if (window.innerWidth > 992) {
+		for (var i = 0, len = thumbs.length; i < len; i++) {
+			var thumb = thumbs[i];
 
-			if ($thisForm.parent().hasClass('success-form')) return;
-
-			event.preventDefault();
-
-			testValidateForm($thisForm);
-		});
-
-		// $(':text, input[type="email"], textarea', $form).on('keyup change', function () {
-		// 	var $form = $(this).closest('form');
-		// 	if ($form.parent().hasClass('error-form')) {
-		// 		testValidateForm($form);
-		// 	}
-		// })
-
-	}
-
-	function testValidateForm(form) {
-		var $thisFormWrap = form.parent();
-
-		var $inputs = $(':text, input[type="email"], input[type="password"], textarea', form);
-
-		var inputsLength = $inputs.length;
-		var inputsHasValueLength = $inputs.filter(function () {
-			return $(this).val().length;
-		}).length;
-
-		$thisFormWrap.toggleClass('error-form', inputsLength !== inputsHasValueLength);
-		$thisFormWrap.toggleClass('success-form', inputsLength === inputsHasValueLength);
-
-		$.each($inputs, function () {
-			var $thisInput = $(this);
-			var thisInputVal = $thisInput.val();
-			var $thisInputWrap = $thisInput.parent();
-
-			$thisInput.toggleClass('error', !thisInputVal.length);
-			$thisInput.toggleClass('success', !!thisInputVal.length);
-
-			$thisInputWrap.toggleClass('error', !thisInputVal.length);
-			$thisInputWrap.toggleClass('success', !!thisInputVal.length);
-		});
+			new Drift(thumb, {
+				paneContainer: pane,
+				hoverBoundingBox: true,
+				touchBoundingBox: true,
+				onShow: function () {
+					$(pane).css('visibility', 'visible');
+				},
+				onHide: function () {
+					$(pane).css('visibility', 'hidden');
+				}
+			});
+		}
 	}
 }
+
 
 /**
  * =========== !ready document, load/resize window ===========
@@ -4828,6 +4862,7 @@ $(document).ready(function () {
 	onlyNumberInput();
 	textSlide();
 	contactsMap();
+	// customCursor();
 
 	/*! shops location */
 	shopsLocation();
@@ -4835,6 +4870,8 @@ $(document).ready(function () {
 	stickyInit();
 	/*! for testing validate forms */
 	/*! formSuccessExample(); */
+
+	imgZoom();
 
 	/*! удалить после программирования */
 	var llength = 120;

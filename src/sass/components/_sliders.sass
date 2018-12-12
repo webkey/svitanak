@@ -54,47 +54,62 @@
 .images-slider
 
 	.slick-arrow
-		right: 0
+		right: auto
 		left: auto
-		top: 100%
+		top: auto
+		//top: 100%
+		bottom: 0
 		transform: translate(0, 0)
-		margin-top: -#{round($slider-arrow-size/2)}
-		+margin-horizontal(-110px)
+		//margin-top: -#{round($slider-arrow-size/2)}
+		margin: 17px
+		//margin-top: 4px
+		//+margin-horizontal(-110px)
 
 	.slick-prev
-		left: 50%
+		left: 0
+		//left: 50%
 
 	.slick-next
-		right: 50%
+		right: 0
+		//right: 50%
 
 	// slider counter
 	.slider-counter
-		$sc-size: 256px, 86px
+		//$sc-size: 256px, 86px
+		$sc-size: auto, 86px
 
-		position: absolute
-		+position(100%, 50%)
-		padding: 31px 0 0
+		//position: absolute
+		position: relative
+		//+position(100%, 50%)
+		padding: 34px 0 0
 		+size(nth($sc-size, 1), nth($sc-size, 2))
-		margin: -#{round(nth($sc-size, 2)/2)} 0 0 -#{round(nth($sc-size, 1)/2)}
+		//margin: -#{round(nth($sc-size, 2)/2)} 0 0 -#{round(nth($sc-size, 1)/2)}
+		//margin: -15px 0 0 -#{round(nth($sc-size, 1)/2)}
 		+font-alt
 		+font(24px, 1)
 		color: $text-color
 		text-align: center
 		background-color: $bg-color-base
-		border: 1px solid $border-color
+		border: 0 solid $border-color
+		border-width: 1px 0 0
 
 		&::before, &::after
-			+pseudo()
-			+position(50%)
+			content: ''
+			display: block
+			position: absolute
+			top: 50%
+			//+position(50%)
 			+size(0, 30px)
-			margin-top: -15px
+			margin: -15px 88px
 			border-left: 1px solid $border-color
 
 		&::before
-			margin-left: -42px
+			left: 0
+			//margin-left: -42px
 
 		&::after
-			margin-left: 42px
+			right: 0
+			//margin-left: 42px
 
 		.slide-curr
 			color: $base-color

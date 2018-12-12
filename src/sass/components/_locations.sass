@@ -42,11 +42,12 @@
 	.select
 		margin: 0
 
-		&.form-minimal select
-			+font-bold
-			font-size: 14px
-			letter-spacing: 0.2em
-			text-transform: uppercase
+		&.form-minimal
+			select, .select2-container--default .select2-selection, .select2-container--default .select2-selection .select2-selection__rendered
+				+font-bold
+				font-size: 14px
+				letter-spacing: 0.2em
+				text-transform: uppercase
 
 		&.disabled
 			&::before, &::after

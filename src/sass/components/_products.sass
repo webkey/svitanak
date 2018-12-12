@@ -56,6 +56,7 @@
 	z-index: 10
 
 .products__visual
+	position: relative
 	float: left
 	width: calc(100% - #{$product-content-width})
 	padding-right: $product-visual-space
@@ -80,6 +81,32 @@
 			padding-right: 0
 			padding-top: 0
 			margin-bottom: 3rem
+
+.products__new
+	position: absolute
+	bottom: 0
+	left: 0
+	background-image: url(../../img/label-new.png)
+	background-repeat: no-repeat
+	background-position: center
+	background-size: contain
+	width: 80px
+	font-size: 0
+	line-height: 0
+	z-index: 10
+
+	+media('<mob-md')
+		left: auto
+		bottom: auto
+		right: 0
+		top: 0
+		width: 60px
+
+	&::before
+		content: ''
+		display: block
+		position: relative
+		+ratio(240, 199)
 
 .products__figure
 	display: block
@@ -323,6 +350,12 @@ a.btn-to-basket
 		&:last-child
 			margin-bottom: 0
 
+	.products__new
+		top: auto
+		left: auto
+		right: 0
+		bottom: 0
+
 	.products__title
 		//+padding-horizontal($grid-space)
 		+font-normal
@@ -477,6 +510,9 @@ $p-filters-angle-lines-color: $text-color
 	transition:
 		property: transform
 		duration: $animation-speed
+	user-select: none
+	-webkit-tap-highlight-color: transparent
+	pointer-events: none
 
 	&::before, &::after
 		+pseudo()
@@ -506,11 +542,24 @@ $p-filters-angle-lines-color: $text-color
 	overflow: hidden
 	height: 0
 
+	.p-filters-is-open &
+		padding: #{round($grid-space*0.8)} 0 $grid-space
+
+.p-filters-is-open
+	.p-filters-drop-list
+		overflow-x: hidden
+		overflow-y: auto
+		max-height: 320px
+
+		+media('<tab-lg')
+			overflow-y: visible
+			max-height: none
+
 .p-filters-drop-list
 
 	&, .#{$user-content} &
 		margin: 0
-		padding: #{round($grid-space*0.8)} 0 $grid-space
+		padding: 0
 
 		li
 			padding-left: 0
@@ -861,13 +910,16 @@ $p-filters-angle-lines-color: $text-color
 
 	img
 		display: block
+		margin: 0 auto
+		//max-height: 100%
+		//max-width: 100%
+		//width: auto
+
 		width: 100%
 		height: 100%
 		max-width: none
-		+object-fit(none)
-		//+object-fit(scale-down)
+		//+object-fit(none)
 		+object-fit(contain)
-		visibility: hidden
 
 		+media('<tab-lg')
 			visibility: visible
@@ -876,6 +928,43 @@ $p-filters-angle-lines-color: $text-color
 			width: auto
 			height: auto
 			max-width: 100%
+
+.p-card__zoom-container
+	position: fixed
+	top: $header-height
+	//right: $layout-spaces + $p-card-space
+	right: 0
+	width: calc(#{nth($p-card-ratio, 2)} - #{$sidebar-width})
+	height: calc(100vh - #{$header-height})
+	//border: 1px solid $border-color
+	visibility: hidden
+	z-index: 999
+
+	//+media('<desk-hd')
+		right: $layout-spaces--hd + $p-card-space--hd
+
+	+media('<desk-lg')
+		//right: $layout-spaces--lg + $p-card-space--md
+		width: calc(#{nth($p-card-ratio--lg, 2)} - #{$sidebar-width--lg})
+		top: $header-height--lg
+		height: calc(100vh - #{$header-height--lg})
+
+	+media('<desk-sm')
+		//right: $layout-spaces--sm + $p-card-space--sm
+		width: nth($p-card-ratio--lg, 2)
+
+	+media('<mob-lg')
+		//right: $layout-spaces--mob
+		width: nth($p-card-ratio--sm, 2)
+
+	+media('<tab-lg')
+		display: none
+
+	img
+		visibility: visible
+		width: auto
+		height: auto
+		+object-fit(contain)
 
 .p-card__gallery__inner
 	position: relative
@@ -887,6 +976,10 @@ $p-filters-angle-lines-color: $text-color
 	background-position: center
 	background-repeat: no-repeat
 	background-size: auto 80%
+
+	display: flex
+	align-items: center
+	justify-content: center
 
 	+media('<tab-lg')
 		background: none !important
@@ -975,6 +1068,7 @@ $p-filters-angle-lines-color: $text-color
 
 // info
 .p-card__content
+	position: relative
 	width: nth($p-card-ratio, 2)
 	float: right
 	clear: right
@@ -1050,6 +1144,44 @@ $p-filters-angle-lines-color: $text-color
 
 		small
 			font-size: 10px
+
+// product card new label
+.p-card__new
+	position: absolute
+	left: 0
+	top: 0
+	background-image: url(../../img/label-new.png)
+	background-repeat: no-repeat
+	background-position: center
+	background-size: contain
+	width: 120px
+	font-size: 0
+	line-height: 0
+	z-index: 10
+	pointer-events: none
+	// transition
+	$prop: opacity
+	will-change: $prop
+	transition:
+		property: $prop
+		duration: $animation-speed
+		timing-function: ease-in-out
+
+	.zoom-on &
+		opacity: 0
+
+	+media('<mob-md')
+		left: auto
+		bottom: auto
+		right: 0
+		top: 0
+		width: 60px
+
+	&::before
+		content: ''
+		display: block
+		position: relative
+		+ratio(240, 199)
 
 // list of characteristics
 $dt-width: 50%
@@ -1400,7 +1532,7 @@ $dt-width--p-card: 184px
 		duration: 0.4s
 		timing-function: cubic-bezier(0,.71,.41,1)
 
-.p-card__gallery__item
+//.p-card__gallery__item
 	+media('>=tab-lg')
 		//cursor: url(../../img/cursor-zoom-in.cur), zoom-in
 		cursor: zoom-in
@@ -1453,6 +1585,9 @@ $dt-width--p-card: 184px
 	pointer-events: none
 	user-select: none
 	-webkit-tap-highlight-color: transparent
+
+	.touchevents &
+		display: none !important
 
 	.no-js &
 		cursor: zoom-in

@@ -846,10 +846,15 @@ body
 		margin-bottom: $bottom-space--ml
 
 .images-slider
-	margin-bottom: $bottom-space--lg*2
+	//margin-bottom: $bottom-space--lg*2
+	margin-bottom: $bottom-space--lg
 
 	+media('<tab-lg')
-		margin-bottom: $bottom-space--ml*2
+		//margin-bottom: $bottom-space--ml*2
+		margin-bottom: $bottom-space--ml
+
+	&:last-child
+		margin-bottom: 0
 
 /* feature list, images slider end
 
@@ -1177,6 +1182,3 @@ body
 		padding-top: 0
 
 /* product card (layout) end
-
-/* shutter (layout)
-/* shutter (layout) end
