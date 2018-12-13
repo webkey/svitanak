@@ -10,7 +10,7 @@ body
 .wrapper
 	margin: 0 auto
 	min-height: 100vh
-	overflow: hidden
+	overflow-x: hidden
 	position: relative
 	padding-top: $header-height
 
@@ -680,11 +680,11 @@ body
 		+media('<desk-hd')
 			bottom: #{round($layout-spaces--hd*0.9)}
 
-		+media('<desk-lg')
+		//+media('<desk-lg')
 			bottom: #{round($layout-spaces--lg*0.9)}
 
 		+media('<desk-sm')
-			bottom: #{round($layout-spaces--sm*0.9)}
+			bottom: 45px
 
 		+media('<mob-lg')
 			bottom: #{round($layout-spaces--mob*0.9)}
@@ -732,7 +732,7 @@ body
 			padding: #{round($layout-spaces--sm*0.9*2.5)} #{$layout-spaces--sm} 30px
 
 		+media('<mob-lg')
-			padding: #{$layout-spaces--mob}
+			padding: #{$layout-spaces--mob} #{$layout-spaces--mob} 0
 
 	/* main slider (layout) end
 

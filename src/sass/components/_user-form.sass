@@ -56,15 +56,18 @@
 
 .form-subtitle
 	+font-alt-bold
-	+font(36px, round-float(36/36, 2))
+	+font($font-size-h2, $line-height-h2)
 	color: $title-color
 	margin-bottom: $uf-row-bottom-space
 
-	+media(#{$media--md})
+	+media('<desk-md')
+		+font($font-size-h2--md, $line-height-h2--md)
+
+	+media('<tab-sm')
 		margin-bottom: $uf-row-bottom-space--sm
 
-	+media(#{$media--sm})
-		font-size: 28px
+	+media('<mob-lg')
+		+font($font-size-h2--sm, $line-height-h2--sm)
 
 .btn-reset
 	+font($font-size, round-float(20/16, 2))
@@ -148,57 +151,81 @@
 		resize: none
 
 	.form-footer
-		//padding-left: $label-width
 		padding: $uf-row-bottom-space 0 0
 		border: solid #d9d9d9
 		border-width: 1px 0 0
-		+clear
+		text-align: center
+
+		&::after
+			content: none
 
 		+media(#{$media--md})
 			padding-top: $uf-row-bottom-space--sm
 
 	.form-buttons
-		float: right
-		margin-left: 30px
+		float: none
+		margin-bottom: 20px
 
 		+media(#{$media--md})
 			float: none
-			margin: 0 0 $uf-row-bottom-space--sm
 			text-align: center
 
 		.btn-submit
 			width: 200px
 
-	.form-note
-		overflow: hidden
-		min-height: $form-input-height
-		max-width: $uf-label-width
-		+clear-spacing
-		line-height: 25px
+			+media(#{$media--sm})
+				display: block
+				width: 100%
 
-		&::before
+		&:last-child
+			margin-bottom: 0
+
+	.form-note
+		//overflow: hidden
+		//min-height: $form-input-height
+		//max-width: $uf-label-width
+		//+clear-spacing
+		+font($font-size, $line-height)
+		//line-height: 25px
+		text-align: left
+		margin-bottom: 20px
+		min-height: 0
+
+		+media(#{$media--md})
+			+font($font-size--sm, $line-height--sm)
+
+		//&::before
 			content: ''
 			display: inline-block
 			vertical-align: middle
 			min-height: inherit
 
-		+media(#{$media--md})
+		//+media(#{$media--md})
 			max-width: none
 			min-height: 0
 			padding-right: 120px
 
-		+media(#{$media--sm})
+		//+media(#{$media--sm})
 			padding: 0 0 30px
+
+		&:last-child
+			margin-bottom: 0
 
 		.form-mark
 			margin-left: 0
 			left: auto
 
 	.form-note__item
-		display: inline-block
-		vertical-align: middle
-		width: calc(100% - 6px)
-		+font($font-size, round-float(20/16, 2))
-		letter-spacing: normal
+		//display: inline-block
+		//vertical-align: middle
+		//width: calc(100% - 6px)
+		//letter-spacing: normal
+		margin-bottom: 10px
+
+		+media(#{$media--md})
+			margin-bottom: 5px
+
+		&:last-child
+			margin-bottom: 0
 
 /* user form end

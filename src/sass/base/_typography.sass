@@ -67,6 +67,9 @@ h3
 	+media('<desk-md')
 		+font($font-size-h3--md, $line-height-h3--md)
 
+	+media('<mob-lg')
+		+font($font-size-h3--sm, $line-height-h3--sm)
+
 h4
 	+font($font-size-h4, $line-height-h4)
 
@@ -279,6 +282,9 @@ i b, i strong, em b, em strong, b i, b em, strong i, strong em
 		display: block
 		margin-bottom: 4rem
 
+	+media('<mob-lg')
+		margin-bottom: 2rem
+
 	h1, h2, h3
 		position: relative
 		+display-inline-block-middle
@@ -287,8 +293,8 @@ i b, i strong, em b, em strong, b i, b em, strong i, strong em
 		//max-width: 80%
 
 		+media('<tab-lg')
+			display: block
 			padding-right: 0
-			text-align: center
 
 		+media('<mob-lg')
 			margin-bottom: 1rem
@@ -314,7 +320,7 @@ i b, i strong, em b, em strong, b i, b em, strong i, strong em
 
 	+media('<tab-lg')
 		display: block
-		text-align: center
+		text-align: left
 		margin-bottom: 1rem
 
 .heading__options__item

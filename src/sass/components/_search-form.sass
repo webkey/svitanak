@@ -3,9 +3,6 @@
 @import ../../libs/include-media/dist/include-media
 
 /* search form
-//.search-form
-	+padding-vertical(50px)
-
 .search-form, .search-form__field
 	position: relative
 	margin-bottom: $bottom-space--md
@@ -16,8 +13,19 @@
 	&:last-child
 		margin-bottom: 0
 
+.search-form__field
+
+	.touchevents &
+		padding-right: #{$search-form-popup-btn-size+12}
+
+	&, .touchevents &
+		+media('<tab-lg')
+			padding-right: #{$search-form-popup-btn-size+12}
+
+		+media('<mob-lg')
+			padding-right: #{$search-form-popup-btn-size--sm+12}
+
 input.search-form__input
-	//padding: 0 #{$search-form-popup-btn-size+12} 0 0
 	padding: 0
 	height: 72px
 	+font-alt-bold
@@ -35,7 +43,6 @@ input.search-form__input
 	+media('<mob-lg')
 		height: 22px
 		+font(22px, 22px)
-		//padding-right: #{$search-form-popup-btn-size--sm+12}
 
 	&, &:hover, &:focus, &.error, &.input--has-value
 		box-shadow: none
@@ -68,6 +75,12 @@ input.search-form__input
 	// цвет текста и svg иконки
 	color: #e5e5e5
 	pointer-events: none
+
+	.touchevents &
+		display: block
+
+	+media('<tab-lg')
+		display: block
 
 	+media('<mob-lg')
 		+size($search-form-popup-btn-size--sm)
@@ -156,7 +169,7 @@ input.search-form__input
 		+grid-item-responsive(3, $products-space--md, floor($products-space--md*0.5))
 
 	+media('<tab-lg')
-		+grid-item-responsive(2, $products-space--sm, $products-space--sm)
+		+grid-item-responsive(1, $products-space--sm, $products-space--sm)
 
 	+media('<mob-lg')
 		+grid-item-responsive(1, $products-space--mob, $products-space--mob)
